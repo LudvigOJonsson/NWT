@@ -20,12 +20,6 @@ namespace NWT
 		public NewsPage (int ID)
 		{
 			InitializeComponent ();
-            LoadNews(ID);
-
-        }
-
-        void LoadNews(int ID)
-        {
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
             imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
             imageLinks.Add("https://www.surfertoday.com/images/stories/clouds.jpg");
@@ -34,8 +28,15 @@ namespace NWT
             imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
+            LoadNews(ID);
 
-            var RSS = App.database.GetRSS(ID).First();
+        }
+
+        void LoadNews(int ID)
+        {
+            
+
+            var RSS = App.database.GetRss(ID).First();
             Header.Text = RSS.Title;
             Body.Text = RSS.Description;
             Body.Text = Body.Text + " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -117,26 +118,6 @@ namespace NWT
                     FontSize = 16,
 
                 };
-                var VoteArrowUp = new Button
-                {
-                    Image = "uparrow.png",
-                    BackgroundColor = Color.Transparent,
-                    WidthRequest = 20,
-                    HeightRequest = 20,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Start,
-                    Margin = 0,
-                };
-                var VoteArrowDown = new Button
-                {
-                    Image = "downarrow.png",
-                    BackgroundColor = Color.Transparent,
-                    WidthRequest = 20,
-                    HeightRequest = 20,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.End,
-                    Margin = 0,
-                };
                 /*var Userimage = new Image
                 {
                     Source = "snail.png",
@@ -163,8 +144,6 @@ namespace NWT
                 ArticleGrid.Children.Add(CommentBox, 0, s.CommentNR + 8);
                 ArticleGrid.Children.Add(Comment, 0, s.CommentNR + 8);
                 ArticleGrid.Children.Add(Username, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + 8);
                 //ArticleGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
                 ArticleGrid.Children.Add(Reply, 0, s.CommentNR + 8);
             }

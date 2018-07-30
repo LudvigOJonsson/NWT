@@ -52,6 +52,7 @@ namespace NWT
         public int User { get; set; }
         public string Token { get; set; }
         public string IP { get; set; }
+        public string LastUse { get; set; }
     }
 
 
@@ -86,6 +87,8 @@ namespace NWT
         public string Title { get; set; }
         public string Link{ get; set; }
         public string Description { get; set; }
+        public string Source { get; set; }
+        public string PubDate { get; set; }
     }
 
 
@@ -130,12 +133,23 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
-        public List<RSSTable> GetRSS(int ID)
+        public void LoadRSS(int start, int stop)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", JsonConvert.SerializeObject("SELECT * FROM RSS WHERE ID = "+ ID.ToString()))));
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            Console.WriteLine(Result.JSON);
-            return JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON);     
+            for(int x = start; x < stop; x++)
+            {
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", JsonConvert.SerializeObject("SELECT * FROM RSS WHERE ID = " + x.ToString()))));
+                var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
+                DB.Insert(Article);
+            }
+        }
+        public List<RSSTable> GetRSS(int ID)
+        {           
+            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < " + ID.ToString() + " ORDER BY PubDate");     
+        }
+        public List<RSSTable> GetRss(int ID)
+        {
+            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = " + ID.ToString());
         }
         public void Registration(UserTable User)
         {
@@ -169,18 +183,28 @@ namespace NWT
         {
             if(App.Token != null)
             {
+             
                 var Token = new TokenTable();
                 Token.User = App.Token.User;
                 Token.Token = SHA256Hash(App.Token.Token + App.Token.User);            
                 var Result = TCP(JsonConvert.SerializeObject(new JSONObj("Token", "TokenCheck", JsonConvert.SerializeObject(Token))));
-                if (JsonConvert.DeserializeObject<Boolean>(JsonConvert.DeserializeObject<JSONObj>(Result).JSON))
-                {
-                    return true;
+                if(Result != null)
+                {                                     
+                    var JSON = JsonConvert.DeserializeObject<JSONObj>(Result).JSON;
+                    var Test = JsonConvert.DeserializeObject<Boolean>(JSON);
+                    
+                    if (Test)
+                    {
+                        
+                        return true;
+                    }
+                    else
+                    {
+                        Logout();
+                        return false;
+                    }
                 }
-                else
-                {   
-                    return false;
-                }
+                
             }
             return false;
         }
@@ -241,6 +265,7 @@ namespace NWT
             string Message = "";
             try
             {
+                
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
@@ -251,13 +276,13 @@ namespace NWT
 
                 Stream stm = tcpclnt.GetStream();
 
-                ASCIIEncoding asen = new ASCIIEncoding();
+                Encoding asen = Encoding.Default;
                 byte[] ba = asen.GetBytes(JSON);
                 Console.WriteLine("Transmitting.....");
 
                 stm.Write(ba, 0, ba.Length);
 
-                byte[] bb = new byte[1000000];
+                byte[] bb = new byte[1000000000];
                 int k = stm.Read(bb, 0, 1024);
 
                 for (int i = 0; i < k; i++)

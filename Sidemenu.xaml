@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Switch x:Name="Red"
+                <Switch x:Name="NWT"
                         x:FieldModifier="public"
                         Toggled="PrintNews"
                         IsToggled="True"
@@ -39,7 +39,7 @@
                OnColor="#48BDAE"
                 Grid.Row="0" Grid.Column="0"
                 />
-                <Switch x:Name="Orange"
+                <Switch x:Name="Mariestad"
                         x:FieldModifier="public" 
                Toggled="PrintNews"
                IsToggled="True"
@@ -48,7 +48,7 @@
                OnColor="#48BDAE"
                 Grid.Row="1" Grid.Column="0"
                 />
-                <Switch x:Name="Yellow"
+                <Switch x:Name="HJO"
                         x:FieldModifier="public" 
                Toggled="PrintNews"
                IsToggled="True"
@@ -57,7 +57,7 @@
                OnColor="#48BDAE"
                 Grid.Row="2" Grid.Column="0"
                 />
-                <Switch x:Name="Green"
+                <Switch x:Name="SLA"
                         x:FieldModifier="public" 
                Toggled="PrintNews"
                IsToggled="True"
@@ -181,10 +181,10 @@
                  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"        
                  />
 
-                <Label Text="Red" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="0" Grid.Column="1"/>
-                <Label Text="Orange" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Yellow" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Green" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="NWT" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Mariestad" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="HJO" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="SLA" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="1"/>
                 <Label Text="Blue" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="4" Grid.Column="1"/>
                 <Label Text="Purple" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="5" Grid.Column="1"/>
 
