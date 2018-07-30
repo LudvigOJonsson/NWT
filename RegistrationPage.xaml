@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.RegistrationPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <StackLayout>
+        <Entry x:Name="UserLogin" Placeholder="Username" />
+        <Entry x:Name="UserPassword" Placeholder="Password" />
+        <Entry x:Name="UserEmail" Placeholder="Email" />
+        <Entry x:Name="UserName" Placeholder="Name" />
+        <Entry x:Name="UserCity" Placeholder="City" />
+        <Entry x:Name="UserAge" Placeholder="Age" />
+        <Button x:Name="RegisterButton" Text="Register" Clicked="Register" />
+    </StackLayout>
+</ContentPage>

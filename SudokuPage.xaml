@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.SudokuPage"
+             BackgroundColor="#FFFFFF"
+             Title="Sodoku">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Sudoku" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#50d2c2" />
+            <Grid x:Name="SudokuGrid" RowSpacing="1" ColumnSpacing="1" VerticalOptions="Center" HorizontalOptions ="Center" BackgroundColor = "Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="0"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="0"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="1"/>
+
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="0" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="1" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="2" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="3" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="4" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="5" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="6" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="7" Grid.Column="2"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="8" Grid.Column="2"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="3"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="3"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="4"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="4"/>
+
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="0" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="1" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="2" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="3" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="4" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="5" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="6" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="7" Grid.Column="5"/>
+                <BoxView Color="White" WidthRequest="40" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="8" Grid.Column="5"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="6"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="6"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="7"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="7"/>
+
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="3" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="4" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="5" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="6" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="7" Grid.Column="8"/>
+                <BoxView Color="White" WidthRequest="45" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="8" Grid.Column="8"/>
+
+              
+
+            </Grid>
+
+            <Button x:Name="SolveButton" Text="Solve" Clicked="SolveSudoku" Margin="20" BackgroundColor="#50d2c2" TextColor="White"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

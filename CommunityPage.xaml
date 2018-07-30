@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.CommunityPage"
+             x:Name = "Communitypage" 
+             BackgroundColor="#f8f8f9">
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0">
+            <Grid x:Name="AppGridP" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="CommunityButtonN" Text="" Clicked="News" Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="community.png"/>
+                <Button x:Name="NewsButtonN" Text="" Clicked="News" Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="newsfeed.png"/>
+                <Button x:Name="ProfileButtonN" Text="" Clicked="Profile" Grid.Row="0" Grid.Column="2" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="profile.png"/>
+                <Button x:Name="GamesButtonN" Text="" Clicked="Games" Grid.Row="0" Grid.Column="3" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="play.png"/>
+                <BoxView Color="#50d2c2" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+            </Grid>
+
+            <Grid x:Name="LoginGrid" RowSpacing="5" ColumnSpacing="5" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="193" />
+                    <RowDefinition Height="193" />
+                    <RowDefinition Height="193" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF"/>
+                <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF"/>
+                <BoxView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF"/>
+                <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF"/>
+                <Button Grid.Row="0" Grid.Column="0" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" />
+                <Button Grid.Row="0" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" />
+                <Button Grid.Row="1" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" />
+                <Button Grid.Row="2" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" />
+
+
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.Sidemenu"
+             NavigationPage.HasNavigationBar = "False"
+             BackgroundColor="#FFFFFF">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,60,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <!--<Label Text="Christoffer Bodegård" TextColor="White" FontSize="28" HorizontalOptions="End" Margin="20"></Label>
+            <Label Text="Category  Tabs" TextColor="White" FontSize="24" HorizontalOptions="Center" Margin="20"></Label>-->
+            <!-- BackgroundColor="#50d2c2" -->
+            <!-- Comment from Chris -->
+            <Grid x:Name="NewsGrid" RowSpacing="10" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Switch x:Name="Red"
+                        x:FieldModifier="public"
+                        Toggled="PrintNews"
+                        IsToggled="True"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="0" Grid.Column="0"
+                />
+                <Switch x:Name="Orange"
+                        x:FieldModifier="public" 
+               Toggled="PrintNews"
+               IsToggled="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="1" Grid.Column="0"
+                />
+                <Switch x:Name="Yellow"
+                        x:FieldModifier="public" 
+               Toggled="PrintNews"
+               IsToggled="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="2" Grid.Column="0"
+                />
+                <Switch x:Name="Green"
+                        x:FieldModifier="public" 
+               Toggled="PrintNews"
+               IsToggled="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="3" Grid.Column="0"
+                />
+                <Switch x:Name="Blue"
+                        x:FieldModifier="public" 
+               Toggled="PrintNews"
+               IsToggled="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="4" Grid.Column="0"
+                />
+                <Switch x:Name="Purple"
+                        x:FieldModifier="public" 
+               Toggled="PrintNews"
+               IsToggled="True"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="5" Grid.Column="0"
+                />
+
+
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="0" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="0" Grid.Column="1"        
+                 />
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="1" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="1" Grid.Column="1"        
+                 />
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="2" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="2" Grid.Column="1"        
+                 />
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="3" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="3" Grid.Column="1"        
+                 />
+
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="4" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="4" Grid.Column="1"        
+                 />
+                <BoxView Color="#47bcae"
+                 WidthRequest="300"
+                 HeightRequest="0"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="5" Grid.Column="1"        
+                 />
+                <BoxView Color="#f8f8f9"
+                 WidthRequest="300"
+                 HeightRequest="1"
+                 VerticalOptions="Start"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="5" Grid.Column="1"        
+                 />
+
+                <BoxView Color="#50d2c2"
+                 WidthRequest="500"
+                         HeightRequest="400"
+
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"        
+                 />
+
+                <Label Text="Red" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Orange" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="Yellow" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Green" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="Blue" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="4" Grid.Column="1"/>
+                <Label Text="Purple" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="5" Grid.Column="1"/>
+
+                <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
+                <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
+                <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
+                
+            </Grid>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

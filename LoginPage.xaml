@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.LoginPage"
+             x:Name = "Loginpage" 
+             BackgroundColor="#f8f8f9">
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0">
+            <Grid x:Name="AppGridP" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="CommunityButtonN" Text="" Clicked="Community" Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="community.png"/>
+                <Button x:Name="NewsButtonN" Text="" Clicked="News" Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="newsfeed.png"/>
+                <Button x:Name="ProfileButtonN" Text="" Clicked="Profile" Grid.Row="0" Grid.Column="2" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="profile.png"/>
+                <Button x:Name="GamesButtonN" Text="" Clicked="Games" Grid.Row="0" Grid.Column="3" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="play.png"/>
+                <BoxView Color="#50d2c2" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2"/>
+            </Grid>
+
+            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="NWT-APP PROTOTYPE" TextColor="#50d2c2" FontSize="42" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="EMAIL" TextColor="DimGray" FontSize="8" Grid.Row="5" VerticalOptions="Start"/>
+                <Entry x:Name="UserLogin" Placeholder="youremail@gmail.com" Grid.Row="5" TextColor="Black" VerticalOptions="End"/>
+                <Label Text="PASSWORD" TextColor="DimGray" FontSize="8" Grid.Row="7" VerticalOptions="Start"/>
+                <Entry x:Name="UserPassword" Placeholder="1234" TextColor="Black" Grid.Row="7" VerticalOptions="End"/>
+                <Button x:Name="LoginButton" Text="Login"  Clicked="Login" BackgroundColor="#50d2c2" TextColor="White" Grid.Row="9" HeightRequest="50"/>
+                <Label Text="DON'T HAVE AN ACCOUNT?" TextColor="DimGray" FontSize="8" Grid.Row="10" HorizontalOptions="End"/>
+                <Button x:Name="RegisterButton" Text="Register" Clicked="Register" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="End"/>
+
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

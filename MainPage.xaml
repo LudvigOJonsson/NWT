@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+			  x:Class="NWT.MainPage"
+              x:Name="Mainpage"
+              BackgroundColor="#f8f8f9">
+    
+    <ContentPage x:Name = "CommunityPage">
+
+
+    </ContentPage>
+    <ContentPage>
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS, Android" Value="0,0,0,0" />
+            </OnPlatform>
+        </ContentPage.Padding>
+        <StackLayout Spacing="0">
+            
+            <Grid x:Name="AppGridN" ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="CommunityButtonN" Text="" Clicked="Community" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="community.png" Margin="0"/>
+                <Button x:Name="NewsButtonN" Text="" Clicked="News" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="newsfeed.png" Margin="0"/>
+                <Button x:Name="ProfileButtonN" Text="" Clicked="Profile" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="profile.png" Margin="0"/>
+                <Button x:Name="GamesButtonN" Text="" Clicked="Games" Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="play.png" Margin="0"/>
+                <BoxView Color="#50d2c2" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="0"/>
+            </Grid>
+
+            <ScrollView>
+                <Grid x:Name="NewsGrid" RowSpacing="10" ColumnSpacing="1" BackgroundColor="#f8f8f9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage x:Name = "UserPage">
+
+        
+        
+    </ContentPage>
+    <ContentPage>
+        <ContentPage.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS, Android" Value="0,0,0,0" />
+            </OnPlatform>
+        </ContentPage.Padding>
+        <StackLayout Spacing="0">
+            <Grid x:Name="AppGridG" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="CommunityButtonG" Text="" Clicked="Community" Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="community.png"/>
+                <Button x:Name="NewsButtonG" Text="" Clicked="News" Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="newsfeed.png"/>
+                <Button x:Name="ProfileButtonG" Text="" Clicked="Profile" Grid.Row="0" Grid.Column="2" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="profile.png"/>
+                <Button x:Name="GamesButtonG" Text="" Clicked="Games" Grid.Row="0" Grid.Column="3" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="play.png"/>
+                <BoxView Color="#50d2c2" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="3"/>
+            </Grid>
+
+            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="GAMES" TextColor="#50d2c2" FontSize="42" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="White" />
+
+            </Grid>
+
+            
+        </StackLayout>
+    </ContentPage>
+    
+</CarouselPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.SettingsPage"
+             BackgroundColor="#FFFFFF"
+             Title="Settings">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                                              
+
+                <Label Text="FULLNAME" TextColor="DimGray"  Grid.Row="0" VerticalOptions="Start" FontSize="8"/>
+                <Entry x:Name="Fullname" Placeholder="John Smith" Grid.Row="0" TextColor="Black" VerticalOptions="End"  />
+
+                <Label Text="EMAIL" TextColor="DimGray"  Grid.Row="1" VerticalOptions="Start" FontSize="8" />
+                <Entry x:Name="UserEmail" Placeholder="youremail@gmail.com" TextColor="Black" Grid.Row="1" VerticalOptions="End"  />
+
+                <Label Text="CITY" TextColor="DimGray"  Grid.Row="2" VerticalOptions="Start" FontSize="8"  />
+                <Entry x:Name="UserCity" Placeholder="Denver Colorado" TextColor="Black" Grid.Row="2" VerticalOptions="End"  />
+
+                <Label Text="AGE" TextColor="DimGray"  Grid.Row="3" VerticalOptions="Start" FontSize="8"  />
+                <Entry x:Name="UserAge" Placeholder="18" TextColor="Black" Grid.Row="3" VerticalOptions="End"  />
+
+                <Button x:Name="UpdateInfoButton" Text="Update Info" Clicked="UpdateInfo" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+
+                <Label Text="New Password" TextColor="DimGray"  Grid.Row="7" VerticalOptions="Start" FontSize="8"  />
+                <Entry x:Name="NPass" Placeholder="Denver Colorado" TextColor="Black" Grid.Row="7" VerticalOptions="End"  />
+
+                <Label Text="Repeat Password" TextColor="DimGray"  Grid.Row="8" VerticalOptions="Start" FontSize="8"  />
+                <Entry x:Name="RPass" Placeholder="18" TextColor="Black" Grid.Row="8" VerticalOptions="Center" />
+                <Button x:Name="ChangePasswordButton" Text="Change Password" Clicked="ChangePassword" Grid.Row="10" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+
+
+
+
+                <Label Text="Notifications" TextColor="DimGray" FontSize="18" Grid.Row="12" HorizontalOptions="Start"  />
+                <Switch x:Name="NotificationsSwitch"
+                        x:FieldModifier="public"
+               IsToggled="True"
+               HorizontalOptions="End"
+                Grid.Row="12" Grid.Column="0"
+                        OnColor="#50d2c2"
+                        
+                />
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
