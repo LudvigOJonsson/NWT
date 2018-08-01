@@ -10,16 +10,22 @@ using System.Diagnostics;
 
 namespace NWT
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PostPage : ContentPage
+    {
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
 
         public static int ArticleNR;
-		public NewsPage (int ID)
-		{
-			InitializeComponent ();
+        public PostPage(int ID)
+        {
+            InitializeComponent();
+            LoadNews(ID);
+
+        }
+
+        void LoadNews(int ID)
+        {
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
             imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
             imageLinks.Add("https://www.surfertoday.com/images/stories/clouds.jpg");
@@ -28,22 +34,14 @@ namespace NWT
             imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
-            LoadNews(ID);
 
-        }
-
-        void LoadNews(int ID)
-        {
-            
-
-            var RSS = App.database.GetRss(ID).First();
+            var RSS = App.database.GetRSS(ID).First();
             Header.Text = RSS.Title;
             Body.Text = RSS.Description;
             Body.Text = Body.Text + " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
             //Text.Text = ""; "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
-            Date.Text = "Publicerad: "+RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
             LoadComments();
         }
@@ -56,11 +54,11 @@ namespace NWT
         void SubmitComment(int ReplyNR)
         {
 
-            if(App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+            if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
             {
                 var CNR = App.database.CommentCount(ArticleNR);
                 var SC = new CommentTable();
-                
+
                 SC.Article = ArticleNR;
                 SC.CommentNR = CNR;
                 SC.User = App.LoggedinUser.ID;
@@ -68,18 +66,18 @@ namespace NWT
                 {
                     var Reply = App.database.GetComment(ReplyNR).First();
                     var User = App.database.GetUser(Reply.User).First();
-                    SC.Comment = "@" + User.Name + Reply.CommentNR +", " + Comment.Text; //
+                    SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text; //
                 }
                 else
                 {
                     SC.Comment = Comment.Text;
                 }
-                  
+
                 SC.Point = 0;
                 Comment.Text = "";
                 App.database.InsertComment(SC);
                 LoadComments();
-            } 
+            }
         }
 
         void LoadComments() // Remove Previously Rendered Comments.

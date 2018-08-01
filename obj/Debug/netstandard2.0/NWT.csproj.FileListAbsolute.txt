@@ -16,3 +16,5 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netst
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netstandard2.0\LoginPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netstandard2.0\NWT.csprojAssemblyReference.cache
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netstandard2.0\CommunityPage.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Debug\netstandard2.0\SettingsPage.xaml.g.cs

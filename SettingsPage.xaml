@@ -30,7 +30,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                                              
+
 
                 <Label Text="FULLNAME" TextColor="DimGray"  Grid.Row="0" VerticalOptions="Start" FontSize="8"/>
                 <Entry x:Name="Fullname" Placeholder="John Smith" Grid.Row="0" TextColor="Black" VerticalOptions="End"  />
