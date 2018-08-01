@@ -14,7 +14,10 @@ namespace NWT
 	public partial class MainPage : CarouselPage
 	{
         public static int Startnr = 1;
-        public static int Stopnr = 7;
+        public static int Stopnr = 1;
+        public static int DBLN = 30;
+        public static int NTN = DBLN/5;
+
         public static List<KeyValuePair<BoxView, KeyValuePair<Label, Image>>> ArticleList = new List<KeyValuePair<BoxView, KeyValuePair<Label, Image>>>();
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
@@ -33,7 +36,7 @@ namespace NWT
             imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
-            //AddNews();          
+            AddNews();          
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
 
@@ -79,10 +82,10 @@ namespace NWT
 
             Color Colour = Color.Black;
 
-            //var Rss = App.database.GetRSS(Stopnr);
-            //Console.WriteLine(RSS.Count);
+            var Rss = App.database.GetRSS(Stopnr);
+            Console.WriteLine(Rss.Count);
             ArticleList.Clear();
-            /*
+            
             foreach (RSSTable RSS in Rss)
             {
                 switch (ColourNR)
@@ -194,16 +197,28 @@ namespace NWT
                 X++;
             }
             NewsGrid.Children.Add(LoadNewsButton,0, X - 1);
-            */
+            
         }
 
         public void AddNews()
         {
-            App.database.LoadRSS(Startnr, Stopnr);
+            
+            if (Startnr < (Stopnr + NTN))
+            {
+                FillLocalDB();
+            }
+            
+            Stopnr += NTN;
             PrintNews();
-            Startnr = Stopnr;
-            Stopnr += 6;
+
         }
+
+        public void FillLocalDB()
+        {            
+            App.database.LoadRSS(Startnr, (Startnr+DBLN));
+            Startnr += DBLN;
+        }
+
 
         async void PlaySudoku(object sender, EventArgs e)
         {

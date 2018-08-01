@@ -145,7 +145,7 @@ namespace NWT
         }
         public List<RSSTable> GetRSS(int ID)
         {           
-            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < " + ID.ToString() + " ORDER BY PubDate");     
+            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < " + ID.ToString() + " ORDER BY PubDate DESC");     
         }
         public List<RSSTable> GetRss(int ID)
         {
@@ -282,9 +282,9 @@ namespace NWT
 
                 stm.Write(ba, 0, ba.Length);
 
-                byte[] bb = new byte[1000000000];
+                byte[] bb = new byte[10000000];
                 int k = stm.Read(bb, 0, 1024);
-
+                Console.WriteLine("Read Complete");
                 for (int i = 0; i < k; i++)
                     Message += Convert.ToChar(bb[i]);
 

@@ -32,17 +32,17 @@
 
                 <Switch x:Name="NWT"
                         x:FieldModifier="public"
-                        Toggled="PrintNews"
-                        IsToggled="True"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Start"
+                IsToggled="True"
+                Toggled="PrintNews"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
                OnColor="#48BDAE"
                 Grid.Row="0" Grid.Column="0"
                 />
                 <Switch x:Name="Mariestad"
                         x:FieldModifier="public" 
-               Toggled="PrintNews"
                IsToggled="True"
+               Toggled="PrintNews"
                HorizontalOptions="Center"
                VerticalOptions="Start"
                OnColor="#48BDAE"
@@ -50,8 +50,8 @@
                 />
                 <Switch x:Name="HJO"
                         x:FieldModifier="public" 
-               Toggled="PrintNews"
                IsToggled="True"
+               Toggled="PrintNews"
                HorizontalOptions="Center"
                VerticalOptions="Start"
                OnColor="#48BDAE"
@@ -59,31 +59,14 @@
                 />
                 <Switch x:Name="SLA"
                         x:FieldModifier="public" 
-               Toggled="PrintNews"
                IsToggled="True"
+               Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
                OnColor="#48BDAE"
                 Grid.Row="3" Grid.Column="0"
                 />
-                <Switch x:Name="Blue"
-                        x:FieldModifier="public" 
-               Toggled="PrintNews"
-               IsToggled="True"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#48BDAE"
-                Grid.Row="4" Grid.Column="0"
-                />
-                <Switch x:Name="Purple"
-                        x:FieldModifier="public" 
-               Toggled="PrintNews"
-               IsToggled="True"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#48BDAE"
-                Grid.Row="5" Grid.Column="0"
-                />
+
 
 
                 <BoxView Color="#47bcae"
@@ -185,9 +168,7 @@
                 <Label Text="Mariestad" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="1" Grid.Column="1"/>
                 <Label Text="HJO" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="2" Grid.Column="1"/>
                 <Label Text="SLA" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Blue" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="4" Grid.Column="1"/>
-                <Label Text="Purple" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="5" Grid.Column="1"/>
-
+               
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
