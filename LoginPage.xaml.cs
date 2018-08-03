@@ -43,22 +43,7 @@ namespace NWT
             await Navigation.PushAsync(new RegistrationPage());
         }
 
-        void Community()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
-        }
-        void News()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-        }
-        void Profile()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-        }
-        void Games()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[3];
-        }
+
 
     }
 }

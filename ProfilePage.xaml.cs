@@ -18,23 +18,6 @@ namespace NWT
             Welcome.Text = User.Username;
 		}
 
-        void Community()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
-        }
-        void News()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-        }
-        void Profile()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-        }
-        void Games()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[3];
-        }
-
         void Logout()
         {
             App.database.Logout();

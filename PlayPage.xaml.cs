@@ -10,20 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace NWT
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Sidemenu : ContentPage
+	public partial class PlayPage : ContentPage
 	{
-     
-        public Sidemenu ()
+		public PlayPage ()
 		{
 			InitializeComponent ();
-            
-        }
+		}
 
-        public void PrintNews()
+        async void PlaySudoku(object sender, EventArgs e)
         {
-
-            NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
-            Page.PrintNews();
+            await Navigation.PushAsync(new SudokuPage());
         }
-	}
+
+    }
 }

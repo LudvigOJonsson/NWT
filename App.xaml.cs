@@ -36,9 +36,6 @@ namespace NWT
             };
             
             MainPage = Startpage;
-            Mainpage.Children[0] = new CommunityPage();
-            Mainpage.Children[2] = new LoginPage();
-
             Instanciated = true;
         }
         

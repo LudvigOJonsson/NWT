@@ -269,7 +269,7 @@ namespace NWT
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("81.170.199.32", 1508);
+                tcpclnt.Connect("79.102.55.82", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");
