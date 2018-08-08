@@ -6,7 +6,6 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.AssemblyInfo.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.dll
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.pdb
-C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\App.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoginPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\MainPage.xaml.g.cs
@@ -21,3 +20,4 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\PostPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NewsGridPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\PlayPage.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache

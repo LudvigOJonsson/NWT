@@ -3,7 +3,14 @@
 			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			  x:Class="NWT.MainPage"
               x:Name="Mainpage"
-              BackgroundColor="#f8f8f9">
+              BackgroundColor="#f8f8f9"
+              >
+    <CarouselPage.ToolbarItems>
+        <ToolbarItem Icon="community.png" Text="" Clicked="Community"/>
+        <ToolbarItem Icon="newsfeed.png" Text="" Clicked="News"/>
+        <ToolbarItem Icon="profile.png" Text="" Clicked="Profile"/>
+        <ToolbarItem Icon="play.png" Text="" Clicked="Games"/>
+    </CarouselPage.ToolbarItems>
     
     <ContentPage x:Name = "CommunityPage">
 

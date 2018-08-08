@@ -30,8 +30,8 @@ namespace NWT
 
 
 
-    
-    public class UserTable
+
+public class UserTable
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
