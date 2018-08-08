@@ -11,7 +11,7 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout>
-            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="20">
+            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />

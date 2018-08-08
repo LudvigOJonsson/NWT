@@ -6,40 +6,29 @@
              BackgroundColor="#f8f8f9">
     <ContentPage.Content>
 
-        <StackLayout Spacing="0">
-            <Grid x:Name="AppGridP" RowSpacing="0" ColumnSpacing="0">
+        <StackLayout>
+            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Button x:Name="CommunityButtonN" Text="" Clicked="News" Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="community.png"/>
-                <Button x:Name="NewsButtonN" Text="" Clicked="News" Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="newsfeed.png"/>
-                <Button x:Name="ProfileButtonN" Text="" Clicked="Profile" Grid.Row="0" Grid.Column="2" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="profile.png"/>
-                <Button x:Name="GamesButtonN" Text="" Clicked="Games" Grid.Row="0" Grid.Column="3" BackgroundColor="#FFFFFF" VerticalOptions="Start" Image="play.png"/>
-                <BoxView Color="#50d2c2" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
-            </Grid>
-
-            <Grid x:Name="LoginGrid" RowSpacing="5" ColumnSpacing="5" Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="193" />
-                    <RowDefinition Height="193" />
-                    <RowDefinition Height="193" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="200" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF"/>
-                <Button Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF"/>
-                <Button Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF"/>
-                <Button Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF"/>
+                <Button Grid.Row="0" Grid.Column="0" BackgroundColor="#FFFFFF" Image="speechbubble.png"/>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Button Grid.Row="0" Grid.Column="1" BackgroundColor="#FFFFFF" Image="questionmark.png"/>
+                <Label Grid.Row="0" Grid.Column="1" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Button Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF" Image="megaphone.png"/>
+                <Label Grid.Row="1" Grid.ColumnSpan="2" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Button Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF" Image="speechbubbles.png"/>
+                <Label Grid.Row="2" Grid.ColumnSpan="2" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Button Grid.Row="0" Grid.Column="0" HeightRequest= "30" WidthRequest= "30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png"/>
                 <Button Grid.Row="0" Grid.Column="1" HeightRequest="30" WidthRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png"/>
                 <Button Grid.Row="1" Grid.Column="1" HeightRequest="30" WidthRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png"/>

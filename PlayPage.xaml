@@ -8,10 +8,10 @@
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout Spacing="0">
-            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
+        <ScrollView>
+            <Grid x:Name="LoginGrid" RowSpacing="10" ColumnSpacing="0" Margin="30">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="70" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -22,13 +22,24 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="GAMES" TextColor="#50d2c2" FontSize="42" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="FEATURED GAMES" TextColor="#50d2c2" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                
+                <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+                
+                <Button x:Name="SudokuButton3" Clicked="PlaySudoku" Grid.Row="2"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton4" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
 
-                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="White" />
+                <Button x:Name="SudokuButton5" Clicked="PlaySudoku" Grid.Row="3"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton6" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="3" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+
+                <Button x:Name="SudokuButton7" Clicked="PlaySudoku" Grid.Row="4"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton8" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="4" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+
+                <Button x:Name="SudokuButton9" Clicked="PlaySudoku" Grid.Row="5"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton10" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
 
             </Grid>
-
-
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
