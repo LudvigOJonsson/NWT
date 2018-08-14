@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.HistoryPage"
+             BackgroundColor="#FFFFFF"
+             Title="History">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid x:Name="HistoryGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView HeightRequest="1" Color="Black" VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                <BoxView HeightRequest="1" Color="Black" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                <Label Text="Today" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" Grid.Row="0" Grid.Column="1"/>
+
+                <Button Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="#50d2c2" Image="star2.png" Text=" "/>
+                <Label Text="Read 50 articles" VerticalOptions="Center" TextColor="Black" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="18:31" VerticalOptions="Center" TextColor="Black" Grid.Row="1" Grid.Column="2"/>
+
+                <BoxView HeightRequest="1" Color="Black" VerticalOptions="Center" Grid.Row="2" Grid.Column="0"/>
+                <BoxView HeightRequest="1" Color="Black" VerticalOptions="Center" Grid.Row="2" Grid.Column="2"/>
+                <Label Text="Today" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" Grid.Row="2" Grid.Column="1"/>
+
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

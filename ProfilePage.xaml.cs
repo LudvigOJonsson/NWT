@@ -27,5 +27,17 @@ namespace NWT
         {
             await Navigation.PushAsync(new SettingsPage());
         }
+        async void Achivements(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AchivementsPage());
+        }
+        async void History(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HistoryPage());
+        }
+        async void Missions(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MissionsPage());
+        }
     }
 }

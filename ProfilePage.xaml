@@ -42,11 +42,11 @@
 
                 <Button Text="Favorites" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
 
-                <Button Text="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
+                <Button Text="Missions" Clicked="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
 
-                <Button Text="Achivements" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
+                <Button Text="Achivements" Clicked="Achivements" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
 
-                <Button Text="History" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
+                <Button Text="History" Clicked="History" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
 
                 <Button Text="Posts" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png"/>
 
