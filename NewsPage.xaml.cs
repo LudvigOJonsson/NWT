@@ -17,7 +17,7 @@ namespace NWT
         Random rnd = new Random();
 
         public static int ArticleNR;
-		public NewsPage (int ID)
+		public NewsPage (RSSTable RSS)
 		{
 			InitializeComponent ();
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
@@ -28,15 +28,15 @@ namespace NWT
             imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
-            LoadNews(ID);
+            LoadNews(RSS);
 
         }
 
-        void LoadNews(int ID)
+        void LoadNews(RSSTable RSS)
         {
             
 
-            var RSS = App.database.GetRss(ID).First();
+            
             Header.Text = RSS.Title;
             Body.Text = RSS.Description;
             Body.Text = Body.Text + " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";

@@ -16,8 +16,8 @@ namespace NWT
 	{
         public static int Startnr = 1;
         public static int Stopnr = 1;
-        public static int DBLN = 30;
-        public static int NTN = DBLN / 5;
+        public static int DBLN = 60;
+        public static int NTN = DBLN / 6;
         public static int Rownr = 1;
         public static TapGestureRecognizer TGR = new TapGestureRecognizer();
         public static List<Article> ArticleList = new List<Article>();
@@ -33,6 +33,7 @@ namespace NWT
         {
             public int ID = 0;
             public string Source = "";
+            public bool Plus = false;
             public BoxView Box = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
@@ -41,6 +42,7 @@ namespace NWT
             {
                 Source = RSS.Source;
                 ID = RSS.ID;
+                Plus = Convert.ToBoolean(RSS.Plus);
                 Box = new BoxView
                 {
                     Color = Color.FromHex("#FFFFFF"),
@@ -117,8 +119,38 @@ namespace NWT
         async void LoadNews(object sender, EventArgs e)
         {
             var Header = ((Label)sender);
+            
             var id = Int32.Parse(Header.ClassId);
-            await Navigation.PushAsync(new NewsPage(id));
+            var RSS = App.database.GetRss(id).First();
+            if(RSS.Plus == 1)
+            {
+                if (App.LoggedinUser != null)
+                {
+                    var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
+                    if (answer)
+                    {
+                        if (App.database.Plustoken(App.LoggedinUser, -1))
+                        {
+
+                            await Navigation.PushAsync(new NewsPage(RSS));
+                        }
+                        else
+                        {
+                            await DisplayAlert("No Tokens", "Insufficent Tokens", "OK");
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Plus", "This is a Plus article that can be unlocked with Plustokens, please register to learn more about Plustokens", "OK");
+                }            
+            }
+            else
+            {
+                await Navigation.PushAsync(new NewsPage(RSS));
+            }
+
+            
         }
 
         public void PrintNews()

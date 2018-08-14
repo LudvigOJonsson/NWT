@@ -41,7 +41,9 @@ public class UserTable
         public string Name { get; set; }
         public string City { get; set; }
         public int Age { get; set; }
-
+        public int Plustokens { get; set; }
+        public string AchievementString { get; set; }
+        public string MissionString { get; set; }
     }
 
     
@@ -88,7 +90,8 @@ public class UserTable
         public string Link{ get; set; }
         public string Description { get; set; }
         public string Source { get; set; }
-        public string PubDate { get; set; }
+        public DateTime PubDate { get; set; }
+        public int Plus { get; set; }
     }
 
 
@@ -107,29 +110,23 @@ public class UserTable
 
         public void Execute(string statement)
         {
-            TCP(JsonConvert.SerializeObject(new JSONObj("User", "Execute", JsonConvert.SerializeObject(statement))));       
-        }
-        public List<UserTable> GetUsers()
-        {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", JsonConvert.SerializeObject("SELECT * FROM Users"))));
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
+            TCP(JsonConvert.SerializeObject(new JSONObj("User", "Execute", statement)));       
         }
         public List<UserTable> GetUser(int ID_)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", JsonConvert.SerializeObject("SELECT * FROM Users WHERE ID = " + ID_))));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + ID_)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
         public List<CommentTable> GetComments(int ID_)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", JsonConvert.SerializeObject("SELECT * FROM Comments WHERE Article = " + ID_ + " ORDER BY CommentNR"))));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " ORDER BY CommentNR")));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
         public List<CommentTable> GetComment(int ID_)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", JsonConvert.SerializeObject("SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR"))));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR")));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
@@ -137,7 +134,7 @@ public class UserTable
         {
             for(int x = start; x < stop; x++)
             {
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", JsonConvert.SerializeObject("SELECT * FROM RSS WHERE ID = " + x.ToString()))));
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
                 var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
                 var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
                 DB.Insert(Article);
@@ -145,11 +142,11 @@ public class UserTable
         }
         public List<RSSTable> GetRSS(int ID)
         {           
-            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < " + ID.ToString() + " ORDER BY PubDate DESC");     
+            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
         }
         public List<RSSTable> GetRss(int ID)
         {
-            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = " + ID.ToString());
+            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = ?" , ID.ToString());
         }
         public void Registration(UserTable User)
         {
@@ -163,11 +160,14 @@ public class UserTable
             {
                 var Token = JsonConvert.DeserializeObject<List<TokenTable>>(JSONObject.JSON).First();
                 App.Token = Token;
-                var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", JsonConvert.SerializeObject("SELECT * FROM Users WHERE ID = " + Token.User)))));
+                var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + Token.User))));
                 App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
             }
             
         }
+
+        
+
         public void Logout()
         {
             if (App.Token != null)
@@ -209,6 +209,19 @@ public class UserTable
             return false;
         }
 
+        public bool Plustoken(UserTable User,int Balance)
+        {
+            var Pair = JsonConvert.SerializeObject(new KeyValuePair<UserTable, int>(User, Balance)); 
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Plustoken", Pair)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+            var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User))));
+            App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
+
+            return Convert.ToBoolean(Result.JSON);
+        }
+
+
         public void ChangePassword(string NewPass,string RepeatPass)
         {
             if (NewPass == RepeatPass)
@@ -229,14 +242,14 @@ public class UserTable
         }
         public int CommentCount(int parm)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", JsonConvert.SerializeObject("SELECT Comment FROM Comments WHERE Article = " + parm))));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT Comment FROM Comments WHERE Article = " + parm)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON).Count;
         }
    
         public List<SudokuTable> GetTile (int x , int y)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", JsonConvert.SerializeObject("SELECT * FROM Sudoku WHERE X = " + x + " AND Y = " + y))));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", "SELECT * FROM Sudoku WHERE X = " + x + " AND Y = " + y)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);      
         }

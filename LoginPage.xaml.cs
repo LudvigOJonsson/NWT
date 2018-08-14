@@ -29,8 +29,9 @@ namespace NWT
             {
                 App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);
                 App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-                
-                
+                App.database.Plustoken(App.LoggedinUser, 1);
+
+
             }  
             else
             {
