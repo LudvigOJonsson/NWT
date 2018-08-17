@@ -36,7 +36,7 @@
 
 
 
-                <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" Image="newsButton.png"/>
+                <Button Grid.Row="0" Clicked="ShowPopup" Grid.Column="0" BackgroundColor="Transparent" Image="newsButton.png"/>
                 <Button Grid.Row="1" Grid.Column="0" BackgroundColor="Transparent" Image="newsButton.png"/>
                 <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Transparent" Image="newsButton.png"/>
                 <Button Grid.Row="3" Grid.Column="0" BackgroundColor="Transparent" Image="newsButton.png"/>

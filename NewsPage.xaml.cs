@@ -15,6 +15,9 @@ namespace NWT
 	{
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
+        public int red = 255;
+        public int green = 0;
+        public int blue = 0;
 
         public static int ArticleNR;
 		public NewsPage (RSSTable RSS)
@@ -32,11 +35,34 @@ namespace NWT
             if(App.LoggedinUser != null)
             {
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                CountDown();
+            }
+            else
+            {
+                NewsPageView.BackgroundColor = Color.FromRgb(150, 150, 150);
             }
 
-
+            
             LoadNews(RSS);
 
+        }
+        private void CountDown()
+        {
+
+            System.Timers.Timer timer = new System.Timers.Timer();
+            timer.Interval = 10000;
+            timer.Elapsed += OnTimedEvent;
+            timer.Enabled = true;
+
+        }
+
+        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (red > 0) { red = red - 255; };
+            if (green < 255) { green = green + 255; };
+            NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+            CountDown();
         }
 
         void LoadNews(RSSTable RSS)
@@ -104,11 +130,9 @@ namespace NWT
                 ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 var CommentBox = new BoxView
                 {
-                    HeightRequest = 1,
-                    Color = Color.LightGray,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.End,
-                    Margin = 20,
+                    Color = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand
                 };
                 var Comment = new Label
                 {
