@@ -24,15 +24,15 @@
 
                 <Label Text="Missions" TextColor="#50d2c2" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                <Button x:Name="m1" Grid.Row="1"  Image="star2.png" />
+                
                 <Button x:Name="m11" Text="Mission #1"  Grid.Row="1" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
-                <Button x:Name="m2" Grid.Row="2"  Image="star2.png" />
+                <Label x:Name ="m1t" Text="M1" FontSize="20" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+                
                 <Button x:Name="m22" Text="Mission #2"  Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
-                <Button x:Name="m3" Grid.Row="3"  Image="star2.png" />
+                <Label x:Name ="m2t" Text="M2" FontSize="20" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+                
                 <Button x:Name="m33" Text="Mission #3"  Grid.Row="3" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
+                <Label x:Name ="m3t" Text="M3" FontSize="20" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
             </Grid>
         </ContentView>
     </ContentPage.Content>

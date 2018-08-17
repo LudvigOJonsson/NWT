@@ -28,6 +28,8 @@ namespace NWT
                 User.Name = UserName.Text;
                 User.City = UserCity.Text;
                 User.Plustokens = 0;
+                User.AchievementString = "";
+                User.MissionString = "";
 
                 int j;
                 if (Int32.TryParse(UserAge.Text, out j))

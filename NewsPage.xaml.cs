@@ -28,6 +28,13 @@ namespace NWT
             imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
+
+            if(App.LoggedinUser != null)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+            }
+
+
             LoadNews(RSS);
 
         }
@@ -79,7 +86,11 @@ namespace NWT
                 Comment.Text = "";
                 App.database.InsertComment(SC);
                 LoadComments();
-            } 
+            }
+            if (App.LoggedinUser != null)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+            }
         }
 
         void LoadComments() // Remove Previously Rendered Comments.

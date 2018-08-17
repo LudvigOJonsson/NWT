@@ -94,6 +94,16 @@ public class UserTable
         public int Plus { get; set; }
     }
 
+    public class Task
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int Progress { get; set; }
+        public int Goal { get; set; }
+        public int Completed { get; set; }
+        public string Type { get; set; }
+        public int Mission { get; set; }
+    }
 
     public class DBHelper 
     {
@@ -221,6 +231,17 @@ public class UserTable
             return Convert.ToBoolean(Result.JSON);
         }
 
+        public List<Task> MissionUpdate(UserTable User, string Operation)
+        {
+
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Mission", JsonConvert.SerializeObject(new KeyValuePair<UserTable, string>(User,Operation)))));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+
+            var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User))));
+            App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
+            return JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
+        }
 
         public void ChangePassword(string NewPass,string RepeatPass)
         {
@@ -282,7 +303,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("79.102.55.82", 1508);
+                tcpclnt.Connect("81.170.199.32", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");

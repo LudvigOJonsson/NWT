@@ -59,6 +59,10 @@ namespace NWT
             if(CalculateSudoku())
             {
                 await DisplayAlert("Task", "You Solved the Sudoku!", "OK");
+                if (App.LoggedinUser != null)
+                {
+                    App.database.MissionUpdate(App.LoggedinUser, "SudokuSolved");
+                }
             }
             else {
                 await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes.", "OK");
