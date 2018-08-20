@@ -9,7 +9,7 @@
             <On Platform="iOS, Android" Value="0,40,0,0" />
         </OnPlatform>
     </ContentPage.Padding>-->
-    <ScrollView x:Name="NewsPageView">
+    <ScrollView x:Name="NewsPageView" >
         <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <BoxView Color="#FFFFFF" Grid.Column="0" Grid.RowSpan="8"/>
+           
             
             <BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="1"/>
             <BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="2"/>

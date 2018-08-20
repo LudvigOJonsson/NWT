@@ -18,8 +18,9 @@ namespace NWT
         public int red = 255;
         public int green = 0;
         public int blue = 0;
-
+        public System.Timers.Timer Timer;
         public static int ArticleNR;
+
 		public NewsPage (RSSTable RSS)
 		{
 			InitializeComponent ();
@@ -34,35 +35,51 @@ namespace NWT
 
             if(App.LoggedinUser != null)
             {
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                CountDown();
+                Timer = new System.Timers.Timer();
+                Timer.Interval = 20;
+                Timer.Elapsed += OnTimedEvent;
+                Timer.Enabled = true;
             }
             else
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(150, 150, 150);
             }
-
             
             LoadNews(RSS);
-
+            
         }
-        private void CountDown()
-        {
 
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 10000;
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
-
-        }
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (red > 0) { red = red - 255; };
-            if (green < 255) { green = green + 255; };
-            NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-            CountDown();
+            if (red > 0)
+            {
+                red--;
+                green++;
+            }        
+            else
+            {
+                
+            }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                //Test.Color = Color.FromRgb(red, green, blue);
+            });
+            
+            if (green == 255)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                Timer.Stop();
+                Timer.Close();
+            }
+            else
+            {
+                Timer.Start();
+            }
+            
         }
 
         void LoadNews(RSSTable RSS)
