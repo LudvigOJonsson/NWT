@@ -21,6 +21,14 @@ namespace NWT
         void Logout()
         {
             App.database.Logout();
+            var NG = (NewsGridPage)App.Mainpage.Children[1];
+            foreach (NewsGridPage.Article A in NG.ArticleList)
+            {               
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        A.Frame.Color = Color.FromRgb(150, 150, 150);
+                    });               
+            }
         }
 
         async void Settings(object sender, EventArgs e)
