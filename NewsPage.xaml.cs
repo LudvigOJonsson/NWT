@@ -95,13 +95,12 @@ namespace NWT
         void LoadNews(RSSTable RSS)
         {
             
-
-            
             Rubrik.Text = RSS.Title;
+            Dot.Text = "⚫";
             Ingress.Text = RSS.Description;
             for(int i = 0; i < 3 + rnd.Next(7); i++)
             {
-                Brödtext.Text += "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
+                Brödtext.Text += "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
             }           
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
@@ -173,7 +172,8 @@ namespace NWT
                 {
                     Color = Color.White,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = 3,
                 };
                 var Comment = new Label
                 {
