@@ -16,6 +16,7 @@ namespace NWT
         public static bool Instanciated = false;
         public static UserTable LoggedinUser = null;
         public static TokenTable Token = null;
+        public static bool Online = true;
         public App()
         {
             InitializeComponent();

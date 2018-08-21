@@ -72,6 +72,11 @@ namespace NWT
             if (green == 255)
             {
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                var RA = new RAL();
+                RA.User = App.LoggedinUser.ID;
+                RA.Article = ArticleNR;
+                RA.Date = DateTime.Now;
+                App.database.ReadArticle(RA);
                 Timer.Stop();
                 Timer.Close();
             }
@@ -95,12 +100,24 @@ namespace NWT
             ArticleNR = RSS.ID;
             Date.Text = "Publicerad: "+RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
-            LoadComments();
+            if(App.Online)
+            {
+                LoadComments();
+            }
+            
         }
 
-        void SubmitCommentBullshit()
+        async void SubmitCommentBullshit()
         {
-            SubmitComment(-1);
+            if (App.Online)
+            {
+                SubmitComment(-1);
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
+
         }
 
         void SubmitComment(int ReplyNR)

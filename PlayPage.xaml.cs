@@ -19,7 +19,15 @@ namespace NWT
 
         async void PlaySudoku(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SudokuPage());
+            if(App.Online)
+            {
+                await Navigation.PushAsync(new SudokuPage());
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
+
         }
 
     }

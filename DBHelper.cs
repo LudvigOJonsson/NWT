@@ -105,6 +105,18 @@ public class UserTable
         public int Mission { get; set; }
     }
 
+    [Table("ReadArticles")]
+    public class RAL // Read Article List
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int Article { get; set; }
+        public DateTime Date { get; set; }
+        public int User { get; set; }
+    }
+
+
+
     public class DBHelper 
     {
 
@@ -115,6 +127,8 @@ public class UserTable
             DB = new SQLiteConnection(dbPath);
             DB.DropTable<RSSTable>();
             DB.CreateTable<RSSTable>();
+            DB.DropTable<RAL>();
+            DB.CreateTable<RAL>();
         }
 
 
@@ -145,9 +159,20 @@ public class UserTable
             for(int x = start; x < stop; x++)
             {
                 var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
-                var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-                var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
-                DB.Insert(Article);
+                Console.WriteLine(JSONResult);
+                if(JSONResult != "No")
+                {
+                    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                    var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
+                    DB.Insert(Article);
+                }
+                else
+                {
+                    ParseRssFile();
+                    App.Online = false;
+                    break;
+                }
+                
             }
         }
         public List<RSSTable> GetRSS(int ID)
@@ -275,6 +300,17 @@ public class UserTable
             return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);      
         }
 
+        public void ReadArticle(RAL Article)
+        {
+            DB.Insert(Article);
+        }
+
+        public int ReadArticleCount(UserTable User)
+        {
+            var Query = DB.Query<RAL>("SELECT * FROM ReadArticles WHERE User = " + User.ID);
+            return Query.Count;
+        }
+
         public string SHA256Hash(string input)
         {
             // Create a SHA256   
@@ -294,6 +330,97 @@ public class UserTable
             }
         }
 
+        public void ParseRssFile()
+        {
+            //
+            string[] RssSource = { "NWT", "Mariestad", "Hjo", "SLA" };
+            string[] RssSite = { "https://nwt.se/rss.xml", "https://mariestadstidningen.se/rss.xml", "https://sla.se/hjo/rss.xml", "https://sla.se/rss.xml" };
+            List<KeyValuePair<string, string>> RSSList = new List<KeyValuePair<string, string>>();
+
+
+            for (int i = 0; i < RssSite.Length; i++)
+            {
+                RSSList.Add(new KeyValuePair<string, string>(RssSource[i], RssSite[i]));
+            }
+
+            foreach (KeyValuePair<string, string> T in RSSList)
+            {
+                var Compare = DB.Query<RSSTable>("SELECT * FROM RSS");
+                XmlDocument rssXmlDoc = new XmlDocument();
+
+                // Load the RSS file from the RSS URL
+                rssXmlDoc.Load(T.Value);
+
+                // Parse the Items in the RSS file
+                XmlNodeList rssNodes = rssXmlDoc.SelectNodes("rss/channel/item");
+
+                StringBuilder rssContent = new StringBuilder();
+
+                // Iterate through the items in the RSS file
+
+
+                foreach (XmlNode rssNode in rssNodes)
+                {
+                    var RSS = new RSSTable();
+
+                    RSS.Source = T.Key;
+
+
+                    XmlNode rssSubNode = rssNode.SelectSingleNode("title");
+                    RSS.Title = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    rssSubNode = rssNode.SelectSingleNode("link");
+                    RSS.Link = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    rssSubNode = rssNode.SelectSingleNode("description");
+                    RSS.Description = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    rssSubNode = rssNode.SelectSingleNode("pubDate");
+                    var date = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    while (true)
+                    {
+                        if (Char.IsDigit(date[0]))
+                            break;
+                        else
+                        {
+                            date = date.Remove(0, 1);
+                        }
+
+                    }
+                    Random rnd = new Random();
+                    int test = rnd.Next(21);
+
+                    if (test > 13)
+                    {
+
+                        RSS.Plus = 1;
+                    }
+                    else
+                    {
+                        RSS.Plus = 0;
+                    }
+
+                    RSS.Plus = 0;
+                    RSS.PubDate = DateTime.Parse(date);
+                    Console.WriteLine(RSS.PubDate);
+                    Boolean Noinsert = false;
+
+                    foreach (RSSTable rss in Compare)
+                    {
+                        if (RSS.Title == rss.Title)
+                            Noinsert = true;
+                    }
+
+                    if (!Noinsert)
+                        DB.Insert(RSS);
+                }
+
+            }
+
+        }
+
+
         public static string TCP(string JSON)
         {
             string Message = "";
@@ -303,7 +430,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("81.170.199.32", 1508);
+                tcpclnt.Connect("79.102.55.82", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");
@@ -330,6 +457,7 @@ public class UserTable
             catch (Exception e)
             {
                 Console.WriteLine("Error..... " + e.StackTrace);
+                
                 return "No";
             }
         }

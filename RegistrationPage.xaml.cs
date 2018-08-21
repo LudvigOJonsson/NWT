@@ -19,31 +19,37 @@ namespace NWT
 
         async void Register(object sender, EventArgs e)
         {
-            if(UserLogin.Text != null && UserPassword.Text != null && UserName.Text != null)
-            {
-                var User = new UserTable();
-                User.Username = UserLogin.Text;             
-                User.Password = UserPassword.Text;
-                User.Email = UserEmail.Text;
-                User.Name = UserName.Text;
-                User.City = UserCity.Text;
-                User.Plustokens = 0;
-                User.AchievementString = "";
-                User.MissionString = "";
+            if(App.Online)
+            { 
+                if(UserLogin.Text != null && UserPassword.Text != null && UserName.Text != null)
+                {
+                    var User = new UserTable();
+                    User.Username = UserLogin.Text;             
+                    User.Password = UserPassword.Text;
+                    User.Email = UserEmail.Text;
+                    User.Name = UserName.Text;
+                    User.City = UserCity.Text;
+                    User.Plustokens = 0;
+                    User.AchievementString = "";
+                    User.MissionString = "";
 
-                int j;
-                if (Int32.TryParse(UserAge.Text, out j))
-                    User.Age = j;
+                    int j;
+                    if (Int32.TryParse(UserAge.Text, out j))
+                        User.Age = j;
+                    else
+                        User.Age = 18;
+                    App.database.Registration(User);
+                    await DisplayAlert("Registration Complete", "User " + UserLogin.Text + " has now been created", "OK");
+                }
                 else
-                    User.Age = 18;
-                App.database.Registration(User);
-                await DisplayAlert("Registration Complete", "User " + UserLogin.Text + " has now been created", "OK");
+                {
+                    await DisplayAlert("Incorrect Input","Please fill in  the proper Credentials.","OK");
+                }
             }
             else
             {
-                await DisplayAlert("Incorrect Input","Please fill in  the proper Credentials.","OK");
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-                
         }
 
     }
