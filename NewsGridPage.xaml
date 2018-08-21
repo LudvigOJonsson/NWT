@@ -11,10 +11,10 @@
         <ScrollView>
             <Grid x:Name="NewsGrid" RowSpacing="10" ColumnSpacing="1" BackgroundColor="#f8f8f9">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollView>

@@ -311,6 +311,11 @@ public class UserTable
             return Query.Count;
         }
 
+        public List<RAL> GetReadArticle(int ID)
+        {
+            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE ID = ?", ID.ToString());
+        }
+
         public string SHA256Hash(string input)
         {
             // Create a SHA256   

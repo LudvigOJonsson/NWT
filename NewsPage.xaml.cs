@@ -36,12 +36,20 @@ namespace NWT
 
             if(App.LoggedinUser != null)
             {
+                if (App.database.GetReadArticle(RSS.ID).Count == 0)
+                {
+                    NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                    Timer = new System.Timers.Timer();
+                    Timer.Interval = 140;
+                    Timer.Elapsed += OnTimedEvent;
+                    Timer.Enabled = true;
+                }
+                else
+                {
+                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Dot.TextColor = Color.FromRgb(80, 210, 194);
+                }
                 
-                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                Timer = new System.Timers.Timer();
-                Timer.Interval = 140;
-                Timer.Elapsed += OnTimedEvent;
-                Timer.Enabled = true;
             }
             else
             {
@@ -71,7 +79,7 @@ namespace NWT
             Device.BeginInvokeOnMainThread(() =>
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                //Test.Color = Color.FromRgb(red, green, blue);
+                Dot.TextColor = Color.FromRgb(red, green, blue);
             });
             
             if (green == 210 && blue == 194 && red == 80)
@@ -82,6 +90,22 @@ namespace NWT
                 RA.Article = ArticleNR;
                 RA.Date = DateTime.Now;
                 App.database.ReadArticle(RA);
+
+                var NG = (NewsGridPage)App.Mainpage.Children[1];
+                foreach (NewsGridPage.Article A in NG.ArticleList)
+                {
+                    if (A.ID == ArticleNR)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            A.Frame.Color = Color.FromRgb(80, 210, 194);
+                        });
+
+                    }
+                }
+
+
+
                 Timer.Stop();
                 Timer.Close();
             }

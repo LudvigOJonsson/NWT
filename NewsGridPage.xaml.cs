@@ -20,7 +20,7 @@ namespace NWT
         public static int NTN = DBLN / 6;
         public static int Rownr = 1;
         public static TapGestureRecognizer TGR = new TapGestureRecognizer();
-        public static List<Article> ArticleList = new List<Article>();
+        public List<Article> ArticleList = new List<Article>();
         public static List<string> imageLinks = new List<string>();
         public static Random rnd = new Random();
         public static Button LoadNewsButton = new Button() {Text = "Load"};
@@ -35,6 +35,7 @@ namespace NWT
             public string Source = "";
             public bool Plus = false;
             public BoxView Box = new BoxView { };
+            public BoxView Frame = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
 
@@ -47,22 +48,33 @@ namespace NWT
                 {
                     Color = Color.FromHex("#FFFFFF"),
                     WidthRequest = 200,
-                    HeightRequest = 80,
+                    HeightRequest = 100,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.End,
+                    ClassId = RSS.Source,
+                    Margin = 5
+                };
+
+                Frame = new BoxView
+                {
+                    Color = Color.FromRgb(150,150,150),
+                    WidthRequest = 200,
+                    HeightRequest = 400,
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Center,
                     ClassId = RSS.Source
                 };
 
                 Label = new Label
                 {
                     Text = RSS.Title,
-                    HorizontalTextAlignment = TextAlignment.Start,
+                    HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.End,
-                    HeightRequest = 80,
+                    HeightRequest = 50,
                     TextColor = Color.Black,
                     FontSize = 25,
                     ClassId = RSS.ID.ToString(),
-                    Margin = 10
+                    Margin = 5
                 };
 
                 Label.GestureRecognizers.Add(TGR);
@@ -72,7 +84,8 @@ namespace NWT
                     Source = imageLinks[rnd.Next(7)],
                     WidthRequest = 200,
                     HeightRequest = 300,
-                    Aspect = Aspect.AspectFill
+                    Aspect = Aspect.AspectFill,
+                    Margin = 5
                 };
             }
 
@@ -81,6 +94,7 @@ namespace NWT
                 Image.IsVisible = State;
                 Label.IsVisible = State;
                 Box.IsVisible = State;
+                Frame.IsVisible = State;
             }
 
 
@@ -106,6 +120,7 @@ namespace NWT
 
             TGR.Tapped += (s, e) => {
                 LoadNews(s, e);
+                      
             };
 
             LoadNewsButton.Clicked += (s, e) => {
@@ -212,6 +227,8 @@ namespace NWT
                     ArticleList.Add(Box);
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowSpacing = 0;
+                    
+                    NewsGrid.Children.Add(Box.Frame, 0, Rownr - 1); //Boxview
                     NewsGrid.Children.Add(Box.Image, 0, Rownr - 1); //Image
                     NewsGrid.Children.Add(Box.Box, 0, Rownr - 1); //Boxview
                     NewsGrid.Children.Add(Box.Label, 0, Rownr - 1); //Label

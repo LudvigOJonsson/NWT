@@ -29,13 +29,13 @@
             <BoxView Color="#FFFFFF" Grid.Column="0" Grid.RowSpan="7" Margin="3"/>
 
             <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="200" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Margin="3"/>
-            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="32" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="0"/>
-            <Label Text="Publicerad: Idag 00:00" x:Name="Date" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10" HorizontalOptions="Start" Grid.Row="2" Grid.Column="0"/>
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="48" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Date" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" Grid.Row="2" Grid.Column="0"/>
             <Label Text="John Smith" x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10" HorizontalOptions="End" Grid.Row="2" Grid.Column="0" HeightRequest="5"/>
-            <Label Text="Link" x:Name="Link" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0"/>
+            <Label Text="Link" x:Name="Link" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" FontAttributes="Italic" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0"/>
 
             <Label Text="Dot" x:Name="Dot" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" FontAttributes="Bold,Italic" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
             <Label Text="" x:Name="Brödtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
@@ -50,7 +50,7 @@
             
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="6" Grid.Column="0" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="5" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="6" Grid.Column="0" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
         </Grid>
     </ScrollView>
