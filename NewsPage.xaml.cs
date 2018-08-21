@@ -15,11 +15,12 @@ namespace NWT
 	{
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
-        public int red = 255;
-        public int green = 0;
-        public int blue = 0;
+        public int red = 150;
+        public int green = 150;
+        public int blue = 150;
         public System.Timers.Timer Timer;
         public static int ArticleNR;
+        public int CC = 8;
 
 		public NewsPage (RSSTable RSS)
 		{
@@ -38,7 +39,7 @@ namespace NWT
                 
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 Timer = new System.Timers.Timer();
-                Timer.Interval = 20;
+                Timer.Interval = 140;
                 Timer.Elapsed += OnTimedEvent;
                 Timer.Enabled = true;
             }
@@ -54,14 +55,18 @@ namespace NWT
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (red > 0)
+            if (red != 80)
             {
                 red--;
-                green++;
-            }        
-            else
-            {
                 
+            }        
+            if (green != 210)
+            {
+                green++;
+            }
+            if (blue != 194)
+            {
+                blue++;  
             }
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -69,7 +74,7 @@ namespace NWT
                 //Test.Color = Color.FromRgb(red, green, blue);
             });
             
-            if (green == 255)
+            if (green == 210 && blue == 194 && red == 80)
             {
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 var RA = new RAL();
@@ -92,10 +97,12 @@ namespace NWT
             
 
             
-            Header.Text = RSS.Title;
-            Body.Text = RSS.Description;
-            Body.Text = Body.Text + " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-            //Text.Text = ""; "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+            Rubrik.Text = RSS.Title;
+            Ingress.Text = RSS.Description;
+            for(int i = 0; i < 3 + rnd.Next(7); i++)
+            {
+                Brödtext.Text += "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
+            }           
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
             Date.Text = "Publicerad: "+RSS.PubDate;
@@ -231,13 +238,13 @@ namespace NWT
                     SubmitComment(s.ID);
                 };
 
-                ArticleGrid.Children.Add(CommentBox, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Comment, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Username, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + 8);
+                ArticleGrid.Children.Add(CommentBox, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Comment, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Username, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + CC);
                 //ArticleGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Reply, 0, s.CommentNR + 8);
+                ArticleGrid.Children.Add(Reply, 0, s.CommentNR + CC);
             }
         }
     }

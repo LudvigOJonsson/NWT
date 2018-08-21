@@ -14,41 +14,42 @@
         <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="15" />
+                <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="16" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <BoxView Color="#FFFFFF" Grid.Column="0" Grid.RowSpan="8" Margin="3"/>
+            <BoxView Color="#FFFFFF" Grid.Column="0" Grid.RowSpan="7" Margin="3"/>
 
-            <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Margin="3"/>
-            <Label Text="Publicerad: Idag 00:00" x:Name="Date" Style="{StaticResource grayLabelStyle}" Margin="2" FontSize="10" HorizontalOptions="Start" Grid.Row="1" Grid.Column="0"/>
-            <Label Text="John Smith" x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="2" FontSize="10" HorizontalOptions="End" Grid.Row="1" Grid.Column="0" HeightRequest="5"/>
-            
-            <Label Text="Header" x:Name="Header" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="32" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="2" Grid.Column="0"/>
-            <Label Text="Body" x:Name="Body" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
-            <Label Text="Brödtext" x:Name="Brödtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
+            <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="200" Aspect="AspectFill" Grid.Row="0" Grid.Column="0" Margin="3"/>
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="32" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Date" Style="{StaticResource grayLabelStyle}" Margin="2" FontSize="10" HorizontalOptions="Start" Grid.Row="2" Grid.Column="0"/>
+            <Label Text="John Smith" x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="2" FontSize="10" HorizontalOptions="End" Grid.Row="2" Grid.Column="0" HeightRequest="5"/>
+            <Label Text="Link" x:Name="Link" Style="{StaticResource blackLabelStyle}" Margin="2" FontSize="8" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>
+
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
+            <Label Text="" x:Name="Brödtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
 
             <!--<Button  Text="Link" x:Name="Link" Style="Link" Margin="10" FontSize="Micro" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>-->
-            <Label Text="Link" x:Name="Link" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Micro" HorizontalOptions="Start" Grid.Row="6" Grid.Column="0"/>
+
 
             <!--<BoxView Color="White" WidthRequest="300" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0"/>-->
 
-            <BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="8" Margin="0"/>
+            <BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="7" Margin="0"/>
             
-            <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="0"/>
+            <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="2"/>
 
-            <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="8" Grid.Column="0" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="6" Grid.Column="0" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
         </Grid>
     </ScrollView>
