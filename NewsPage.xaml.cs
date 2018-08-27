@@ -126,7 +126,7 @@ namespace NWT
             }           
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
-            Date.Text = "Publicerad: "+RSS.PubDate;
+            Date.Text = "  Publicerad: "+RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
             if(App.Online)
             {
@@ -190,12 +190,21 @@ namespace NWT
             {
                 var User = App.database.GetUser(s.User).First();
                 ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                var CommentBox = new BoxView
+                /*var CommentBox = new BoxView
                 {
                     Color = Color.White,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Margin = 3,
+                };*/
+
+                var Box = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 5,
+                    BackgroundColor = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
                 };
                 var Comment = new Label
                 {
@@ -243,6 +252,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                 };*/
+
                 var Reply = new Button()
                 {
                     BackgroundColor = Color.FromHex("#50d2c2"),
@@ -255,12 +265,13 @@ namespace NWT
                     VerticalOptions = LayoutOptions.End,
                     Margin = 20,
                 };
+                
 
                 Reply.Clicked += (o, e) => {
                     SubmitComment(s.ID);
                 };
 
-                ArticleGrid.Children.Add(CommentBox, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Box, 0, s.CommentNR + CC);
                 ArticleGrid.Children.Add(Comment, 0, s.CommentNR + CC);
                 ArticleGrid.Children.Add(Username, 0, s.CommentNR + CC);
                 ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + CC);
