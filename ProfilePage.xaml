@@ -5,7 +5,7 @@
              BackgroundColor="#f8f8f9">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
-        <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>
+        <ToolbarItem Icon="timer.png" Text="History" />
     </ContentPage.ToolbarItems>
     
     <StackLayout Spacing="0" Margin="0" >

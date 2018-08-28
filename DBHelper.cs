@@ -313,7 +313,7 @@ public class UserTable
 
         public List<RAL> GetReadArticle(int ID)
         {
-            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = ?", ID.ToString());
+            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE ID = ?", ID.ToString());
         }
 
         public string SHA256Hash(string input)
