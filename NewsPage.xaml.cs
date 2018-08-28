@@ -52,7 +52,7 @@ namespace NWT
                 
             }
             else
-            {
+            {               
                 NewsPageView.BackgroundColor = Color.FromRgb(150, 150, 150);
             }
             
@@ -103,11 +103,9 @@ namespace NWT
 
                     }
                 }
-
-
-
                 Timer.Stop();
                 Timer.Close();
+                Timer.Dispose();
             }
             else
             {
@@ -120,7 +118,7 @@ namespace NWT
         {
             
             Rubrik.Text = RSS.Title;
-            Dot.Text = "⚫";
+            Dot.Text = "⚫   ";
             Ingress.Text = RSS.Description;
             for(int i = 0; i < 3 + rnd.Next(7); i++)
             {
