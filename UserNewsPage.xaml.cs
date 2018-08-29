@@ -11,21 +11,20 @@ using System.Diagnostics;
 namespace NWT
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PostPage : ContentPage
+    public partial class UserNewsPage : ContentPage
     {
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
-
+        public int red = 150;
+        public int green = 150;
+        public int blue = 150;
+        public System.Timers.Timer Timer;
         public static int ArticleNR;
-        public PostPage(int ID)
+        public int CC = 8;
+
+        public UserNewsPage(UserRSSTable RSS)
         {
             InitializeComponent();
-            LoadNews(ID);
-
-        }
-
-        void LoadNews(int ID)
-        {
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
             imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
             imageLinks.Add("https://www.surfertoday.com/images/stories/clouds.jpg");
@@ -35,20 +34,116 @@ namespace NWT
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
 
-            var RSS = App.database.GetRSS(ID).First();
-            Header.Text = RSS.Title;
-            Body.Text = RSS.Description;
-            Body.Text = Body.Text + " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-            //Text.Text = ""; "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-            //Link.Text = RSS.Link;
-            ArticleNR = RSS.ID;
-            //ArticleImage.Source = imageLinks[rnd.Next(7)];
-            LoadComments();
+            if (App.LoggedinUser != null)
+            {
+                if (App.database.GetReadArticle(RSS.ID).Count == 0)
+                {
+                    UserNewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                    Timer = new System.Timers.Timer();
+                    Timer.Interval = 140;
+                    Timer.Elapsed += OnTimedEvent;
+                    Timer.Enabled = true;
+                }
+                else
+                {
+                    UserNewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Dot.TextColor = Color.FromRgb(80, 210, 194);
+                }
+
+            }
+            else
+            {
+                UserNewsPageView.BackgroundColor = Color.FromRgb(150, 150, 150);
+            }
+
+            LoadNews(RSS);
+
         }
 
-        void SubmitCommentBullshit()
+
+        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            SubmitComment(-1);
+            if (red != 80)
+            {
+                red--;
+
+            }
+            if (green != 210)
+            {
+                green++;
+            }
+            if (blue != 194)
+            {
+                blue++;
+            }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                UserNewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                Dot.TextColor = Color.FromRgb(red, green, blue);
+            });
+
+            if (green == 210 && blue == 194 && red == 80)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                var RA = new RAL();
+                RA.User = App.LoggedinUser.ID;
+                RA.Article = ArticleNR;
+                RA.Date = DateTime.Now;
+                App.database.ReadArticle(RA);
+
+                var NG = (NewsGridPage)App.Mainpage.Children[1];
+                foreach (NewsGridPage.Article A in NG.ArticleList)
+                {
+                    if (A.ID == ArticleNR)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            A.Frame.Color = Color.FromRgb(80, 210, 194);
+                        });
+
+                    }
+                }
+                Timer.Stop();
+                Timer.Close();
+                Timer.Dispose();
+            }
+            else
+            {
+                Timer.Start();
+            }
+
+        }
+
+        void LoadNews(UserRSSTable RSS)
+        {
+
+            Rubrik.Text = RSS.Rubrik;
+            Dot.Text = "⚫   ";
+            Ingress.Text = RSS.Ingress;
+            Brödtext.Text =RSS.Brödtext;
+            
+            //Link.Text = RSS.Referat;
+            ArticleNR = RSS.ID;
+            Date.Text = "  Publicerad: " + RSS.PubDate;
+            ArticleImage.Source = imageLinks[rnd.Next(7)];
+            if (App.Online)
+            {
+                LoadComments();
+            }
+
+        }
+
+        async void SubmitCommentBullshit()
+        {
+            if (App.Online)
+            {
+                SubmitComment(-1);
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
+
         }
 
         void SubmitComment(int ReplyNR)
@@ -61,6 +156,7 @@ namespace NWT
 
                 SC.Article = ArticleNR;
                 SC.CommentNR = CNR;
+                SC.UserSubmitted = 1;
                 SC.User = App.LoggedinUser.ID;
                 if (ReplyNR > -1)
                 {
@@ -78,6 +174,10 @@ namespace NWT
                 App.database.InsertComment(SC);
                 LoadComments();
             }
+            if (App.LoggedinUser != null)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+            }
         }
 
         void LoadComments() // Remove Previously Rendered Comments.
@@ -89,13 +189,21 @@ namespace NWT
             {
                 var User = App.database.GetUser(s.User).First();
                 ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                var CommentBox = new BoxView
+                /*var CommentBox = new BoxView
                 {
-                    HeightRequest = 1,
-                    Color = Color.LightGray,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.End,
-                    Margin = 20,
+                    Color = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = 3,
+                };*/
+
+                var Box = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 5,
+                    BackgroundColor = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
                 };
                 var Comment = new Label
                 {
@@ -143,6 +251,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Center,
                 };*/
+
                 var Reply = new Button()
                 {
                     BackgroundColor = Color.FromHex("#50d2c2"),
@@ -156,17 +265,18 @@ namespace NWT
                     Margin = 20,
                 };
 
+
                 Reply.Clicked += (o, e) => {
                     SubmitComment(s.ID);
                 };
 
-                ArticleGrid.Children.Add(CommentBox, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Comment, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Username, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + 8);
+                ArticleGrid.Children.Add(Box, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Comment, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Username, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + CC);
                 //ArticleGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Reply, 0, s.CommentNR + 8);
+                ArticleGrid.Children.Add(Reply, 0, s.CommentNR + CC);
             }
         }
     }

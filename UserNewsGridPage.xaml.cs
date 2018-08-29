@@ -9,11 +9,11 @@ using Xamarin.Forms.Xaml;
 
 namespace NWT
 {
-    
+
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsGridPage : ContentPage
-	{
+    public partial class UserNewsGridPage : ContentPage
+    {
         public static int Startnr = 1;
         public static int Stopnr = 1;
         public static int DBLN = 10;
@@ -23,7 +23,7 @@ namespace NWT
         public List<Article> ArticleList = new List<Article>();
         public static List<string> imageLinks = new List<string>();
         public static Random rnd = new Random();
-        public static Button LoadNewsButton = new Button() {Text = "Load"};
+        public static Button LoadNewsButton = new Button() { Text = "Load" };
         public bool NWT = true;
         public bool Mariestad = true;
         public bool HJO = true;
@@ -32,18 +32,18 @@ namespace NWT
         public class Article
         {
             public int ID = 0;
-            public string Source = "";
+            public int Referat = -1;
             public bool Plus = false;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
 
-            public Article(RSSTable RSS)
+            public Article(UserRSSTable RSS)
             {
-                Source = RSS.Source;
+                
                 ID = RSS.ID;
-                Plus = Convert.ToBoolean(RSS.Plus);
+                Referat = RSS.Referat;
                 Box = new Button
                 {
                     BackgroundColor = Color.FromHex("#FFFFFF"),
@@ -51,24 +51,24 @@ namespace NWT
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.End,
-                    ClassId = RSS.Source,
+                    ClassId = RSS.ID.ToString(),
                     Margin = 5,
                     CornerRadius = 5,
                 };
 
                 Frame = new BoxView
                 {
-                    Color = Color.FromRgb(150,150,150),
+                    Color = Color.FromRgb(150, 150, 150),
                     WidthRequest = 200,
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Center,
-                    ClassId = RSS.Source
+                    ClassId = RSS.ID.ToString()
                 };
 
                 Label = new Label
                 {
-                    Text = RSS.Title,
+                    Text = RSS.Rubrik,
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Start,
                     FontSize = 36,
@@ -83,17 +83,18 @@ namespace NWT
 
                 Image = new Image
                 {
-                    
+
                     Source = imageLinks[rnd.Next(7)],
                     WidthRequest = 200,
                     HeightRequest = 300,
                     Aspect = Aspect.AspectFill,
                     Margin = 5,
-                    
+
                 };
             }
 
-            public void Visibility(bool State){
+            public void Visibility(bool State)
+            {
 
                 Image.IsVisible = State;
                 Label.IsVisible = State;
@@ -107,9 +108,9 @@ namespace NWT
         }
 
 
-        public NewsGridPage ()
-		{
-			InitializeComponent ();
+        public UserNewsGridPage()
+        {
+            InitializeComponent();
 
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
             imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
@@ -124,7 +125,7 @@ namespace NWT
 
             TGR.Tapped += (s, e) => {
                 LoadNews(s, e);
-                      
+
             };
 
             LoadNewsButton.Clicked += (s, e) => {
@@ -138,69 +139,12 @@ namespace NWT
         async void LoadNews(object sender, EventArgs e)
         {
             var Header = ((Label)sender);
-            
+
             var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetRss(id).First();
-            if(RSS.Plus == 1)
-            {
-                if (App.LoggedinUser != null)
-                {
-                    var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
-                    if (answer)
-                    {
-                        if (App.database.Plustoken(App.LoggedinUser, -1))
-                        {
-
-                            await Navigation.PushAsync(new NewsPage(RSS));
-                        }
-                        else
-                        {
-                            await DisplayAlert("No Tokens", "Insufficent Tokens", "OK");
-                        }
-                    }
-                }
-                else
-                {
-                    await DisplayAlert("Plus", "This is a Plus article that can be unlocked with Plustokens, please register to learn more about Plustokens", "OK");
-                }            
-            }
-            else
-            {
-                await Navigation.PushAsync(new NewsPage(RSS));
-            }
-
+            var RSS = App.database.GetUserRss(id).First();
             
-        }
-
-        public void PrintNews()
-        {
-            
-
-            
-            if (App.Instanciated)
-            {
-                NWT = App.SideMenu.NWT.IsToggled;
-                Mariestad = App.SideMenu.Mariestad.IsToggled;
-                HJO = App.SideMenu.HJO.IsToggled;
-                SLA = App.SideMenu.SLA.IsToggled;
-            }
-
-
-            foreach (var Article in ArticleList)
-            {
-                if ((Article.Source == "NWT" && NWT) ||
-                   (Article.Source == "Mariestad" && Mariestad) ||
-                   (Article.Source == "Hjo" && HJO) ||
-                   (Article.Source == "SLA" && SLA))
-                {
-                    Article.Visibility(true);
-                }
-                else
-                {
-                    Article.Visibility(false);
-                }
-            }
-        }
+            await Navigation.PushAsync(new UserNewsPage(RSS));
+        }     
 
         public void AddNews()
         {
@@ -210,10 +154,10 @@ namespace NWT
                 FillLocalDB();
             }
             Stopnr += NTN;
-            var Rss = App.database.GetRSS(Stopnr);
+            var Rss = App.database.GetUserRSS(Stopnr);
             Console.WriteLine(Rss.Count);
 
-            foreach (RSSTable RSS in Rss)
+            foreach (UserRSSTable RSS in Rss)
             {
                 bool Exists = false;
 
@@ -229,31 +173,29 @@ namespace NWT
                 {
                     var Box = new Article(RSS);
                     ArticleList.Add(Box);
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 300 });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 100 });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 20 });
-                    NewsGrid.RowSpacing = 0;
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 300 });
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 100 });
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 20 });
+                    UserNewsGrid.RowSpacing = 0;
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
-                    NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 1); //Image
-                    NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 1, Rownr + 2); //Label
+                    UserNewsGrid.Children.Add(Box.Frame, 0, 1, Rownr - 1, Rownr + 2); //Boxview
+                    UserNewsGrid.Children.Add(Box.Box, 0, 1, Rownr - 1, Rownr + 2); //Boxview
+                    UserNewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 1); //Image
+                    UserNewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 1, Rownr + 2); //Label
                     Rownr++;
                     Rownr++;
                     Rownr++;
 
                 }
             }
-            NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr - 1);                    
-            PrintNews();
-
+            UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            UserNewsGrid.Children.Add(LoadNewsButton, 0, Rownr - 1);
         }
 
         public void FillLocalDB()
         {
-            App.database.LoadRSS(Startnr, (Startnr + DBLN));
+            App.database.LoadUserRSS(Startnr, (Startnr + DBLN));
             Startnr += DBLN;
         }
 

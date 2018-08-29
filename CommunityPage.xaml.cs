@@ -34,9 +34,9 @@ namespace NWT
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[3];
         }
-        async void PostPage()
+        async void Insandare()
         {
-            await Navigation.PushAsync(new PostPage(0));
+            await Navigation.PushAsync(new UserNewsGridPage());
         }
     }
 }

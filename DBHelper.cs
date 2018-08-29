@@ -64,6 +64,7 @@ public class UserTable
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
         public int Article { get; set; }
+        public int UserSubmitted { get; set; }
         public int CommentNR { get; set; }
         public int User { get; set; }
         public string Comment { get; set; }
@@ -115,7 +116,18 @@ public class UserTable
         public int User { get; set; }
     }
 
-
+    [Table("Insandare")]
+    public class UserRSSTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public string Rubrik { get; set; }
+        public string Ingress { get; set; }
+        public string Brödtext { get; set; }
+        public int Referat { get; set; }
+        public DateTime PubDate { get; set; }
+        public int Author { get; set; }
+    }
 
     public class DBHelper 
     {
@@ -127,6 +139,8 @@ public class UserTable
             DB = new SQLiteConnection(dbPath);
             DB.DropTable<RSSTable>();
             DB.CreateTable<RSSTable>();
+            DB.DropTable<UserRSSTable>();
+            DB.CreateTable<UserRSSTable>();
             DB.DropTable<RAL>();
             DB.CreateTable<RAL>();
         }
@@ -175,6 +189,31 @@ public class UserTable
                 
             }
         }
+
+        public void LoadUserRSS(int start, int stop)
+        {
+            for (int x = start; x < stop; x++)
+            {
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
+                Console.WriteLine(JSONResult);
+                if (JSONResult != "No")
+                {
+                    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                    var Article = JsonConvert.DeserializeObject<List<UserRSSTable>>(Result.JSON).First();
+                    DB.Insert(Article);
+                }
+                else
+                {
+                    
+                    App.Online = false;
+                    break;
+                }
+
+            }
+        }
+
+
+
         public List<RSSTable> GetRSS(int ID)
         {           
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
@@ -183,6 +222,16 @@ public class UserTable
         {
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = ?" , ID.ToString());
         }
+
+        public List<UserRSSTable> GetUserRSS(int ID)
+        {
+            return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
+        }
+        public List<UserRSSTable> GetUserRss(int ID)
+        {
+            return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID = ?", ID.ToString());
+        }
+
         public void Registration(UserTable User)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Register", JsonConvert.SerializeObject(User))));           
@@ -337,7 +386,7 @@ public class UserTable
 
         public void ParseRssFile()
         {
-            //
+   
             string[] RssSource = { "NWT", "Mariestad", "Hjo", "SLA" };
             string[] RssSite = { "https://nwt.se/rss.xml", "https://mariestadstidningen.se/rss.xml", "https://sla.se/hjo/rss.xml", "https://sla.se/rss.xml" };
             List<KeyValuePair<string, string>> RSSList = new List<KeyValuePair<string, string>>();
@@ -435,7 +484,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("79.102.55.82", 1508);
+                tcpclnt.Connect("81.170.199.32", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");

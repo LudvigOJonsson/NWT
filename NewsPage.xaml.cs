@@ -158,6 +158,7 @@ namespace NWT
                 
                 SC.Article = ArticleNR;
                 SC.CommentNR = CNR;
+                SC.UserSubmitted = 0;
                 SC.User = App.LoggedinUser.ID;
                 if (ReplyNR > -1)
                 {

@@ -10,20 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace NWT
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Sidemenu : ContentPage
+	public partial class UserSubmissionPage : ContentPage
 	{
-     
-        public Sidemenu ()
+		public UserSubmissionPage ()
 		{
 			InitializeComponent ();
-            
-        }
-
-        public void PrintNews()
-        {
-
-            //NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
-            //Page.PrintNews();
-        }
+		}
 	}
 }
