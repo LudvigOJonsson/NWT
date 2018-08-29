@@ -9,12 +9,12 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="NewsGrid" RowSpacing="10" ColumnSpacing="1" BackgroundColor="#f8f8f9">
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#f8f8f9">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollView>
