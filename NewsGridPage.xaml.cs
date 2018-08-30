@@ -71,7 +71,7 @@ namespace NWT
                     Text = RSS.Title,
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Start,
-                    FontSize = 36,
+                    FontSize = 34,
                     FontAttributes = FontAttributes.Bold,
                     HeightRequest = 50,
                     TextColor = Color.Black,
@@ -241,6 +241,8 @@ namespace NWT
                     NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 2, Rownr + 3); //Label
                     
                     NewsGrid.RowDefinitions[Rownr].Height = 20;
+					
+					NewsGrid.RowDefinitions[Rownr + 2].Height = 100;
 
                     Rownr++;
                     Rownr++;
