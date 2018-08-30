@@ -62,7 +62,7 @@ namespace NWT
                     WidthRequest = 200,
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Fill,
                     ClassId = RSS.Source
                 };
 
@@ -229,24 +229,29 @@ namespace NWT
                 {
                     var Box = new Article(RSS);
                     ArticleList.Add(Box);
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 300 });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 100 });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 20 });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowSpacing = 0;
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
-                    NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 1); //Image
-                    NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 1, Rownr + 2); //Label
+                    NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Box, 0, 1, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Image, 0, 1, Rownr + 1, Rownr + 2); //Image
+                    NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 2, Rownr + 3); //Label
+                    
+                    NewsGrid.RowDefinitions[Rownr].Height = 20;
+
                     Rownr++;
                     Rownr++;
                     Rownr++;
+
+                    NewsGrid.RowDefinitions[0].Height = 0;
 
                 }
             }
             NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr - 1);                    
+            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);                    
             PrintNews();
 
         }
