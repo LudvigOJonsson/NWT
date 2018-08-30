@@ -38,5 +38,9 @@ namespace NWT
         {
             await Navigation.PushAsync(new UserNewsGridPage());
         }
+        async void MakeInsandare()
+        {
+            await Navigation.PushAsync(new UserSubmissionPage());
+        }
     }
 }

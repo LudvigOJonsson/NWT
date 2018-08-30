@@ -39,7 +39,7 @@
 
             <Label Text="Dot" x:Name="Dot" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
             <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" FontAttributes="Bold,Italic" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0"/>
-            <Label Text="" x:Name="Brödtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
+            <Label Text="" x:Name="Brodtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->

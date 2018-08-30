@@ -16,5 +16,17 @@ namespace NWT
 		{
 			InitializeComponent ();
 		}
+
+        public void Submit()
+        {
+            var RSS = new UserRSSTable();
+            RSS.Rubrik = Rubrik.Text;
+            RSS.Ingress = Ingress.Text;
+            RSS.Brodtext = Brodtext.Text;
+            RSS.PubDate = DateTime.Now;
+
+            App.database.InsertInsandare(RSS);
+        }
+
 	}
 }

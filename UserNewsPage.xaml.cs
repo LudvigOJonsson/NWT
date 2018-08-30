@@ -120,7 +120,7 @@ namespace NWT
             Rubrik.Text = RSS.Rubrik;
             Dot.Text = "⚫   ";
             Ingress.Text = RSS.Ingress;
-            Brödtext.Text =RSS.Brödtext;
+            Brodtext.Text = RSS.Brodtext;
             
             //Link.Text = RSS.Referat;
             ArticleNR = RSS.ID;

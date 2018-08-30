@@ -123,7 +123,7 @@ public class UserTable
         public int ID { get; set; }
         public string Rubrik { get; set; }
         public string Ingress { get; set; }
-        public string Brödtext { get; set; }
+        public string Brodtext { get; set; }
         public int Referat { get; set; }
         public DateTime PubDate { get; set; }
         public int Author { get; set; }
@@ -168,13 +168,20 @@ public class UserTable
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
-        public void LoadRSS(int start, int stop)
+        public int LoadRSS(int start, int stop)
         {
-            for(int x = start; x < stop; x++)
+            int Nr = 0;
+            for (int x = start; x < stop; x++)
             {
                 var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
                 Console.WriteLine(JSONResult);
-                if(JSONResult != "No")
+
+                if (JSONResult == null)
+                {
+                    break;
+                }
+
+                if (JSONResult != "No")
                 {
                     var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
                     var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
@@ -186,19 +193,30 @@ public class UserTable
                     App.Online = false;
                     break;
                 }
-                
+                Nr = x;
             }
+            return Nr;
         }
 
-        public void LoadUserRSS(int start, int stop)
+        public int LoadUserRSS(int start, int stop)
         {
+            int Nr = 0;
             for (int x = start; x < stop; x++)
             {
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
-                Console.WriteLine(JSONResult);
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM Insandare WHERE ID = " + x.ToString())));
+                
+
+                
+
                 if (JSONResult != "No")
                 {
                     var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                    Console.WriteLine(Result.JSON);
+                    if (Result.JSON == "[]")
+                    {
+                        break;
+                    }
+
                     var Article = JsonConvert.DeserializeObject<List<UserRSSTable>>(Result.JSON).First();
                     DB.Insert(Article);
                 }
@@ -208,11 +226,15 @@ public class UserTable
                     App.Online = false;
                     break;
                 }
-
+                Nr = x;
             }
+            return Nr;
         }
 
-
+        public void InsertInsandare(UserRSSTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
+        }
 
         public List<RSSTable> GetRSS(int ID)
         {           
@@ -497,8 +519,8 @@ public class UserTable
 
                 stm.Write(ba, 0, ba.Length);
 
-                byte[] bb = new byte[10000000];
-                int k = stm.Read(bb, 0, 1024);
+                byte[] bb = new byte[100000000];
+                int k = stm.Read(bb, 0, 16384);
                 Console.WriteLine("Read Complete");
                 for (int i = 0; i < k; i++)
                     Message += Convert.ToChar(bb[i]);
