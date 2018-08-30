@@ -195,7 +195,8 @@ namespace NWT
 
         public void FillLocalDB()
         {
-            App.database.LoadUserRSS(Startnr, (Startnr + DBLN));
+            var X = App.database.LoadUserRSS(Startnr, (Startnr + DBLN));
+            
             Startnr += DBLN;
         }
 

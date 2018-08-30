@@ -124,6 +124,9 @@ namespace NWT
             {
                 Brödtext.Text += "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
             }           
+
+            
+
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
             Date.Text = "  Publicerad: "+RSS.PubDate;
