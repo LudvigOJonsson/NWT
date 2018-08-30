@@ -176,14 +176,16 @@ public class UserTable
                 var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
                 Console.WriteLine(JSONResult);
 
-                if (JSONResult == null)
-                {
-                    break;
-                }
+                
 
                 if (JSONResult != "No")
                 {
                     var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                    Console.WriteLine(Result.JSON);
+                    if (Result.JSON == "[]")
+                    {
+                        break;
+                    }
                     var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
                     DB.Insert(Article);
                 }
