@@ -118,7 +118,7 @@ namespace NWT
         {
             
             Rubrik.Text = RSS.Title;
-            Dot.Text = "⚫   ";
+            Dot.Text = "⚫    ";
             Ingress.Text = RSS.Description;
             for(int i = 0; i < 3 + rnd.Next(7); i++)
             {
@@ -167,7 +167,7 @@ namespace NWT
                 {
                     var Reply = App.database.GetComment(ReplyNR).First();
                     var User = App.database.GetUser(Reply.User).First();
-                    SC.Comment = "@" + User.Name + Reply.CommentNR +", " + Comment.Text; //
+                    SC.Comment = "@" + User.Name + Reply.CommentNR +", " + Comment.Text;
                 }
                 else
                 {
@@ -230,7 +230,7 @@ namespace NWT
                     FontSize = 16,
 
                 };
-                var VoteArrowUp = new Button
+                var VoteArrowUp = new Button()
                 {
                     Image = "uparrow.png",
                     BackgroundColor = Color.Transparent,
@@ -240,7 +240,17 @@ namespace NWT
                     VerticalOptions = LayoutOptions.Start,
                     Margin = 0,
                 };
-                var VoteArrowDown = new Button
+                var VoteNumber = new Label
+                {
+                    Text = "0",
+                    TextColor = Color.Black,
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Margin = 0,
+                    FontSize = 16,
+                };
+                var VoteArrowDown = new Button()
                 {
                     Image = "downarrow.png",
                     BackgroundColor = Color.Transparent,
@@ -269,19 +279,26 @@ namespace NWT
                     VerticalOptions = LayoutOptions.End,
                     Margin = 20,
                 };
-                
+
 
                 Reply.Clicked += (o, e) => {
                     SubmitComment(s.ID);
                 };
-
-                ArticleGrid.Children.Add(Box, 0, s.CommentNR + CC);
-                ArticleGrid.Children.Add(Comment, 0, s.CommentNR + CC);
-                ArticleGrid.Children.Add(Username, 0, s.CommentNR + CC);
-                ArticleGrid.Children.Add(VoteArrowDown, 0, s.CommentNR + CC);
-                ArticleGrid.Children.Add(VoteArrowUp, 0, s.CommentNR + CC);
+                VoteArrowUp.Clicked += (o, e) => {
+                    //Upvote clicked
+                };
+                VoteArrowDown.Clicked += (o, e) => {
+                    //Downvote clicked
+                };
+                //0, 1, Rownr, Rownr + 3
+                ArticleGrid.Children.Add(Box, 0, 6, s.CommentNR + CC, s.CommentNR + CC + 1);
+                ArticleGrid.Children.Add(Comment, 1, 5, s.CommentNR + CC, s.CommentNR + CC + 1);
+                ArticleGrid.Children.Add(Username, 1, 5, s.CommentNR + CC, s.CommentNR + CC + 1);
+                ArticleGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR + CC, s.CommentNR + CC + 1);
+                ArticleGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR + CC, s.CommentNR + CC + 1);
+                ArticleGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR + CC, s.CommentNR + CC + 1);
                 //ArticleGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                ArticleGrid.Children.Add(Reply, 0, s.CommentNR + CC);
+                ArticleGrid.Children.Add(Reply, 5, 6, s.CommentNR + CC, s.CommentNR + CC + 1);
             }
         }
     }
