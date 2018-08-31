@@ -51,10 +51,11 @@ namespace NWT
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.End,
-                    ClassId = RSS.Source,
+                    ClassId = RSS.ID.ToString(),
                     Margin = 5,
                     CornerRadius = 5,
                 };
+                
 
                 Frame = new BoxView
                 {
@@ -63,7 +64,7 @@ namespace NWT
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
-                    ClassId = RSS.Source
+                    ClassId = RSS.ID.ToString(),
                 };
 
                 Label = new Label
@@ -89,8 +90,11 @@ namespace NWT
                     HeightRequest = 300,
                     Aspect = Aspect.AspectFill,
                     Margin = 5,
-                    
+                    ClassId = RSS.ID.ToString(),
+
                 };
+
+                Image.GestureRecognizers.Add(TGR);
             }
 
             public void Visibility(bool State){
@@ -137,7 +141,8 @@ namespace NWT
 
         async void LoadNews(object sender, EventArgs e)
         {
-            var Header = ((Label)sender);
+
+            var Header = (View)sender;
             
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetRss(id).First();
