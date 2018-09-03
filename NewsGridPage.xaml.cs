@@ -54,12 +54,14 @@ namespace NWT
                     ClassId = RSS.ID.ToString(),
                     Margin = 5,
                     CornerRadius = 5,
+                    BorderColor = Color.FromRgb(220,220,220),
+                    BorderWidth = 1,
                 };
                 
 
                 Frame = new BoxView
                 {
-                    Color = Color.FromRgb(150,150,150),
+                    Color = Color.FromRgb(248,248,248),
                     WidthRequest = 200,
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
@@ -72,7 +74,7 @@ namespace NWT
                     Text = RSS.Title,
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Start,
-                    FontSize = 34,
+                    FontSize = 28,
                     FontAttributes = FontAttributes.Bold,
                     HeightRequest = 50,
                     TextColor = Color.Black,

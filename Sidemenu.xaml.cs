@@ -25,5 +25,12 @@ namespace NWT
             //NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
             //Page.PrintNews();
         }
+        public void Logout()
+        {
+            if (App.Mainpage.Children[2].ToString() == "ProfilePage") {
+                ProfilePage page = (ProfilePage)App.Mainpage.Children[2];
+                page.Logout();
+            }
+        }
 	}
 }

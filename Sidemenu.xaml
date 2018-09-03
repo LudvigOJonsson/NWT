@@ -171,7 +171,7 @@
                
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
-                <Button Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
+                <Button Text="" Clicked="Logout" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
                 
             </Grid>
 

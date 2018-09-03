@@ -18,7 +18,7 @@ namespace NWT
             Welcome.Text = User.Username;
 		}
 
-        void Logout()
+        public void Logout()
         {
             App.database.Logout();
             var NG = (NewsGridPage)App.Mainpage.Children[1];

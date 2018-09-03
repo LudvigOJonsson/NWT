@@ -15,9 +15,9 @@ namespace NWT
 	{
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
-        public int red = 150;
-        public int green = 150;
-        public int blue = 150;
+        public int red = 248;
+        public int green = 248;
+        public int blue = 248;
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
@@ -70,11 +70,11 @@ namespace NWT
             }        
             if (green != 210)
             {
-                green++;
+                green--;
             }
             if (blue != 194)
             {
-                blue++;  
+                blue--;  
             }
             Device.BeginInvokeOnMainThread(() =>
             {
