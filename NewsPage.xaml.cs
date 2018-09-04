@@ -288,11 +288,16 @@ namespace NWT
                     SubmitComment(s.ID);
                 };
                 VoteArrowUp.Clicked += (o, e) => {
+
+                    
+                    
+                    
                     if (VoteArrowUp.ClassId == "false")
                     {
                         VoteArrowUp.ClassId = "true";
                         VoteArrowUp.Image = "uparrowBlue.png";
                         VoteNumber.Text = (Int32.Parse(VoteNumber.Text) + 1).ToString();
+                        UpClicked(o, e);
                     }
                     else
                     {
@@ -314,6 +319,7 @@ namespace NWT
                         VoteArrowDown.ClassId = "true";
                         VoteArrowDown.Image = "downarrowRed.png";
                         VoteNumber.Text = (Int32.Parse(VoteNumber.Text) - 1).ToString();
+                        DownClicked(o, e);
                     }
                     else
                     {
@@ -330,6 +336,18 @@ namespace NWT
 
 
                 };
+                async void UpClicked(object sender, System.EventArgs e)
+                {
+                    await VoteArrowUp.RotateTo(-15, 80, Easing.BounceOut);
+                    await VoteArrowUp.RotateTo(15, 120, Easing.BounceOut);
+                    await VoteArrowUp.RotateTo(0, 80, Easing.BounceOut);
+                }
+                async void DownClicked(object sender, System.EventArgs e)
+                {
+                    await VoteArrowDown.RotateTo(-15, 80, Easing.BounceOut);
+                    await VoteArrowDown.RotateTo(15, 120, Easing.BounceOut);
+                    await VoteArrowDown.RotateTo(0, 80, Easing.BounceOut);
+                }
                 //0, 1, Rownr, Rownr + 3
                 ArticleGrid.Children.Add(Box, 0, 6, s.CommentNR + CC, s.CommentNR + CC + 1);
                 ArticleGrid.Children.Add(Comment, 1, 5, s.CommentNR + CC, s.CommentNR + CC + 1);
