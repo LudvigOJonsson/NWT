@@ -285,8 +285,18 @@ namespace NWT
 
 
                 Reply.Clicked += (o, e) => {
+                    PostClicked(o,e);
                     SubmitComment(s.ID);
+
                 };
+                async void PostClicked(object sender, System.EventArgs e)
+                {
+                    Button button = (Button)sender;
+                    await button.RotateTo(-5, 80, Easing.BounceOut);
+                    await button.RotateTo(5, 120, Easing.BounceOut);
+                    await button.RotateTo(0, 80, Easing.BounceOut);
+                }
+                
                 VoteArrowUp.Clicked += (o, e) => {
 
                     

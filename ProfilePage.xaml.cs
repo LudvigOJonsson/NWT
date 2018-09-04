@@ -33,18 +33,34 @@ namespace NWT
 
         async void Settings(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new SettingsPage());
         }
         async void Achivements(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new AchivementsPage());
         }
         async void History(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new HistoryPage());
         }
         async void Missions(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new MissionsPage());
         }
     }

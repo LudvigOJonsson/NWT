@@ -34,12 +34,20 @@ namespace NWT
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[3];
         }
-        async void Insandare()
+        async void Insandare(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new UserNewsGridPage());
         }
-        async void MakeInsandare()
+        async void MakeInsandare(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new UserSubmissionPage());
         }
     }
