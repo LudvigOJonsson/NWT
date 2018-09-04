@@ -10,9 +10,9 @@ using System.Diagnostics;
 
 namespace NWT
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewsPage : ContentPage
+    {
         public List<string> imageLinks = new List<string>();
         Random rnd = new Random();
         public int red = 248;
@@ -22,9 +22,9 @@ namespace NWT
         public static int ArticleNR;
         public int CC = 8;
 
-		public NewsPage (RSSTable RSS)
-		{
-			InitializeComponent ();
+        public NewsPage(RSSTable RSS)
+        {
+            InitializeComponent();
             imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
             imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
             imageLinks.Add("https://www.surfertoday.com/images/stories/clouds.jpg");
@@ -34,13 +34,13 @@ namespace NWT
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
 
-            if(App.LoggedinUser != null)
+            if (App.LoggedinUser != null)
             {
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                     Timer = new System.Timers.Timer();
-                    Timer.Interval = 140;
+                    Timer.Interval = 60;
                     Timer.Elapsed += OnTimedEvent;
                     Timer.Enabled = true;
                 }
@@ -49,15 +49,15 @@ namespace NWT
                     NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                 }
-                
+
             }
             else
-            {               
-                NewsPageView.BackgroundColor = Color.FromRgb(150, 150, 150);
+            {
+                NewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
             }
-            
+
             LoadNews(RSS);
-            
+
         }
 
 
@@ -66,22 +66,22 @@ namespace NWT
             if (red != 80)
             {
                 red--;
-                
-            }        
+
+            }
             if (green != 210)
             {
                 green--;
             }
             if (blue != 194)
             {
-                blue--;  
+                blue--;
             }
             Device.BeginInvokeOnMainThread(() =>
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 Dot.TextColor = Color.FromRgb(red, green, blue);
             });
-            
+
             if (green == 210 && blue == 194 && red == 80)
             {
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
@@ -111,31 +111,31 @@ namespace NWT
             {
                 Timer.Start();
             }
-            
+
         }
 
         void LoadNews(RSSTable RSS)
         {
-            
+
             Rubrik.Text = RSS.Title;
             Dot.Text = "⚫    ";
             Ingress.Text = RSS.Description;
-            for(int i = 0; i < 3 + rnd.Next(7); i++)
+            for (int i = 0; i < 3 + rnd.Next(7); i++)
             {
                 Brödtext.Text += "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
-            }           
+            }
 
-            
+
 
             Link.Text = RSS.Link;
             ArticleNR = RSS.ID;
-            Date.Text = "  Publicerad: "+RSS.PubDate;
+            Date.Text = "  Publicerad: " + RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
-            if(App.Online)
+            if (App.Online)
             {
                 LoadComments();
             }
-            
+
         }
 
         async void SubmitCommentBullshit()
@@ -154,11 +154,11 @@ namespace NWT
         void SubmitComment(int ReplyNR)
         {
 
-            if(App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+            if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
             {
                 var CNR = App.database.CommentCount(ArticleNR);
                 var SC = new CommentTable();
-                
+
                 SC.Article = ArticleNR;
                 SC.CommentNR = CNR;
                 SC.UserSubmitted = 0;
@@ -167,13 +167,13 @@ namespace NWT
                 {
                     var Reply = App.database.GetComment(ReplyNR).First();
                     var User = App.database.GetUser(Reply.User).First();
-                    SC.Comment = "@" + User.Name + Reply.CommentNR +", " + Comment.Text;
+                    SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text;
                 }
                 else
                 {
                     SC.Comment = Comment.Text;
                 }
-                  
+
                 SC.Point = 0;
                 Comment.Text = "";
                 App.database.InsertComment(SC);
@@ -239,6 +239,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.Start,
                     Margin = 0,
+                    ClassId = "false"
                 };
                 var VoteNumber = new Label
                 {
@@ -249,6 +250,7 @@ namespace NWT
                     VerticalOptions = LayoutOptions.Center,
                     Margin = 0,
                     FontSize = 16,
+
                 };
                 var VoteArrowDown = new Button()
                 {
@@ -259,6 +261,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Center,
                     VerticalOptions = LayoutOptions.End,
                     Margin = 0,
+                    ClassId = "false"
                 };
                 /*var Userimage = new Image
                 {
@@ -285,10 +288,47 @@ namespace NWT
                     SubmitComment(s.ID);
                 };
                 VoteArrowUp.Clicked += (o, e) => {
-                    //Upvote clicked
+                    if (VoteArrowUp.ClassId == "false")
+                    {
+                        VoteArrowUp.ClassId = "true";
+                        VoteArrowUp.Image = "uparrowBlue.png";
+                        VoteNumber.Text = (Int32.Parse(VoteNumber.Text) + 1).ToString();
+                    }
+                    else
+                    {
+                        VoteArrowUp.ClassId = "false";
+                        VoteArrowUp.Image = "uparrow.png";
+                        VoteNumber.Text = "0";// (Int32.Parse(VoteNumber.Text) - 1).ToString();
+                    }
+                    if (VoteArrowDown.ClassId == "true")
+                    {
+                        VoteArrowDown.ClassId = "false";
+                        VoteArrowDown.Image = "downarrow.png";
+                        VoteNumber.Text = (Int32.Parse(VoteNumber.Text) + 1).ToString();
+                    }
+
                 };
                 VoteArrowDown.Clicked += (o, e) => {
-                    //Downvote clicked
+                    if (VoteArrowDown.ClassId == "false")
+                    {
+                        VoteArrowDown.ClassId = "true";
+                        VoteArrowDown.Image = "downarrowRed.png";
+                        VoteNumber.Text = (Int32.Parse(VoteNumber.Text) - 1).ToString();
+                    }
+                    else
+                    {
+                        VoteArrowDown.ClassId = "false";
+                        VoteArrowDown.Image = "downarrow.png";
+                        VoteNumber.Text = "0";// (Int32.Parse(VoteNumber.Text) + 1).ToString();
+                    }
+                    if (VoteArrowUp.ClassId == "true")
+                    {
+                        VoteArrowUp.ClassId = "false";
+                        VoteArrowUp.Image = "uparrow.png";
+                        VoteNumber.Text = (Int32.Parse(VoteNumber.Text) - 1).ToString();
+                    }
+
+
                 };
                 //0, 1, Rownr, Rownr + 3
                 ArticleGrid.Children.Add(Box, 0, 6, s.CommentNR + CC, s.CommentNR + CC + 1);

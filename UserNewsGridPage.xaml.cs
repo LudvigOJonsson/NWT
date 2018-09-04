@@ -88,6 +88,7 @@ namespace NWT
                     WidthRequest = 200,
                     HeightRequest = 300,
                     Aspect = Aspect.AspectFill,
+                    ClassId = RSS.ID.ToString(),
                     Margin = 5,
 
                 };
@@ -136,9 +137,12 @@ namespace NWT
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
 
+
+
+
         async void LoadNews(object sender, EventArgs e)
         {
-            var Header = ((Label)sender);
+            var Header = ((View)sender);
 
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetUserRss(id).First();
@@ -196,8 +200,11 @@ namespace NWT
         public void FillLocalDB()
         {
             var X = App.database.LoadUserRSS(Startnr, (Startnr + DBLN));
-            
-            Startnr += DBLN;
+            if(X != -1)
+            {
+                Startnr += X;
+            }
+                
         }
 
 

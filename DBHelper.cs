@@ -168,6 +168,15 @@ public class UserTable
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
+        /*
+        public List<UpvoteTable> GetUpvote(int ID_)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR")));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
+        }*/
+
+
         public int LoadRSS(int start, int stop)
         {
             int Nr = 0;
@@ -224,7 +233,7 @@ public class UserTable
                 }
                 else
                 {
-                    
+                    x = -1;
                     App.Online = false;
                     break;
                 }
@@ -508,7 +517,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("81.170.199.32", 1508);
+                tcpclnt.Connect("79.102.55.82", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");
