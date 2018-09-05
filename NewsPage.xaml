@@ -59,6 +59,18 @@
 
             <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
-        </Grid>
+            <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Grid>
     </ScrollView>
 </ContentPage>

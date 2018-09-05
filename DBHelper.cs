@@ -105,6 +105,19 @@ public class UserTable
         public string Type { get; set; }
         public int Mission { get; set; }
     }
+    
+    public class UpvoteTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int UserSubmitted { get; set; }
+        public int Article { get; set; }
+        public int CommentNR { get; set; }
+        public int User { get; set; }
+        public int Point { get; set; }
+    }
+
+
 
     [Table("ReadArticles")]
     public class RAL // Read Article List
@@ -168,15 +181,16 @@ public class UserTable
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
-        /*
-        public List<UpvoteTable> GetUpvote(int ID_)
+        
+        public List<UpvoteTable> GetUpvote(int CommentNR,int Article, int US)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR")));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Query", "SELECT * FROM Upvotes WHERE Article = " + Article + " AND CommentNR = "+ CommentNR + " AND UserSubmitted = " + US)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
-        }*/
+            Console.WriteLine(Result.JSON);
+            return JsonConvert.DeserializeObject<List<UpvoteTable>>(Result.JSON);
+        }
 
-
+        
         public int LoadRSS(int start, int stop)
         {
             int Nr = 0;
@@ -246,7 +260,14 @@ public class UserTable
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
         }
-
+        public void InsertUpvote(UpvoteTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Insert", JsonConvert.SerializeObject(RSS))));
+        }
+        public void DeleteUpvote(UpvoteTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Delete", JsonConvert.SerializeObject(RSS))));
+        }
         public List<RSSTable> GetRSS(int ID)
         {           
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
@@ -337,6 +358,18 @@ public class UserTable
 
             return Convert.ToBoolean(Result.JSON);
         }
+
+        public bool PointUpdate(CommentTable Comment, int Value)
+        {
+            var Pair = JsonConvert.SerializeObject(new KeyValuePair<CommentTable, int>(Comment, Value));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Point", Pair)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+            
+
+            return Convert.ToBoolean(Result.JSON);
+        }
+
 
         public List<Task> MissionUpdate(UserTable User, string Operation)
         {
