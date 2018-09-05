@@ -16,7 +16,9 @@ namespace NWT
 		{
 			InitializeComponent ();
             Welcome.Text = User.Username;
-		}
+            TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+
+        }
 
         public void Logout()
         {
@@ -30,7 +32,7 @@ namespace NWT
                     });               
             }
         }
-
+        
         async void Settings(object sender, EventArgs e)
         {
             Button button = (Button)sender;

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.AboutPage"
+             BackgroundColor="#FFFFFF"
+             Title="AboutPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid x:Name="AboutPageGrid" RowSpacing="0" ColumnSpacing="0" Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Created by:" Grid.Row="0" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                <Label Text="Two dudes with a purpose" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="Black"/>
+
+                <Label Text="Temporary text by:" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                <Label Text="One of the those dudes" Grid.Row="5" Grid.Column="0" FontSize="16" TextColor="Black"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

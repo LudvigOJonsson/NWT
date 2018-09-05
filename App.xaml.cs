@@ -31,8 +31,8 @@ namespace NWT
             
             Startpage = new MasterDetailPage()
             {
-                Master = new NavigationPage(SideMenu) { Title = "Side Menu",  },
-                Detail = new NavigationPage(Mainpage) { BarBackgroundColor = Color.FromHex("#FFFFFF") }
+                Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = Color.FromHex("#FFFFFF"), BarTextColor = Color.FromHex("#000000"), },
+                Detail = new NavigationPage(Mainpage) { BarBackgroundColor = Color.FromHex("#FFFFFF"), BarTextColor = Color.FromHex("#000000"), }
             };
             
 
