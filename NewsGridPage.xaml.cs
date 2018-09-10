@@ -14,16 +14,16 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NewsGridPage : ContentPage
 	{
-        public static int Startnr = 1;
-        public static int Stopnr = 1;
+        public int Startnr = 1;
+        public int Stopnr = 1;
         public static int DBLN = 10;
         public static int NTN = DBLN / 2;
-        public static int Rownr = 1;
-        public static TapGestureRecognizer TGR = new TapGestureRecognizer();
+        public int Rownr = 0;
+        public static TapGestureRecognizer TGR;
         public List<Article> ArticleList = new List<Article>();
         public static List<string> imageLinks = new List<string>();
         public static Random rnd = new Random();
-        public static Button LoadNewsButton = new Button() {Text = "Load"};
+        public Button LoadNewsButton = new Button() {Text = "Load"};
         public bool NWT = true;
         public bool Mariestad = true;
         public bool HJO = true;
@@ -113,7 +113,7 @@ namespace NWT
         }
 
 
-        public NewsGridPage ()
+        public NewsGridPage (int Argc)
 		{
 			InitializeComponent ();
 
@@ -126,12 +126,32 @@ namespace NWT
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
 
-            TGR.NumberOfTapsRequired = 1;
+            
 
-            TGR.Tapped += (s, e) => {
-                LoadNews(s, e);
-                      
-            };
+
+            if(Argc == 0)
+            {
+                TGR = new TapGestureRecognizer();
+                Console.WriteLine("NewsGrid");
+                TGR.Tapped += (s, e) => {
+                    LoadNews(s, e);
+
+                };
+            }
+            else if(Argc == 1)
+            {
+                TGR = new TapGestureRecognizer();
+                Console.WriteLine("ReferatSida");
+                TGR.Tapped += (s, e) => {
+                   var Header = (View)s;
+                    Console.WriteLine(Header.ClassId);
+                    Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType()); 
+                    App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
+                    
+                   Navigation.PopAsync();
+                };
+            }
+            TGR.NumberOfTapsRequired = 1;
 
             LoadNewsButton.Clicked += (s, e) => {
                 AddNews();
@@ -219,7 +239,7 @@ namespace NWT
             Stopnr += NTN;
             var Rss = App.database.GetRSS(Stopnr);
             Console.WriteLine(Rss.Count);
-
+            Console.WriteLine("Inladdning Klar");
             foreach (RSSTable RSS in Rss)
             {
                 bool Exists = false;
@@ -231,10 +251,12 @@ namespace NWT
                         Exists = true;
                     }
                 }
-
+                Console.WriteLine(ArticleList.Count);
+                Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
                     var Box = new Article(RSS);
+                    Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -260,7 +282,8 @@ namespace NWT
                 }
             }
             NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);                    
+            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
+            Console.WriteLine("Nyheter inlagda i Grid");
             PrintNews();
 
         }

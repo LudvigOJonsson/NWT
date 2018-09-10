@@ -20,7 +20,7 @@ namespace NWT
         {
             
             InitializeComponent();
-            Children[1] = new NewsGridPage();
+            Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
             Children[2] = new LoginPage();
             Children[3] = new PlayPage();

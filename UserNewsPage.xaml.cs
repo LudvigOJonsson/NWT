@@ -121,8 +121,8 @@ namespace NWT
             Dot.Text = "⚫   ";
             Ingress.Text = RSS.Ingress;
             Brodtext.Text = RSS.Brodtext;
-            
-            //Link.Text = RSS.Referat;
+            Author.Text = App.database.GetUser(RSS.ID).First().Name;
+            Link.Text = RSS.Referat.ToString();
             ArticleNR = RSS.ID;
             Date.Text = "  Publicerad: " + RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
