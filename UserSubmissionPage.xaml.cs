@@ -38,7 +38,6 @@ namespace NWT
             
             await Navigation.PushAsync(new NewsGridPage(1));
             
-        }
-
+        }        
 	}
 }

@@ -60,7 +60,6 @@ namespace NWT
             LoadNews(RSS);
 
         }
-
         async void ButtonClicked(object sender, System.EventArgs e)
         {
             Button button = (Button)sender;
@@ -68,7 +67,6 @@ namespace NWT
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
         }
-
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -173,14 +171,17 @@ namespace NWT
                 SC.CommentNR = CNR;
                 SC.UserSubmitted = 0;
                 SC.User = App.LoggedinUser.ID;
+                SC.Replynr = ReplyNR;
                 if (ReplyNR > -1)
                 {
                     var Reply = App.database.GetComment(ReplyNR).First();
                     var User = App.database.GetUser(Reply.User).First();
+                    SC.Replylvl = Reply.Replylvl + 1;
                     SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text;
                 }
                 else
                 {
+                    SC.Replylvl = 0;
                     SC.Comment = Comment.Text;
                 }
 
@@ -195,9 +196,9 @@ namespace NWT
             }
         }
 
-        void LoadComments() // Remove Previously Rendered Comments.
+        void LoadComments()
         {
-            var Query = App.database.GetComments(ArticleNR);
+            var Query = App.database.GetComments(ArticleNR,0,-1);
             bool UUV = false;
             CommentGrid.Children.Clear();
             foreach (var s in Query)
@@ -268,6 +269,17 @@ namespace NWT
                     TextColor = Color.Black,
                     FontSize = 16,
 
+                };
+                var Replychain = new Button()
+                {
+                    Image = "exclaimation.png",
+                    BackgroundColor = Color.Transparent,
+                    WidthRequest = 25,
+                    HeightRequest = 25,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Start,
+                    Margin = 20,
+                    ClassId = "false"
                 };
                 var VoteArrowUp = new Button()
                 {
@@ -347,8 +359,13 @@ namespace NWT
 
 
                 Reply.Clicked += (o, e) => {
-                    PostClicked(o,e);
+                    PostClicked(o, e);
                     SubmitComment(s.ID);
+                };
+
+                Replychain.Clicked += async (o, e) => {
+                    PostClicked(o, e);
+                    await Navigation.PushAsync(new CommentPage(ArticleNR, s));
                 };
 
                 async void PostClicked(object sender, System.EventArgs e)
@@ -465,6 +482,7 @@ namespace NWT
                 CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
                 //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
                 CommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+                CommentGrid.Children.Add(Replychain, 4, 5, s.CommentNR, s.CommentNR + 1);
             }
         }
     }

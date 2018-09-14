@@ -69,6 +69,8 @@ public class UserTable
         public int User { get; set; }
         public string Comment { get; set; }
         public int Point { get; set; }
+        public int Replynr { get; set; }
+        public int Replylvl { get; set; }
     }
 
     
@@ -169,12 +171,13 @@ public class UserTable
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
-        public List<CommentTable> GetComments(int ID_)
+        public List<CommentTable> GetComments(int ID_ , int LVL, int RNR)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " ORDER BY CommentNR")));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " AND Replylvl = " + LVL + " AND (Replynr = "+ RNR+ " OR Replynr = -1) ORDER BY CommentNR")));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
+
         public List<CommentTable> GetComment(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR")));

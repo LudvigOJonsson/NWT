@@ -19,7 +19,7 @@ namespace NWT
         public int green = 248;
         public int blue = 248;
         public System.Timers.Timer Timer;
-        public static int ArticleNR;
+        public int ArticleNR;
         public int CC = 8;
 
         public UserNewsPage(UserRSSTable RSS)
@@ -113,16 +113,22 @@ namespace NWT
             }
 
         }
+        async public void LoadReference()
+        {           
+            var id = Int32.Parse(ClassId);
+            var RSS = App.database.GetRss(id).First();
+            await Navigation.PushAsync(new NewsPage(RSS));
+        }
 
         void LoadNews(UserRSSTable RSS)
         {
-
+            ClassId = RSS.Referat.ToString();
             Rubrik.Text = RSS.Rubrik;
             Dot.Text = "⚫   ";
             Ingress.Text = RSS.Ingress;
             Brodtext.Text = RSS.Brodtext;
             Author.Text = App.database.GetUser(RSS.ID).First().Name;
-            Link.Text = RSS.Referat.ToString();
+            Link.Text = App.database.GetRss(RSS.Referat).First().Link;
             ArticleNR = RSS.ID;
             Date.Text = "  Publicerad: " + RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];
@@ -158,14 +164,17 @@ namespace NWT
                 SC.CommentNR = CNR;
                 SC.UserSubmitted = 1;
                 SC.User = App.LoggedinUser.ID;
+                SC.Replynr = ReplyNR;
                 if (ReplyNR > -1)
                 {
                     var Reply = App.database.GetComment(ReplyNR).First();
                     var User = App.database.GetUser(Reply.User).First();
+                    SC.Replylvl = Reply.Replylvl+1;
                     SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text; //
                 }
                 else
                 {
+                    SC.Replylvl = 0;
                     SC.Comment = Comment.Text;
                 }
 
@@ -180,9 +189,9 @@ namespace NWT
             }
         }
 
-        void LoadComments() // Remove Previously Rendered Comments.
+        void LoadComments()
         {
-            var Query = App.database.GetComments(ArticleNR);
+            var Query = App.database.GetComments(ArticleNR,0,-1);
             bool UUV = false;
             UserCommentGrid.Children.Clear();
 
@@ -246,6 +255,17 @@ namespace NWT
                     TextColor = Color.Black,
                     FontSize = 16,
 
+                };
+                var Replychain = new Button()
+                {
+                    Image = "exclaimation.png",
+                    BackgroundColor = Color.Transparent,
+                    WidthRequest = 25,
+                    HeightRequest = 25,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Start,
+                    Margin = 20,
+                    ClassId = "false"
                 };
                 var VoteArrowUp = new Button()
                 {
@@ -327,6 +347,11 @@ namespace NWT
                 Reply.Clicked += (o, e) => {
                     PostClicked(o, e);
                     SubmitComment(s.ID);
+                };
+
+                Replychain.Clicked += async (o, e) => {
+                    PostClicked(o, e);
+                    await Navigation.PushAsync(new CommentPage(ArticleNR,s)); 
                 };
 
                 async void PostClicked(object sender, System.EventArgs e)
@@ -442,6 +467,7 @@ namespace NWT
                 UserCommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
                 UserCommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
                 //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
+                UserCommentGrid.Children.Add(Replychain, 4, 5, s.CommentNR, s.CommentNR + 1);
                 UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
             }
         }

@@ -27,3 +27,4 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserNewsPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserSubmissionPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\AboutPage.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CommentPage.xaml.g.cs
