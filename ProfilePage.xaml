@@ -13,23 +13,25 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="1" WidthRequest="140"/>
+                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Label Text="Orange" x:Name="Welcome"  FontSize="36" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" TextColor="Black"/>
 
-                <Button HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" CornerRadius="25" BackgroundColor="Transparent" Image="Tokens.png"/>
-                <Button HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" CornerRadius="25" BorderColor="LightGray" BorderWidth="1"/>
-                <Label Text="0" x:Name="TokenNumber"  FontSize="28" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" TextColor="Black"/>
+                <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+                <Image HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
+                <Label Text="0" x:Name="TokenNumber"  FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" TextColor="Black"/>
                 <!--<Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Image="leftarrow.png" HorizontalOptions="Start"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Image="rightarrow.png" HorizontalOptions="End"/>-->
-                <Label Text="Orange" x:Name="Welcome"  FontSize="36" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+                
 
 
             </Grid>

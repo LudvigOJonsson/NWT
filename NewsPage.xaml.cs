@@ -48,6 +48,7 @@ namespace NWT
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
+                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
                 }
 
             }
@@ -58,6 +59,14 @@ namespace NWT
 
             LoadNews(RSS);
 
+        }
+
+        async void ButtonClicked(object sender, System.EventArgs e)
+        {
+            Button button = (Button)sender;
+            await button.RotateTo(-2, 40, Easing.BounceOut);
+            await button.RotateTo(2, 60, Easing.BounceOut);
+            await button.RotateTo(0, 40, Easing.BounceOut);
         }
 
 
@@ -80,6 +89,7 @@ namespace NWT
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 Dot.TextColor = Color.FromRgb(red, green, blue);
+                TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
             if (green == 210 && blue == 194 && red == 80)
