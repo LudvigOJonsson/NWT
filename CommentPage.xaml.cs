@@ -109,6 +109,17 @@ namespace NWT
                 FontSize = 16,
 
             };
+            var CurLVL = new Label
+            {
+                Text = s.Replylvl.ToString(),
+                TextColor = Color.Black,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
+                Margin = 0,
+                FontSize = 16,
+
+            };
             var VoteArrowDown = new Button()
             {
                 Image = "downarrow.png",
@@ -119,6 +130,30 @@ namespace NWT
                 VerticalOptions = LayoutOptions.End,
                 Margin = 0,
                 ClassId = "false"
+            };
+            var Replies = new Button()
+            {
+                Text = "X Replies",
+                BackgroundColor = Color.FromRgb(80, 210, 194),
+                TextColor = Color.Black,
+                WidthRequest = 60,
+                HeightRequest = 20,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.End,
+                Margin = 0,
+                
+            };
+            var Reply = new Button()
+            {
+                BackgroundColor = Color.FromHex("#50d2c2"),
+                TextColor = Color.FromHex("#FFFFFF"),
+                WidthRequest = 60,
+                HeightRequest = 30,
+                Text = "Reply",
+                FontSize = 10,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End,
+                Margin = 20,
             };
             /*var Userimage = new Image
             {
@@ -236,6 +271,9 @@ namespace NWT
 
                 }
             };
+            Reply.Clicked +=  (o, e) => {
+                SubmitComment(s.ID);
+            };
             async void UpClicked(object sender, System.EventArgs e)
             {
                 await VoteArrowUp.RotateTo(-15, 80, Easing.BounceOut);
@@ -257,9 +295,48 @@ namespace NWT
             CommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
+            CommentGrid.Children.Add(Replies, 3, 4, s.CommentNR, s.CommentNR + 1);
+            CommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+            CommentGrid.Children.Add(CurLVL, 4, 5, s.CommentNR, s.CommentNR + 1);
             //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);        
         }
 
+        void SubmitComment(int ReplyNR)
+        {
+
+            if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+            {
+                var CNR = App.database.CommentCount(ArticleNR);
+                var SC = new CommentTable();
+
+                SC.Article = ArticleNR;
+                SC.CommentNR = CNR;
+                SC.UserSubmitted = 1;
+                SC.User = App.LoggedinUser.ID;
+                SC.Replynr = ReplyNR;
+                if (ReplyNR > -1)
+                {
+                    var Reply = App.database.GetComment(ReplyNR).First();
+                    var User = App.database.GetUser(Reply.User).First();
+                    SC.Replylvl = Reply.Replylvl + 1;
+                    SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text; //
+                }
+                else
+                {
+                    SC.Replylvl = 0;
+                    SC.Comment = Comment.Text;
+                }
+
+                SC.Point = 0;
+                Comment.Text = "";
+                App.database.InsertComment(SC);
+                LoadComments(CLVL);
+            }
+            if (App.LoggedinUser != null)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+            }
+        }
 
         void LoadComments(int LVL)
         {

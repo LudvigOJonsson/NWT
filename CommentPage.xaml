@@ -4,14 +4,29 @@
              x:Class="NWT.CommentPage">
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#f8f8f9">
+            <Grid x:Name="PageGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Entry Placeholder="Write a Reply..." x:Name="Comment" FontSize="16"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
+                <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#f8f8f9" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
             </Grid>
+            
 
         </ScrollView>
     </ContentPage.Content>

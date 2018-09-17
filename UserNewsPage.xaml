@@ -57,7 +57,7 @@
 
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" Clicked="SubmitCommentBullshit" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" Clicked="SubmitComment" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
             <Grid x:Name="UserCommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

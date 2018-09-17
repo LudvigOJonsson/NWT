@@ -139,11 +139,31 @@ namespace NWT
 
         }
 
-        async void SubmitCommentBullshit()
+        async void SubmitComment()
         {
             if (App.Online)
             {
-                SubmitComment(-1);
+                if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+                {
+                    var CNR = App.database.CommentCount(ArticleNR);
+                    var SC = new CommentTable();
+
+                    SC.Article = ArticleNR;
+                    SC.CommentNR = CNR;
+                    SC.UserSubmitted = 1;
+                    SC.User = App.LoggedinUser.ID;
+                    SC.Replynr = -1;
+                    SC.Replylvl = 0;
+                    SC.Comment = Comment.Text;
+                    SC.Point = 0;
+                    Comment.Text = "";
+                    App.database.InsertComment(SC);
+                    LoadComments();
+                }
+                if (App.LoggedinUser != null)
+                {
+                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+                }
             }
             else
             {
@@ -152,42 +172,7 @@ namespace NWT
 
         }
 
-        void SubmitComment(int ReplyNR)
-        {
 
-            if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
-            {
-                var CNR = App.database.CommentCount(ArticleNR);
-                var SC = new CommentTable();
-
-                SC.Article = ArticleNR;
-                SC.CommentNR = CNR;
-                SC.UserSubmitted = 1;
-                SC.User = App.LoggedinUser.ID;
-                SC.Replynr = ReplyNR;
-                if (ReplyNR > -1)
-                {
-                    var Reply = App.database.GetComment(ReplyNR).First();
-                    var User = App.database.GetUser(Reply.User).First();
-                    SC.Replylvl = Reply.Replylvl+1;
-                    SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text; //
-                }
-                else
-                {
-                    SC.Replylvl = 0;
-                    SC.Comment = Comment.Text;
-                }
-
-                SC.Point = 0;
-                Comment.Text = "";
-                App.database.InsertComment(SC);
-                LoadComments();
-            }
-            if (App.LoggedinUser != null)
-            {
-                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
-            }
-        }
 
         void LoadComments()
         {
@@ -256,17 +241,7 @@ namespace NWT
                     FontSize = 16,
 
                 };
-                var Replychain = new Button()
-                {
-                    Image = "exclaimation.png",
-                    BackgroundColor = Color.Transparent,
-                    WidthRequest = 25,
-                    HeightRequest = 25,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Start,
-                    Margin = 20,
-                    ClassId = "false"
-                };
+                
                 var VoteArrowUp = new Button()
                 {
                     Image = "uparrow.png",
@@ -344,15 +319,12 @@ namespace NWT
 
 
 
-                Reply.Clicked += (o, e) => {
+                Reply.Clicked += async (o, e) => {
                     PostClicked(o, e);
-                    SubmitComment(s.ID);
+                    await Navigation.PushAsync(new CommentPage(ArticleNR, s));
                 };
 
-                Replychain.Clicked += async (o, e) => {
-                    PostClicked(o, e);
-                    await Navigation.PushAsync(new CommentPage(ArticleNR,s)); 
-                };
+                
 
                 async void PostClicked(object sender, System.EventArgs e)
                 {
@@ -467,7 +439,6 @@ namespace NWT
                 UserCommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
                 UserCommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
                 //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                UserCommentGrid.Children.Add(Replychain, 4, 5, s.CommentNR, s.CommentNR + 1);
                 UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
             }
         }
