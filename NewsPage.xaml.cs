@@ -62,11 +62,27 @@ namespace NWT
         }
         async void ButtonClicked(object sender, System.EventArgs e)
         {
+            //IconRotation();
             Button button = (Button)sender;
             await button.RotateTo(-2, 40, Easing.BounceOut);
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
         }
+        async void TimerDone(object sender)
+        {
+            //IconRotation();
+            Label label = (Label)sender;
+            await label.RotateTo(-2, 40, Easing.BounceOut);
+            await label.RotateTo(2, 60, Easing.BounceOut);
+            await label.RotateTo(0, 40, Easing.BounceOut);
+        }
+        /*async void IconRotation()
+        {
+            Image image = TimerIcon;
+            await image.RotateTo(-2, 40, Easing.BounceOut);
+            await image.RotateTo(2, 60, Easing.BounceOut);
+            await image.RotateTo(0, 40, Easing.BounceOut);
+        }*/
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -114,6 +130,9 @@ namespace NWT
                 Timer.Stop();
                 Timer.Close();
                 Timer.Dispose();
+                TimerDone(Rubrik);
+                TimerDone(Ingress);
+                TimerDone(Brödtext);
             }
             else
             {

@@ -23,11 +23,11 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
                 <Label Text="Orange" x:Name="Welcome"  FontSize="36" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" TextColor="Black"/>
 
-                <Button HorizontalOptions="FillAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
-                <Image HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
+                <Button HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+                <Image HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
                 <Label Text="0" x:Name="TokenNumber"  FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" TextColor="Black"/>
                 <!--<Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Image="leftarrow.png" HorizontalOptions="Start"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Image="rightarrow.png" HorizontalOptions="End"/>-->

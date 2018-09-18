@@ -55,10 +55,10 @@
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
 
-            <Button x:Name="TimerButton" Text="Token Timer" 
-                    Clicked="ButtonClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#FFFFFF" TextColor="#FFFFFF" Margin="20" 
+            <Button x:Name="TimerButton" Text="Timer" 
+                    Clicked="ButtonClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
-            <Image HorizontalOptions="Center" VerticalOptions="Center" 
+            <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
                    Grid.Row="6" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
 
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
