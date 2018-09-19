@@ -172,19 +172,29 @@ namespace NWT
             {
                 if (App.LoggedinUser != null)
                 {
-                    var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
-                    if (answer)
+                    if(App.database.CheckPlus(RSS.ID))
                     {
-                        if (App.database.Plustoken(App.LoggedinUser, -1))
-                        {
-
-                            await Navigation.PushAsync(new NewsPage(RSS));
-                        }
-                        else
-                        {
-                            await DisplayAlert("No Tokens", "Insufficent Tokens", "OK");
-                        }
+                        await Navigation.PushAsync(new NewsPage(RSS));
                     }
+                    else
+                    {
+                        var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
+                        if (answer)
+                        {
+                            if (App.database.Plustoken(App.LoggedinUser, -1))
+                            {
+                                var Plus = new PlusRSSTable();
+                                Plus.Article = RSS.ID;
+                                Plus.User = App.LoggedinUser.ID;
+                                App.database.InsertPlus(Plus);
+                                await Navigation.PushAsync(new NewsPage(RSS));
+                            }
+                            else
+                            {
+                                await DisplayAlert("No Tokens", "Insufficent Tokens", "OK");
+                            }
+                        }
+                    }                   
                 }
                 else
                 {

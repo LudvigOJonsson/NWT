@@ -119,7 +119,13 @@ public class UserTable
         public int Point { get; set; }
     }
 
-
+    public class PlusRSSTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int Article { get; set; }
+        public int User { get; set; }
+    }
 
     [Table("ReadArticles")]
     public class RAL // Read Article List
@@ -165,12 +171,14 @@ public class UserTable
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Execute", statement)));       
         }
+
         public List<UserTable> GetUser(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + ID_)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
+
         public List<CommentTable> GetComments(int ID_ , int LVL, int RNR)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " AND Replylvl = " + LVL + " AND (Replynr = "+ RNR+ " OR Replynr = -1) ORDER BY CommentNR")));
@@ -192,8 +200,7 @@ public class UserTable
             Console.WriteLine(Result.JSON);
             return JsonConvert.DeserializeObject<List<UpvoteTable>>(Result.JSON);
         }
-
-        
+       
         public int LoadRSS(int start, int stop)
         {
             int Nr = 0;
@@ -259,22 +266,62 @@ public class UserTable
             return Nr;
         }
 
+        public void InsertPlus(PlusRSSTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Plus", "Insert", JsonConvert.SerializeObject(RSS))));
+        }
+
+        public bool CheckPlus(int Article)
+        {
+            
+
+            if (App.LoggedinUser != null)
+            {
+
+                var Plus = new PlusRSSTable();
+                Plus.User = App.LoggedinUser.ID;
+                Plus.Article = Article;
+                var Result = TCP(JsonConvert.SerializeObject(new JSONObj("Plus", "PlusCheck", JsonConvert.SerializeObject(Plus))));
+
+                if (Result != null)
+                {
+                    var JSON = JsonConvert.DeserializeObject<JSONObj>(Result).JSON;
+                    var Test = JsonConvert.DeserializeObject<Boolean>(JSON);
+
+                    if (Test)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            return false;
+        }
+
         public void InsertInsandare(UserRSSTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
         }
+
         public void InsertUpvote(UpvoteTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Insert", JsonConvert.SerializeObject(RSS))));
         }
+
         public void DeleteUpvote(UpvoteTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Delete", JsonConvert.SerializeObject(RSS))));
         }
+
         public List<RSSTable> GetRSS(int ID)
         {           
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
         }
+
         public List<RSSTable> GetRss(int ID)
         {
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = ?" , ID.ToString());
@@ -284,6 +331,7 @@ public class UserTable
         {
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
         }
+
         public List<UserRSSTable> GetUserRss(int ID)
         {
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID = ?", ID.ToString());
@@ -293,6 +341,7 @@ public class UserTable
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Register", JsonConvert.SerializeObject(User))));           
         }
+
         public void Login(UserTable User)
         {
             var JSONObject = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("Token", "Login", JsonConvert.SerializeObject(User)))));
@@ -306,9 +355,7 @@ public class UserTable
             }
             
         }
-
-        
-
+     
         public void Logout()
         {
             if (App.Token != null)
@@ -320,6 +367,7 @@ public class UserTable
                 App.Mainpage.CurrentPage = App.Mainpage.Children[2];
             }
         }
+
         public bool TokenCheck()
         {
             if(App.Token != null)
@@ -373,7 +421,6 @@ public class UserTable
             return Convert.ToBoolean(Result.JSON);
         }
 
-
         public List<Task> MissionUpdate(UserTable User, string Operation)
         {
 
@@ -404,6 +451,7 @@ public class UserTable
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Insert", JsonConvert.SerializeObject(Comment))));
         }
+
         public int CommentCount(int parm)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT Comment FROM Comments WHERE Article = " + parm)));
