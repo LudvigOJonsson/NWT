@@ -20,15 +20,15 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="NWT-APP PROTOTYPE" TextColor="#50d2c2" FontSize="42" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="NWT-APP PROTOTYP" TextColor="#50d2c2" FontSize="42" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
                 <Label Text="EMAIL" TextColor="DimGray" FontSize="8" Grid.Row="5" VerticalOptions="Start"/>
-                <Entry x:Name="UserLogin" Placeholder="youremail@gmail.com" Grid.Row="5" TextColor="Black" VerticalOptions="End"/>
-                <Label Text="PASSWORD" TextColor="DimGray" FontSize="8" Grid.Row="7" VerticalOptions="Start"/>
+                <Entry x:Name="UserLogin" Placeholder="dinemail@gmail.com" Grid.Row="5" TextColor="Black" VerticalOptions="End"/>
+                <Label Text="LÖSENORD" TextColor="DimGray" FontSize="8" Grid.Row="7" VerticalOptions="Start"/>
                 <Entry x:Name="UserPassword" IsPassword="True" Placeholder="1234" TextColor="Black" Grid.Row="7" VerticalOptions="End"/>
-                <Button x:Name="LoginButton" Text="Login"  Clicked="Login" BackgroundColor="#50d2c2" TextColor="White" Grid.Row="9" HeightRequest="50"/>
-                <Label Text="DON'T HAVE AN ACCOUNT?" TextColor="DimGray" FontSize="8" Grid.Row="10" HorizontalOptions="End"/>
-                <Button x:Name="RegisterButton" Text="Register" Clicked="Register" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="End"/>
+                <Button x:Name="LoginButton" Text="Logga in"  Clicked="Login" BackgroundColor="#50d2c2" TextColor="White" Grid.Row="9" HeightRequest="50"/>
+                <Label Text="INGET KONTO?" TextColor="DimGray" FontSize="8" Grid.Row="10" HorizontalOptions="End"/>
+                <Button x:Name="RegisterButton" Text="Registrera" Clicked="Register" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="End"/>
 
             </Grid>
             

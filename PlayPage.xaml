@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="FEATURED GAMES" TextColor="#50d2c2" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="SPEL" TextColor="#50d2c2" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 
                 <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"  Image="sudoku.jpg" />
                 <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />

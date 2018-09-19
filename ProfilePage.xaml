@@ -37,7 +37,7 @@
             </Grid>
         </ContentView>
         <ContentView VerticalOptions="Start">
-            <Grid x:Name="ArticleGrid2" RowSpacing="1" ColumnSpacing="1">
+            <Grid x:Name="ArticleGrid2" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0" />
                     <RowDefinition Height="0" />
@@ -48,17 +48,28 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Text="Favorites" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <Button Text="Favoriter" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="15" CornerRadius="5"/>
 
-                <Button Text="Missions" Clicked="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <!--<Button Text="Missions" Clicked="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                -->
+                <Button Text="Knappar" Clicked="Achivements" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="15" CornerRadius="5"/>
 
-                <Button Text="Achivements" Clicked="Achivements" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <Button Text="Historik" Clicked="History" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="15" CornerRadius="5"/>
 
-                <Button Text="History" Clicked="History" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <!--<Button Text="Posts" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                -->
+                <Button Text="Inställningar" Clicked="Settings" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="15" CornerRadius="5"/>
 
-                <Button Text="Posts" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <Label Text="Uppdrag" TextColor="#50d2c2" FontSize="36" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                <Button Text="Settings" Clicked="Settings" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="5" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
+                <Button x:Name="m11" Text="Mission #1"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start" Margin="15"/>
+                <Label x:Name ="m1t" Text="M1" FontSize="20" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
+
+                <Button x:Name="m22" Text="Mission #2"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"   Margin="15"/>
+                <Label x:Name ="m2t" Text="M2" FontSize="20" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
+
+                <Button x:Name="m33" Text="Mission #3"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  Margin="15"/>
+                <Label x:Name ="m3t" Text="M3" FontSize="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
 
                 <!--<Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
                 <BoxView HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>

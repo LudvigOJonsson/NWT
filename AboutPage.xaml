@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.AboutPage"
              BackgroundColor="#FFFFFF"
-             Title="AboutPage">
+             Title="Om Oss">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS, Android" Value="0,0,0,0" />
@@ -21,11 +21,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Created by:" Grid.Row="0" Grid.Column="0" FontSize="14" TextColor="Black"/>
-                <Label Text="Two dudes with a purpose" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="Black"/>
+                <Label Text="Producerad av:" Grid.Row="0" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                <Label Text="Ludvig Jonsson och Christoffer Bodegård" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="Black"/>
 
-                <Label Text="Temporary text by:" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
-                <Label Text="One of the those dudes" Grid.Row="5" Grid.Column="0" FontSize="16" TextColor="Black"/>
+                <Label Text="På uppdrag av:" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                <Label Text="Gothia Innovation" Grid.Row="5" Grid.Column="0" FontSize="16" TextColor="Black"/>
 
             </Grid>
         </StackLayout>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.SettingsPage"
              BackgroundColor="#FFFFFF"
-             Title="Settings">
+             Title="Inställningar">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS, Android" Value="0,0,0,0" />
