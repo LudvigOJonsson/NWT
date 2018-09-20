@@ -62,13 +62,13 @@
 
                 <Label Text="Uppdrag" TextColor="#50d2c2" FontSize="36" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                <Button x:Name="m11" Text="Mission #1"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start" Margin="15"/>
+                <Button x:Name="m11" Image="checkmark.png" Text="Mission #1"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start" Margin="15"/>
                 <Label x:Name ="m1t" Text="M1" FontSize="20" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
 
-                <Button x:Name="m22" Text="Mission #2"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"   Margin="15"/>
+                <Button x:Name="m22" Image="checkmark.png" Text="Mission #2"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"   Margin="15"/>
                 <Label x:Name ="m2t" Text="M2" FontSize="20" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
 
-                <Button x:Name="m33" Text="Mission #3"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  Margin="15"/>
+                <Button x:Name="m33" Image="checkmark.png" Text="Mission #3"  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  Margin="15"/>
                 <Label x:Name ="m3t" Text="M3" FontSize="20" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Margin="15"/>
 
                 <!--<Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
