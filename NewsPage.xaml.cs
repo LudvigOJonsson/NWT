@@ -324,6 +324,16 @@ namespace NWT
                     VerticalOptions = LayoutOptions.End,
                     Margin = 20,
                 };
+                var Elispses = new Button()
+                {
+                    BackgroundColor = Color.Transparent,
+                    WidthRequest = 60,
+                    HeightRequest = 30,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.End,
+                    Margin = 20,
+                    Image = "elipses.png",
+                };
 
                 if (App.LoggedinUser != null)
                 {
@@ -354,8 +364,6 @@ namespace NWT
                     await Navigation.PushAsync(new CommentPage(ArticleNR, s));
                 };
 
-               
-
                 async void PostClicked(object sender, System.EventArgs e)
                 {
                     Button button = (Button)sender;
@@ -363,6 +371,24 @@ namespace NWT
                     await button.RotateTo(5, 120, Easing.BounceOut);
                     await button.RotateTo(0, 80, Easing.BounceOut);
                 }
+
+                Elispses.Clicked += async (o, e) => {
+                    var action = await DisplayActionSheet("Alternativ", "Avbryt", null, "Markera med Token", "Dela", "Rapportera");
+                    Debug.WriteLine("Action: " + action);
+
+                    switch (action)
+                    {
+                        case "Markera med Token":
+                            //DoSomething();
+                            break;
+                        case "Dela":
+                            //DoSomethingElse();
+                            break;
+                        case "Rapportera":
+                            //DoSomethingElse();
+                            break;
+                    }
+                };
 
                 VoteArrowUp.Clicked += (o, e) => {
                     if (App.LoggedinUser != null)
@@ -469,7 +495,8 @@ namespace NWT
                 CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
                 CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
                 //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                CommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+                CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
+                CommentGrid.Children.Add(Elispses, 5, 6, s.CommentNR, s.CommentNR + 1);
             }
         }
     }

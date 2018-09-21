@@ -18,6 +18,17 @@ namespace NWT
             Welcome.Text = User.Username;
             TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
 
+            //Getting update
+            updateMissions();
+
+        }
+
+        public void updateMissions()
+        {
+            var Tasklist = App.database.MissionUpdate(App.LoggedinUser, "Evaluate");
+            m1t.Text = "Read " + Tasklist[0].Progress + "/" + Tasklist[0].Goal + "Articles";
+            m2t.Text = "Post " + Tasklist[1].Progress + "/" + Tasklist[1].Goal + " Comments";
+            m3t.Text = "Solve " + Tasklist[2].Progress + "/" + Tasklist[2].Goal + " Sudokus";
         }
 
         public void Logout()
