@@ -14,7 +14,9 @@ namespace NWT
 	{
 
         public Label Label = new Label { };
+        public Label Label2 = new Label { };
         public Image Image = new Image { };
+        public Image Image2 = new Image { };
         public Button Button = new Button { };
 
         public AchivementsPage()
@@ -24,7 +26,7 @@ namespace NWT
         private async void ShowPopup()
         {
             //Create `ContentPage` with padding and transparent background
-            ContentPage loginPage = new ContentPage
+            ContentPage popup = new ContentPage
             {
                 BackgroundColor = Color.FromHex("#D9000000"),
                 Padding = new Thickness(20, 20, 20, 20)
@@ -33,22 +35,62 @@ namespace NWT
             // Create Children
             Label = new Label
             {
-                Text = "",
-                HorizontalTextAlignment = TextAlignment.Start,
-                VerticalTextAlignment = TextAlignment.End,
+                Text = "Read 5 Articles",
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
                 HeightRequest = 80,
-                TextColor = Color.Black,
+                TextColor = Color.White,
                 FontSize = 25,
                 Margin = 10
+            };
+            // Create Children
+            Label2 = new Label
+            {
+                Text = "Hello!Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                HorizontalTextAlignment = TextAlignment.Start,
+                VerticalTextAlignment = TextAlignment.Center,
+                TextColor = Color.White,
+                FontSize = 18,
+                Margin = 30
+            };
+            Button = new Button
+            {
+                HeightRequest = 80,
+                WidthRequest = 80,
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Start,
+                BackgroundColor = Color.White,
+                Margin = 10
+                
             };
 
             Image = new Image
             {
-                Source = "https://cdn.discordapp.com/attachments/318470280622374912/478947159685988362/eipugIu.jpg",
-                WidthRequest = 200,
-                HeightRequest = 300,
-                Aspect = Aspect.AspectFill
+                Source = "knapp.png",
+                WidthRequest = 150,
+                HeightRequest = 150,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
             };
+            Image2 = new Image
+            {
+                Source = "articleIcon.png",
+                WidthRequest = 80,
+                HeightRequest = 80,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };
+
+            var grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { });
+            grid.RowDefinitions.Add(new RowDefinition { });
+            grid.RowDefinitions.Add(new RowDefinition { });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { });
+
+            grid.Children.Add(Image, 0, 0);
+            grid.Children.Add(Image2, 0, 0);
+            grid.Children.Add(Label, 0, 1);
+            grid.Children.Add(Button, 0, 2);
 
             //Create desired layout to be a content of your popup page. 
             var contentLayout = new StackLayout
@@ -59,17 +101,26 @@ namespace NWT
                 Children =
           {
               // Add children
-              Image,
-              Label
+              grid
           }
-            };
+        };
 
             //set popup page content:
-            loginPage.Content = contentLayout;
+            popup.Content = contentLayout;
 
             //Show Popup
-            await Navigation.PushModalAsync(loginPage, false);
+            await Navigation.PushModalAsync(popup, false);
+
+            Button.Clicked += (s, e) => {
+                OnDismissButtonClicked(s,e);
+            };
+
         }
+        async void OnDismissButtonClicked(object sender, EventArgs args)
+        {
+            await Navigation.PopModalAsync();
+        }
+
     }
     
 }
