@@ -39,6 +39,21 @@ namespace NWT
                     else
                         User.Age = 18;
                     App.database.Registration(User);
+
+                    var Stats = new StatsTable();
+                    Stats.User = App.database.GetUserByName(UserLogin.Text).First().ID;
+                    Stats.Startups = 0;
+                    Stats.Logins = 0;
+                    Stats.UseTime = 0;
+                    Stats.ArticlesClicked = 0;
+                    Stats.ArticlesRead = 0;
+                    Stats.PlusArticlesClicked = 0;
+                    Stats.PlusArticlesUnlocked = 0;
+                    Stats.InsandareSubmitted = 0;
+                    Stats.InsandareRead = 0;
+                    Stats.GameStarted = 0;
+                    Stats.GameFinished = 0;
+                    App.database.InsertStats(Stats);
                     await DisplayAlert("Registration Complete", "User " + UserLogin.Text + " has now been created", "OK");
                 }
                 else
