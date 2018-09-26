@@ -55,7 +55,7 @@ namespace NWT
                     Margin = 5,
                     CornerRadius = 5,
                     BorderColor = Color.FromRgb(220,220,220),
-                    BorderWidth = 1,
+                    BorderWidth = 2,
                 };
                 
 
@@ -74,12 +74,12 @@ namespace NWT
                     Text = RSS.Title,
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Start,
-                    FontSize = 28,
+                    FontSize = 26,
                     FontAttributes = FontAttributes.Bold,
                     HeightRequest = 50,
                     TextColor = Color.Black,
                     ClassId = RSS.ID.ToString(),
-                    Margin = 8
+                    Margin = 12
                 };
 
                 Label.GestureRecognizers.Add(TGR);

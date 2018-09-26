@@ -122,7 +122,7 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            A.Frame.Color = Color.FromRgb(80, 210, 194);
+                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                         });
 
                     }
