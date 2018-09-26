@@ -34,6 +34,7 @@ namespace NWT
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
 
+            /*
             if (App.LoggedinUser != null)
             {
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
@@ -55,7 +56,7 @@ namespace NWT
             {
                 UserNewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
             }
-
+            */
             LoadNews(RSS);
 
         }
@@ -90,6 +91,7 @@ namespace NWT
                 RA.Article = ArticleNR;
                 RA.Date = DateTime.Now;
                 App.database.ReadArticle(RA);
+                
 
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
@@ -106,6 +108,7 @@ namespace NWT
                 Timer.Stop();
                 Timer.Close();
                 Timer.Dispose();
+                App.database.UpdateStats("InsandareRead");
             }
             else
             {

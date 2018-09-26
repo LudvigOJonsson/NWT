@@ -21,6 +21,7 @@ namespace NWT
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
+        public bool Read = false;
 
         public NewsPage(RSSTable RSS)
         {
@@ -49,6 +50,7 @@ namespace NWT
                     NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Read = true;
                 }
 
             }
@@ -58,7 +60,8 @@ namespace NWT
             }
 
             LoadNews(RSS);
-
+            App.database.UpdateStats("ArticlesClicked");
+            
         }
         async void ButtonClicked(object sender, System.EventArgs e)
         {
@@ -67,6 +70,14 @@ namespace NWT
             await button.RotateTo(-2, 40, Easing.BounceOut);
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
+
+            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
+            {
+                App.database.UpdateStats("ArticlesRead");
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                Read = true;
+            }
+
         }
         async void TimerDone(object sender)
         {
@@ -89,7 +100,6 @@ namespace NWT
             if (red != 80)
             {
                 red--;
-
             }
             if (green != 210)
             {
@@ -108,7 +118,7 @@ namespace NWT
 
             if (green == 210 && blue == 194 && red == 80)
             {
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+               
                 var RA = new RAL();
                 RA.User = App.LoggedinUser.ID;
                 RA.Article = ArticleNR;
@@ -133,6 +143,7 @@ namespace NWT
                 TimerDone(Rubrik);
                 TimerDone(Ingress);
                 TimerDone(Brödtext);
+                
             }
             else
             {

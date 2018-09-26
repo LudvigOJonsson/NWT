@@ -58,7 +58,6 @@ namespace NWT
                     BorderWidth = 2,
                 };
                 
-
                 Frame = new BoxView
                 {
                     Color = Color.FromRgb(248,248,248),
@@ -96,7 +95,7 @@ namespace NWT
 
                 };
 
-                Image.GestureRecognizers.Add(TGR);
+               Image.GestureRecognizers.Add(TGR);
             }
 
             public void Visibility(bool State){
@@ -178,6 +177,7 @@ namespace NWT
                     }
                     else
                     {
+                        App.database.UpdateStats("PlusArticlesClicked");
                         var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
                         if (answer)
                         {
@@ -187,6 +187,7 @@ namespace NWT
                                 Plus.Article = RSS.ID;
                                 Plus.User = App.LoggedinUser.ID;
                                 App.database.InsertPlus(Plus);
+                                App.database.UpdateStats("PlusArticlesUnlocked");
                                 await Navigation.PushAsync(new NewsPage(RSS));
                             }
                             else
@@ -294,6 +295,17 @@ namespace NWT
             NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
             Console.WriteLine("Nyheter inlagda i Grid");
+            foreach (Article A in ArticleList)
+            {
+                if (App.database.GetReadArticle(A.ID).Count > 0)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        A.Frame.Color = Color.FromRgb(80, 210, 194);
+                    });
+
+                }
+            }
             PrintNews();
 
         }
