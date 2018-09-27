@@ -68,6 +68,15 @@ namespace NWT
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
         }
+        async void TimerButtonClicked(object sender, System.EventArgs e)
+        {
+            //IconRotation();
+            Button button = (Button)sender;
+            await button.RotateTo(-2, 40, Easing.BounceOut);
+            await button.RotateTo(2, 60, Easing.BounceOut);
+            await button.RotateTo(0, 40, Easing.BounceOut);
+            TimerIcon.Source = "tokenicon3.png";
+        }
         async void TimerDone(object sender)
         {
             //IconRotation();
