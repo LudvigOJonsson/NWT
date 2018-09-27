@@ -150,6 +150,38 @@ public class UserTable
         public int Author { get; set; }
     }
 
+    public class StatsTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int User { get; set; }
+        public int Startups { get; set; }
+        public int Logins { get; set; }
+        public int UseTime { get; set; }
+        public int ArticlesClicked { get; set; }
+        public int ArticlesRead { get; set; }
+        public int PlusArticlesClicked { get; set; }
+        public int PlusArticlesUnlocked { get; set; }
+        public int InsandareSubmitted { get; set; }
+        public int InsandareRead { get; set; }
+        public int GameStarted { get; set; }
+        public int GameFinished { get; set; }
+    }
+
+    [Table("LS")]
+    public class LocalStatsTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int Startups { get; set; }
+        public int UseTime { get; set; }
+        public int ArticlesClicked { get; set; }
+        public int PlusArticlesClicked { get; set; }
+        public int InsandareRead { get; set; }
+        public int GameStarted { get; set; } 
+        public int GameFinished { get; set; }
+    }
+
     public class DBHelper 
     {
 
@@ -162,7 +194,8 @@ public class UserTable
             DB.CreateTable<RSSTable>();
             DB.DropTable<UserRSSTable>();
             DB.CreateTable<UserRSSTable>();
-            DB.DropTable<RAL>();
+            DB.CreateTable<LocalStatsTable>();
+            //DB.DropTable<RAL>();
             DB.CreateTable<RAL>();
         }
 
@@ -175,6 +208,13 @@ public class UserTable
         public List<UserTable> GetUser(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + ID_)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
+        }
+
+        public List<UserTable> GetUserByName(string Username)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE Username = '" + Username+ "'")));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
@@ -458,7 +498,22 @@ public class UserTable
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON).Count;
         }
-   
+
+        public void InsertStats(StatsTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
+        }
+
+        public void UpdateStats(string Value)
+        {
+            if(App.LoggedinUser != null)
+            {
+                var statement = "UPDATE Stats SET " + Value + " = " + Value + " + 1 WHERE User = " + App.LoggedinUser.ID;
+                TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Execute", statement)));
+            }            
+        }
+
+
         public List<SudokuTable> GetTile (int x , int y)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", "SELECT * FROM Sudoku WHERE X = " + x + " AND Y = " + y)));
@@ -591,7 +646,6 @@ public class UserTable
 
         }
 
-
         public static string TCP(string JSON)
         {
             string Message = "";
@@ -601,7 +655,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("79.102.36.202", 1508);
+                tcpclnt.Connect("81.170.199.32", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");

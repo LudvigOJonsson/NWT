@@ -92,6 +92,10 @@ namespace NWT
                     Margin = 5,
 
                 };
+
+                
+
+
             }
 
             public void Visibility(bool State)
