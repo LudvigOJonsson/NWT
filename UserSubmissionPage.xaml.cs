@@ -20,7 +20,7 @@ namespace NWT
 
         public void Submit()
         {
-            if(App.LoggedinUser != null)
+            if(App.LoggedinUser != null && Rubrik.Text != "" && Ingress.Text != "" && Brodtext.Text != "")
             {
                 var RSS = new UserRSSTable();
                 RSS.Rubrik = Rubrik.Text;

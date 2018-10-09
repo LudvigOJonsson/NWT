@@ -63,22 +63,7 @@ namespace NWT
             App.database.UpdateStats("ArticlesClicked");
             
         }
-        async void ButtonClicked(object sender, System.EventArgs e)
-        {
-            //IconRotation();
-            Button button = (Button)sender;
-            await button.RotateTo(-2, 40, Easing.BounceOut);
-            await button.RotateTo(2, 60, Easing.BounceOut);
-            await button.RotateTo(0, 40, Easing.BounceOut);
 
-            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
-            {
-                App.database.UpdateStats("ArticlesRead");
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
-                Read = true;
-            }
-
-        }
         async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
@@ -86,7 +71,31 @@ namespace NWT
             await button.RotateTo(-2, 40, Easing.BounceOut);
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
-            TimerIcon.Source = "tokenicon3.png";
+            
+            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
+            {
+                var RA = new RAL();
+                RA.User = App.LoggedinUser.ID;
+                RA.Article = ArticleNR;
+                RA.Date = DateTime.Now;
+                App.database.ReadArticle(RA);
+                TimerIcon.Source = "tokenicon3.png";
+                var NG = (NewsGridPage)App.Mainpage.Children[1];
+                foreach (NewsGridPage.Article A in NG.ArticleList)
+                {
+                    if (A.ID == ArticleNR)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                        });
+
+                    }
+                }
+                App.database.UpdateStats("ArticlesRead");
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                Read = true;
+            }
         }
         async void TimerDone(object sender)
         {
@@ -128,24 +137,7 @@ namespace NWT
             if (green == 210 && blue == 194 && red == 80)
             {
                
-                var RA = new RAL();
-                RA.User = App.LoggedinUser.ID;
-                RA.Article = ArticleNR;
-                RA.Date = DateTime.Now;
-                App.database.ReadArticle(RA);
-
-                var NG = (NewsGridPage)App.Mainpage.Children[1];
-                foreach (NewsGridPage.Article A in NG.ArticleList)
-                {
-                    if (A.ID == ArticleNR)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
-                        });
-
-                    }
-                }
+                
                 Timer.Stop();
                 Timer.Close();
                 Timer.Dispose();

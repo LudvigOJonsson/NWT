@@ -17,6 +17,7 @@ namespace NWT
         public static UserTable LoggedinUser = null;
         public static TokenTable Token = null;
         public static bool Online = true;
+        public static System.Timers.Timer Timer;
         public App()
         {
             InitializeComponent();
@@ -34,13 +35,24 @@ namespace NWT
                 Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = Color.FromHex("#FFFFFF"), BarTextColor = Color.FromHex("#000000"), },
                 Detail = new NavigationPage(Mainpage) { BarBackgroundColor = Color.FromHex("#FFFFFF"), BarTextColor = Color.FromHex("#000000"), }
             };
-            
 
+            Timer = new System.Timers.Timer();
+            Timer.Interval = 60000;
+            Timer.Elapsed += OnTimedEvent;
+            Timer.Enabled = true;
 
             MainPage = Startpage;
             Instanciated = true;
         }
-        
+
+        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if(App.LoggedinUser != null)
+            {
+                App.database.UpdateStats("UseTime");
+            }            
+            Timer.Start();         
+        }
         protected override void OnStart ()
 		{
             

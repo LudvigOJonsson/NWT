@@ -194,9 +194,32 @@ public class UserTable
             DB.CreateTable<RSSTable>();
             DB.DropTable<UserRSSTable>();
             DB.CreateTable<UserRSSTable>();
-            DB.CreateTable<LocalStatsTable>();
-            //DB.DropTable<RAL>();
+
+            if(DB.Query<LocalStatsTable>("Select * From LS Where ID = 0").Count == 0)
+            {
+                Console.WriteLine("Reseting Statistics");
+                RCLS();
+            }
+
+            
+            DB.DropTable<RAL>();
             DB.CreateTable<RAL>();
+        }
+
+        public void RCLS()
+        {
+            DB.DropTable<LocalStatsTable>();
+            DB.CreateTable<LocalStatsTable>();
+            var LS = new LocalStatsTable();
+            LS.ID = 0;
+            LS.Startups = 0;
+            LS.UseTime = 0;
+            LS.ArticlesClicked = 0;
+            LS.PlusArticlesClicked = 0;
+            LS.InsandareRead = 0;
+            LS.GameStarted = 0;
+            LS.GameFinished = 0;
+            DB.Insert(LS);
         }
 
 
@@ -501,7 +524,7 @@ public class UserTable
 
         public void InsertStats(StatsTable RSS)
         {
-            TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
+            TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Insert", JsonConvert.SerializeObject(RSS))));
         }
 
         public void UpdateStats(string Value)
@@ -510,9 +533,40 @@ public class UserTable
             {
                 var statement = "UPDATE Stats SET " + Value + " = " + Value + " + 1 WHERE User = " + App.LoggedinUser.ID;
                 TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Execute", statement)));
-            }            
+            }
+            else
+            {
+                var statement = "UPDATE LS SET " + Value + " = " + Value + " + 1 WHERE ID = 0";
+                Console.WriteLine(statement);
+            }
         }
 
+        public void LocalStatDump()
+        {
+            var Query = DB.Query<LocalStatsTable>("SELECT * FROM LS WHERE ID = '0'");
+
+            Console.WriteLine("LSQuery: "+ Query.Count());
+            if (Query.Any())
+            {
+                var LS = Query.First();
+                Console.WriteLine("Current Local Stats: " + LS);
+
+                var statement = "UPDATE Stats SET"
+                    + "  Startups = Startups + " + LS.Startups
+                    + ", UseTime = UseTime + " + LS.UseTime
+                    + ", ArticlesClicked = ArticlesClicked + " + LS.ArticlesClicked
+                    + ", PlusArticlesClicked = PlusArticlesClicked + " + LS.PlusArticlesClicked
+                    + ", InsandareRead = InsandareRead + " + LS.InsandareRead
+                    + ", GameStarted = GameStarted + " + LS.GameStarted
+                    + ", GameFinished = GameFinished + " + LS.GameFinished
+                    + " WHERE User = " + App.LoggedinUser.ID;
+                TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Execute", statement)));
+                RCLS();
+
+            }
+
+            
+        }
 
         public List<SudokuTable> GetTile (int x , int y)
         {
@@ -655,7 +709,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("81.170.199.32", 1508);
+                tcpclnt.Connect("100.64.37.162", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");

@@ -65,7 +65,7 @@ namespace NWT
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
-                    ClassId = RSS.ID.ToString(),
+                    ClassId = RSS.ID.ToString()
                 };
 
                 Label = new Label
@@ -91,7 +91,7 @@ namespace NWT
                     HeightRequest = 300,
                     Aspect = Aspect.AspectFill,
                     Margin = 5,
-                    ClassId = RSS.ID.ToString(),
+                    ClassId = RSS.ID.ToString()
 
                 };
 

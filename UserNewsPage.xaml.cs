@@ -21,6 +21,7 @@ namespace NWT
         public System.Timers.Timer Timer;
         public int ArticleNR;
         public int CC = 8;
+        public bool Read = false;
 
         public UserNewsPage(UserRSSTable RSS)
         {
@@ -34,8 +35,7 @@ namespace NWT
             imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
             imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
 
-            /*
-            if (App.LoggedinUser != null)
+            if (App.LoggedinUser != null || false)
             {
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
                 {
@@ -49,6 +49,8 @@ namespace NWT
                 {
                     UserNewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
+                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Read = true;
                 }
 
             }
@@ -56,18 +58,76 @@ namespace NWT
             {
                 UserNewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
             }
-            */
             LoadNews(RSS);
-
+            
         }
 
+
+        async void ButtonClicked(object sender, System.EventArgs e)
+        {
+            //IconRotation();
+            Button button = (Button)sender;
+            await button.RotateTo(-2, 40, Easing.BounceOut);
+            await button.RotateTo(2, 60, Easing.BounceOut);
+            await button.RotateTo(0, 40, Easing.BounceOut);
+
+            
+
+        }
+        async void TimerButtonClicked(object sender, System.EventArgs e)
+        {
+            //IconRotation();
+            Button button = (Button)sender;
+            await button.RotateTo(-2, 40, Easing.BounceOut);
+            await button.RotateTo(2, 60, Easing.BounceOut);
+            await button.RotateTo(0, 40, Easing.BounceOut);
+            
+            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
+            {
+                var RA = new RAL();
+                RA.User = App.LoggedinUser.ID;
+                RA.Article = ArticleNR;
+                RA.Date = DateTime.Now;
+                App.database.ReadArticle(RA);
+                TimerIcon.Source = "tokenicon3.png";
+                var NG = (UserNewsGridPage)App.Mainpage.Children[0].Navigation.NavigationStack[1];
+                foreach (UserNewsGridPage.Article A in NG.ArticleList)
+                {
+                    if (A.ID == ArticleNR)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                        });
+
+                    }
+                }
+                App.database.UpdateStats("InsandareRead");
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                Read = true;
+            }
+        }
+        async void TimerDone(object sender)
+        {
+            //IconRotation();
+            Label label = (Label)sender;
+            await label.RotateTo(-2, 40, Easing.BounceOut);
+            await label.RotateTo(2, 60, Easing.BounceOut);
+            await label.RotateTo(0, 40, Easing.BounceOut);
+        }
+        /*async void IconRotation()
+        {
+            Image image = TimerIcon;
+            await image.RotateTo(-2, 40, Easing.BounceOut);
+            await image.RotateTo(2, 60, Easing.BounceOut);
+            await image.RotateTo(0, 40, Easing.BounceOut);
+        }*/
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (red != 80)
             {
                 red--;
-
             }
             if (green != 210)
             {
@@ -81,34 +141,20 @@ namespace NWT
             {
                 UserNewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 Dot.TextColor = Color.FromRgb(red, green, blue);
+                TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
             if (green == 210 && blue == 194 && red == 80)
             {
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
-                var RA = new RAL();
-                RA.User = App.LoggedinUser.ID;
-                RA.Article = ArticleNR;
-                RA.Date = DateTime.Now;
-                App.database.ReadArticle(RA);
+
                 
-
-                var NG = (NewsGridPage)App.Mainpage.Children[1];
-                foreach (NewsGridPage.Article A in NG.ArticleList)
-                {
-                    if (A.ID == ArticleNR)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            A.Frame.Color = Color.FromRgb(80, 210, 194);
-                        });
-
-                    }
-                }
                 Timer.Stop();
                 Timer.Close();
                 Timer.Dispose();
-                App.database.UpdateStats("InsandareRead");
+                TimerDone(Rubrik);
+                TimerDone(Ingress);
+                TimerDone(Brodtext);
+
             }
             else
             {
@@ -130,8 +176,17 @@ namespace NWT
             Dot.Text = "⚫   ";
             Ingress.Text = RSS.Ingress;
             Brodtext.Text = RSS.Brodtext;
-            Author.Text = App.database.GetUser(RSS.ID).First().Name;
-            Link.Text = App.database.GetRss(RSS.Referat).First().Link;
+            if(RSS.Author != -1)
+            {
+                Author.Text = App.database.GetUser(RSS.Author).First().Name;
+            }
+
+            
+            if(RSS.Referat != -1)
+            {
+                Link.Text = App.database.GetRss(RSS.Referat).First().Link;
+            }
+            
             ArticleNR = RSS.ID;
             Date.Text = "  Publicerad: " + RSS.PubDate;
             ArticleImage.Source = imageLinks[rnd.Next(7)];

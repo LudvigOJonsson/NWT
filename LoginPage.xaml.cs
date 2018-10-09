@@ -21,11 +21,13 @@ namespace NWT
 
         async void Login(object sender, EventArgs e)
         {
-            if (App.Online)
+            if (App.Online && UserLogin.Text != "" && UserPassword.Text != "")
             {
                 UserTable User = new UserTable();
                 User.Username = UserLogin.Text;
                 User.Password = UserPassword.Text;
+
+
                 App.database.Login(User);
                 if (App.LoggedinUser != null)
                 {
@@ -33,6 +35,7 @@ namespace NWT
                     App.Mainpage.CurrentPage = App.Mainpage.Children[2];
                     App.database.Plustoken(App.LoggedinUser, 1);
                     App.database.UpdateStats("Logins");
+                    App.database.LocalStatDump();
 
                     var NG = (NewsGridPage)App.Mainpage.Children[1];
                     foreach (NewsGridPage.Article A in NG.ArticleList)
@@ -41,7 +44,7 @@ namespace NWT
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {
-                                A.Frame.Color = Color.FromRgb(80, 210, 194);
+                                A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                             });
 
                         }
