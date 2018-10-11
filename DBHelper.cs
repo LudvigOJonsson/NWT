@@ -93,6 +93,8 @@ public class UserTable
         public string Link{ get; set; }
         public string Description { get; set; }
         public string Source { get; set; }
+        public string ImgSource { get; set; }
+        public string Category { get; set; }
         public DateTime PubDate { get; set; }
         public int Plus { get; set; }
     }
@@ -171,7 +173,7 @@ public class UserTable
     [Table("LS")]
     public class LocalStatsTable
     {
-        [PrimaryKey, AutoIncrement, Unique]
+        [PrimaryKey, Unique]
         public int ID { get; set; }
         public int Startups { get; set; }
         public int UseTime { get; set; }
@@ -194,7 +196,7 @@ public class UserTable
             DB.CreateTable<RSSTable>();
             DB.DropTable<UserRSSTable>();
             DB.CreateTable<UserRSSTable>();
-
+            DB.CreateTable<LocalStatsTable>();
             if(DB.Query<LocalStatsTable>("Select * From LS Where ID = 0").Count == 0)
             {
                 Console.WriteLine("Reseting Statistics");
@@ -612,9 +614,9 @@ public class UserTable
 
         public void ParseRssFile()
         {
-   
-            string[] RssSource = { "NWT", "Mariestad", "Hjo", "SLA" };
-            string[] RssSite = { "https://nwt.se/rss.xml", "https://mariestadstidningen.se/rss.xml", "https://sla.se/hjo/rss.xml", "https://sla.se/rss.xml" };
+            //
+            string[] RssSource = { "SLA" };
+            string[] RssSite = { "https://www.sla.se/feed/" };
             List<KeyValuePair<string, string>> RSSList = new List<KeyValuePair<string, string>>();
 
 
@@ -636,6 +638,9 @@ public class UserTable
 
                 StringBuilder rssContent = new StringBuilder();
 
+                XmlNamespaceManager nmspc = new XmlNamespaceManager(rssXmlDoc.NameTable);
+                nmspc.AddNamespace("media", "http://search.yahoo.com/mrss/");
+
                 // Iterate through the items in the RSS file
 
 
@@ -646,14 +651,22 @@ public class UserTable
                     RSS.Source = T.Key;
 
 
+
+
                     XmlNode rssSubNode = rssNode.SelectSingleNode("title");
                     RSS.Title = rssSubNode != null ? rssSubNode.InnerText : "";
 
                     rssSubNode = rssNode.SelectSingleNode("link");
                     RSS.Link = rssSubNode != null ? rssSubNode.InnerText : "";
 
-                    rssSubNode = rssNode.SelectSingleNode("description");
-                    RSS.Description = rssSubNode != null ? rssSubNode.InnerText : "";
+                    rssSubNode = rssNode.SelectSingleNode("category");
+                    RSS.Category = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    rssSubNode = rssNode.SelectSingleNode("source");
+                    RSS.Source = rssSubNode != null ? rssSubNode.InnerText : "";
+
+                    rssSubNode = rssNode.SelectSingleNode("media:content", nmspc);
+                    RSS.ImgSource = rssSubNode != null ? rssSubNode.Attributes["url"].Value : "";
 
                     rssSubNode = rssNode.SelectSingleNode("pubDate");
                     var date = rssSubNode != null ? rssSubNode.InnerText : "";
@@ -681,7 +694,7 @@ public class UserTable
                         RSS.Plus = 0;
                     }
 
-                    RSS.Plus = 0;
+
                     RSS.PubDate = DateTime.Parse(date);
                     Console.WriteLine(RSS.PubDate);
                     Boolean Noinsert = false;

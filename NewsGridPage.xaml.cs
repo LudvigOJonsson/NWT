@@ -21,7 +21,7 @@ namespace NWT
         public int Rownr = 0;
         public static TapGestureRecognizer TGR;
         public List<Article> ArticleList = new List<Article>();
-        public static List<string> imageLinks = new List<string>();
+        public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
         public Button LoadNewsButton = new Button() {Text = "Load"};
         public bool NWT = true;
@@ -86,7 +86,7 @@ namespace NWT
                 Image = new Image
                 {
                     
-                    Source = imageLinks[rnd.Next(7)],
+                    Source = RSS.ImgSource,
                     WidthRequest = 200,
                     HeightRequest = 300,
                     Aspect = Aspect.AspectFill,
@@ -116,14 +116,8 @@ namespace NWT
 		{
 			InitializeComponent ();
 
-            imageLinks.Add("http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg");
-            imageLinks.Add("https://pbs.twimg.com/media/CynmmdYWgAAjky1.jpg");
-            imageLinks.Add("https://www.surfertoday.com/images/stories/clouds.jpg");
-            imageLinks.Add("https://s-ec.bstatic.com/images/hotel/max1024x768/683/68345961.jpg");
-            imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Hertig_Johans_torg%2C_Sk%C3%B6vde%2C_2014_01.JPG/1200px-Hertig_Johans_torg%2C_Sk%C3%B6vde%2C_2014_01.JPG");
-            imageLinks.Add("https://cdn2.acsi.eu/5/8/5/2/5852b667270eb.jpeg");
-            imageLinks.Add("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Runder_Berg.JPG/1200px-Runder_Berg.JPG");
-            imageLinks.Add("https://thumbs.dreamstime.com/z/online-robber-17098197.jpg");
+          
+            
 
             
 
@@ -214,7 +208,7 @@ namespace NWT
         {
             
 
-            
+            /*
             if (App.Instanciated)
             {
                 NWT = App.SideMenu.NWT.IsToggled;
@@ -238,6 +232,8 @@ namespace NWT
                     Article.Visibility(false);
                 }
             }
+            */
+            
         }
 
         public void AddNews()
