@@ -18,7 +18,7 @@ namespace NWT
         public int Stopnr = 1;
         public static int DBLN = 10;
         public static int NTN = DBLN / 2;
-        public int Rownr = 0;
+        public int Rownr = 1;
         public static TapGestureRecognizer TGR;
         public List<Article> ArticleList = new List<Article>();
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
