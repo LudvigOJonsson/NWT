@@ -158,7 +158,7 @@ namespace NWT
 
             Rubrik.Text = RSS.Title;
             Dot.Text = "⚫    ";
-            Ingress.Text = RSS.Description;
+            Ingress.Text = RSS.Description + "Denna app innehåller inte fullständiga nyheter, utan presenterar endast ett skal där nyheter kan läggas till, och länkas till. I en fullständing version kommer denna text vara utbytt mot artikelns innehåll. Skriv gärna en kommentar nedanför om du är inloggad, och ge gärna kommentarer på appens utforming, både i detta tidiga form men också som en hypotetisk framtida nyhetsapp.";
             for (int i = 0; i < 3 + rnd.Next(7); i++)
             {
                 Brödtext.Text += "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
