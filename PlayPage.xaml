@@ -23,21 +23,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Text="SPEL" TextColor="#50d2c2" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                
-                <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"  Image="sudoku.jpg" />
+
+                <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"   Image="sudoku.jpg" />
                 <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+                <Image x:Name="SudokuReward1" HeightRequest="30" WidthRequest="30" Source="tokenicon.png" Grid.Row="1"  BackgroundColor="Transparent" VerticalOptions="End" HorizontalOptions="End" Margin="15"/>
+                <Label Grid.Row="1" Text="Reward:        " FontSize="22" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="End" HorizontalOptions="End" Margin="15"/>
                 
-                <Button x:Name="SudokuButton3" Clicked="PlaySudoku" Grid.Row="2"  Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton4" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
-                <Button x:Name="SudokuButton5" Clicked="PlaySudoku" Grid.Row="3"  Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton6" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="3" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
-                <Button x:Name="SudokuButton7" Clicked="PlaySudoku" Grid.Row="4"  Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton8" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="4" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
-
-                <Button x:Name="SudokuButton9" Clicked="PlaySudoku" Grid.Row="5"  Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton10" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
 
             </Grid>
         </ScrollView>
