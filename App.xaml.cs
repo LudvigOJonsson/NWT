@@ -47,10 +47,7 @@ namespace NWT
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if(App.LoggedinUser != null)
-            {
-                App.database.UpdateStats("UseTime");
-            }            
+            App.database.UpdateStats("UseTime");                      
             Timer.Start();         
         }
         protected override void OnStart ()
