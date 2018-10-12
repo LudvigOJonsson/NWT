@@ -539,7 +539,6 @@ public class UserTable
             else
             {
                 var statement = "UPDATE LS SET " + Value + " = " + Value + " + 1 WHERE ID = 0";
-                DB.Execute(statement);
                 Console.WriteLine(statement);
             }
         }
