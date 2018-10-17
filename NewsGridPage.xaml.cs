@@ -271,6 +271,9 @@ namespace NWT
                     NewsGrid.RowSpacing = 0;
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
+
+          
+
                     NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Box, 0, 1, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Image, 0, 1, Rownr + 1, Rownr + 2); //Image
@@ -291,6 +294,7 @@ namespace NWT
             NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
             Console.WriteLine("Nyheter inlagda i Grid");
+            /*
             foreach (Article A in ArticleList)
             {
                 if (App.database.GetReadArticle(A.ID).Count > 0)
@@ -301,7 +305,7 @@ namespace NWT
                     });
 
                 }
-            }
+            }*/
             PrintNews();
 
         }

@@ -29,6 +29,18 @@ namespace NWT
             }
 
         }
+        async void PlayQuiz(object sender, EventArgs e)
+        {
+            if (App.Online)
+            {
+                await Navigation.PushAsync(new QuizPage());
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
+
+        }
 
     }
 }
