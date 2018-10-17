@@ -29,6 +29,20 @@
                 <Image x:Name="SudokuReward1" HeightRequest="30" WidthRequest="30" Source="tokenicon.png" Grid.Row="1"  BackgroundColor="Transparent" VerticalOptions="End" HorizontalOptions="End" Margin="15"/>
                 <Label Grid.Row="1" Text="Reward:        " FontSize="22" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="End" HorizontalOptions="End" Margin="15"/>
                 
+<<<<<<< HEAD
+=======
+                <Button x:Name="SudokuButton3" Clicked="PlayQuiz" Grid.Row="2"  Image="megaphone.jpg" />
+                <Button x:Name="SudokuButton4" Text="Quiz" Clicked="PlayQuiz" Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+
+                <Button x:Name="SudokuButton5" Clicked="PlaySudoku" Grid.Row="3"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton6" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="3" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+
+                <Button x:Name="SudokuButton7" Clicked="PlaySudoku" Grid.Row="4"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton8" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="4" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+
+                <Button x:Name="SudokuButton9" Clicked="PlaySudoku" Grid.Row="5"  Image="sudoku.jpg" />
+                <Button x:Name="SudokuButton10" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+>>>>>>> Tempo
 
             </Grid>
         </ScrollView>
