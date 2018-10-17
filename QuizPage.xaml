@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.QuizPage">
+  <ContentPage.Content>
+        <StackLayout>
+            <Grid x:Name="QuizGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <BoxView x:Name="Q1"   Grid.Row="0" Grid.Column="0"/>
+                <BoxView x:Name="Q2"   Grid.Row="0" Grid.Column="1"/>
+                <BoxView x:Name="Q3"   Grid.Row="0" Grid.Column="2"/>
+                <BoxView x:Name="Q4"   Grid.Row="0" Grid.Column="3"/>
+                <BoxView x:Name="Q5"   Grid.Row="0" Grid.Column="4"/>
+
+                <Button x:Name="Start" Text="Start Game" Clicked="Gametick" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Submit" Text="Submit Questions"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+
+
+                <Button x:Name="Cat1" Text="Danska Fiskar" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat2" Text="Norska Danskor" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat3" Text="Sista Kategorin" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+
+                <Label  x:Name="QuestionText" Text="The Question" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsVisible="False"/>
+                <Button x:Name="A" Text="A" ClassId="A" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="B" Text="B" ClassId="B" Clicked="Gametick" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="C" Text="C" ClassId="C" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="D" Text="D" ClassId="D" Clicked="Gametick" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

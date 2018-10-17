@@ -27,8 +27,8 @@
                 <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"  Image="sudoku.jpg" />
                 <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
                 
-                <Button x:Name="SudokuButton3" Clicked="PlaySudoku" Grid.Row="2"  Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton4" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
+                <Button x:Name="SudokuButton3" Clicked="PlayQuiz" Grid.Row="2"  Image="megaphone.jpg" />
+                <Button x:Name="SudokuButton4" Text="Quiz" Clicked="PlayQuiz" Grid.Row="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />
 
                 <Button x:Name="SudokuButton5" Clicked="PlaySudoku" Grid.Row="3"  Image="sudoku.jpg" />
                 <Button x:Name="SudokuButton6" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="3" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  />

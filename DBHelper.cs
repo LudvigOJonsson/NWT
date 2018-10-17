@@ -196,6 +196,7 @@ public class UserTable
             DB.CreateTable<RSSTable>();
             DB.DropTable<UserRSSTable>();
             DB.CreateTable<UserRSSTable>();
+
             DB.CreateTable<LocalStatsTable>();
             if(DB.Query<LocalStatsTable>("Select * From LS Where ID = 0").Count == 0)
             {
@@ -204,7 +205,7 @@ public class UserTable
             }
 
             
-            DB.DropTable<RAL>();
+            //DB.DropTable<RAL>();
             DB.CreateTable<RAL>();
         }
 
@@ -723,7 +724,7 @@ public class UserTable
                 TcpClient tcpclnt = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("100.64.37.162", 1508);
+                tcpclnt.Connect("109.228.152.124", 1508);
                 // use the ipaddress as in the server program
 
                 Console.WriteLine("Connected");
