@@ -38,6 +38,8 @@ namespace NWT
             public BoxView Frame = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
+            public Image PlusImage = new Image { };
+            public Image CornerImage = new Image { };
 
             public Article(RSSTable RSS)
             {
@@ -78,14 +80,14 @@ namespace NWT
                     HeightRequest = 50,
                     TextColor = Color.Black,
                     ClassId = RSS.ID.ToString(),
-                    Margin = 12
+                    Margin = 12,
                 };
-
+                
                 Label.GestureRecognizers.Add(TGR);
-
+                
                 Image = new Image
                 {
-                    
+
                     Source = RSS.ImgSource,
                     WidthRequest = 200,
                     HeightRequest = 300,
@@ -95,12 +97,59 @@ namespace NWT
 
                 };
 
-               Image.GestureRecognizers.Add(TGR);
+                Image.GestureRecognizers.Add(TGR);
+
+                
+
+                if (RSS.Plus == 1)
+                {
+                    PlusImage = new Image
+                    {
+
+                        Source = "tokenicon.png",
+                        WidthRequest = 60,
+                        HeightRequest = 60,
+                        Aspect = Aspect.AspectFill,
+                        Margin = 10,
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+                    CornerImage = new Image
+                    {
+
+                        Source = "cornerTriangle.png",
+                        WidthRequest = 120,
+                        HeightRequest = 120,
+                        Aspect = Aspect.AspectFill,
+                        Margin = 0,
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+
+                    if (App.LoggedinUser != null)
+                    {
+                        if (App.database.CheckPlus(RSS.ID))
+                        {
+                            //Show locked image
+                            PlusImage.Source = "tokenicon.png";
+                        }
+                        else
+                        {
+                            //Show unlocked image
+                            PlusImage.Source = "tokenicon3.png";
+                        }
+                    }
+                }
             }
 
             public void Visibility(bool State){
 
                 Image.IsVisible = State;
+                PlusImage.IsVisible = State;
                 Label.IsVisible = State;
                 Box.IsVisible = State;
                 Frame.IsVisible = State;
@@ -172,10 +221,10 @@ namespace NWT
                     else
                     {
                         App.database.UpdateStats("PlusArticlesClicked");
-                        var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 1 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
+                        var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 3 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
                         if (answer)
                         {
-                            if (App.database.Plustoken(App.LoggedinUser, -1))
+                            if (App.database.Plustoken(App.LoggedinUser, -3))
                             {
                                 var Plus = new PlusRSSTable();
                                 Plus.Article = RSS.ID;
@@ -278,7 +327,9 @@ namespace NWT
                     NewsGrid.Children.Add(Box.Box, 0, 1, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Image, 0, 1, Rownr + 1, Rownr + 2); //Image
                     NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 2, Rownr + 3); //Label
-                    
+                    NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 1, Rownr + 2); //CornerImage
+                    NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 1, Rownr + 2); //PlusImage
+
                     NewsGrid.RowDefinitions[Rownr].Height = 20;
 					
 					NewsGrid.RowDefinitions[Rownr + 2].Height = 100;
