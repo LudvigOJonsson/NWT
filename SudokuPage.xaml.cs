@@ -55,7 +55,7 @@ namespace NWT
             }
 
         }
-        async public void SolveSudoku()
+        async public void SolveSudoku(object sender, EventArgs e)
         {
             if(CalculateSudoku())
             {

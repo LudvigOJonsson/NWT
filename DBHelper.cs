@@ -184,6 +184,19 @@ public class UserTable
         public int GameFinished { get; set; }
     }
 
+    public class QuizTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public string Category { get; set; }
+        public string QuestionText { get; set; }
+        public string ChoiceA { get; set; }
+        public string ChoiceB { get; set; }
+        public string ChoiceC { get; set; }
+        public string ChoiceD { get; set; }
+        public string CorrectAnswer { get; set; }
+    }
+
     public class DBHelper 
     {
 
@@ -383,8 +396,14 @@ public class UserTable
             TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Delete", JsonConvert.SerializeObject(RSS))));
         }
 
+
+
+
+
+
         public List<RSSTable> GetRSS(int ID)
-        {           
+        {
+            //var MaxSize = DB.Query<RSSTable>("SELECT MAX(ID) FROM RSS");
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
         }
 
@@ -395,6 +414,8 @@ public class UserTable
 
         public List<UserRSSTable> GetUserRSS(int ID)
         {
+            //var MaxSize = DB.Query<UserRSSTable>("SELECT MAX(ID) FROM Insandare");
+            
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
         }
 
@@ -594,6 +615,16 @@ public class UserTable
             return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = ?", ID.ToString());
         }
 
+
+        public void InsertQuestion(QuizTable Quiz)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Insert", JsonConvert.SerializeObject(Quiz))));
+        }
+
+
+
+
+
         public string SHA256Hash(string input)
         {
             // Create a SHA256   
@@ -721,24 +752,24 @@ public class UserTable
             {
                 
                 TcpClient tcpclnt = new TcpClient();
-                Console.WriteLine("Connecting.....");
+                //Console.WriteLine("Connecting.....");
 
                 tcpclnt.Connect("109.228.152.124", 1508);
                 // use the ipaddress as in the server program
 
-                Console.WriteLine("Connected");
+                //Console.WriteLine("Connected");
 
                 Stream stm = tcpclnt.GetStream();
 
                 Encoding asen = Encoding.Default;
                 byte[] ba = asen.GetBytes(JSON);
-                Console.WriteLine("Transmitting.....");
+                //Console.WriteLine("Transmitting.....");
 
                 stm.Write(ba, 0, ba.Length);
 
                 byte[] bb = new byte[100000000];
                 int k = stm.Read(bb, 0, 16384);
-                Console.WriteLine("Read Complete");
+                //Console.WriteLine("Read Complete");
                 for (int i = 0; i < k; i++)
                     Message += Convert.ToChar(bb[i]);
 

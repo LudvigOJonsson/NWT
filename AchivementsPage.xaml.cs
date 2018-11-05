@@ -23,7 +23,7 @@ namespace NWT
 		{
 			InitializeComponent ();
         }
-        private async void ShowPopup()
+        private async void ShowPopup(object sender, EventArgs ev)
         {
             //Create `ContentPage` with padding and transparent background
             ContentPage popup = new ContentPage

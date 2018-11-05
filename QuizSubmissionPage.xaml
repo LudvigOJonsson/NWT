@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.QuizSubmissionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid x:Name="QuizSubmissionGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="Start" Text="Skriv en egen fråga du vill skicka in till frågesporten!" HorizontalTextAlignment="Center" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+
+                <Button x:Name="Cat" Text="Välj Kategori" Clicked="CatPop" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Button x:Name="Correct" Text="Välj Rätt Svar" Clicked="AnswerPop" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Button x:Name="Submit" Text="Submit Quesition" Clicked="SubmitQ" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+
+                <Entry x:Name="QuestionText" Placeholder="The Question" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Entry x:Name="A" Placeholder="Answer A" ClassId="A"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Entry x:Name="B" Placeholder="Answer B" ClassId="B"  Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Entry x:Name="C" Placeholder="Answer C" ClassId="C"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Entry x:Name="D" Placeholder="Answer D" ClassId="D"  Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

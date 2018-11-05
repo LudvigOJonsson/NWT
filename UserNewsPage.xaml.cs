@@ -162,7 +162,7 @@ namespace NWT
             }
 
         }
-        async public void LoadReference()
+        async public void LoadReference(object sender, EventArgs e)
         {           
             var id = Int32.Parse(ClassId);
             var RSS = App.database.GetRss(id).First();
@@ -197,7 +197,7 @@ namespace NWT
 
         }
 
-        async void SubmitComment()
+        async void SubmitComment(object sender, EventArgs e)
         {
             if (App.Online)
             {

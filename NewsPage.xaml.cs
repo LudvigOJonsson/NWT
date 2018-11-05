@@ -95,6 +95,7 @@ namespace NWT
                 }
                 App.database.UpdateStats("ArticlesRead");
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                App.database.Plustoken(App.LoggedinUser, 1);
                 Read = true;
             }
         }
@@ -178,7 +179,7 @@ namespace NWT
 
         }
 
-        async void SubmitComment()
+        async void SubmitComment(object sender, EventArgs e)
         {
             if (App.Online)
             {
