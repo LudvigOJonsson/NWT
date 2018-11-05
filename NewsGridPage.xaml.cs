@@ -9,11 +9,11 @@ using Xamarin.Forms.Xaml;
 
 namespace NWT
 {
-    
+
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class NewsGridPage : ContentPage
-	{
+    public partial class NewsGridPage : ContentPage
+    {
         public int Startnr = 1;
         public int Stopnr = 1;
         public static int DBLN = 10;
@@ -23,7 +23,7 @@ namespace NWT
         public List<Article> ArticleList = new List<Article>();
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
-        public Button LoadNewsButton = new Button() {Text = "Load"};
+        public Button LoadNewsButton = new Button() { Text = "Load" };
         public bool NWT = true;
         public bool Mariestad = true;
         public bool HJO = true;
@@ -56,13 +56,13 @@ namespace NWT
                     ClassId = RSS.ID.ToString(),
                     Margin = 5,
                     CornerRadius = 5,
-                    BorderColor = Color.FromRgb(220,220,220),
+                    BorderColor = Color.FromRgb(220, 220, 220),
                     BorderWidth = 2,
                 };
-                
+
                 Frame = new BoxView
                 {
-                    Color = Color.FromRgb(248,248,248),
+                    Color = Color.FromRgb(248, 248, 248),
                     WidthRequest = 200,
                     HeightRequest = 420,
                     HorizontalOptions = LayoutOptions.Fill,
@@ -82,9 +82,9 @@ namespace NWT
                     ClassId = RSS.ID.ToString(),
                     Margin = 12,
                 };
-                
+
                 Label.GestureRecognizers.Add(TGR);
-                
+
                 Image = new Image
                 {
 
@@ -99,57 +99,39 @@ namespace NWT
 
                 Image.GestureRecognizers.Add(TGR);
 
-                
-
-                if (RSS.Plus == 1)
+                PlusImage = new Image
                 {
-                    PlusImage = new Image
-                    {
+                    Source = "plus.png",
+                    WidthRequest = 60,
+                    HeightRequest = 60,
+                    Aspect = Aspect.AspectFill,
+                    Margin = 10,
+                    ClassId = RSS.ID.ToString(),
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.End,
 
-                        Source = "tokenicon.png",
-                        WidthRequest = 60,
-                        HeightRequest = 60,
-                        Aspect = Aspect.AspectFill,
-                        Margin = 10,
-                        ClassId = RSS.ID.ToString(),
-                        HorizontalOptions = LayoutOptions.End,
-                        VerticalOptions = LayoutOptions.End,
+                };
 
-                    };
-                    CornerImage = new Image
-                    {
+                CornerImage = new Image
+                {
 
-                        Source = "cornerTriangle.png",
-                        WidthRequest = 120,
-                        HeightRequest = 120,
-                        Aspect = Aspect.AspectFill,
-                        Margin = 0,
-                        ClassId = RSS.ID.ToString(),
-                        HorizontalOptions = LayoutOptions.End,
-                        VerticalOptions = LayoutOptions.End,
+                    Source = "cornerTriangle.png",
+                    WidthRequest = 120,
+                    HeightRequest = 120,
+                    Aspect = Aspect.AspectFill,
+                    Margin = 5,
+                    ClassId = RSS.ID.ToString(),
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.End,
 
-                    };
+                };
 
-                    if (App.LoggedinUser != null)
-                    {
-                        if (App.database.CheckPlus(RSS.ID))
-                        {
-                            //Show locked image
-                            PlusImage.Source = "tokenicon.png";
-                        }
-                        else
-                        {
-                            //Show unlocked image
-                            PlusImage.Source = "tokenicon3.png";
-                        }
-                    }
-                }
             }
 
-            public void Visibility(bool State){
+            public void Visibility(bool State)
+            {
 
                 Image.IsVisible = State;
-                PlusImage.IsVisible = State;
                 Label.IsVisible = State;
                 Box.IsVisible = State;
                 Frame.IsVisible = State;
@@ -161,17 +143,17 @@ namespace NWT
         }
 
 
-        public NewsGridPage (int Argc)
-		{
-			InitializeComponent ();
-
-          
-            
-
-            
+        public NewsGridPage(int Argc)
+        {
+            InitializeComponent();
 
 
-            if(Argc == 0)
+
+
+
+
+
+            if (Argc == 0)
             {
                 TGR = new TapGestureRecognizer();
                 Console.WriteLine("NewsGrid");
@@ -180,17 +162,17 @@ namespace NWT
 
                 };
             }
-            else if(Argc == 1)
+            else if (Argc == 1)
             {
                 TGR = new TapGestureRecognizer();
                 Console.WriteLine("ReferatSida");
                 TGR.Tapped += (s, e) => {
-                   var Header = (View)s;
+                    var Header = (View)s;
                     Console.WriteLine(Header.ClassId);
-                    Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType()); 
+                    Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType());
                     App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
-                    
-                   Navigation.PopAsync();
+
+                    Navigation.PopAsync();
                 };
             }
             TGR.NumberOfTapsRequired = 1;
@@ -207,14 +189,14 @@ namespace NWT
         {
 
             var Header = (View)sender;
-            
+
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetRss(id).First();
-            if(RSS.Plus == 1)
+            if (RSS.Plus == 1)
             {
                 if (App.LoggedinUser != null)
                 {
-                    if(App.database.CheckPlus(RSS.ID))
+                    if (App.database.CheckPlus(RSS.ID))
                     {
                         await Navigation.PushAsync(new NewsPage(RSS));
                     }
@@ -238,24 +220,24 @@ namespace NWT
                                 await DisplayAlert("No Tokens", "Insufficent Tokens", "OK");
                             }
                         }
-                    }                   
+                    }
                 }
                 else
                 {
                     await DisplayAlert("Plus", "This is a Plus article that can be unlocked with Plustokens, please register to learn more about Plustokens", "OK");
-                }            
+                }
             }
             else
             {
                 await Navigation.PushAsync(new NewsPage(RSS));
             }
 
-            
+
         }
 
         public void PrintNews()
         {
-            
+
 
             /*
             if (App.Instanciated)
@@ -282,7 +264,7 @@ namespace NWT
                 }
             }
             */
-            
+
         }
 
         public void AddNews()
@@ -321,18 +303,22 @@ namespace NWT
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
 
-          
+
 
                     NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Box, 0, 1, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Image, 0, 1, Rownr + 1, Rownr + 2); //Image
                     NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 2, Rownr + 3); //Label
-                    NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 1, Rownr + 2); //CornerImage
-                    NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 1, Rownr + 2); //PlusImage
+
+                    if (Box.Plus)
+                    {
+                        NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 1, Rownr + 2); //CornerImage
+                        NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 1, Rownr + 2); //PlusImage
+                    }
 
                     NewsGrid.RowDefinitions[Rownr].Height = 20;
-					
-					NewsGrid.RowDefinitions[Rownr + 2].Height = 100;
+
+                    NewsGrid.RowDefinitions[Rownr + 2].Height = 100;
 
                     Rownr++;
                     Rownr++;
