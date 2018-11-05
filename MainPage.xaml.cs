@@ -29,19 +29,19 @@ namespace NWT
 
         }
   
-        void Community()
+        void Community(object sender, EventArgs e)
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[0];
         }
-        void News()
+        void News(object sender, EventArgs e)
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[1];
         }
-        void Profile()
+        void Profile(object sender, EventArgs e)
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[2];
         }
-        void Games()
+        void Games(object sender, EventArgs e)
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[3];
         }

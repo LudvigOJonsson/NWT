@@ -26,7 +26,7 @@
                 <BoxView x:Name="Q5"   Grid.Row="0" Grid.Column="4"/>
 
                 <Button x:Name="Start" Text="Start Game" Clicked="Gametick" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="Submit" Text="Submit Questions"  Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+                <Button x:Name="Submit" Text="Submit Questions"  Clicked="Submission" Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
 
 
                 <Button x:Name="Cat1" Text="Danska Fiskar" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>

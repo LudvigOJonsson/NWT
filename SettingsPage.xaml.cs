@@ -21,7 +21,7 @@ namespace NWT
             UserAge.Text = App.LoggedinUser.Age.ToString();
         }
 
-        public void ChangePassword()
+        public void ChangePassword(object sender, EventArgs e)
         {
             if(App.database.TokenCheck())
             {
@@ -29,7 +29,7 @@ namespace NWT
             }
         }
 
-        public async void UpdateInfo()
+        public async void UpdateInfo(object sender, EventArgs e)
         {
             if (App.database.TokenCheck())
             {

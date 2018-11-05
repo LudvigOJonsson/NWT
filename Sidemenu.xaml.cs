@@ -19,20 +19,21 @@ namespace NWT
             
         }
 
-        public void PrintNews()
+        public void PrintNews(object sender, EventArgs e)
         {
 
             //NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
             //Page.PrintNews();
         }
-        public void Logout()
+        /*
+        public void Logout(object sender, EventArgs e)
         {
             if (App.LoggedinUser != null)
             {
                 ProfilePage page = (ProfilePage)App.Mainpage.Children[2];
                 page.Logout();
             }
-        }
+        }*/
         async void Logout(object sender, EventArgs e)
         {
             ProfilePage page = (ProfilePage)App.Mainpage.Children[2];

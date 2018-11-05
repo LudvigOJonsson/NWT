@@ -75,6 +75,11 @@ namespace NWT
 
         }
 
+        public async void Submission(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new QuizSubmissionPage());
+        }
+
         public void Gametick(object sender, System.EventArgs e)
         {
             var Clicked = (Button)sender;

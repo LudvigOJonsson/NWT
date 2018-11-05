@@ -18,7 +18,7 @@ namespace NWT
             ClassId = "-1";
 		}
 
-        public void Submit()
+        public void Submit(object sender, EventArgs e)
         {
             if(App.LoggedinUser != null && Rubrik.Text != "" && Ingress.Text != "" && Brodtext.Text != "")
             {
@@ -34,7 +34,7 @@ namespace NWT
             }
             
         }
-        async public void GetReference()
+        async public void GetReference(object sender, EventArgs e)
         {
             
             await Navigation.PushAsync(new NewsGridPage(1));
