@@ -88,6 +88,7 @@ namespace NWT
                 case "Menu":
                     Start.IsVisible = false;
                     Submit.IsVisible = false;
+                    Header.IsVisible = false;
 
                     QuestionText.IsVisible = true;
                     QuestionText.Text = "Välj en kategori";
@@ -110,10 +111,14 @@ namespace NWT
                     B.IsVisible = true;
                     C.IsVisible = true;
                     D.IsVisible = true;
-                    A.BackgroundColor = Color.Gray;
-                    B.BackgroundColor = Color.Gray;
-                    C.BackgroundColor = Color.Gray;
-                    D.BackgroundColor = Color.Gray;
+                    A.BackgroundColor = Color.White;
+                    B.BackgroundColor = Color.White;
+                    C.BackgroundColor = Color.White;
+                    D.BackgroundColor = Color.White;
+                    A.BorderColor = Color.FromHex("#50d2c2");
+                    B.BorderColor = Color.FromHex("#50d2c2");
+                    C.BorderColor = Color.FromHex("#50d2c2");
+                    D.BorderColor = Color.FromHex("#50d2c2");
 
                     var Q = new Question();
                     QuestionText.Text = "Kategori; "+Clicked.Text+ ": " +Q.QuestionText; 
@@ -148,6 +153,7 @@ namespace NWT
                             }
                             Start.IsVisible = true;
                             Submit.IsVisible = true;
+                            Header.IsVisible = true;
                             QuestionText.IsVisible = false;
                             state = "Menu";
                         }
@@ -169,6 +175,10 @@ namespace NWT
                         B.BackgroundColor = Color.Red;
                         C.BackgroundColor = Color.Red;
                         D.BackgroundColor = Color.Red;
+                        A.BorderColor = Color.FromHex("#50d2c2");
+                        B.BorderColor = Color.FromHex("#50d2c2");
+                        C.BorderColor = Color.FromHex("#50d2c2");
+                        D.BorderColor = Color.FromHex("#50d2c2");
 
                         if (Clicked.ClassId == CorrectAnswer)
                         {

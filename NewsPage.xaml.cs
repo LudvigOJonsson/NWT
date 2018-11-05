@@ -68,9 +68,9 @@ namespace NWT
         {
             //IconRotation();
             Button button = (Button)sender;
-            await button.RotateTo(-2, 40, Easing.BounceOut);
+            /*await button.RotateTo(-2, 40, Easing.BounceOut);
             await button.RotateTo(2, 60, Easing.BounceOut);
-            await button.RotateTo(0, 40, Easing.BounceOut);
+            await button.RotateTo(0, 40, Easing.BounceOut);*/
             
             if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
             {
@@ -88,6 +88,7 @@ namespace NWT
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                            A.Image.Margin = 6;
                         });
 
                     }
