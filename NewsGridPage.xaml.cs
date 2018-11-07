@@ -98,7 +98,7 @@ namespace NWT
                 };
 
                 Image.GestureRecognizers.Add(TGR);
-
+                //Image.IsVisible = false;
                 PlusImage = new Image
                 {
                     Source = "plus.png",

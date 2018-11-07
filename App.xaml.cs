@@ -67,5 +67,6 @@ namespace NWT
 		{
 			// Handle when your app resumes
 		}
+       
 	}
 }

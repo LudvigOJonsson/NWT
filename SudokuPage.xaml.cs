@@ -118,5 +118,11 @@ namespace NWT
                 }
             }
         }
-	}
+
+        protected override void OnDisappearing()
+        {
+            Console.WriteLine("Memory Cleanup");
+            GC.Collect();
+        }
+    }
 }

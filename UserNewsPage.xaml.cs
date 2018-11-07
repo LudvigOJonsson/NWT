@@ -22,6 +22,261 @@ namespace NWT
         public int ArticleNR;
         public int CC = 8;
         public bool Read = false;
+        public bool CommentLock = false;
+
+        public void MakeComment(CommentTable s)
+        {
+            var User = App.database.GetUser(s.User).First();
+
+            Console.WriteLine("TEST");
+            /*var CommentBox = new BoxView
+            {
+                Color = Color.White,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                Margin = 3,
+            };*/
+
+            var Box = new Button
+            {
+                CornerRadius = 10,
+                Margin = 5,
+                BackgroundColor = Color.White,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+            };
+            var Comment = new Label
+            {
+                Text = s.Comment,
+                HorizontalTextAlignment = TextAlignment.Start,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalOptions = LayoutOptions.Start,
+                TextColor = Color.Black,
+                FontSize = 16,
+                WidthRequest = 290,
+                Margin = 20,
+            };
+            var Username = new Label
+            {
+                Text = "  " + User.Name,
+                HorizontalTextAlignment = TextAlignment.Start,
+                VerticalTextAlignment = TextAlignment.Start,
+                TextColor = Color.Black,
+                FontSize = 16,
+
+            };
+
+
+            /*var Userimage = new Image
+            {
+                Source = "snail.png",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+            };*/
+
+            var Reply = new Button()
+            {
+                BackgroundColor = Color.FromHex("#50d2c2"),
+                TextColor = Color.FromHex("#FFFFFF"),
+                WidthRequest = 60,
+                HeightRequest = 30,
+                Text = "Reply",
+                FontSize = 10,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.End,
+                Margin = 20,
+            };
+
+            Reply.Clicked += async (o, e) => {
+                PostClicked(o, e);
+                await Navigation.PushAsync(new CommentPage(ArticleNR, s));
+            };
+
+
+
+            async void PostClicked(object sender, System.EventArgs e)
+            {
+                Button button = (Button)sender;
+                await button.RotateTo(-5, 80, Easing.BounceOut);
+                await button.RotateTo(5, 120, Easing.BounceOut);
+                await button.RotateTo(0, 80, Easing.BounceOut);
+            }
+
+            /*
+            bool UUV = false;
+            UpvoteTable Upvote = null;
+            var UpvoteList = App.database.GetUpvote(s.CommentNR, ArticleNR, s.UserSubmitted);
+
+            if (UpvoteList.Any() && App.LoggedinUser != null)
+            {
+                foreach (UpvoteTable UV in UpvoteList)
+                {
+                    if (UV.User == App.LoggedinUser.ID)
+                    {
+                        UUV = true;
+                        Upvote = UV;
+                        break;
+                    }
+                }
+            }
+            var VoteArrowUp = new Button()
+            {
+                Image = "uparrow.png",
+                BackgroundColor = Color.Transparent,
+                WidthRequest = 20,
+                HeightRequest = 20,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Start,
+                Margin = 0,
+                ClassId = "false"
+            };
+            var VoteNumber = new Label
+            {
+                Text = s.Point.ToString(),
+                TextColor = Color.Black,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                Margin = 0,
+                FontSize = 16,
+
+            };
+            var VoteArrowDown = new Button()
+            {
+                Image = "downarrow.png",
+                BackgroundColor = Color.Transparent,
+                WidthRequest = 20,
+                HeightRequest = 20,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.End,
+                Margin = 0,
+                ClassId = "false"
+            };
+            if (App.LoggedinUser != null)
+            {
+                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+                if (UUV)
+                {
+                    if (Upvote.Point == 1)
+                    {
+                        VoteArrowUp.ClassId = "true";
+                        VoteArrowUp.Image = "uparrowBlue.png";
+                    }
+                    else if (Upvote.Point == -1)
+                    {
+                        VoteArrowDown.ClassId = "true";
+                        VoteArrowDown.Image = "downarrowRed.png";
+                    }
+                }
+            }
+
+            VoteArrowUp.Clicked +=  (o, e) => {
+                if (App.LoggedinUser != null && CommentLock == false)
+                {
+                    CommentLock = true;
+                    var UV = new UpvoteTable();
+                    UV.User = App.LoggedinUser.ID;
+                    UV.UserSubmitted = s.UserSubmitted;
+                    UV.Article = ArticleNR;
+                    UV.CommentNR = s.CommentNR;
+                    UV.Point = 0;
+
+                    if (VoteArrowUp.ClassId == "false")
+                    {
+                        VoteArrowUp.ClassId = "true";
+                        VoteArrowUp.Image = "uparrowBlue.png";
+                        UpClicked(o, e);
+                        UV.Point = 1;
+                        App.database.InsertUpvote(UV);
+                        if (VoteArrowDown.ClassId == "true")
+                        {
+                            VoteArrowDown.ClassId = "false";
+                            VoteArrowDown.Image = "downarrow.png";
+                            App.database.DeleteUpvote(Upvote);
+                            UV.Point = 2;
+                        }
+                    }
+                    else
+                    {
+                        VoteArrowUp.ClassId = "false";
+                        VoteArrowUp.Image = "uparrow.png";
+                        App.database.DeleteUpvote(Upvote);
+                        UV.Point = -1;
+                    }
+                    VoteNumber.Text = (s.Point + UV.Point).ToString();
+                    Upvote = UV;
+                     App.database.PointUpdate(s, UV.Point);
+                    //LoadComments();
+                    CommentLock = false;
+                }
+            };
+            VoteArrowDown.Clicked += (o, e) => {
+                if (App.LoggedinUser != null && CommentLock == false)
+                {
+                    CommentLock = true;
+                    var UV = new UpvoteTable();
+                    UV.User = App.LoggedinUser.ID;
+                    UV.UserSubmitted = s.UserSubmitted;
+                    UV.Article = ArticleNR;
+                    UV.CommentNR = s.CommentNR;
+                    UV.Point = 0;
+
+                    if (VoteArrowDown.ClassId == "false")
+                    {
+                        VoteArrowDown.ClassId = "true";
+                        VoteArrowDown.Image = "downarrowRed.png";
+                        DownClicked(o, e);
+                        UV.Point = -1;
+                        App.database.InsertUpvote(UV);
+                        if (VoteArrowUp.ClassId == "true")
+                        {
+                            VoteArrowUp.ClassId = "false";
+                            VoteArrowUp.Image = "uparrow.png";
+                            App.database.DeleteUpvote(Upvote);
+                            UV.Point = -2;
+                        }
+                    }
+                    else
+                    {
+                        VoteArrowDown.ClassId = "false";
+                        VoteArrowDown.Image = "downarrow.png";
+                        App.database.DeleteUpvote(Upvote);
+                        UV.Point = 1;
+                    }
+                    VoteNumber.Text = (s.Point + UV.Point).ToString();
+                    Upvote = UV;
+                    App.database.PointUpdate(s, UV.Point);
+                    //LoadComments();
+                    CommentLock = false;
+                }
+            };
+            async void UpClicked(object sender, System.EventArgs e)
+            {
+                await VoteArrowUp.RotateTo(-15, 80, Easing.BounceOut);
+                await VoteArrowUp.RotateTo(15, 120, Easing.BounceOut);
+                await VoteArrowUp.RotateTo(0, 80, Easing.BounceOut);
+            }
+            async void DownClicked(object sender, System.EventArgs e)
+            {
+                await VoteArrowDown.RotateTo(-15, 80, Easing.BounceOut);
+                await VoteArrowDown.RotateTo(15, 120, Easing.BounceOut);
+                await VoteArrowDown.RotateTo(0, 80, Easing.BounceOut);
+            }
+            */
+
+            //0, 1, Rownr, Rownr + 3
+            UserCommentGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            UserCommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
+            UserCommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
+            UserCommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);
+            //UserCommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
+            //UserCommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
+            //UserCommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
+            //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
+            UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+        }
+
+
 
         public UserNewsPage(UserRSSTable RSS)
         {
@@ -216,7 +471,7 @@ namespace NWT
                     SC.Point = 0;
                     Comment.Text = "";
                     App.database.InsertComment(SC);
-                    LoadComments();
+                    MakeComment(SC);
                 }
                 if (App.LoggedinUser != null)
                 {
@@ -235,270 +490,19 @@ namespace NWT
         void LoadComments()
         {
             var Query = App.database.GetComments(ArticleNR,0,-1);
-            bool UUV = false;
+            
             UserCommentGrid.Children.Clear();
 
             foreach (var s in Query)
             {
-                var User = App.database.GetUser(s.User).First();
-                UpvoteTable Upvote = null;
-                var UpvoteList = App.database.GetUpvote(s.CommentNR, ArticleNR, s.UserSubmitted);
-                Console.WriteLine("The current Upvotelist: " + UpvoteList);
-
-
-
-                if (UpvoteList.Any() && App.LoggedinUser != null)
-                {
-                    Console.WriteLine("The current Upvotelist First: " + UpvoteList.First());
-
-                    foreach (UpvoteTable UV in UpvoteList)
-                    {
-                        if (UV.User == App.LoggedinUser.ID)
-                        {
-                            UUV = true;
-                            Upvote = UV;
-                            break;
-                        }
-                    }
-                }
-
-                Console.WriteLine("TEST");
-                /*var CommentBox = new BoxView
-                {
-                    Color = Color.White,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    Margin = 3,
-                };*/
-
-                var Box = new Button
-                {
-                    CornerRadius = 10,
-                    Margin = 5,
-                    BackgroundColor = Color.White,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                };
-                var Comment = new Label
-                {
-                    Text = s.Comment,
-                    HorizontalTextAlignment = TextAlignment.Start,
-                    VerticalTextAlignment = TextAlignment.Center,
-                    HorizontalOptions = LayoutOptions.Start,
-                    TextColor = Color.Black,
-                    FontSize = 16,
-                    WidthRequest = 290,
-                    Margin = 20,
-                };
-                var Username = new Label
-                {
-                    Text = "  " + User.Name,
-                    HorizontalTextAlignment = TextAlignment.Start,
-                    VerticalTextAlignment = TextAlignment.Start,
-                    TextColor = Color.Black,
-                    FontSize = 16,
-
-                };
-                
-                var VoteArrowUp = new Button()
-                {
-                    Image = "uparrow.png",
-                    BackgroundColor = Color.Transparent,
-                    WidthRequest = 20,
-                    HeightRequest = 20,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Start,
-                    Margin = 0,
-                    ClassId = "false"
-                };
-                var VoteNumber = new Label
-                {
-                    Text = s.Point.ToString(),
-                    TextColor = Color.Black,
-                    BackgroundColor = Color.Transparent,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                    Margin = 0,
-                    FontSize = 16,
-
-                };
-                var VoteArrowDown = new Button()
-                {
-                    Image = "downarrow.png",
-                    BackgroundColor = Color.Transparent,
-                    WidthRequest = 20,
-                    HeightRequest = 20,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.End,
-                    Margin = 0,
-                    ClassId = "false"
-                };
-                /*var Userimage = new Image
-                {
-                    Source = "snail.png",
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                };*/
-
-                var Reply = new Button()
-                {
-                    BackgroundColor = Color.FromHex("#50d2c2"),
-                    TextColor = Color.FromHex("#FFFFFF"),
-                    WidthRequest = 60,
-                    HeightRequest = 30,
-                    Text = "Reply",
-                    FontSize = 10,
-                    HorizontalOptions = LayoutOptions.End,
-                    VerticalOptions = LayoutOptions.End,
-                    Margin = 20,
-                };
-
-                if (App.LoggedinUser != null)
-                {
-                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
-
-                    if (UUV)
-                    {
-                        if (Upvote.Point == 1)
-                        {
-                            VoteArrowUp.ClassId = "true";
-                            VoteArrowUp.Image = "uparrowBlue.png";
-                        }
-                        else if (Upvote.Point == -1)
-                        {
-                            VoteArrowDown.ClassId = "true";
-                            VoteArrowDown.Image = "downarrowRed.png";
-                        }
-                    }
-
-
-                }
-
-
-
-
-                Reply.Clicked += async (o, e) => {
-                    PostClicked(o, e);
-                    await Navigation.PushAsync(new CommentPage(ArticleNR, s));
-                };
-
-                
-
-                async void PostClicked(object sender, System.EventArgs e)
-                {
-                    Button button = (Button)sender;
-                    await button.RotateTo(-5, 80, Easing.BounceOut);
-                    await button.RotateTo(5, 120, Easing.BounceOut);
-                    await button.RotateTo(0, 80, Easing.BounceOut);
-                }
-
-                VoteArrowUp.Clicked += (o, e) => {
-                    if (App.LoggedinUser != null)
-                    {
-                        var UV = new UpvoteTable();
-                        UV.User = App.LoggedinUser.ID;
-                        UV.UserSubmitted = s.UserSubmitted;
-                        UV.Article = ArticleNR;
-                        UV.CommentNR = s.CommentNR;
-                        UV.Point = 0;
-
-                        if (VoteArrowUp.ClassId == "false")
-                        {
-                            VoteArrowUp.ClassId = "true";
-                            VoteArrowUp.Image = "uparrowBlue.png";
-                            UpClicked(o, e);
-                            UV.Point = 1;
-                            App.database.InsertUpvote(UV);
-                            if (VoteArrowDown.ClassId == "true")
-                            {
-                                VoteArrowDown.ClassId = "false";
-                                VoteArrowDown.Image = "downarrow.png";
-                                App.database.DeleteUpvote(Upvote);
-                                UV.Point = 2;
-                            }
-
-
-                        }
-                        else
-                        {
-                            VoteArrowUp.ClassId = "false";
-                            VoteArrowUp.Image = "uparrow.png";
-                            App.database.DeleteUpvote(Upvote);
-                            UV.Point = -1;
-
-                        }
-
-                        App.database.PointUpdate(s, UV.Point);
-                        LoadComments();
-
-                    }
-
-
-                };
-                VoteArrowDown.Clicked += (o, e) => {
-                    if (App.LoggedinUser != null)
-                    {
-                        var UV = new UpvoteTable();
-                        UV.User = App.LoggedinUser.ID;
-                        UV.UserSubmitted = s.UserSubmitted;
-                        UV.Article = ArticleNR;
-                        UV.CommentNR = s.CommentNR;
-                        UV.Point = 0;
-
-                        if (VoteArrowDown.ClassId == "false")
-                        {
-                            VoteArrowDown.ClassId = "true";
-                            VoteArrowDown.Image = "downarrowRed.png";
-                            DownClicked(o, e);
-                            UV.Point = -1;
-                            App.database.InsertUpvote(UV);
-                            if (VoteArrowUp.ClassId == "true")
-                            {
-                                VoteArrowUp.ClassId = "false";
-                                VoteArrowUp.Image = "uparrow.png";
-                                App.database.DeleteUpvote(Upvote);
-                                UV.Point = -2;
-                            }
-
-
-                        }
-                        else
-                        {
-                            VoteArrowDown.ClassId = "false";
-                            VoteArrowDown.Image = "downarrow.png";
-                            App.database.DeleteUpvote(Upvote);
-                            UV.Point = 1;
-
-                        }
-
-                        App.database.PointUpdate(s, UV.Point);
-                        LoadComments();
-
-                    }
-                };
-                async void UpClicked(object sender, System.EventArgs e)
-                {
-                    await VoteArrowUp.RotateTo(-15, 80, Easing.BounceOut);
-                    await VoteArrowUp.RotateTo(15, 120, Easing.BounceOut);
-                    await VoteArrowUp.RotateTo(0, 80, Easing.BounceOut);
-                }
-                async void DownClicked(object sender, System.EventArgs e)
-                {
-                    await VoteArrowDown.RotateTo(-15, 80, Easing.BounceOut);
-                    await VoteArrowDown.RotateTo(15, 120, Easing.BounceOut);
-                    await VoteArrowDown.RotateTo(0, 80, Easing.BounceOut);
-                }
-                //0, 1, Rownr, Rownr + 3
-                UserCommentGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                UserCommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
-                UserCommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
-                UserCommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);
-                UserCommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
-                UserCommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
-                UserCommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
-                //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-                UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+                MakeComment(s);
             }
+        }
+
+        protected override void OnDisappearing()
+        {
+            Console.WriteLine("Memory Cleanup");
+            GC.Collect();
         }
     }
 }

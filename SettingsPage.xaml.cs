@@ -76,5 +76,11 @@ namespace NWT
                     await DisplayAlert("Bad Credentials", "Please type in new information and/or a valid age", "OK");
             }
         }
+
+        protected override void OnDisappearing()
+        {
+            Console.WriteLine("Memory Cleanup");
+            GC.Collect();
+        }
     }
 }

@@ -121,6 +121,11 @@ namespace NWT
             await Navigation.PopModalAsync();
         }
 
+        protected override void OnDisappearing()
+        {
+            Console.WriteLine("Memory Cleanup");
+            GC.Collect();
+        }
     }
     
 }
