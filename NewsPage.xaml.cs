@@ -337,9 +337,9 @@ namespace NWT
         {
             //IconRotation();
             Button button = (Button)sender;
-            await button.RotateTo(-2, 40, Easing.BounceOut);
-            await button.RotateTo(2, 60, Easing.BounceOut);
-            await button.RotateTo(0, 40, Easing.BounceOut);
+            await button.RotateTo(-2, 1, Easing.BounceOut);
+            await button.RotateTo(2, 1, Easing.BounceOut);
+            await button.RotateTo(0, 1, Easing.BounceOut);
             
             if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
             {
@@ -366,6 +366,10 @@ namespace NWT
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 App.database.Plustoken(App.LoggedinUser, 1);
                 Read = true;
+
+
+                var variable = (ProfilePage)App.Mainpage.Children[2];
+                variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
             }
         }
         async void TimerDone(object sender)
