@@ -50,7 +50,7 @@ namespace NWT
                 {
                     BackgroundColor = Color.FromHex("#FFFFFF"),
                     WidthRequest = 200,
-                    HeightRequest = 420,
+                    HeightRequest = 440,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.End,
                     ClassId = RSS.ID.ToString(),
@@ -64,7 +64,7 @@ namespace NWT
                 {
                     Color = Color.FromRgb(248, 248, 248),
                     WidthRequest = 200,
-                    HeightRequest = 420,
+                    HeightRequest = 440,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
                     ClassId = RSS.ID.ToString()
@@ -77,7 +77,7 @@ namespace NWT
                     VerticalTextAlignment = TextAlignment.Start,
                     FontSize = 26,
                     FontAttributes = FontAttributes.Bold,
-                    HeightRequest = 50,
+                    HeightRequest = 70,
                     TextColor = Color.Black,
                     ClassId = RSS.ID.ToString(),
                     Margin = 12,
@@ -316,9 +316,9 @@ namespace NWT
                         NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 1, Rownr + 2); //PlusImage
                     }
 
-                    NewsGrid.RowDefinitions[Rownr].Height = 20;
+                    NewsGrid.RowDefinitions[Rownr].Height = 30;
 
-                    NewsGrid.RowDefinitions[Rownr + 2].Height = 100;
+                    NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
 
                     Rownr++;
                     Rownr++;
