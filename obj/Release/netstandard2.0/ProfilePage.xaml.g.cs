@@ -26,7 +26,7 @@ namespace NWT {
         private global::Xamarin.Forms.Label Welcome;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Label TokenNumber;
+        public global::Xamarin.Forms.Label TokenNumber;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Grid ArticleGrid2;

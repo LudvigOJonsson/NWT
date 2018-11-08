@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 10;
+        public static int DBLN = 30;
         public static int NTN = DBLN / 2;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
@@ -180,6 +180,8 @@ namespace NWT
             LoadNewsButton.Clicked += (s, e) => {
                 AddNews();
             };
+
+            LoadNewsButton.IsVisible = false;
 
             AddNews();
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");

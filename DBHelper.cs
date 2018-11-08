@@ -612,7 +612,7 @@ public class UserTable
 
         public List<RAL> GetReadArticle(int ID)
         {
-            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = ?", ID.ToString());
+            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = "+ ID.ToString()+ " AND User = "+ App.LoggedinUser.ID);
         }
 
 
@@ -621,7 +621,12 @@ public class UserTable
             TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Insert", JsonConvert.SerializeObject(Quiz))));
         }
 
-
+        public List<QuizTable> GetQuestion(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Query", "SELECT * FROM Questions WHERE ID = " + ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<QuizTable>>(Result.JSON);
+        }
 
 
 

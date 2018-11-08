@@ -18,7 +18,7 @@ namespace NWT
             ClassId = "-1";
 		}
 
-        public void Submit(object sender, EventArgs e)
+        public async void Submit(object sender, EventArgs e)
         {
             if(App.LoggedinUser != null && Rubrik.Text != "" && Ingress.Text != "" && Brodtext.Text != "")
             {
@@ -31,7 +31,9 @@ namespace NWT
                 RSS.Referat = Int32.Parse(ClassId);
                 App.database.InsertInsandare(RSS);
                 App.database.UpdateStats("InsandareSubmitted");
+                await DisplayAlert("Submission Successful", "Insändare Submitted", "OK");
             }
+
             
         }
         async public void GetReference(object sender, EventArgs e)

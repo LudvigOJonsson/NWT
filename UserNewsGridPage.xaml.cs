@@ -14,16 +14,16 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserNewsGridPage : ContentPage
     {
-        public static int Startnr = 1;
-        public static int Stopnr = 1;
+        public int Startnr = 1;
+        public int Stopnr = 1;
         public static int DBLN = 10;
         public static int NTN = DBLN / 2;
-        public static int Rownr = 1;
+        public int Rownr = 1;
         public static TapGestureRecognizer TGR = new TapGestureRecognizer();
         public List<Article> ArticleList = new List<Article>();
         public static List<string> imageLinks = new List<string>();
         public static Random rnd = new Random();
-        public static Button LoadNewsButton = new Button() { Text = "Load" };
+        public Button LoadNewsButton = new Button() { Text = "Load" };
         public bool NWT = true;
         public bool Mariestad = true;
         public bool HJO = true;
@@ -138,7 +138,7 @@ namespace NWT
             LoadNewsButton.Clicked += (s, e) => {
                 AddNews();
             };
-
+            LoadNewsButton.IsVisible = false;
             AddNews();
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }

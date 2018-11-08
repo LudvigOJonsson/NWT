@@ -28,14 +28,15 @@ namespace NWT
             public string ChoiceD { get; set; }
             public string CorrectAnswer { get; set; }
             public List<string> AnswerList { get; set; }
-            public Question()
+            public Question(QuizTable Q)
             {
-                QuestionText = "Den lever i vattnet Och kan simma, inte Flyger den heller...";
-                ChoiceA = "Jaffakaj";
-                ChoiceB = "Jaffakaj";
-                ChoiceC = "Jaffakaj";
-                ChoiceD = "Jaffakaj";
-
+                QuestionText = Q.QuestionText;
+                ChoiceA = Q.ChoiceA;
+                ChoiceB = Q.ChoiceB;
+                ChoiceC = Q.ChoiceC;
+                ChoiceD = Q.ChoiceD;
+                CorrectAnswer = Q.CorrectAnswer;
+                /*
                 var RNG = rnd.Next(3);
 
                 switch (RNG)
@@ -57,7 +58,7 @@ namespace NWT
                         ChoiceD = "En elegant firre";
                         break;
                 }
-                    
+                */    
 
             }
 
@@ -72,7 +73,7 @@ namespace NWT
             ScoreList.Add(Q3);
             ScoreList.Add(Q4);
             ScoreList.Add(Q5);
-
+            ScoreList.Add(Q6);
         }
 
         public async void Submission(object sender, EventArgs e)
@@ -119,8 +120,8 @@ namespace NWT
                     B.BorderColor = Color.FromHex("#50d2c2");
                     C.BorderColor = Color.FromHex("#50d2c2");
                     D.BorderColor = Color.FromHex("#50d2c2");
-
-                    var Q = new Question();
+                    var Quest = App.database.GetQuestion(CurrentQuestion+1).First();
+                    var Q = new Question(Quest);
                     QuestionText.Text = "Kategori; "+Clicked.Text+ ": " +Q.QuestionText; 
                     A.Text = Q.ChoiceA;
                     B.Text = Q.ChoiceB;
@@ -144,7 +145,7 @@ namespace NWT
                         D.IsVisible = false;
                        
 
-                        if (CurrentQuestion == 4)
+                        if (CurrentQuestion == 5)
                         {
 
                             foreach (var Box in ScoreList)

@@ -24,7 +24,7 @@
                 <BoxView x:Name="Q3"   Grid.Row="0" Grid.Column="2"/>
                 <BoxView x:Name="Q4"   Grid.Row="0" Grid.Column="3"/>
                 <BoxView x:Name="Q5"   Grid.Row="0" Grid.Column="4"/>
-
+                <BoxView x:Name="Q6"   Grid.Row="0" Grid.Column="5"/>
 
                 <Label x:Name="Header" Text="QUIZ!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#50d2c2" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
 
@@ -33,9 +33,9 @@
                 <Button x:Name="Submit" Margin="10" BackgroundColor="#50d2c2" Text="Submit Questions" TextColor="White" Clicked="Submission" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
 
 
-                <Button x:Name="Cat1" Margin="10" Text="Danska Fiskar" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="Cat2" Margin="10" Text="Norska Danskor" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="Cat3" Margin="10" Text="Sista Kategorin" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat1" Margin="10" Text="Kategori 1" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat2" Margin="10" Text="Kategori 2" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat3" Margin="10" Text="Kategori 3" TextColor="White" BackgroundColor="#50d2c2" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
 
                 <Label  x:Name="QuestionText" Text="The Question" TextColor="#50d2c2" FontSize="20" HorizontalTextAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsVisible="False"/>
                 <Button x:Name="A" BorderWidth="2" BorderColor="Transparent" Text="A" BackgroundColor="#50d2c2" ClassId="A" Clicked="Gametick" Grid.Row="3" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>

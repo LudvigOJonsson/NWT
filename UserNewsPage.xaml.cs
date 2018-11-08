@@ -21,7 +21,7 @@ namespace NWT
         public System.Timers.Timer Timer;
         public int ArticleNR;
         public int CC = 8;
-        public bool Read = false;
+        public bool Read = true;
         public bool CommentLock = false;
 
         public void MakeComment(CommentTable s)
@@ -418,10 +418,13 @@ namespace NWT
 
         }
         async public void LoadReference(object sender, EventArgs e)
-        {           
+        {                       
             var id = Int32.Parse(ClassId);
-            var RSS = App.database.GetRss(id).First();
-            await Navigation.PushAsync(new NewsPage(RSS));
+            if(id != -1)
+            {
+                var RSS = App.database.GetRss(id).First();
+                await Navigation.PushAsync(new NewsPage(RSS));
+            }           
         }
 
         void LoadNews(UserRSSTable RSS)
