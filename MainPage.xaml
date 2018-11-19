@@ -1,32 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" 
-			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-			  x:Class="NWT.MainPage"
-              x:Name="Mainpage"
-              BackgroundColor="#f8f8f9"
-              >
-    <CarouselPage.ToolbarItems>
-        <ToolbarItem Icon="community.png" Text="" Clicked="Community"/>
-        <ToolbarItem Icon="newsfeed.png" Text="" Clicked="News"/>
-        <ToolbarItem Icon="profile.png" Text="" Clicked="Profile"/>
-        <ToolbarItem Icon="play.png" Text="" Clicked="Games"/>
-    </CarouselPage.ToolbarItems>
-    
-    <ContentPage x:Name = "CommunityPage">
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="NWT.MainPage"
+            x:Name="Mainpage"
+            BackgroundColor="#f8f8f9"
+            >
+    <ContentPage x:Name = "CommunityPage" Title ="Community">
 
 
     </ContentPage>
-    <ContentPage x:Name = "NewsGridPage">
+    <ContentPage x:Name = "NewsGridPage" Title ="News">
 
 
     </ContentPage>
-    <ContentPage x:Name = "UserPage">
+    <ContentPage x:Name = "UserPage" Title ="User">
 
-        
-        
+
+
     </ContentPage>
-    <ContentPage x:Name = "PlayPage">
-       
+    <ContentPage x:Name = "PlayPage" Title ="Play">
+
     </ContentPage>
-    
-</CarouselPage>
+</TabbedPage>

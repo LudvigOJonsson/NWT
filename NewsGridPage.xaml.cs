@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 30;
+        public static int DBLN = 20;
         public static int NTN = DBLN / 2;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
@@ -84,10 +84,10 @@ namespace NWT
                 };
 
                 Label.GestureRecognizers.Add(TGR);
-
+                if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
                 Image = new Image
                 {
-
+                    
                     Source = RSS.ImgSource,
                     WidthRequest = 200,
                     HeightRequest = 300,

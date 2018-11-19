@@ -90,13 +90,17 @@ public class UserTable
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
         public string Title { get; set; }
-        public string Link{ get; set; }
         public string Description { get; set; }
-        public string Source { get; set; }
-        public string ImgSource { get; set; }
-        public string Category { get; set; }
         public DateTime PubDate { get; set; }
+        public string Link { get; set; }
+        public string Source { get; set; }
         public int Plus { get; set; }
+        public int NewsScore { get; set; }
+        public string Author { get; set; }
+        public string Category { get; set; }
+        public string Tag { get; set; }
+        public string Content { get; set; }
+        public string ImgSource { get; set; }
     }
 
     public class Task
@@ -218,7 +222,7 @@ public class UserTable
             }
 
             
-            //DB.DropTable<RAL>();
+            DB.DropTable<RAL>();
             DB.CreateTable<RAL>();
         }
 
@@ -299,11 +303,13 @@ public class UserTable
                         break;
                     }
                     var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
+                    Console.WriteLine("JSON Deserialized");
                     DB.Insert(Article);
+                    Console.WriteLine("Article Inserted");
                 }
                 else
                 {
-                    ParseRssFile();
+                    //ParseRssFile();
                     App.Online = false;
                     break;
                 }
@@ -648,7 +654,7 @@ public class UserTable
                 return builder.ToString();
             }
         }
-
+        /*
         public void ParseRssFile()
         {
             //
@@ -749,7 +755,7 @@ public class UserTable
             }
 
         }
-
+        */
         public static string TCP(string JSON)
         {
             string Message = "";
@@ -772,7 +778,7 @@ public class UserTable
 
                 stm.Write(ba, 0, ba.Length);
 
-                byte[] bb = new byte[100000000];
+                byte[] bb = new byte[100000];
                 int k = stm.Read(bb, 0, 16384);
                 //Console.WriteLine("Read Complete");
                 for (int i = 0; i < k; i++)

@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace NWT
 {
-	public partial class MainPage : CarouselPage
+	public partial class MainPage : TabbedPage
 	{
 
 
@@ -23,12 +23,9 @@ namespace NWT
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
             Children[2] = new LoginPage();
-            Children[3] = new PlayPage();
-            
-            
-
+            Children[3] = new PlayPage();                      
         }
-  
+  /*
         void Community(object sender, EventArgs e)
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[0];
@@ -45,7 +42,7 @@ namespace NWT
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[3];
         }
-
+*/
 
     }
 }
