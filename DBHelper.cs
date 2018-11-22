@@ -205,7 +205,7 @@ public class UserTable
     {
 
         static SQLiteConnection DB;
-
+        public static bool ComLock = false;
         public DBHelper(string dbPath)
         {
             DB = new SQLiteConnection(dbPath);
@@ -289,19 +289,29 @@ public class UserTable
             int Nr = 0;
             for (int x = start; x < stop; x++)
             {
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
-                Console.WriteLine(JSONResult);
 
+                while (ComLock)
+                {
+
+                };
+                ComLock = true;
                 
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
+                //Console.WriteLine(JSONResult.Length);
+                ComLock = false;
 
                 if (JSONResult != "No")
                 {
+                    
+                    Console.WriteLine("JSON Object Found");
                     var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+                    
                     Console.WriteLine(Result.JSON);
                     if (Result.JSON == "[]")
                     {
                         break;
                     }
+                    
                     var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
                     Console.WriteLine("JSON Deserialized");
                     DB.Insert(Article);
@@ -759,6 +769,9 @@ public class UserTable
         public static string TCP(string JSON)
         {
             string Message = "";
+
+
+            
             try
             {
                 
@@ -767,25 +780,67 @@ public class UserTable
 
                 tcpclnt.Connect("109.228.152.124", 1508);
                 // use the ipaddress as in the server program
-
+                //tcpclnt.ReceiveTimeout = 20000;
+                //tcpclnt.SendTimeout = 20000;
                 //Console.WriteLine("Connected");
-
-                Stream stm = tcpclnt.GetStream();
+                var Client = tcpclnt.Client;
+                //Stream stm = tcpclnt.GetStream();
 
                 Encoding asen = Encoding.Default;
                 byte[] ba = asen.GetBytes(JSON);
                 //Console.WriteLine("Transmitting.....");
 
-                stm.Write(ba, 0, ba.Length);
+                //stm.Write(ba, 0, ba.Length);
+                Client.Send(ba, ba.Length, SocketFlags.None);
 
-                byte[] bb = new byte[100000];
-                int k = stm.Read(bb, 0, 16384);
-                //Console.WriteLine("Read Complete");
-                for (int i = 0; i < k; i++)
+                byte[] bb = new byte[100];
+
+                int Length = Client.Receive(bb);
+
+                for (int i = 0; i < Length; i++)
+                {
                     Message += Convert.ToChar(bb[i]);
+                }
+
+                Length = Convert.ToInt32(Message);
+                Console.WriteLine("Length of Message is: " + Length);
+
+
+                byte[] bc = asen.GetBytes("OK");
+                Client.Send(bc, bc.Length, SocketFlags.None);
+
+
+                byte[] bd = new byte[100000];
+                int byteCount = 0;
+                Console.WriteLine("Recieved Bytecount is: " + byteCount);
+                for (int i = 0; i < byteCount; i++)
+                {
+                    Message += Convert.ToChar(bd[i]);
+                }
+
+                int BR = 0;
+                Message = "";
+                do
+                {
+                    
+                    byteCount = Client.Receive(bd);
+                    Console.WriteLine("Recieved Bytecount is: " + byteCount);
+                    for (int i = 0; i < byteCount; i++)
+                    {
+                        Message += Convert.ToChar(bd[i]);
+                    }
+                    BR += byteCount;
+                    Console.WriteLine("Current Bytes Read: " + BR);
+                } while (BR < Length);
+
+                
+
+
+
 
                 Console.WriteLine(Message);
                 tcpclnt.Close();
+                
                 return Message;
             }
 
