@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.ProfilePage"
-             BackgroundColor="#f8f8f9">
+             BackgroundColor="#f8f8f9"
+             Icon="elipses.png">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
         <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->

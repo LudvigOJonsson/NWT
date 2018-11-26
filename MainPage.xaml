@@ -4,21 +4,24 @@
             x:Class="NWT.MainPage"
             x:Name="Mainpage"
             BackgroundColor="#f8f8f9"
+            BarBackgroundColor="Red"
+            
             >
-    <ContentPage x:Name = "CommunityPage" Title ="Community">
+    
+    <ContentPage x:Name = "CommunityPage">
 
 
     </ContentPage>
-    <ContentPage x:Name = "NewsGridPage" Title ="News">
+    <ContentPage x:Name = "NewsGridPage">
 
 
     </ContentPage>
-    <ContentPage x:Name = "UserPage" Title ="User">
+    <ContentPage x:Name = "UserPage" >
 
 
 
     </ContentPage>
-    <ContentPage x:Name = "PlayPage" Title ="Play">
+    <ContentPage x:Name = "PlayPage">
 
     </ContentPage>
 </TabbedPage>

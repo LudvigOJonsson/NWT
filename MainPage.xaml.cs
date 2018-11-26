@@ -6,13 +6,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 // await DisplayAlert("Task", "PING","OK");
 
 namespace NWT
 {
-	public partial class MainPage : TabbedPage
-	{
+	public partial class MainPage : Xamarin.Forms.TabbedPage
+    {
 
 
 
@@ -20,6 +20,13 @@ namespace NWT
         {
             
             InitializeComponent();
+            
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.Yellow);
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.Green);
+
+
+
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
             Children[2] = new LoginPage();

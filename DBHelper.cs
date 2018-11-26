@@ -56,8 +56,6 @@ public class UserTable
         public string IP { get; set; }
         public string LastUse { get; set; }
     }
-
-
     
     public class CommentTable
     {
@@ -72,7 +70,6 @@ public class UserTable
         public int Replynr { get; set; }
         public int Replylvl { get; set; }
     }
-
     
     public class SudokuTable
     {
@@ -780,12 +777,12 @@ public class UserTable
 
                 tcpclnt.Connect("109.228.152.124", 1508);
                 // use the ipaddress as in the server program
-                //tcpclnt.ReceiveTimeout = 20000;
-                //tcpclnt.SendTimeout = 20000;
+
                 //Console.WriteLine("Connected");
                 var Client = tcpclnt.Client;
                 //Stream stm = tcpclnt.GetStream();
-
+                Client.ReceiveTimeout = 3000;
+                Client.SendTimeout = 3000;
                 Encoding asen = Encoding.Default;
                 byte[] ba = asen.GetBytes(JSON);
                 //Console.WriteLine("Transmitting.....");
@@ -819,6 +816,7 @@ public class UserTable
                 }
 
                 int BR = 0;
+                int Break = 0;
                 Message = "";
                 do
                 {
@@ -831,6 +829,14 @@ public class UserTable
                     }
                     BR += byteCount;
                     Console.WriteLine("Current Bytes Read: " + BR);
+
+                    Break++;
+
+                    if (Break > 100) 
+                    {
+                        Message = "No";
+                        break;
+                    }
                 } while (BR < Length);
 
                 

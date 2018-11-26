@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.LoginPage"
              x:Name = "Loginpage" 
-             BackgroundColor="#f8f8f9">
+             BackgroundColor="#f8f8f9"
+             Icon="elipses.png"
+             Title="User">
     <ContentPage.Content>
 
         <StackLayout Spacing="0">
