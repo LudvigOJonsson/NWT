@@ -4,8 +4,8 @@
              x:Class="NWT.CommunityPage"
              x:Name = "Communitypage" 
              BackgroundColor="#f8f8f9"
-             Icon="elipses.png"
-             Title="Community"
+             Icon="community3.png"
+             Title="Framsida"
              >
     <ContentPage.Content>
 

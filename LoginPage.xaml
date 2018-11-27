@@ -4,8 +4,8 @@
              x:Class="NWT.LoginPage"
              x:Name = "Loginpage" 
              BackgroundColor="#f8f8f9"
-             Icon="elipses.png"
-             Title="User">
+             Icon="profile.png"
+             Title="Profil">
     <ContentPage.Content>
 
         <StackLayout Spacing="0">

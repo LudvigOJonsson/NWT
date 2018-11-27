@@ -21,9 +21,9 @@ namespace NWT
             
             InitializeComponent();
             
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.Yellow);
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.Green);
+            //On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.Black);
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.FromHex("50d2c2"));
 
 
 
