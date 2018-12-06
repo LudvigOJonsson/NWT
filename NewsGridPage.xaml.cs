@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 1;
+        public static int DBLN = 3;
         public static int NTN = DBLN;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
@@ -278,8 +278,8 @@ namespace NWT
             }
             Stopnr += NTN;
             var Rss = App.database.GetRSS(Stopnr);
-            Console.WriteLine(Rss.Count);
-            Console.WriteLine("Inladdning Klar");
+            //Console.WriteLine(Rss.Count);
+           // Console.WriteLine("Inladdning Klar");
             foreach (RSSTable RSS in Rss)
             {
                 bool Exists = false;
@@ -291,12 +291,12 @@ namespace NWT
                         Exists = true;
                     }
                 }
-                Console.WriteLine(ArticleList.Count);
-                Console.WriteLine("Jämnförelse ned ArtikelLista klar");
+                //Console.WriteLine(ArticleList.Count);
+                //Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
                     var Box = new Article(RSS);
-                    Console.WriteLine("ArtikelObjekt Skapat");
+                   // Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -332,7 +332,7 @@ namespace NWT
             }
             NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
-            Console.WriteLine("Nyheter inlagda i Grid");
+            //Console.WriteLine("Nyheter inlagda i Grid");
             /*
             foreach (Article A in ArticleList)
             {

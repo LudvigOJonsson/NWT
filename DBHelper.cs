@@ -300,19 +300,19 @@ public class UserTable
                 if (JSONResult != "No")
                 {
                     
-                    Console.WriteLine("JSON Object Found");
+                    //Console.WriteLine("JSON Object Found");
                     var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
                     
-                    Console.WriteLine(Result.JSON);
+                    //Console.WriteLine(Result.JSON);
                     if (Result.JSON == "[]")
                     {
                         break;
                     }
                     
                     var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
-                    Console.WriteLine("JSON Deserialized");
+                    //Console.WriteLine("JSON Deserialized");
                     DB.Insert(Article);
-                    Console.WriteLine("Article Inserted");
+                    //Console.WriteLine("Article Inserted");
                 }
                 else
                 {
@@ -582,11 +582,11 @@ public class UserTable
         {
             var Query = DB.Query<LocalStatsTable>("SELECT * FROM LS WHERE ID = '0'");
 
-            Console.WriteLine("LSQuery: "+ Query.Count());
+            //Console.WriteLine("LSQuery: "+ Query.Count());
             if (Query.Any())
             {
                 var LS = Query.First();
-                Console.WriteLine("Current Local Stats: " + LS);
+                
 
                 var statement = "UPDATE Stats SET"
                     + "  Startups = Startups + " + LS.Startups
@@ -800,7 +800,7 @@ public class UserTable
                 }
 
                 Length = Convert.ToInt32(Message);
-                Console.WriteLine("Length of Message is: " + Length);
+                //Console.WriteLine("Length of Message is: " + Length);
 
 
                 byte[] bc = asen.GetBytes("OK");
@@ -809,7 +809,7 @@ public class UserTable
 
                 byte[] bd = new byte[100000];
                 int byteCount = 0;
-                Console.WriteLine("Recieved Bytecount is: " + byteCount);
+                //Console.WriteLine("Recieved Bytecount is: " + byteCount);
                 for (int i = 0; i < byteCount; i++)
                 {
                     Message += Convert.ToChar(bd[i]);
@@ -822,13 +822,13 @@ public class UserTable
                 {
                     
                     byteCount = Client.Receive(bd);
-                    Console.WriteLine("Recieved Bytecount is: " + byteCount);
+                   // Console.WriteLine("Recieved Bytecount is: " + byteCount);
                     for (int i = 0; i < byteCount; i++)
                     {
                         Message += Convert.ToChar(bd[i]);
                     }
                     BR += byteCount;
-                    Console.WriteLine("Current Bytes Read: " + BR);
+                    //Console.WriteLine("Current Bytes Read: " + BR);
 
                     Break++;
 
@@ -844,7 +844,7 @@ public class UserTable
 
 
 
-                Console.WriteLine(Message);
+                //Console.WriteLine(Message);
                 tcpclnt.Close();
                 
                 return Message;

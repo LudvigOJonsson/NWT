@@ -18,9 +18,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -40,10 +37,12 @@
             <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="48" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6"/>
 
             <Label Text="Link" x:Name="Link" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" FontAttributes="Italic" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Source" x:Name="Source" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" FontAttributes="Italic" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" FontAttributes="Italic" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="8" FontAttributes="Italic" HorizontalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
 
-            <Label Text="Dot" x:Name="Dot" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <!--<Label Text="Dot" x:Name="Dot" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>-->
             <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" FontAttributes="Bold,Italic" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Label Text="" x:Name="Brödtext" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" HorizontalOptions="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -55,7 +54,7 @@
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
 
-            <Button x:Name="TimerButton" Text="Timer" 
+            <!--<Button x:Name="TimerButton" Text="Timer" 
                     Clicked="TimerButtonClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
@@ -76,7 +75,8 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                </Grid>
+                </Grid>-->
+            
             </Grid>
     </ScrollView>
 </ContentPage>

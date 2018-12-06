@@ -32,7 +32,7 @@ namespace NWT
                 if (App.LoggedinUser != null)
                 {
                     
-                    App.database.Plustoken(App.LoggedinUser, 1);
+                    App.database.Plustoken(App.LoggedinUser, 3);
                     App.database.UpdateStats("Logins");
                     App.database.LocalStatDump();
                     App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);

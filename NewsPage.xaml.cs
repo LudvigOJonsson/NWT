@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
+using System.Xml;
 
 namespace NWT
 {
@@ -21,18 +22,274 @@ namespace NWT
         public static int ArticleNR;
         public int CC = 8;
         public bool Read = false;
+        public int Row = 5;
+        public bool Topimg = true;
 
+
+        public NewsPage(RSSTable RSS)
+        {
+            InitializeComponent();
+
+            if (App.LoggedinUser != null)
+            {
+                /*
+                if (App.database.GetReadArticle(RSS.ID).Count == 0)
+                {
+                    NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                    Timer = new System.Timers.Timer();
+                    Timer.Interval = 60;
+                    Timer.Elapsed += OnTimedEvent;
+                    Timer.Enabled = true;
+                }
+                else
+                {
+                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Dot.TextColor = Color.FromRgb(80, 210, 194);
+                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Read = true;
+                }*/
+
+            }
+            else
+            {
+                NewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
+            }
+
+            LoadNews(RSS);
+            App.database.UpdateStats("ArticlesClicked");
+            
+        }
+
+ 
+
+        void LoadNews(RSSTable RSS)
+        {
+            ArticleNR = RSS.ID;
+            Rubrik.Text = RSS.Title;
+            //Dot.Text = "⚫    ";
+            Ingress.Text = RSS.Description;
+            Date.Text = "  Publicerad: " + RSS.PubDate;
+            Link.Text = RSS.Link;
+            Source.Text = RSS.Source;
+            Category.Text = RSS.Category;
+            Tags.Text = RSS.Tag;            
+            ArticleImage.Source = RSS.ImgSource;
+
+            XmlDocument xmltest = new XmlDocument();
+            xmltest.LoadXml(RSS.Content);
+            XmlDocument xmltemp = new XmlDocument();
+            xmltemp.LoadXml(xmltest.DocumentElement.InnerXml);
+            XmlNodeList fulllist = xmltemp.DocumentElement.ChildNodes;
+                               
+            foreach (XmlNode Node in fulllist)
+            {
+                
+                /*
+                Device.BeginInvokeOnMainThread(async () => {
+                    await App.Mainpage.DisplayAlert("Test", Node.OuterXml, "Exit");
+                });*/
+                if (Node.OuterXml.Contains("element"))
+                {
+                    if (!Node.OuterXml.Contains("headline-"))
+                    {
+                        ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        var Label = new Label
+                        {
+                            Text = Node.InnerXml,
+                            HorizontalTextAlignment = TextAlignment.Start,
+                            VerticalTextAlignment = TextAlignment.Start,
+                            FontSize = 14,                          
+                            TextColor = Color.Black,                            
+                            Margin = 12
+                        };
+                        ArticleGrid.Children.Add(Label, 0, 5, Row, Row + 1);
+                        Row++;
+                    }
+                }
+                else if (Node.OuterXml.Contains("object"))
+                {
+                    if (Node.OuterXml.Contains("x-im/image"))
+                    {
+                        ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        var Image = new Image
+                        {                           
+                            WidthRequest = 200,
+                            HeightRequest = 300,
+                            Aspect = Aspect.AspectFill,
+                            Margin = 5,                           
+                        };
+
+                        var test = Node != null ? Node.Attributes["uuid"].Value : "eb65d51b-054d-5ea3-89c5-ec8e9768514c";
+                        Console.WriteLine("Ping: " + test);
+
+                        var IS = "https://imengine.public.nwt.infomaker.io/image.php?uuid=";
+                        IS += test;
+                        IS += "&function=hardcrop&type=preview&source=false&q=75&width=600&height=338";
+                        Console.WriteLine(IS);
+
+                        if(Topimg == true)
+                        {
+                            ArticleImage.Source = IS;
+                            Topimg = false;
+                        }
+                        else
+                        {
+                            Image.Source = IS;
+                            ArticleGrid.Children.Add(Image, 0, 5, Row, Row + 1);
+                            Row++;
+                        }                        
+                    }
+                }
+            }
+            if (App.Online)
+            {
+                //LoadComments();
+            }
+
+        }
+
+        /*
+        async void TimerButtonClicked(object sender, System.EventArgs e)
+        {
+            //IconRotation();
+            Button button = (Button)sender;
+            await button.RotateTo(-2, 1, Easing.BounceOut);
+            await button.RotateTo(2, 1, Easing.BounceOut);
+            await button.RotateTo(0, 1, Easing.BounceOut);
+
+            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
+            {
+                var RA = new RAL();
+                RA.User = App.LoggedinUser.ID;
+                RA.Article = ArticleNR;
+                RA.Date = DateTime.Now;
+                App.database.ReadArticle(RA);
+                TimerIcon.Source = "tokenicon3.png";
+                var NG = (NewsGridPage)App.Mainpage.Children[1];
+                foreach (NewsGridPage.Article A in NG.ArticleList)
+                {
+                    if (A.ID == ArticleNR)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                            A.Image.Margin = 6;
+                        });
+
+                    }
+                }
+                App.database.UpdateStats("ArticlesRead");
+                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
+                App.database.Plustoken(App.LoggedinUser, 1);
+                Read = true;
+
+
+                var variable = (ProfilePage)App.Mainpage.Children[2];
+                variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+            }
+        }
+        async void TimerDone(object sender)
+        {
+            //IconRotation();
+            Label label = (Label)sender;
+            await label.RotateTo(-2, 40, Easing.BounceOut);
+            await label.RotateTo(2, 60, Easing.BounceOut);
+            await label.RotateTo(0, 40, Easing.BounceOut);
+        }
+        async void IconRotation()
+        {
+            Image image = TimerIcon;
+            await image.RotateTo(-2, 40, Easing.BounceOut);
+            await image.RotateTo(2, 60, Easing.BounceOut);
+            await image.RotateTo(0, 40, Easing.BounceOut);
+        }
+        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (red != 80)
+            {
+                red--;
+            }
+            if (green != 210)
+            {
+                green--;
+            }
+            if (blue != 194)
+            {
+                blue--;
+            }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                Dot.TextColor = Color.FromRgb(red, green, blue);
+                TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
+            });
+
+            if (green == 210 && blue == 194 && red == 80)
+            {
+
+
+                Timer.Stop();
+                Timer.Close();
+                Timer.Dispose();
+                TimerDone(Rubrik);
+                TimerDone(Ingress);
+                TimerDone(Brödtext);
+
+            }
+            else
+            {
+                Timer.Start();
+            }
+
+        }
+        
+        async void SubmitComment(object sender, EventArgs e)
+        {
+            if (App.Online)
+            {
+                if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+                {
+                    var CNR = App.database.CommentCount(ArticleNR);
+                    var SC = new CommentTable();
+
+                    SC.Article = ArticleNR;
+                    SC.CommentNR = CNR;
+                    SC.UserSubmitted = 0;
+                    SC.User = App.LoggedinUser.ID;
+                    SC.Replynr = -1;
+                    SC.Replylvl = 0;
+                    SC.Comment = Comment.Text;
+                    SC.Point = 0;
+                    Comment.Text = "";
+                    App.database.InsertComment(SC);
+                    MakeComment(SC);
+                }
+                if (App.LoggedinUser != null)
+                {
+                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
+
+        }
+        void LoadComments()
+        {
+            var Query = App.database.GetComments(ArticleNR,0,-1);
+            
+            CommentGrid.Children.Clear();
+            foreach (var s in Query)
+            {
+                MakeComment(s);
+            }
+        }
         public void MakeComment(CommentTable s)
         {
             var User = App.database.GetUser(s.User).First();
 
-            /*var CommentBox = new BoxView
-            {
-                Color = Color.White,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                Margin = 3,
-            };*/
+
 
             var Box = new Button
             {
@@ -63,12 +320,6 @@ namespace NWT
 
             };
 
-            /*var Userimage = new Image
-            {
-                Source = "snail.png",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-            };*/
 
             var Reply = new Button()
             {
@@ -129,7 +380,7 @@ namespace NWT
                 }
             };
 
-            /*
+            
             bool UUV = false;
             UpvoteTable Upvote = null;
             var UpvoteList = App.database.GetUpvote(s.CommentNR, ArticleNR, s.UserSubmitted);
@@ -283,219 +534,21 @@ namespace NWT
                 await VoteArrowDown.RotateTo(15, 120, Easing.BounceOut);
                 await VoteArrowDown.RotateTo(0, 80, Easing.BounceOut);
             }
-            */
+            
 
-            //0, 1, Rownr, Rownr + 3
+            
             CommentGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             CommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);
-            //CommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
-            //CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
-            //CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);
-            //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
+            CommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
+            CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
+            CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);          
             CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Elispses, 5, 6, s.CommentNR, s.CommentNR + 1);
 
         }
-
-
-        public NewsPage(RSSTable RSS)
-        {
-            InitializeComponent();
-
-            if (App.LoggedinUser != null)
-            {
-                if (App.database.GetReadArticle(RSS.ID).Count == 0)
-                {
-                    NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                    Timer = new System.Timers.Timer();
-                    Timer.Interval = 60;
-                    Timer.Elapsed += OnTimedEvent;
-                    Timer.Enabled = true;
-                }
-                else
-                {
-                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Dot.TextColor = Color.FromRgb(80, 210, 194);
-                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Read = true;
-                }
-
-            }
-            else
-            {
-                NewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
-            }
-
-            LoadNews(RSS);
-            App.database.UpdateStats("ArticlesClicked");
-            
-        }
-
-        async void TimerButtonClicked(object sender, System.EventArgs e)
-        {
-            //IconRotation();
-            Button button = (Button)sender;
-            await button.RotateTo(-2, 1, Easing.BounceOut);
-            await button.RotateTo(2, 1, Easing.BounceOut);
-            await button.RotateTo(0, 1, Easing.BounceOut);
-            
-            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
-            {
-                var RA = new RAL();
-                RA.User = App.LoggedinUser.ID;
-                RA.Article = ArticleNR;
-                RA.Date = DateTime.Now;
-                App.database.ReadArticle(RA);
-                TimerIcon.Source = "tokenicon3.png";
-                var NG = (NewsGridPage)App.Mainpage.Children[1];
-                foreach (NewsGridPage.Article A in NG.ArticleList)
-                {
-                    if (A.ID == ArticleNR)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
-                            A.Image.Margin = 6;
-                        });
-
-                    }
-                }
-                App.database.UpdateStats("ArticlesRead");
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
-                App.database.Plustoken(App.LoggedinUser, 1);
-                Read = true;
-
-
-                var variable = (ProfilePage)App.Mainpage.Children[2];
-                variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
-            }
-        }
-        async void TimerDone(object sender)
-        {
-            //IconRotation();
-            Label label = (Label)sender;
-            await label.RotateTo(-2, 40, Easing.BounceOut);
-            await label.RotateTo(2, 60, Easing.BounceOut);
-            await label.RotateTo(0, 40, Easing.BounceOut);
-        }
-        /*async void IconRotation()
-        {
-            Image image = TimerIcon;
-            await image.RotateTo(-2, 40, Easing.BounceOut);
-            await image.RotateTo(2, 60, Easing.BounceOut);
-            await image.RotateTo(0, 40, Easing.BounceOut);
-        }*/
-
-        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (red != 80)
-            {
-                red--;
-            }
-            if (green != 210)
-            {
-                green--;
-            }
-            if (blue != 194)
-            {
-                blue--;
-            }
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                Dot.TextColor = Color.FromRgb(red, green, blue);
-                TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
-            });
-
-            if (green == 210 && blue == 194 && red == 80)
-            {
-               
-                
-                Timer.Stop();
-                Timer.Close();
-                Timer.Dispose();
-                TimerDone(Rubrik);
-                TimerDone(Ingress);
-                TimerDone(Brödtext);
-                
-            }
-            else
-            {
-                Timer.Start();
-            }
-
-        }
-
-        void LoadNews(RSSTable RSS)
-        {
-
-            Rubrik.Text = RSS.Title;
-            Dot.Text = "⚫    ";
-            Ingress.Text = RSS.Description + "Denna app innehåller inte fullständiga nyheter, utan presenterar endast ett skal där nyheter kan läggas till, och länkas till. I en fullständing version kommer denna text vara utbytt mot artikelns innehåll. Skriv gärna en kommentar nedanför om du är inloggad, och ge gärna kommentarer på appens utforming, både i detta tidiga form men också som en hypotetisk framtida nyhetsapp.";
-            for (int i = 0; i < 3 + rnd.Next(7); i++)
-            {
-                Brödtext.Text += "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
-            }
-
-
-
-            Link.Text = RSS.Link;
-            ArticleNR = RSS.ID;
-            Date.Text = "  Publicerad: " + RSS.PubDate;
-            ArticleImage.Source = RSS.ImgSource;
-            if (App.Online)
-            {
-                LoadComments();
-            }
-
-        }
-
-        async void SubmitComment(object sender, EventArgs e)
-        {
-            if (App.Online)
-            {
-                if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
-                {
-                    var CNR = App.database.CommentCount(ArticleNR);
-                    var SC = new CommentTable();
-
-                    SC.Article = ArticleNR;
-                    SC.CommentNR = CNR;
-                    SC.UserSubmitted = 0;
-                    SC.User = App.LoggedinUser.ID;
-                    SC.Replynr = -1;
-                    SC.Replylvl = 0;
-                    SC.Comment = Comment.Text;
-                    SC.Point = 0;
-                    Comment.Text = "";
-                    App.database.InsertComment(SC);
-                    MakeComment(SC);
-                }
-                if (App.LoggedinUser != null)
-                {
-                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
-                }
-            }
-            else
-            {
-                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
-            }
-
-        }
-
-        void LoadComments()
-        {
-            var Query = App.database.GetComments(ArticleNR,0,-1);
-            
-            CommentGrid.Children.Clear();
-            foreach (var s in Query)
-            {
-                MakeComment(s);
-            }
-        }
-
+        */
         protected override void OnDisappearing()
         {
             Console.WriteLine("Memory Cleanup");
