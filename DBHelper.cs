@@ -286,39 +286,43 @@ public class UserTable
             int Nr = 0;
             for (int x = start; x < stop; x++)
             {
-
-                while (ComLock)
+                for(int i = 0; i < 10; i++)
                 {
-
-                };
-                ComLock = true;
-                
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
-                //Console.WriteLine(JSONResult.Length);
-                ComLock = false;
-
-                if (JSONResult != "No")
-                {
-                    
-                    //Console.WriteLine("JSON Object Found");
-                    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-                    
-                    //Console.WriteLine(Result.JSON);
-                    if (Result.JSON == "[]")
+                    while (ComLock)
                     {
+
+                    };
+                    ComLock = true;
+
+                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
+                    //Console.WriteLine(JSONResult.Length);
+                    ComLock = false;
+
+                    if (JSONResult != "No")
+                    {
+
+                        //Console.WriteLine("JSON Object Found");
+                        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+                        //Console.WriteLine(Result.JSON);
+                        if (Result.JSON == "[]")
+                        {
+                            break;
+                        }
+
+                        var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
+                        //Console.WriteLine("JSON Deserialized");
+                        DB.Insert(Article);
+                        //Console.WriteLine("Article Inserted");
                         break;
                     }
-                    
-                    var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
-                    //Console.WriteLine("JSON Deserialized");
-                    DB.Insert(Article);
-                    //Console.WriteLine("Article Inserted");
-                }
-                else
-                {
-                    //ParseRssFile();
-                    App.Online = false;
-                    break;
+                    else
+                    {
+
+                        //ParseRssFile();
+                        //App.Online = false;
+                        
+                    }                    
                 }
                 Nr = x;
             }

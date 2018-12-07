@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 3;
+        public static int DBLN = 10;
         public static int NTN = DBLN;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
