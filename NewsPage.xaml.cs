@@ -108,6 +108,7 @@ namespace NWT
                 }
                 else if (Node.OuterXml.Contains("object"))
                 {
+                    Console.WriteLine(Node.OuterXml);
                     if (Node.OuterXml.Contains("x-im/image"))
                     {
                         ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -119,13 +120,13 @@ namespace NWT
                             Margin = 5,                           
                         };
 
-                        var test = Node != null ? Node.Attributes["uuid"].Value : "eb65d51b-054d-5ea3-89c5-ec8e9768514c";
-                        Console.WriteLine("Ping: " + test);
+                        var uuid = Node != null ? Node.Attributes["uuid"].Value : "eb65d51b-054d-5ea3-89c5-ec8e9768514c";
+                        Console.WriteLine(uuid);
+                        var width = "200"; //Node != null ? Node.Attributes["width"].Value : "50";
+                        var length = "300"; //Node != null ? Node.Attributes["length"].Value : "50";
+                        var IS = "https://imengine.public.nwt.infomaker.io/image.php?uuid=" + uuid + "&function=hardcrop&type=preview&source=false&q=75&width="+width+"&height="+length;
 
-                        var IS = "https://imengine.public.nwt.infomaker.io/image.php?uuid=";
-                        IS += test;
-                        IS += "&function=hardcrop&type=preview&source=false&q=75&width=600&height=338";
-                        Console.WriteLine(IS);
+                        
 
                         if(Topimg == true)
                         {

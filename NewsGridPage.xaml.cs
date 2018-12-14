@@ -34,6 +34,7 @@ namespace NWT
             public int ID = 0;
             public string Source = "";
             public bool Plus = false;
+            public bool Full = true;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
             public Label Label = new Label { };
@@ -43,89 +44,197 @@ namespace NWT
 
             public Article(RSSTable RSS)
             {
+                //System.Diagnostics.Debug.WriteLine("IM IN!");
+
                 Source = RSS.Source;
                 ID = RSS.ID;
                 Plus = Convert.ToBoolean(RSS.Plus);
-                Box = new Button
-                {
-                    BackgroundColor = Color.FromHex("#FFFFFF"),
-                    WidthRequest = 200,
-                    HeightRequest = 440,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.End,
-                    ClassId = RSS.ID.ToString(),
-                    Margin = 5,
-                    CornerRadius = 5,
-                    BorderColor = Color.FromRgb(220, 220, 220),
-                    BorderWidth = 2,
-                };
+                
 
-                Frame = new BoxView
-                {
-                    Color = Color.FromRgb(248, 248, 248),
-                    WidthRequest = 200,
-                    HeightRequest = 440,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Fill,
-                    ClassId = RSS.ID.ToString()
-                };
+                int IMGXC = 200;
+                int IMGYC = 300;
 
-                Label = new Label
+                if ((ID % 2) == 0)
                 {
-                    Text = RSS.Title,
-                    HorizontalTextAlignment = TextAlignment.Start,
-                    VerticalTextAlignment = TextAlignment.Start,
-                    FontSize = 26,
-                    FontAttributes = FontAttributes.Bold,
-                    HeightRequest = 70,
-                    TextColor = Color.Black,
-                    ClassId = RSS.ID.ToString(),
-                    Margin = 12,
-                };
+                    Full = false;
+                }
 
-                Label.GestureRecognizers.Add(TGR);
-                if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
-                Image = new Image
-                {
+
+                if (Full) { 
+
                     
-                    Source = RSS.ImgSource,
-                    WidthRequest = 200,
-                    HeightRequest = 300,
-                    Aspect = Aspect.AspectFill,
-                    Margin = 5,
-                    ClassId = RSS.ID.ToString()
 
-                };
+                    Label = new Label
+                    {
+                        Text = RSS.Title,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 25,
+                        FontAttributes = FontAttributes.Bold,
+                        WidthRequest = IMGXC,
+                        HeightRequest = ((RSS.Title.Length/30))*50,
+                        TextColor = Color.Black,
+                        ClassId = RSS.ID.ToString(),
+                        Margin = 12,
+                    };
 
-                Image.GestureRecognizers.Add(TGR);
-                //Image.IsVisible = false;
-                PlusImage = new Image
+                    Label.GestureRecognizers.Add(TGR);
+                    if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
+                    Image = new Image
+                    {
+                    
+                        Source = RSS.ImgSource,
+                        WidthRequest = IMGXC,
+                        HeightRequest = IMGYC,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        Aspect = Aspect.AspectFill,
+                        Margin = 5,
+                        ClassId = RSS.ID.ToString()
+
+                    };
+
+                    Box = new Button
+                    {
+                        BackgroundColor = Color.FromHex("#FFFFFF"),
+                        WidthRequest = IMGXC,
+                        HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.End,
+                        ClassId = RSS.ID.ToString(),
+                        Margin = 5,
+                        CornerRadius = 5,
+                        BorderColor = Color.FromRgb(220, 220, 220),
+                        BorderWidth = 2,
+                    };
+
+                    Frame = new BoxView
+                    {
+                        Color = Color.FromRgb(248, 248, 248),
+                        WidthRequest = IMGXC,
+                        HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        ClassId = RSS.ID.ToString()
+                    };
+
+
+                    Image.GestureRecognizers.Add(TGR);
+                    //Image.IsVisible = false;
+                    PlusImage = new Image
+                    {
+                        Source = "plus.png",
+                        WidthRequest = 60,
+                        HeightRequest = 60,
+                        Margin = 5,
+                        Aspect = Aspect.AspectFill,
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+
+                    CornerImage = new Image
+                    {
+
+                        Source = "cornerTriangle.png",
+                        WidthRequest = 120,
+                        HeightRequest = 120,
+                        Margin = 5,
+                        Aspect = Aspect.AspectFill,
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+                }
+                else
                 {
-                    Source = "plus.png",
-                    WidthRequest = 60,
-                    HeightRequest = 60,
-                    Aspect = Aspect.AspectFill,
-                    Margin = 10,
-                    ClassId = RSS.ID.ToString(),
-                    HorizontalOptions = LayoutOptions.End,
-                    VerticalOptions = LayoutOptions.End,
 
-                };
+                    Label = new Label
+                    {
+                        Text = RSS.Title,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 25,
+                        FontAttributes = FontAttributes.Bold,
+                        WidthRequest = IMGXC/2,
+                        HeightRequest = ((RSS.Title.Length / 15)) * 50,
+                        TextColor = Color.Black,
+                        ClassId = RSS.ID.ToString(),
+                        Margin = 12,
+                    };
 
-                CornerImage = new Image
-                {
+                    Label.GestureRecognizers.Add(TGR);
+                    if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
+                    Image = new Image
+                    {
 
-                    Source = "cornerTriangle.png",
-                    WidthRequest = 120,
-                    HeightRequest = 120,
-                    Aspect = Aspect.AspectFill,
-                    Margin = 5,
-                    ClassId = RSS.ID.ToString(),
-                    HorizontalOptions = LayoutOptions.End,
-                    VerticalOptions = LayoutOptions.End,
+                        Source = RSS.ImgSource,
+                        WidthRequest = IMGXC/2,
+                        HeightRequest = ((RSS.Title.Length / 15)) * 50,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        Aspect = Aspect.AspectFill,
+                        Margin = 5,
+                        ClassId = RSS.ID.ToString()
 
-                };
+                    };
 
+                    Box = new Button
+                    {
+                        BackgroundColor = Color.FromHex("#FFFFFF"),
+                        WidthRequest = IMGXC,
+                        HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.End,
+                        ClassId = RSS.ID.ToString(),
+                        Margin = 5,
+                        CornerRadius = 5,
+                        BorderColor = Color.FromRgb(220, 220, 220),
+                        BorderWidth = 2,
+                    };
+
+                    Frame = new BoxView
+                    {
+                        Color = Color.FromRgb(248, 248, 248),
+                        WidthRequest = IMGXC,
+                        HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        ClassId = RSS.ID.ToString()
+                    };
+
+
+                    Image.GestureRecognizers.Add(TGR);
+                    //Image.IsVisible = false;
+                    PlusImage = new Image
+                    {
+                        Source = "plus.png",
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                        Margin = 3,
+                        Aspect = Aspect.AspectFill,
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+
+                    CornerImage = new Image
+                    {
+
+                        Source = "cornerTriangle.png",
+                        WidthRequest = 60,
+                        HeightRequest = 60,
+                        Margin = 3,
+                        Aspect = Aspect.AspectFill,                        
+                        ClassId = RSS.ID.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+
+                    };
+                }
             }
 
             public void Visibility(bool State)
@@ -305,23 +414,41 @@ namespace NWT
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
 
-
-
-                    NewsGrid.Children.Add(Box.Frame, 0, 1, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 0, 1, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 0, 1, Rownr + 1, Rownr + 2); //Image
-                    NewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 2, Rownr + 3); //Label
-
-                    if (Box.Plus)
+                    if (Box.Full)
                     {
-                        NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 1, Rownr + 2); //CornerImage
-                        NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 1, Rownr + 2); //PlusImage
+                        NewsGrid.Children.Add(Box.Frame, 0, 2, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Box, 0, 2, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Image, 0, 2, Rownr + 1, Rownr + 2); //Image
+                        NewsGrid.Children.Add(Box.Label, 0, 2, Rownr + 2, Rownr + 3); //Label
+
+                        if (Box.Plus)
+                        {
+                            NewsGrid.Children.Add(Box.CornerImage, 0, 2, Rownr + 1, Rownr + 2); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 0, 2, Rownr + 1, Rownr + 2); //PlusImage
+                        }
+                    }
+                    else
+                    {
+                        NewsGrid.Children.Add(Box.Frame, 0, 2, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Box, 0, 2, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 3); //Image
+                        NewsGrid.Children.Add(Box.Label, 1, 2, Rownr, Rownr + 3); //Label
+
+                        if (Box.Plus)
+                        {
+                            NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 2, Rownr + 3); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 2, Rownr + 3); //PlusImage
+                        }
                     }
 
+                    
+
+                    
+                    
                     NewsGrid.RowDefinitions[Rownr].Height = 30;
 
                     NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
-
+                    
                     Rownr++;
                     Rownr++;
                     Rownr++;

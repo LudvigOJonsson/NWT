@@ -31,7 +31,7 @@ namespace NWT
 
 
 
-public class UserTable
+    public class UserTable
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
@@ -420,7 +420,7 @@ public class UserTable
 
         public List<RSSTable> GetRSS(int ID)
         {
-            //var MaxSize = DB.Query<RSSTable>("SELECT MAX(ID) FROM RSS");
+            
             return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
         }
 
@@ -431,7 +431,7 @@ public class UserTable
 
         public List<UserRSSTable> GetUserRSS(int ID)
         {
-            //var MaxSize = DB.Query<UserRSSTable>("SELECT MAX(ID) FROM Insandare");
+            
             
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
         }
