@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 10;
+        public static int DBLN = 20;
         public static int NTN = DBLN;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
@@ -264,23 +264,27 @@ namespace NWT
 
             if (Argc == 0)
             {
+                
                 TGR = new TapGestureRecognizer();
                 Console.WriteLine("NewsGrid");
                 TGR.Tapped += (s, e) => {
+                    IsEnabled = false;
                     LoadNews(s, e);
-
+                    IsEnabled = true;
                 };
+
             }
             else if (Argc == 1)
             {
                 TGR = new TapGestureRecognizer();
                 Console.WriteLine("ReferatSida");
                 TGR.Tapped += (s, e) => {
+                    IsEnabled = false;
                     var Header = (View)s;
                     Console.WriteLine(Header.ClassId);
                     Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType());
                     App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
-
+                   
                     Navigation.PopAsync();
                 };
             }
