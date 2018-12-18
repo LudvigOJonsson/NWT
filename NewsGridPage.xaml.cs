@@ -34,9 +34,10 @@ namespace NWT
             public int ID = 0;
             public string Source = "";
             public bool Plus = false;
-            public bool Full = true;
+            public bool Full = false;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
+            public BoxView ArticleMargin = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
             public Image PlusImage = new Image { };
@@ -54,9 +55,9 @@ namespace NWT
                 int IMGXC = 200;
                 int IMGYC = 300;
 
-                if ((ID % 2) == 0)
+                if ((ID % 4) == 0)
                 {
-                    Full = false;
+                    Full = true;
                 }
 
 
@@ -89,28 +90,28 @@ namespace NWT
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
-                        Margin = 5,
+                        Margin = 0,
                         ClassId = RSS.ID.ToString()
 
                     };
 
                     Box = new Button
                     {
-                        BackgroundColor = Color.FromHex("#FFFFFF"),
+                        BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.End,
                         ClassId = RSS.ID.ToString(),
-                        Margin = 5,
+                        Margin = 0,
                         CornerRadius = 5,
-                        BorderColor = Color.FromRgb(220, 220, 220),
+                        BorderColor = Color.Transparent,
                         BorderWidth = 2,
                     };
 
                     Frame = new BoxView
                     {
-                        Color = Color.FromRgb(248, 248, 248),
+                        Color = Color.White,
                         WidthRequest = IMGXC,
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -126,7 +127,7 @@ namespace NWT
                         Source = "plus.png",
                         WidthRequest = 60,
                         HeightRequest = 60,
-                        Margin = 5,
+                        Margin = 0,
                         Aspect = Aspect.AspectFill,
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
@@ -140,12 +141,21 @@ namespace NWT
                         Source = "cornerTriangle.png",
                         WidthRequest = 120,
                         HeightRequest = 120,
-                        Margin = 5,
+                        Margin = 0,
                         Aspect = Aspect.AspectFill,
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
+                    };
+                    ArticleMargin = new BoxView
+                    {
+                        Color = Color.Gray,
+                        WidthRequest = IMGXC,
+                        HeightRequest = 0,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        ClassId = RSS.ID.ToString()
                     };
                 }
                 else
@@ -156,9 +166,9 @@ namespace NWT
                         Text = RSS.Title,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Start,
-                        FontSize = 25,
+                        FontSize = 15,
                         FontAttributes = FontAttributes.Bold,
-                        WidthRequest = IMGXC/2,
+                        WidthRequest = IMGXC/1.5,
                         HeightRequest = ((RSS.Title.Length / 15)) * 50,
                         TextColor = Color.Black,
                         ClassId = RSS.ID.ToString(),
@@ -171,33 +181,33 @@ namespace NWT
                     {
 
                         Source = RSS.ImgSource,
-                        WidthRequest = IMGXC/2,
+                        WidthRequest = IMGXC/2.5,
                         HeightRequest = ((RSS.Title.Length / 15)) * 50,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
-                        Margin = 5,
+                        Margin = 25,
                         ClassId = RSS.ID.ToString()
 
                     };
 
                     Box = new Button
                     {
-                        BackgroundColor = Color.FromHex("#FFFFFF"),
+                        BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
                         HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.End,
                         ClassId = RSS.ID.ToString(),
-                        Margin = 5,
+                        Margin = 0,
                         CornerRadius = 5,
-                        BorderColor = Color.FromRgb(220, 220, 220),
+                        BorderColor = Color.Transparent,
                         BorderWidth = 2,
                     };
 
                     Frame = new BoxView
                     {
-                        Color = Color.FromRgb(248, 248, 248),
+                        Color = Color.White,
                         WidthRequest = IMGXC,
                         HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -213,7 +223,7 @@ namespace NWT
                         Source = "plus.png",
                         WidthRequest = 30,
                         HeightRequest = 30,
-                        Margin = 3,
+                        Margin = 25,
                         Aspect = Aspect.AspectFill,
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
@@ -227,12 +237,22 @@ namespace NWT
                         Source = "cornerTriangle.png",
                         WidthRequest = 60,
                         HeightRequest = 60,
-                        Margin = 3,
+                        Margin = 25,
                         Aspect = Aspect.AspectFill,                        
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
+                    };
+
+                    ArticleMargin = new BoxView
+                    {
+                        Color = Color.Gray,
+                        WidthRequest = IMGXC,
+                        HeightRequest = 0,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        ClassId = RSS.ID.ToString()
                     };
                 }
             }
@@ -414,35 +434,48 @@ namespace NWT
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     NewsGrid.RowSpacing = 0;
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
 
                     if (Box.Full)
                     {
-                        NewsGrid.Children.Add(Box.Frame, 0, 2, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Box, 0, 2, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Image, 0, 2, Rownr + 1, Rownr + 2); //Image
-                        NewsGrid.Children.Add(Box.Label, 0, 2, Rownr + 2, Rownr + 3); //Label
+                        NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
+                        NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
+
+                        int temp = 0;
+                        temp = NewsGrid.Children.IndexOf(Box.Frame);
+                        NewsGrid.Children[temp - 1].HeightRequest = 25;
 
                         if (Box.Plus)
                         {
-                            NewsGrid.Children.Add(Box.CornerImage, 0, 2, Rownr + 1, Rownr + 2); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 0, 2, Rownr + 1, Rownr + 2); //PlusImage
+                            NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
                         }
+                        
+                        NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
+
+                        /*temp = 0;
+                        temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
+                        NewsGrid.Children[temp].HeightRequest = 25;*/
                     }
                     else
                     {
-                        NewsGrid.Children.Add(Box.Frame, 0, 2, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Box, 0, 2, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 3); //Image
-                        NewsGrid.Children.Add(Box.Label, 1, 2, Rownr, Rownr + 3); //Label
+                        NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
+                        NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
+                        NewsGrid.Children.Add(Box.Label, 0, 2, Rownr, Rownr + 3); //Label
 
                         if (Box.Plus)
                         {
-                            NewsGrid.Children.Add(Box.CornerImage, 0, 1, Rownr + 2, Rownr + 3); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 0, 1, Rownr + 2, Rownr + 3); //PlusImage
+                            NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr + 2, Rownr + 3); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr + 2, Rownr + 3); //PlusImage
                         }
+
+                        NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
                     }
 
                     
@@ -453,6 +486,7 @@ namespace NWT
 
                     NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
                     
+                    Rownr++;
                     Rownr++;
                     Rownr++;
                     Rownr++;
