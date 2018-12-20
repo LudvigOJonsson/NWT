@@ -826,6 +826,7 @@ namespace NWT
                 {
                     
                     byteCount = Client.Receive(bd);
+                    
                    // Console.WriteLine("Recieved Bytecount is: " + byteCount);
                     for (int i = 0; i < byteCount; i++)
                     {

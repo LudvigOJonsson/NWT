@@ -66,13 +66,17 @@ namespace NWT
         {
             ArticleNR = RSS.ID;
             Rubrik.Text = RSS.Title;
-            //Dot.Text = "⚫    ";
-            Ingress.Text = RSS.Description;
-            Date.Text = "  Publicerad: " + RSS.PubDate;
-            Link.Text = RSS.Link;
-            Source.Text = RSS.Source;
-            Category.Text = RSS.Category;
-            Tags.Text = RSS.Tag;            
+            Dot.Text = "⚫";
+            Ingress.Text = "    "+RSS.Description;
+            Top.Text = "  Publicerad: " + RSS.PubDate + "   "+RSS.Source;
+            Author.Text = RSS.Author;
+            Category.Text = "Nyhetskategorier: "+RSS.Category;
+
+            if(RSS.Tag != "")
+            {
+                Tags.Text = "Tags: " + RSS.Tag;
+            }
+                   
             ArticleImage.Source = RSS.ImgSource;
 
             XmlDocument xmltest = new XmlDocument();
@@ -83,60 +87,98 @@ namespace NWT
                                
             foreach (XmlNode Node in fulllist)
             {
-                
+
                 /*
                 Device.BeginInvokeOnMainThread(async () => {
                     await App.Mainpage.DisplayAlert("Test", Node.OuterXml, "Exit");
                 });*/
                 if (Node.OuterXml.Contains("element"))
                 {
-                    if (!Node.OuterXml.Contains("headline-"))
+                    if (Node.OuterXml.Contains("paragraph"))
                     {
                         ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+
+
                         var Label = new Label
                         {
-                            Text = Node.InnerXml,
+                            Text = "    " + Node.InnerText,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 14,                          
-                            TextColor = Color.Black,                            
-                            Margin = 12
+                            FontSize = 14,
+                            TextColor = Color.Black,                        
+                            Margin = 0
                         };
-                        ArticleGrid.Children.Add(Label, 0, 5, Row, Row + 1);
+                        ArticleGrid.Children.Add(Label, 0, 6, Row, Row + 1);
                         Row++;
                     }
                 }
-                else if (Node.OuterXml.Contains("object"))
+                else if (Node.OuterXml.Contains("links"))
                 {
-                    Console.WriteLine(Node.OuterXml);
+
+                    
+                   
+                    
+
+
                     if (Node.OuterXml.Contains("x-im/image"))
                     {
-                        ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                        var Image = new Image
-                        {                           
-                            WidthRequest = 200,
-                            HeightRequest = 300,
-                            Aspect = Aspect.AspectFill,
-                            Margin = 5,                           
+
+                        var Links = Node.ChildNodes[0].ChildNodes[0];
+                        var Data = Links.ChildNodes[0];
+                        var W = Data.ChildNodes[0];
+                        var H = Data.ChildNodes[1];
+                        var Txt = Data.ChildNodes[2];
+
+
+
+
+                        var IMGText = new Label
+                        {
+                            Text = "    " + Txt.InnerText,
+                            HorizontalOptions = LayoutOptions.Start ,
+                            VerticalOptions = LayoutOptions.End,
+                            FontAttributes = FontAttributes.Italic,
+                            HorizontalTextAlignment = TextAlignment.Start,
+                            VerticalTextAlignment = TextAlignment.Start,
+                            FontSize = 9,
+                            TextColor = Color.Gray,
+                            Margin = 0
                         };
+
+
 
                         var uuid = Node != null ? Node.Attributes["uuid"].Value : "eb65d51b-054d-5ea3-89c5-ec8e9768514c";
                         Console.WriteLine(uuid);
-                        var width = "200"; //Node != null ? Node.Attributes["width"].Value : "50";
-                        var length = "300"; //Node != null ? Node.Attributes["length"].Value : "50";
+                        var width = W != null ? W.InnerText : "50";
+                        var length = H != null ? H.InnerText : "50";
                         var IS = "https://imengine.public.nwt.infomaker.io/image.php?uuid=" + uuid + "&function=hardcrop&type=preview&source=false&q=75&width="+width+"&height="+length;
 
                         
 
-                        if(Topimg == true)
+                        if (Topimg == true)
                         {
                             ArticleImage.Source = IS;
+                            ArticleGrid.Children.Add(IMGText, 0, 6, 1, 2);
                             Topimg = false;
                         }
                         else
                         {
+
+                            var Image = new Image
+                            {
+                                WidthRequest = 200,
+                                HeightRequest = 300,
+                                Aspect = Aspect.AspectFill,
+                                Margin = 5,
+                            };
+
+                            ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                            ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                             Image.Source = IS;
-                            ArticleGrid.Children.Add(Image, 0, 5, Row, Row + 1);
+                            ArticleGrid.Children.Add(Image, 0, 6, Row, Row + 1);
+                            ArticleGrid.Children.Add(IMGText, 0, 6, Row+1, Row + 2);
+                            Row++;
                             Row++;
                         }                        
                     }
