@@ -51,7 +51,6 @@ namespace NWT
                 ID = RSS.ID;
                 Plus = Convert.ToBoolean(RSS.Plus);
                 
-
                 int IMGXC = 200;
                 int IMGYC = 300;
 
@@ -150,7 +149,7 @@ namespace NWT
                     };
                     ArticleMargin = new BoxView
                     {
-                        Color = Color.Gray,
+                        Color = Color.LightGray,
                         WidthRequest = IMGXC,
                         HeightRequest = 0,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -247,7 +246,7 @@ namespace NWT
 
                     ArticleMargin = new BoxView
                     {
-                        Color = Color.Gray,
+                        Color = Color.LightGray,
                         WidthRequest = IMGXC,
                         HeightRequest = 0,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -448,7 +447,8 @@ namespace NWT
 
                         int temp = 0;
                         temp = NewsGrid.Children.IndexOf(Box.Frame);
-                        NewsGrid.Children[temp - 1].HeightRequest = 25;
+                        NewsGrid.Children[temp - 1].HeightRequest = 10;
+                        NewsGrid.Children[temp - 1].WidthRequest = 1000;
 
                         if (Box.Plus)
                         {
@@ -458,9 +458,11 @@ namespace NWT
                         
                         NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
 
-                        /*temp = 0;
+                        temp = 0;
                         temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
-                        NewsGrid.Children[temp].HeightRequest = 25;*/
+                        NewsGrid.Children[temp].HeightRequest = 1;
+                        NewsGrid.Children[temp].WidthRequest = 380;
+                        Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
                     }
                     else
                     {
@@ -476,6 +478,12 @@ namespace NWT
                         }
 
                         NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
+
+                        int temp = 0;
+                        temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
+                        NewsGrid.Children[temp].HeightRequest = 1;
+                        NewsGrid.Children[temp].WidthRequest = 380;
+                        Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
                     }
 
                     
