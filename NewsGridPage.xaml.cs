@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Xml;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +16,7 @@ namespace NWT
     {
         public int Startnr = 1;
         public int Stopnr = 1;
-        public static int DBLN = 20;
+        public static int DBLN = 10;
         public static int NTN = DBLN;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
@@ -59,11 +59,10 @@ namespace NWT
                     Full = true;
                 }
 
+                
 
                 if (Full) { 
-
                     
-
                     Label = new Label
                     {
                         Text = RSS.Title,
@@ -79,6 +78,7 @@ namespace NWT
                     };
 
                     Label.GestureRecognizers.Add(TGR);
+                  
                     if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
                     Image = new Image
                     {
@@ -163,11 +163,11 @@ namespace NWT
                     Label = new Label
                     {
                         Text = RSS.Title,
-                        HorizontalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Start,
                         FontSize = 15,
                         FontAttributes = FontAttributes.Bold,
-                        WidthRequest = IMGXC/1.5,
+                        WidthRequest = IMGXC/2,
                         HeightRequest = ((RSS.Title.Length / 15)) * 50,
                         TextColor = Color.Black,
                         ClassId = RSS.ID.ToString(),
@@ -180,11 +180,11 @@ namespace NWT
                     {
 
                         Source = RSS.ImgSource,
-                        WidthRequest = IMGXC/2.5,
-                        HeightRequest = ((RSS.Title.Length / 15)) * 50,
+                        WidthRequest = IMGXC/2,
+                        HeightRequest = IMGYC/2,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        Aspect = Aspect.AspectFill,
+                        Aspect = Aspect.AspectFit,
                         Margin = 25,
                         ClassId = RSS.ID.ToString()
 

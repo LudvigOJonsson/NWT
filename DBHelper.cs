@@ -98,6 +98,10 @@ namespace NWT
         public string Tag { get; set; }
         public string Content { get; set; }
         public string ImgSource { get; set; }
+        public string Ordning { get; set; }
+        public string Text { get; set; }
+        public string Images { get; set; }
+        public string Imagetext { get; set; }
     }
 
     public class Task

@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Diagnostics;
-using System.Xml;
+using Newtonsoft.Json;
 
 namespace NWT
 {
@@ -79,30 +78,32 @@ namespace NWT
                    
             ArticleImage.Source = RSS.ImgSource;
 
-            XmlDocument xmltest = new XmlDocument();
-            xmltest.LoadXml(RSS.Content);
-            XmlDocument xmltemp = new XmlDocument();
-            xmltemp.LoadXml(xmltest.DocumentElement.InnerXml);
-            XmlNodeList fulllist = xmltemp.DocumentElement.ChildNodes;
+
+            var Order = JsonConvert.DeserializeObject<List<int>>(RSS.Ordning);
+            var Text = JsonConvert.DeserializeObject<List<string>>(RSS.Text);
+            var Images = JsonConvert.DeserializeObject<List<string>>(RSS.Images);
+            var ImageText = JsonConvert.DeserializeObject<List<string>>(RSS.Imagetext);
+
+            int Count = 0;
+            int TextCount = 0;
+            int ImageCount = 0;
+
+
+            
                                
-            foreach (XmlNode Node in fulllist)
+            foreach (int Type in Order)
             {
 
                 /*
                 Device.BeginInvokeOnMainThread(async () => {
                     await App.Mainpage.DisplayAlert("Test", Node.OuterXml, "Exit");
                 });*/
-                if (Node.OuterXml.Contains("element"))
-                {
-                    if (Node.OuterXml.Contains("paragraph"))
-                    {
+                if (Type == 0)
+                {                   
                         ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-
-
                         var Label = new Label
                         {
-                            Text = "    " + Node.InnerText,
+                            Text = "    " + Text[TextCount],
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 14,
@@ -111,31 +112,14 @@ namespace NWT
                         };
                         ArticleGrid.Children.Add(Label, 0, 6, Row, Row + 1);
                         Row++;
-                    }
+                        Count++;
+                        TextCount++;
                 }
-                else if (Node.OuterXml.Contains("links"))
+                else if (Type == 1)
                 {
-
-                    
-                   
-                    
-
-
-                    if (Node.OuterXml.Contains("x-im/image"))
-                    {
-
-                        var Links = Node.ChildNodes[0].ChildNodes[0];
-                        var Data = Links.ChildNodes[0];
-                        var W = Data.ChildNodes[0];
-                        var H = Data.ChildNodes[1];
-                        var Txt = Data.ChildNodes[2];
-
-
-
-
                         var IMGText = new Label
                         {
-                            Text = "    " + Txt.InnerText,
+                            Text = "    " + ImageText[ImageCount],
                             HorizontalOptions = LayoutOptions.Start ,
                             VerticalOptions = LayoutOptions.End,
                             FontAttributes = FontAttributes.Italic,
@@ -145,20 +129,10 @@ namespace NWT
                             TextColor = Color.Gray,
                             Margin = 0
                         };
-
-
-
-                        var uuid = Node != null ? Node.Attributes["uuid"].Value : "eb65d51b-054d-5ea3-89c5-ec8e9768514c";
-                        Console.WriteLine(uuid);
-                        var width = W != null ? W.InnerText : "50";
-                        var length = H != null ? H.InnerText : "50";
-                        var IS = "https://imengine.public.nwt.infomaker.io/image.php?uuid=" + uuid + "&function=hardcrop&type=preview&source=false&q=75&width="+width+"&height="+length;
-
                         
-
                         if (Topimg == true)
                         {
-                            ArticleImage.Source = IS;
+                            ArticleImage.Source = Images[ImageCount];
                             ArticleGrid.Children.Add(IMGText, 0, 6, 1, 2);
                             Topimg = false;
                         }
@@ -175,13 +149,14 @@ namespace NWT
 
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                            Image.Source = IS;
+                            Image.Source = Images[ImageCount];
                             ArticleGrid.Children.Add(Image, 0, 6, Row, Row + 1);
                             ArticleGrid.Children.Add(IMGText, 0, 6, Row+1, Row + 2);
                             Row++;
                             Row++;
-                        }                        
-                    }
+                        }
+                        Count++;
+                        ImageCount++;
                 }
             }
             if (App.Online)
