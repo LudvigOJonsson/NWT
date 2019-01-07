@@ -31,7 +31,7 @@ namespace NWT
 
             if (App.LoggedinUser != null)
             {
-                /*
+                
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
@@ -46,7 +46,7 @@ namespace NWT
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Read = true;
-                }*/
+                }
 
             }
             else
@@ -159,14 +159,20 @@ namespace NWT
                         ImageCount++;
                 }
             }
+            ArticleGrid.Children.Add(TimerButton, 0, 6, Row+1, Row + 2);
+            ArticleGrid.Children.Add(TimerIcon, 2, Row+1);
+            ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 3, Row + 4);
+
             if (App.Online)
             {
-                //LoadComments();
+                LoadComments();
             }
 
         }
 
-        /*
+        
         async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
@@ -251,7 +257,7 @@ namespace NWT
                 Timer.Dispose();
                 TimerDone(Rubrik);
                 TimerDone(Ingress);
-                TimerDone(Brödtext);
+                //TimerDone(Brödtext);
 
             }
             else
@@ -382,7 +388,7 @@ namespace NWT
 
             Elispses.Clicked += async (o, e) => {
                 var action = await DisplayActionSheet("Alternativ", "Avbryt", null, "Markera med Token", "Dela", "Rapportera");
-                Debug.WriteLine("Action: " + action);
+                //Debug.WriteLine("Action: " + action);
 
                 switch (action)
                 {
@@ -398,7 +404,7 @@ namespace NWT
                 }
             };
 
-            
+            /*
             bool UUV = false;
             UpvoteTable Upvote = null;
             var UpvoteList = App.database.GetUpvote(s.CommentNR, ArticleNR, s.UserSubmitted);
@@ -552,21 +558,21 @@ namespace NWT
                 await VoteArrowDown.RotateTo(15, 120, Easing.BounceOut);
                 await VoteArrowDown.RotateTo(0, 80, Easing.BounceOut);
             }
-            
+            */
 
             
             CommentGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             CommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);          
+            //CommentGrid.Children.Add(VoteArrowDown, 0, 1, s.CommentNR, s.CommentNR + 1);
+            //CommentGrid.Children.Add(VoteArrowUp, 0, 1, s.CommentNR, s.CommentNR + 1);
+            //CommentGrid.Children.Add(VoteNumber, 0, 1, s.CommentNR, s.CommentNR + 1);          
             CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Elispses, 5, 6, s.CommentNR, s.CommentNR + 1);
 
         }
-        */
+        
         protected override void OnDisappearing()
         {
             Console.WriteLine("Memory Cleanup");

@@ -18,6 +18,11 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -52,29 +57,29 @@
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
 
-            <!--<Button x:Name="TimerButton" Text="Timer" 
-                    Clicked="TimerButtonClicked" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
+            <Button x:Name="TimerButton" Text="Timer" 
+                    Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
-                   Grid.Row="6" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
+                    Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
 
-            <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
+            <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"   Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" Clicked="SubmitComment" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
-            <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="6">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>-->
-            
+            <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
             </Grid>
+
+        </Grid>
     </ScrollView>
 </ContentPage>
