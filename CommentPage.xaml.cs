@@ -41,8 +41,8 @@ namespace NWT
         {
             
             var User = App.database.GetUser(s.User).First();
-            
 
+            
             
             /*var CommentBox = new BoxView
             {
@@ -321,9 +321,12 @@ namespace NWT
 
         void SubmitComment(int ReplyNR)
         {
-
+            Console.WriteLine("PING1");
             if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
             {
+
+                Console.WriteLine("PING2");
+
                 var CNR = App.database.CommentCount(ArticleNR);
                 var SC = new CommentTable();
 
@@ -334,13 +337,17 @@ namespace NWT
                 SC.Replynr = ReplyNR;
                 if (ReplyNR > -1)
                 {
+                    Console.WriteLine("PING3.1.1");
                     var Reply = App.database.GetComment(ReplyNR).First();
+                    Console.WriteLine("PING3.1.2");
                     var User = App.database.GetUser(Reply.User).First();
+                    Console.WriteLine("PING3.1.3");
                     SC.Replylvl = Reply.Replylvl + 1;
                     SC.Comment = "@" + User.Name + Reply.CommentNR + ", " + Comment.Text; //
                 }
                 else
                 {
+                    Console.WriteLine("PING3.2");
                     SC.Replylvl = 0;
                     SC.Comment = Comment.Text;
                 }
@@ -348,6 +355,7 @@ namespace NWT
                 SC.Point = 0;
                 Comment.Text = "";
                 App.database.InsertComment(SC);
+                Console.WriteLine("PING4");
                 LoadComments(CLVL, Chain.Last().ID);
             }
             if (App.LoggedinUser != null)
@@ -360,13 +368,16 @@ namespace NWT
         {
             var Query = App.database.GetComments(ArticleNR,LVL,ReplyID);
             CommentGrid.Children.Clear();
+            Console.WriteLine("PING5");
             foreach (var a in Chain)
             {
+                Console.WriteLine("PING6.1");
                 AddComment(a);
                 
             }           
             foreach (var s in Query)
             {
+                Console.WriteLine("PING6.2");
                 AddComment(s);   
             }                     
         }

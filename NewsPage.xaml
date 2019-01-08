@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button BackgroundColor="#FFFFFF" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="8" Margin="3"/>
+            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="10" Margin="3"/>
 
 
             <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
@@ -56,7 +56,7 @@
             <!--<BoxView Color="White" WidthRequest="300" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0"/>-->
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
-
+            <Button x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="6"  Margin="3"/>
             <Button x:Name="TimerButton" Text="Timer" 
                     Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>

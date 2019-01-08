@@ -89,8 +89,8 @@ namespace NWT
             int ImageCount = 0;
 
 
-            
-                               
+            //ArticleGrid.Children.Add(BG, 0, 6, 0, Row+Order.Count);
+
             foreach (int Type in Order)
             {
 
@@ -159,12 +159,15 @@ namespace NWT
                         ImageCount++;
                 }
             }
+
+            
+            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
             ArticleGrid.Children.Add(TimerButton, 0, 6, Row+1, Row + 2);
             ArticleGrid.Children.Add(TimerIcon, 2, Row+1);
             ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 3, Row + 4);
-
+            
             if (App.Online)
             {
                 LoadComments();

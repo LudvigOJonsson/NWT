@@ -42,5 +42,10 @@ namespace NWT
 
         }
 
+        async void PlayPicross(object sender, EventArgs e)
+        {            
+                await DisplayAlert("", "Coming Soon!", "OK");          
+        }
+
     }
 }
