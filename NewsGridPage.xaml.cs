@@ -66,7 +66,7 @@ namespace NWT
                     Label = new Label
                     {
                         Text = RSS.Title,
-                        HorizontalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Start,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
@@ -164,11 +164,11 @@ namespace NWT
                     {
                         Text = RSS.Title,
                         HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 15,
                         FontAttributes = FontAttributes.Bold,
                         WidthRequest = IMGXC/2,
-                        HeightRequest = ((RSS.Title.Length / 15)) * 50,
+                        HeightRequest = ((RSS.Title.Length / 15)) * 10,
                         TextColor = Color.Black,
                         ClassId = RSS.ID.ToString(),
                         Margin = 12,
@@ -220,9 +220,9 @@ namespace NWT
                     PlusImage = new Image
                     {
                         Source = "plus.png",
-                        WidthRequest = 30,
-                        HeightRequest = 30,
-                        Margin = 25,
+                        WidthRequest = 15,
+                        HeightRequest = 15,
+                        Margin = 20,
                         Aspect = Aspect.AspectFill,
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
@@ -234,9 +234,9 @@ namespace NWT
                     {
 
                         Source = "cornerTriangle.png",
-                        WidthRequest = 60,
-                        HeightRequest = 60,
-                        Margin = 25,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                        Margin = 20,
                         Aspect = Aspect.AspectFill,                        
                         ClassId = RSS.ID.ToString(),
                         HorizontalOptions = LayoutOptions.End,
@@ -430,16 +430,18 @@ namespace NWT
                     var Box = new Article(RSS);
                    // Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                    NewsGrid.RowSpacing = 0;
+                    
 
                     //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
 
                     if (Box.Full)
                     {
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        NewsGrid.RowSpacing = 0;
+
                         NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
@@ -463,9 +465,19 @@ namespace NWT
                         NewsGrid.Children[temp].HeightRequest = 1;
                         NewsGrid.Children[temp].WidthRequest = 380;
                         Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
+
+                        NewsGrid.RowDefinitions[Rownr].Height = 30;
+
+                        NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
                     }
                     else
                     {
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 120 });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                        NewsGrid.RowSpacing = 0;
+
                         NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
@@ -473,8 +485,8 @@ namespace NWT
 
                         if (Box.Plus)
                         {
-                            NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr + 2, Rownr + 3); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr + 2, Rownr + 3); //PlusImage
+                            NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr, Rownr + 3); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr, Rownr + 3); //PlusImage
                         }
 
                         NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
@@ -483,16 +495,9 @@ namespace NWT
                         temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
                         NewsGrid.Children[temp].HeightRequest = 1;
                         NewsGrid.Children[temp].WidthRequest = 380;
+
                         Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
                     }
-
-                    
-
-                    
-                    
-                    NewsGrid.RowDefinitions[Rownr].Height = 30;
-
-                    NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
                     
                     Rownr++;
                     Rownr++;

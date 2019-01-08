@@ -108,7 +108,7 @@ namespace NWT
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 14,
                             TextColor = Color.Black,                        
-                            Margin = 0
+                            Margin = 10
                         };
                         ArticleGrid.Children.Add(Label, 0, 6, Row, Row + 1);
                         Row++;
