@@ -44,6 +44,8 @@ namespace NWT
         public int Plustokens { get; set; }
         public string AchievementString { get; set; }
         public string MissionString { get; set; }
+        public int LoginStreak { get; set; }
+        public int DailyLogin { get; set; }
     }
 
     
@@ -669,108 +671,7 @@ namespace NWT
                 return builder.ToString();
             }
         }
-        /*
-        public void ParseRssFile()
-        {
-            //
-            string[] RssSource = { "SLA" };
-            string[] RssSite = { "https://www.sla.se/feed/" };
-            List<KeyValuePair<string, string>> RSSList = new List<KeyValuePair<string, string>>();
-
-
-            for (int i = 0; i < RssSite.Length; i++)
-            {
-                RSSList.Add(new KeyValuePair<string, string>(RssSource[i], RssSite[i]));
-            }
-
-            foreach (KeyValuePair<string, string> T in RSSList)
-            {
-                var Compare = DB.Query<RSSTable>("SELECT * FROM RSS");
-                XmlDocument rssXmlDoc = new XmlDocument();
-
-                // Load the RSS file from the RSS URL
-                rssXmlDoc.Load(T.Value);
-
-                // Parse the Items in the RSS file
-                XmlNodeList rssNodes = rssXmlDoc.SelectNodes("rss/channel/item");
-
-                StringBuilder rssContent = new StringBuilder();
-
-                XmlNamespaceManager nmspc = new XmlNamespaceManager(rssXmlDoc.NameTable);
-                nmspc.AddNamespace("media", "http://search.yahoo.com/mrss/");
-
-                // Iterate through the items in the RSS file
-
-
-                foreach (XmlNode rssNode in rssNodes)
-                {
-                    var RSS = new RSSTable();
-
-                    RSS.Source = T.Key;
-
-
-
-
-                    XmlNode rssSubNode = rssNode.SelectSingleNode("title");
-                    RSS.Title = rssSubNode != null ? rssSubNode.InnerText : "";
-
-                    rssSubNode = rssNode.SelectSingleNode("link");
-                    RSS.Link = rssSubNode != null ? rssSubNode.InnerText : "";
-
-                    rssSubNode = rssNode.SelectSingleNode("category");
-                    RSS.Category = rssSubNode != null ? rssSubNode.InnerText : "";
-
-                    rssSubNode = rssNode.SelectSingleNode("source");
-                    RSS.Source = rssSubNode != null ? rssSubNode.InnerText : "";
-
-                    rssSubNode = rssNode.SelectSingleNode("media:content", nmspc);
-                    RSS.ImgSource = rssSubNode != null ? rssSubNode.Attributes["url"].Value : "";
-
-                    rssSubNode = rssNode.SelectSingleNode("pubDate");
-                    var date = rssSubNode != null ? rssSubNode.InnerText : "";
-
-                    while (true)
-                    {
-                        if (Char.IsDigit(date[0]))
-                            break;
-                        else
-                        {
-                            date = date.Remove(0, 1);
-                        }
-
-                    }
-                    Random rnd = new Random();
-                    int test = rnd.Next(21);
-
-                    if (test > 13)
-                    {
-
-                        RSS.Plus = 1;
-                    }
-                    else
-                    {
-                        RSS.Plus = 0;
-                    }
-
-
-                    RSS.PubDate = DateTime.Parse(date);
-                    Console.WriteLine(RSS.PubDate);
-                    Boolean Noinsert = false;
-
-                    foreach (RSSTable rss in Compare)
-                    {
-                        if (RSS.Title == rss.Title)
-                            Noinsert = true;
-                    }
-
-                    if (!Noinsert)
-                        DB.Insert(RSS);
-                }
-
-            }
-
-        }
-        */
+        
         public static string TCP(string JSON)
         {
             string Message = "";

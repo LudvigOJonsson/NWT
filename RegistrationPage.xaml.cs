@@ -29,9 +29,11 @@ namespace NWT
                     User.Email = UserEmail.Text;
                     User.Name = UserName.Text;
                     User.City = UserCity.Text;
-                    User.Plustokens = 0;
+                    User.Plustokens = 20;
                     User.AchievementString = "";
                     User.MissionString = "";
+                    User.LoginStreak = 0;
+                    User.DailyLogin = 0;
 
                     int j;
                     if (Int32.TryParse(UserAge.Text, out j))

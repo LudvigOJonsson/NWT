@@ -20,7 +20,10 @@ namespace NWT
 
             //Getting update
             updateMissions();
-
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
+            });
         }
 
         public void updateMissions()

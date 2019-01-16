@@ -19,7 +19,7 @@ namespace NWT
 
         public void ChangePassword(object sender, EventArgs e)
         {
-            if(App.database.TokenCheck())
+            if(App.database.TokenCheck() && NPass.Text != null && RPass.Text != null)
             {
                 App.database.ChangePassword(NPass.Text,RPass.Text);
             }

@@ -61,8 +61,13 @@ namespace NWT
 
                 
 
-                if (Full) { 
+                if (Full) {
+
+                    //RSS.Title = RSS.Title.Replace("\"", "'");
                     
+
+
+
                     Label = new Label
                     {
                         Text = RSS.Title,
