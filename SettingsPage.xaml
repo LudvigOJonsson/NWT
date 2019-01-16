@@ -17,14 +17,14 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -32,26 +32,21 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Label Text="FULLNAME" TextColor="DimGray"  Grid.Row="0" VerticalOptions="Start" FontSize="8"/>
+                <Label Text="NAMN" TextColor="DimGray"  Grid.Row="0" VerticalOptions="Start" FontSize="8"/>
                 <Entry x:Name="Fullname" Placeholder="John Smith" Grid.Row="0" TextColor="Black" VerticalOptions="End"  />
 
                 <Label Text="EMAIL" TextColor="DimGray"  Grid.Row="1" VerticalOptions="Start" FontSize="8" />
                 <Entry x:Name="UserEmail" Placeholder="youremail@gmail.com" TextColor="Black" Grid.Row="1" VerticalOptions="End"  />
 
-                <Label Text="CITY" TextColor="DimGray"  Grid.Row="2" VerticalOptions="Start" FontSize="8"  />
+                <Label Text="STAD" TextColor="DimGray"  Grid.Row="2" VerticalOptions="Start" FontSize="8"  />
                 <Entry x:Name="UserCity" Placeholder="Denver Colorado" TextColor="Black" Grid.Row="2" VerticalOptions="End"  />
 
-                <Label Text="AGE" TextColor="DimGray"  Grid.Row="3" VerticalOptions="Start" FontSize="8"  />
+                <Label Text="ÅLDER" TextColor="DimGray"  Grid.Row="3" VerticalOptions="Start" FontSize="8"  />
                 <Entry x:Name="UserAge" Placeholder="18" TextColor="Black" Grid.Row="3" VerticalOptions="End"  />
 
-                <Button x:Name="UpdateInfoButton" Text="Update Info" Clicked="UpdateInfo" Grid.Row="5" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+                <Button x:Name="UpdateInfoButton" Text="Uppdatera information" Clicked="UpdateInfo" Grid.Row="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
 
-                <Label Text="New Password" TextColor="DimGray"  Grid.Row="7" VerticalOptions="Start" FontSize="8"  />
-                <Entry x:Name="NPass" Placeholder="Denver Colorado" TextColor="Black" Grid.Row="7" VerticalOptions="End"  />
-
-                <Label Text="Repeat Password" TextColor="DimGray"  Grid.Row="8" VerticalOptions="Start" FontSize="8"  />
-                <Entry x:Name="RPass" Placeholder="18" TextColor="Black" Grid.Row="8" VerticalOptions="Center" />
-                <Button x:Name="ChangePasswordButton" Text="Change Password" Clicked="ChangePassword" Grid.Row="10" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+                <Button x:Name="ChangePasswordButton" Text="Byt Lösenord" Clicked="ChangePassword" Grid.Row="8" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
 
 
 

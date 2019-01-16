@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.AvatarPage"
+             BackgroundColor="#FFFFFF"
+             Title="Figur">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentView>
+        <Grid x:Name="ArticleGrid2" RowSpacing="0" ColumnSpacing="0" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+            <Image x:Name="ProfilePictureHat" Source="" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+            <Image x:Name="ProfilePictureClothes" Source="" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+            <Label Text="Utstyrsel" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" TextColor="Black"/>
+
+            <Button Clicked="ChangeClothes" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Clicked="ChangeClothes2" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+
+        </Grid>
+    </ContentView>
+</ContentPage>

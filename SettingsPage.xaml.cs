@@ -21,12 +21,20 @@ namespace NWT
             UserAge.Text = App.LoggedinUser.Age.ToString();
         }
 
-        public void ChangePassword(object sender, EventArgs e)
+        /*public void ChangePassword(object sender, EventArgs e)
         {
-            if(App.database.TokenCheck())
+            if (App.database.TokenCheck() && NPass.Text != null && RPass.Text != null)
             {
                 App.database.ChangePassword(NPass.Text,RPass.Text);
             }
+        }*/
+        async void ChangePassword(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
+            await Navigation.PushAsync(new PasswordPage());
         }
 
         public async void UpdateInfo(object sender, EventArgs e)

@@ -43,7 +43,11 @@ namespace NWT
                     });               
             }
         }
-        
+        async void Avatar(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            await Navigation.PushAsync(new AvatarPage());
+        }
         async void Settings(object sender, EventArgs e)
         {
             Button button = (Button)sender;
