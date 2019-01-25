@@ -204,6 +204,16 @@ namespace NWT
         public string CorrectAnswer { get; set; }
     }
 
+    public class FavoritesTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int Article { get; set; }
+        public int User { get; set; }
+        public string Header { get; set; }
+        public string Image { get; set; }
+    }
+
     public class DBHelper 
     {
 
@@ -286,7 +296,21 @@ namespace NWT
             Console.WriteLine(Result.JSON);
             return JsonConvert.DeserializeObject<List<UpvoteTable>>(Result.JSON);
         }
-       
+
+        public List<RSSTable> GetServerRSS(int ID_)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + ID_)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON);
+        }
+
+        public List<FavoritesTable> GetFavorites(int ID_)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Query", "SELECT * FROM Favorites WHERE User = " + ID_)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<FavoritesTable>>(Result.JSON);
+        }
+
         public int LoadRSS(int start, int stop)
         {
             int Nr = 0;
@@ -300,7 +324,7 @@ namespace NWT
                     };
                     ComLock = true;
 
-                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + x.ToString())));
+                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS LIMIT 1 OFFSET (SELECT COUNT(*) FROM RSS) - " + (x+1).ToString())));
                     //Console.WriteLine(JSONResult.Length);
                     ComLock = false;
 
@@ -409,25 +433,25 @@ namespace NWT
             TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS))));
         }
 
-        public void InsertUpvote(UpvoteTable RSS)
+        public void InsertFavorite(FavoritesTable RSS)
         {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Insert", JsonConvert.SerializeObject(RSS))));
+            TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Insert", JsonConvert.SerializeObject(RSS))));
         }
 
-        public void DeleteUpvote(UpvoteTable RSS)
+        public void DeleteFavorite(FavoritesTable RSS)
         {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Upvote", "Delete", JsonConvert.SerializeObject(RSS))));
+            TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Delete", JsonConvert.SerializeObject(RSS))));
         }
 
-
-
-
-
+        public List<RAL> GetHistory(int ID)
+        {
+            Console.WriteLine(ID);
+            return DB.Query<RAL>("SELECT * FROM ReadArticles LIMIT " + ID.ToString() + " OFFSET (SELECT COUNT(*) FROM ReadArticles) - " + ID.ToString());
+        }
 
         public List<RSSTable> GetRSS(int ID)
-        {
-            
-            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());     
+        {          
+            return DB.Query<RSSTable>("SELECT * FROM RSS LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM RSS) - " + ID.ToString());     
         }
 
         public List<RSSTable> GetRss(int ID)
@@ -436,9 +460,7 @@ namespace NWT
         }
 
         public List<UserRSSTable> GetUserRSS(int ID)
-        {
-            
-            
+        {                     
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
         }
 
@@ -637,7 +659,6 @@ namespace NWT
         {
             return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = "+ ID.ToString()+ " AND User = "+ App.LoggedinUser.ID);
         }
-
 
         public void InsertQuestion(QuizTable Quiz)
         {

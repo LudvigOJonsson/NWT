@@ -28,6 +28,7 @@ namespace NWT
         public bool Mariestad = true;
         public bool HJO = true;
         public bool SLA = true;
+        public bool First = true;
 
         public class Article
         {
@@ -45,7 +46,7 @@ namespace NWT
 
             public Article(RSSTable RSS)
             {
-                //System.Diagnostics.Debug.WriteLine("IM IN!");
+                Console.WriteLine(RSS.ID +" som har NS: " +RSS.NewsScore );
 
                 Source = RSS.Source;
                 ID = RSS.ID;
@@ -54,12 +55,17 @@ namespace NWT
                 int IMGXC = 200;
                 int IMGYC = 300;
 
-                if ((ID % 4) == 0)
+                if (RSS.NewsScore > 3 && RSS.ImgSource != "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg")
                 {
+                    Console.WriteLine("Full Artikel");
                     Full = true;
                 }
-
+                else
+                {
+                    Console.WriteLine("Halv Artikel");
+                }
                 
+
 
                 if (Full) {
 
@@ -259,6 +265,7 @@ namespace NWT
                         ClassId = RSS.ID.ToString()
                     };
                 }
+                Console.WriteLine("Artikel Klar");
             }
 
             public void Visibility(bool State)
@@ -283,24 +290,35 @@ namespace NWT
 
 
 
+            TGR = new TapGestureRecognizer();
+            TGR.NumberOfTapsRequired = 1;
 
+            LoadNewsButton.Clicked += (s, e) => {
+                if (Startnr < (Stopnr + NTN))
+                {
+                    LoadLocalDB();
+                }
+                Stopnr += NTN;
+                AddNews(0);
+            };
 
+            LoadNewsButton.IsVisible = false;
 
             if (Argc == 0)
-            {
-                
-                TGR = new TapGestureRecognizer();
+            {     
                 Console.WriteLine("NewsGrid");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
                     LoadNews(s, e);
                     IsEnabled = true;
                 };
-
+                LoadLocalDB();
+                Stopnr += NTN;
+                AddNews(0);
             }
             else if (Argc == 1)
             {
-                TGR = new TapGestureRecognizer();
+                
                 Console.WriteLine("ReferatSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -311,16 +329,36 @@ namespace NWT
                    
                     Navigation.PopAsync();
                 };
+                AddNews(0);
             }
-            TGR.NumberOfTapsRequired = 1;
+            else if (Argc == 2)
+            {
 
-            LoadNewsButton.Clicked += (s, e) => {
-                AddNews();
-            };
+                Console.WriteLine("HistorikSida");
+                TGR.Tapped += (s, e) => {
+                    IsEnabled = false;
+                    LoadNews(s, e);
+                    IsEnabled = true;
+                };
+                LoadHistory();
+            }
+            else if (Argc == 3)
+            {
 
-            LoadNewsButton.IsVisible = false;
+                Console.WriteLine("FavoritSida");
+                TGR.Tapped += (s, e) => {
+                    IsEnabled = false;
+                    LoadNews(s, e);
+                    IsEnabled = true;
+                };
+                LoadFavorites();
+            }
 
-            AddNews();
+
+
+
+
+
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
 
@@ -374,6 +412,24 @@ namespace NWT
 
         }
 
+        public void LoadHistory()
+        {
+            DBLN = 2;
+            AddNews(1);
+        }
+
+        public void LoadFavorites()
+        {
+            AddNews(2);
+        }
+
+        public void LoadLocalDB()
+        {
+            App.database.LoadRSS(Startnr, (Startnr + DBLN));
+            Startnr += DBLN;
+            
+        }
+
         public void PrintNews()
         {
 
@@ -406,17 +462,43 @@ namespace NWT
 
         }
 
-        public void AddNews()
+        public void AddNews(int argc)
         {
-
-            if (Startnr < (Stopnr + NTN))
+            List<RSSTable> Rss = new List<RSSTable>();
+            if(argc == 0)
             {
-                FillLocalDB();
+                Rss = App.database.GetRSS(Stopnr);
             }
-            Stopnr += NTN;
-            var Rss = App.database.GetRSS(Stopnr);
-            //Console.WriteLine(Rss.Count);
-           // Console.WriteLine("Inladdning Klar");
+            else if(argc == 1)
+            {
+                var RAL = App.database.GetHistory(DBLN);
+                Console.WriteLine("History Gotten: " + RAL.Count());
+                foreach(var RA in RAL)
+                {
+                    Rss.Add(App.database.GetServerRSS(RA.Article).First());
+                    Console.WriteLine("Artikel Inlagd");
+                }
+
+            }
+            else if (argc == 2)
+            {
+                var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
+                Console.WriteLine("Favorites Gotten.");
+                Console.WriteLine("Favorites Gotten: " + FAL.Count());
+                foreach (var FA in FAL)
+                {
+                    Rss.Add(App.database.GetServerRSS(FA.Article).First());
+                    Console.WriteLine("Artikel Inlagd");
+                }
+            }
+            else
+            {
+                Rss = App.database.GetRSS(Stopnr);
+            }
+
+            
+            Console.WriteLine(Rss.Count);
+            Console.WriteLine("Inladdning Klar");
             foreach (RSSTable RSS in Rss)
             {
                 bool Exists = false;
@@ -428,12 +510,12 @@ namespace NWT
                         Exists = true;
                     }
                 }
-                //Console.WriteLine(ArticleList.Count);
-                //Console.WriteLine("Jämnförelse ned ArtikelLista klar");
+                Console.WriteLine(ArticleList.Count);
+                Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
                     var Box = new Article(RSS);
-                   // Console.WriteLine("ArtikelObjekt Skapat");
+                    Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
                     
 
@@ -441,6 +523,8 @@ namespace NWT
 
                     if (Box.Full)
                     {
+                        Console.WriteLine("Indelning av Fullt Artikel Objekt");
+
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -452,10 +536,19 @@ namespace NWT
                         NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
                         NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
 
+                        Console.WriteLine("Artikel Objekt Lagd i Grid");
                         int temp = 0;
-                        temp = NewsGrid.Children.IndexOf(Box.Frame);
-                        NewsGrid.Children[temp - 1].HeightRequest = 10;
-                        NewsGrid.Children[temp - 1].WidthRequest = 1000;
+                        if (!First)
+                        {
+                            
+                            temp = NewsGrid.Children.IndexOf(Box.Frame);
+                            NewsGrid.Children[temp - 1].HeightRequest = 10;
+                            NewsGrid.Children[temp - 1].WidthRequest = 1000;
+                        }
+                        else
+                        {
+                            First = false;
+                        }
 
                         if (Box.Plus)
                         {
@@ -465,11 +558,15 @@ namespace NWT
                         
                         NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
 
+                        Console.WriteLine("Val om Plus Artikel Klar");
+
                         temp = 0;
                         temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
                         NewsGrid.Children[temp].HeightRequest = 1;
                         NewsGrid.Children[temp].WidthRequest = 380;
                         Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
+
+                        Console.WriteLine("Margin Inlagd");
 
                         NewsGrid.RowDefinitions[Rownr].Height = 30;
 
@@ -513,8 +610,8 @@ namespace NWT
 
                 }
             }
-            NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
+            //NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            //NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
             //Console.WriteLine("Nyheter inlagda i Grid");
             /*
             foreach (Article A in ArticleList)
@@ -532,11 +629,7 @@ namespace NWT
 
         }
 
-        public void FillLocalDB()
-        {
-            App.database.LoadRSS(Startnr, (Startnr + DBLN));
-            Startnr += DBLN;
-        }
+        
 
 
     }

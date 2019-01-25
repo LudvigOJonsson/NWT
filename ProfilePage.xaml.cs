@@ -38,11 +38,12 @@ namespace NWT
         {
             App.database.Logout();
             var NG = (NewsGridPage)App.Mainpage.Children[1];
+
             foreach (NewsGridPage.Article A in NG.ArticleList)
             {               
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        A.Frame.Color = Color.FromRgb(150, 150, 150);
+                        A.Box.BorderColor = Color.FromRgb(150, 150, 150);
                     });               
             }
         }
@@ -65,6 +66,7 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
+            //await Navigation.PushAsync(new NewsGridPage(3));
             await Navigation.PushAsync(new AchivementsPage());
         }
         async void Favorites(object sender, EventArgs e)
@@ -81,7 +83,10 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new HistoryPage());
+
+            await Navigation.PushAsync(new NewsGridPage(2));
+
+            //await Navigation.PushAsync(new HistoryPage());
         }
         async void Missions(object sender, EventArgs e)
         {

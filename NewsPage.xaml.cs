@@ -165,11 +165,14 @@ namespace NWT
                         ImageCount++;
                 }
             }
-
             
+
+            ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
             ArticleGrid.Children.Add(TimerButton, 0, 6, Row+1, Row + 2);
             ArticleGrid.Children.Add(TimerIcon, 2, Row+1);
+            ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(FavIcon, 5, Row + 1);
             ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 3, Row + 4);
@@ -180,9 +183,25 @@ namespace NWT
             }
 
         }
-
-        
-        async void TimerButtonClicked(object sender, System.EventArgs e)
+        async void FavButtonClicked(object sender, System.EventArgs e)
+        {
+            if (App.LoggedinUser != null)
+            {
+                var fav = new FavoritesTable();
+                fav.User = App.LoggedinUser.ID;
+                fav.Article = ArticleNR;
+                fav.Image = ArticleImage.Source.ToString();
+                fav.Header = Rubrik.Text;
+                App.database.InsertFavorite(fav);
+                await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
+            }
+            else
+            {
+                await DisplayAlert("Favorite", "Please Log in in order to Favorite Articles", "Ok");
+            }
+            
+        }
+            async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
             Button button = (Button)sender;

@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="10" Margin="3"/>
+            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="5" Margin="3"/>
 
 
             <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
@@ -62,6 +62,14 @@
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
                     Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
+
+            <Button x:Name="FavButton" Text="" 
+                    Clicked="FavButtonClicked"  Grid.Column="5" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" 
+                    HeightRequest="40" WidthRequest="40" HorizontalOptions="Start" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
+            <Image x:Name="FavIcon" HorizontalOptions="Start" VerticalOptions="Center" 
+                    Grid.Column="5" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="star.png"/>
+
+
 
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"   Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 

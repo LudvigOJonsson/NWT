@@ -13,7 +13,8 @@ namespace NWT
 	public partial class SudokuPage : ContentPage
 	{
         public static List<Tile> SudokuBoard = new List<Tile>();
-
+        public bool Fusk = false;
+        public bool Solved = false;
         public class Tile
         {
             public int x { get; set; }
@@ -22,9 +23,9 @@ namespace NWT
         }
 
 
-
         public SudokuPage ()
 		{
+            
 			InitializeComponent ();
             MakeEntry();
             App.database.UpdateStats("GameStarted");
@@ -57,7 +58,7 @@ namespace NWT
         }
         async public void SolveSudoku(object sender, EventArgs e)
         {
-            if(CalculateSudoku())
+            if((CalculateSudoku() || Fusk) && !Solved)
             {
                 await DisplayAlert("Task", "You Solved the Sudoku!", "OK");
                 if (App.LoggedinUser != null)
@@ -65,9 +66,11 @@ namespace NWT
                     App.database.MissionUpdate(App.LoggedinUser, "SudokuSolved");
                     App.database.UpdateStats("GameFinished");
                 }
+                Solved = true;
             }
             else {
-                await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes.", "OK");
+                await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes. (Unless you want to Cheat, at which you can just click solve again..)", "OK");
+                Fusk = true;
             }
         }
         public bool CalculateSudoku()
