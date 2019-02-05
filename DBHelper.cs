@@ -63,7 +63,7 @@ namespace NWT
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        public int Article { get; set; }
+        public long Article { get; set; }
         public int UserSubmitted { get; set; }
         public int CommentNR { get; set; }
         public int User { get; set; }
@@ -132,16 +132,17 @@ namespace NWT
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        public int Article { get; set; }
+        public long Article { get; set; }
         public int User { get; set; }
     }
+
 
     [Table("ReadArticles")]
     public class RAL // Read Article List
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        public int Article { get; set; }
+        public long Article { get; set; }
         public DateTime Date { get; set; }
         public int User { get; set; }
     }
@@ -154,7 +155,7 @@ namespace NWT
         public string Rubrik { get; set; }
         public string Ingress { get; set; }
         public string Brodtext { get; set; }
-        public int Referat { get; set; }
+        public long Referat { get; set; }
         public DateTime PubDate { get; set; }
         public int Author { get; set; }
     }
@@ -208,11 +209,34 @@ namespace NWT
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        public int Article { get; set; }
+        public long Article { get; set; }
         public int User { get; set; }
         public string Header { get; set; }
         public string Image { get; set; }
     }
+
+    public class HistoryTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public long Article { get; set; }
+        public int User { get; set; }
+        public string Header { get; set; }
+        public string Image { get; set; }
+        public DateTime Readat { get; set; }
+    }
+
+    [Table("NF")]
+    public class NewsfeedTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public long Article { get; set; }
+        public string Header { get; set; }
+        public string Image { get; set; }
+        public int Plus { get; set; }
+    }
+
 
     public class DBHelper 
     {
@@ -226,6 +250,9 @@ namespace NWT
             DB.CreateTable<RSSTable>();
             DB.DropTable<UserRSSTable>();
             DB.CreateTable<UserRSSTable>();
+            DB.DropTable<NewsfeedTable>();
+            DB.CreateTable<NewsfeedTable>();
+
 
             DB.CreateTable<LocalStatsTable>();
             if(DB.Query<LocalStatsTable>("Select * From LS Where ID = 0").Count == 0)
@@ -297,7 +324,7 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<UpvoteTable>>(Result.JSON);
         }
 
-        public List<RSSTable> GetServerRSS(int ID_)
+        public List<RSSTable> GetServerRSS(long ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + ID_)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
@@ -311,7 +338,15 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<FavoritesTable>>(Result.JSON);
         }
 
-        public int LoadRSS(int start, int stop)
+        public List<HistoryTable> GetHistory(int ID_)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = " + ID_)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
+        }
+
+
+        public int LoadNF(int start, int stop)
         {
             int Nr = 0;
             for (int x = start; x < stop; x++)
@@ -324,7 +359,7 @@ namespace NWT
                     };
                     ComLock = true;
 
-                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS LIMIT 1 OFFSET (SELECT COUNT(*) FROM RSS) - " + (x+1).ToString())));
+                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x+1).ToString())));
                     //Console.WriteLine(JSONResult.Length);
                     ComLock = false;
 
@@ -340,7 +375,7 @@ namespace NWT
                             break;
                         }
 
-                        var Article = JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON).First();
+                        var Article = JsonConvert.DeserializeObject<List<NewsfeedTable>>(Result.JSON).First();
                         //Console.WriteLine("JSON Deserialized");
                         DB.Insert(Article);
                         //Console.WriteLine("Article Inserted");
@@ -438,25 +473,33 @@ namespace NWT
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Insert", JsonConvert.SerializeObject(RSS))));
         }
 
+
+
         public void DeleteFavorite(FavoritesTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Delete", JsonConvert.SerializeObject(RSS))));
         }
 
+        public void InsertHistory(HistoryTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS))));
+        }
+
+        /*
         public List<RAL> GetHistory(int ID)
         {
             Console.WriteLine(ID);
             return DB.Query<RAL>("SELECT * FROM ReadArticles LIMIT " + ID.ToString() + " OFFSET (SELECT COUNT(*) FROM ReadArticles) - " + ID.ToString());
-        }
+        }*/
 
-        public List<RSSTable> GetRSS(int ID)
+        public List<NewsfeedTable> GetNF(int ID)
         {          
-            return DB.Query<RSSTable>("SELECT * FROM RSS LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM RSS) - " + ID.ToString());     
+            return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());     
         }
 
-        public List<RSSTable> GetRss(int ID)
+        public List<NewsfeedTable> GetNf(long ID)
         {
-            return DB.Query<RSSTable>("SELECT * FROM RSS WHERE ID = ?" , ID.ToString());
+            return DB.Query<NewsfeedTable>("SELECT * FROM NF WHERE Article = ?" , ID.ToString());
         }
 
         public List<UserRSSTable> GetUserRSS(int ID)
@@ -655,7 +698,7 @@ namespace NWT
             return Query.Count;
         }
 
-        public List<RAL> GetReadArticle(int ID)
+        public List<RAL> GetReadArticle(long ID)
         {
             return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = "+ ID.ToString()+ " AND User = "+ App.LoggedinUser.ID);
         }

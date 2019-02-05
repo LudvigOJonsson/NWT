@@ -66,8 +66,8 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            //await Navigation.PushAsync(new NewsGridPage(3));
-            await Navigation.PushAsync(new AchivementsPage());
+            await Navigation.PushAsync(new NewsGridPage(3));
+            //await Navigation.PushAsync(new AchivementsPage());
         }
         async void Favorites(object sender, EventArgs e)
         {

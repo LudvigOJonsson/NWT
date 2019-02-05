@@ -259,7 +259,7 @@ namespace NWT
             var id = Int32.Parse(ClassId);
             if(id != -1)
             {
-                var RSS = App.database.GetRss(id).First();
+                var RSS = App.database.GetServerRSS(id).First();
                 await Navigation.PushAsync(new NewsPage(RSS));
             }           
         }
@@ -279,7 +279,7 @@ namespace NWT
             
             if(RSS.Referat != -1)
             {
-                Link.Text = App.database.GetRss(RSS.Referat).First().Link;
+                Link.Text = App.database.GetServerRSS(RSS.Referat).First().Link;
             }
             
             ArticleNR = RSS.ID;

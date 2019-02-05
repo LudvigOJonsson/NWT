@@ -32,7 +32,7 @@ namespace NWT
         public class Article
         {
             public int ID = 0;
-            public int Referat = -1;
+            public long Referat = -1;
             public bool Plus = false;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };

@@ -211,11 +211,13 @@ namespace NWT
 
             if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
             {
-                var RA = new RAL();
-                RA.User = App.LoggedinUser.ID;
-                RA.Article = ArticleNR;
-                RA.Date = DateTime.Now;
-                App.database.ReadArticle(RA);
+                var HT = new HistoryTable();
+                HT.User = App.LoggedinUser.ID;
+                HT.Article = ArticleNR;
+                HT.Readat = DateTime.Now;
+                HT.Header = Rubrik.Text;
+                HT.Image = ArticleImage.Source.ToString();
+                App.database.InsertHistory(HT);
                 TimerIcon.Source = "tokenicon3.png";
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)

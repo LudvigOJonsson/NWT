@@ -32,10 +32,10 @@ namespace NWT
 
         public class Article
         {
-            public int ID = 0;
+            public long ID = 0;
             public string Source = "";
             public bool Plus = false;
-            public bool Full = false;
+            public bool Full = true;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
             public BoxView ArticleMargin = new BoxView { };
@@ -44,17 +44,17 @@ namespace NWT
             public Image PlusImage = new Image { };
             public Image CornerImage = new Image { };
 
-            public Article(RSSTable RSS)
+            public Article(NewsfeedTable NF)
             {
-                Console.WriteLine(RSS.ID +" som har NS: " +RSS.NewsScore );
+                
 
-                Source = RSS.Source;
-                ID = RSS.ID;
-                Plus = Convert.ToBoolean(RSS.Plus);
+                //Source = RSS.Source;
+                ID = NF.Article;
+                Plus = Convert.ToBoolean(NF.Plus);
                 
                 int IMGXC = 200;
                 int IMGYC = 300;
-
+                /*
                 if (RSS.NewsScore > 3 && RSS.ImgSource != "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg")
                 {
                     Console.WriteLine("Full Artikel");
@@ -64,7 +64,7 @@ namespace NWT
                 {
                     Console.WriteLine("Halv Artikel");
                 }
-                
+                */
 
 
                 if (Full) {
@@ -76,32 +76,32 @@ namespace NWT
 
                     Label = new Label
                     {
-                        Text = RSS.Title,
+                        Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Start,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
                         WidthRequest = IMGXC,
-                        HeightRequest = ((RSS.Title.Length/30))*50,
+                        HeightRequest = ((NF.Header.Length/30))*50,
                         TextColor = Color.Black,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         Margin = 12,
                     };
 
                     Label.GestureRecognizers.Add(TGR);
                   
-                    if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
+                    if (NF.Image == null) { NF.Image = Defaultimage; }
                     Image = new Image
                     {
                     
-                        Source = RSS.ImgSource,
+                        Source = NF.Image,
                         WidthRequest = IMGXC,
                         HeightRequest = IMGYC,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
                         Margin = 0,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
 
                     };
 
@@ -112,7 +112,7 @@ namespace NWT
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.End,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         Margin = 0,
                         CornerRadius = 5,
                         BorderColor = Color.Transparent,
@@ -126,7 +126,7 @@ namespace NWT
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
                     };
 
 
@@ -139,7 +139,7 @@ namespace NWT
                         HeightRequest = 60,
                         Margin = 0,
                         Aspect = Aspect.AspectFill,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
@@ -153,7 +153,7 @@ namespace NWT
                         HeightRequest = 120,
                         Margin = 0,
                         Aspect = Aspect.AspectFill,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
@@ -165,7 +165,7 @@ namespace NWT
                         HeightRequest = 0,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
                     };
                 }
                 else
@@ -173,31 +173,31 @@ namespace NWT
 
                     Label = new Label
                     {
-                        Text = RSS.Title,
+                        Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 15,
                         FontAttributes = FontAttributes.Bold,
                         WidthRequest = IMGXC/2,
-                        HeightRequest = ((RSS.Title.Length / 15)) * 10,
+                        HeightRequest = ((NF.Header.Length / 15)) * 10,
                         TextColor = Color.Black,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         Margin = 12,
                     };
 
                     Label.GestureRecognizers.Add(TGR);
-                    if (RSS.ImgSource == null) { RSS.ImgSource = Defaultimage; }
+                    if (NF.Image == null) { NF.Image = Defaultimage; }
                     Image = new Image
                     {
 
-                        Source = RSS.ImgSource,
+                        Source = NF.Image,
                         WidthRequest = IMGXC/2,
                         HeightRequest = IMGYC/2,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFit,
                         Margin = 25,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
 
                     };
 
@@ -205,10 +205,10 @@ namespace NWT
                     {
                         BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
-                        HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
+                        HeightRequest = ((NF.Header.Length / 15)+1) * 50,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.End,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         Margin = 0,
                         CornerRadius = 5,
                         BorderColor = Color.Transparent,
@@ -219,10 +219,10 @@ namespace NWT
                     {
                         Color = Color.White,
                         WidthRequest = IMGXC,
-                        HeightRequest = ((RSS.Title.Length / 15)+1) * 50,
+                        HeightRequest = ((NF.Header.Length / 15)+1) * 50,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
                     };
 
 
@@ -235,7 +235,7 @@ namespace NWT
                         HeightRequest = 15,
                         Margin = 20,
                         Aspect = Aspect.AspectFill,
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
@@ -249,7 +249,7 @@ namespace NWT
                         HeightRequest = 30,
                         Margin = 20,
                         Aspect = Aspect.AspectFill,                        
-                        ClassId = RSS.ID.ToString(),
+                        ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.End,
 
@@ -262,7 +262,7 @@ namespace NWT
                         HeightRequest = 0,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        ClassId = RSS.ID.ToString()
+                        ClassId = NF.Article.ToString()
                     };
                 }
                 Console.WriteLine("Artikel Klar");
@@ -368,7 +368,7 @@ namespace NWT
             var Header = (View)sender;
 
             var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetRss(id).First();
+            var RSS = App.database.GetServerRSS(id).First();
             if (RSS.Plus == 1)
             {
                 if (App.LoggedinUser != null)
@@ -425,7 +425,7 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadRSS(Startnr, (Startnr + DBLN));
+            App.database.LoadNF(Startnr, (Startnr + DBLN));
             Startnr += DBLN;
             
         }
@@ -464,48 +464,51 @@ namespace NWT
 
         public void AddNews(int argc)
         {
-            List<RSSTable> Rss = new List<RSSTable>();
+            List<NewsfeedTable> Rss = new List<NewsfeedTable>();
             if(argc == 0)
             {
-                Rss = App.database.GetRSS(Stopnr);
+                Rss = App.database.GetNF(Stopnr);
             }
             else if(argc == 1)
             {
-                var RAL = App.database.GetHistory(DBLN);
+                
+                var RAL = App.database.GetHistory(App.LoggedinUser.ID);
                 Console.WriteLine("History Gotten: " + RAL.Count());
                 foreach(var RA in RAL)
                 {
-                    Rss.Add(App.database.GetServerRSS(RA.Article).First());
+                    Rss.Add(App.database.GetNf(RA.Article).First());
                     Console.WriteLine("Artikel Inlagd");
                 }
 
             }
             else if (argc == 2)
             {
+                
                 var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
-                Console.WriteLine("Favorites Gotten.");
+                
                 Console.WriteLine("Favorites Gotten: " + FAL.Count());
                 foreach (var FA in FAL)
                 {
-                    Rss.Add(App.database.GetServerRSS(FA.Article).First());
+                    Rss.Add(App.database.GetNf(FA.Article).First());
                     Console.WriteLine("Artikel Inlagd");
                 }
+                
             }
             else
             {
-                Rss = App.database.GetRSS(Stopnr);
+                Rss = App.database.GetNF(Stopnr);
             }
 
             
             Console.WriteLine(Rss.Count);
             Console.WriteLine("Inladdning Klar");
-            foreach (RSSTable RSS in Rss)
+            foreach (NewsfeedTable NF in Rss)
             {
                 bool Exists = false;
 
                 foreach (var Article in ArticleList)
                 {
-                    if (Article.ID == RSS.ID)
+                    if (Article.ID == NF.Article)
                     {
                         Exists = true;
                     }
@@ -514,7 +517,7 @@ namespace NWT
                 Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
-                    var Box = new Article(RSS);
+                    var Box = new Article(NF);
                     Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
                     
