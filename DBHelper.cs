@@ -137,15 +137,7 @@ namespace NWT
     }
 
 
-    [Table("ReadArticles")]
-    public class RAL // Read Article List
-    {
-        [PrimaryKey, AutoIncrement, Unique]
-        public int ID { get; set; }
-        public long Article { get; set; }
-        public DateTime Date { get; set; }
-        public int User { get; set; }
-    }
+
 
     [Table("Insandare")]
     public class UserRSSTable
@@ -215,6 +207,7 @@ namespace NWT
         public string Image { get; set; }
     }
 
+    
     public class HistoryTable
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -252,7 +245,8 @@ namespace NWT
             DB.CreateTable<UserRSSTable>();
             DB.DropTable<NewsfeedTable>();
             DB.CreateTable<NewsfeedTable>();
-
+            DB.DropTable<HistoryTable>();
+            DB.CreateTable<HistoryTable>();
 
             DB.CreateTable<LocalStatsTable>();
             if(DB.Query<LocalStatsTable>("Select * From LS Where ID = 0").Count == 0)
@@ -261,9 +255,7 @@ namespace NWT
                 RCLS();
             }
 
-            
-            DB.DropTable<RAL>();
-            DB.CreateTable<RAL>();
+
         }
 
         public void RCLS()
@@ -340,7 +332,14 @@ namespace NWT
 
         public List<HistoryTable> GetHistory(int ID_)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = " + ID_)));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = "+ID_+" ORDER BY Readat LIMIT 10 OFFSET(SELECT COUNT(*) FROM History ) - 10 ")));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
+        }
+
+        public List<HistoryTable> GetAllHistory(int ID_)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = " + ID_ + " ORDER BY Readat")));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
         }
@@ -687,21 +686,7 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);      
         }
 
-        public void ReadArticle(RAL Article)
-        {
-            DB.Insert(Article);
-        }
 
-        public int ReadArticleCount(UserTable User)
-        {
-            var Query = DB.Query<RAL>("SELECT * FROM ReadArticles WHERE User = " + User.ID);
-            return Query.Count;
-        }
-
-        public List<RAL> GetReadArticle(long ID)
-        {
-            return DB.Query<RAL>("SELECT * FROM ReadArticles WHERE Article = "+ ID.ToString()+ " AND User = "+ App.LoggedinUser.ID);
-        }
 
         public void InsertQuestion(QuizTable Quiz)
         {

@@ -38,19 +38,23 @@ namespace NWT
                     App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);
                     App.Mainpage.CurrentPage = App.Mainpage.Children[2];
 
+                    var History = App.database.GetAllHistory(App.LoggedinUser.ID);
+
                     var NG = (NewsGridPage)App.Mainpage.Children[1];
                     foreach (NewsGridPage.Article A in NG.ArticleList)
                     {
-                        if (App.database.GetReadArticle(A.ID).Count > 0)
+                        foreach (HistoryTable HT in History)
                         {
-                            Device.BeginInvokeOnMainThread(() =>
+                            if (A.ID == HT.Article)
                             {
-                                A.Box.BorderColor = Color.FromRgb(80, 210, 194);
-                            });
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                                });
 
-                        }
+                            }
+                        }                       
                     }
-
                 }
                 else
                 {

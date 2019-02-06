@@ -129,6 +129,7 @@ namespace NWT
 
             if (App.LoggedinUser != null || false)
             {
+                /*
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
                 {
                     UserNewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
@@ -143,7 +144,7 @@ namespace NWT
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Read = true;
-                }
+                }*/
 
             }
             else
@@ -176,11 +177,12 @@ namespace NWT
             
             if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
             {
+                /*
                 var RA = new RAL();
                 RA.User = App.LoggedinUser.ID;
                 RA.Article = ArticleNR;
                 RA.Date = DateTime.Now;
-                App.database.ReadArticle(RA);
+                App.database.ReadArticle(RA);*/
                 TimerIcon.Source = "tokenicon3.png";
                 var NG = (UserNewsGridPage)App.Mainpage.Children[0].Navigation.NavigationStack[1];
                 foreach (UserNewsGridPage.Article A in NG.ArticleList)

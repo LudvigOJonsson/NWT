@@ -31,7 +31,7 @@ namespace NWT
 
             if (App.LoggedinUser != null)
             {
-                
+                /*
                 if (App.database.GetReadArticle(RSS.ID).Count == 0)
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
@@ -46,7 +46,7 @@ namespace NWT
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Read = true;
-                }
+                }*/
 
             }
             else
