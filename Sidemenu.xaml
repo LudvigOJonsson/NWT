@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.Sidemenu"
              NavigationPage.HasNavigationBar = "False"
-             BackgroundColor="#FFFFFF">
+             BackgroundColor="#FFFFFF"
+             Title="Kategorier">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS, Android" Value="0,60,0,0" />
+            <On Platform="iOS, Android" Value="0,30,0,0" />
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
@@ -16,8 +17,13 @@
             <Label Text="Category  Tabs" TextColor="White" FontSize="24" HorizontalOptions="Center" Margin="20"></Label>-->
             <!-- BackgroundColor="#50d2c2" -->
             <!-- Comment from Chris -->
-            <Grid x:Name="NewsGrid" RowSpacing="10" ColumnSpacing="10">
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -30,7 +36,27 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Switch x:Name="NWT"
+                <ScrollView Grid.Row="0" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Grid x:Name="NewsGridOri" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Switch x:Name="Nyheter"
                         x:FieldModifier="public"
                 IsToggled="True"
                 Toggled="PrintNews"
@@ -39,7 +65,7 @@
                OnColor="#48BDAE"
                 Grid.Row="0" Grid.Column="0"
                 />
-                <Switch x:Name="Mariestad"
+                        <Switch x:Name="Brott"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"
@@ -48,7 +74,7 @@
                OnColor="#48BDAE"
                 Grid.Row="1" Grid.Column="0"
                 />
-                <Switch x:Name="HJO"
+                        <Switch x:Name="Vård"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"
@@ -57,7 +83,7 @@
                OnColor="#48BDAE"
                 Grid.Row="2" Grid.Column="0"
                 />
-                <Switch x:Name="SLA"
+                        <Switch x:Name="Miljö"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"              
@@ -66,59 +92,149 @@
                OnColor="#48BDAE"
                 Grid.Row="3" Grid.Column="0"
                 />
+                        <Switch x:Name="Skola"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="4" Grid.Column="0"
+                />
+                        <Switch x:Name="Mat"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="5" Grid.Column="0"
+                />
+                        <Switch x:Name="Bostad"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="6" Grid.Column="0"
+                />
+                        <Switch x:Name="Trafik"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="7" Grid.Column="0"
+                />
+                        <Switch x:Name="Politik"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="8" Grid.Column="0"
+                />
+                        <Switch x:Name="Sport"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="9" Grid.Column="0"
+                />
+                <Switch x:Name="Ekonomi"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="10" Grid.Column="0"
+                />
+                <Switch x:Name="Åsikter"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="11" Grid.Column="0"
+                />
+                <Switch x:Name="Kultur"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="12" Grid.Column="0"
+                />
+                <Switch x:Name="Familj"
+                        x:FieldModifier="public" 
+               IsToggled="True"
+               Toggled="PrintNews"              
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               OnColor="#48BDAE"
+                Grid.Row="13" Grid.Column="0"
+                />
 
 
 
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="0" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="0" Grid.Column="1"        
                  />
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="1" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="1" Grid.Column="1"        
                  />
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="2" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="2" Grid.Column="1"        
                  />
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="3" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
@@ -126,34 +242,54 @@
                  Grid.Row="3" Grid.Column="1"        
                  />
 
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="4" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="4" Grid.Column="1"        
                  />
-                <BoxView Color="#47bcae"
+                        <BoxView Color="#47bcae"
                  WidthRequest="300"
                  HeightRequest="0"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="5" Grid.Column="1"        
                  />
-                <BoxView Color="#f8f8f9"
+                        <BoxView Color="#f8f8f9"
                  WidthRequest="300"
                  HeightRequest="1"
                  VerticalOptions="Start"
                  HorizontalOptions="CenterAndExpand"
                  Grid.Row="5" Grid.Column="1"        
                  />
+
+                        
+
+                        <Label Text="Nyheter" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Brott och Blåljus" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Vård och Omsorg" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Miljö" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Skola och Utbildning" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Mat och Dryck" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Bostad" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Trafik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Politik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Sport " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Ekonomi " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Åsikter " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Nöje/Kultur" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Familj" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+
+                    </Grid>
+                </ScrollView>
 
                 <BoxView Color="#50d2c2"
                  WidthRequest="500"
@@ -161,17 +297,12 @@
 
                  VerticalOptions="CenterAndExpand"
                  HorizontalOptions="CenterAndExpand"
-                 Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"        
+                 Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"        
                  />
 
-                <Label Text="NWT" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="0" Grid.Column="1"/>
-                <Label Text="Mariestad" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="HJO" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="SLA" FontSize="26" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Grid.Row="3" Grid.Column="1"/>
-               
-                <Button Clicked="Settings" Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
-                <Button Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
-                <Button Clicked="Logout" Text="" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
+                <Button Clicked="UserSettings" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
+                <Button Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
+                <Button Clicked="Logout" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
                 
             </Grid>
 

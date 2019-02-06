@@ -51,16 +51,13 @@ namespace NWT
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new AboutPage());
         }
-        async void Settings(object sender, EventArgs e)
+        async void UserSettings(object sender, EventArgs e)
         {
-            if (App.LoggedinUser != null)
-            {
-                Button button = (Button)sender;
-                await button.RotateTo(-5, 80, Easing.BounceOut);
-                await button.RotateTo(5, 120, Easing.BounceOut);
-                await button.RotateTo(0, 80, Easing.BounceOut);
-                await Navigation.PushAsync(new SettingsPage());
-            }
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
+            await Navigation.PushAsync(new UserSettingsPage());
         }
 
     }
