@@ -226,7 +226,8 @@ namespace NWT
         public int ID { get; set; }
         public long Article { get; set; }
         public string Header { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; }      
+        public string Category { get; set; }
         public int Plus { get; set; }
     }
 

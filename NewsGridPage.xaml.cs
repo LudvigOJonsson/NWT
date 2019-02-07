@@ -24,10 +24,7 @@ namespace NWT
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
         public Button LoadNewsButton = new Button() { Text = "Load" };
-        public bool NWT = true;
-        public bool Mariestad = true;
-        public bool HJO = true;
-        public bool SLA = true;
+
         public bool First = true;
         public int argc = 0;
 
@@ -35,6 +32,7 @@ namespace NWT
         {
             public long ID = 0;
             public string Source = "";
+            public string Tag = "";
             public bool Plus = false;
             public bool Full = true;
             public Button Box = new Button { };
@@ -47,9 +45,9 @@ namespace NWT
 
             public Article(NewsfeedTable NF)
             {
-                
 
-                //Source = RSS.Source;
+
+                Tag = NF.Category;
                 ID = NF.Article;
                 Plus = Convert.ToBoolean(NF.Plus);
                 
@@ -276,6 +274,9 @@ namespace NWT
                 Label.IsVisible = State;
                 Box.IsVisible = State;
                 Frame.IsVisible = State;
+                CornerImage.IsVisible = State;
+                PlusImage.IsVisible = State;
+                ArticleMargin.IsVisible = State;
             }
 
 
@@ -437,32 +438,35 @@ namespace NWT
         {
 
 
-            /*
+            
             if (App.Instanciated)
             {
-                NWT = App.SideMenu.NWT.IsToggled;
-                Mariestad = App.SideMenu.Mariestad.IsToggled;
-                HJO = App.SideMenu.HJO.IsToggled;
-                SLA = App.SideMenu.SLA.IsToggled;
-            }
-
-
-            foreach (var Article in ArticleList)
-            {
-                if ((Article.Source == "NWT" && NWT) ||
-                   (Article.Source == "Mariestad" && Mariestad) ||
-                   (Article.Source == "Hjo" && HJO) ||
-                   (Article.Source == "SLA" && SLA))
+                
+                foreach (var Article in ArticleList)
                 {
-                    Article.Visibility(true);
-                }
-                else
-                {
-                    Article.Visibility(false);
+                    if ((Article.Tag.Contains("Nyheter") && App.SideMenu.Nyheter.IsToggled) ||
+                       (Article.Tag.Contains("Brott och Blåljus") && App.SideMenu.BrottochBlåljus.IsToggled) ||
+                       (Article.Tag.Contains("Vård och Omsorg") && App.SideMenu.VårdochOmsorg.IsToggled) ||
+                       (Article.Tag.Contains("Miljö") && App.SideMenu.Miljö.IsToggled) ||
+                       (Article.Tag.Contains("Skola och Utbildning") && App.SideMenu.SkolaochUtbildning.IsToggled) ||
+                       (Article.Tag.Contains("Mat och Dryck") && App.SideMenu.MatochDryck.IsToggled) ||
+                       (Article.Tag.Contains("Bostad") && App.SideMenu.Bostad.IsToggled) ||
+                       (Article.Tag.Contains("Trafik") && App.SideMenu.Trafik.IsToggled) ||
+                       (Article.Tag.Contains("Politik") && App.SideMenu.Politik.IsToggled) ||
+                       (Article.Tag.Contains("Sport") && App.SideMenu.Sport.IsToggled) ||
+                       (Article.Tag.Contains("Ekonomi") && App.SideMenu.Ekonomi.IsToggled) ||
+                       (Article.Tag.Contains("Åsikter") && App.SideMenu.Åsikter.IsToggled) ||
+                       (Article.Tag.Contains("Nöje och Kultur") && App.SideMenu.NöjeochKultur.IsToggled) ||
+                       (Article.Tag.Contains("Familj") && App.SideMenu.Familj.IsToggled))
+                    {
+                        Article.Visibility(true);
+                    }
+                    else
+                    {
+                        Article.Visibility(false);
+                    }
                 }
             }
-            */
-
         }
 
         public void AddNews(int argc)

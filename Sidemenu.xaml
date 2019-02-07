@@ -65,7 +65,7 @@
                OnColor="#48BDAE"
                 Grid.Row="0" Grid.Column="0"
                 />
-                        <Switch x:Name="Brott"
+                        <Switch x:Name="BrottochBlåljus"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"
@@ -74,7 +74,7 @@
                OnColor="#48BDAE"
                 Grid.Row="1" Grid.Column="0"
                 />
-                        <Switch x:Name="Vård"
+                        <Switch x:Name="VårdochOmsorg"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"
@@ -92,7 +92,7 @@
                OnColor="#48BDAE"
                 Grid.Row="3" Grid.Column="0"
                 />
-                        <Switch x:Name="Skola"
+                        <Switch x:Name="SkolaochUtbildning"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"              
@@ -101,7 +101,7 @@
                OnColor="#48BDAE"
                 Grid.Row="4" Grid.Column="0"
                 />
-                        <Switch x:Name="Mat"
+                        <Switch x:Name="MatochDryck"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"              
@@ -164,7 +164,7 @@
                OnColor="#48BDAE"
                 Grid.Row="11" Grid.Column="0"
                 />
-                <Switch x:Name="Kultur"
+                <Switch x:Name="NöjeochKultur"
                         x:FieldModifier="public" 
                IsToggled="True"
                Toggled="PrintNews"              
@@ -282,10 +282,10 @@
                         <Label Text="Bostad" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
                         <Label Text="Trafik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
                         <Label Text="Politik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Sport " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Ekonomi " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Åsikter " FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Nöje/Kultur" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Sport" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Ekonomi" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Åsikter" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Nöje och Kultur" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
                         <Label Text="Familj" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
 
                     </Grid>

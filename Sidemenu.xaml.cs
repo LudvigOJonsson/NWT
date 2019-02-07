@@ -22,8 +22,8 @@ namespace NWT
         public void PrintNews(object sender, EventArgs e)
         {
 
-            //NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
-            //Page.PrintNews();
+            NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
+            Page.PrintNews();
         }
         /*
         public void Logout(object sender, EventArgs e)
