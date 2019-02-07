@@ -483,14 +483,6 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS))));
         }
-
-        /*
-        public List<RAL> GetHistory(int ID)
-        {
-            Console.WriteLine(ID);
-            return DB.Query<RAL>("SELECT * FROM ReadArticles LIMIT " + ID.ToString() + " OFFSET (SELECT COUNT(*) FROM ReadArticles) - " + ID.ToString());
-        }*/
-
         public List<NewsfeedTable> GetNF(int ID)
         {          
             return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());     

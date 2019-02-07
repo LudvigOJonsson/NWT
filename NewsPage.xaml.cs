@@ -31,8 +31,24 @@ namespace NWT
 
             if (App.LoggedinUser != null)
             {
-                /*
-                if (App.database.GetReadArticle(RSS.ID).Count == 0)
+                bool read = false;
+                var History = App.database.GetAllHistory(App.LoggedinUser.ID);
+                foreach (HistoryTable HT in History)
+                {
+                    if (RSS.ID == HT.Article)
+                    {
+                        read = true;
+                        break;
+                    }                 
+                }            
+                if (read)
+                {
+                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Dot.TextColor = Color.FromRgb(80, 210, 194);
+                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    Read = true;                   
+                }
+                else
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                     Timer = new System.Timers.Timer();
@@ -40,14 +56,6 @@ namespace NWT
                     Timer.Elapsed += OnTimedEvent;
                     Timer.Enabled = true;
                 }
-                else
-                {
-                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Dot.TextColor = Color.FromRgb(80, 210, 194);
-                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Read = true;
-                }*/
-
             }
             else
             {
