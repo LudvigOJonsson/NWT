@@ -29,6 +29,7 @@ namespace NWT
         public bool HJO = true;
         public bool SLA = true;
         public bool First = true;
+        public int argc = 0;
 
         public class Article
         {
@@ -375,7 +376,7 @@ namespace NWT
                 {
                     if (App.database.CheckPlus(RSS.ID))
                     {
-                        await Navigation.PushAsync(new NewsPage(RSS));
+                        await Navigation.PushAsync(new NewsPage(RSS,argc));
                     }
                     else
                     {
@@ -390,7 +391,7 @@ namespace NWT
                                 Plus.User = App.LoggedinUser.ID;
                                 App.database.InsertPlus(Plus);
                                 App.database.UpdateStats("PlusArticlesUnlocked");
-                                await Navigation.PushAsync(new NewsPage(RSS));
+                                await Navigation.PushAsync(new NewsPage(RSS,argc));
                             }
                             else
                             {
@@ -406,7 +407,7 @@ namespace NWT
             }
             else
             {
-                await Navigation.PushAsync(new NewsPage(RSS));
+                await Navigation.PushAsync(new NewsPage(RSS,argc));
             }
 
 
@@ -415,11 +416,13 @@ namespace NWT
         public void LoadHistory()
         {
             DBLN = 2;
+            argc = 1;
             AddNews(1);
         }
 
         public void LoadFavorites()
         {
+            argc = 2;
             AddNews(2);
         }
 

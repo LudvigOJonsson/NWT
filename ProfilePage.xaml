@@ -55,7 +55,7 @@
 
                 <!--<Button Text="Missions" Clicked="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
                 -->
-                <Button Text="Knappar" FontSize="12" Clicked="Achivements" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
+                <Button Text="Favoriter" FontSize="12" Clicked="Achivements" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
 
                 <Button Text="Historik" FontSize="12" Clicked="History" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
 

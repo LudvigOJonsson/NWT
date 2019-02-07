@@ -141,10 +141,13 @@ namespace NWT
                 }
                 if (read)
                 {
+                    TimerButton.IsEnabled = false;
+                    Read = true;
+                    TimerIcon.Source = "tokenicon3.png";
                     UserNewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Read = true;
+                    
                 }
                 else
                 {
@@ -209,6 +212,7 @@ namespace NWT
                 App.database.UpdateStats("InsandareRead");
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 Read = true;
+                TimerButton.IsEnabled = false;
             }
         }
         async void TimerDone(object sender)
@@ -272,7 +276,7 @@ namespace NWT
             if(id != -1)
             {
                 var RSS = App.database.GetServerRSS(id).First();
-                await Navigation.PushAsync(new NewsPage(RSS));
+                await Navigation.PushAsync(new NewsPage(RSS,0));
             }           
         }
 

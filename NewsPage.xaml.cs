@@ -25,11 +25,11 @@ namespace NWT
         public bool Topimg = true;
 
 
-        public NewsPage(RSSTable RSS)
+        public NewsPage(RSSTable RSS, int argc)
         {
             InitializeComponent();
 
-            if (App.LoggedinUser != null)
+            if (App.LoggedinUser != null && argc == 0)
             {
                 bool read = false;
                 var History = App.database.GetAllHistory(App.LoggedinUser.ID);
@@ -42,11 +42,14 @@ namespace NWT
                     }                 
                 }            
                 if (read)
-                {
+                {                   
+                    TimerButton.IsEnabled = false;
+                    TimerIcon.Source = "tokenicon3.png";
+                    Read = true;
                     NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Read = true;                   
+                                     
                 }
                 else
                 {
@@ -61,6 +64,15 @@ namespace NWT
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
             }
+
+            if(argc != 0)
+            {
+                TimerButton.IsVisible = false;
+                TimerIcon.IsVisible = false;
+                FavButton.IsVisible = false;
+                FavIcon.IsVisible = false;
+            }
+
 
             LoadNews(RSS);
             App.database.UpdateStats("ArticlesClicked");
@@ -244,7 +256,7 @@ namespace NWT
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 App.database.Plustoken(App.LoggedinUser, 1);
                 Read = true;
-
+                TimerButton.IsEnabled = false;
 
                 var variable = (ProfilePage)App.Mainpage.Children[2];
                 variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
