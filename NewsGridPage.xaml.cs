@@ -35,9 +35,10 @@ namespace NWT
             public string Tag = "";
             public bool Plus = false;
             public bool Full = true;
-            public Button Box = new Button { };
+            public BoxView Box = new BoxView { };
             public BoxView Frame = new BoxView { };
             public BoxView ArticleMargin = new BoxView { };
+            public BoxView CategoryBox = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
             public Image PlusImage = new Image { };
@@ -76,12 +77,13 @@ namespace NWT
                     Label = new Label
                     {
                         Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Start,
+                        HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Start,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
                         WidthRequest = IMGXC,
-                        HeightRequest = ((NF.Header.Length/30))*50,
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        //HeightRequest = ((NF.Header.Length/30))*50,
                         TextColor = Color.Black,
                         ClassId = NF.Article.ToString(),
                         Margin = 12,
@@ -104,18 +106,15 @@ namespace NWT
 
                     };
 
-                    Box = new Button
+                    Box = new BoxView
                     {
-                        BackgroundColor = Color.Transparent,
+                        BackgroundColor = Color.White,
                         WidthRequest = IMGXC,
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         ClassId = NF.Article.ToString(),
                         Margin = 0,
-                        CornerRadius = 5,
-                        BorderColor = Color.Transparent,
-                        BorderWidth = 2,
                     };
 
                     Frame = new BoxView
@@ -134,13 +133,13 @@ namespace NWT
                     PlusImage = new Image
                     {
                         Source = "plus.png",
-                        WidthRequest = 60,
-                        HeightRequest = 60,
-                        Margin = 0,
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        Margin = 5,
                         Aspect = Aspect.AspectFill,
                         ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
-                        VerticalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.Center,
 
                     };
 
@@ -166,6 +165,15 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Fill,
                         ClassId = NF.Article.ToString()
                     };
+                    CategoryBox = new BoxView
+                    {
+                        BackgroundColor = Color.FromHex("#2f6e83"),
+                        WidthRequest = 7,
+                        HeightRequest = Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        Margin = 0,
+                    };
                 }
                 else
                 {
@@ -173,7 +181,7 @@ namespace NWT
                     Label = new Label
                     {
                         Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Start,
+                        HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 15,
                         FontAttributes = FontAttributes.Bold,
@@ -200,18 +208,15 @@ namespace NWT
 
                     };
 
-                    Box = new Button
+                    Box = new BoxView
                     {
                         BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
-                        HeightRequest = ((NF.Header.Length / 15)+1) * 50,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.End,
+                        //HeightRequest = ((NF.Header.Length / 15)+1) * 50,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         ClassId = NF.Article.ToString(),
                         Margin = 0,
-                        CornerRadius = 5,
-                        BorderColor = Color.Transparent,
-                        BorderWidth = 2,
                     };
 
                     Frame = new BoxView
@@ -538,16 +543,20 @@ namespace NWT
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowSpacing = 0;
 
-                        NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                        //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
                         NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
+                        NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
+
+                        //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 30)) * 300;
+
+
 
                         Console.WriteLine("Artikel Objekt Lagd i Grid");
-                        int temp = 0;
+                        /*int temp = 0;
                         if (!First)
                         {
                             
@@ -558,15 +567,15 @@ namespace NWT
                         else
                         {
                             First = false;
-                        }
+                        }*/
 
                         if (Box.Plus)
                         {
-                            NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
+                            //NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 2, Rownr + 3); //PlusImage
                         }
                         
-                        NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
+                        /*NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
 
                         Console.WriteLine("Val om Plus Artikel Klar");
 
@@ -580,7 +589,7 @@ namespace NWT
 
                         NewsGrid.RowDefinitions[Rownr].Height = 30;
 
-                        NewsGrid.RowDefinitions[Rownr + 2].Height = 110;
+                        NewsGrid.RowDefinitions[Rownr + 2].Height = 110;*/
                     }
                     else
                     {
@@ -614,9 +623,8 @@ namespace NWT
                     Rownr++;
                     Rownr++;
                     Rownr++;
-                    Rownr++;
 
-                    NewsGrid.RowDefinitions[0].Height = 0;
+                    //NewsGrid.RowDefinitions[0].Height = 0;
 
                 }
             }

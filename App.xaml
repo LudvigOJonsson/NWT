@@ -25,12 +25,12 @@
             </Style>
 
             <!-- Pallete 50d2c2 -->
-            <Color x:Key="primary-back-title-color">#000000</Color>
+            <Color x:Key="primary-back-title-color">#2f6e83</Color>
             <Color x:Key="primary-title-color">#FFFFFF</Color>
             <!-- Pallete-end -->
             <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Key=primary-back-title-color}"/>
-                <Setter Property="BarTextColor" Value="{StaticResource Key=primary-title-color}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource Key=textColorWhite}"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

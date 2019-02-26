@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.ProfilePage"
-             BackgroundColor="#f8f8f9"
+             BackgroundColor="#ffffff"
              Icon="profile.png"
              Title="Profil">
     <ContentPage.ToolbarItems>
@@ -15,96 +16,54 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
-                
-                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
-                <Label Text="Orange" x:Name="Welcome"  FontSize="36" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" TextColor="Black"/>
 
-                <Button HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
-                <Image HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
-                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="28" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" TextColor="Black"/>
+
+                <Label Text="Orange" x:Name="Welcome"  FontSize="40" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
+                
+                <!--<Button HorizontalOptions="Center" WidthRequest="180" HeightRequest="80" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
+-->
+                <forms:AnimationView 
+	                x:Name="tokenAnimation" 
+	                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    VerticalOptions="FillAndExpand"
+	                HorizontalOptions="FillAndExpand" 
+	                Animation="stone.json" 
+	                Loop="true" 
+	                AutoPlay="true"
+	                />
+
+                <!--<Image HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>-->
+                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" TextColor="Black"/>
                 <!--<Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Image="leftarrow.png" HorizontalOptions="Start"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Image="rightarrow.png" HorizontalOptions="End"/>-->
-                
+
+                <!--<Label Text="Uppdrag" TextColor="#50d2c2" FontSize="36" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+-->
+                <Button x:Name="m11" Image="checkmark.png" Text=" "  Grid.Row="3" Grid.Column="0" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start" Margin="15"/>
+                <!--<Label x:Name ="m1t" Text="" TextColor="White" FontSize="12" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
+-->
+                <Button x:Name="m22" Image="checkmark.png" Text=" "  Grid.Row="3" Grid.Column="1" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"   Margin="15"/>
+                 <!--<Label x:Name ="m2t" Text="" TextColor="White" FontSize="12" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
+-->
+                <Button x:Name="m33" Image="checkmark.png" Text=" "  Grid.Row="3" Grid.Column="2" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  Margin="15"/>
+                 <!--<Label x:Name ="m3t" Text="" TextColor="White" FontSize="12" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
+-->
 
 
             </Grid>
         </ContentView>
-        <ContentView VerticalOptions="Start">
-            <Grid x:Name="ArticleGrid2" RowSpacing="0" ColumnSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="0" />
-                    <RowDefinition Height="0" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Button Text="Figur" FontSize="12" Clicked="Avatar" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
-
-                <!--<Button Text="Missions" Clicked="Missions" HeightRequest="150" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
-                -->
-                <Button Text="Favoriter" FontSize="12" Clicked="Achivements" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
-
-                <Button Text="Historik" FontSize="12" Clicked="History" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
-
-                <!--<Button Text="Posts" HeightRequest="50" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="20" CornerRadius="5"/>
-                -->
-                <Button Text="Inställningar" FontSize="12" Clicked="Settings" HeightRequest="75" TextColor="#FFFFFF" BackgroundColor="#50d2c2" Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Image="star2.png" Margin="5" CornerRadius="5"/>
-
-                <Label Text="Uppdrag" TextColor="#50d2c2" FontSize="36" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
-                <Button x:Name="m11" Image="checkmark.png" Text=" "  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start" Margin="5"/>
-                <Label x:Name ="m1t" Text="" TextColor="White" FontSize="12" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
-
-                <Button x:Name="m22" Image="checkmark.png" Text=" "  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"   Margin="5"/>
-                <Label x:Name ="m2t" Text="" TextColor="White" FontSize="12" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
-
-                <Button x:Name="m33" Image="checkmark.png" Text=" "  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#50d2c2" TextColor="White" VerticalOptions="Start"  Margin="5"/>
-                <Label x:Name ="m3t" Text="" TextColor="White" FontSize="12" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
-
-                <!--<Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="1" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Label Text="5 Articles read by Johanna Nilsen" FontSize="16" TextColor="Black" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="2" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="3" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="4" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="4" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="5" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="5" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="6" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="7" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="7" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="8" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="8" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>
-
-                <Button Text=" " BackgroundColor="#FFFFFF" Grid.Row="9" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Image="timer.png"/>
-                <BoxView HeightRequest="1" Grid.Row="9" Grid.ColumnSpan="3" Color="LightGray" VerticalOptions="End" WidthRequest="160"/>-->
-
-            </Grid>
-        </ContentView>
+        
 
     </StackLayout>
 </ContentPage>

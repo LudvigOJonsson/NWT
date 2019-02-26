@@ -13,7 +13,7 @@
         <ScrollView>
             <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

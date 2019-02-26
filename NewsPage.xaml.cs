@@ -224,6 +224,7 @@ namespace NWT
             async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
+
             Button button = (Button)sender;
             await button.RotateTo(-2, 1, Easing.BounceOut);
             await button.RotateTo(2, 1, Easing.BounceOut);
@@ -246,7 +247,7 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                            //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                             A.Image.Margin = 6;
                         });
 
@@ -397,7 +398,7 @@ namespace NWT
 
             var Reply = new Button()
             {
-                BackgroundColor = Color.FromHex("#50d2c2"),
+                BackgroundColor = Color.FromHex("#2f6e83"),
                 TextColor = Color.FromHex("#FFFFFF"),
                 WidthRequest = 60,
                 HeightRequest = 30,
