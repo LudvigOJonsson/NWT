@@ -31,7 +31,6 @@ namespace NWT
                 App.database.Login(User);
                 if (App.LoggedinUser != null)
                 {
-                    
                     App.database.Plustoken(App.LoggedinUser, 3);
                     App.database.UpdateStats("Logins");
                     App.database.LocalStatDump();
@@ -49,7 +48,7 @@ namespace NWT
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                                    //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                                 });
 
                             }

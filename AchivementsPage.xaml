@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.AchivementsPage"
              BackgroundColor="#FFFFFF"
              Title="Knappar">
@@ -34,24 +35,29 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-
+                <forms:AnimationView 
+	                x:Name="animationView" 
+	                 Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+	                Animation="trophy.json" 
+	                Loop="false" 
+	                AutoPlay="true" />
 
 
                 <Image HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" HeightRequest="50" WidthRequest="50" Source="knapp.png"/>
 
-                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
-                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
-                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
-                <Image Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
-                <Image Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
-                <Image Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="2" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
+                <Image Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="knapp.png"/>
 
-                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="tokenicon2.png"/>
-                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="puzzlePiece.png"/>
-                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="clipboard.png"/>
-                <Image Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="upvoteIcon.png"/>
-                <Image Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="30" HeightRequest="30" Source="articleIcon.png"/>
-                <Image Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="30" HeightRequest="30" Source="articleIcon.png"/>
+                <Image Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="tokenicon2.png"/>
+                <Image Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="puzzlePiece.png"/>
+                <Image Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="clipboard.png"/>
+                <Image Grid.Row="2" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="40" HeightRequest="40" Source="upvoteIcon.png"/>
+                <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="30" HeightRequest="30" Source="articleIcon.png"/>
+                <Image Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="30" HeightRequest="30" Source="articleIcon.png"/>
 
 
                 <Button Grid.Row="0" Clicked="ShowPopup" Grid.Column="0" BackgroundColor="Transparent"/>

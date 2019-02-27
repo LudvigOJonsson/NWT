@@ -76,7 +76,7 @@ namespace NWT
 
             var Reply = new Button()
             {
-                BackgroundColor = Color.FromHex("#50d2c2"),
+                BackgroundColor = Color.FromHex("#2f6e83"),
                 TextColor = Color.FromHex("#FFFFFF"),
                 WidthRequest = 60,
                 HeightRequest = 30,

@@ -22,9 +22,8 @@ namespace NWT
             InitializeComponent();
             
             //On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.Black);
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.FromHex("50d2c2"));
-
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.FromHex("FFFFFF"));
+            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.FromHex("FFFFFF"));
 
 
             Children[1] = new NewsGridPage(0);
