@@ -30,7 +30,17 @@
 
                 <Label Text="Orange" x:Name="Welcome"  FontSize="40" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
                 <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
-                
+
+                <Button Image="heart.png" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                <!--<Image Grid.Row="1" Grid.Column="0" Source="heart.png" WidthRequest="80" HeightRequest="80"/>-->
+                <Button Image="history.png" Clicked="History" Grid.Row="2" Grid.Column="0" x:Name="HistoryButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                <!--<Image Grid.Row="2" Grid.Column="0" Source="history.png" WidthRequest="80" HeightRequest="80"/>-->
+
+                <Button Image="knapp2.png" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                <!--<Image Grid.Row="1" Grid.Column="2" Source="puzzlePiece.png" WidthRequest="80" HeightRequest="80"/>-->
+                <Button Image="settings2.png" Clicked="Settings" Grid.Row="2" Grid.Column="2" x:Name="ProfileSettingsButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                <!--<Image Grid.Row="2" Grid.Column="2" Source="settings2.png" WidthRequest="80" HeightRequest="80"/>-->
+
                 <!--<Button HorizontalOptions="Center" WidthRequest="180" HeightRequest="80" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" CornerRadius="25" BackgroundColor="White" BorderColor="LightGray" BorderWidth="1"/>
 -->
                 <forms:AnimationView 
@@ -44,7 +54,7 @@
 	                />
 
                 <!--<Image HorizontalOptions="End" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>-->
-                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="40" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" TextColor="Black"/>
+                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="40" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" TextColor="Black"/>
                 <!--<Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Image="leftarrow.png" HorizontalOptions="Start"/>
                 <Button Text="" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" Image="rightarrow.png" HorizontalOptions="End"/>-->
 
