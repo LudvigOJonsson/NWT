@@ -382,7 +382,7 @@ namespace NWT
                     else
                     {
                         App.database.UpdateStats("PlusArticlesClicked");
-                        var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 3 Plustoken to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
+                        var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 3 Plustokens to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
                         if (answer)
                         {
                             if (App.database.Plustoken(App.LoggedinUser, -3))

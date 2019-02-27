@@ -23,7 +23,7 @@ namespace NWT
         public bool Read = false;
         public int Row = 5;
         public bool Topimg = true;
-
+        public bool Favorited = false;
 
         public NewsPage(RSSTable RSS, int argc)
         {
@@ -65,14 +65,20 @@ namespace NWT
                 NewsPageView.BackgroundColor = Color.FromRgb(248, 248, 248);
             }
 
-            if(argc != 0)
+            if(argc == 1)
             {
                 TimerButton.IsVisible = false;
                 TimerIcon.IsVisible = false;
                 FavButton.IsVisible = false;
                 FavIcon.IsVisible = false;
             }
-
+            
+            if (argc == 2)
+            {
+                TimerButton.IsVisible = false;
+                TimerIcon.IsVisible = false;
+                Favorited = true;
+            }
 
             LoadNews(RSS);
             App.database.UpdateStats("ArticlesClicked");
@@ -205,15 +211,28 @@ namespace NWT
         }
         async void FavButtonClicked(object sender, System.EventArgs e)
         {
+            
             if (App.LoggedinUser != null)
             {
-                var fav = new FavoritesTable();
-                fav.User = App.LoggedinUser.ID;
-                fav.Article = ArticleNR;
-                fav.Image = ArticleImage.Source.ToString();
-                fav.Header = Rubrik.Text;
-                App.database.InsertFavorite(fav);
-                await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
+                
+                if (Favorited)
+                {
+                    App.database.Execute("DELETE FROM Favorites WHERE User = "+ App.LoggedinUser.ID +" AND Article = "+ ArticleNR);
+                    await DisplayAlert("Favorite", "Article Unfavorited", "Ok");
+                    Favorited = false;
+                }
+                else
+                {
+                    var fav = new FavoritesTable();
+                    fav.User = App.LoggedinUser.ID;
+                    fav.Article = ArticleNR;
+                    fav.Image = ArticleImage.Source.ToString();
+                    fav.Header = Rubrik.Text;
+                    App.database.InsertFavorite(fav);
+                    await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
+                    Favorited = true;
+                }
+                
             }
             else
             {

@@ -207,7 +207,7 @@ namespace NWT
         public string Image { get; set; }
     }
 
-    
+    [Table("HistT")]
     public class HistoryTable
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -225,12 +225,38 @@ namespace NWT
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
         public long Article { get; set; }
+        public int NewsScore { get; set; }
         public string Header { get; set; }
         public string Image { get; set; }      
         public string Category { get; set; }
         public int Plus { get; set; }
     }
+    public class VoteQuestionTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public string Question { get; set; }
+        public string Option1 { get; set; }
+        public string Option2 { get; set; }
+        public string Option3 { get; set; }
+        public string Option4 { get; set; }
+        public DateTime Posted { get; set; }
+        public int Stage { get; set; }
+        public int Winner { get; set; }
+        public int TotalVotes1 { get; set; }
+        public int TotalVotes2 { get; set; }
+        public int TotalVotes3 { get; set; }
+        public int TotalVotes4 { get; set; }
 
+    }
+    public class VoteTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int User { get; set; }
+        public int Question { get; set; }
+        public int ChoosenOption { get; set; }
+    }
 
     public class DBHelper 
     {
@@ -279,6 +305,16 @@ namespace NWT
         public void Execute(string statement)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Execute", statement)));       
+        }
+        public void Insert<T>(T arg)
+        {
+            Console.WriteLine(arg.ToString());
+            DB.Insert(arg);
+        }
+        public void Delete<T>(T arg)
+        {
+            Console.WriteLine(arg.ToString());
+            DB.Delete(arg);
         }
 
         public List<UserTable> GetUser(int ID_)
