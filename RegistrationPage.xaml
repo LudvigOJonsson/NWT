@@ -14,6 +14,6 @@
         <Entry x:Name="UserName" Placeholder="Name" />
         <Entry x:Name="UserCity" Placeholder="City" />
         <Entry x:Name="UserAge" Placeholder="Age" />
-        <Button x:Name="RegisterButton" Text="Register" Clicked="Register" />
+        <Button x:Name="RegisterButton" BackgroundColor="#2f6e83" TextColor="White" Text="Register" Clicked="Register" />
     </StackLayout>
 </ContentPage>
