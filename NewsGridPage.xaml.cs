@@ -77,16 +77,16 @@ namespace NWT
                     Label = new Label
                     {
                         Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Start,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
-                        WidthRequest = IMGXC,
-                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         //HeightRequest = ((NF.Header.Length/30))*50,
                         TextColor = Color.Black,
                         ClassId = NF.Article.ToString(),
-                        Margin = 12,
+                        Margin = 15,
                     };
 
                     Label.GestureRecognizers.Add(TGR);
@@ -133,13 +133,13 @@ namespace NWT
                     PlusImage = new Image
                     {
                         Source = "plus.png",
-                        WidthRequest = 50,
-                        HeightRequest = 50,
-                        Margin = 5,
+                        WidthRequest = 40,
+                        HeightRequest = 40 ,
+                        Margin = 15,
                         Aspect = Aspect.AspectFill,
                         ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
-                        VerticalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Start,
 
                     };
 
@@ -147,13 +147,13 @@ namespace NWT
                     {
 
                         Source = "cornerTriangle.png",
-                        WidthRequest = 120,
-                        HeightRequest = 120,
-                        Margin = 0,
+                        WidthRequest = 40,
+                        HeightRequest = 40,
+                        Margin = 15,
                         Aspect = Aspect.AspectFill,
                         ClassId = NF.Article.ToString(),
                         HorizontalOptions = LayoutOptions.End,
-                        VerticalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.Start,
 
                     };
                     ArticleMargin = new BoxView
@@ -545,13 +545,15 @@ namespace NWT
                         NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         NewsGrid.RowSpacing = 0;
 
+                        Box.Label.WidthRequest = Box.Label.Width - 25;
+
                         //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
                         NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
                         NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
                         NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
 
-                        //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 30)) * 300;
+                        //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
 
 
 
@@ -571,8 +573,8 @@ namespace NWT
 
                         if (Box.Plus)
                         {
-                            //NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 2, Rownr + 3); //PlusImage
+                            NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
+                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
                         }
                         
                         /*NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin

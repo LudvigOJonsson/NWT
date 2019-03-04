@@ -27,17 +27,17 @@
 
                 <Label Text="SPEL" TextColor="#2f6e83" FontSize="36" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                <Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"   Image="sudoku.jpg" />
-                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
+                <!--<Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"   Image="sudoku.jpg" />-->
+                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" Grid.RowSpan="3" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
                 <!--<Image x:Name="SudokuReward1" HeightRequest="30" WidthRequest="30" Source="tokenicon.png" Grid.Row="1"  BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End" Margin="15"/>
                 <Label Grid.Row="1" Text="Reward:        " FontSize="22" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" Margin="15"/>
                 -->
-                
-                <Button x:Name="SudokuButton3" Clicked="PlayQuiz" Grid.Row="2"  Image="megaphone.jpg" />
-                <Button x:Name="SudokuButton4" Text="Quiz" Clicked="PlayQuiz" Grid.Row="2" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
 
-                <Button x:Name="SudokuButton5" Clicked="PlayPicross" Grid.Row="3"  Image="picross.jpg" />
-                <Button x:Name="SudokuButton6" Clicked="PlayPicross" Text="Picross"  Grid.Row="3" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
+                <!--<Button x:Name="SudokuButton3" Clicked="PlayQuiz" Grid.Row="2"  Image="megaphone.jpg" />-->
+                <Button x:Name="QuizButtons" Text="Quiz" Clicked="PlayQuiz" Grid.Row="3" Grid.RowSpan="5"  BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
+
+                <!--<Button x:Name="SudokuButton5" Clicked="PlayPicross" Grid.Row="3"  Image="picross.jpg" />-->
+                <Button x:Name="PicrossButton" Clicked="PlayPicross" Text="Picross"  Grid.Row="5" Grid.RowSpan="7"  BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="Start"  />
 
               
             </Grid>

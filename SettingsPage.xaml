@@ -44,9 +44,9 @@
                 <Label Text="ÅLDER" TextColor="DimGray"  Grid.Row="3" VerticalOptions="Start" FontSize="8"  />
                 <Entry x:Name="UserAge" Placeholder="18" TextColor="Black" Grid.Row="3" VerticalOptions="End"  />
 
-                <Button x:Name="UpdateInfoButton" Text="Uppdatera information" Clicked="UpdateInfo" Grid.Row="6" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+                <Button x:Name="UpdateInfoButton" Text="Uppdatera information" Clicked="UpdateInfo" Grid.Row="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF"/>
 
-                <Button x:Name="ChangePasswordButton" Text="Byt Lösenord" Clicked="ChangePassword" Grid.Row="8" BackgroundColor="#50d2c2" TextColor="#FFFFFF"/>
+                <Button x:Name="ChangePasswordButton" Text="Byt Lösenord" Clicked="ChangePassword" Grid.Row="8" BackgroundColor="#2f6e83" TextColor="#FFFFFF"/>
 
 
 
@@ -57,7 +57,7 @@
                IsToggled="True"
                HorizontalOptions="End"
                 Grid.Row="12" Grid.Column="0"
-                        OnColor="#50d2c2"
+                        OnColor="#2f6e83"
                         
                 />
 
