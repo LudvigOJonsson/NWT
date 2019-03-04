@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.VoteDisplayPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label  x:Name="Question" Text="The Question" ClassId="-1" TextColor="#50d2c2" FontSize="20" HorizontalTextAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                    <Button x:Name="Op1" BorderWidth="2" BorderColor="Transparent" Text="Option1" BackgroundColor="#50d2c2" ClassId="1" Clicked="SubmitV" Grid.Row="3" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <Button x:Name="Op2" BorderWidth="2" BorderColor="Transparent" Text="Option2" BackgroundColor="#50d2c2" ClassId="2" Clicked="SubmitV" Grid.Row="3" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <Button x:Name="Op3" BorderWidth="2" BorderColor="Transparent" Text="Option3" BackgroundColor="#50d2c2" ClassId="3" Clicked="SubmitV" Grid.Row="5" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <Button x:Name="Op4" BorderWidth="2" BorderColor="Transparent"  Text="Option4" BackgroundColor="#50d2c2" ClassId="4" Clicked="SubmitV" Grid.Row="5" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

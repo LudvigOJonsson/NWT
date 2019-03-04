@@ -381,6 +381,20 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
         }
 
+        public List<VoteQuestionTable> GetVoteQuestions(int ID)
+        {           
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM VoteQuestions WHERE Stage = " + ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<VoteQuestionTable>>(Result.JSON);
+        }
+
+        public List<VoteTable> VoteCheck(int ID, int Q)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Query", "SELECT * FROM Votes WHERE User = " + ID + " AND Question = " + Q)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
+            
+        }
 
         public int LoadNF(int start, int stop)
         {
@@ -508,9 +522,6 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Insert", JsonConvert.SerializeObject(RSS))));
         }
-
-
-
         public void DeleteFavorite(FavoritesTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Delete", JsonConvert.SerializeObject(RSS))));
@@ -520,6 +531,18 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS))));
         }
+
+        public void InsertVoteQuestion(VoteQuestionTable VQ)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Insert", JsonConvert.SerializeObject(VQ))));
+        }
+        public void InsertVote(VoteTable Vote)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote))));
+        }
+
+       
+
         public List<NewsfeedTable> GetNF(int ID)
         {          
             return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());     
@@ -770,7 +793,7 @@ namespace NWT
                 //Stream stm = tcpclnt.GetStream();
                 Client.ReceiveTimeout = 3000;
                 Client.SendTimeout = 3000;
-                Encoding asen = Encoding.Default;
+                Encoding asen = Encoding.GetEncoding("iso-8859-1");
                 byte[] ba = asen.GetBytes(JSON);
                 //Console.WriteLine("Transmitting.....");
 
