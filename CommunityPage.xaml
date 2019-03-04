@@ -41,7 +41,8 @@
                 <!--<Label Grid.Row="0" Grid.Column="0" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />-->
                 <Button Grid.Row="1" Text="Skriv Insändare" TextColor="#000000" Grid.Column="1" BackgroundColor="#FFFFFF" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10" Clicked="MakeInsandare" />
 
-                <Button Grid.Row="2" Grid.RowSpan="3" Text="Cool grej." TextColor="#FFFFFF" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#2f6e83" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10"/>
+
+                <Button Grid.Row="2" Grid.RowSpan="3" Text="Lokala Omröstningar" TextColor="#FFFFFF" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#2f6e83" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10" Clicked="VotePage"/>
 
                 <!--<Label Grid.Row="0" Grid.Column="1" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
 
