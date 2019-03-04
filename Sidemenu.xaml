@@ -300,7 +300,7 @@
                  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"        
                  />
 
-                <Button Clicked="UserSettings" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Image="settingsWhite.png" HorizontalOptions="Center"/>
+                <Button Clicked="UserSettings" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Image="edit.png" HorizontalOptions="Center"/>
                 <Button Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
                 <Button Clicked="Logout" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
                 

@@ -146,7 +146,7 @@ namespace NWT
                     CornerImage = new Image
                     {
 
-                        Source = "cornerTriangle.png",
+                        Source = "plusBackground.png",
                         WidthRequest = 40,
                         HeightRequest = 40,
                         Margin = 15,
@@ -248,7 +248,7 @@ namespace NWT
                     CornerImage = new Image
                     {
 
-                        Source = "cornerTriangle.png",
+                        Source = "plusBackground.png",
                         WidthRequest = 30,
                         HeightRequest = 30,
                         Margin = 20,

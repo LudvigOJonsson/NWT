@@ -44,7 +44,7 @@ namespace NWT
                 if (read)
                 {                   
                     TimerButton.IsEnabled = false;
-                    TimerIcon.Source = "tokenicon3.png";
+                    TimerIcon.Source = "tokenicon.png";
                     Read = true;
                     NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
@@ -258,7 +258,7 @@ namespace NWT
                 HT.Header = Rubrik.Text;
                 HT.Image = ArticleImage.Source.ToString();
                 App.database.InsertHistory(HT);
-                TimerIcon.Source = "tokenicon3.png";
+                TimerIcon.Source = "tokenicon.png";
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
                 {

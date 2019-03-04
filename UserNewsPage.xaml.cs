@@ -143,7 +143,7 @@ namespace NWT
                 {
                     TimerButton.IsEnabled = false;
                     Read = true;
-                    TimerIcon.Source = "tokenicon3.png";
+                    TimerIcon.Source = "tokenicon.png";
                     UserNewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
                     Dot.TextColor = Color.FromRgb(80, 210, 194);
                     TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
@@ -196,7 +196,7 @@ namespace NWT
                 HT.Header = Rubrik.Text;
                 HT.Image = imageLinks[rnd.Next(7)];
                 App.database.InsertHistory(HT);
-                TimerIcon.Source = "tokenicon3.png";
+                TimerIcon.Source = "tokenicon.png";
                 var NG = (UserNewsGridPage)App.Mainpage.Children[0].Navigation.NavigationStack[1];
                 foreach (UserNewsGridPage.Article A in NG.ArticleList)
                 {

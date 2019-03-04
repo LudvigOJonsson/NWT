@@ -63,7 +63,7 @@
                     Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
-                    Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon4.png"/>
+                    Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
 
             <Button x:Name="FavButton" Text=""
                     Clicked="FavButtonClicked"  Grid.Column="5" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" 
