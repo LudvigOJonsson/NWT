@@ -36,8 +36,7 @@
                 </Grid.ColumnDefinitions>
 
                 <forms:AnimationView 
-	                x:Name="animationView" 
-	                 Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+	                x:Name="animationView" 	                 
 	                Animation="trophy.json" 
 	                Loop="false" 
 	                AutoPlay="true" />

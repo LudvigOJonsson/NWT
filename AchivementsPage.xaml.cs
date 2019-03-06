@@ -29,6 +29,7 @@ namespace NWT
             ContentPage popup = new ContentPage
             {
                 BackgroundColor = Color.FromHex("#D9000000"),
+                
                 Padding = new Thickness(20, 20, 20, 20)
             };
 
@@ -87,10 +88,24 @@ namespace NWT
             grid.RowDefinitions.Add(new RowDefinition { });
             grid.ColumnDefinitions.Add(new ColumnDefinition { });
 
+            var x = new Lottie.Forms.AnimationView
+            {
+                Animation = "confetti.json",
+                Loop = false,
+                AutoPlay = true
+            };
+
+
             grid.Children.Add(Image, 0, 0);
             grid.Children.Add(Image2, 0, 0);
             grid.Children.Add(Label, 0, 1);
+            grid.Children.Add(x, 0, 1, 0, 3);
             grid.Children.Add(Button, 0, 2);
+            
+
+            
+
+
 
             //Create desired layout to be a content of your popup page. 
             var contentLayout = new StackLayout
