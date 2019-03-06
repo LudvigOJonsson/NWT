@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProfilePage : ContentPage
 	{
-		public ProfilePage (UserTable User)
+        public ProfilePage (UserTable User)
 		{
 			InitializeComponent ();
             Welcome.Text = "Hi, " + User.Username + "!";
@@ -22,7 +23,9 @@ namespace NWT
             updateMissions();
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
+                //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
+                
+                await PopupNavigation.Instance.PushAsync(new DailyPopUp());
             });
         }
 
@@ -66,8 +69,8 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new NewsGridPage(3));
-            //await Navigation.PushAsync(new AchivementsPage());
+            //await Navigation.PushAsync(new NewsGridPage(3));
+            await Navigation.PushAsync(new AchivementsPage());
         }
         async void Favorites(object sender, EventArgs e)
         {
