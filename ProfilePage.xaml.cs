@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+using Rg.Plugins.Popup.Services;
+using Lottie.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,10 @@ namespace NWT
             m2t.Text = "Post " + Tasklist[1].Progress + "/" + Tasklist[1].Goal + " Comments";
             m3t.Text = "Solve " + Tasklist[2].Progress + "/" + Tasklist[2].Goal + " Sudokus";*/
         }
+
+ 
+
+
 
         public void Logout()
         {

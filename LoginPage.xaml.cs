@@ -34,9 +34,15 @@ namespace NWT
                     App.database.Plustoken(App.LoggedinUser, 3);
                     App.database.UpdateStats("Logins");
                     App.database.LocalStatDump();
+                    
+
+                    
+                    await Navigation.PushAsync(App.Startpage);
+                    
+                    
                     App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);
                     App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-
+                    /*
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
                     var NG = (NewsGridPage)App.Mainpage.Children[1];
@@ -53,7 +59,7 @@ namespace NWT
 
                             }
                         }                       
-                    }
+                    }*/
                 }
                 else
                 {
