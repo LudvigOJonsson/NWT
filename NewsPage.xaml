@@ -46,7 +46,7 @@
             <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="5" FontSize="8" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
             <Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="5" FontSize="8" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="End" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
 
-            <Label Text="Dot" x:Name="Dot" Margin="0" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Dot" x:Name="Dot" Margin="5" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>
             <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" FontAttributes="Bold,Italic" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
