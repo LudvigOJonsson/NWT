@@ -28,7 +28,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -36,30 +35,16 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-
                 <forms:AnimationView 
-	                x:Name="tokenAnimation2" 
-	                Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"
-                    VerticalOptions="FillAndExpand"
-	                HorizontalOptions="FillAndExpand" 
-	                Animation="confetti.json" 
-	                Loop="false" 
-	                AutoPlay="true"
-	                />
-                <forms:AnimationView 
-	                x:Name="tokenAnimation"
-	                Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"
+	                x:Name="loadingAnimation"
+	                Grid.Row="1" Grid.Column="1"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
-	                Animation="stone.json"
+	                Animation="loading.json"
 	                Loop="true"
 	                AutoPlay="true"
 	                />
                 
-
-                <Label Text="+1 Daily Token!" FontSize="42" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"/>
-
             </Grid>
         </ContentView>
     </StackLayout>
