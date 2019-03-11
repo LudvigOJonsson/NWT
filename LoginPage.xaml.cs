@@ -21,10 +21,17 @@ namespace NWT
 
         async void Login(object sender, EventArgs e)
         {
+            
+                //await Navigation.PushAsync(App.LoadingScreen);
+            
             if (App.Online && UserLogin.Text != null && UserPassword.Text != null)
             {
+               
+                
+
                 UserTable User = new UserTable();
                 User.Username = UserLogin.Text;
+                User.Email = UserLogin.Text;
                 User.Password = UserPassword.Text;
 
 
@@ -34,14 +41,15 @@ namespace NWT
                     App.database.Plustoken(App.LoggedinUser, 3);
                     App.database.UpdateStats("Logins");
                     App.database.LocalStatDump();
-                    
 
+                    App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
                     
-                    await Navigation.PushAsync(App.Startpage);
-                    
-                    
+                    //await Navigation.PushAsync(App.Startpage);
+
+
                     App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);
                     App.Mainpage.CurrentPage = App.Mainpage.Children[2];
+                    
                     /*
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
@@ -70,7 +78,7 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-
+            await Navigation.PopAsync();
         }
 
         async void Register(object sender, EventArgs e)

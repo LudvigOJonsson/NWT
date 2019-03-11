@@ -20,6 +20,7 @@ namespace NWT
         public static bool Online = true;
         public static System.Timers.Timer Timer;
         public static bool Login = false;
+        public static LoadingPopUp LoadingScreen; 
         public App()
         {
             InitializeComponent();
@@ -31,11 +32,11 @@ namespace NWT
             Loginpage = new LoginPage();
             SideMenu = new Sidemenu();
             Mainpage = new MainPage();
-
+            LoadingScreen = new LoadingPopUp();
             Startpage = new MasterDetailPage()
             {
                 Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), },
-                Detail = new NavigationPage(Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"),  }
+                Detail = new NavigationPage(Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"),  }
             };
 
             Timer = new System.Timers.Timer();
@@ -43,7 +44,7 @@ namespace NWT
             Timer.Elapsed += OnTimedEvent;
             Timer.Enabled = true;
 
-            MainPage = new NavigationPage(Loginpage);
+            MainPage = Startpage;// new NavigationPage();
             Instanciated = true;
         }
 

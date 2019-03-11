@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Net.Sockets;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using Xamarin.Forms;
 
 namespace NWT
 {
@@ -589,8 +590,7 @@ namespace NWT
                 TCP(JsonConvert.SerializeObject(new JSONObj("Token", "Logout", JsonConvert.SerializeObject(App.Token))));
                 App.Token = null;
                 App.LoggedinUser = null;
-                App.Mainpage.Children[2] = new LoginPage();
-                App.Mainpage.CurrentPage = App.Mainpage.Children[2];
+                App.Startpage.Detail = new NavigationPage(App.Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
             }
         }
 

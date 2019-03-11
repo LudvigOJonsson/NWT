@@ -32,9 +32,11 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\AvatarPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\PasswordPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserSettingsPage.xaml.g.cs
-C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\VoteDisplayPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\VoteListPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\VotePage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\VoteSubmissionPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\DailyPopUp.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoadingPopUp.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\XamlC.stamp
