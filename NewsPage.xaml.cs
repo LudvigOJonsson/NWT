@@ -14,9 +14,9 @@ namespace NWT
     public partial class NewsPage : ContentPage
     {
         Random rnd = new Random();
-        public int red = 248;
-        public int green = 248;
-        public int blue = 248;
+        public int red = 147;
+        public int green = 210;
+        public int blue = 231;
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
@@ -45,10 +45,11 @@ namespace NWT
                 {                   
                     TimerButton.IsEnabled = false;
                     TimerIcon.Source = "tokenicon.png";
+                    TimerButton.Text = "Samlad";
                     Read = true;
-                    NewsPageView.BackgroundColor = Color.FromRgb(80, 210, 194);
-                    Dot.TextColor = Color.FromRgb(80, 210, 194);
-                    TimerButton.BackgroundColor = Color.FromRgb(80, 210, 194);
+                    NewsPageView.BackgroundColor = Color.FromRgb(47, 110, 131);
+                    Dot.TextColor = Color.FromRgb(47, 110, 131); 
+                    TimerButton.BackgroundColor = Color.FromRgb(47, 110, 131);
                                      
                 }
                 else
@@ -196,7 +197,8 @@ namespace NWT
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
             ArticleGrid.Children.Add(TimerButton, 0, 6, Row+1, Row + 2);
-            ArticleGrid.Children.Add(TimerIcon, 2, Row+1);
+            ArticleGrid.Children.Add(TimerIcon, 1, Row + 1);
+            //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(FavIcon, 5, Row + 1);
             ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
@@ -245,11 +247,11 @@ namespace NWT
             //IconRotation();
 
             Button button = (Button)sender;
-            await button.RotateTo(-2, 1, Easing.BounceOut);
+            await button.RotateTo(0, 1, Easing.BounceOut);
             await button.RotateTo(2, 1, Easing.BounceOut);
             await button.RotateTo(0, 1, Easing.BounceOut);
 
-            if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
+            if (TimerButton.BackgroundColor == Color.FromRgb(47, 110, 131) && Read == false)
             {
                 var HT = new HistoryTable();
                 HT.User = App.LoggedinUser.ID;
@@ -259,6 +261,7 @@ namespace NWT
                 HT.Image = ArticleImage.Source.ToString();
                 App.database.InsertHistory(HT);
                 TimerIcon.Source = "tokenicon.png";
+                TimerButton.Text = "Samlad";
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
                 {
@@ -299,15 +302,15 @@ namespace NWT
         }
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (red != 80)
+            if (red != 47)
             {
                 red--;
             }
-            if (green != 210)
+            if (green != 110)
             {
                 green--;
             }
-            if (blue != 194)
+            if (blue != 131)
             {
                 blue--;
             }
@@ -318,7 +321,7 @@ namespace NWT
                 TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
-            if (green == 210 && blue == 194 && red == 80)
+            if (green == 110 && blue == 131 && red == 47)
             {
 
 

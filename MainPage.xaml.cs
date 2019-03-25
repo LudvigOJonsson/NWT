@@ -29,26 +29,29 @@ namespace NWT
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
             //Children[2] = new ProfilePage(App.LoggedinUser);
-            Children[3] = new PlayPage();                      
+            Children[3] = new PlayPage();
+
+            ToolbarItems.Add(new ToolbarItem("Search", "search.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel"); Debug.WriteLine("success: {0}", result); }));
+
         }
-  /*
-        void Community(object sender, EventArgs e)
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
-        }
-        void News(object sender, EventArgs e)
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-        }
-        void Profile(object sender, EventArgs e)
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-        }
-        void Games(object sender, EventArgs e)
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[3];
-        }
-*/
+        /*
+              void Community(object sender, EventArgs e)
+              {
+                  App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+              }
+              void News(object sender, EventArgs e)
+              {
+                  App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+              }
+              void Profile(object sender, EventArgs e)
+              {
+                  App.Mainpage.CurrentPage = App.Mainpage.Children[2];
+              }
+              void Games(object sender, EventArgs e)
+              {
+                  App.Mainpage.CurrentPage = App.Mainpage.Children[3];
+              }
+      */
 
     }
 }
