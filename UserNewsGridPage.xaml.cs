@@ -36,6 +36,7 @@ namespace NWT
             public bool Plus = false;
             public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
+            public BoxView CategoryBox = new BoxView { };
             public Label Label = new Label { };
             public Image Image = new Image { };
 
@@ -44,58 +45,69 @@ namespace NWT
                 
                 ID = RSS.ID;
                 Referat = RSS.Referat;
-                Box = new Button
-                {
-                    BackgroundColor = Color.FromHex("#FFFFFF"),
-                    WidthRequest = 200,
-                    HeightRequest = 420,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.End,
-                    ClassId = RSS.ID.ToString(),
-                    Margin = 5,
-                    CornerRadius = 5,
-                    BorderColor = Color.FromRgb(220, 220, 220),
-                    BorderWidth = 2,
-                };
-
-                Frame = new BoxView
-                {
-                    Color = Color.FromRgb(248, 248, 248),
-                    WidthRequest = 200,
-                    HeightRequest = 420,
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Fill,
-                    ClassId = RSS.ID.ToString()
-                };
 
                 Label = new Label
                 {
                     Text = RSS.Rubrik,
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Start,
-                    FontSize = 26,
+                    FontSize = 25,
                     FontAttributes = FontAttributes.Bold,
-                    HeightRequest = 50,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    //HeightRequest = ((NF.Header.Length/30))*50,
                     TextColor = Color.Black,
-                    ClassId = RSS.ID.ToString(),
-                    Margin = 12
+                    Margin = 15,
                 };
 
                 Label.GestureRecognizers.Add(TGR);
-
+                
                 Image = new Image
                 {
 
                     Source = imageLinks[rnd.Next(7)],
                     WidthRequest = 200,
                     HeightRequest = 300,
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Fill,
                     Aspect = Aspect.AspectFill,
-                    ClassId = RSS.ID.ToString(),
-                    Margin = 5,
+                    Margin = 0,
 
                 };
 
+                Box = new Button
+                {
+                    BackgroundColor = Color.White,
+                    WidthRequest = 200,
+                    HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = 0,
+                };
+
+                Frame = new BoxView
+                {
+                    Color = Color.White,
+                    WidthRequest = 200,
+                    HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Fill,
+                };
+
+
+                Image.GestureRecognizers.Add(TGR);
                 
+                CategoryBox = new BoxView
+                {
+                    BackgroundColor = Color.FromHex("#2f6e83"),
+                    WidthRequest = 7,
+                    HeightRequest = Label.HeightRequest,
+                    HorizontalOptions = LayoutOptions.Start,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    Margin = 0,
+                };
+
+
 
 
             }
@@ -183,24 +195,25 @@ namespace NWT
                 {
                     var Box = new Article(RSS);
                     ArticleList.Add(Box);
-                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 300 });
-                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 100 });
-                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = 20 });
+
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                    UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                     UserNewsGrid.RowSpacing = 0;
 
-                    //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
-                    UserNewsGrid.Children.Add(Box.Frame, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    UserNewsGrid.Children.Add(Box.Box, 0, 1, Rownr - 1, Rownr + 2); //Boxview
-                    UserNewsGrid.Children.Add(Box.Image, 0, 1, Rownr, Rownr + 1); //Image
-                    UserNewsGrid.Children.Add(Box.Label, 0, 1, Rownr + 1, Rownr + 2); //Label
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
+                    Box.Label.WidthRequest = Box.Label.Width - 25;
 
+                    //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                    UserNewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
+                    UserNewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
+                    UserNewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
+                    UserNewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
+                        
+                    Rownr++;
+                    Rownr++;
+                    Rownr++;
                 }
             }
-            UserNewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            UserNewsGrid.Children.Add(LoadNewsButton, 0, Rownr - 1);
         }
 
         public void FillLocalDB()
