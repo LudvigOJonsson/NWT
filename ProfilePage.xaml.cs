@@ -14,9 +14,14 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProfilePage : ContentPage
 	{
-        public ProfilePage (UserTable User)
+        public ProfilePage ()
 		{
 			InitializeComponent ();
+            
+        }
+
+        public void Login(UserTable User)
+        {
             Welcome.Text = "Hi, " + User.Username + "!";
             TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
 
@@ -25,7 +30,7 @@ namespace NWT
             Device.BeginInvokeOnMainThread(async () =>
             {
                 //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
-                
+
                 await PopupNavigation.Instance.PushAsync(new DailyPopUp());
             });
         }

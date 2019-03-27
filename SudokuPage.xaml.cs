@@ -28,7 +28,6 @@ namespace NWT
             
 			InitializeComponent ();
             MakeEntry();
-            App.database.UpdateStats("GameStarted");
             LoadSudoku();
         }
 
@@ -64,7 +63,6 @@ namespace NWT
                 if (App.LoggedinUser != null)
                 {
                     App.database.MissionUpdate(App.LoggedinUser, "SudokuSolved");
-                    App.database.UpdateStats("GameFinished");
                 }
                 Solved = true;
             }

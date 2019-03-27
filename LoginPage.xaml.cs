@@ -15,13 +15,14 @@ namespace NWT
 		public LoginPage ()
 		{
 			InitializeComponent ();
-            
+            BindingContext = this;
+            IsBusy = false;
 		}
 
 
         async void Login(object sender, EventArgs e)
         {
-            
+            IsBusy = true;
                 //await Navigation.PushAsync(App.LoadingScreen);
             
             if (App.Online && UserLogin.Text != null && UserPassword.Text != null)
@@ -38,18 +39,16 @@ namespace NWT
                 App.database.Login(User);
                 if (App.LoggedinUser != null)
                 {
-                    App.database.Plustoken(App.LoggedinUser, 3);
-                    App.database.UpdateStats("Logins");
-                    App.database.LocalStatDump();
+                    //App.database.Plustoken(App.LoggedinUser, 3);
 
                     App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
                     
-                    //await Navigation.PushAsync(App.Startpage);
-
-
-                    App.Mainpage.Children[2] = new ProfilePage(App.LoggedinUser);
-                    App.Mainpage.CurrentPage = App.Mainpage.Children[2];
                     
+
+                    var x = (ProfilePage)App.Mainpage.Children[2];
+                    x.Login(App.LoggedinUser);
+                    App.Mainpage.CurrentPage = App.Mainpage.Children[2];
+                    IsBusy = false;
                     /*
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
@@ -78,7 +77,7 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-            await Navigation.PopAsync();
+            //await Navigation.PopAsync();
         }
 
         async void Register(object sender, EventArgs e)

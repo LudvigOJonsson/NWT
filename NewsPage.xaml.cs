@@ -82,7 +82,7 @@ namespace NWT
             }
 
             LoadNews(RSS);
-            App.database.UpdateStats("ArticlesClicked");
+            
             
         }
 
@@ -275,7 +275,7 @@ namespace NWT
 
                     }
                 }
-                App.database.UpdateStats("ArticlesRead");
+                
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 App.database.Plustoken(App.LoggedinUser, 1);
                 Read = true;

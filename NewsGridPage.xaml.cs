@@ -386,7 +386,6 @@ namespace NWT
                     }
                     else
                     {
-                        App.database.UpdateStats("PlusArticlesClicked");
                         var answer = await DisplayAlert("Plus", "This is a Plus Article. You have to spend 3 Plustokens to gain access to it. Spend a token? (You have " + App.LoggedinUser.Plustokens + " Tokens left.)", "Yes", "No");
                         if (answer)
                         {
@@ -396,7 +395,6 @@ namespace NWT
                                 Plus.Article = RSS.ID;
                                 Plus.User = App.LoggedinUser.ID;
                                 App.database.InsertPlus(Plus);
-                                App.database.UpdateStats("PlusArticlesUnlocked");
                                 await Navigation.PushAsync(new NewsPage(RSS,argc));
                             }
                             else

@@ -30,7 +30,6 @@ namespace NWT
                 RSS.Author = App.LoggedinUser.ID;
                 RSS.Referat = Int32.Parse(ClassId);
                 App.database.InsertInsandare(RSS);
-                App.database.UpdateStats("InsandareSubmitted");
                 await DisplayAlert("Submission Successful", "Insändare Submitted", "OK");
             }
 

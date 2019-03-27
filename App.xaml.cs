@@ -20,10 +20,14 @@ namespace NWT
         public static bool Online = true;
         public static System.Timers.Timer Timer;
         public static bool Login = false;
-        public static LoadingPopUp LoadingScreen; 
+        public static LoadingPopUp LoadingScreen;
         public App()
         {
             InitializeComponent();
+
+            
+            
+
 
             if (database == null)
             {
@@ -43,6 +47,8 @@ namespace NWT
             Timer.Interval = 60000;
             Timer.Elapsed += OnTimedEvent;
             Timer.Enabled = true;
+
+            
 
             MainPage = Startpage;// new NavigationPage();
             Instanciated = true;
@@ -65,12 +71,8 @@ namespace NWT
 
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if(App.LoggedinUser != null)
-            {
-                App.database.UpdateStats("UseTime");
-            }            
-            Timer.Start();         
+        {           
+            //Timer.Start();         
         }
         protected override void OnStart ()
 		{
