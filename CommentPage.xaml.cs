@@ -202,10 +202,6 @@ namespace NWT
                 Console.WriteLine("PING4");
                 LoadComments(CLVL, Chain.Last().ID);
             }
-            if (App.LoggedinUser != null)
-            {
-                App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
-            }
         }
 
         void LoadComments(int LVL, int ReplyID)

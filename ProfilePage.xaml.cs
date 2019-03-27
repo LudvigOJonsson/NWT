@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace NWT
 {
@@ -37,11 +38,14 @@ namespace NWT
 
         public void updateMissions()
         {
-            var Tasklist = App.database.MissionUpdate(App.LoggedinUser, "Evaluate");
-            /*m1t1
-            m1t.Text = "Read " + Tasklist[0].Progress + "/" + Tasklist[0].Goal + "Articles";
-            m2t.Text = "Post " + Tasklist[1].Progress + "/" + Tasklist[1].Goal + " Comments";
-            m3t.Text = "Solve " + Tasklist[2].Progress + "/" + Tasklist[2].Goal + " Sudokus";*/
+            var Tasklist = JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
+            
+            m1t1.Text = Tasklist[0].Type;
+            m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
+            m2t1.Text = Tasklist[1].Type;
+            m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
+            m3t1.Text = Tasklist[2].Type;
+            m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
         }
 
  
@@ -79,7 +83,6 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            //await Navigation.PushAsync(new NewsGridPage(3));
             await Navigation.PushAsync(new AchivementsPage());
         }
         async void Favorites(object sender, EventArgs e)
@@ -88,7 +91,7 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new FavoritesPage());
+            await Navigation.PushAsync(new NewsGridPage(3));
         }
         async void History(object sender, EventArgs e)
         {
@@ -96,18 +99,8 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-
             await Navigation.PushAsync(new NewsGridPage(2));
+        }
 
-            //await Navigation.PushAsync(new HistoryPage());
-        }
-        async void Missions(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new MissionsPage());
-        }
     }
 }

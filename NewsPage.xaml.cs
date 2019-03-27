@@ -275,8 +275,6 @@ namespace NWT
 
                     }
                 }
-                
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 App.database.Plustoken(App.LoggedinUser, 1);
                 Read = true;
                 TimerButton.IsEnabled = false;
@@ -360,10 +358,6 @@ namespace NWT
                     Comment.Text = "";
                     App.database.InsertComment(SC);
                     MakeComment(SC);
-                }
-                if (App.LoggedinUser != null)
-                {
-                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
                 }
             }
             else

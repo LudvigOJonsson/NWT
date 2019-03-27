@@ -185,6 +185,7 @@ namespace NWT
                         {
                             ScoreList.ElementAt(CurrentQuestion).Color = Color.Green;
                             Clicked.BackgroundColor = Color.Green;
+                            App.database.StatUpdate("QuestionAnswered");
                         }
                         else
                         {

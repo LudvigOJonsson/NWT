@@ -185,7 +185,8 @@ namespace NWT
             await button.RotateTo(-2, 40, Easing.BounceOut);
             await button.RotateTo(2, 60, Easing.BounceOut);
             await button.RotateTo(0, 40, Easing.BounceOut);
-            
+            App.database.StatUpdate("InsandareRead");
+            /*
             if (TimerButton.BackgroundColor == Color.FromRgb(80, 210, 194) && Read == false)
             {
                
@@ -209,10 +210,9 @@ namespace NWT
 
                     }
                 }
-                App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 Read = true;
                 TimerButton.IsEnabled = false;
-            }
+            }*/
         }
         async void TimerDone(object sender)
         {
@@ -327,10 +327,6 @@ namespace NWT
                     Comment.Text = "";
                     App.database.InsertComment(SC);
                     MakeComment(SC);
-                }
-                if (App.LoggedinUser != null)
-                {
-                    App.database.MissionUpdate(App.LoggedinUser, "CommentPosted");
                 }
             }
             else

@@ -22,22 +22,7 @@ namespace NWT
         public AchivementsPage()
 		{
 			InitializeComponent ();
-            var Stats = new StatsTable();
-            Stats.User = -1;
-            Stats.Logins = 69;
-            Stats.UseTime = 420;
-            Stats.ArticlesRead = 27;
-            Stats.PlusArticlesUnlocked = 12;
-            Stats.InsandareSubmitted = 12;
-            Stats.InsandareRead = 53;
-            Stats.GameFinished = 4;
-            Stats.QuestionSubmitted = 1;
-            Stats.QuestionAnswered = 5;
-            Stats.VoteQuestionSubmitted = 1;
-            Stats.VoteSubmitted = 13;
-            Stats.CommentsPosted = 17;
-            Stats.TokensCollected = 123;
-
+            var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
             UpdateAchivements(Stats);
         }
 
@@ -125,25 +110,29 @@ namespace NWT
             tokensCollectedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int commentsPostedGoal = 0;
-            if (Stats.CommentsPosted < 5)
+            if (Stats.CommentsPosted < 1)
             {
                 commentsPostedGoal = 1;
             }
-            else if (Stats.CommentsPosted < 10)
+            else if (Stats.CommentsPosted < 5)
             {
                 commentsPostedGoal = 5;
             }
-            else if (Stats.CommentsPosted < 25)
+            else if (Stats.CommentsPosted < 10)
             {
                 commentsPostedGoal = 10;
             }
-            else if (Stats.CommentsPosted < 50)
+            else if (Stats.CommentsPosted < 25)
             {
                 commentsPostedGoal = 25;
             }
-            else if (Stats.CommentsPosted < 100)
+            else if (Stats.CommentsPosted < 50)
             {
                 commentsPostedGoal = 50;
+            }
+            else if (Stats.CommentsPosted < 100)
+            {
+                commentsPostedGoal = 100;
             }
 
             commentsPostedText.Text = Stats.CommentsPosted.ToString() + " Kommentarer Skrivna";
@@ -152,54 +141,60 @@ namespace NWT
             commentsPostedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int insandarePostedGoal = 0;
-            if (Stats.InsandareSubmitted < 5)
+            if (Stats.InsandareSubmitted < 1)
             {
                 insandarePostedGoal = 1;
             }
-            else if (Stats.InsandareSubmitted < 10)
+            else if (Stats.InsandareSubmitted < 5)
             {
                 insandarePostedGoal = 5;
             }
-            else if (Stats.InsandareSubmitted < 25)
+            else if (Stats.InsandareSubmitted < 10)
             {
                 insandarePostedGoal = 10;
             }
-            else if (Stats.InsandareSubmitted < 50)
+            else if (Stats.InsandareSubmitted < 25)
             {
                 insandarePostedGoal = 25;
             }
-            else if (Stats.InsandareSubmitted < 100)
+            else if (Stats.InsandareSubmitted < 50)
             {
                 insandarePostedGoal = 50;
             }
-
+            else if (Stats.InsandareSubmitted < 100)
+            {
+                insandarePostedGoal = 100;
+            }
             insandarePostedText.Text = Stats.InsandareSubmitted.ToString() + " Insändare Skrivna";
             insandarePostedNumber.Text = Stats.InsandareSubmitted.ToString() + "/" + insandarePostedGoal;
             percentCompleted = (double)Stats.InsandareSubmitted / (double)insandarePostedGoal;
             insandarePostedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int questionPostedGoal = 0;
-            if (Stats.VoteQuestionSubmitted < 5)
+            if (Stats.VoteQuestionSubmitted < 1)
             {
                 questionPostedGoal = 1;
             }
-            else if (Stats.VoteQuestionSubmitted < 10)
+            else if (Stats.VoteQuestionSubmitted < 5)
             {
                 questionPostedGoal = 5;
             }
-            else if (Stats.VoteQuestionSubmitted < 25)
+            else if (Stats.VoteQuestionSubmitted < 10)
             {
                 questionPostedGoal = 10;
             }
-            else if (Stats.VoteQuestionSubmitted < 50)
+            else if (Stats.VoteQuestionSubmitted < 25)
             {
                 questionPostedGoal = 25;
             }
-            else if (Stats.VoteQuestionSubmitted < 100)
+            else if (Stats.VoteQuestionSubmitted < 50)
             {
                 questionPostedGoal = 50;
             }
-
+            else if (Stats.VoteQuestionSubmitted < 100)
+            {
+                questionPostedGoal = 100;
+            }
             questionPostedText.Text = Stats.VoteQuestionSubmitted.ToString() + " Lokalfråga Skapta";
             questionPostedNumber.Text = Stats.VoteQuestionSubmitted.ToString() + "/" + questionPostedGoal;
             percentCompleted = (double)Stats.VoteQuestionSubmitted / (double)questionPostedGoal;
@@ -233,19 +228,19 @@ namespace NWT
             quizPostedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int gamesFinishedGoal = 0;
-            if (Stats.GameFinished < 5)
+            if (Stats.GameFinished < 1)
             {
                 gamesFinishedGoal = 1;
             }
-            else if (Stats.GameFinished < 10)
+            else if (Stats.GameFinished < 3)
             {
                 gamesFinishedGoal = 3;
             }
-            else if (Stats.GameFinished < 25)
+            else if (Stats.GameFinished < 10)
             {
                 gamesFinishedGoal = 10;
             }
-            else if (Stats.GameFinished < 50)
+            else if (Stats.GameFinished < 20)
             {
                 gamesFinishedGoal = 20;
             }
@@ -256,56 +251,56 @@ namespace NWT
             gamesFinishedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int questionAnsweredGoal = 0;
-            if (Stats.VoteSubmitted < 5)
+            if (Stats.VoteSubmitted < 1)
             {
                 questionAnsweredGoal = 1;
             }
-            else if (Stats.VoteSubmitted < 10)
+            else if (Stats.VoteSubmitted < 5)
             {
                 questionAnsweredGoal = 5;
             }
-            else if (Stats.VoteSubmitted < 25)
+            else if (Stats.VoteSubmitted < 10)
             {
                 questionAnsweredGoal = 10;
             }
-            else if (Stats.VoteSubmitted < 50)
+            else if (Stats.VoteSubmitted < 15)
             {
                 questionAnsweredGoal = 15;
             }
-            else if (Stats.VoteSubmitted < 100)
+            else if (Stats.VoteSubmitted < 25)
             {
                 questionAnsweredGoal = 25;
             }
 
-            gamesFinishedText.Text = Stats.VoteSubmitted.ToString() + " Lokalfråga Svarade";
-            gamesFinishedNumber.Text = Stats.VoteSubmitted.ToString() + "/" + questionAnsweredGoal;
+            questionAnsweredText.Text = Stats.VoteSubmitted.ToString() + " Lokalfråga Svarade";
+            questionAnsweredNumber.Text = Stats.VoteSubmitted.ToString() + "/" + questionAnsweredGoal;
             percentCompleted = (double)Stats.VoteSubmitted / (double)questionAnsweredGoal;
             questionAnsweredProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int quizAnsweredGoal = 0;
-            if (Stats.QuestionAnswered < 5)
+            if (Stats.QuestionAnswered < 1)
             {
                 quizAnsweredGoal = 1;
             }
-            else if (Stats.QuestionAnswered < 10)
+            else if (Stats.QuestionAnswered < 5)
             {
                 quizAnsweredGoal = 5;
             }
-            else if (Stats.QuestionAnswered < 25)
+            else if (Stats.QuestionAnswered < 10)
             {
                 quizAnsweredGoal = 10;
             }
-            else if (Stats.QuestionAnswered < 50)
+            else if (Stats.QuestionAnswered < 15)
             {
                 quizAnsweredGoal = 15;
             }
-            else if (Stats.QuestionAnswered < 100)
+            else if (Stats.QuestionAnswered < 25)
             {
                 quizAnsweredGoal = 25;
             }
 
-            gamesFinishedText.Text = Stats.QuestionAnswered.ToString() + " Quiz Svarade";
-            gamesFinishedNumber.Text = Stats.QuestionAnswered.ToString() + "/" + quizAnsweredGoal;
+            quizAnsweredText.Text = Stats.QuestionAnswered.ToString() + " Quiz Svarade";
+            quizAnsweredNumber.Text = Stats.QuestionAnswered.ToString() + "/" + quizAnsweredGoal;
             percentCompleted = (double)Stats.QuestionAnswered / (double)quizAnsweredGoal;
             quizAnsweredProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 

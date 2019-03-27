@@ -109,6 +109,26 @@ namespace NWT
         public string Imagetext { get; set; }
     }
 
+    public class StatsTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public int User { get; set; }
+        public int Logins { get; set; }
+        public int UseTime { get; set; }
+        public int ArticlesRead { get; set; }
+        public int PlusArticlesUnlocked { get; set; }
+        public int InsandareSubmitted { get; set; }
+        public int InsandareRead { get; set; }
+        public int GameFinished { get; set; }
+        public int QuestionSubmitted { get; set; }
+        public int QuestionAnswered { get; set; }
+        public int VoteQuestionSubmitted { get; set; }
+        public int VoteSubmitted { get; set; }
+        public int CommentsPosted { get; set; }
+        public int TokensCollected { get; set; }
+    }
+
     public class Task
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -329,6 +349,15 @@ namespace NWT
             
         }
 
+        public List<StatsTable> GetUserStats(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Query", "SELECT * FROM Stats WHERE User = " + ID.ToString(), App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<StatsTable>>(Result.JSON);
+        }
+
+
+
         public int LoadNF(int start, int stop)
         {
             int Nr = 0;
@@ -473,8 +502,11 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote), App.LoggedinUser.ID)));
         }
+        public void StatUpdate(string Statement)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Update", Statement, App.LoggedinUser.ID)));
+        }
 
-       
 
         public List<NewsfeedTable> GetNF(int ID)
         {          
@@ -495,6 +527,8 @@ namespace NWT
         {
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID = ?", ID.ToString());
         }
+
+
 
         public void Registration(UserTable User)
         {
@@ -568,16 +602,6 @@ namespace NWT
             return Convert.ToBoolean(Result.JSON);
         }
 
-        public bool PointUpdate(CommentTable Comment, int Value)
-        {
-            var Pair = JsonConvert.SerializeObject(new KeyValuePair<CommentTable, int>(Comment, Value));
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Point", Pair, App.LoggedinUser.ID)));
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-
-            
-
-            return Convert.ToBoolean(Result.JSON);
-        }
 
         public List<Task> MissionUpdate(UserTable User, string Operation)
         {

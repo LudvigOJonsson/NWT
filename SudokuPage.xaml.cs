@@ -60,10 +60,7 @@ namespace NWT
             if((CalculateSudoku() || Fusk) && !Solved)
             {
                 await DisplayAlert("Task", "You Solved the Sudoku!", "OK");
-                if (App.LoggedinUser != null)
-                {
-                    App.database.MissionUpdate(App.LoggedinUser, "SudokuSolved");
-                }
+                App.database.StatUpdate("GameFinished");
                 Solved = true;
             }
             else {

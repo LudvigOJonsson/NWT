@@ -10,7 +10,6 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\HistoryPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoginPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\MainPage.xaml.g.cs
-C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\MissionsPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NewsGridPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NewsPage.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\PlayPage.xaml.g.cs
