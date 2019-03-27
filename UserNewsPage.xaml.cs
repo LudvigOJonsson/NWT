@@ -209,7 +209,6 @@ namespace NWT
 
                     }
                 }
-                App.database.UpdateStats("InsandareRead");
                 App.database.MissionUpdate(App.LoggedinUser, "ArticleRead");
                 Read = true;
                 TimerButton.IsEnabled = false;

@@ -28,7 +28,7 @@ namespace NWT
 
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
-            //Children[2] = new ProfilePage(App.LoggedinUser);
+            Children[2] = new ProfilePage();
             Children[3] = new PlayPage();                      
         }
   /*
