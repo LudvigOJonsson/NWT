@@ -38,7 +38,8 @@ namespace NWT
         public void updateMissions()
         {
             var Tasklist = App.database.MissionUpdate(App.LoggedinUser, "Evaluate");
-            /*m1t.Text = "Read " + Tasklist[0].Progress + "/" + Tasklist[0].Goal + "Articles";
+            /*m1t1
+            m1t.Text = "Read " + Tasklist[0].Progress + "/" + Tasklist[0].Goal + "Articles";
             m2t.Text = "Post " + Tasklist[1].Progress + "/" + Tasklist[1].Goal + " Comments";
             m3t.Text = "Solve " + Tasklist[2].Progress + "/" + Tasklist[2].Goal + " Sudokus";*/
         }
@@ -62,7 +63,6 @@ namespace NWT
         }
         async void Avatar(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
             await Navigation.PushAsync(new AvatarPage());
         }
         async void Settings(object sender, EventArgs e)

@@ -23,31 +23,72 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
-            <Image x:Name="ProfilePictureHat" Source="" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
-            <Image x:Name="ProfilePictureClothes" Source="" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2"/>
-            <Label Text="Utstyrsel" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" TextColor="Black"/>
+            <Image x:Name="ProfilePictureBody" Source="avatar_body.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
+            <Image x:Name="ProfilePicture" Source="avatar_face.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
+            <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
 
-            <Button Clicked="ChangeClothes" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Clicked="ChangeClothes2" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="4" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="4" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="4" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="4" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="4" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="5" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="5" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="5" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="5" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
-            <Button Grid.Row="5" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#50d2c2" BorderWidth="2"/>
+            <Image ClassId="avatar_hair1.png" Source="avatar_hair1.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_hair2.png" Source="avatar_hair2.png" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_hair3.png" Source="avatar_hair3.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_hair4.png" Source="avatar_hair4.png" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_hair5.png" Source="avatar_hair5.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image ClassId="avatar_body1.png" Source="avatar_body1.png" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_body2.png" Source="avatar_body2.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_body3.png" Source="avatar_body3.png" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_body4.png" Source="avatar_body4.png" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image ClassId="avatar_body5.png" Source="avatar_body5.png" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            
+            <Button Grid.Row="4" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="4" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
+            <Button Grid.Row="5" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0" BorderColor="#2f6e83" BorderWidth="2"/>
 
         </Grid>
     </ContentView>

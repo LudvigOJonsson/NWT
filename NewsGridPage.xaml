@@ -4,6 +4,10 @@
              x:Class="NWT.NewsGridPage"
              Icon="newsfeed.png"
              Title="Nyheter">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
+        <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
+    </ContentPage.ToolbarItems>
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS, Android" Value="0,0,0,0" />

@@ -24,10 +24,13 @@ namespace NWT
             //On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.FromHex("FFFFFF"));
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.FromHex("FFFFFF"));
-
-
+            
+            ToolbarItems.Add(new ToolbarItem("Search", "search.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel");
+            Debug.WriteLine("success: {0}", result); }));
+            
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
+
             Children[2] = new ProfilePage();
             Children[3] = new PlayPage();                      
         }
@@ -48,7 +51,7 @@ namespace NWT
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[3];
         }
-*/
+      */
 
     }
 }

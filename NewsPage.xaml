@@ -33,8 +33,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="10" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="10" Margin="0"/>
+            <Button x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
 
             <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
@@ -58,24 +58,37 @@
             <!--<BoxView Color="White" WidthRequest="300" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0"/>-->
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
-            <Button x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="6"  Margin="3"/>
-            <Button x:Name="TimerButton" Text="Timer" 
-                    Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" Margin="20" 
-                    WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray"/>
-            <Image x:Name="TimerIcon" HorizontalOptions="Start" VerticalOptions="Center" 
-                    Grid.Column="2" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="tokenicon.png"/>
+            <Button x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
+            <Button x:Name="TimerButton" Text="Samla token!" 
+                    Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#FFFFFF" TextColor="#000000" Margin="20" 
+                    WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="#3b5e6a"/>
+            <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
+                     BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source=""/>
+
+            <!--<forms:AnimationView 
+	                x:Name="tokenAnimation" 
+	                VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+	                Animation="confetti.json" 
+	                Loop="True" 
+	                AutoPlay="true"
+	                />-->
 
             <Button x:Name="FavButton" Text=""
                     Clicked="FavButtonClicked"  Grid.Column="5" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" 
                     HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray" Margin="5"/>
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="5" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="star.png"/>
+                    Grid.Column="5" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="star.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
 
 
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"   Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" FontSize="48" CornerRadius="20" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF" Margin="2" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
             <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6">
                 <Grid.RowDefinitions>

@@ -8,6 +8,10 @@
              Icon="community.png"
              Title="Framsida"
              >
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
+        <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
         <StackLayout>
