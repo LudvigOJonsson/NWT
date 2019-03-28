@@ -475,10 +475,44 @@ namespace NWT
             return false;
         }
 
+        public void InsertComment(CommentTable Comment)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Insert", JsonConvert.SerializeObject(Comment), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
         public void InsertInsandare(UserRSSTable RSS)
         {
-            TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
         }
+        public void StatUpdate(string Statement)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Update", Statement, App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+        public void InsertQuestion(QuizTable Quiz)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Insert", JsonConvert.SerializeObject(Quiz), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+        public void InsertHistory(HistoryTable RSS)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+        public void InsertVoteQuestion(VoteQuestionTable VQ)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Insert", JsonConvert.SerializeObject(VQ), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+        public void InsertVote(VoteTable Vote)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+
+ 
+
 
         public void InsertFavorite(FavoritesTable RSS)
         {
@@ -488,25 +522,6 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Delete", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
         }
-
-        public void InsertHistory(HistoryTable RSS)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
-        }
-
-        public void InsertVoteQuestion(VoteQuestionTable VQ)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Insert", JsonConvert.SerializeObject(VQ), App.LoggedinUser.ID)));
-        }
-        public void InsertVote(VoteTable Vote)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote), App.LoggedinUser.ID)));
-        }
-        public void StatUpdate(string Statement)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Update", Statement, App.LoggedinUser.ID)));
-        }
-
 
         public List<NewsfeedTable> GetNF(int ID)
         {          
@@ -629,10 +644,7 @@ namespace NWT
                 TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateInfo", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));      
         }
 
-        public void InsertComment(CommentTable Comment)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Insert", JsonConvert.SerializeObject(Comment), App.LoggedinUser.ID)));
-        }
+
 
         public int CommentCount(int parm)
         {
@@ -655,10 +667,7 @@ namespace NWT
 
 
 
-        public void InsertQuestion(QuizTable Quiz)
-        {
-            TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Insert", JsonConvert.SerializeObject(Quiz), App.LoggedinUser.ID)));
-        }
+
 
         public List<QuizTable> GetQuestion(int ID)
         {

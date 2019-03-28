@@ -102,5 +102,10 @@ namespace NWT
             await Navigation.PushAsync(new NewsGridPage(2));
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            updateMissions();
+        }
     }
 }
