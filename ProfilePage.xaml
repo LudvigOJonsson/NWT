@@ -72,7 +72,7 @@
 
                 <!--<Label Text="Uppdrag" TextColor="#50d2c2" FontSize="36" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 -->
-                <Button x:Name="m1" Grid.Row="4" Grid.Column="0" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="10"/>
+                <Button x:Name="m1" Grid.Row="4" Grid.Column="0" Clicked="Evaluate" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="10"/>
 
                 <Label x:Name="m1t1" TextColor="White" Text="Read Article" FontSize="14" Grid.Row="4" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m1t2" TextColor="White" FontSize="26" Text="0 / 10"  Grid.Row="4" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
@@ -81,13 +81,13 @@
                 <!--<Image x:Name="mission1Picture" Source="newsfeed.png"  Grid.Row="4" Grid.Column="0" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="50" HeightRequest="50" Margin="5"/>-->
                 <!--<Label x:Name ="m1t" Text="" TextColor="White" FontSize="12" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5"/>
 -->
-                <Button x:Name="m2" Grid.Row="4" Grid.Column="1" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="10"/>
+                <Button x:Name="m2" Grid.Row="4" Grid.Column="1" Clicked="Evaluate" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="10"/>
 
                 <Label x:Name="m2t1" TextColor="White" Text="Post Comment" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m2t2" TextColor="White" FontSize="26" Text="0 / 5"  Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
                 <Label x:Name="m2t3" TextColor="White" Text="5 Tokens" FontSize="14" Grid.Row="4" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
 
-                <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="10" />
+                <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" Clicked="Evaluate" BackgroundColor="#2f6e83" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="10" />
 
                 <Label x:Name="m3t1" TextColor="White" Text="Win Sudoku" FontSize="14" Grid.Row="4" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m3t2" TextColor="White" FontSize="26" Text="0 / 3"  Grid.Row="4" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>

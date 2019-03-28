@@ -15,6 +15,10 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProfilePage : ContentPage
 	{
+        public bool M1HI = false;
+        public bool M2HI = false;
+        public bool M3HI = false;
+
         public ProfilePage ()
 		{
 			InitializeComponent ();
@@ -23,32 +27,111 @@ namespace NWT
 
         public void Login(UserTable User)
         {
-            Welcome.Text = "Hi, " + User.Username + "!";
+            Welcome.Text = "Hej, " + User.Username + "!";
             TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
 
             //Getting update
             updateMissions();
-            Device.BeginInvokeOnMainThread(async () =>
+            if(App.LoggedinUser.DailyLogin == 0)
             {
-                //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
 
-                await PopupNavigation.Instance.PushAsync(new DailyPopUp());
-            });
+                    await PopupNavigation.Instance.PushAsync(new DailyPopUp());
+                });
+            }
+            
         }
 
         public void updateMissions()
         {
+            TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
             var Tasklist = JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
             
-            m1t1.Text = Tasklist[0].Type;
-            m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
-            m2t1.Text = Tasklist[1].Type;
-            m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
-            m3t1.Text = Tasklist[2].Type;
-            m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
+
+            if(Tasklist[0].Completed == 1)
+            {
+                m1t1.Text = "Mission Complete";
+                m1t2.Text = "";
+                m1t3.Text = "Come back tomorrow for new Missions";
+                m1.BackgroundColor = Color.FromHex("D3D3D3");
+                m1.IsEnabled = false;
+                M1HI = false;
+            }
+            else
+            {
+                m1t1.Text = Tasklist[0].Type;
+                m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
+                if (Tasklist[0].Progress >=  Tasklist[0].Goal)
+                {
+                    m1.BackgroundColor = Color.FromHex("FFDF00");
+                    M1HI = true;
+                }
+            }
+            if (Tasklist[1].Completed == 1)
+            {
+                m2t1.Text = "Mission Complete";
+                m2t2.Text = "";
+                m2t3.Text = "Come back tomorrow for new Missions";
+                m2.BackgroundColor = Color.FromHex("D3D3D3");
+                m2.IsEnabled = false;
+                M2HI = false;
+            }
+            else
+            {
+                m2t1.Text = Tasklist[1].Type;
+                m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
+                if (Tasklist[1].Progress >= Tasklist[1].Goal)
+                {
+                    m2.BackgroundColor = Color.FromHex("FFDF00");
+                    M2HI = true;
+                }
+            }
+            if (Tasklist[2].Completed == 1)
+            {
+                m3t1.Text = "Mission Complete";
+                m3t2.Text = "";
+                m3t3.Text = "Come back tomorrow for new Missions";
+                m3.BackgroundColor = Color.FromHex("D3D3D3");
+                m3.IsEnabled = false;
+                M3HI = false;
+            }
+            else
+            {
+                m3t1.Text = Tasklist[2].Type;
+                m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
+                if (Tasklist[2].Progress >= Tasklist[2].Goal)
+                {
+                    m3.BackgroundColor = Color.FromHex("FFDF00");
+                    M3HI = true;
+                }
+            }
+            
+            
+            
         }
 
- 
+        public void Evaluate(object sender, EventArgs e)
+        {
+            if (M1HI || M2HI || M3HI)
+            {
+                App.database.MissionEvaluation();
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
+
+                    await PopupNavigation.Instance.PushAsync(new DailyPopUp());
+                });
+
+            }
+            else
+            {
+
+            }
+            updateMissions();
+        }
 
 
 

@@ -630,6 +630,14 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
         }
 
+        public void MissionEvaluation()
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Mission", "", App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+
+
+
         public void ChangePassword(string NewPass,string RepeatPass)
         {
             if (NewPass == RepeatPass)
