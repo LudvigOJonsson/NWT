@@ -419,7 +419,6 @@ namespace NWT
 
         public void LoadHistory()
         {
-            DBLN = 2;
             argc = 1;
             AddNews(1);
         }
@@ -460,7 +459,8 @@ namespace NWT
                        (Article.Tag.Contains("Ekonomi") && App.SideMenu.Ekonomi.IsToggled) ||
                        (Article.Tag.Contains("Åsikter") && App.SideMenu.Åsikter.IsToggled) ||
                        (Article.Tag.Contains("Nöje och Kultur") && App.SideMenu.NöjeochKultur.IsToggled) ||
-                       (Article.Tag.Contains("Familj") && App.SideMenu.Familj.IsToggled))
+                       (Article.Tag.Contains("Familj") && App.SideMenu.Familj.IsToggled) ||
+                        Article.Tag.Contains("N/A"))
                     {
                         Article.Visibility(true);
                     }
@@ -486,7 +486,15 @@ namespace NWT
                 Console.WriteLine("History Gotten: " + RAL.Count());
                 foreach(var RA in RAL)
                 {
-                    Rss.Add(App.database.GetNf(RA.Article).First());
+                    var NF = new NewsfeedTable();
+                    NF.ID = 0;
+                    NF.NewsScore = 5;
+                    NF.Image = RA.Image;
+                    NF.Article = RA.Article;
+                    NF.Category = "N/A";
+                    NF.Header = RA.Header;
+                    NF.Plus = 0;
+                    Rss.Add(NF);
                     Console.WriteLine("Artikel Inlagd");
                 }
 
@@ -499,7 +507,15 @@ namespace NWT
                 Console.WriteLine("Favorites Gotten: " + FAL.Count());
                 foreach (var FA in FAL)
                 {
-                    Rss.Add(App.database.GetNf(FA.Article).First());
+                    var NF = new NewsfeedTable();
+                    NF.ID = 0;
+                    NF.NewsScore = 5;
+                    NF.Image = FA.Image;
+                    NF.Article = FA.Article;
+                    NF.Category = "N/A";
+                    NF.Header = FA.Header;
+                    NF.Plus = 0;
+                    Rss.Add(NF);
                     Console.WriteLine("Artikel Inlagd");
                 }
                 

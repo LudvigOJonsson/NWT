@@ -138,6 +138,7 @@ namespace NWT
         public int Completed { get; set; }
         public string Type { get; set; }
         public int Mission { get; set; }
+        public double Modifier { get; set; }
     }
     
 

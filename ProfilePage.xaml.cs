@@ -18,6 +18,9 @@ namespace NWT
         public bool M1HI = false;
         public bool M2HI = false;
         public bool M3HI = false;
+        public int M1T = 0;
+        public int M2T = 0;
+        public int M3T = 0;
 
         public ProfilePage ()
 		{
@@ -61,8 +64,10 @@ namespace NWT
             }
             else
             {
+                M1T = Convert.ToInt32(Tasklist[0].Goal / Tasklist[0].Modifier);
                 m1t1.Text = Tasklist[0].Type;
                 m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
+                m1t3.Text = "" + M1T +" Tokens";
                 if (Tasklist[0].Progress >=  Tasklist[0].Goal)
                 {
                     m1.BackgroundColor = Color.FromHex("FFDF00");
@@ -80,8 +85,10 @@ namespace NWT
             }
             else
             {
+                M2T = Convert.ToInt32(Tasklist[1].Goal / Tasklist[1].Modifier);
                 m2t1.Text = Tasklist[1].Type;
                 m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
+                m2t3.Text = "" + M2T + " Tokens";
                 if (Tasklist[1].Progress >= Tasklist[1].Goal)
                 {
                     m2.BackgroundColor = Color.FromHex("FFDF00");
@@ -99,8 +106,10 @@ namespace NWT
             }
             else
             {
+                M3T = Convert.ToInt32(Tasklist[2].Goal / Tasklist[2].Modifier);
                 m3t1.Text = Tasklist[2].Type;
                 m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
+                m3t3.Text = "" + M3T + " Tokens";
                 if (Tasklist[2].Progress >= Tasklist[2].Goal)
                 {
                     m3.BackgroundColor = Color.FromHex("FFDF00");
@@ -124,7 +133,20 @@ namespace NWT
 
                     await PopupNavigation.Instance.PushAsync(new DailyPopUp());
                 });
-
+                var T = Convert.ToInt32(TokenNumber.Text);
+                if (M1HI)
+                {
+                    T += M1T;
+                }
+                if (M2HI)
+                {
+                    T += M2T;
+                }
+                if (M3HI)
+                {
+                    T += M3T;
+                }
+                TokenNumber.Text = T.ToString();
             }
             else
             {
