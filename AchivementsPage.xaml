@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.AchivementsPage"
              BackgroundColor="#FFFFFF"
-             Title="Knappar">
+             Title="Troféer">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS, Android" Value="0,0,0,0" />
@@ -42,7 +42,7 @@
 	                AutoPlay="true" 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"/>
-                <Label Text="Knappar" FontSize="28" TextColor="#2f6e83" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="2"  Grid.Column="1"/>
+                <Label Text="Troféer" FontSize="28" TextColor="#2f6e83" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="2"  Grid.Column="1"/>
 
                 <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" CornerRadius="0" Margin="0"/>
                 <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="newsfeedWhite.png" Margin="10"/>

@@ -33,8 +33,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Button x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
+            <BoxView x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
 
             <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
@@ -58,7 +58,7 @@
             <!--<BoxView Color="White" WidthRequest="300" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0"/>-->
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
-            <Button x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
+            <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="Samla token!" 
                     Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#FFFFFF" TextColor="#000000" Margin="20" 
                     WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="#3b5e6a"/>

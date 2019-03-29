@@ -43,6 +43,7 @@ namespace NWT
             public Image Image = new Image { };
             public Image PlusImage = new Image { };
             public Image CornerImage = new Image { };
+            public Image CheckImage = new Image { };
 
             public Article(NewsfeedTable NF)
             {
@@ -156,6 +157,21 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Start,
 
                     };
+
+                    CheckImage = new Image
+                    {
+
+                        Source = "checkmark.png",
+                        WidthRequest = 40,
+                        HeightRequest = 40,
+                        Margin = 15,
+                        Aspect = Aspect.AspectFill,
+                        ClassId = NF.Article.ToString(),
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.Start,
+
+                    };
+
                     ArticleMargin = new BoxView
                     {
                         Color = Color.LightGray,
@@ -589,8 +605,10 @@ namespace NWT
                         {
                             NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
                             NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
+                            NewsGrid.Children.Add(Box.CheckImage, 0, 3, Rownr + 1, Rownr + 2); //CheckImage
+                            Box.CheckImage.IsVisible = false;
                         }
-                        
+
                         /*NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
 
                         Console.WriteLine("Val om Plus Artikel Klar");

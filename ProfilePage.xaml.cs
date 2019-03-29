@@ -22,6 +22,10 @@ namespace NWT
         public int M2T = 0;
         public int M3T = 0;
 
+        public Image avatarHairPic;
+        public Image avatarBodyPic;
+
+
         public ProfilePage ()
 		{
 			InitializeComponent ();
@@ -44,7 +48,13 @@ namespace NWT
                     await PopupNavigation.Instance.PushAsync(new DailyPopUp());
                 });
             }
-            
+
+        }
+
+        public void updateAvatar(ImageSource hair, ImageSource body)
+        {
+            ProfilePictureHair.Source = hair;
+            ProfilePictureBody.Source = body;
         }
 
         public void updateMissions()
