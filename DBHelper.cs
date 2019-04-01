@@ -323,7 +323,7 @@ namespace NWT
 
         public List<HistoryTable> GetHistory(int ID_)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = "+ID_+" ORDER BY Readat LIMIT 10 OFFSET(SELECT COUNT(*) FROM History ) - 10 ", App.LoggedinUser.ID)));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = "+ID_+ " ORDER BY Readat LIMIT 10 OFFSET(SELECT COUNT(*) FROM History  WHERE User = " + ID_ + ") - 10 ", App.LoggedinUser.ID)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
         }

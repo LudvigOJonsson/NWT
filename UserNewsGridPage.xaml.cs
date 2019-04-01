@@ -57,6 +57,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     //HeightRequest = ((NF.Header.Length/30))*50,
                     TextColor = Color.Black,
+                    ClassId = ID.ToString(),
                     Margin = 15,
                 };
 
@@ -71,6 +72,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
                     Aspect = Aspect.AspectFill,
+                    ClassId = ID.ToString(),
                     Margin = 0,
 
                 };
@@ -82,6 +84,7 @@ namespace NWT
                     HeightRequest = Image.HeightRequest + Label.HeightRequest,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
+                    ClassId = ID.ToString(),
                     Margin = 0,
                 };
 
@@ -92,6 +95,7 @@ namespace NWT
                     HeightRequest = Image.HeightRequest + Label.HeightRequest,
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
+                    ClassId = ID.ToString()
                 };
 
 
@@ -105,6 +109,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.Start,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Margin = 0,
+                    ClassId = ID.ToString()
                 };
 
 

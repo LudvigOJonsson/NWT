@@ -269,7 +269,7 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
+                            //A.Box.Color = Color.FromRgb(80, 210, 194);
                             A.Image.Margin = 6;
                         });
 
