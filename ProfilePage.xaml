@@ -47,6 +47,8 @@
                 <!--<Image Grid.Row="1" Grid.Column="0" Source="heart.png" WidthRequest="80" HeightRequest="80"/>-->
                 <Button Image="history.png" Clicked="History" Grid.Row="2" Grid.Column="0" x:Name="HistoryButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--<Image Grid.Row="2" Grid.Column="0" Source="history.png" WidthRequest="80" HeightRequest="80"/>-->
+                
+                <Button Clicked="Points" Grid.Row="0" Grid.Column="2" CornerRadius="30" BackgroundColor="#f8f8f9" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
 
                 <Button Image="knapp.png" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--<Image Grid.Row="1" Grid.Column="2" Source="puzzlePiece.png" WidthRequest="80" HeightRequest="80"/>-->

@@ -203,6 +203,18 @@ namespace NWT
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new AchivementsPage());
         }
+        async void Points(object sender, EventArgs e)
+        {
+
+            App.database.Plustoken(App.LoggedinUser, 1);
+            var variable = (ProfilePage)App.Mainpage.Children[2];
+            variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+
+            Button button = (Button)sender;
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
+        }
         async void Favorites(object sender, EventArgs e)
         {
             Button button = (Button)sender;
