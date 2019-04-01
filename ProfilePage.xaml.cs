@@ -29,6 +29,9 @@ namespace NWT
         public ProfilePage ()
 		{
 			InitializeComponent ();
+
+            avatarHairPic = ProfilePictureHair;
+            avatarBodyPic = ProfilePictureBody;
             
         }
 
