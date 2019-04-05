@@ -45,9 +45,15 @@ namespace NWT
             {
                 articleReadGoal = 50;
             }
-            else if (Stats.ArticlesRead < 100)
+            else
             {
-                articleReadGoal = 100;
+                for (int i = 0; i < Stats.ArticlesRead; i += 100)
+                {
+                    if (Stats.ArticlesRead < i)
+                    {
+                        articleReadGoal = i;
+                    }
+                }
             }
 
             articleReadText.Text = Stats.ArticlesRead.ToString() + " Artiklar Lästa";
@@ -72,9 +78,15 @@ namespace NWT
             {
                 tokensCollectedGoal = 50;
             }
-            else if (Stats.TokensCollected < 100)
+            else
             {
-                tokensCollectedGoal = 100;
+                for (int i = 0; i < Stats.TokensCollected; i += 100)
+                {
+                    if (Stats.TokensCollected < i)
+                    {
+                        tokensCollectedGoal = i;
+                    }
+                }
             }
 
             tokensCollectedText.Text = Stats.TokensCollected.ToString() + " Tokens Insamlade";
@@ -99,9 +111,15 @@ namespace NWT
             {
                 insandareReadGoal = 50;
             }
-            else if (Stats.InsandareRead < 100)
+            else
             {
-                insandareReadGoal = 100;
+                for (int i = 0; i < Stats.InsandareRead; i += 100)
+                {
+                    if (Stats.InsandareRead < i)
+                    {
+                        insandareReadGoal = i;
+                    }
+                }
             }
 
             insandareReadText.Text = Stats.InsandareRead.ToString() + " Insändare Lästa";
@@ -130,9 +148,15 @@ namespace NWT
             {
                 commentsPostedGoal = 50;
             }
-            else if (Stats.CommentsPosted < 100)
+            else
             {
-                commentsPostedGoal = 100;
+                for (int i = 0; i < Stats.CommentsPosted; i += 100)
+                {
+                    if (Stats.CommentsPosted < i)
+                    {
+                        commentsPostedGoal = i;
+                    }
+                }
             }
 
             commentsPostedText.Text = Stats.CommentsPosted.ToString() + " Kommentarer Skrivna";
@@ -161,9 +185,15 @@ namespace NWT
             {
                 insandarePostedGoal = 50;
             }
-            else if (Stats.InsandareSubmitted < 100)
+            else
             {
-                insandarePostedGoal = 100;
+                for (int i = 0; i < Stats.InsandareSubmitted; i += 100)
+                {
+                    if (Stats.InsandareSubmitted < i)
+                    {
+                        insandarePostedGoal = i;
+                    }
+                }
             }
             insandarePostedText.Text = Stats.InsandareSubmitted.ToString() + " Insändare Skrivna";
             insandarePostedNumber.Text = Stats.InsandareSubmitted.ToString() + "/" + insandarePostedGoal;
@@ -191,9 +221,15 @@ namespace NWT
             {
                 questionPostedGoal = 50;
             }
-            else if (Stats.VoteQuestionSubmitted < 100)
+            else
             {
-                questionPostedGoal = 100;
+                for (int i = 0; i < Stats.VoteQuestionSubmitted; i += 100)
+                {
+                    if (Stats.VoteQuestionSubmitted < i)
+                    {
+                        questionPostedGoal = i;
+                    }
+                }
             }
             questionPostedText.Text = Stats.VoteQuestionSubmitted.ToString() + " Lokalfråga Skapta";
             questionPostedNumber.Text = Stats.VoteQuestionSubmitted.ToString() + "/" + questionPostedGoal;
@@ -203,23 +239,29 @@ namespace NWT
             int quizPostedGoal = 0;
             if (Stats.QuestionSubmitted < 5)
             {
-                quizPostedGoal = 1;
+                quizPostedGoal = 5;
             }
             else if (Stats.QuestionSubmitted < 10)
             {
-                quizPostedGoal = 5;
+                quizPostedGoal = 10;
             }
             else if (Stats.QuestionSubmitted < 25)
             {
-                quizPostedGoal = 10;
+                quizPostedGoal = 25;
             }
             else if (Stats.QuestionSubmitted < 50)
             {
-                quizPostedGoal = 25;
-            }
-            else if (Stats.QuestionSubmitted < 100)
-            {
                 quizPostedGoal = 50;
+            }
+            else
+            {
+                for (int i = 0; i < Stats.QuestionSubmitted; i += 100)
+                {
+                    if (Stats.QuestionSubmitted < i)
+                    {
+                        quizPostedGoal = i;
+                    }
+                }
             }
 
             quizPostedText.Text = Stats.QuestionSubmitted.ToString() + " Quizfrågor Skapta";
@@ -240,9 +282,15 @@ namespace NWT
             {
                 gamesFinishedGoal = 10;
             }
-            else if (Stats.GameFinished < 20)
+            else
             {
-                gamesFinishedGoal = 20;
+                for (int i = 0; i < Stats.GameFinished; i += 20)
+                {
+                    if (Stats.GameFinished < i)
+                    {
+                        gamesFinishedGoal = i;
+                    }
+                }
             }
 
             gamesFinishedText.Text = Stats.GameFinished.ToString() + " Spel Avklarade";
@@ -267,9 +315,15 @@ namespace NWT
             {
                 questionAnsweredGoal = 15;
             }
-            else if (Stats.VoteSubmitted < 25)
+            else
             {
-                questionAnsweredGoal = 25;
+                for (int i = 0; i < Stats.VoteSubmitted; i += 25)
+                {
+                    if (Stats.VoteSubmitted < i)
+                    {
+                        questionAnsweredGoal = i;
+                    }
+                }
             }
 
             questionAnsweredText.Text = Stats.VoteSubmitted.ToString() + " Lokalfråga Svarade";
@@ -294,9 +348,15 @@ namespace NWT
             {
                 quizAnsweredGoal = 15;
             }
-            else if (Stats.QuestionAnswered < 25)
+            else
             {
-                quizAnsweredGoal = 25;
+                for (int i = 0; i < Stats.QuestionAnswered; i += 25)
+                {
+                    if (Stats.QuestionAnswered < i)
+                    {
+                        quizAnsweredGoal = i;
+                    }
+                }
             }
 
             quizAnsweredText.Text = Stats.QuestionAnswered.ToString() + " Quiz Svarade";

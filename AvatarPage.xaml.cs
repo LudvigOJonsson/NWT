@@ -40,14 +40,21 @@ namespace NWT
             Image image = (Image)sender;
             ProfilePictureHair.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
         }
         public void ChangeBody(object sender, EventArgs e)
         {
             Image image = (Image)sender;
             ProfilePictureBody.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
+        }
+        public void ChangeFace(object sender, EventArgs e)
+        {
+            Image image = (Image)sender;
+            ProfilePictureFace.Source = image.Source;
+            var PP = (ProfilePage)App.Mainpage.Children[2];
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
         }
 
         async void OnDismissButtonClicked(object sender, EventArgs args)
