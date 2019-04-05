@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +15,20 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsGridPage : ContentPage
     {
-        public int Startnr = 1;
-        public int Stopnr = 1;
+        public int Loadnr = 1;
         public static int DBLN = 10;
-        public static int NTN = DBLN;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
         public List<Article> ArticleList = new List<Article>();
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
-        public Button LoadNewsButton = new Button() { Text = "Load" };
+
+        public int PREV = 0;
+        public int CURR = DBLN;
+        public int NEXT = DBLN*2;
+        public bool ScrollLock = false;
+
+
 
         public bool First = true;
         public int argc = 0;
@@ -40,6 +45,7 @@ namespace NWT
             public BoxView ArticleMargin = new BoxView { };
             public BoxView CategoryBox = new BoxView { };
             public Label Label = new Label { };
+            public Label NrLabel = new Label { };
             public Image Image = new Image { };
             public Image PlusImage = new Image { };
             public Image CornerImage = new Image { };
@@ -91,7 +97,25 @@ namespace NWT
                     };
 
                     Label.GestureRecognizers.Add(TGR);
-                  
+
+                    NrLabel = new Label
+                    {
+                        
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 25,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.Start,
+                        HorizontalOptions = LayoutOptions.Start,
+                        //HeightRequest = ((NF.Header.Length/30))*50,
+                        TextColor = Color.Red,
+                        ClassId = NF.Article.ToString(),
+                        Margin = 15,
+                    };
+
+                    NrLabel.GestureRecognizers.Add(TGR);
+
+
                     if (NF.Image == null) { NF.Image = Defaultimage; }
                     Image = new Image
                     {
@@ -285,6 +309,21 @@ namespace NWT
                         ClassId = NF.Article.ToString()
                     };
                 }
+
+                if (NF.Image == null || NF.Image == Defaultimage)
+                {
+
+                    Image.Source = "BlueSquare.png";
+                    CategoryBox.HeightRequest = Label.Height;
+                    CornerImage.HeightRequest = 0;
+                    PlusImage.HeightRequest = 0;
+                    Box.HeightRequest = Label.Height;
+                    Image.HeightRequest = 1;
+
+
+                }
+
+
                 Console.WriteLine("Artikel Klar");
             }
 
@@ -293,11 +332,13 @@ namespace NWT
 
                 Image.IsVisible = State;
                 Label.IsVisible = State;
+                NrLabel.IsVisible = State;
                 Box.IsVisible = State;
                 Frame.IsVisible = State;
                 CornerImage.IsVisible = State;
                 PlusImage.IsVisible = State;
                 ArticleMargin.IsVisible = State;
+                
             }
 
 
@@ -309,23 +350,20 @@ namespace NWT
         public NewsGridPage(int Argc)
         {
             InitializeComponent();
+            NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-
-
+            for (int i = 0; i< DBLN; i++)
+            {
+                NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+            NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
             TGR = new TapGestureRecognizer();
             TGR.NumberOfTapsRequired = 1;
 
-            LoadNewsButton.Clicked += (s, e) => {
-                if (Startnr < (Stopnr + NTN))
-                {
-                    LoadLocalDB();
-                }
-                Stopnr += NTN;
-                AddNews(0);
-            };
 
-            LoadNewsButton.IsVisible = false;
 
             if (Argc == 0)
             {     
@@ -336,7 +374,7 @@ namespace NWT
                     IsEnabled = true;
                 };
                 LoadLocalDB();
-                Stopnr += NTN;
+
                 AddNews(0);
             }
             else if (Argc == 1)
@@ -447,21 +485,136 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadNF(Startnr, (Startnr + DBLN));
-            Startnr += DBLN;
-            
+            App.database.LoadNF(Loadnr, (Loadnr + DBLN));
+            Loadnr += DBLN;
+
         }
 
         public void PrintNews()
         {
-
+            int Start = 0;
+            int End = 0;
+            Rownr = 1;
 
             
-            if (App.Instanciated)
+            Start = PREV;
+            End = CURR;
+            
+            NewsGrid.Children.Clear();
+
+            if(PREV > 0)
             {
+                NewsGrid.Children.Add(Up, 0,3,0,1);
+            }
+
+            for (int i = Start; i < End; i++)
+            {
+                Article Box = ArticleList[i];
+                if (Box.Full)
+                {
+                    Console.WriteLine("Indelning av Fullt Artikel Objekt");
+
+
+                    NewsGrid.RowSpacing = 0;
+
+                    Box.Label.WidthRequest = Box.Label.Width - 25;
+
+                    //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
+                    NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
+                    NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
+                    NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
+                    //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
+
+
+
+                    Console.WriteLine("Artikel Objekt Lagd i Grid");
+                    /*int temp = 0;
+                    if (!First)
+                    {
+
+                        temp = NewsGrid.Children.IndexOf(Box.Frame);
+                        NewsGrid.Children[temp - 1].HeightRequest = 10;
+                        NewsGrid.Children[temp - 1].WidthRequest = 1000;
+                    }
+                    else
+                    {
+                        First = false;
+                    }*/
+
+                    if (Box.Plus)
+                    {
+                        NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
+                        NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
+                        NewsGrid.Children.Add(Box.CheckImage, 0, 3, Rownr + 1, Rownr + 2); //CheckImage
+                        Box.CheckImage.IsVisible = false;
+                    }
+
+                    /*NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
+
+                    Console.WriteLine("Val om Plus Artikel Klar");
+
+                    temp = 0;
+                    temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
+                    NewsGrid.Children[temp].HeightRequest = 1;
+                    NewsGrid.Children[temp].WidthRequest = 380;
+                    Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
+
+                    Console.WriteLine("Margin Inlagd");
+
+                    NewsGrid.RowDefinitions[Rownr].Height = 30;
+
+                    NewsGrid.RowDefinitions[Rownr + 2].Height = 110;*/
+                }
+                else
+                {
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 120 });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                    NewsGrid.RowSpacing = 0;
+
+                    NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
+                    NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
+                    NewsGrid.Children.Add(Box.Label, 0, 2, Rownr, Rownr + 3); //Label
+                    NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
+
+                    if (Box.Plus)
+                    {
+                        NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr, Rownr + 3); //CornerImage
+                        NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr, Rownr + 3); //PlusImage
+                    }
+
+                    NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
+
+                    int temp = 0;
+                    temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
+                    NewsGrid.Children[temp].HeightRequest = 1;
+                    NewsGrid.Children[temp].WidthRequest = 380;
+
+                    Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
+                }
+
                 
+
+                Rownr++;
+                Rownr++;
+                Rownr++;
+            }
+            NewsGrid.Children.Add(Down, 0,3, Rownr + 1,Rownr +2);
+
+
+
+
+
+            if (App.Instanciated && false)
+            {
+                int i = 0;
                 foreach (var Article in ArticleList)
                 {
+
                     if ((Article.Tag.Contains("Nyheter") && App.SideMenu.Nyheter.IsToggled) ||
                        (Article.Tag.Contains("Brott och Blåljus") && App.SideMenu.BrottochBlåljus.IsToggled) ||
                        (Article.Tag.Contains("Vård och Omsorg") && App.SideMenu.VårdochOmsorg.IsToggled) ||
@@ -479,25 +632,37 @@ namespace NWT
                         Article.Tag.Contains("N/A"))
                     {
                         Article.Visibility(true);
+                        NewsGrid.RowDefinitions[i * 3].Height = GridLength.Auto;
+                        NewsGrid.RowDefinitions[i * 3 + 1].Height = GridLength.Auto;
+                        NewsGrid.RowDefinitions[i * 3 + 2].Height = GridLength.Auto;
+
+                        Console.WriteLine("Article: " + i + " ;True");
                     }
                     else
                     {
                         Article.Visibility(false);
+                        NewsGrid.RowDefinitions[i * 3].Height = 0;
+                        NewsGrid.RowDefinitions[i * 3 + 1].Height = 0;
+                        NewsGrid.RowDefinitions[i * 3 + 2].Height = 0;
+                        Console.WriteLine("Article: " + i + " ;False");
                     }
+                    i++;
                 }
             }
         }
 
         public void AddNews(int argc)
         {
+            
             List<NewsfeedTable> Rss = new List<NewsfeedTable>();
             if(argc == 0)
             {
-                Rss = App.database.GetNF(Stopnr);
+                Rss = App.database.GetNF(Loadnr);
             }
             else if(argc == 1)
             {
-                
+                Down.IsVisible = false;
+                int j = 0;
                 var RAL = App.database.GetHistory(App.LoggedinUser.ID);
                 Console.WriteLine("History Gotten: " + RAL.Count());
                 foreach(var RA in RAL)
@@ -511,15 +676,17 @@ namespace NWT
                     NF.Header = RA.Header;
                     NF.Plus = 0;
                     Rss.Add(NF);
+                    j++;
                     Console.WriteLine("Artikel Inlagd");
                 }
+                CURR = j;
 
             }
             else if (argc == 2)
             {
-                
+                Down.IsVisible = false;
+                int j = 0;
                 var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
-                
                 Console.WriteLine("Favorites Gotten: " + FAL.Count());
                 foreach (var FA in FAL)
                 {
@@ -532,18 +699,22 @@ namespace NWT
                     NF.Header = FA.Header;
                     NF.Plus = 0;
                     Rss.Add(NF);
+                    j++;
                     Console.WriteLine("Artikel Inlagd");
                 }
-                
+                CURR = j;
             }
             else
             {
-                Rss = App.database.GetNF(Stopnr);
+                Rss = App.database.GetNF(Loadnr);
             }
 
             
+            
             Console.WriteLine(Rss.Count);
             Console.WriteLine("Inladdning Klar");
+            int i = 1;
+
             foreach (NewsfeedTable NF in Rss)
             {
                 bool Exists = false;
@@ -555,134 +726,71 @@ namespace NWT
                         Exists = true;
                     }
                 }
-                Console.WriteLine(ArticleList.Count);
+                //Console.WriteLine(ArticleList.Count);
                 Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
                     var Box = new Article(NF);
+                    Box.NrLabel.Text = i.ToString();
                     Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
-                    
-
-                    //column (left) = 0, right = column + column span; 0 + 5 = 6.  row (top) = 1, bottom = row + row span; 1 + 1 = 2
-
-                    if (Box.Full)
-                    {
-                        Console.WriteLine("Indelning av Fullt Artikel Objekt");
-
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                        NewsGrid.RowSpacing = 0;
-
-                        Box.Label.WidthRequest = Box.Label.Width - 25;
-
-                        //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
-                        NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
-                        NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
-
-                        //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
-
-
-
-                        Console.WriteLine("Artikel Objekt Lagd i Grid");
-                        /*int temp = 0;
-                        if (!First)
-                        {
-                            
-                            temp = NewsGrid.Children.IndexOf(Box.Frame);
-                            NewsGrid.Children[temp - 1].HeightRequest = 10;
-                            NewsGrid.Children[temp - 1].WidthRequest = 1000;
-                        }
-                        else
-                        {
-                            First = false;
-                        }*/
-
-                        if (Box.Plus)
-                        {
-                            NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
-                            NewsGrid.Children.Add(Box.CheckImage, 0, 3, Rownr + 1, Rownr + 2); //CheckImage
-                            Box.CheckImage.IsVisible = false;
-                        }
-
-                        /*NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
-
-                        Console.WriteLine("Val om Plus Artikel Klar");
-
-                        temp = 0;
-                        temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
-                        NewsGrid.Children[temp].HeightRequest = 1;
-                        NewsGrid.Children[temp].WidthRequest = 380;
-                        Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
-
-                        Console.WriteLine("Margin Inlagd");
-
-                        NewsGrid.RowDefinitions[Rownr].Height = 30;
-
-                        NewsGrid.RowDefinitions[Rownr + 2].Height = 110;*/
-                    }
-                    else
-                    {
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 120 });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
-                        NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
-                        NewsGrid.RowSpacing = 0;
-
-                        NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
-                        NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
-                        NewsGrid.Children.Add(Box.Label, 0, 2, Rownr, Rownr + 3); //Label
-
-                        if (Box.Plus)
-                        {
-                            NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr, Rownr + 3); //CornerImage
-                            NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr, Rownr + 3); //PlusImage
-                        }
-
-                        NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
-
-                        int temp = 0;
-                        temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
-                        NewsGrid.Children[temp].HeightRequest = 1;
-                        NewsGrid.Children[temp].WidthRequest = 380;
-
-                        Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
-                    }
-                    
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
-
-                    //NewsGrid.RowDefinitions[0].Height = 0;
-
                 }
+                i++;
             }
-            //NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            //NewsGrid.Children.Add(LoadNewsButton, 0, Rownr);
-            //Console.WriteLine("Nyheter inlagda i Grid");
-            /*
-            foreach (Article A in ArticleList)
-            {
-                if (App.database.GetReadArticle(A.ID).Count > 0)
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        A.Frame.Color = Color.FromRgb(80, 210, 194);
-                    });
-
-                }
-            }*/
             PrintNews();
-
         }
 
-        
+        private void ScrollUp(object sender, ScrolledEventArgs e)
+        {
+
+            if (argc == 0)
+            {
+
+                NEXT = CURR;
+                CURR = PREV;
+                PREV -= DBLN;
+                if(PREV <= 0)
+                {
+                    PREV = 0;
+                    CURR = DBLN;
+                    NEXT = DBLN * 2;
+                }
 
 
+
+                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LoadLocalDB();
+                    AddNews(argc);
+                    NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
+                });
+                GC.Collect();
+
+            }
+        }
+
+        private void ScrollDown(object sender, ScrolledEventArgs e)
+        {
+
+            if (argc == 0)
+            {
+                PREV = CURR;
+                CURR = NEXT;
+                NEXT += DBLN;
+
+                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LoadLocalDB();
+                    AddNews(argc);
+                    NewsSV.ScrollToAsync(0, 10, false);
+                });
+                GC.Collect();
+
+            }
+        }
     }
 }
