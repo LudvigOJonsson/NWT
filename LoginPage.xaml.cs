@@ -49,7 +49,7 @@ namespace NWT
                     x.Login(App.LoggedinUser);
                     App.Mainpage.CurrentPage = App.Mainpage.Children[2];
                     IsBusy = false;
-                    /*
+                    
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
                     var NG = (NewsGridPage)App.Mainpage.Children[1];
@@ -61,12 +61,13 @@ namespace NWT
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
+                                    A.CheckImage.Source = "checkmark.png";
                                     //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                                 });
 
                             }
                         }                       
-                    }*/
+                    }
                 }
                 else
                 {

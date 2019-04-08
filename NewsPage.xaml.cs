@@ -269,6 +269,7 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                            A.CheckImage.Source = "checkmark.png";
                             //A.Box.Color = Color.FromRgb(80, 210, 194);
                             A.Image.Margin = 6;
                         });
@@ -477,7 +478,7 @@ namespace NWT
             CommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);                  
-            CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
+            //CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
             CommentGrid.Children.Add(Elispses, 5, 6, s.CommentNR, s.CommentNR + 1);
 
         }

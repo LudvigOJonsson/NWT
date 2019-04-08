@@ -185,7 +185,7 @@ namespace NWT
                     CheckImage = new Image
                     {
 
-                        Source = "checkmark.png",
+                        
                         WidthRequest = 40,
                         HeightRequest = 40,
                         Margin = 15,
@@ -524,7 +524,7 @@ namespace NWT
                     NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
                     NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
                     NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
-                    NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
+                    //NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
                     //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
 
 
@@ -579,7 +579,7 @@ namespace NWT
                     NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
                     NewsGrid.Children.Add(Box.Label, 0, 2, Rownr, Rownr + 3); //Label
-                    NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
+                   // NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
 
                     if (Box.Plus)
                     {
@@ -609,7 +609,7 @@ namespace NWT
 
 
 
-            if (App.Instanciated && false)
+            if (App.Instanciated)
             {
                 int i = 0;
                 foreach (var Article in ArticleList)
@@ -632,18 +632,11 @@ namespace NWT
                         Article.Tag.Contains("N/A"))
                     {
                         Article.Visibility(true);
-                        NewsGrid.RowDefinitions[i * 3].Height = GridLength.Auto;
-                        NewsGrid.RowDefinitions[i * 3 + 1].Height = GridLength.Auto;
-                        NewsGrid.RowDefinitions[i * 3 + 2].Height = GridLength.Auto;
-
                         Console.WriteLine("Article: " + i + " ;True");
                     }
                     else
                     {
                         Article.Visibility(false);
-                        NewsGrid.RowDefinitions[i * 3].Height = 0;
-                        NewsGrid.RowDefinitions[i * 3 + 1].Height = 0;
-                        NewsGrid.RowDefinitions[i * 3 + 2].Height = 0;
                         Console.WriteLine("Article: " + i + " ;False");
                     }
                     i++;

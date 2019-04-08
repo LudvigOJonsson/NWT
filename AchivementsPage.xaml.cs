@@ -47,7 +47,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.ArticlesRead; i += 100)
+                for (int i = 0; i < Stats.ArticlesRead+100; i += 100)
                 {
                     if (Stats.ArticlesRead < i)
                     {
@@ -80,7 +80,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.TokensCollected; i += 100)
+                for (int i = 0; i < Stats.TokensCollected + 100; i += 100)
                 {
                     tokensCollectedGoal = i;
                 }
@@ -110,7 +110,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.InsandareRead; i += 100)
+                for (int i = 0; i < Stats.InsandareRead + 100; i += 100)
                 {
                     insandareReadGoal = i;
                 }
@@ -144,7 +144,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.CommentsPosted; i += 100)
+                for (int i = 0; i < Stats.CommentsPosted + 100; i += 100)
                 {
                     commentsPostedGoal = i;
                 }
@@ -178,7 +178,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.InsandareSubmitted; i += 100)
+                for (int i = 0; i < Stats.InsandareSubmitted + 100; i += 100)
                 {
                     insandarePostedGoal = i;
                 }
@@ -211,7 +211,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.VoteQuestionSubmitted; i += 100)
+                for (int i = 0; i < Stats.VoteQuestionSubmitted + 100; i += 100)
                 {
                     questionPostedGoal = i;
                 }
@@ -240,7 +240,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.QuestionSubmitted; i += 100)
+                for (int i = 0; i < Stats.QuestionSubmitted + 100; i += 100)
                 {
                     quizPostedGoal = i;
                 }
@@ -266,7 +266,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.GameFinished; i += 20)
+                for (int i = 0; i < Stats.GameFinished + 20; i += 20)
                 {
                     gamesFinishedGoal = i;
                 }
@@ -296,7 +296,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.VoteSubmitted; i += 25)
+                for (int i = 0; i < Stats.VoteSubmitted + 25; i += 25)
                 {
                     questionAnsweredGoal = i;
                 }
@@ -326,7 +326,7 @@ namespace NWT
             }
             else
             {
-                for (int i = 0; i < Stats.QuestionAnswered; i += 25)
+                for (int i = 0; i < Stats.QuestionAnswered + 25; i += 25)
                 {
                     quizAnsweredGoal = i;
                 }

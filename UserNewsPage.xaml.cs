@@ -110,7 +110,7 @@ namespace NWT
             UserCommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);
             
             //CommentGrid.Children.Add(Userimage, 0, s.CommentNR + 8);
-            UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
+            //UserCommentGrid.Children.Add(Reply, 5, 6, s.CommentNR, s.CommentNR + 1);
         }
 
 
@@ -295,6 +295,10 @@ namespace NWT
             if(RSS.Referat != -1)
             {
                 Link.Text = App.database.GetServerRSS(RSS.Referat).First().Link;
+            }
+            else
+            {
+                Link.IsVisible = false;
             }
             
             ArticleNR = RSS.ID;
