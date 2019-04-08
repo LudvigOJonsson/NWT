@@ -24,6 +24,7 @@ namespace NWT
 
         public Image avatarHairPic;
         public Image avatarBodyPic;
+        public Image avatarFacePic;
 
 
         public ProfilePage ()
@@ -32,7 +33,8 @@ namespace NWT
 
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
-            
+            avatarFacePic = ProfilePictureFace;
+
         }
 
         public void Login(UserTable User)
@@ -54,19 +56,68 @@ namespace NWT
 
         }
 
-        public void updateAvatar(ImageSource hair, ImageSource body)
+        public void updateAvatar(ImageSource hair, ImageSource body, ImageSource face)
         {
             ProfilePictureHair.Source = hair;
             ProfilePictureBody.Source = body;
+            ProfilePictureFace.Source = face;
         }
 
         public void updateMissions()
         {
             TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
             var Tasklist = JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
-            
 
-            if(Tasklist[0].Completed == 1)
+            List<String> missionNames = new List<string>();
+            missionNames.Add("");
+            missionNames.Add("");
+            missionNames.Add("");
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (Tasklist[i].Type == "ArticlesRead")
+                {
+                    missionNames[i] = "Artiklar lästa";
+                }
+                else if (Tasklist[i].Type == "InsandareSubmitted")
+                {
+                    missionNames[i] = "Insändare skapad";
+                }
+                else if (Tasklist[i].Type == "InsandareRead")
+                {
+                    missionNames[i] = "Insändare lästa";
+                }
+                else if (Tasklist[i].Type == "GameFinished")
+                {
+                    missionNames[i] = "Spel avklarade";
+                }
+                else if (Tasklist[i].Type == "QuestionSubmitted")
+                {
+                    missionNames[i] = "Quiz skapad";
+                }
+                else if (Tasklist[i].Type == "QuestionAnswered")
+                {
+                    missionNames[i] = "Quiz svarad";
+                }
+                else if (Tasklist[i].Type == "VoteQuestionSubmitted")
+                {
+                    missionNames[i] = "Omröstning skapad";
+                }
+                else if (Tasklist[i].Type == "VoteSubmitted")
+                {
+                    missionNames[i] = "Omröstning svarad";
+                }
+                else if (Tasklist[i].Type == "CommentsPosted")
+                {
+                    missionNames[i] = "Kommentarer skrivna";
+                }
+                else if (Tasklist[i].Type == "TokensCollected")
+                {
+                    missionNames[i] = "Tokens insamlade";
+                }
+            }
+
+            if (Tasklist[0].Completed == 1)
             {
                 m1t1.Text = "Mission Complete";
                 m1t2.Text = "";
@@ -78,7 +129,7 @@ namespace NWT
             else
             {
                 M1T = Convert.ToInt32(Tasklist[0].Goal / Tasklist[0].Modifier);
-                m1t1.Text = Tasklist[0].Type;
+                m1t1.Text = missionNames[0];
                 m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
                 m1t3.Text = "" + M1T +" Tokens";
                 if (Tasklist[0].Progress >=  Tasklist[0].Goal)
@@ -99,7 +150,7 @@ namespace NWT
             else
             {
                 M2T = Convert.ToInt32(Tasklist[1].Goal / Tasklist[1].Modifier);
-                m2t1.Text = Tasklist[1].Type;
+                m2t1.Text = missionNames[1];
                 m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
                 m2t3.Text = "" + M2T + " Tokens";
                 if (Tasklist[1].Progress >= Tasklist[1].Goal)
@@ -120,7 +171,7 @@ namespace NWT
             else
             {
                 M3T = Convert.ToInt32(Tasklist[2].Goal / Tasklist[2].Modifier);
-                m3t1.Text = Tasklist[2].Type;
+                m3t1.Text = missionNames[2];
                 m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
                 m3t3.Text = "" + M3T + " Tokens";
                 if (Tasklist[2].Progress >= Tasklist[2].Goal)

@@ -35,15 +35,15 @@
                         <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
-                <Image x:Name="ProfilePicture" Source="avatar_face.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
-                <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+                <Image x:Name="ProfilePictureFace" Source="avatar_face.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Button Image="heart.png" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Image="heart.png" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--<Image Grid.Row="1" Grid.Column="0" Source="heart.png" WidthRequest="80" HeightRequest="80"/>-->
                 <Button Image="history.png" Clicked="History" Grid.Row="2" Grid.Column="0" x:Name="HistoryButton" CornerRadius="30" BackgroundColor="#2f6e83" WidthRequest="60" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center"/>
                 <!--<Image Grid.Row="2" Grid.Column="0" Source="history.png" WidthRequest="80" HeightRequest="80"/>-->

@@ -90,7 +90,7 @@ namespace NWT
             }
 
             tokensCollectedText.Text = Stats.TokensCollected.ToString() + " Tokens Insamlade";
-            tokensCollectedNumber.Text = Stats.TokensCollected.ToString() + "/" + articleReadGoal;
+            tokensCollectedNumber.Text = Stats.TokensCollected.ToString() + "/" + tokensCollectedGoal;
             percentCompleted = (double)Stats.TokensCollected / (double)tokensCollectedGoal;
             tokensCollectedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
@@ -125,7 +125,7 @@ namespace NWT
             insandareReadText.Text = Stats.InsandareRead.ToString() + " Insändare Lästa";
             insandareReadNumber.Text = Stats.InsandareRead.ToString() + "/" + insandareReadGoal;
             percentCompleted = (double)Stats.InsandareRead / (double)insandareReadGoal;
-            tokensCollectedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
+            insandareReadProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
             int commentsPostedGoal = 0;
             if (Stats.CommentsPosted < 1)
