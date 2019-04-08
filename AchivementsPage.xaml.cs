@@ -82,10 +82,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.TokensCollected; i += 100)
                 {
-                    if (Stats.TokensCollected < i)
-                    {
-                        tokensCollectedGoal = i;
-                    }
+                    tokensCollectedGoal = i;
                 }
             }
 
@@ -115,10 +112,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.InsandareRead; i += 100)
                 {
-                    if (Stats.InsandareRead < i)
-                    {
-                        insandareReadGoal = i;
-                    }
+                    insandareReadGoal = i;
                 }
             }
 
@@ -152,10 +146,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.CommentsPosted; i += 100)
                 {
-                    if (Stats.CommentsPosted < i)
-                    {
-                        commentsPostedGoal = i;
-                    }
+                    commentsPostedGoal = i;
                 }
             }
 
@@ -189,10 +180,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.InsandareSubmitted; i += 100)
                 {
-                    if (Stats.InsandareSubmitted < i)
-                    {
-                        insandarePostedGoal = i;
-                    }
+                    insandarePostedGoal = i;
                 }
             }
             insandarePostedText.Text = Stats.InsandareSubmitted.ToString() + " Insändare Skrivna";
@@ -225,10 +213,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.VoteQuestionSubmitted; i += 100)
                 {
-                    if (Stats.VoteQuestionSubmitted < i)
-                    {
-                        questionPostedGoal = i;
-                    }
+                    questionPostedGoal = i;
                 }
             }
             questionPostedText.Text = Stats.VoteQuestionSubmitted.ToString() + " Lokalfråga Skapta";
@@ -257,10 +242,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.QuestionSubmitted; i += 100)
                 {
-                    if (Stats.QuestionSubmitted < i)
-                    {
-                        quizPostedGoal = i;
-                    }
+                    quizPostedGoal = i;
                 }
             }
 
@@ -286,10 +268,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.GameFinished; i += 20)
                 {
-                    if (Stats.GameFinished < i)
-                    {
-                        gamesFinishedGoal = i;
-                    }
+                    gamesFinishedGoal = i;
                 }
             }
 
@@ -319,10 +298,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.VoteSubmitted; i += 25)
                 {
-                    if (Stats.VoteSubmitted < i)
-                    {
-                        questionAnsweredGoal = i;
-                    }
+                    questionAnsweredGoal = i;
                 }
             }
 
@@ -352,10 +328,7 @@ namespace NWT
             {
                 for (int i = 0; i < Stats.QuestionAnswered; i += 25)
                 {
-                    if (Stats.QuestionAnswered < i)
-                    {
-                        quizAnsweredGoal = i;
-                    }
+                    quizAnsweredGoal = i;
                 }
             }
 
