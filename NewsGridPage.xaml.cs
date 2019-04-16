@@ -733,7 +733,7 @@ namespace NWT
             PrintNews();
         }
 
-        private void ScrollUp(object sender, ScrolledEventArgs e)
+        public void Scrollup(object sender, EventArgs e)
         {
 
             if (argc == 0)
@@ -764,7 +764,7 @@ namespace NWT
             }
         }
 
-        private void ScrollDown(object sender, ScrolledEventArgs e)
+        public void Scrolldown(object sender, EventArgs e)
         {
 
             if (argc == 0)

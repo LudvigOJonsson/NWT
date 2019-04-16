@@ -53,7 +53,7 @@ namespace NWT
                     SudokuBoard.Add(Tile);
                 }
             }
-
+            
         }
         async public void SolveSudoku(object sender, EventArgs e)
         {

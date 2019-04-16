@@ -23,11 +23,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Up" Margin="0" BackgroundColor="#2f6e83" Text="ScrollUp" TextColor="White" Clicked="ScrollUp"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="Down" Margin="0" BackgroundColor="#2f6e83" Text="ScrollDown" TextColor="White" Clicked="ScrollDown"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Up" Margin="0" BackgroundColor="#2f6e83" Text="ScrollUp" TextColor="White" Clicked="Scrollup"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Down" Margin="0" BackgroundColor="#2f6e83" Text="ScrollDown" TextColor="White" Clicked="Scrolldown"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
                 <ActivityIndicator x:Name="Loading" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" Color="Blue"></ActivityIndicator>
-            </Grid>
-            
+            </Grid>        
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

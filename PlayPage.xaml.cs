@@ -43,8 +43,15 @@ namespace NWT
         }
 
         async void PlayPicross(object sender, EventArgs e)
-        {            
-                await DisplayAlert("", "Coming Soon!", "OK");          
+        {
+            if (App.Online)
+            {
+                await Navigation.PushAsync(new PicrossPage());
+            }
+            else
+            {
+                await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
+            }
         }
 
     }

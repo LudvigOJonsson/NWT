@@ -240,6 +240,15 @@ namespace NWT
         public int ChoosenOption { get; set; }
     }
 
+    public class PicrossTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public string Left { get; set; }
+        public string Top { get; set; }
+        public string Gameboard { get; set; }
+    }
+
     public class DBHelper 
     {
 
@@ -536,7 +545,7 @@ namespace NWT
 
         public List<UserRSSTable> GetUserRSS(int ID)
         {                     
-            return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID < ? ORDER BY PubDate DESC", ID.ToString());
+            return DB.Query<UserRSSTable>("SELECT * FROM Insandare LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM Insandare) - " + ID.ToString());
         }
 
         public List<UserRSSTable> GetUserRss(int ID)
@@ -544,7 +553,12 @@ namespace NWT
             return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID = ?", ID.ToString());
         }
 
-
+        public List<PicrossTable> LoadPicross()
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Picross", "Query", "SELECT * FROM Picross WHERE ID = 1", App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<PicrossTable>>(Result.JSON);
+        }
 
         public void Registration(UserTable User)
         {
