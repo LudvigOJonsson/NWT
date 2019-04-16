@@ -30,7 +30,7 @@
 	                AutoPlay="false"
 	                />
 
-                <Label Text="NWT-APP PROTOTYP" TextColor="#2f6e83" FontSize="36" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="SLA-APP PROTOTYP" TextColor="#2f6e83" FontSize="36" Grid.Row="1" Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Label Text="EMAIL" TextColor="DimGray" FontSize="8" Grid.Row="5" VerticalOptions="Start"/>
                 <Entry x:Name="UserLogin" x:FieldModifier="public" Placeholder="dinemail@gmail.com" Grid.Row="5" TextColor="Black" VerticalOptions="End"/>
                 <Label Text="LÖSENORD" TextColor="DimGray" FontSize="8" Grid.Row="7" VerticalOptions="Start"/>

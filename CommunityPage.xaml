@@ -14,57 +14,150 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
-        <StackLayout>
-            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
+        <ScrollView>
+            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="20" Margin="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="5" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="5" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="5" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1" />
                 </Grid.ColumnDefinitions>
 
-                <!--<Label Text="FRAMSIDA" TextColor="#50d2c2" FontSize="36" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
+                <Image Grid.Row="1" Grid.Column="1" BackgroundColor="Black"
+                       Source = "https://issme.org/wp-content/uploads/2015/09/news-image-1024x366.jpg"
+                       HorizontalOptions = "Fill"
+                       VerticalOptions = "Fill"
+                       Aspect = "AspectFill" />
+                <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <Button Grid.Row="3" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
+
+                <Label Grid.Row="3" Grid.Column="1" Text="Artikelrubrik. #7 kommer att shocka dig." FontSize = "25"
+                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15"/>
+
+
+
+                <Button Grid.Row="5" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Label  Grid.Row="5" Grid.Column="1" Text="Senaste nyheter" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="6" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="6" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="6" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="7" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="7" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="7" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="8" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="9" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="9" Grid.Column="1" Text="Fler Nyheter >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+
+
+                <Image Grid.Row="11" Grid.Column="1" BackgroundColor="Black"
+                       
+                       HorizontalOptions = "Fill"
+                       VerticalOptions = "Fill"
+                       Aspect = "AspectFill" />
+                <BoxView Grid.Row="12" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <Button Grid.Row="13" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
+
+                <Label Grid.Row="13" Grid.Column="1" Text="Insändare #1! Jag är bäst!" FontSize = "25"
+                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15"/>
+
+
+
+                <Button Grid.Row="15" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Label  Grid.Row="15" Grid.Column="1" Text="Senaste insändare" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="16" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="16" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="16" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="17" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="17" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="17" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="18" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="18" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="18" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="19" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="19" Grid.Column="1" Text="Fler insändare >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
                 
-                <forms:AnimationView 
-	                x:Name="tokenAnimation" 
-	                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-	                Animation="news_animation.json" 
-	                Loop="false" 
-	                AutoPlay="true"
-                    HeightRequest="800"
-                    WidthRequest="1600"
-	                />
-
-                <Button Grid.Row="1" Text="Insändare" TextColor="#000000" Grid.Column="0" BackgroundColor="#FFFFFF" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10" Clicked="Insandare"/>
-                <!--<Label Grid.Row="0" Grid.Column="0" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />-->
-                <Button Grid.Row="1" Text="Skriv Insändare" TextColor="#000000" Grid.Column="1" BackgroundColor="#FFFFFF" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10" Clicked="MakeInsandare" />
-
-
-                <Button Grid.Row="2" Grid.RowSpan="3" Text="Lokala Omröstningar" TextColor="#FFFFFF" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#2f6e83" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10" Clicked="VotePage"/>
-
-                <!--<Label Grid.Row="0" Grid.Column="1" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
-
-                <!--<Button Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF" Image="megaphone.png" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10"/>-->
                 
-                <!--<Label Grid.Row="1" Grid.ColumnSpan="2" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
-
-                <!--<Button Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="#FFFFFF" Image="speechbubbles.png" Margin="20" BorderColor="LightGray" BorderWidth="1" CornerRadius="10"/>-->
                 
-                <!--<Label Grid.Row="2" Grid.ColumnSpan="2" TextColor="#50d2c2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>-->
-                <!--<Button Grid.Row="0" Grid.Column="0" HeightRequest= "30" WidthRequest= "30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png" Clicked="Insandare" Margin="20"/>
-                <Button Grid.Row="0" Grid.Column="1" HeightRequest="30" WidthRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png" Clicked="MakeInsandare" Margin="20"/>
-                <Button Grid.Row="1" Grid.Column="1" HeightRequest="30" WidthRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png" Margin="20"/>
-                <Button Grid.Row="2" Grid.Column="1" HeightRequest="30" WidthRequest="30" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="#50d2c2" Image="rightarrow.png" Margin="20"/>-->
+                <Image Grid.Row="21" Grid.Column="1" BackgroundColor="Black"
+                       
+                       HorizontalOptions = "Fill"
+                       VerticalOptions = "Fill"
+                       Aspect = "AspectFill" />
+                <BoxView Grid.Row="22" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <Button Grid.Row="23" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
+
+                <Label Grid.Row="23" Grid.Column="1" Text="Majbrasa i Skultorp" FontSize = "25"
+                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15"/>
+
+
+
+                <Button Grid.Row="25" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Label  Grid.Row="25" Grid.Column="1" Text="Andra evenemang" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="26" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="26" Grid.Column="1" Text="Dans i skogen" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="26" Grid.Column="1" Text="2:a Maj" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="27" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="27" Grid.Column="1" Text="Kolla på tåg med Sigge" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="27" Grid.Column="1" Text="12:e Maj" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="28" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="28" Grid.Column="1" Text="Julbord!" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="28" Grid.Column="1" Text="30:e Maj" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button Grid.Row="29" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  Grid.Row="29" Grid.Column="1" Text="Fler evenemang >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
 
 
             </Grid>
 
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

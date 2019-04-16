@@ -165,7 +165,12 @@ namespace NWT
                         
                         if (Topimg == true)
                         {
+                            Image img = new Image { Source = Images[ImageCount] };
+                            
+
                             ArticleImage.Source = Images[ImageCount];
+                            ArticleImage.HeightRequest = img.Height;
+                            ArticleImage.WidthRequest = 300;
                             ArticleGrid.Children.Add(IMGText, 0, 6, 1, 2);
                             Topimg = false;
                         }
@@ -242,7 +247,7 @@ namespace NWT
             }
             
         }
-            async void TimerButtonClicked(object sender, System.EventArgs e)
+        async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
 

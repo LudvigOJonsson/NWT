@@ -40,7 +40,7 @@ namespace NWT
             public string Tag = "";
             public bool Plus = false;
             public bool Full = true;
-            public BoxView Box = new BoxView { };
+            public Button Box = new Button { };
             public BoxView Frame = new BoxView { };
             public BoxView ArticleMargin = new BoxView { };
             public BoxView CategoryBox = new BoxView { };
@@ -60,7 +60,7 @@ namespace NWT
                 Plus = Convert.ToBoolean(NF.Plus);
                 
                 int IMGXC = 200;
-                int IMGYC = 300;
+                int IMGYC = 250;
                 /*
                 if (RSS.NewsScore > 3 && RSS.ImgSource != "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg")
                 {
@@ -131,7 +131,7 @@ namespace NWT
 
                     };
 
-                    Box = new BoxView
+                    Box = new Button
                     {
                         BackgroundColor = Color.White,
                         WidthRequest = IMGXC,
@@ -140,7 +140,12 @@ namespace NWT
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         ClassId = NF.Article.ToString(),
                         Margin = 0,
+                        CornerRadius = 0,
+                        BorderWidth = 1,
+                        BorderColor = Color.FromHex("#f0f0f0"),
                     };
+
+                    Box.GestureRecognizers.Add(TGR);
 
                     Frame = new BoxView
                     {
@@ -198,9 +203,9 @@ namespace NWT
 
                     ArticleMargin = new BoxView
                     {
-                        Color = Color.LightGray,
+                        Color = Color.White,
                         WidthRequest = IMGXC,
-                        HeightRequest = 0,
+                        HeightRequest = 20,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         ClassId = NF.Article.ToString()
@@ -208,10 +213,10 @@ namespace NWT
                     CategoryBox = new BoxView
                     {
                         BackgroundColor = Color.FromHex("#2f6e83"),
-                        WidthRequest = 7,
-                        HeightRequest = Label.HeightRequest,
-                        HorizontalOptions = LayoutOptions.Start,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        WidthRequest = Label.WidthRequest,
+                        HeightRequest = 3,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Start,
                         Margin = 0,
                     };
                 }
@@ -248,7 +253,7 @@ namespace NWT
 
                     };
 
-                    Box = new BoxView
+                    Box = new Button
                     {
                         BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
@@ -313,14 +318,17 @@ namespace NWT
                 if (NF.Image == null || NF.Image == Defaultimage)
                 {
 
-                    Image.Source = "BlueSquare.png";
+                    Image.Source = "";
                     CategoryBox.HeightRequest = Label.Height;
                     CornerImage.HeightRequest = 0;
                     PlusImage.HeightRequest = 0;
                     Box.HeightRequest = Label.Height;
                     Image.HeightRequest = 1;
 
-
+                    CategoryBox.WidthRequest = 7;
+                    CategoryBox.HeightRequest = Label.HeightRequest;
+                    CategoryBox.HorizontalOptions = LayoutOptions.Start;
+                    CategoryBox.VerticalOptions = LayoutOptions.FillAndExpand;
                 }
 
 
@@ -354,6 +362,7 @@ namespace NWT
 
             for (int i = 0; i< DBLN; i++)
             {
+                NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                 NewsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -520,10 +529,11 @@ namespace NWT
                     Box.Label.WidthRequest = Box.Label.Width - 25;
 
                     //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 0, 3, Rownr + 1, Rownr + 2); //Image
-                    NewsGrid.Children.Add(Box.Label, 0, 3, Rownr + 2, Rownr + 3); //Label
-                    NewsGrid.Children.Add(Box.CategoryBox, 0, 3, Rownr + 2, Rownr + 3); //Label
+                    NewsGrid.Children.Add(Box.ArticleMargin, 1, 2, Rownr, Rownr + 1); //Boxview
+                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
+                    NewsGrid.Children.Add(Box.Image, 1, 2, Rownr + 2, Rownr + 3); //Image
+                    NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 3, Rownr + 4); //Label
+                    NewsGrid.Children.Add(Box.CategoryBox, 1, 2, Rownr + 3, Rownr + 4); //Label
                     //NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
                     //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
 
@@ -545,9 +555,9 @@ namespace NWT
 
                     if (Box.Plus)
                     {
-                        NewsGrid.Children.Add(Box.CornerImage, 0, 3, Rownr + 1, Rownr + 2); //CornerImage
-                        NewsGrid.Children.Add(Box.PlusImage, 0, 3, Rownr + 1, Rownr + 2); //PlusImage
-                        NewsGrid.Children.Add(Box.CheckImage, 0, 3, Rownr + 1, Rownr + 2); //CheckImage
+                        NewsGrid.Children.Add(Box.CornerImage, 1, 2, Rownr + 2, Rownr + 3); //CornerImage
+                        NewsGrid.Children.Add(Box.PlusImage, 1, 2, Rownr + 2, Rownr + 3); //PlusImage
+                        NewsGrid.Children.Add(Box.CheckImage, 1, 2, Rownr + 2, Rownr + 3); //CheckImage
                         Box.CheckImage.IsVisible = false;
                     }
 
@@ -569,36 +579,35 @@ namespace NWT
                 }
                 else
                 {
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                    /*NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 120 });
                     NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
-                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                    NewsGrid.RowDefinitions.Add(new RowDefinition { Height = 1 });*/
                     NewsGrid.RowSpacing = 0;
 
-                    NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 2, 3, Rownr, Rownr + 3); //Image
-                    NewsGrid.Children.Add(Box.Label, 0, 2, Rownr, Rownr + 3); //Label
-                   // NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
+                    NewsGrid.Children.Add(Box.Frame, 1, 2, Rownr + 1, Rownr + 4); //Boxview
+                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
+                    NewsGrid.Children.Add(Box.Image, 1, 2, Rownr + 1, Rownr + 4); //Image
+                    NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 1, Rownr + 4); //Label
+                    // NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
 
                     if (Box.Plus)
                     {
-                        NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr, Rownr + 3); //CornerImage
-                        NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr, Rownr + 3); //PlusImage
+                        NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr + 1, Rownr + 4); //CornerImage
+                        NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr + 1, Rownr + 4); //PlusImage
                     }
 
-                    NewsGrid.Children.Add(Box.ArticleMargin, 0, 3, Rownr + 3, Rownr + 4); //Margin
-
-                    int temp = 0;
+                    /*int temp = 0;
                     temp = NewsGrid.Children.IndexOf(Box.ArticleMargin);
                     NewsGrid.Children[temp].HeightRequest = 1;
                     NewsGrid.Children[temp].WidthRequest = 380;
 
-                    Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;
+                    Box.ArticleMargin.HorizontalOptions = LayoutOptions.Center;*/
                 }
 
                 
 
+                Rownr++;
                 Rownr++;
                 Rownr++;
                 Rownr++;
