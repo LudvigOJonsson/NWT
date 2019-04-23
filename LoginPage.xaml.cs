@@ -47,7 +47,7 @@ namespace NWT
 
                     var x = (ProfilePage)App.Mainpage.Children[2];
                     x.Login(App.LoggedinUser);
-                    App.Mainpage.CurrentPage = App.Mainpage.Children[2];
+                    App.Mainpage.CurrentPage = App.Mainpage.Children[0];
                     IsBusy = false;
                     
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);

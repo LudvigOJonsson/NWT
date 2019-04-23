@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="NWT.HubbPage"
+             x:Name = "Hubbpage" 
+             BackgroundColor="#ffffff"
+             Icon="slaicon.png"
+             Title="Hubb"
+             >
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
+        <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Grid x:Name="HubbGrid" RowSpacing="0" ColumnSpacing="14" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="1" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="Insandare"/>
+                <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <Image Source="newsfeed.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Margin="20"/>
+
+                <Label Grid.Row="1" Grid.Column="1" Text="              Insändare" FontSize = "25"
+                        HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15"/>
+                <Button Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="MakeInsandare"/>
+                
+                
+                <Button Grid.Row="3" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
+                <BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <Image Source="calendar.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" Margin="20"/>
+
+                <Label Grid.Row="3" Grid.Column="1" Text="              Evenemang" FontSize = "25"
+                        HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15"/>
+                <Button Grid.Row="3" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
+
+
+                <Button Grid.Row="5" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="VotePage"/>
+                <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <Image Source="votebox.png" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" Margin="20"/>
+
+                <Label Grid.Row="5" Grid.Column="1" Text="              Röstning" FontSize = "25"
+                        HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15"/>
+
+                
+                <Button Grid.Row="7" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="GamePage"/>
+                <BoxView Grid.Row="7" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <Image Source="play.png" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" Margin="20"/>
+
+                <Label Grid.Row="7" Grid.Column="1" Text="              Spel" FontSize = "25"
+                        HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15"/>
+                
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

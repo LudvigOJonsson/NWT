@@ -21,7 +21,7 @@
 
 
     </ContentPage>
-    <ContentPage x:Name = "PlayPage">
+    <ContentPage x:Name = "HubbPage">
 
     </ContentPage>
 </TabbedPage>
