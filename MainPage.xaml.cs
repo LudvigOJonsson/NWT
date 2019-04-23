@@ -32,7 +32,7 @@ namespace NWT
             Children[0] = new CommunityPage();
 
             Children[2] = new ProfilePage();
-            Children[3] = new PlayPage();                      
+            Children[3] = new HubbPage();                      
         }
   /*
         void Community(object sender, EventArgs e)
