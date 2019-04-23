@@ -40,3 +40,4 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoadingPopUp.xaml.g.cs
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\PicrossPage.xaml.g.cs
+C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\HubbPage.xaml.g.cs

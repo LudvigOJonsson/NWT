@@ -16,13 +16,13 @@ namespace NWT
 		{
 			InitializeComponent ();
             BindingContext = this;
-            IsBusy = false;
+            
 		}
 
 
         async void Login(object sender, EventArgs e)
         {
-            IsBusy = true;
+            
                 //await Navigation.PushAsync(App.LoadingScreen);
             
             if (App.Online && UserLogin.Text != null && UserPassword.Text != null)
@@ -45,10 +45,9 @@ namespace NWT
                     
                     
 
-                    var x = (ProfilePage)App.Mainpage.Children[2];
+                    var x = (ProfilePage)App.Mainpage.Children[3];
                     x.Login(App.LoggedinUser);
                     App.Mainpage.CurrentPage = App.Mainpage.Children[0];
-                    IsBusy = false;
                     
                     var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 

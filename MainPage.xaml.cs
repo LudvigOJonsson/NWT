@@ -31,8 +31,8 @@ namespace NWT
             Children[1] = new NewsGridPage(0);
             Children[0] = new CommunityPage();
 
-            Children[2] = new ProfilePage();
-            Children[3] = new HubbPage();                      
+            Children[3] = new ProfilePage();
+            Children[2] = new HubbPage();                      
         }
   /*
         void Community(object sender, EventArgs e)
