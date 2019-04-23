@@ -28,7 +28,16 @@ namespace NWT
         public int NEXT = DBLN*2;
         public bool ScrollLock = false;
 
-
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+            }
+        }
 
         public bool First = true;
         public int argc = 0;
@@ -439,7 +448,7 @@ namespace NWT
 
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetServerRSS(id).First();
-            if (RSS.Plus == 1)
+            if (RSS.Plus == 1 && false)
             {
                 if (App.LoggedinUser != null)
                 {
@@ -553,7 +562,7 @@ namespace NWT
                         First = false;
                     }*/
 
-                    if (Box.Plus)
+                    if (Box.Plus && false)
                     {
                         NewsGrid.Children.Add(Box.CornerImage, 1, 2, Rownr + 2, Rownr + 3); //CornerImage
                         NewsGrid.Children.Add(Box.PlusImage, 1, 2, Rownr + 2, Rownr + 3); //PlusImage
@@ -591,7 +600,7 @@ namespace NWT
                     NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 1, Rownr + 4); //Label
                     // NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
 
-                    if (Box.Plus)
+                    if (Box.Plus && false)
                     {
                         NewsGrid.Children.Add(Box.CornerImage, 2, 3, Rownr + 1, Rownr + 4); //CornerImage
                         NewsGrid.Children.Add(Box.PlusImage, 2, 3, Rownr + 1, Rownr + 4); //PlusImage
@@ -612,7 +621,8 @@ namespace NWT
                 Rownr++;
                 Rownr++;
             }
-            NewsGrid.Children.Add(Down, 0,3, Rownr + 1,Rownr +2);
+            NewsGrid.Children.Add(Down, 0, 3, Rownr + 1, Rownr + 2);
+
 
 
 
@@ -742,9 +752,9 @@ namespace NWT
             PrintNews();
         }
 
-        public void Scrollup(object sender, EventArgs e)
+        public async void Scrollup(object sender, EventArgs e)
         {
-
+            IsBusy = true;
             if (argc == 0)
             {
 
@@ -762,20 +772,20 @@ namespace NWT
 
                 Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
 
-                Device.BeginInvokeOnMainThread(() =>
-                {
+               
                     LoadLocalDB();
                     AddNews(argc);
-                    NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
-                });
+                  await  NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
+       
                 GC.Collect();
 
             }
+            IsBusy = false;
         }
 
-        public void Scrolldown(object sender, EventArgs e)
+        public async void Scrolldown(object sender, EventArgs e)
         {
-
+            IsBusy = true;
             if (argc == 0)
             {
                 PREV = CURR;
@@ -784,15 +794,15 @@ namespace NWT
 
                 Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
 
-                Device.BeginInvokeOnMainThread(() =>
-                {
+
                     LoadLocalDB();
                     AddNews(argc);
-                    NewsSV.ScrollToAsync(0, 10, false);
-                });
+                    await NewsSV.ScrollToAsync(0, 10, false);
+
                 GC.Collect();
 
             }
+            IsBusy = false;
         }
     }
 }

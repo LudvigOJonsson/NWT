@@ -56,68 +56,68 @@
                     <ColumnDefinition Width="1" />
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Row="1" Grid.Column="1" BackgroundColor="Black"
+                <Image x:Name="CPMNAP" Grid.Row="1" Grid.Column="1" BackgroundColor="Black"
                        Source = "https://issme.org/wp-content/uploads/2015/09/news-image-1024x366.jpg"
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
                 <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#2f6e83"/>
-                <Button Grid.Row="3" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
+                <Button  x:Name="CPMNAB" Grid.Row="3" Clicked="LoadNews"  Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
-                <Label Grid.Row="3" Grid.Column="1" Text="Artikelrubrik. #7 kommer att shocka dig." FontSize = "25"
-                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15"/>
+                <Label x:Name="CPMNAT" Grid.Row="3" Grid.Column="1" Text="Artikelrubrik. #7 kommer att shocka dig." FontSize = "25"
+                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15" InputTransparent="True"/>
 
 
 
-                <Button Grid.Row="5" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Button Grid.Row="5"  Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
                 <Label  Grid.Row="5" Grid.Column="1" Text="Senaste nyheter" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="6" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="6" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="6" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPNA1B" Grid.Row="6" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA1T" Grid.Row="6" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="6" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="7" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="7" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="7" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPNA2B" Grid.Row="7" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA2T" Grid.Row="7" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="7" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="8" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="8" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPNA3B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA3T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="9" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Button Grid.Row="9" Clicked="News" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
                 <Label  Grid.Row="9" Grid.Column="1" Text="Fler Nyheter >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
 
 
-                <Image Grid.Row="11" Grid.Column="1" BackgroundColor="Black"
+                <Image x:Name="CPMIAP" Grid.Row="11" Grid.Column="1" BackgroundColor="Black"
                        
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
                 <BoxView Grid.Row="12" Grid.Column="1" BackgroundColor="#2f6e83"/>
-                <Button Grid.Row="13" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
+                <Button x:Name="CPMIAB" Clicked="LoadUserNews" Grid.Row="13" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
-                <Label Grid.Row="13" Grid.Column="1" Text="Insändare #1! Jag är bäst!" FontSize = "25"
-                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15"/>
+                <Label x:Name="CPMIAT" Grid.Row="13" Grid.Column="1" Text="Insändare #1! Jag är bäst!" FontSize = "25"
+                        FontAttributes ="Bold" HorizontalOptions="Start" TextColor="Black" Margin="15" InputTransparent="True"/>
 
 
 
                 <Button Grid.Row="15" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
                 <Label  Grid.Row="15" Grid.Column="1" Text="Senaste insändare" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="16" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="16" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="16" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPIA1B" Clicked="LoadUserNews" Grid.Row="16" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  x:Name="CPIA1T" Grid.Row="16" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="16" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="17" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="17" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="17" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPIA2B" Clicked="LoadUserNews" Grid.Row="17" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  x:Name="CPIA2T" Grid.Row="17" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="17" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="18" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="18" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
-                <Label  Grid.Row="18" Grid.Column="1" Text="11 min" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Button x:Name="CPIA3B" Clicked="LoadUserNews" Grid.Row="18" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label  x:Name="CPIA3T" Grid.Row="18" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="18" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button Grid.Row="19" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Button Grid.Row="19" Clicked="Hubb" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
                 <Label  Grid.Row="19" Grid.Column="1" Text="Fler insändare >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
                 

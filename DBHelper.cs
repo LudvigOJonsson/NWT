@@ -421,7 +421,7 @@ namespace NWT
             int Nr = 0;
             for (int x = start; x < stop; x++)
             {
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM Insandare WHERE ID = " + x.ToString(), App.LoggedinUser.ID)));
+                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM Insandare WHERE ID = " + x.ToString(), -1)));
                 
 
                 

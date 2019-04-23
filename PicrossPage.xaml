@@ -4,7 +4,7 @@
              x:Class="NWT.PicrossPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Picross" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#50d2c2" />
+            <Label Text="Picross"  FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#50d2c2" />
             <Grid x:Name="PicrossGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor = "Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

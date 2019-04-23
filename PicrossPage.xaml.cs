@@ -115,12 +115,16 @@ namespace NWT
                 //Fusk = true;
             }
         }
+
+ 
+
+
+
         public bool CalculatePicross()
         {
             Boolean Solved = false;
             for (int x = 0; x < 10; x++)
-            {
-                
+            {            
                 var TempBoard = Gameboard[x];
                 for (int y = 0; y < 10; y++)
                 {
