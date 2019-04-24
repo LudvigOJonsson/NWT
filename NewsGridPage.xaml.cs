@@ -142,7 +142,7 @@ namespace NWT
 
                     Box = new Button
                     {
-                        BackgroundColor = Color.White,
+                        BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -171,7 +171,7 @@ namespace NWT
                     //Image.IsVisible = false;
                     PlusImage = new Image
                     {
-                        Source = "plus.png",
+                        Source = "",
                         WidthRequest = 40,
                         HeightRequest = 40 ,
                         Margin = 15,
@@ -185,7 +185,7 @@ namespace NWT
                     CornerImage = new Image
                     {
 
-                        Source = "plusBackground.png",
+                        Source = "",
                         WidthRequest = 40,
                         HeightRequest = 40,
                         Margin = 15,
@@ -539,10 +539,10 @@ namespace NWT
 
                     //NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
                     NewsGrid.Children.Add(Box.ArticleMargin, 1, 2, Rownr, Rownr + 1); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
                     NewsGrid.Children.Add(Box.Image, 1, 2, Rownr + 2, Rownr + 3); //Image
                     NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 3, Rownr + 4); //Label
                     NewsGrid.Children.Add(Box.CategoryBox, 1, 2, Rownr + 3, Rownr + 4); //Label
+                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
                     //NewsGrid.Children.Add(Box.NrLabel, 0, 1, Rownr + 1, Rownr + 2);
                     //NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
 
