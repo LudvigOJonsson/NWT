@@ -274,8 +274,11 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            A.CheckImage.Source = "checkmark.png";
+
+                            //A.CheckImage.Source = "checkmark.png";
+
                             A.CornerImage.Source = "plusBackground.png";
+
                             //A.Box.Color = Color.FromRgb(80, 210, 194);
                             A.Image.Margin = 6;
                         });
@@ -286,7 +289,7 @@ namespace NWT
                 Read = true;
                 TimerButton.IsEnabled = false;
 
-                var variable = (ProfilePage)App.Mainpage.Children[2];
+                var variable = (ProfilePage)App.Mainpage.Children[3];
                 variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
             }
         }

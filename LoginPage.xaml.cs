@@ -60,7 +60,7 @@ namespace NWT
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    A.CheckImage.Source = "checkmark.png";
+                                    //A.CheckImage.Source = "checkmark.png";
                                     //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
                                 });
 
