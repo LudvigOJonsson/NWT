@@ -274,7 +274,11 @@ namespace NWT
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
+
                             //A.CheckImage.Source = "checkmark.png";
+
+                            A.CornerImage.Source = "plusBackground.png";
+
                             //A.Box.Color = Color.FromRgb(80, 210, 194);
                             A.Image.Margin = 6;
                         });

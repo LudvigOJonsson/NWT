@@ -60,7 +60,9 @@ namespace NWT
                 Header = NF.Header;
                 IMGSource = NF.Image;
                 Plus = Convert.ToBoolean(NF.Plus);
+
                 HeaderLength = Header.Length;
+
                 Console.WriteLine("Artikel Klar");
             }
 
@@ -239,6 +241,7 @@ namespace NWT
                     Image Image = new Image
                     {
 
+
                         //Source = NF.Image,
                         WidthRequest = IMGXC,
                         HeightRequest = IMGYC,
@@ -247,6 +250,7 @@ namespace NWT
                         Aspect = Aspect.AspectFill,
                         Margin = 0,
                         // ClassId = NF.Article.ToString()
+
 
                     };
 
