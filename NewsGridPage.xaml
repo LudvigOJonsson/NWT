@@ -17,7 +17,9 @@
         <ScrollView x:Name="NewsSV">
             <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="14" BackgroundColor="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1" />
@@ -26,11 +28,6 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="Up" Margin="0" BackgroundColor="#2f6e83" Clicked="Scrollup" Text="Scrollup" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
                 <Button x:Name="Down" Margin="0" BackgroundColor="#2f6e83" Clicked="Scrolldown" Text="Scrolldown" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <ActivityIndicator x:Name="AI"
-                           IsVisible="{Binding IsBusy}"
-                           IsRunning="{Binding IsBusy}"
-                           Color="Black" />
-
             </Grid>
             
         </ScrollView>
