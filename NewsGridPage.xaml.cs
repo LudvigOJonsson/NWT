@@ -61,7 +61,7 @@ namespace NWT
                 IMGSource = NF.Image;
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                HeaderLength = Header.Length;
+                HeaderLength = ((Header.Length / 30) + 1)  * 60;
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -157,16 +157,27 @@ namespace NWT
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
 
+        public void ArtikelClicked(object sender, EventArgs e)
+        {
+            var Header = (View)sender;
+            Console.WriteLine(Header.ClassId);
+            Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType());
+            App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
+
+            Navigation.PopAsync();
+        }
+
+
         async void LoadNews(object sender, EventArgs e)
         {
 
-            var Header = (View)sender;
-
+            var Header = (Button)sender;
+            Header.IsEnabled = false;
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetServerRSS(id).First();
             await Navigation.PushAsync(new NewsPage(RSS, argc));
 
-
+            Header.IsEnabled = true;
 
         }
 
@@ -233,6 +244,7 @@ namespace NWT
                         //HeightRequest = ((NF.Header.Length/30))*50,
                         TextColor = Color.Black,
                         //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
                         Margin = 15,
                     };
 
@@ -248,6 +260,7 @@ namespace NWT
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
+                        InputTransparent = true,
                         Margin = 0,
                         // ClassId = NF.Article.ToString()
 
@@ -266,7 +279,21 @@ namespace NWT
                         CornerRadius = 0,
                         BorderWidth = 1,
                         BorderColor = Color.FromHex("#f0f0f0"),
+                        
+                        
                     };
+
+                    
+
+                    if(argc == 1)
+                    {
+                        Box.Clicked += ArtikelClicked;
+                    }
+                    else
+                    {
+                        Box.Clicked += LoadNews;
+                    }
+
 
                     BoxView Frame = new BoxView
                     {
@@ -275,6 +302,7 @@ namespace NWT
                         HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
                         //ClassId = NF.Article.ToString()
                     };
 
@@ -285,6 +313,7 @@ namespace NWT
                         HeightRequest = 20,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
                         //ClassId = NF.Article.ToString()
                     };
 
@@ -295,12 +324,13 @@ namespace NWT
                         HeightRequest = 3,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.Start,
+                        InputTransparent = true,
                         Margin = 0,
                     };
 
-                    Label.GestureRecognizers.Add(TGR);
-                    Image.GestureRecognizers.Add(TGR);
-                    Box.GestureRecognizers.Add(TGR);
+                    //Label.GestureRecognizers.Add(TGR);
+                    //Image.GestureRecognizers.Add(TGR);
+                    
                     /*
                     if (Image.Source.ToString() == Defaultimage)
                     {
@@ -454,6 +484,11 @@ namespace NWT
                     i++;
                 }
             }
+        }
+
+        private void Box_Clicked(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddNews(int argc)
