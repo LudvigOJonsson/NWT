@@ -18,55 +18,58 @@ namespace NWT
             
 		}
 
-        void Community()
+        public void ButtonLock()
         {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+            InsandareButton.IsEnabled = !InsandareButton.IsEnabled;
+            MakeInsandareButton.IsEnabled = !MakeInsandareButton.IsEnabled;
+            EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
+            MakeEvenemangsButton.IsEnabled = !MakeEvenemangsButton.IsEnabled;
+            VoteButton.IsEnabled = !VoteButton.IsEnabled;
+            PlayButton.IsEnabled = !PlayButton.IsEnabled;
         }
-        void News()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-        }
-        void Profile()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[2];
-        }
-        void Games()
-        {
-            App.Mainpage.CurrentPage = App.Mainpage.Children[3];
-        }
+
+
         async void Insandare(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new UserNewsGridPage());
+            ButtonLock();
         }
         async void MakeInsandare(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new UserSubmissionPage());
+            ButtonLock();
         }
 
         async void VotePage(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new VotePage());
+            ButtonLock();
         }
 
         async void GamePage(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new PlayPage());
+            ButtonLock();
         }
         async void WIP(object sender, EventArgs e)
         {

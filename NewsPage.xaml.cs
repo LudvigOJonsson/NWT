@@ -250,7 +250,7 @@ namespace NWT
         async void TimerButtonClicked(object sender, System.EventArgs e)
         {
             //IconRotation();
-
+            TimerButton.IsEnabled = false;
             Button button = (Button)sender;
             await button.RotateTo(0, 1, Easing.BounceOut);
             await button.RotateTo(2, 1, Easing.BounceOut);
@@ -291,6 +291,10 @@ namespace NWT
 
                 var variable = (ProfilePage)App.Mainpage.Children[3];
                 variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+            }
+            else
+            {
+                TimerButton.IsEnabled = true;
             }
         }
         async void TimerDone(object sender)
@@ -350,9 +354,10 @@ namespace NWT
         
         async void SubmitComment(object sender, EventArgs e)
         {
+            CommentButton.IsEnabled = false;
             if (App.Online)
             {
-                if (App.database.TokenCheck() && (Comment.Text != null || Comment.Text != ""))
+                if (App.database.TokenCheck() && Comment.Text != null && Comment.Text != "" && Comment.Text.Length < 0)
                 {
                     var CNR = App.database.CommentCount(ArticleNR);
                     var SC = new CommentTable();
@@ -374,7 +379,7 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-
+            CommentButton.IsEnabled = true;
         }
         void LoadComments()
         {

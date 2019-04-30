@@ -33,33 +33,33 @@
                     <ColumnDefinition Width="1" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="1" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="Insandare"/>
+                <Button x:Name="InsandareButton" Grid.Row="1" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="Insandare"/>
                 <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="newsfeed.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="1" Grid.Column="1" Text="              Insändare" FontSize = "25"
                         HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15" InputTransparent="True"/>
-                <Button Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="MakeInsandare"/>
-                
-                
-                <Button Grid.Row="3" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
+                <Button x:Name="MakeInsandareButton" Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="MakeInsandare"/>
+
+
+                <Button x:Name="EvenemangsButton" Grid.Row="3" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
                 <BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="calendar.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="3" Grid.Column="1" Text="              Evenemang" FontSize = "25"
                         HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15" InputTransparent="True"/>
-                <Button Grid.Row="3" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP" />
+                <Button x:Name="MakeEvenemangsButton" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Margin="25" Text="+" FontSize="20" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP" />
 
 
-                <Button Grid.Row="5" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="VotePage"/>
+                <Button x:Name="VoteButton" Grid.Row="5" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="VotePage"/>
                 <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="votebox.png" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="5" Grid.Column="1" Text="              Röstning" FontSize = "25"
                         HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Margin="15" InputTransparent="True"/>
 
-                
-                <Button Grid.Row="7" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="GamePage"/>
+
+                <Button x:Name="PlayButton" Grid.Row="7" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="GamePage"/>
                 <BoxView Grid.Row="7" Grid.Column="1" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="play.png" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 

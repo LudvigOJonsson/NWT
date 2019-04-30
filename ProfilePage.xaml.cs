@@ -219,7 +219,16 @@ namespace NWT
             updateMissions();
         }
 
-
+        public void ButtonLock()
+        {
+            FavoritesButton.IsEnabled = !FavoritesButton.IsEnabled;
+            HistoryButton.IsEnabled = !HistoryButton.IsEnabled;
+            AchievementsButton.IsEnabled = !AchievementsButton.IsEnabled;
+            ProfileSettingsButton.IsEnabled = !ProfileSettingsButton.IsEnabled;
+            m1.IsEnabled = !m1.IsEnabled;
+            m2.IsEnabled = !m2.IsEnabled;
+            m3.IsEnabled = !m3.IsEnabled;
+        }
 
         public void Logout()
         {
@@ -236,23 +245,29 @@ namespace NWT
         }
         async void Avatar(object sender, EventArgs e)
         {
+            ButtonLock();
             await Navigation.PushAsync(new AvatarPage());
+            ButtonLock();
         }
         async void Settings(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new SettingsPage());
+            ButtonLock();
         }
         async void Achivements(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new AchivementsPage());
+            ButtonLock();
         }
         async void Points(object sender, EventArgs e)
         {
@@ -269,18 +284,22 @@ namespace NWT
         async void Favorites(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new NewsGridPage(3));
+            ButtonLock();
         }
         async void History(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             await Navigation.PushAsync(new NewsGridPage(2));
+            ButtonLock();
         }
 
         protected override void OnAppearing()
