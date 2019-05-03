@@ -14,7 +14,7 @@
     <ScrollView x:Name="NewsPageView" >
         <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -26,28 +26,30 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
 
             <BoxView x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
             <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
 
-            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="3" FontSize="10" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
 
-            <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,25"/>
-            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6"/>
-           
-            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="5" FontSize="8" FontAttributes="Italic" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="5" FontSize="8" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="End" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,0,20" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
 
-            <Label Text="Dot" x:Name="Dot" Margin="5" FontSize="Medium" HorizontalOptions="Start" VerticalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6"/>
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Medium" FontAttributes="Bold,Italic" HorizontalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,0" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,10,0" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+            
+            <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
+            
+
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,10" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -60,8 +62,8 @@
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="Samla token!" 
-                    Clicked="TimerButtonClicked"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#FFFFFF" TextColor="#000000" Margin="20" 
-                    WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="#3b5e6a"/>
+                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="#FFFFFFF" Margin="15" 
+                    HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="0" BorderColor="#000000"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
                      BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source=""/>
 
@@ -74,15 +76,14 @@
 	                AutoPlay="true"
 	                />-->
 
-            <Button x:Name="FavButton" Text=""
-                    Clicked="FavButtonClicked"  Grid.Column="5" Grid.ColumnSpan="6" BackgroundColor="#f8f8f9" TextColor="#000000" 
-                    HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="15" BorderColor="LightGray" Margin="5"/>
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="5" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source="star.png">
+                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="star.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
+
+
 
 
 

@@ -62,80 +62,8 @@
                 Toggled="PrintNews"
                 HorizontalOptions="Center"
                 VerticalOptions="Start"
-               OnColor="#2f6e83"
+               OnColor="#3b5e6a"
                 Grid.Row="0" Grid.Column="0"
-                />
-                        <Switch x:Name="BrottochBlåljus"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="1" Grid.Column="0"
-                />
-                        <Switch x:Name="VårdochOmsorg"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="2" Grid.Column="0"
-                />
-                        <Switch x:Name="Miljö"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="3" Grid.Column="0"
-                />
-                        <Switch x:Name="SkolaochUtbildning"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="4" Grid.Column="0"
-                />
-                        <Switch x:Name="MatochDryck"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="5" Grid.Column="0"
-                />
-                        <Switch x:Name="Bostad"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="6" Grid.Column="0"
-                />
-                        <Switch x:Name="Trafik"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="7" Grid.Column="0"
-                />
-                        <Switch x:Name="Politik"
-                        x:FieldModifier="public" 
-               IsToggled="True"
-               Toggled="PrintNews"              
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="8" Grid.Column="0"
                 />
                         <Switch x:Name="Sport"
                         x:FieldModifier="public" 
@@ -143,8 +71,8 @@
                Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="9" Grid.Column="0"
+               OnColor="#6cb12c"
+                Grid.Row="2" Grid.Column="0"
                 />
                 <Switch x:Name="Ekonomi"
                         x:FieldModifier="public" 
@@ -152,8 +80,8 @@
                Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="10" Grid.Column="0"
+               OnColor="#3b5e6a"
+                Grid.Row="4" Grid.Column="0"
                 />
                 <Switch x:Name="Åsikter"
                         x:FieldModifier="public" 
@@ -161,8 +89,8 @@
                Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="11" Grid.Column="0"
+               OnColor="#56babd"
+                Grid.Row="6" Grid.Column="0"
                 />
                 <Switch x:Name="NöjeochKultur"
                         x:FieldModifier="public" 
@@ -170,8 +98,8 @@
                Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="12" Grid.Column="0"
+               OnColor="#bb0065"
+                Grid.Row="8" Grid.Column="0"
                 />
                 <Switch x:Name="Familj"
                         x:FieldModifier="public" 
@@ -179,8 +107,8 @@
                Toggled="PrintNews"              
                HorizontalOptions="Center"
                VerticalOptions="Start"
-               OnColor="#2f6e83"
-                Grid.Row="13" Grid.Column="0"
+               OnColor="#dfd8b3"
+                Grid.Row="10" Grid.Column="0"
                 />
 
 
@@ -274,19 +202,11 @@
                         
 
                         <Label Text="Nyheter" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Brott och Blåljus" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Vård och Omsorg" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Miljö" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Skola och Utbildning" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Mat och Dryck" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Bostad" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Trafik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Politik" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Sport" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Ekonomi" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Åsikter" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Nöje och Kultur" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
-                        <Label Text="Familj" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Sport" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Ekonomi" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Åsikter" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Nöje och Kultur" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
+                        <Label Text="Familj" FontSize="18" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Start"/>
 
                     </Grid>
                 </ScrollView>

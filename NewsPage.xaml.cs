@@ -21,7 +21,7 @@ namespace NWT
         public static int ArticleNR;
         public int CC = 8;
         public bool Read = false;
-        public int Row = 5;
+        public int Row = 7;
         public bool Topimg = true;
         public bool Favorited = false;
 
@@ -48,7 +48,7 @@ namespace NWT
                     TimerButton.Text = "Samlad";
                     Read = true;
                     NewsPageView.BackgroundColor = Color.FromRgb(47, 110, 131);
-                    Dot.TextColor = Color.FromRgb(47, 110, 131); 
+                    //Dot.TextColor = Color.FromRgb(47, 110, 131); 
                     TimerButton.BackgroundColor = Color.FromRgb(47, 110, 131);
                                      
                 }
@@ -70,7 +70,7 @@ namespace NWT
             {
                 TimerButton.IsVisible = false;
                 TimerIcon.IsVisible = false;
-                FavButton.IsVisible = false;
+                //FavButton.IsVisible = false;
                 FavIcon.IsVisible = false;
             }
             
@@ -92,15 +92,18 @@ namespace NWT
         {
             ArticleNR = RSS.ID;
             Rubrik.Text = RSS.Title;
-            Dot.Text = "⚫";
-            Ingress.Text = "    "+RSS.Description;
-            Top.Text = "  Publicerad: " + RSS.PubDate + "   "+RSS.Source;
+            //Dot.Text = "⚫";
+            Ingress.Text = RSS.Description;
+            Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
             Author.Text = RSS.Author;
-            Category.Text = "Nyhetskategorier: "+RSS.Category;
+            Category.Text = "-"+RSS.Category;
 
             if(RSS.Tag != "")
             {
-                Tags.Text = "Tags: " + RSS.Tag;
+                Tags.Text = "Tags: " + RSS.Tag + "  ";
+            } else
+            {
+                Tags.Text = "";
             }
                    
             ArticleImage.Source = RSS.ImgSource;
@@ -133,17 +136,14 @@ namespace NWT
                         
                         var Label = new Label
                         {
-                            
-
-
-                            Text = "    " + Text[TextCount],
+                            Text = Text[TextCount],
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 14,
                             TextColor = Color.Black,                        
-                            Margin = 10
+                            Margin = new Thickness(0, 0, 10, 10)
                         };
-                        ArticleGrid.Children.Add(Label, 0, 6, Row, Row + 1);
+                        ArticleGrid.Children.Add(Label, 1, 5, Row, Row + 1);
                         Row++;
                         Count++;
                         TextCount++;
@@ -152,15 +152,14 @@ namespace NWT
                 {
                         var IMGText = new Label
                         {
-                            Text = "    " + ImageText[ImageCount],
+                            Text = ImageText[ImageCount],
                             HorizontalOptions = LayoutOptions.Start ,
-                            VerticalOptions = LayoutOptions.End,
-                            FontAttributes = FontAttributes.Italic,
+                            VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 9,
+                            FontSize = 12,
                             TextColor = Color.Gray,
-                            Margin = 0
+                            Margin = new Thickness(0, 0, 10, 10)
                         };
                         
                         if (Topimg == true)
@@ -171,7 +170,7 @@ namespace NWT
                             ArticleImage.Source = Images[ImageCount];
                             ArticleImage.HeightRequest = img.Height;
                             ArticleImage.WidthRequest = 300;
-                            ArticleGrid.Children.Add(IMGText, 0, 6, 1, 2);
+                            ArticleGrid.Children.Add(IMGText, 1, 5, 5, 6);
                             Topimg = false;
                         }
                         else
@@ -187,12 +186,14 @@ namespace NWT
 
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                            ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                             Image.Source = Images[ImageCount];
                             ArticleGrid.Children.Add(Image, 0, 6, Row, Row + 1);
-                            ArticleGrid.Children.Add(IMGText, 0, 6, Row+1, Row + 2);
+                            ArticleGrid.Children.Add(IMGText, 1, 5, Row+1, Row + 2);
                             Row++;
                             Row++;
-                        }
+                            Row++;
+                    }
                         Count++;
                         ImageCount++;
                 }
@@ -201,11 +202,11 @@ namespace NWT
 
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
-            ArticleGrid.Children.Add(TimerButton, 0, 6, Row+1, Row + 2);
-            ArticleGrid.Children.Add(TimerIcon, 1, Row + 1);
+            ArticleGrid.Children.Add(TimerButton, 1, 4, Row+1, Row + 2);
+            ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
-            ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(FavIcon, 5, Row + 1);
+            //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
             ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
             ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 3, Row + 4);
@@ -329,7 +330,7 @@ namespace NWT
             Device.BeginInvokeOnMainThread(() =>
             {
                 NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                Dot.TextColor = Color.FromRgb(red, green, blue);
+                //Dot.TextColor = Color.FromRgb(red, green, blue);
                 TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
