@@ -5,7 +5,7 @@
              x:Class="NWT.CommunityPage"
              x:Name = "Communitypage" 
              BackgroundColor="#ffffff"
-             Icon="community.png"
+             Icon="slaicon.png"
              Title="Framsida"
              >
     <ContentPage.ToolbarItems>
@@ -18,8 +18,19 @@
             <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="20" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="5" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="35" />
+
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="0" />
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="30" />
@@ -29,19 +40,8 @@
                     <RowDefinition Height="35" />
 
                     <RowDefinition Height="20" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="25" />
-                    <RowDefinition Height="30" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-                    <RowDefinition Height="35" />
-
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="5" />
+                    <RowDefinition Height="0" />
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="25" />
                     <RowDefinition Height="30" />
@@ -60,7 +60,11 @@
                        Source = "https://issme.org/wp-content/uploads/2015/09/news-image-1024x366.jpg"
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
-                       Aspect = "AspectFill" />
+                       Aspect = "AspectFill" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoadNews" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
                 <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#2f6e83"/>
                 <Button  x:Name="CPMNAB" Grid.Row="3" Clicked="LoadNews"  Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
@@ -84,8 +88,24 @@
                 <Label x:Name="CPNA3T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
                 <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
+                <Button x:Name="CPNA4B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA4T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button x:Name="CPNA5B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA5T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
+                <Button x:Name="CPNA6B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
+                <Label x:Name="CPNA6T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
+                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+
                 <Button Grid.Row="9" Clicked="News" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label  Grid.Row="9" Grid.Column="1" Text="Fler Nyheter >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
+                <Label  Grid.Row="9" Grid.Column="1" Text="Fler Nyheter >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="News" NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
 
 
 
@@ -94,7 +114,7 @@
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
-                <BoxView Grid.Row="12" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <BoxView Grid.Row="13" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#2f6e83"/>
                 <Button x:Name="CPMIAB" Clicked="LoadUserNews" Grid.Row="13" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
                 <Label x:Name="CPMIAT" Grid.Row="13" Grid.Column="1" Text="Insändare #1! Jag är bäst!" FontSize = "25"
@@ -128,7 +148,7 @@
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
-                <BoxView Grid.Row="22" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <BoxView Grid.Row="23" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#2f6e83"/>
                 <Button Grid.Row="23" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
                 <Label Grid.Row="23" Grid.Column="1" Text="Majbrasa i Skultorp" FontSize = "25"

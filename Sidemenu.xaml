@@ -51,9 +51,9 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
                         </Grid.ColumnDefinitions>
 
                         <Button x:Name="Nyheter"
@@ -61,66 +61,66 @@
                 Text="Nyheter"
                 FontSize="18"   
                 Pressed="PrintNews"
-                HorizontalOptions="CenterAndExpand"
+                HorizontalOptions="StartAndExpand"
                 VerticalOptions="Start"
                 BackgroundColor="#3b5e6a"
                 ClassId="Nyheter"
-                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                 />
                         <Button x:Name="Sport"
                         x:FieldModifier="public" 
                Text="Sport"
                FontSize="18"   
                Pressed="PrintNews"              
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
                VerticalOptions="Start"
                BackgroundColor="#6cb12c"
                ClassId="Sport"
-                Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                 />
                 <Button x:Name="Ekonomi"
                         x:FieldModifier="public" 
                Text="Ekonomi"
                FontSize="18"            
                Pressed="PrintNews"              
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
                VerticalOptions="Start"
                BackgroundColor="#3b5e6a"
                ClassId="Ekonomi"
-                Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                 />
                 <Button x:Name="Åsikter"
                         x:FieldModifier="public" 
                Text="Åsikter"
                FontSize="18"   
                Pressed="PrintNews"              
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
                VerticalOptions="Start"
                BackgroundColor="#56babd"
                 ClassId="Åsikter"
-                Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                 />
                 <Button x:Name="NöjeochKultur"
                         x:FieldModifier="public" 
                Text="Nöje och Kultur"
                FontSize="18"         
                Pressed="PrintNews"              
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
                VerticalOptions="Start"
                BackgroundColor="#bb0065"
                ClassId="Nöje"
-                Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
                 />
                 <Button x:Name="Familj"
                         x:FieldModifier="public" 
                Text="Familj"
                FontSize="18"   
                Pressed="PrintNews"              
-               HorizontalOptions="CenterAndExpand"
+               HorizontalOptions="StartAndExpand"
                VerticalOptions="Start"
                BackgroundColor="#dfd8b3"
                ClassId="Familj"
-               Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"
+               Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                 />
 
 

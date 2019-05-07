@@ -62,8 +62,8 @@
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="Samla token!" 
-                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="#FFFFFFF" Margin="15" 
-                    HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="3" CornerRadius="0" BorderColor="#000000"/>
+                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="White" Margin="15" 
+                    HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
                      BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source=""/>
 
