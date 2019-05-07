@@ -277,6 +277,10 @@ namespace NWT
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Execute", statement, App.LoggedinUser.ID)));       
         }
+        public void LocalExecute(string statement)
+        {
+            DB.Execute(statement);
+        }
         public void Insert<T>(T arg)
         {
             Console.WriteLine(arg.ToString());
@@ -368,7 +372,7 @@ namespace NWT
 
 
 
-        public int LoadNF(int start, int stop)
+        public int LoadNF(int start, int stop, string Filter)
         {
             int Nr = 0;
             for (int x = start; x < stop; x++)
@@ -380,8 +384,18 @@ namespace NWT
 
                     };
                     ComLock = true;
-
-                    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x+1).ToString(),-1)));
+                    string JSONResult = "";
+                    if(Filter == "" || Filter == "All" && Filter != null)
+                    {
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x + 1).ToString(), -1)));
+                        Console.WriteLine("No Filter");
+                    }
+                    else
+                    {
+                        
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%') - " + (x + 1).ToString(), -1)));
+                        Console.WriteLine("Filter");
+                    }
                     //Console.WriteLine(JSONResult.Length);
                     ComLock = false;
 

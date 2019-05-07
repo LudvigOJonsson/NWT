@@ -38,7 +38,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -111,7 +111,7 @@
           "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll": {}
         }
       },
-      "Xamarin.Forms/3.6.0.293080": {
+      "Xamarin.Forms/3.6.0.344457": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
@@ -300,42 +300,33 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.1": {
-      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.1",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.pdb",
         "lib/net35/Newtonsoft.Json.xml",
         "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.pdb",
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.pdb",
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.pdb",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.pdb",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.pdb",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.1.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
@@ -480,10 +471,10 @@
         "xam.plugins.forms.imagecircle.nuspec"
       ]
     },
-    "Xamarin.Forms/3.6.0.293080": {
-      "sha512": "5o6pS3kbFwWDiTpywz0UasLwn9Ay5/1eGH8JWXBV0N2lDkZauOgTZaMIE/Rdjz2bLhMturwzI1/DFuNxdSidFw==",
+    "Xamarin.Forms/3.6.0.344457": {
+      "sha512": "7IffIKgL0fmgbfCLKzXaFKJ7uOueKiz/BIgmAG1Z5WMn+vMKeALe5GgRs3Uddo670VzllIHWkNEZD3lG+e02bw==",
       "type": "package",
-      "path": "xamarin.forms/3.6.0.293080",
+      "path": "xamarin.forms/3.6.0.344457",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -641,7 +632,7 @@
         "lib/uap10.0/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.3.6.0.293080.nupkg.sha512",
+        "xamarin.forms.3.6.0.344457.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     }
@@ -650,32 +641,35 @@
     ".NETStandard,Version=v2.0": [
       "Com.Airbnb.Xamarin.Forms.Lottie >= 2.7.1",
       "NETStandard.Library >= 2.0.3",
-      "Newtonsoft.Json >= 12.0.1",
+      "Newtonsoft.Json >= 12.0.2",
       "Rg.Plugins.Popup >= 1.1.5.188",
       "Xam.Plugins.Forms.ImageCircle >= 3.0.0.5",
-      "Xamarin.Forms >= 3.6.0.293080",
+      "Xamarin.Forms >= 3.6.0.344457",
       "sqlite-net-pcl >= 1.5.231"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\party\\.nuget\\packages\\": {},
+    "C:\\Users\\ludvi\\.nuget\\packages\\": {},
+    "C:\\ProgramData\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\party\\Documents\\Visual Studio 2017\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
+      "projectUniqueName": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
       "projectName": "NWT",
-      "projectPath": "C:\\Users\\party\\Documents\\Visual Studio 2017\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
-      "packagesPath": "C:\\Users\\party\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\party\\Documents\\Visual Studio 2017\\Projects\\NWT\\NWT\\NWT\\obj\\",
+      "projectPath": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
+      "packagesPath": "C:\\Users\\ludvi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\ProgramData\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\party\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ludvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -710,7 +704,7 @@
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[12.0.1, )"
+            "version": "[12.0.2, )"
           },
           "Rg.Plugins.Popup": {
             "target": "Package",
@@ -722,7 +716,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[3.6.0.293080, )"
+            "version": "[3.6.0.344457, )"
           },
           "sqlite-net-pcl": {
             "target": "Package",

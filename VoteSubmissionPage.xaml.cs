@@ -18,7 +18,7 @@ namespace NWT
 		}
         public async void SubmitQ(object sender, EventArgs e)
         {
-            if (Question.Text != "" && Op1.Text != "" && Op2.Text != "")
+            if (Question.Text != "" && Op1.Text != "" && Op2.Text != "" && Question.Text != null && Op1.Text != null && Op2.Text != null && Op3.Text != null && Op4.Text != null)
             {
                 var VQ = new VoteQuestionTable();
                 

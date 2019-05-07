@@ -23,7 +23,7 @@ namespace NWT
         public List<Article> ArticlePrintList = new List<Article>();
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
-
+        public string Filter = "All";
         public int PREV = 0;
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
@@ -195,7 +195,7 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadNF(Loadnr, (Loadnr + DBLN));
+            App.database.LoadNF(Loadnr, (Loadnr + DBLN),Filter);
             Loadnr += DBLN;
 
         }
@@ -456,7 +456,7 @@ namespace NWT
                 int i = 0;
                 foreach (var Article in ArticlePrintList)
                 {
-
+                    /*
                     if ((Article.Tag.Contains("Nyheter") && App.SideMenu.Nyheter.IsToggled) ||
                        (Article.Tag.Contains("Brott och Blåljus") && App.SideMenu.BrottochBlåljus.IsToggled) ||
                        (Article.Tag.Contains("Vård och Omsorg") && App.SideMenu.VårdochOmsorg.IsToggled) ||
@@ -480,7 +480,7 @@ namespace NWT
                     {
                         Article.Visibility(false);
                         Console.WriteLine("Article: " + i + " ;False");
-                    }
+                    }*/
                     i++;
                 }
             }

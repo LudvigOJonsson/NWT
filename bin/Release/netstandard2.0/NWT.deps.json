@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "0ae8252dddeedd4e3390a21277fe378e8186a3c5"
+    "signature": "9365d0c81ba2ed864cde420638250e39e712dae7"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,10 +11,10 @@
         "dependencies": {
           "Com.Airbnb.Xamarin.Forms.Lottie": "2.7.1",
           "NETStandard.Library": "2.0.3",
-          "Newtonsoft.Json": "12.0.1",
+          "Newtonsoft.Json": "12.0.2",
           "Rg.Plugins.Popup": "1.1.5.188",
           "Xam.Plugins.Forms.ImageCircle": "3.0.0.5",
-          "Xamarin.Forms": "3.6.0.293080",
+          "Xamarin.Forms": "3.6.0.344457",
           "sqlite-net-pcl": "1.5.231"
         },
         "runtime": {
@@ -23,7 +23,7 @@
       },
       "Com.Airbnb.Xamarin.Forms.Lottie/2.7.1": {
         "dependencies": {
-          "Xamarin.Forms": "3.6.0.293080"
+          "Xamarin.Forms": "3.6.0.344457"
         },
         "runtime": {
           "lib/netstandard2.0/Lottie.Forms.dll": {
@@ -38,17 +38,17 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.1.22727"
+            "fileVersion": "12.0.2.23222"
           }
         }
       },
       "Rg.Plugins.Popup/1.1.5.188": {
         "dependencies": {
-          "Xamarin.Forms": "3.6.0.293080"
+          "Xamarin.Forms": "3.6.0.344457"
         },
         "runtime": {
           "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
@@ -98,7 +98,7 @@
       },
       "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
         "dependencies": {
-          "Xamarin.Forms": "3.6.0.293080"
+          "Xamarin.Forms": "3.6.0.344457"
         },
         "runtime": {
           "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll": {
@@ -107,7 +107,7 @@
           }
         }
       },
-      "Xamarin.Forms/3.6.0.293080": {
+      "Xamarin.Forms/3.6.0.344457": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
@@ -152,12 +152,12 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "Newtonsoft.Json/12.0.1": {
+    "Newtonsoft.Json/12.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
-      "path": "newtonsoft.json/12.0.1",
-      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
     },
     "Rg.Plugins.Popup/1.1.5.188": {
       "type": "package",
@@ -194,12 +194,12 @@
       "path": "xam.plugins.forms.imagecircle/3.0.0.5",
       "hashPath": "xam.plugins.forms.imagecircle.3.0.0.5.nupkg.sha512"
     },
-    "Xamarin.Forms/3.6.0.293080": {
+    "Xamarin.Forms/3.6.0.344457": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5o6pS3kbFwWDiTpywz0UasLwn9Ay5/1eGH8JWXBV0N2lDkZauOgTZaMIE/Rdjz2bLhMturwzI1/DFuNxdSidFw==",
-      "path": "xamarin.forms/3.6.0.293080",
-      "hashPath": "xamarin.forms.3.6.0.293080.nupkg.sha512"
+      "sha512": "sha512-7IffIKgL0fmgbfCLKzXaFKJ7uOueKiz/BIgmAG1Z5WMn+vMKeALe5GgRs3Uddo670VzllIHWkNEZD3lG+e02bw==",
+      "path": "xamarin.forms/3.6.0.344457",
+      "hashPath": "xamarin.forms.3.6.0.344457.nupkg.sha512"
     }
   }
 }
