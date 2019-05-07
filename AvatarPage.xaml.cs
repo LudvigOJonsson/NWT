@@ -26,7 +26,7 @@ namespace NWT
             //But right now these database variables do not exist. So instead, a local variable will be saved.
 
 
-            var PP = (ProfilePage)App.Mainpage.Children[2];
+            var PP = (ProfilePage)App.Mainpage.Children[3];
             
             //Make the avatar picture into whatever pieces are saved on the user's account.
             ProfilePictureHair.Source = PP.avatarHairPic.Source;
@@ -39,21 +39,21 @@ namespace NWT
         {
             Image image = (Image)sender;
             ProfilePictureHair.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
+            var PP = (ProfilePage)App.Mainpage.Children[3];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
         }
         public void ChangeBody(object sender, EventArgs e)
         {
             Image image = (Image)sender;
             ProfilePictureBody.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
+            var PP = (ProfilePage)App.Mainpage.Children[3];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
         }
         public void ChangeFace(object sender, EventArgs e)
         {
             Image image = (Image)sender;
             ProfilePictureFace.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
+            var PP = (ProfilePage)App.Mainpage.Children[3];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
         }
 
