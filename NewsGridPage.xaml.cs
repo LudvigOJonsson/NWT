@@ -222,10 +222,13 @@ namespace NWT
                 // Source of data items.
                 
                 ItemsSource = ArticlePrintList,
-                RowHeight = 400,
-                // Define template for displaying each item.
-                // (Argument of DataTemplate constructor is called for 
-                //      each item; it must return a Cell derivative.)
+                RowHeight = 360,
+                SeparatorVisibility = SeparatorVisibility.None,
+
+
+            // Define template for displaying each item.
+            // (Argument of DataTemplate constructor is called for 
+            //      each item; it must return a Cell derivative.)
                 ItemTemplate = new DataTemplate(() =>
                 {
                     // Create views with bindings for displaying each property.
