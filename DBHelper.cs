@@ -475,6 +475,7 @@ namespace NWT
             if (App.LoggedinUser != null)
             {
 
+
                 var Plus = new PlusRSSTable();
                 Plus.User = App.LoggedinUser.ID;
                 Plus.Article = Article;

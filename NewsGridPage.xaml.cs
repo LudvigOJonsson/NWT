@@ -16,7 +16,7 @@ namespace NWT
     public partial class NewsGridPage : ContentPage
     {
         public int Loadnr = 1;
-        public static int DBLN = 30;
+        public static int DBLN = 20;
         public int Rownr = 1;
         public static TapGestureRecognizer TGR;
         public List<Article> ArticleList = new List<Article>();
@@ -41,41 +41,70 @@ namespace NWT
             public string Header { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
-            public bool Plus = false;
-            public bool Full = true;
-            public Button Box = new Button { };
-            public BoxView Frame = new BoxView { };
-            public BoxView ArticleMargin = new BoxView { };
-            public BoxView CategoryBox = new BoxView { };
-            public Label Label = new Label { };
-            public Image Image = new Image { };
-
-
+            public bool Plus { get; set; }
+            public bool Full { get; set; }
+            public int IHR { get; set; }          
+            public int BHR { get; set; }
+            public int CBWR { get; set; }
+            public int CBHR { get; set; }
+            public LayoutOptions CBHO { get; set; }
+            public LayoutOptions CBVO { get; set; }
             public Article(NewsfeedTable NF)
             {
-
+                
 
                 Tag = NF.Category;
                 ID = NF.Article;
                 Header = NF.Header;
                 IMGSource = NF.Image;
+                Full = true;
+
+
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                HeaderLength = ((Header.Length / 30) + 1)  * 60;
+                int BL = 32;
+                int BH = 35;
+
+                if(Header.Length < BL)
+                {
+                    HeaderLength = BH;
+                }
+                else if (Header.Length < BL*2)
+                {
+                    HeaderLength = BH*2;
+                }
+                else if (Header.Length < BL*3)
+                {
+                    HeaderLength = BH*3;
+                }
+
+                if (IMGSource.ToString() == Defaultimage)
+                {
+                    IMGSource = "";
+                    IHR = 1;
+                    CBWR = 7;
+                    CBHR = HeaderLength;
+                    BHR = HeaderLength;
+                    CBHO = LayoutOptions.Start;
+                    CBVO = LayoutOptions.FillAndExpand;
+                    Full = false;
+                }
+                else
+                {
+                    IHR = 250;
+                    BHR = 250 + HeaderLength;
+                    CBWR = 225;
+                    CBHR = 3;
+                    CBHO = LayoutOptions.FillAndExpand;
+                    CBVO = LayoutOptions.Start;
+                }
+
 
                 Console.WriteLine("Artikel Klar");
             }
 
-            public void Visibility(bool State)
-            {
 
-                Image.IsVisible = State;
-                Label.IsVisible = State;
-                Box.IsVisible = State;
-                Frame.IsVisible = State;
-                ArticleMargin.IsVisible = State;
 
-            }
 
 
 
@@ -222,7 +251,7 @@ namespace NWT
                 // Source of data items.
                 
                 ItemsSource = ArticlePrintList,
-                RowHeight = 360,
+                HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
 
 
@@ -244,11 +273,11 @@ namespace NWT
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        //HeightRequest = ((NF.Header.Length/30))*50,
+                        
                         TextColor = Color.Black,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
-                        Margin = 15,
+                        Margin = new Thickness(15, 10, 15, 0),
                     };
 
                     Label.SetBinding(HeightRequestProperty,"HeaderLength");
@@ -259,7 +288,7 @@ namespace NWT
 
                         //Source = NF.Image,
                         WidthRequest = IMGXC,
-                        HeightRequest = IMGYC,
+                        //HeightRequest = IMGYC,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
@@ -270,25 +299,27 @@ namespace NWT
 
                     };
 
+                    Image.SetBinding(HeightRequestProperty, "IHR");
+
                     Button Box = new Button
                     {
                         BackgroundColor = Color.White,
                         WidthRequest = IMGXC,
-                        HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         //ClassId = NF.Article.ToString(),
                         Margin = 0,
                         CornerRadius = 0,
-                        BorderWidth = 1,
+                        BorderWidth = 0,
                         BorderColor = Color.FromHex("#f0f0f0"),
                         
                         
                     };
 
-                    
+                    Box.SetBinding(HeightRequestProperty, "BHR");
 
-                    if(argc == 1)
+                    if (argc == 1)
                     {
                         Box.Clicked += ArtikelClicked;
                     }
@@ -322,32 +353,23 @@ namespace NWT
 
                     BoxView CategoryBox = new BoxView
                     {
+                        
                         BackgroundColor = Color.FromHex("#2f6e83"),
-                        WidthRequest = Label.WidthRequest,
-                        HeightRequest = 3,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Start,
+                        ///WidthRequest = Label.WidthRequest,
+                        //HeightRequest = 3,
+                        //HorizontalOptions =,
+                        //VerticalOptions = LayoutOptions.Start,
                         InputTransparent = true,
                         Margin = 0,
                     };
 
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
-                    
-                    /*
-                    if (Image.Source.ToString() == Defaultimage)
-                    {
-                        Image.Source = "";
-                        CategoryBox.HeightRequest = Label.Height;
 
-                        Box.HeightRequest = Label.Height;
-                        Image.HeightRequest = 1;
-
-                        CategoryBox.WidthRequest = 7;
-                        CategoryBox.HeightRequest = Label.HeightRequest;
-                        CategoryBox.HorizontalOptions = LayoutOptions.Start;
-                        CategoryBox.VerticalOptions = LayoutOptions.FillAndExpand;
-                    }*/
+                    CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
+                    CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
+                    CategoryBox.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
+                    CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
 
                     Label.SetBinding(Label.TextProperty, "Header");
                     Image.SetBinding(Image.SourceProperty, "IMGSource");
@@ -382,6 +404,11 @@ namespace NWT
 
                     };
 
+
+
+
+
+                    //Label.HeightRequest = ((Label.Text.Length / 30)) * 50;
                     Label.WidthRequest = Label.Width - 25;
 
                     //Grid.Children.Add(Frame, 0, 3, 0, 0 + 3); //Boxview
@@ -403,8 +430,15 @@ namespace NWT
                 })
                 
             };
+            
+
+
+
 
             NewsGrid.Children.Add(listView, 0, 3, 1, 2);
+
+
+
 
             /*
                 for (int i = Start; i < End; i++)
