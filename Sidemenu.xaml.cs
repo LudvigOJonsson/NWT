@@ -12,6 +12,7 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Sidemenu : ContentPage
 	{
+        public Button previousButton;
      
         public Sidemenu ()
 		{
@@ -21,7 +22,15 @@ namespace NWT
 
         public void PrintNews(object sender, EventArgs e)
         {
+            if (previousButton != null)
+            {
+                previousButton.BorderWidth = 0;
+            }
+
             var Filter = (Button)sender;
+            Filter.BorderWidth = 3;
+            Filter.BorderColor = Color.Black;
+            previousButton = Filter;
             ButtonLock();
             NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
             App.database.LocalExecute("DELETE FROM NF");
@@ -43,7 +52,7 @@ namespace NWT
             Nyheter.IsEnabled = !Nyheter.IsEnabled;
             Sport.IsEnabled = !Sport.IsEnabled;
             Ekonomi.IsEnabled = !Ekonomi.IsEnabled;
-            NöjeochKultur.IsEnabled = !NöjeochKultur.IsEnabled;
+            NöjeochKultur.IsEnabled = !NöjeochKultur.IsEnabled; 
             Åsikter.IsEnabled = !Åsikter.IsEnabled;
             Familj.IsEnabled = !Familj.IsEnabled;
             UserSettingsB.IsEnabled = !UserSettingsB.IsEnabled;
