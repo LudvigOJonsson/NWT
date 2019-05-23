@@ -33,9 +33,9 @@ namespace NWT
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
+            /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);*/
             await Navigation.PushAsync(new UserNewsGridPage());
             ButtonLock();
         }
@@ -43,9 +43,9 @@ namespace NWT
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
+            /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);*/
             await Navigation.PushAsync(new UserSubmissionPage());
             ButtonLock();
         }
@@ -54,9 +54,9 @@ namespace NWT
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
+            /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);*/
             await Navigation.PushAsync(new VotePage());
             ButtonLock();
         }
@@ -65,9 +65,9 @@ namespace NWT
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
+            /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);*/
             await Navigation.PushAsync(new PlayPage());
             ButtonLock();
         }

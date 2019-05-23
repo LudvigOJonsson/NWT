@@ -88,18 +88,6 @@
                 <Label x:Name="CPNA3T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
                 <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
 
-                <Button x:Name="CPNA4B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label x:Name="CPNA4T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
-                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
-
-                <Button x:Name="CPNA5B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label x:Name="CPNA5T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
-                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
-
-                <Button x:Name="CPNA6B" Grid.Row="8" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
-                <Label x:Name="CPNA6T" Grid.Row="8" Grid.Column="1" Text="Påstpyssel i Värsås" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" Margin="5" InputTransparent="True"/>
-                <Label  Grid.Row="8" Grid.Column="1" Text="" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5"/>
-
                 <Button Grid.Row="9" Clicked="News" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
                 <Label  Grid.Row="9" Grid.Column="1" Text="Fler Nyheter >" TextColor="Black" HorizontalOptions="End" VerticalOptions="Center" Margin="5">
                     <Label.GestureRecognizers>

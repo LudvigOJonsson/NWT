@@ -76,7 +76,7 @@ namespace NWT
             Nyheter.IsEnabled = !Nyheter.IsEnabled;
             Sport.IsEnabled = !Sport.IsEnabled;
             Ekonomi.IsEnabled = !Ekonomi.IsEnabled;
-            NöjeochKultur.IsEnabled = !NöjeochKultur.IsEnabled;
+            NöjeochKultur.IsEnabled = !NöjeochKultur.IsEnabled; 
             Åsikter.IsEnabled = !Åsikter.IsEnabled;
             Familj.IsEnabled = !Familj.IsEnabled;
             UserSettingsB.IsEnabled = !UserSettingsB.IsEnabled;

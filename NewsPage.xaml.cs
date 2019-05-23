@@ -97,8 +97,11 @@ namespace NWT
             Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
             Author.Text = RSS.Author;
             Category.Text = "-"+RSS.Category;
-
-            if(RSS.Tag != "")
+            if (RSS.Tag.Length > 20)
+            {
+                Tags.Text = "";
+            }
+            else if(RSS.Tag != "")
             {
                 //Tags.Text = "Tags: " + RSS.Tag + "  ";
             } else
