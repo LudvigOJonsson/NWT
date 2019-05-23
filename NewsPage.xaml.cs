@@ -100,12 +100,21 @@ namespace NWT
 
             if(RSS.Tag != "")
             {
-                Tags.Text = "Tags: " + RSS.Tag + "  ";
+                //Tags.Text = "Tags: " + RSS.Tag + "  ";
             } else
             {
-                Tags.Text = "";
+                //Tags.Text = "";
             }
-                   
+
+            var TGR = new TapGestureRecognizer();
+            TGR.NumberOfTapsRequired = 1;
+            TGR.Tapped += (s, e) => {
+                IsEnabled = false;
+                App.SideMenu.Author = RSS.Author;
+                IsEnabled = true;
+            };
+            Author.GestureRecognizers.Add(TGR);
+
             ArticleImage.Source = RSS.ImgSource;
 
 

@@ -24,6 +24,9 @@ namespace NWT
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
         public string Filter = "All";
+        public string Author = "";
+        public string Tag = "";
+
         public int PREV = 0;
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
@@ -62,7 +65,7 @@ namespace NWT
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 32;
+                int BL = 33;
                 int BH = 35;
 
                 if(Header.Length < BL)
@@ -91,12 +94,12 @@ namespace NWT
                 }
                 else
                 {
-                    IHR = 250;
-                    BHR = 250 + HeaderLength;
-                    CBWR = 225;
-                    CBHR = 3;
+                    IHR = 200;
+                    BHR = 200 + HeaderLength;
+                    CBWR = 200;
+                    CBHR = 5;
                     CBHO = LayoutOptions.FillAndExpand;
-                    CBVO = LayoutOptions.Start;
+                    CBVO = LayoutOptions.End;
                 }
 
 
@@ -224,7 +227,7 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadNF(Loadnr, (Loadnr + DBLN),Filter);
+            App.database.LoadNF(Loadnr, (Loadnr + DBLN),Filter, Author , Tag);
             Loadnr += DBLN;
 
         }
@@ -277,7 +280,7 @@ namespace NWT
                         TextColor = Color.Black,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
-                        Margin = new Thickness(15, 10, 15, 0),
+                        Margin = new Thickness(15, 5, 15, 0),
                     };
 
                     Label.SetBinding(HeightRequestProperty,"HeaderLength");
@@ -293,7 +296,7 @@ namespace NWT
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-                        Margin = 0,
+                        
                         // ClassId = NF.Article.ToString()
 
 
@@ -309,9 +312,6 @@ namespace NWT
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         //ClassId = NF.Article.ToString(),
-                        Margin = 0,
-                        CornerRadius = 0,
-                        BorderWidth = 0,
                         BorderColor = Color.FromHex("#f0f0f0"),
                         
                         
@@ -360,7 +360,7 @@ namespace NWT
                         //HorizontalOptions =,
                         //VerticalOptions = LayoutOptions.Start,
                         InputTransparent = true,
-                        Margin = 0,
+                        
                     };
 
                     //Label.GestureRecognizers.Add(TGR);
@@ -383,12 +383,13 @@ namespace NWT
 
                     var Grid = new Grid
                     {
-
+                        
                         RowDefinitions = {
+                    new RowDefinition { Height = 20 },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
-                    new RowDefinition { Height = GridLength.Auto },
+
                     },
 
                         ColumnDefinitions = {
@@ -413,10 +414,11 @@ namespace NWT
 
                     //Grid.Children.Add(Frame, 0, 3, 0, 0 + 3); //Boxview
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 4); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 2, 3); //Image
-                    Grid.Children.Add(Label, 1, 2, 3, 4); //Label
-                    Grid.Children.Add(CategoryBox, 1, 2, 3, 4); //Label
+                    Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image    
+                    Grid.Children.Add(Label, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(CategoryBox, 1, 2, 1, 2); //Label
+
 
                     Console.WriteLine("Utdata: " + Label.Text);
 

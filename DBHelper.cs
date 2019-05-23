@@ -209,8 +209,10 @@ namespace NWT
         public long Article { get; set; }
         public int NewsScore { get; set; }
         public string Header { get; set; }
-        public string Image { get; set; }      
+        public string Image { get; set; }
+        public string Author { get; set; }
         public string Category { get; set; }
+        public string Tag { get; set; }
         public int Plus { get; set; }
     }
     public class VoteQuestionTable
@@ -372,9 +374,12 @@ namespace NWT
 
 
 
-        public int LoadNF(int start, int stop, string Filter)
+        public int LoadNF(int start, int stop, string Filter, string Author, string Tag)
         {
             int Nr = 0;
+
+
+
             for (int x = start; x < stop; x++)
             {
                 for(int i = 0; i < 10; i++)
@@ -385,7 +390,7 @@ namespace NWT
                     };
                     ComLock = true;
                     string JSONResult = "";
-                    if(Filter == "" || Filter == "All" && Filter != null)
+                    if((Filter == "" || Filter == "All" && Filter != null)&& (Author == "" || Author == "All" && Filter != null) && (Tag == "" || Tag == "All" && Tag != null))
                     {
                         JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x + 1).ToString(), -1)));
                         Console.WriteLine("No Filter");
@@ -393,7 +398,7 @@ namespace NWT
                     else
                     {
                         
-                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%') - " + (x + 1).ToString(), -1)));
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%' LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%') - " + (x + 1).ToString(), -1)));
                         Console.WriteLine("Filter");
                     }
                     //Console.WriteLine(JSONResult.Length);

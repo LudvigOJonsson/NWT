@@ -12,16 +12,46 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Sidemenu : ContentPage
 	{
-     
+
+        string Filter = "";
+        public string Author = "";
+        string Tag = "";
+
         public Sidemenu ()
 		{
 			InitializeComponent ();
             
         }
+        
+
+        public void SetKategori(object sender, EventArgs e)
+        {
+            var Sender = (Button)sender;
+            Filter = Sender.ClassId;
+        }
+        public void SetTag(object sender, EventArgs e)
+        {
+            var Sender = (Button)sender;
+            Tag = Sender.ClassId;
+        }
+        public void SetAuthor(object sender, EventArgs e)
+        {
+            var Sender = (Button)sender;
+            Author = Sender.ClassId;
+        }
+
+
+        public void Clear(object sender, EventArgs e)
+        {
+            Filter = "";
+            Author = "";
+            Tag = "";
+        }
+
 
         public void PrintNews(object sender, EventArgs e)
         {
-            var Filter = (Button)sender;
+
             ButtonLock();
             NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
             App.database.LocalExecute("DELETE FROM NF");
@@ -30,7 +60,10 @@ namespace NWT
             Page.CURR = NewsGridPage.DBLN;
             Page.NEXT = NewsGridPage.DBLN * 2;
             Page.Loadnr = 1;
-            Page.Filter = Filter.ClassId;
+            Page.Filter = Filter;
+            Page.Author = Author;
+            Page.Tag = Tag;
+
             Page.ArticleList.Clear();
             Page.LoadLocalDB();
             Page.AddNews(0);
@@ -49,6 +82,15 @@ namespace NWT
             UserSettingsB.IsEnabled = !UserSettingsB.IsEnabled;
             AboutB.IsEnabled = !AboutB.IsEnabled;
             LogoutB.IsEnabled = !LogoutB.IsEnabled;
+
+            Tibro.IsEnabled = !Tibro.IsEnabled;
+            Skövde.IsEnabled = !Skövde.IsEnabled;
+            Falkköping.IsEnabled = !Falkköping.IsEnabled;
+            Karlsborg.IsEnabled = !Karlsborg.IsEnabled;
+            Rensa.IsEnabled = !Rensa.IsEnabled;
+            Verkställ.IsEnabled = !Verkställ.IsEnabled;
+
+
         }
 
 
