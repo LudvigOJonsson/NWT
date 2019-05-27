@@ -16,116 +16,13 @@ namespace NWT
         public string Filter = "";
         public string Author = "";
         public string Tag = "";
-        List<string> tempList = new List<string>();
-        int Rownr = 1;
 
         public Sidemenu ()
-        {
-
-            InitializeComponent();
-
-            //-------------------------------------------------------------
-
-            //adding to list.
-            tempList.Add("Brått");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Fika4");
-            tempList.Add("Fika5");
-            tempList.Add("Fika6");
-
-            foreach (string s in tempList)
-            {
-                var Box = new Subject();
-                Box.Label.Text = s;
-
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { });
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
-
-
-                NewsGridOri.Children.Add(Box.Label, 1, 8, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
-                NewsGridOri.Children.Add(Box.Box, 1, 8, Rownr + 1, Rownr + 2); //Boxview
-
-
-                Rownr++;
-                Rownr++;
-
-            }
+		{
+			InitializeComponent ();
+            
         }
-
-        public class Subject
-        {
-            public Button Box = new Button { };
-            public Label Label = new Label { };
-            public Image TrashImage = new Image { };
-            public Image BellImage = new Image { };
-
-            public Subject()
-            {
-
-                Label = new Label
-                {
-                    Text = "Ämne",
-                    FontSize = 20,
-                    TextColor = Color.Black,
-                    BackgroundColor = Color.White,
-                    VerticalOptions = LayoutOptions.Center,
-
-                };
-
-                //Label.GestureRecognizers.Add(TGR);
-                
-                Box = new Button
-                {
-                    BackgroundColor = Color.LightGray,
-                };
-
-                TrashImage = new Image
-                {
-                    Source = "trash.png",
-                    WidthRequest = 10,
-                    HeightRequest = 10,
-                };
-
-                BellImage = new Image
-                {
-                    Source = "bell.png",
-                    WidthRequest = 10,
-                    HeightRequest = 10,
-                };
-
-            }
-        }
-
-        //-------------------------------------------------------------
+        
 
         public void SetKategori(object sender, EventArgs e)
         {
@@ -176,23 +73,23 @@ namespace NWT
 
         public void ButtonLock()
         {
-            /*Nyheter.IsEnabled = !Nyheter.IsEnabled;
+            Nyheter.IsEnabled = !Nyheter.IsEnabled;
             Sport.IsEnabled = !Sport.IsEnabled;
             Ekonomi.IsEnabled = !Ekonomi.IsEnabled;
             NöjeochKultur.IsEnabled = !NöjeochKultur.IsEnabled; 
             Åsikter.IsEnabled = !Åsikter.IsEnabled;
-            Familj.IsEnabled = !Familj.IsEnabled;*/
+            Familj.IsEnabled = !Familj.IsEnabled;
             UserSettingsB.IsEnabled = !UserSettingsB.IsEnabled;
             AboutB.IsEnabled = !AboutB.IsEnabled;
             LogoutB.IsEnabled = !LogoutB.IsEnabled;
 
-            /*Tibro.IsEnabled = !Tibro.IsEnabled;
+            Tibro.IsEnabled = !Tibro.IsEnabled;
             Skövde.IsEnabled = !Skövde.IsEnabled;
             Falkköping.IsEnabled = !Falkköping.IsEnabled;
             Karlsborg.IsEnabled = !Karlsborg.IsEnabled;
             Rensa.IsEnabled = !Rensa.IsEnabled;
             Verkställ.IsEnabled = !Verkställ.IsEnabled;
-            */
+
 
         }
 

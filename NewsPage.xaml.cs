@@ -294,14 +294,20 @@ namespace NWT
             ArticleGrid.Children.Add(Comment, 0, 6, Row + 3, Row + 4);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
             ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 4, Row + 5);
-			
+
+
+
+
+
+
             if (App.Online)
             {
                 LoadComments();
             }
 
         }
-		void CategoryButtonClicked(object sender, System.EventArgs e)
+
+        void CategoryButtonClicked(object sender, System.EventArgs e)
         {
 
             var Button = (Button)sender;
@@ -312,6 +318,7 @@ namespace NWT
             var Button = (Button)sender;
             App.SideMenu.Tag = Button.ClassId;
         }
+
         async void FavButtonClicked(object sender, System.EventArgs e)
         {
             
