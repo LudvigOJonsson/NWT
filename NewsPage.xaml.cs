@@ -99,7 +99,7 @@ namespace NWT
             Category.Text = "-"+RSS.Category;
             if (RSS.Tag.Length > 20)
             {
-                Tags.Text = "";
+                //Tags.Text = "";
             }
             else if(RSS.Tag != "")
             {
@@ -210,7 +210,78 @@ namespace NWT
                         ImageCount++;
                 }
             }
-            
+            string[] Categories = RSS.Category.Split(new[] { ", " }, StringSplitOptions.None);
+            string[] Tags = RSS.Tag.Split(new[] { ", " }, StringSplitOptions.None);
+
+            Row = 0;
+
+            foreach (String Category in Categories)
+            {
+                var Box = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 2,
+                    BackgroundColor = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    ClassId = Category,
+                    
+                };
+                Box.Clicked += CategoryButtonClicked;
+
+                var Comment = new Label
+                {
+                    Text = Category,
+                    HorizontalTextAlignment = TextAlignment.Start,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalOptions = LayoutOptions.Start,
+                    TextColor = Color.Black,
+                    FontSize = 16,
+                    WidthRequest = 290,
+                    Margin = 20,
+                    InputTransparent = true,
+                };
+                TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
+                TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
+                Row++;
+            }
+
+
+
+            foreach (String Tag in Tags)
+            {
+                var Box = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 2,
+                    BackgroundColor = Color.White,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    ClassId = Tag
+                };
+                Box.Clicked += TagButtonClicked;
+                var Comment = new Label
+                {
+                    Text = Tag,
+                    HorizontalTextAlignment = TextAlignment.Start,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalOptions = LayoutOptions.Start,
+                    TextColor = Color.Black,
+                    FontSize = 16,
+                    WidthRequest = 290,
+                    Margin = 20,
+                    InputTransparent = true,
+                };
+                TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
+                TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
+                TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
+                Row++;
+            }
+
+
 
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
@@ -219,16 +290,35 @@ namespace NWT
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
-            ArticleGrid.Children.Add(Comment, 0, 6, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 3, Row + 4);
-            
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(Comment, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 4, Row + 5);
+
+
+
+
+
+
             if (App.Online)
             {
                 LoadComments();
             }
 
         }
+
+        void CategoryButtonClicked(object sender, System.EventArgs e)
+        {
+
+            var Button = (Button)sender;
+            App.SideMenu.Filter = Button.ClassId;
+        }
+        void TagButtonClicked(object sender, System.EventArgs e) {
+
+            var Button = (Button)sender;
+            App.SideMenu.Tag = Button.ClassId;
+        }
+
         async void FavButtonClicked(object sender, System.EventArgs e)
         {
             

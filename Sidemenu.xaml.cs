@@ -13,9 +13,9 @@ namespace NWT
 	public partial class Sidemenu : ContentPage
 	{
 
-        string Filter = "";
+        public string Filter = "";
         public string Author = "";
-        string Tag = "";
+        public string Tag = "";
 
         public Sidemenu ()
 		{
