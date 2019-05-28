@@ -5,8 +5,8 @@
              x:Class="NWT.CommunityPage"
              x:Name = "Communitypage" 
              BackgroundColor="#ffffff"
-             Icon="slaicon.png"
-             Title="Framsida"
+             Icon="newsfeed.png"
+             Title="Nyheter"
              >
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
