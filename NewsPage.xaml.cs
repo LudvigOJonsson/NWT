@@ -213,7 +213,7 @@ namespace NWT
             string[] Categories = RSS.Category.Split(new[] { ", " }, StringSplitOptions.None);
             string[] Tags = RSS.Tag.Split(new[] { ", " }, StringSplitOptions.None);
 
-            Row = 0;
+            int TagRow = 0;
 
             foreach (String Category in Categories)
             {
@@ -245,7 +245,7 @@ namespace NWT
 
                 TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
                 TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
-                Row++;
+                TagRow++;
             }
 
 
@@ -278,7 +278,7 @@ namespace NWT
 
                 TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
                 TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
-                Row++;
+                TagRow++;
             }
 
 

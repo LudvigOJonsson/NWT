@@ -23,7 +23,7 @@ namespace NWT
             
         }
         
-
+        
         public void SetKategori(object sender, EventArgs e)
         {
             var Sender = (Button)sender;
@@ -92,6 +92,29 @@ namespace NWT
 
 
         }
+
+        public void ToggleFeed(int i)
+        {
+            if(i == 0)
+            {
+                NewsGridOri.IsVisible = false;
+                CommunityMenuGrid.IsVisible = true;
+            }
+            else if (i == 1)
+            {
+                NewsGridOri.IsVisible = true;
+                CommunityMenuGrid.IsVisible = false;
+            }
+            else
+            {
+                NewsGridOri.IsVisible = false;
+                CommunityMenuGrid.IsVisible = false;
+            }
+
+
+
+        }
+
 
 
         async void Logout(object sender, EventArgs e)

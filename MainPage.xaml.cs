@@ -34,5 +34,25 @@ namespace NWT
             Children[3] = new ProfilePage();
             Children[2] = new HubbPage();                      
         }
+
+        protected override void OnCurrentPageChanged()
+        {
+            if (App.Instanciated)
+            {
+                base.OnCurrentPageChanged();
+
+                if (CurrentPage == Children[1])
+                {
+                    App.SideMenu.ToggleFeed(1);
+                }
+                else if (CurrentPage == Children[0])
+                {
+                    App.SideMenu.ToggleFeed(0);
+                }
+            }
+
+
+
+        }
     }
 }
