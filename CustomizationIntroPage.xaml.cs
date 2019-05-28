@@ -14,7 +14,7 @@ namespace NWT
 	{
 		public CustomizationIntroPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
             
 		}
 

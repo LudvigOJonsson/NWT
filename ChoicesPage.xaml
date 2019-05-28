@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NWT.ChoicesPage"
+             NavigationPage.HasNavigationBar = "False"
+             BackgroundColor="#FFFFFF"
+             Title="Ämnen">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,30,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+
+        <StackLayout>
+            <!--<Label Text="Christoffer Bodegård" TextColor="White" FontSize="28" HorizontalOptions="End" Margin="20"></Label>
+            <Label Text="Category  Tabs" TextColor="White" FontSize="24" HorizontalOptions="Center" Margin="20"></Label>-->
+            <!-- BackgroundColor="#50d2c2" -->
+            <!-- Comment from Chris -->
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ScrollView Grid.Row="0" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="3">
+                    <Grid x:Name="NewsGridOri" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+
+                       <!-- <Button x:Name="Nyheter"
+                        x:FieldModifier="public"
+                Text="Nyheter"
+                TextColor="White"
+                FontSize="18"   
+                Pressed="SetKategori"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Start"
+                BackgroundColor="#3b5e6a"
+                ClassId="Nyheter"
+                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Sport"
+                        x:FieldModifier="public" 
+               Text="Sport"
+               TextColor="White"
+               FontSize="18"   
+               Pressed="SetKategori"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#6cb12c"
+               ClassId="Sport"
+                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Ekonomi"
+                        x:FieldModifier="public" 
+               Text="Ekonomi"
+               TextColor="White"
+               FontSize="18"            
+               Pressed="SetKategori"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Ekonomi"
+                Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Åsikter"
+                        x:FieldModifier="public" 
+               Text="Åsikter"
+               TextColor="White"
+               FontSize="18"   
+               Pressed="SetKategori"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#56babd"
+                ClassId="Åsikter"
+                Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="NöjeochKultur"
+                        x:FieldModifier="public" 
+               Text="Nöje och Kultur"
+               TextColor="White"
+               FontSize="18"         
+               Pressed="SetKategori"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#bb0065"
+               ClassId="Nöje"
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Familj"
+                        x:FieldModifier="public" 
+               Text="Familj"
+               TextColor="White"
+               FontSize="18"   
+               Pressed="SetKategori"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#dfd8b3"
+               ClassId="Familj"
+               Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+
+                        <Button x:Name="Tibro"
+                        x:FieldModifier="public" 
+                        Text="Tibro"
+               FontSize="18"   
+               Pressed="SetTag"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Tibro"
+                Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Skövde"
+                        x:FieldModifier="public" 
+               Text="Skövde"
+               FontSize="18"            
+               Pressed="SetTag"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Skövde"
+                Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Falkköping"
+                        x:FieldModifier="public" 
+               Text="Falkköping"
+               FontSize="18"   
+               Pressed="SetTag"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+                ClassId="Falkköping"
+                Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Karlsborg"
+                        x:FieldModifier="public" 
+               Text="Karlsborg"
+               FontSize="18"         
+               Pressed="SetTag"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Karlsborg"
+                Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Verkställ"
+                        x:FieldModifier="public" 
+               Text="Verkställ"
+               FontSize="18"   
+               Pressed="PrintNews"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Verkställ"
+               Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2"
+                />
+                        <Button x:Name="Rensa"
+                        x:FieldModifier="public" 
+               Text="Rensa"
+               FontSize="18"   
+               Pressed="Clear"              
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="Start"
+               BackgroundColor="#3b5e6a"
+               ClassId="Rensa"
+               Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2"
+                />
+-->
+
+
+
+                    </Grid>
+                </ScrollView>
+
+                <BoxView Color="#2f6e83"
+                 WidthRequest="500"
+                         HeightRequest="400"
+
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"
+                 Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"        
+                 />
+
+                <Button x:Name="UserSettingsB" Clicked="UserSettings" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Image="edit.png" HorizontalOptions="Center"/>
+                <Button x:Name="AboutB" Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
+                <Button x:Name="LogoutB" Clicked="Logout" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
+
+            </Grid>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

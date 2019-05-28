@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.CustomizationIntroPage"
-             x:Name = "CustomizationIntroPage" 
              BackgroundColor="#ffffff"
              Icon="heart.png"
              Title="Mina val"
@@ -15,7 +14,7 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <Grid x:Name="IntroGrid" RowSpacing="0" ColumnSpacing="14" Margin="0">
+            <Grid x:Name="IntroGrid2" RowSpacing="0" ColumnSpacing="14" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
