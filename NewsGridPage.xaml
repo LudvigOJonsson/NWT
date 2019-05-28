@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.NewsGridPage"
-             Icon="newsfeed.png"
-             Title="Nyheter">
+             Icon="heart.png"
+             Title="Mina val">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
         <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
