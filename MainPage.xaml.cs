@@ -35,6 +35,7 @@ namespace NWT
             Children[2] = new HubbPage();                      
         }
 
+        /*
         protected override void OnCurrentPageChanged()
         {
             if (App.Instanciated)
@@ -53,6 +54,6 @@ namespace NWT
 
 
 
-        }
+        }*/
     }
 }

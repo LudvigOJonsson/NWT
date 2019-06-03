@@ -67,6 +67,11 @@ namespace NWT
                             }
                         }                       
                     }
+
+                    App.SideMenu.SetTags();
+
+
+
                 }
                 else
                 {

@@ -243,9 +243,16 @@ namespace NWT
                 };
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-                TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
-                TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
+                TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
+                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
                 TagRow++;
+
+                if (App.SideMenu.Categories.Contains(Category))
+                {
+                    Box.IsEnabled = false;
+                }
+
+
             }
 
 
@@ -276,9 +283,15 @@ namespace NWT
                 };
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
-                TagGrid.Children.Add(Box, 0, 6, Row, Row + 1);
-                TagGrid.Children.Add(Comment, 0, 6, Row, Row + 1);
+                TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
+                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
                 TagRow++;
+
+
+                if (App.SideMenu.Tags.Contains(Tag))
+                {
+                    Box.IsEnabled = false;
+                }
             }
 
 
@@ -307,16 +320,19 @@ namespace NWT
 
         }
 
+
         void CategoryButtonClicked(object sender, System.EventArgs e)
         {
 
             var Button = (Button)sender;
-            App.SideMenu.Filter = Button.ClassId;
+            App.SideMenu.Categories.Add(Button.ClassId);
+            App.SideMenu.UpdateTags();
         }
         void TagButtonClicked(object sender, System.EventArgs e) {
 
             var Button = (Button)sender;
-            App.SideMenu.Tag = Button.ClassId;
+            App.SideMenu.Tags.Add(Button.ClassId);
+            App.SideMenu.UpdateTags();
         }
 
         async void FavButtonClicked(object sender, System.EventArgs e)

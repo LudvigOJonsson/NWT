@@ -47,6 +47,7 @@ namespace NWT
         public int Plustokens { get; set; }
         public string AchievementString { get; set; }
         public string MissionString { get; set; }
+        public string TaggString { get; set; }
         public int LoginStreak { get; set; }
         public int DailyLogin { get; set; }
     }
@@ -687,6 +688,14 @@ namespace NWT
                 TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateInfo", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));      
         }
 
+        public void UpdateChoices(UserTable Update)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateChoices", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
+
+            var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User, App.LoggedinUser.ID))));
+            App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
+            
+        }
 
 
         public int CommentCount(int parm)

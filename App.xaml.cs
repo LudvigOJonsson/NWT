@@ -11,7 +11,7 @@ namespace NWT
 
         public static DBHelper database;
         public static MasterDetailPage Startpage;
-        public static Sidemenu SideMenu;
+        public static ChoicesPage SideMenu;
         public static LoginPage Loginpage;
         public static MainPage Mainpage;
         public static bool Instanciated = false;
@@ -34,7 +34,7 @@ namespace NWT
                 database = new DBHelper(DependencyService.Get<IFileHelper>().GetLocalFilePath("UserDB.db3"));
             }
             Loginpage = new LoginPage();
-            SideMenu = new Sidemenu();
+            SideMenu = new ChoicesPage();
             Mainpage = new MainPage();
             LoadingScreen = new LoadingPopUp();
             Startpage = new MasterDetailPage()

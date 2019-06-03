@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace NWT
         public string Filter = "";
         public string Author = "";
         public string Tag = "";
-        List<string> tempList = new List<string>();
+
+        public List<string> Categories = new List<string>();
+        public List<string> Tags = new List<string>();
+        public List<string> Authors = new List<string>();
+
         int Rownr = 1;
 
         public ChoicesPage()
@@ -24,61 +29,71 @@ namespace NWT
 
             InitializeComponent();
 
+
+
+
+
+
+
             //-------------------------------------------------------------
 
             //adding to list.
-            tempList.Add("Brått");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Mat");
-            tempList.Add("Fika");
-            tempList.Add("Fika2");
-            tempList.Add("Fika3");
-            tempList.Add("Fika4");
-            tempList.Add("Fika5");
-            tempList.Add("Fika6");
 
-            foreach (string s in tempList)
+        }
+        public void SetTags(){
+
+            var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
+            Categories = TagList[0];
+            Tags = TagList[1];
+            Authors = TagList[2];
+
+            foreach (string s in Categories)
             {
-                var Box = new Subject();
-                Box.Label.Text = s;
-
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { });
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
-
-
-                NewsGridOri.Children.Add(Box.Label, 1, 8, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
-                NewsGridOri.Children.Add(Box.Box, 1, 8, Rownr + 1, Rownr + 2); //Boxview
-
-
-                Rownr++;
-                Rownr++;
+                MakeButton(s);
+            }
+            foreach (string s in Tags)
+            {
+                MakeButton(s);
 
             }
+            foreach (string s in Authors)
+            {
+                MakeButton(s);
+            }
+
+
+        }
+
+        public void MakeButton(string s)
+        {
+            var Box = new Subject();
+            Box.Label.Text = s;
+
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { });
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
+
+
+            NewsGridOri.Children.Add(Box.Label, 1, 8, Rownr, Rownr + 1); //Label
+            NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
+            NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
+            NewsGridOri.Children.Add(Box.Box, 1, 8, Rownr + 1, Rownr + 2); //Boxview
+
+
+            Rownr++;
+            Rownr++;
+        }
+
+        public void UpdateTags()
+        {
+            List<List<string>> Taglist = new List<List<string>>();
+
+            Taglist.Add(Categories);
+            Taglist.Add(Tags);
+            Taglist.Add(Authors);
+            App.LoggedinUser.TaggString = JsonConvert.SerializeObject(Taglist);
+            App.database.UpdateChoices(App.LoggedinUser);
+            NewsGridOri.Children.Clear();
+            SetTags();
         }
 
         public class Subject

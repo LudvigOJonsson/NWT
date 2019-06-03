@@ -84,3 +84,6 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.dll
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.pdb
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\ChoicesPage.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomizationIntroPage.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomNewsFeed.xaml.g.cs
