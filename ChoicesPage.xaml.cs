@@ -49,34 +49,34 @@ namespace NWT
 
             foreach (string s in Categories)
             {
-                MakeButton(s);
+                MakeButton(s,0);
             }
             foreach (string s in Tags)
             {
-                MakeButton(s);
+                MakeButton(s,1);
 
             }
             foreach (string s in Authors)
             {
-                MakeButton(s);
+                MakeButton(s,2);
             }
 
 
         }
 
-        public void MakeButton(string s)
+        public void MakeButton(string s, int Type)
         {
-            var Box = new Subject();
-            Box.Label.Text = s;
+            var Box = new Subject(s,Type);
 
-            NewsGridOri.RowDefinitions.Add(new RowDefinition { });
+
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
             NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
 
-
-            NewsGridOri.Children.Add(Box.Label, 1, 8, Rownr, Rownr + 1); //Label
+            NewsGridOri.Children.Add(Box.Box, 1, 7, Rownr, Rownr + 1); //Boxview
+            NewsGridOri.Children.Add(Box.Label, 1, 7, Rownr, Rownr + 1); //Label
             NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
             NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
-            NewsGridOri.Children.Add(Box.Box, 1, 8, Rownr + 1, Rownr + 2); //Boxview
+            
 
 
             Rownr++;
@@ -103,15 +103,15 @@ namespace NWT
             public Image TrashImage = new Image { };
             public Image BellImage = new Image { };
 
-            public Subject()
+            public Subject(string s, int Type)
             {
 
                 Label = new Label
                 {
-                    Text = "Ämne",
+                    Text = s,
                     FontSize = 20,
                     TextColor = Color.Black,
-                    BackgroundColor = Color.White,
+                    InputTransparent = true,
                     VerticalOptions = LayoutOptions.Center,
 
                 };
@@ -121,7 +121,21 @@ namespace NWT
                 Box = new Button
                 {
                     BackgroundColor = Color.LightGray,
+                    ClassId = s
                 };
+
+                if (Type == 0)
+                {
+                    Box.Clicked += App.SideMenu.SetKategori;
+                }
+                else if (Type == 2)
+                {
+                    Box.Clicked += App.SideMenu.SetTag;
+                }
+                else if (Type == 2)
+                {
+                    Box.Clicked += App.SideMenu.SetAuthor;
+                }
 
                 TrashImage = new Image
                 {
@@ -144,18 +158,24 @@ namespace NWT
 
         public void SetKategori(object sender, EventArgs e)
         {
+            Clear(sender,e);
             var Sender = (Button)sender;
             Filter = Sender.ClassId;
+            PrintNews(sender, e);
         }
         public void SetTag(object sender, EventArgs e)
         {
+            Clear(sender, e);
             var Sender = (Button)sender;
             Tag = Sender.ClassId;
+            PrintNews(sender, e);
         }
         public void SetAuthor(object sender, EventArgs e)
         {
+            Clear(sender, e);
             var Sender = (Button)sender;
             Author = Sender.ClassId;
+            PrintNews(sender, e);
         }
 
 
@@ -191,6 +211,12 @@ namespace NWT
 
         public void ButtonLock()
         {
+            foreach (var Child in NewsGridOri.Children)
+            {
+                Child.IsEnabled = !Child.IsEnabled;
+            }
+
+
             /*Nyheter.IsEnabled = !Nyheter.IsEnabled;
             Sport.IsEnabled = !Sport.IsEnabled;
             Ekonomi.IsEnabled = !Ekonomi.IsEnabled;
