@@ -8,7 +8,7 @@
             
             >
     
-    <ContentPage x:Name = "CommunityPage">
+    <ContentPage x:Name = "CustomNewsFeed">
 
 
     </ContentPage>

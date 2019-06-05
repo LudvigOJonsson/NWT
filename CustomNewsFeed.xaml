@@ -1,12 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NWT.CustomNewsFeed">
+             x:Class="NWT.CustomNewsFeed"
+             Icon="newsfeed.png"
+             Title="Nyheter">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
+        <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS, Android" Value="0,0,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView x:Name="NewsSV">
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="14" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Up" Margin="5" BackgroundColor="#2f6e83" Clicked="Scrollup" Text="Scrollup" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Down" Margin="5" BackgroundColor="#2f6e83" Clicked="Scrolldown" Text="Scrolldown" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+            </Grid>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
