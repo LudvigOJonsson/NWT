@@ -327,12 +327,14 @@ namespace NWT
             var Button = (Button)sender;
             App.SideMenu.Categories.Add(Button.ClassId);
             App.SideMenu.UpdateTags();
+            Button.IsEnabled = false;
         }
         void TagButtonClicked(object sender, System.EventArgs e) {
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Add(Button.ClassId);
             App.SideMenu.UpdateTags();
+            Button.IsEnabled = false;
         }
 
         async void FavButtonClicked(object sender, System.EventArgs e)

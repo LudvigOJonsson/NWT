@@ -22,7 +22,12 @@ namespace NWT
         public List<string> Tags = new List<string>();
         public List<string> Authors = new List<string>();
 
-        int Rownr = 1;
+        public static TapGestureRecognizer TGR = new TapGestureRecognizer();
+
+
+
+
+           int Rownr = 1;
 
         public ChoicesPage()
         {
@@ -30,7 +35,12 @@ namespace NWT
             InitializeComponent();
 
 
-
+            TGR.NumberOfTapsRequired = 1;
+            TGR.Tapped += (s, e) => {
+                IsEnabled = false;
+                App.SideMenu.Trash(s, e);
+                IsEnabled = true;
+            };
 
 
 
@@ -96,7 +106,9 @@ namespace NWT
             SetTags();
         }
 
-        public class Subject
+
+
+    public class Subject
         {
             public Button Box = new Button { };
             public Label Label = new Label { };
@@ -128,7 +140,7 @@ namespace NWT
                 {
                     Box.Clicked += App.SideMenu.SetKategori;
                 }
-                else if (Type == 2)
+                else if (Type == 1)
                 {
                     Box.Clicked += App.SideMenu.SetTag;
                 }
@@ -142,7 +154,9 @@ namespace NWT
                     Source = "trash.png",
                     WidthRequest = 10,
                     HeightRequest = 10,
+                    ClassId = s
                 };
+                TrashImage.GestureRecognizers.Add(TGR);
 
                 BellImage = new Image
                 {
@@ -176,6 +190,45 @@ namespace NWT
             var Sender = (Button)sender;
             Author = Sender.ClassId;
             PrintNews(sender, e);
+        }
+
+        public void Trash(object sender, EventArgs e)
+        {
+
+            var Sender = (Image)sender;
+            var Trash = Sender.ClassId;
+
+            foreach (string s in Categories)
+            {
+                if (s.Contains(Trash))
+                {
+                    Categories.Remove(s);
+                    UpdateTags();                    
+                    break;
+                }
+                
+            }
+            foreach (string s in Tags)
+            {
+                if (s.Contains(Trash))
+                {
+                    Tags.Remove(s);
+                    UpdateTags();
+                    break;
+                }
+                
+            }
+            foreach (string s in Authors)
+            {
+                if (s.Contains(Trash))
+                {
+                    Authors.Remove(s);
+                    UpdateTags();
+                    break;
+                }
+                
+            }
+         
         }
 
 
@@ -269,6 +322,17 @@ namespace NWT
             await Navigation.PushAsync(new UserSettingsPage());
             ButtonLock();
         }
+        async void Customization(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ButtonLock();
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
+            await Navigation.PushAsync(new CustomizationPage());
+            ButtonLock();
+        }
+
 
     }
 }
