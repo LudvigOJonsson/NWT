@@ -29,7 +29,7 @@ namespace NWT
             Debug.WriteLine("success: {0}", result); }));
             App.database.LoadUserRSS(1, (10));
             Children[1] = new NewsGridPage(0);
-            Children[0] = new CommunityPage();
+            Children[0] = new CustomNewsFeed(0);
 
             Children[3] = new ProfilePage();
             Children[2] = new HubbPage();                      
