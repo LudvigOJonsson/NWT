@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    x:Class="NWT.TutorialPopUp2"
+    x:Name="TutorialPopUpPage2">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <StackLayout Padding="0,0,0,0"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+        <ContentView>
+            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <forms:AnimationView 
+	                x:Name="tokenAnimation2" 
+	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+                    VerticalOptions="FillAndExpand"
+	                HorizontalOptions="FillAndExpand"
+	                Animation="confetti.json" 
+	                Loop="false" 
+	                AutoPlay="true"
+	                />
+                
+                <Image Source="hamburger.png" Grid.Row="0" Grid.Column="0"/>
+                <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+
+                <Label Text="Grattis! Du har nu anpassat din avatar. Gå till inställningar för att vidare anpassa din app!" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+
+                <BoxView x:Name="progressBarTutorial" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="progressBarTutorialBackground" BackgroundColor="Gray" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="10" Margin="10"/>
+                <BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar2" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar3" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+            </Grid>
+        </ContentView>
+    </StackLayout>
+</pages:PopupPage>

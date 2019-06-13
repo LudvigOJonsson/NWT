@@ -93,6 +93,12 @@
                 
                 <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
 
+                <BoxView x:Name="IntroBackground" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff"/>
+                <Label x:Name="IntroText" Text="Steg 2: Anpassa din avatar!" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
+                <BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar2" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar3" BackgroundColor="#d8d8d8" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+
             </Grid>
         </ContentView>
         

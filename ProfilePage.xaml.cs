@@ -25,8 +25,7 @@ namespace NWT
         public Image avatarHairPic;
         public Image avatarBodyPic;
         public Image avatarFacePic;
-
-
+        
         public ProfilePage ()
 		{
 			InitializeComponent ();
@@ -34,7 +33,46 @@ namespace NWT
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
             avatarFacePic = ProfilePictureFace;
-
+        }
+        void ChangeIntroStep(int step)
+        {
+            if (step == 1)
+            {
+                IntroText.Text = "Steg 1: Anpassa ditt flöde!";
+                introProgressBar1.BackgroundColor = Color.FromHex("#00f9ff");
+                introProgressBar2.BackgroundColor = Color.FromHex("#d8d8d8");
+                introProgressBar3.BackgroundColor = Color.FromHex("#d8d8d8");
+            }
+            else if (step == 2)
+            {
+                IntroText.Text = "Steg 2: Anpassa din avatar!";
+                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
+                introProgressBar2.BackgroundColor = Color.FromHex("#00f9ff");
+                introProgressBar3.BackgroundColor = Color.FromHex("#d8d8d8");
+            }
+            else if (step == 2)
+            {
+                IntroText.Text = "Steg 3: Anpassa din app!";
+                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
+                introProgressBar2.BackgroundColor = Color.FromHex("#00b5ba");
+                introProgressBar3.BackgroundColor = Color.FromHex("#00f9ff");
+            }
+        }
+        void RemoveIntro()
+        {
+            IntroBackground.IsEnabled = false;
+            introProgressBar1.IsEnabled = false;
+            introProgressBar2.IsEnabled = false;
+            introProgressBar3.IsEnabled = false;
+            IntroText.IsEnabled = false;
+        }
+        void AddIntro()
+        {
+            IntroBackground.IsEnabled = true;
+            introProgressBar1.IsEnabled = true;
+            introProgressBar2.IsEnabled = true;
+            introProgressBar3.IsEnabled = true;
+            IntroText.IsEnabled = true;
         }
 
         public void Login(UserTable User)

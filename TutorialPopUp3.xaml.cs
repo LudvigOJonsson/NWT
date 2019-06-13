@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace NWT
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TutorialPopUp : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class TutorialPopUp3 : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public TutorialPopUp()
+        public TutorialPopUp3()
         {
             InitializeComponent();
         }
