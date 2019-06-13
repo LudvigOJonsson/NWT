@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,9 @@ namespace NWT
         public List<Article> ArticlePrintList = new List<Article>();
         public static string Defaultimage = "http://media2.hitzfm.nu/2016/11/Nyheter_3472x1074.jpg";
         public static Random rnd = new Random();
-        public string Filter = "All";
-        public string Author = "";
-        public string Tag = "";
+        public List<string> Filter = new List<string>();
+        public List<string> Author = new List<string>();
+        public List<string> Tag = new List<string>();
 
         public int PREV = 0;
         public int CURR = DBLN;
@@ -199,6 +200,32 @@ namespace NWT
             Navigation.PopAsync();
         }
 
+        public void TagUpdate()
+        {
+
+            
+            
+            App.database.LocalExecute("DELETE FROM CNF");
+
+            PREV = 0;
+            CURR = NewsGridPage.DBLN;
+            NEXT = NewsGridPage.DBLN * 2;
+            Loadnr = 1;
+            var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
+            Filter = TagList[0];
+            Tag = TagList[1];
+            Author = TagList[2];
+
+
+            ArticleList.Clear();
+            LoadLocalDB();
+            AddNews(0);
+            
+
+        }
+
+
+
 
         async void LoadNews(object sender, EventArgs e)
         {
@@ -227,7 +254,7 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadNF(Loadnr, (Loadnr + DBLN), Filter, Author, Tag);
+            App.database.LoadCNF(Loadnr, (Loadnr + DBLN), Filter, Author, Tag);
             Loadnr += DBLN;
 
         }
@@ -536,7 +563,7 @@ namespace NWT
             List<NewsfeedTable> Rss = new List<NewsfeedTable>();
             if (argc == 0)
             {
-                Rss = App.database.GetNF(Loadnr);
+                Rss = App.database.GetCNF(Loadnr);
             }
             else if (argc == 1)
             {

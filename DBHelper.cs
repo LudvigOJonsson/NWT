@@ -216,6 +216,22 @@ namespace NWT
         public string Tag { get; set; }
         public int Plus { get; set; }
     }
+
+    [Table("CNF")]
+    public class CustomNewsfeedTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public long Article { get; set; }
+        public int NewsScore { get; set; }
+        public string Header { get; set; }
+        public string Image { get; set; }
+        public string Author { get; set; }
+        public string Category { get; set; }
+        public string Tag { get; set; }
+        public int Plus { get; set; }
+    }
+
     public class VoteQuestionTable
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -268,7 +284,8 @@ namespace NWT
             DB.CreateTable<NewsfeedTable>();
             DB.DropTable<HistoryTable>();
             DB.CreateTable<HistoryTable>();
-
+            DB.DropTable<CustomNewsfeedTable>();
+            DB.CreateTable<CustomNewsfeedTable>();
 
 
         }
@@ -436,6 +453,103 @@ namespace NWT
             return Nr;
         }
 
+        public int LoadCNF(int start, int stop, List<string> Filter_, List<string> Author_, List<string> Tag_)
+        {
+            int Nr = 0;
+
+
+
+            for (int x = start; x < stop; x++)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    while (ComLock)
+                    {
+
+                    };
+                    ComLock = true;
+                    string JSONResult = "";
+                    if ((!Filter_.Any()) && (!Author_.Any()) && (!Tag_.Any()))
+                    {
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x).ToString(), -1)));
+                        Console.WriteLine("No Filter");
+                    }
+                    else
+                    {
+                        string C = "";
+                        string A = "";
+                        string T = "";
+
+                        bool CF = true;
+                        bool AF = true;
+                        bool TF = true;
+                        foreach (string s in Filter_)
+                        {
+                            if (!CF)
+                            {
+                                C += " OR ";
+                            }
+                            C += "Category LIKE '%" + s + "%'";
+                            CF = false;
+                        }
+                        
+                        foreach (string s in Filter_)
+                        {
+                            if (!AF)
+                            {
+                                A += " OR ";
+                            }
+                            A += "Author LIKE '%" + s + "%'";
+                            AF = false;
+                        }
+                        foreach (string s in Tag_)
+                        {
+                            if (!TF)
+                            {
+                                T += " OR ";
+                            }
+                            T += "Tag LIKE '%" + s + "%'";
+                            TF = false;
+                        }
+
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + " LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + ") - " + (x).ToString(), -1)));
+                        Console.WriteLine("Filter");
+                    }
+                    //Console.WriteLine(JSONResult.Length);
+                    ComLock = false;
+
+                    if (JSONResult != "No")
+                    {
+
+                        //Console.WriteLine("JSON Object Found");
+                        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+                        //Console.WriteLine(Result.JSON);
+                        if (Result.JSON == "[]")
+                        {
+                            break;
+                        }
+
+                        var Article = JsonConvert.DeserializeObject<List<CustomNewsfeedTable>>(Result.JSON).First();
+                        //Console.WriteLine("JSON Deserialized");
+                        DB.Insert(Article);
+                        //Console.WriteLine("Article Inserted");
+                        break;
+                    }
+                    else
+                    {
+
+                        //ParseRssFile();
+                        //App.Online = false;
+
+                    }
+                }
+                Nr = x;
+            }
+            return Nr;
+        }
+
+
         public int LoadUserRSS(int start, int stop)
         {
             int Nr = 0;
@@ -557,6 +671,11 @@ namespace NWT
         public List<NewsfeedTable> GetNF(int ID)
         {          
             return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());     
+        }
+
+        public List<NewsfeedTable> GetCNF(int ID)
+        {
+            return DB.Query<NewsfeedTable>("SELECT * FROM CNF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM CNF) - " + ID.ToString());
         }
 
         public List<NewsfeedTable> GetNf(long ID)

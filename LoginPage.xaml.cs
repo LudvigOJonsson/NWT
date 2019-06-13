@@ -69,7 +69,8 @@ namespace NWT
                     }
 
                     App.SideMenu.SetTags();
-
+                    var y = (CustomNewsFeed)App.Mainpage.Children[0];
+                    y.TagUpdate();
 
 
                 }

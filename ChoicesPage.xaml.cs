@@ -104,6 +104,8 @@ namespace NWT
             App.database.UpdateChoices(App.LoggedinUser);
             NewsGridOri.Children.Clear();
             SetTags();
+            var y = (CustomNewsFeed)App.Mainpage.Children[0];
+            y.TagUpdate();
         }
 
 
