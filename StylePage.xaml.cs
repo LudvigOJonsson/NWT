@@ -22,6 +22,26 @@ namespace NWT
         public StylePage()
         {
             InitializeComponent();
+
+            TGR.NumberOfTapsRequired = 1;
+            TGR.Tapped += (s, e) => {
+                IsEnabled = false;
+                SelectStyle(s, e);
+                IsEnabled = true;
+            };
+        }
+
+        public void SelectStyle(object sender, EventArgs e)
+        {
+
+            var Sender = (Button)sender;
+            var Style = Sender.ClassId;
+
+            //NEW STYLE SELECTED
+
+            //UPDATE STYLE ON LEAVE PAGE, or straight away?
+
+            //LOADING animation?
         }
 
         async void OnDismissButtonClicked(object sender, EventArgs args)
@@ -54,6 +74,8 @@ namespace NWT
             public Label Label = new Label { };
             public Image Image = new Image { };
 
+            public string style = "";
+
             public StyleButton()
             {
                 Label = new Label
@@ -67,6 +89,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     TextColor = Color.Black,
                     Margin = 15,
+                    ClassId = style,
                 };
 
                 Label.GestureRecognizers.Add(TGR);
@@ -79,6 +102,7 @@ namespace NWT
                     VerticalOptions = LayoutOptions.Fill,
                     Aspect = Aspect.AspectFill,
                     Margin = 0,
+                    ClassId = style,
 
                 };
 
@@ -90,6 +114,7 @@ namespace NWT
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     Margin = 0,
+                    ClassId = style,
                 };
 
                 Button.GestureRecognizers.Add(TGR);
