@@ -41,7 +41,9 @@ namespace NWT
         {
             public long ID { get; set; }
             public string Source { get; set; }
+            public Color CategoryColor { get; set; }
             public string Tag { get; set; }
+            public bool TagVisible { get; set; }
             public string Header { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
@@ -55,9 +57,73 @@ namespace NWT
             public LayoutOptions CBVO { get; set; }
             public Article(NewsfeedTable NF)
             {
+                if (NF.Category.Contains("Sport"))
+                {
+                    CategoryColor = Color.FromHex("#6fb110");
+                }
+                else if (NF.Category.Contains("Ekonomi"))
+                {
+                    CategoryColor = Color.FromHex("#3b5e6a");
+                }
+                else if (NF.Category.Contains("Åsikter"))
+                {
+                    CategoryColor = Color.FromHex("#57bcbf");
+                }
+                else if(NF.Category.Contains("Nöje/Kultur"))
+                {
+                    CategoryColor = Color.FromHex("#bb0066");
+                }
+                else if (NF.Category.Contains("Familj"))
+                {
+                    CategoryColor = Color.FromHex("#e0d8b3");
+                }
+                else
+                {
+                    CategoryColor = Color.FromHex("#3b5e6a");
+                }
+
+                Tag = "";
+
+                if (App.LoggedinUser != null)
+                {
+                    var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
+                    var UserCategories = TagList[0];
+                    var UserTags = TagList[1];
+                    var UserAuthors = TagList[2];
+
+                
+                    var Firsttag = true;
+
+                    foreach (var Tag_ in UserTags)
+                    {
+                        if (NF.Tag.Contains(Tag_))
+                        {
+                            if (Firsttag)
+                            {
+                                Firsttag = false;
+                            }
+                            else
+                            {
+                                Tag += ", ";
+                            }
+                            Tag += NF.Tag;
+                        }
+
+                    }
+
+                    if (Firsttag)
+                    {
+                        TagVisible = false;
+                    }
+                    else
+                    {
+                        TagVisible = true;
+                    }
+                }
 
 
-                Tag = NF.Category;
+
+                
                 ID = NF.Article;
                 Header = NF.Header;
                 IMGSource = NF.Image;
@@ -329,6 +395,8 @@ namespace NWT
 
                     };
 
+
+
                     Image.SetBinding(HeightRequestProperty, "IHR");
 
                     Button Box = new Button
@@ -381,7 +449,7 @@ namespace NWT
                     BoxView CategoryBox = new BoxView
                     {
 
-                        BackgroundColor = Color.FromHex("#2f6e83"),
+                        
                         ///WidthRequest = Label.WidthRequest,
                         //HeightRequest = 3,
                         //HorizontalOptions =,
@@ -390,6 +458,23 @@ namespace NWT
 
                     };
 
+                    Label Tag = new Label
+                    {
+                        //Text = NF.Header,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 10,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
+
+                        TextColor = Color.Red,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 0),
+                    };
+
+
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
 
@@ -397,9 +482,13 @@ namespace NWT
                     CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
                     CategoryBox.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
                     CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
+                    CategoryBox.SetBinding(BoxView.BackgroundColorProperty, "CategoryColor");
 
                     Label.SetBinding(Label.TextProperty, "Header");
                     Image.SetBinding(Image.SourceProperty, "IMGSource");
+
+                    Tag.SetBinding(Label.TextProperty, "Tag");
+                    Tag.SetBinding(Label.IsVisibleProperty, "TagVisible");
 
                     Label.SetBinding(Label.ClassIdProperty, "ID");
                     Image.SetBinding(Image.ClassIdProperty, "ID");
@@ -443,6 +532,7 @@ namespace NWT
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
                     Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
                     Grid.Children.Add(Image, 1, 2, 1, 2); //Image    
+                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag    
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
                     Grid.Children.Add(CategoryBox, 1, 2, 1, 2); //Label
 
@@ -465,91 +555,8 @@ namespace NWT
 
 
             NewsGrid.Children.Add(listView, 0, 3, 1, 2);
-
-
-
-
-            /*
-                for (int i = Start; i < End; i++)
-                {
-                    Article Box = ArticleList[i];
-
-
-
-                    Console.WriteLine("Indelning av Fullt Artikel Objekt");
-
-
-                    NewsGrid.RowSpacing = 0;
-
-                    Box.Label.WidthRequest = Box.Label.Width - 25;
-
-                    NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.ArticleMargin, 1, 2, Rownr, Rownr + 1); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 1, 2, Rownr + 2, Rownr + 3); //Image
-                    NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 3, Rownr + 4); //Label
-                    NewsGrid.Children.Add(Box.CategoryBox, 1, 2, Rownr + 3, Rownr + 4); //Label
-                    NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
-
-
-
-                    Console.WriteLine("Artikel Objekt Lagd i Grid");
-
-
-  
-
-
-
-
-
-
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
-                }
-            
-            */
             NewsGrid.Children.Add(Down, 0, 3, 2, 3);
 
-
-
-
-
-
-            if (App.Instanciated && false)
-            {
-                int i = 0;
-                foreach (var Article in ArticlePrintList)
-                {
-                    /*
-                    if ((Article.Tag.Contains("Nyheter") && App.SideMenu.Nyheter.IsToggled) ||
-                       (Article.Tag.Contains("Brott och Blåljus") && App.SideMenu.BrottochBlåljus.IsToggled) ||
-                       (Article.Tag.Contains("Vård och Omsorg") && App.SideMenu.VårdochOmsorg.IsToggled) ||
-                       (Article.Tag.Contains("Miljö") && App.SideMenu.Miljö.IsToggled) ||
-                       (Article.Tag.Contains("Skola och Utbildning") && App.SideMenu.SkolaochUtbildning.IsToggled) ||
-                       (Article.Tag.Contains("Mat och Dryck") && App.SideMenu.MatochDryck.IsToggled) ||
-                       (Article.Tag.Contains("Bostad") && App.SideMenu.Bostad.IsToggled) ||
-                       (Article.Tag.Contains("Trafik") && App.SideMenu.Trafik.IsToggled) ||
-                       (Article.Tag.Contains("Politik") && App.SideMenu.Politik.IsToggled) ||
-                       (Article.Tag.Contains("Sport") && App.SideMenu.Sport.IsToggled) ||
-                       (Article.Tag.Contains("Ekonomi") && App.SideMenu.Ekonomi.IsToggled) ||
-                       (Article.Tag.Contains("Åsikter") && App.SideMenu.Åsikter.IsToggled) ||
-                       (Article.Tag.Contains("Nöje och Kultur") && App.SideMenu.NöjeochKultur.IsToggled) ||
-                       (Article.Tag.Contains("Familj") && App.SideMenu.Familj.IsToggled) ||
-                        Article.Tag.Contains("N/A"))
-                    {
-                        Article.Visibility(true);
-                        Console.WriteLine("Article: " + i + " ;True");
-                    }
-                    else
-                    {
-                        Article.Visibility(false);
-                        Console.WriteLine("Article: " + i + " ;False");
-                    }*/
-                    i++;
-                }
-            }
         }
 
         private void Box_Clicked(object sender, EventArgs e)

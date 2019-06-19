@@ -432,97 +432,12 @@ namespace NWT
                 })
                 
             };
-            
-
-
-
-
+           
             NewsGrid.Children.Add(listView, 0, 3, 1, 2);
-
-
-
-
-            /*
-                for (int i = Start; i < End; i++)
-                {
-                    Article Box = ArticleList[i];
-
-
-
-                    Console.WriteLine("Indelning av Fullt Artikel Objekt");
-
-
-                    NewsGrid.RowSpacing = 0;
-
-                    Box.Label.WidthRequest = Box.Label.Width - 25;
-
-                    NewsGrid.Children.Add(Box.Frame, 0, 3, Rownr, Rownr + 3); //Boxview
-                    NewsGrid.Children.Add(Box.ArticleMargin, 1, 2, Rownr, Rownr + 1); //Boxview
-                    NewsGrid.Children.Add(Box.Box, 1, 2, Rownr + 1, Rownr + 4); //Boxview
-                    NewsGrid.Children.Add(Box.Image, 1, 2, Rownr + 2, Rownr + 3); //Image
-                    NewsGrid.Children.Add(Box.Label, 1, 2, Rownr + 3, Rownr + 4); //Label
-                    NewsGrid.Children.Add(Box.CategoryBox, 1, 2, Rownr + 3, Rownr + 4); //Label
-                    NewsGrid.RowDefinitions[Rownr + 2].Height = ((Box.Label.Text.Length / 10) * );
-
-
-
-                    Console.WriteLine("Artikel Objekt Lagd i Grid");
-
-
-  
-
-
-
-
-
-
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
-                    Rownr++;
-                }
-            
-            */
             NewsGrid.Children.Add(Down, 0, 3, 2, 3);
 
 
 
-
-
-
-            if (App.Instanciated && false)
-            {
-                int i = 0;
-                foreach (var Article in ArticlePrintList)
-                {
-                    /*
-                    if ((Article.Tag.Contains("Nyheter") && App.SideMenu.Nyheter.IsToggled) ||
-                       (Article.Tag.Contains("Brott och Blåljus") && App.SideMenu.BrottochBlåljus.IsToggled) ||
-                       (Article.Tag.Contains("Vård och Omsorg") && App.SideMenu.VårdochOmsorg.IsToggled) ||
-                       (Article.Tag.Contains("Miljö") && App.SideMenu.Miljö.IsToggled) ||
-                       (Article.Tag.Contains("Skola och Utbildning") && App.SideMenu.SkolaochUtbildning.IsToggled) ||
-                       (Article.Tag.Contains("Mat och Dryck") && App.SideMenu.MatochDryck.IsToggled) ||
-                       (Article.Tag.Contains("Bostad") && App.SideMenu.Bostad.IsToggled) ||
-                       (Article.Tag.Contains("Trafik") && App.SideMenu.Trafik.IsToggled) ||
-                       (Article.Tag.Contains("Politik") && App.SideMenu.Politik.IsToggled) ||
-                       (Article.Tag.Contains("Sport") && App.SideMenu.Sport.IsToggled) ||
-                       (Article.Tag.Contains("Ekonomi") && App.SideMenu.Ekonomi.IsToggled) ||
-                       (Article.Tag.Contains("Åsikter") && App.SideMenu.Åsikter.IsToggled) ||
-                       (Article.Tag.Contains("Nöje och Kultur") && App.SideMenu.NöjeochKultur.IsToggled) ||
-                       (Article.Tag.Contains("Familj") && App.SideMenu.Familj.IsToggled) ||
-                        Article.Tag.Contains("N/A"))
-                    {
-                        Article.Visibility(true);
-                        Console.WriteLine("Article: " + i + " ;True");
-                    }
-                    else
-                    {
-                        Article.Visibility(false);
-                        Console.WriteLine("Article: " + i + " ;False");
-                    }*/
-                    i++;
-                }
-            }
         }
 
         private void Box_Clicked(object sender, EventArgs e)

@@ -55,8 +55,6 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomizationPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomNewsFeed.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\DailyPopUp.xaml.g.cs
-C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\FavoritesPage.xaml.g.cs
-C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\HistoryPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\HubbPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoadingPopUp.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoginPage.xaml.g.cs
@@ -73,8 +71,6 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\SettingsPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\Sidemenu.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\SudokuPage.xaml.g.cs
-C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserNewsGridPage.xaml.g.cs
-C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserNewsPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserSettingsPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\UserSubmissionPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\VoteDisplayPage.xaml.g.cs
@@ -88,3 +84,8 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.dll
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.pdb
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\TutorialPopUp1.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\TutorialPopUp2.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\TutorialPopUp3.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\IntroWalkthrough.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\StylePage.xaml.g.cs

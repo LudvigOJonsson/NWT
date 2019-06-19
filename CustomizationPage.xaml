@@ -43,11 +43,11 @@
 
                     <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="POPULÄRA KATEGORIER" FontSize="14" TextColor="#50d2c2" VerticalOptions="Center"/>
 
-                    <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="BROTT OCH BLÅLJUS" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Brott och Blåljus" Clicked="CategoryButtonClicked"/>
+                    <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="BROTT OCH BLÅLJUS" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Brott &amp; Blåljus" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="SPORT" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Sport" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="BOSTAD" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Bostad" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="POLITIK" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Politik" Clicked="CategoryButtonClicked"/>
-                    <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="SKOLA OCH UTBILDNING" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Skola och Utbildning" Clicked="CategoryButtonClicked"/>
+                    <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="SKOLA OCH UTBILDNING" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Skola &amp; Utbildning" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="TRAFIK" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Trafik" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="EKONOMI" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Ekonomi" Clicked="CategoryButtonClicked"/>
                     <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="HELG" FontSize="16" TextColor="Black" VerticalOptions="Center" BackgroundColor="White" ClassId="Helg" Clicked="CategoryButtonClicked"/>

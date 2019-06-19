@@ -36,7 +36,7 @@ namespace NWT
             /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);*/
-            await Navigation.PushAsync(new UserNewsGridPage());
+            //await Navigation.PushAsync(new UserNewsGridPage());
             ButtonLock();
         }
         async void MakeInsandare(object sender, EventArgs e)

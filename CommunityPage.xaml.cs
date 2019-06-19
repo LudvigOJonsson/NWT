@@ -60,7 +60,7 @@ namespace NWT
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetUserRss(id).First();
 
-            await Navigation.PushAsync(new UserNewsPage(RSS));
+            //await Navigation.PushAsync(new UserNewsPage(RSS));
         }
 
         void Community()
@@ -85,7 +85,7 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new UserNewsGridPage());
+            //await Navigation.PushAsync(new UserNewsGridPage());
         }
         async void MakeInsandare(object sender, EventArgs e)
         {
