@@ -27,7 +27,7 @@ namespace NWT
             
             ToolbarItems.Add(new ToolbarItem("Search", "search.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel");
             Debug.WriteLine("success: {0}", result); }));
-            App.database.LoadUserRSS(1, (10));
+            
             Children[1] = new NewsGridPage(0);
             Children[0] = new CustomNewsFeed(0);
 

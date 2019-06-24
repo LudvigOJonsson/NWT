@@ -22,6 +22,7 @@ namespace NWT
         {
             if(App.LoggedinUser != null && Rubrik.Text != "" && Ingress.Text != "" && Brodtext.Text != "")
             {
+                /*
                 var RSS = new UserRSSTable();
                 RSS.Rubrik = Rubrik.Text;
                 RSS.Ingress = Ingress.Text;
@@ -31,7 +32,7 @@ namespace NWT
                 RSS.Referat = Int32.Parse(ClassId);
                 App.database.InsertInsandare(RSS);
                 await DisplayAlert("Submission Successful", "Insändare Submitted", "OK");
-            }
+            */}
 
             
         }

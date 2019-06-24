@@ -50,6 +50,7 @@ namespace NWT
         public string TaggString { get; set; }
         public int LoginStreak { get; set; }
         public int DailyLogin { get; set; }
+        public int TutorialProgress { get; set; }
     }
 
     
@@ -154,18 +155,7 @@ namespace NWT
 
 
 
-    [Table("Insandare")]
-    public class UserRSSTable
-    {
-        [PrimaryKey, AutoIncrement, Unique]
-        public int ID { get; set; }
-        public string Rubrik { get; set; }
-        public string Ingress { get; set; }
-        public string Brodtext { get; set; }
-        public long Referat { get; set; }
-        public DateTime PubDate { get; set; }
-        public int Author { get; set; }
-    }
+
 
     public class QuizTable
     {
@@ -278,8 +268,6 @@ namespace NWT
             DB = new SQLiteConnection(dbPath);
             DB.DropTable<RSSTable>();
             DB.CreateTable<RSSTable>();
-            DB.DropTable<UserRSSTable>();
-            DB.CreateTable<UserRSSTable>();
             DB.DropTable<NewsfeedTable>();
             DB.CreateTable<NewsfeedTable>();
             DB.DropTable<HistoryTable>();
@@ -476,10 +464,10 @@ namespace NWT
                     }
                     else
                     {
-                        string C = "";
-                        string A = "";
-                        string T = "";
-
+                        string C = "Category LIKE ";
+                        string A = "Author LIKE ";
+                        string T = "Tag LIKE ";
+                        string X = "'%%'";
                         bool CF = true;
                         bool AF = true;
                         bool TF = true;
@@ -489,17 +477,18 @@ namespace NWT
                             {
                                 C += " OR ";
                             }
-                            C += "Category LIKE '%" + s + "%'";
+
+                            C += " '%" + s + "%'";
                             CF = false;
-                        }
-                        
-                        foreach (string s in Filter_)
+                        }                      
+                        foreach (string s in Author_)
                         {
                             if (!AF)
                             {
                                 A += " OR ";
                             }
-                            A += "Author LIKE '%" + s + "%'";
+
+                            A += " '%" + s + "%'";
                             AF = false;
                         }
                         foreach (string s in Tag_)
@@ -508,8 +497,22 @@ namespace NWT
                             {
                                 T += " OR ";
                             }
-                            T += "Tag LIKE '%" + s + "%'";
+
+                            T += " '%" + s + "%'";
                             TF = false;
+                        }
+
+                        if (CF)
+                        {
+                            C += X;
+                        }
+                        if (AF)
+                        {
+                            A += X;
+                        }
+                        if (TF)
+                        {
+                            T += X;
                         }
 
                         JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + " LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + ") - " + (x).ToString(), -1)));
@@ -550,38 +553,7 @@ namespace NWT
         }
 
 
-        public int LoadUserRSS(int start, int stop)
-        {
-            int Nr = 0;
-            for (int x = start; x < stop; x++)
-            {
-                var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Query", "SELECT * FROM Insandare WHERE ID = " + x.ToString(), -1)));
-                
 
-                
-
-                if (JSONResult != "No")
-                {
-                    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-                    Console.WriteLine(Result.JSON);
-                    if (Result.JSON == "[]")
-                    {
-                        break;
-                    }
-
-                    var Article = JsonConvert.DeserializeObject<List<UserRSSTable>>(Result.JSON).First();
-                    DB.Insert(Article);
-                }
-                else
-                {
-                    x = -1;
-                    App.Online = false;
-                    break;
-                }
-                Nr = x;
-            }
-            return Nr;
-        }
 
         public void InsertPlus(PlusRSSTable RSS)
         {
@@ -625,7 +597,7 @@ namespace NWT
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Insert", JsonConvert.SerializeObject(Comment), App.LoggedinUser.ID)));
             App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
         }
-        public void InsertInsandare(UserRSSTable RSS)
+        public void InsertInsandare(NewsfeedTable RSS)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("UserRSS", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
             App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
@@ -681,16 +653,6 @@ namespace NWT
         public List<NewsfeedTable> GetNf(long ID)
         {
             return DB.Query<NewsfeedTable>("SELECT * FROM NF WHERE Article = ?" , ID.ToString());
-        }
-
-        public List<UserRSSTable> GetUserRSS(int ID)
-        {                     
-            return DB.Query<UserRSSTable>("SELECT * FROM Insandare LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM Insandare) - " + ID.ToString());
-        }
-
-        public List<UserRSSTable> GetUserRss(int ID)
-        {
-            return DB.Query<UserRSSTable>("SELECT * FROM Insandare WHERE ID = ?", ID.ToString());
         }
 
         public List<PicrossTable> LoadPicross()

@@ -13,7 +13,7 @@ namespace NWT
 	public partial class CommunityPage : ContentPage
 	{
         List<NewsfeedTable> Rss = new List<NewsfeedTable>();
-        List<UserRSSTable> UserRss = new List<UserRSSTable>();
+        List<NewsfeedTable> UserRss = new List<NewsfeedTable>();
         public CommunityPage()
 		{
 			InitializeComponent ();
@@ -29,13 +29,13 @@ namespace NWT
             CPNA2B.ClassId = Rss[2].Article.ToString();
             CPNA3B.ClassId = Rss[3].Article.ToString();
 
-            UserRss = App.database.GetUserRSS(4);
+            UserRss = App.database.GetCNF(4);
 
   
-            CPMIAT.Text = UserRss[0].Rubrik;
-            CPIA1T.Text = UserRss[1].Rubrik;
-            CPIA2T.Text = UserRss[2].Rubrik;
-            CPIA3T.Text = UserRss[3].Rubrik;
+            CPMIAT.Text = UserRss[0].Header;
+            CPIA1T.Text = UserRss[1].Header;
+            CPIA2T.Text = UserRss[2].Header;
+            CPIA3T.Text = UserRss[3].Header;
             CPMIAB.ClassId = UserRss[0].ID.ToString();
             CPIA1B.ClassId = UserRss[1].ID.ToString();
             CPIA2B.ClassId = UserRss[2].ID.ToString();
@@ -58,7 +58,7 @@ namespace NWT
             var Header = ((View)sender);
 
             var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetUserRss(id).First();
+            var RSS = App.database.GetServerRSS(id).First();
 
             //await Navigation.PushAsync(new UserNewsPage(RSS));
         }

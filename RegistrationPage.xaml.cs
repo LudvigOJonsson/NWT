@@ -34,7 +34,7 @@ namespace NWT
                     User.MissionString = "";
                     User.LoginStreak = 0;
                     User.DailyLogin = 0;
-
+                    User.TutorialProgress = 0;
                     int j;
                     if (Int32.TryParse(UserAge.Text, out j))
                         User.Age = j;
