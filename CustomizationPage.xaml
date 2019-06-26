@@ -66,9 +66,9 @@
                     <Button Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="2" Text="FALKÖPING" FontSize="16" TextColor="Black" VerticalOptions="Center" ClassId="Falköping" Clicked="TagButtonClicked"/>
                     <Button Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2" Text="KARLSBORG" FontSize="16" TextColor="Black" VerticalOptions="Center" ClassId="Karlsborg" Clicked="TagButtonClicked"/>
 
-
                 </Grid>
             </ScrollView>
+            <Button Text="Starta appen!" TextColor="White" Clicked="StartButtonPressed" BackgroundColor="#2f6e83" Margin="0" x:Name="StartButton"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

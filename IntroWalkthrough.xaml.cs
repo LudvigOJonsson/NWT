@@ -24,9 +24,17 @@ namespace NWT
             var index = Children.IndexOf(CurrentPage);
             index++;
             if (index >= pageCount)
-                App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+            {
+                Customization();
+                return;
+            }
 
             CurrentPage = Children[index];
+        }
+
+        public void Customization()
+        {
+            App.Startpage.Detail = new CustomizationPage() { };
         }
     }
 }
