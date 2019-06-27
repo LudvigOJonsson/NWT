@@ -46,15 +46,21 @@
                 <Label Text="Favoriter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button Image="heart.png" Text="" FontSize="Micro" TextColor="White" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
-                <Label Text="Historik" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="2" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                <Label Text="Avatar" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Button Image="shirtSmol.png" Text="" FontSize="Micro"  TextColor="White" Clicked="Avatar" Grid.Row="2" Grid.Column="0" x:Name="AvatarButton2" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
                 <Label Text="Troféer" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button Image="knapp.png" Text="" TextColor="White" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
-                <Label Text="Inställningar" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button Image="settings.png" Text="" FontSize="Micro" TextColor="White" Clicked="Settings" Grid.Row="2" Grid.Column="2" x:Name="ProfileSettingsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
-                
+                <Label Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Button Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="Style" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                <Label Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Button Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                <Label Text="Inställningar" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Button Image="settings.png" Text="" FontSize="Micro" TextColor="White" Clicked="Settings" Grid.Row="3" Grid.Column="2" x:Name="ProfileSettingsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
                 <forms:AnimationView 
 	                x:Name="tokenAnimation" 
 	                Grid.Row="2" Grid.Column="1"
