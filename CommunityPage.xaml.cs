@@ -53,16 +53,6 @@ namespace NWT
             await Navigation.PushAsync(new NewsPage(RSS, 0));           
         }
 
-        async void LoadUserNews(object sender, EventArgs e)
-        {
-            var Header = ((View)sender);
-
-            var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetServerRSS(id).First();
-
-            //await Navigation.PushAsync(new UserNewsPage(RSS));
-        }
-
         void Community()
         {
             App.Mainpage.CurrentPage = App.Mainpage.Children[0];

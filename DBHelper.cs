@@ -778,6 +778,10 @@ namespace NWT
             
         }
 
+        public void UpdateTutorialProgress(UserTable Update)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateTutorial", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
+        }
 
         public int CommentCount(int parm)
         {

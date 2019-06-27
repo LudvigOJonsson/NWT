@@ -44,6 +44,7 @@ namespace NWT
             public Color CategoryColor { get; set; }
             public string Tag { get; set; }
             public bool TagVisible { get; set; }
+            public int TagLength { get; set; }
             public string Header { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
@@ -106,7 +107,8 @@ namespace NWT
                             {
                                 Tag += ", ";
                             }
-                            Tag += NF.Tag;
+                            Tag += Tag_;
+                            break;
                         }
 
                     }
@@ -121,14 +123,15 @@ namespace NWT
                     }
                 }
 
+                TagLength = Tag.Length*7;
 
 
-                
+
                 ID = NF.Article;
                 Header = NF.Header;
                 IMGSource = NF.Image;
                 Full = true;
-
+                
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
@@ -161,12 +164,12 @@ namespace NWT
                 }
                 else
                 {
-                    IHR = 200;
+                    IHR = 220;
                     BHR = 200 + HeaderLength;
                     CBWR = 200;
-                    CBHR = 5;
-                    CBHO = LayoutOptions.FillAndExpand;
-                    CBVO = LayoutOptions.End;
+                    CBHR = 7;
+                    CBHO = LayoutOptions.Fill;
+                    CBVO = LayoutOptions.StartAndExpand;
                 }
 
 
@@ -348,6 +351,7 @@ namespace NWT
 
                 ItemsSource = ArticlePrintList,
                 HasUnevenRows = true,
+                
                 SeparatorVisibility = SeparatorVisibility.None,
 
 
@@ -381,15 +385,15 @@ namespace NWT
                     Image Image = new Image
                     {
 
-
+                        BackgroundColor = Color.White,
                         //Source = NF.Image,
                         WidthRequest = IMGXC,
                         //HeightRequest = IMGYC,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-
+                        Margin = 0
                         // ClassId = NF.Article.ToString()
 
 
@@ -405,10 +409,10 @@ namespace NWT
                         WidthRequest = IMGXC,
                         //HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
                         //ClassId = NF.Article.ToString(),
                         BorderColor = Color.FromHex("#f0f0f0"),
-
+                        Margin = 0
 
                     };
 
@@ -424,16 +428,7 @@ namespace NWT
                     }
 
 
-                    BoxView Frame = new BoxView
-                    {
-                        Color = Color.White,
-                        WidthRequest = IMGXC,
-                        HeightRequest = Image.HeightRequest + Label.HeightRequest,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.Fill,
-                        InputTransparent = true,
-                        //ClassId = NF.Article.ToString()
-                    };
+
 
                     BoxView ArticleMargin = new BoxView
                     {
@@ -461,19 +456,29 @@ namespace NWT
                     Label Tag = new Label
                     {
                         //Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
-                        FontSize = 10,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        FontSize = 12,
                         FontAttributes = FontAttributes.Bold,
-                        VerticalOptions = LayoutOptions.End,
-                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
 
-                        TextColor = Color.Red,
+                        TextColor = Color.White,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
                         Margin = new Thickness(15, 5, 15, 0),
                     };
 
+                    BoxView TagBox = new BoxView
+                    {
+
+                        BackgroundColor = Color.FromHex("#3b5e6a"),
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
+                        HeightRequest = 16,
+                        InputTransparent = true,
+
+                    };
 
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
@@ -490,19 +495,22 @@ namespace NWT
                     Tag.SetBinding(Label.TextProperty, "Tag");
                     Tag.SetBinding(Label.IsVisibleProperty, "TagVisible");
 
+                    TagBox.SetBinding(BoxView.IsVisibleProperty, "TagVisible");
+                    TagBox.SetBinding(BoxView.WidthRequestProperty, "TagLength");
+
                     Label.SetBinding(Label.ClassIdProperty, "ID");
                     Image.SetBinding(Image.ClassIdProperty, "ID");
 
                     Box.SetBinding(Button.ClassIdProperty, "ID");
-                    Frame.SetBinding(BoxView.ClassIdProperty, "ID");
+                    
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
 
                     var Grid = new Grid
                     {
-
+                        RowSpacing = 0,
                         RowDefinitions = {
-                    new RowDefinition { Height = 20 },
                     new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Star },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
 
@@ -514,7 +522,7 @@ namespace NWT
                     new ColumnDefinition { Width = 1 },
                     },
 
-                        ColumnSpacing = 14,
+                        //ColumnSpacing = 14,
                         BackgroundColor = Color.White
 
 
@@ -528,13 +536,15 @@ namespace NWT
                     //Label.HeightRequest = ((Label.Text.Length / 30)) * 50;
                     Label.WidthRequest = Label.Width - 25;
 
-                    //Grid.Children.Add(Frame, 0, 3, 0, 0 + 3); //Boxview
+
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
                     Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image    
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
+                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag    
                     Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag    
+                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(CategoryBox, 1, 2, 1, 2); //Label
+                    
 
 
                     Console.WriteLine("Utdata: " + Label.Text);

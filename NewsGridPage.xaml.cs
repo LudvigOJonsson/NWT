@@ -97,9 +97,9 @@ namespace NWT
                     IHR = 200;
                     BHR = 200 + HeaderLength;
                     CBWR = 200;
-                    CBHR = 5;
+                    CBHR = 7;
                     CBHO = LayoutOptions.FillAndExpand;
-                    CBVO = LayoutOptions.End;
+                    CBVO = LayoutOptions.Start;
                 }
 
 
@@ -329,17 +329,6 @@ namespace NWT
                     }
 
 
-                    BoxView Frame = new BoxView
-                    {
-                        Color = Color.White,
-                        WidthRequest = IMGXC,
-                        HeightRequest = Image.HeightRequest + Label.HeightRequest,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.Fill,
-                        InputTransparent = true,
-                        //ClassId = NF.Article.ToString()
-                    };
-
                     BoxView ArticleMargin = new BoxView
                     {
                         Color = Color.White,
@@ -378,7 +367,7 @@ namespace NWT
                     Image.SetBinding(Image.ClassIdProperty, "ID");
 
                     Box.SetBinding(Button.ClassIdProperty, "ID");
-                    Frame.SetBinding(BoxView.ClassIdProperty, "ID");
+        
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
 
                     var Grid = new Grid
@@ -397,7 +386,7 @@ namespace NWT
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = 1 },
                     },
-
+                        RowSpacing = 0,
                         ColumnSpacing = 14,
                         BackgroundColor = Color.White
 
@@ -412,12 +401,12 @@ namespace NWT
                     //Label.HeightRequest = ((Label.Text.Length / 30)) * 50;
                     Label.WidthRequest = Label.Width - 25;
 
-                    //Grid.Children.Add(Frame, 0, 3, 0, 0 + 3); //Boxview
+
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
                     Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image    
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
+                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(CategoryBox, 1, 2, 1, 2); //Label
 
 
                     Console.WriteLine("Utdata: " + Label.Text);

@@ -8,10 +8,11 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CustomizationPage : ContentPage
 	{
-		public CustomizationPage()
+        bool Tutorial = true;
+        public CustomizationPage()
 		{
             InitializeComponent ();
-
+            
             CheckStartButton();
 
             foreach (var Box in CustomizationGrid.Children)
@@ -36,7 +37,11 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Categories.Add(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            if (!Tutorial)
+            {
+                App.SideMenu.UpdateTags();
+            }
+
             Button.IsEnabled = false;
             CheckStartButton();
         }
@@ -45,7 +50,7 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Add(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            
             Button.IsEnabled = false;
             CheckStartButton();
         }
@@ -61,12 +66,14 @@ namespace NWT
                 else
                 {
                     StartButton.IsEnabled = false;
+                    Tutorial = false;
                 }
             }
             else
             {
                 StartButton.IsEnabled = false;
                 StartButton.IsVisible = false;
+                Tutorial = false;
             }
         }
 
@@ -97,10 +104,11 @@ namespace NWT
                 }
             }
 
-            App.SideMenu.SetTags();
+            App.SideMenu.UpdateTags();
             var y = (CustomNewsFeed)App.Mainpage.Children[0];
             y.TagUpdate();
-
+            App.LoggedinUser.TutorialProgress = 1;
+            App.database.UpdateTutorialProgress(App.LoggedinUser);
             await PopupNavigation.Instance.PushAsync(new TutorialPopUp1());
         }
 
