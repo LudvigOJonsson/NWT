@@ -468,9 +468,11 @@ namespace NWT
                         string A = "Author LIKE ";
                         string T = "Tag LIKE ";
                         string X = "'%%'";
+                        string Y = "'%XXXX%'";
                         bool CF = true;
                         bool AF = true;
                         bool TF = true;
+                        bool Change = false;
                         foreach (string s in Filter_)
                         {
                             if (!CF)
@@ -479,6 +481,7 @@ namespace NWT
                             }
 
                             C += " '%" + s + "%'";
+                            Change = true;
                             CF = false;
                         }                      
                         foreach (string s in Author_)
@@ -489,6 +492,7 @@ namespace NWT
                             }
 
                             A += " '%" + s + "%'";
+                            Change = true;
                             AF = false;
                         }
                         foreach (string s in Tag_)
@@ -499,20 +503,45 @@ namespace NWT
                             }
 
                             T += " '%" + s + "%'";
+                            Change = true;
                             TF = false;
                         }
 
                         if (CF)
                         {
-                            C += X;
+                            if (Change)
+                            {
+                                C += Y;
+                            }
+                            else
+                            {
+                                C += X;
+                            }
+                            
                         }
                         if (AF)
                         {
-                            A += X;
+                            
+                            if (Change)
+                            {
+                                A += Y;
+                            }
+                            else
+                            {
+                                A += X;
+                            }
                         }
                         if (TF)
                         {
-                            T += X;
+                            
+                            if (Change)
+                            {
+                                T += Y;
+                            }
+                            else
+                            {
+                                T += X;
+                            }
                         }
 
                         JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + " LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + ") - " + (x).ToString(), -1)));
