@@ -339,6 +339,16 @@ namespace NWT
             await Navigation.PushAsync(new NewsGridPage(2));
             ButtonLock();
         }
+        async void Style(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ButtonLock();
+            await button.RotateTo(-5, 80, Easing.BounceOut);
+            await button.RotateTo(5, 120, Easing.BounceOut);
+            await button.RotateTo(0, 80, Easing.BounceOut);
+            await Navigation.PushAsync(new NewsGridPage(2));
+            ButtonLock();
+        }
 
         protected override void OnAppearing()
         {
