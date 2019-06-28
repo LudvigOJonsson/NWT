@@ -326,13 +326,11 @@ namespace NWT
         }
         async void Customization(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new CustomizationPage());
-            ButtonLock();
+            CustomizationPage c = new CustomizationPage();
+            //c.fromSidemenu = true;
+            await App.Mainpage.Navigation.PushAsync(c);
+
+            App.Startpage.IsPresented = false;
         }
 
 
