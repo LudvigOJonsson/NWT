@@ -354,6 +354,16 @@ namespace NWT
         {
             base.OnAppearing();
             updateMissions();
+            if (App.LoggedinUser.TutorialProgress == 2)
+            {
+                PopupNavigation.Instance.PushAsync(new TutorialPopUp2());
+                App.LoggedinUser.TutorialProgress = 3;
+                IntroText.Text = "Steg 3: Anpassa din app!";
+                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
+                introProgressBar2.BackgroundColor = Color.FromHex("#00b5ba");
+                introProgressBar3.BackgroundColor = Color.FromHex("#00f9ff");
+                
+            }
         }
     }
 }

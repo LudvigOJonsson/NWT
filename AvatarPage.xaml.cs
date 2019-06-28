@@ -32,7 +32,11 @@ namespace NWT
             ProfilePictureHair.Source = PP.avatarHairPic.Source;
             ProfilePictureBody.Source = PP.avatarBodyPic.Source;
 
-            
+            if (App.LoggedinUser.TutorialProgress == 1)
+            {
+                App.LoggedinUser.TutorialProgress = 2;
+            }
+
         }
 
         public void ChangeHair(object sender, EventArgs e)

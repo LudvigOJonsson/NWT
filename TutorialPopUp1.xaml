@@ -34,16 +34,16 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 
-                <!--<forms:AnimationView 
+                <forms:AnimationView 
 	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+	                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
 	                Animation="confetti.json" 
 	                Loop="false" 
 	                AutoPlay="true"
 	                />
-                
+                <!--
                 <Image Source="hamburger.png" Grid.Row="0" Grid.Column="0" Margin="25"/>
                 <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Margin="25"/>
                 <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" Margin="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>

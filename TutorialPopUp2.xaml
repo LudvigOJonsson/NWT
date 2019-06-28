@@ -27,40 +27,36 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
+
                 <forms:AnimationView 
 	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+	                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
 	                Animation="confetti.json" 
 	                Loop="false" 
 	                AutoPlay="true"
 	                />
-                
-                <Image Source="hamburger.png" Grid.Row="0" Grid.Column="0"/>
-                <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
-                <Label Text="Grattis! Du har nu anpassat din avatar. Gå till inställningar för att vidare anpassa din app!" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <!--<Image Source="hamburger.png" Grid.Row="0" Grid.Column="0" Margin="25"/>
+                <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Margin="25"/>
+                <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" Margin="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+-->
+                <Label Text=" Grattis! Du har nu anpassat din avatar. Gå till inställningar för att vidare anpassa din app!" FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
-                <BoxView x:Name="progressBarTutorial" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="progressBarTutorialBackground" BackgroundColor="Gray" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="10" Margin="10"/>
-                <BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="introProgressBar2" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="introProgressBar3" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="progressBarTutorial" BackgroundColor="#00f9ff" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="progressBarTutorialBackground" BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="10" Margin="10"/>
+                <BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar2" BackgroundColor="#00f9ff" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <BoxView x:Name="introProgressBar3" BackgroundColor="#d8d8d8" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
 
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"/>
 
             </Grid>
         </ContentView>
