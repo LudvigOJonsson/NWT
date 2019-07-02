@@ -1,4 +1,4 @@
-using Rg.Plugins.Popup.Services;
+Ôªøusing Rg.Plugins.Popup.Services;
 using Lottie.Forms;
 using System;
 using System.Collections.Generic;
@@ -33,46 +33,76 @@ namespace NWT
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
             avatarFacePic = ProfilePictureFace;
+
+            ChangeIntroStep(App.LoggedinUser.TutorialProgress);
         }
         void ChangeIntroStep(int step)
         {
             if (step == 1)
             {
-                IntroText.Text = "Steg 1: Anpassa ditt flˆde!";
-                introProgressBar1.BackgroundColor = Color.FromHex("#00f9ff");
-                introProgressBar2.BackgroundColor = Color.FromHex("#d8d8d8");
-                introProgressBar3.BackgroundColor = Color.FromHex("#d8d8d8");
+                //IntroText.Text = "Steg 1: Anpassa ditt flÔøΩde!";
+                progressBallCheckmark1.IsVisible = false;
+                progressBallCheckmark2.IsVisible = false;
+                progressBallCheckmark3.IsVisible = false;
             }
             else if (step == 2)
             {
-                IntroText.Text = "Steg 2: Anpassa din avatar!";
-                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
-                introProgressBar2.BackgroundColor = Color.FromHex("#00f9ff");
-                introProgressBar3.BackgroundColor = Color.FromHex("#d8d8d8");
+                //IntroText.Text = "Steg 2: Anpassa din avatar!";
+                progressBallCheckmark1.IsVisible = true;
+                progressBallCheckmark2.IsVisible = false;
+                progressBallCheckmark3.IsVisible = false;
             }
-            else if (step == 2)
+            else if (step == 3)
             {
-                IntroText.Text = "Steg 3: Anpassa din app!";
-                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
-                introProgressBar2.BackgroundColor = Color.FromHex("#00b5ba");
-                introProgressBar3.BackgroundColor = Color.FromHex("#00f9ff");
+                //IntroText.Text = "Steg 3: Anpassa din app!";
+                progressBallCheckmark1.IsVisible = true;
+                progressBallCheckmark2.IsVisible = true;
+                progressBallCheckmark3.IsVisible = false;
             }
+            else if (step >= 4)
+            {
+                RemoveIntro();
+            }
+        }
+        void ProgressBallButton1(object sender, EventArgs e)
+        {
+
+        }
+        void ProgressBallButton2(object sender, EventArgs e)
+        {
+
+        }
+        void ProgressBallButton3(object sender, EventArgs e)
+        {
+
         }
         void RemoveIntro()
         {
-            IntroBackground.IsEnabled = false;
-            introProgressBar1.IsEnabled = false;
-            introProgressBar2.IsEnabled = false;
-            introProgressBar3.IsEnabled = false;
-            IntroText.IsEnabled = false;
+            IntroBackground.IsVisible = false;
+            progressBallCheckmark1.IsVisible = false;
+            progressBallCheckmark2.IsVisible = false;
+            progressBallCheckmark3.IsVisible = false;
+            progressBall1.IsVisible = false;
+            progressBall2.IsVisible = false;
+            progressBall3.IsVisible = false;
+            progressBallCogwheel.IsVisible = false;
+            progressBallProfile.IsVisible = false;
+            progressBallNews.IsVisible = false;
+            IntroText.IsVisible = false;
         }
         void AddIntro()
         {
-            IntroBackground.IsEnabled = true;
-            introProgressBar1.IsEnabled = true;
-            introProgressBar2.IsEnabled = true;
-            introProgressBar3.IsEnabled = true;
-            IntroText.IsEnabled = true;
+            IntroBackground.IsVisible = true;
+            progressBallCheckmark1.IsVisible = true;
+            progressBallCheckmark2.IsVisible = true;
+            progressBallCheckmark3.IsVisible = true;
+            progressBall1.IsVisible = true;
+            progressBall2.IsVisible = true;
+            progressBall3.IsVisible = true;
+            progressBallCogwheel.IsVisible = true;
+            progressBallProfile.IsVisible = true;
+            progressBallNews.IsVisible = true;
+            IntroText.IsVisible = true;
         }
 
         public void Login(UserTable User)
@@ -115,15 +145,15 @@ namespace NWT
             {
                 if (Tasklist[i].Type == "ArticlesRead")
                 {
-                    missionNames[i] = "Artiklar l‰sta";
+                    missionNames[i] = "Artiklar l√§sta";
                 }
                 else if (Tasklist[i].Type == "InsandareSubmitted")
                 {
-                    missionNames[i] = "Ins‰ndare skapad";
+                    missionNames[i] = "Ins√§ndare skapad";
                 }
                 else if (Tasklist[i].Type == "InsandareRead")
                 {
-                    missionNames[i] = "Ins‰ndare l‰sta";
+                    missionNames[i] = "Ins√§ndare l√§sta";
                 }
                 else if (Tasklist[i].Type == "GameFinished")
                 {
@@ -139,11 +169,11 @@ namespace NWT
                 }
                 else if (Tasklist[i].Type == "VoteQuestionSubmitted")
                 {
-                    missionNames[i] = "Omrˆstning skapad";
+                    missionNames[i] = "Omr√∂stning skapad";
                 }
                 else if (Tasklist[i].Type == "VoteSubmitted")
                 {
-                    missionNames[i] = "Omrˆstning svarad";
+                    missionNames[i] = "Omr√∂stning svarad";
                 }
                 else if (Tasklist[i].Type == "CommentsPosted")
                 {
@@ -359,10 +389,10 @@ namespace NWT
                 PopupNavigation.Instance.PushAsync(new TutorialPopUp2());
                 App.LoggedinUser.TutorialProgress = 3;
                 IntroText.Text = "Steg 3: Anpassa din app!";
-                introProgressBar1.BackgroundColor = Color.FromHex("#00b5ba");
-                introProgressBar2.BackgroundColor = Color.FromHex("#00b5ba");
-                introProgressBar3.BackgroundColor = Color.FromHex("#00f9ff");
-                
+                progressBallCheckmark1.IsVisible = true;
+                progressBallCheckmark2.IsVisible = true;
+                progressBallCheckmark3.IsVisible = true;
+
             }
         }
     }

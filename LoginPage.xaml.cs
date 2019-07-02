@@ -39,6 +39,12 @@ namespace NWT
                 App.database.Login(User);
                 if (App.LoggedinUser != null)
                 {
+
+                    //FOR TESTING ONLY
+                    App.LoggedinUser.TutorialProgress = 0;
+                    App.database.UpdateTutorialProgress(App.LoggedinUser);
+                    //REMOVE FOR OFFICIAL RELEASE
+
                     if (App.LoggedinUser.TutorialProgress == 0)
                     {
                         App.Startpage.Detail = new IntroWalkthrough() { };

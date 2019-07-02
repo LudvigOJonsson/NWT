@@ -100,10 +100,26 @@
                 <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
 
                 <BoxView x:Name="IntroBackground" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff"/>
-                <Label x:Name="IntroText" Text="Steg 2: Anpassa din avatar!" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
-                <BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <Label x:Name="IntroText" Text="" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
+                <!--<BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
                 <BoxView x:Name="introProgressBar2" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
                 <BoxView x:Name="introProgressBar3" BackgroundColor="#d8d8d8" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+-->
+                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+
+                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCogwheel" Source="progressBallCogwheel" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+
+                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+
+                <Button x:Name="progressBall1Button1" Clicked="ProgressBallButton1" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall2Button2" Clicked="ProgressBallButton2" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall3Button3" Clicked="ProgressBallButton3" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
 
             </Grid>
         </ContentView>
