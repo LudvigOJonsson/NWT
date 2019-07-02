@@ -42,6 +42,7 @@ namespace NWT
             public long ID { get; set; }
             public string Source { get; set; }
             public Color CategoryColor { get; set; }
+            public string FirstTag { get; set; }
             public string Tag { get; set; }
             public bool TagVisible { get; set; }
             public int TagLength { get; set; }
@@ -84,7 +85,7 @@ namespace NWT
                 }
 
                 Tag = "";
-
+                FirstTag = "";
                 if (App.LoggedinUser != null)
                 {
                     var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
@@ -101,6 +102,7 @@ namespace NWT
                         {
                             if (Firsttag)
                             {
+                                FirstTag = Tag_;
                                 Firsttag = false;
                             }
                             else
@@ -108,7 +110,7 @@ namespace NWT
                                 Tag += ", ";
                             }
                             Tag += Tag_;
-                            break;
+                            
                         }
 
                     }
@@ -123,7 +125,7 @@ namespace NWT
                     }
                 }
 
-                TagLength = Tag.Length*7;
+                TagLength = FirstTag.Length*7;
 
 
 
@@ -469,16 +471,18 @@ namespace NWT
                         Margin = new Thickness(15, 5, 15, 0),
                     };
 
-                    BoxView TagBox = new BoxView
+                    Button TagBox = new Button
                     {
 
                         BackgroundColor = Color.FromHex("#3b5e6a"),
                         VerticalOptions = LayoutOptions.Center,
                         HorizontalOptions = LayoutOptions.Center,
                         HeightRequest = 16,
-                        InputTransparent = true,
-
+                        //InputTransparent = true,
+                        
                     };
+
+                    TagBox.Clicked += TagPopup;
 
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
@@ -492,11 +496,12 @@ namespace NWT
                     Label.SetBinding(Label.TextProperty, "Header");
                     Image.SetBinding(Image.SourceProperty, "IMGSource");
 
-                    Tag.SetBinding(Label.TextProperty, "Tag");
+                    Tag.SetBinding(Label.TextProperty, "FirstTag");
                     Tag.SetBinding(Label.IsVisibleProperty, "TagVisible");
 
-                    TagBox.SetBinding(BoxView.IsVisibleProperty, "TagVisible");
-                    TagBox.SetBinding(BoxView.WidthRequestProperty, "TagLength");
+                    TagBox.SetBinding(Button.IsVisibleProperty, "TagVisible");
+                    TagBox.SetBinding(Button.WidthRequestProperty, "TagLength");
+                    TagBox.SetBinding(Button.ClassIdProperty, "Tag");
 
                     Label.SetBinding(Label.ClassIdProperty, "ID");
                     Image.SetBinding(Image.ClassIdProperty, "ID");
@@ -567,6 +572,15 @@ namespace NWT
             NewsGrid.Children.Add(listView, 0, 3, 1, 2);
             NewsGrid.Children.Add(Down, 0, 3, 2, 3);
 
+        }
+
+        async void TagPopup(object sender, EventArgs e)
+        {
+            var Header = (Button)sender;
+            Header.IsEnabled = false;
+            String tagstring = Header.ClassId;
+
+            await DisplayAlert("Tags", "Tags in this Article that you Follow: \n" + tagstring, "Okay");
         }
 
         private void Box_Clicked(object sender, EventArgs e)
