@@ -23,9 +23,6 @@ namespace NWT {
         private global::Xamarin.Forms.Grid ArticleGrid;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Lottie.Forms.AnimationView tokenAnimation2;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.BoxView progressBarTutorial;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -45,7 +42,6 @@ namespace NWT {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(TutorialPopUp1));
             TutorialPopUpPage1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Rg.Plugins.Popup.Pages.PopupPage>(this, "TutorialPopUpPage1");
             ArticleGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "ArticleGrid");
-            tokenAnimation2 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Lottie.Forms.AnimationView>(this, "tokenAnimation2");
             progressBarTutorial = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.BoxView>(this, "progressBarTutorial");
             progressBarTutorialBackground = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.BoxView>(this, "progressBarTutorialBackground");
             introProgressBar1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.BoxView>(this, "introProgressBar1");
