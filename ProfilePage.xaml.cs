@@ -34,7 +34,7 @@ namespace NWT
             avatarBodyPic = ProfilePictureBody;
             avatarFacePic = ProfilePictureFace;
 
-            ChangeIntroStep(App.LoggedinUser.TutorialProgress);
+            //
         }
         void ChangeIntroStep(int step)
         {
@@ -122,6 +122,7 @@ namespace NWT
                 });
             }
 
+            ChangeIntroStep(App.LoggedinUser.TutorialProgress);
         }
 
         public void updateAvatar(ImageSource hair, ImageSource body, ImageSource face)
