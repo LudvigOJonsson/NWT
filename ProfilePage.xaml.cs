@@ -397,11 +397,8 @@ namespace NWT
             await Navigation.PushAsync(new NewsGridPage(2));
             ButtonLock();
         }
-<<<<<<< HEAD
-        async void StyleP(object sender, EventArgs e)
-=======
+
         async void StylePage(object sender, EventArgs e)
->>>>>>> 076882fc92a7f65edb825a6fa398dcc33262631a
         {
             Button button = (Button)sender;
             ButtonLock();

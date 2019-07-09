@@ -52,13 +52,8 @@
                 <Label x:Name="PE3" x:FieldModifier="public" Text="Troféer" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="knapp.png" Text="" TextColor="White" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
-<<<<<<< HEAD
                 <Label x:Name="PE4" x:FieldModifier="public" Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="StyleP" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
-=======
-                <Label Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button Image="edit.png" Text="" FontSize="Micro" TextColor="White" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
->>>>>>> 076882fc92a7f65edb825a6fa398dcc33262631a
+                <Button x:FieldModifier="public" Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="StyleP" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/
 
                 <Label x:Name="PE5" x:FieldModifier="public" Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
