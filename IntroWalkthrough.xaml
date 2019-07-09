@@ -17,7 +17,7 @@
             <Image Source="newsfeed.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
 
             <BoxView BackgroundColor="White" Grid.Row="1" Grid.Column="0" Margin="0"/>
-            <Label Text="Walkthrough text 1" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="Välkommen! Håll dig uppdaterad var du än är. Här får du alla dina lokala nyheter samlade på ett och samma ställe." TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
             <Button x:Name="Next1" Clicked="PageRight" Text="Nästa" TextColor="White" BackgroundColor="#2f6e83" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="30" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="200" CornerRadius="50"/>
 
         </Grid>
@@ -38,7 +38,7 @@
             <Image Source="BlueSquare.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
 
             <BoxView BackgroundColor="White" Grid.Row="1" Grid.Column="0" Margin="0"/>
-            <Label Text="Walkthrough text 2" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Text="Mina val. Bevaka nyheter och anpassa ditt nyhetsflöde efter vad som intresserar dig. Välj själv vilka kategorier, områden och ämnen du vill följa." TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
             <Button x:Name="Next2" Clicked="PageRight" Text="Nästa" TextColor="White" BackgroundColor="#2f6e83" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="30" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="200" CornerRadius="50"/>
 
         </Grid>
@@ -56,11 +56,34 @@
             </Grid.ColumnDefinitions>
 
             <BoxView BackgroundColor="#f2f2f2" Grid.Row="0" Grid.Column="0" Margin="0"/>
+            <Image Source="profile.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <BoxView BackgroundColor="White" Grid.Row="1" Grid.Column="0" Margin="0"/>
+            <!--<Label Text="" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <Label Text="Uppdrag. Samla mynt genom att utföra uppdrag och nå milstolpar. Du får även mynt genom att bara läsa artiklar!" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Button x:Name="Next3" Clicked="PageRight" Text="Sätt igång" TextColor="White" BackgroundColor="#2f6e83" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="30" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="200" CornerRadius="50"/>
+
+        </Grid>
+
+    </ContentPage>
+    <ContentPage>
+
+        <Grid x:Name="Grid4" RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView BackgroundColor="#f2f2f2" Grid.Row="0" Grid.Column="0" Margin="0"/>
             <Image Source="rocket.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"/>
 
             <BoxView BackgroundColor="White" Grid.Row="1" Grid.Column="0" Margin="0"/>
-            <Label Text="Walkthrough text 3" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
-            <Button x:Name="Next3" Clicked="PageRight" Text="Sätt igång" TextColor="White" BackgroundColor="#2f6e83" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="30" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="200" CornerRadius="50"/>
+            <!--<Label Text="" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />-->
+            <Label Text="Anpassa allt. Spendera dina mynt på nya utstyrslar och appstilar, eller använd dem för att engagera ditt samhälle. Läs nyheter på ditt sätt!" TextColor="Black" Grid.Row="1" Grid.Column="0" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Button x:Name="Next4" Clicked="PageRight" Text="Sätt igång" TextColor="White" BackgroundColor="#2f6e83" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="30" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="60" WidthRequest="200" CornerRadius="50"/>
 
         </Grid>
 

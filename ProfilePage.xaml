@@ -53,7 +53,7 @@
                 <Button Image="knapp.png" Text="" TextColor="White" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
                 <Label Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="Style" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+                <Button Image="edit.png" Text="" FontSize="Micro" TextColor="White" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
 
                 <Label Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
@@ -111,15 +111,15 @@
 
                 <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
                 <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="progressBallCogwheel" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
                 <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
                 <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
                 <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
-                <Button x:Name="progressBall1Button1" Clicked="ProgressBallButton1" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
-                <Button x:Name="progressBall2Button2" Clicked="ProgressBallButton2" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
-                <Button x:Name="progressBall3Button3" Clicked="ProgressBallButton3" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall1Button1" Clicked="ProgressBallClicked1" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall2Button2" Clicked="ProgressBallClicked2" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall3Button3" Clicked="ProgressBallClicked3" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
 
             </Grid>
         </ContentView>
