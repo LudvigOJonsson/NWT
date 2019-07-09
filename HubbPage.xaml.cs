@@ -29,9 +29,9 @@ namespace NWT
         }
 
 
-        async void Insandare(object sender, EventArgs e)
+        void Insandare(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            //Button button = (Button)sender;
             ButtonLock();
             /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
@@ -41,7 +41,7 @@ namespace NWT
         }
         async void MakeInsandare(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            //Button button = (Button)sender;
             ButtonLock();
             /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
@@ -52,7 +52,7 @@ namespace NWT
 
         async void VotePage(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            //Button button = (Button)sender;
             ButtonLock();
             /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
@@ -63,7 +63,7 @@ namespace NWT
 
         async void GamePage(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            //Button button = (Button)sender;
             ButtonLock();
             /*await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);

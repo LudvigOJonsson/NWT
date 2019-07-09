@@ -33,48 +33,75 @@ namespace NWT
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
             avatarFacePic = ProfilePictureFace;
-
-            //
+        }
+        void ProgressBallClicked1(object sender, EventArgs e)
+        {
+            if (App.LoggedinUser.TutorialProgress == 5)
+            {
+                RemoveIntro();
+                App.LoggedinUser.TutorialProgress = 6;
+            }
+            else
+            {
+                //await DisplayAlert("Anpassa dina nyheter!", "Okej", "");
+            }
+        }
+        void ProgressBallClicked2(object sender, EventArgs e)
+        {
+            if (App.LoggedinUser.TutorialProgress == 5)
+            {
+                RemoveIntro();
+                App.LoggedinUser.TutorialProgress = 6;
+            }
+            else
+            {
+                //await DisplayAlert("Anpassa din avatar!", "Okej", "");
+            }
+        }
+        void ProgressBallClicked3(object sender, EventArgs e)
+        {
+            if (App.LoggedinUser.TutorialProgress == 5)
+            {
+                RemoveIntro();
+                App.LoggedinUser.TutorialProgress = 6;
+            }
+            else
+            {
+                //await DisplayAlert("Anpassa din stil!", "Okej", "");
+            }
         }
         void ChangeIntroStep(int step)
         {
             if (step == 1)
             {
-                //IntroText.Text = "Steg 1: Anpassa ditt fl�de!";
-                progressBallCheckmark1.IsVisible = false;
-                progressBallCheckmark2.IsVisible = false;
-                progressBallCheckmark3.IsVisible = false;
-            }
-            else if (step == 2)
-            {
-                //IntroText.Text = "Steg 2: Anpassa din avatar!";
                 progressBallCheckmark1.IsVisible = true;
                 progressBallCheckmark2.IsVisible = false;
                 progressBallCheckmark3.IsVisible = false;
+
             }
-            else if (step == 3)
+            if (step == 2)
             {
-                //IntroText.Text = "Steg 3: Anpassa din app!";
+                PopupNavigation.Instance.PushAsync(new TutorialPopUp2());
+                App.LoggedinUser.TutorialProgress = 3;
                 progressBallCheckmark1.IsVisible = true;
                 progressBallCheckmark2.IsVisible = true;
                 progressBallCheckmark3.IsVisible = false;
+
             }
-            else if (step >= 4)
+            if (step == 4)
+            {
+                PopupNavigation.Instance.PushAsync(new TutorialPopUp3());
+                App.LoggedinUser.TutorialProgress = 5;
+                progressBallCheckmark1.IsVisible = true;
+                progressBallCheckmark2.IsVisible = true;
+                progressBallCheckmark3.IsVisible = true;
+                IntroBackground.Color = Color.Green;
+
+            }
+            if (step > 5)
             {
                 RemoveIntro();
             }
-        }
-        void ProgressBallButton1(object sender, EventArgs e)
-        {
-
-        }
-        void ProgressBallButton2(object sender, EventArgs e)
-        {
-
-        }
-        void ProgressBallButton3(object sender, EventArgs e)
-        {
-
         }
         void RemoveIntro()
         {
@@ -370,14 +397,18 @@ namespace NWT
             await Navigation.PushAsync(new NewsGridPage(2));
             ButtonLock();
         }
-        async void Style(object sender, EventArgs e)
+<<<<<<< HEAD
+        async void StyleP(object sender, EventArgs e)
+=======
+        async void StylePage(object sender, EventArgs e)
+>>>>>>> 076882fc92a7f65edb825a6fa398dcc33262631a
         {
             Button button = (Button)sender;
             ButtonLock();
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new NewsGridPage(2));
+            await Navigation.PushAsync(new StylePage());
             ButtonLock();
         }
 
@@ -385,16 +416,8 @@ namespace NWT
         {
             base.OnAppearing();
             updateMissions();
-            if (App.LoggedinUser.TutorialProgress == 2)
-            {
-                PopupNavigation.Instance.PushAsync(new TutorialPopUp2());
-                App.LoggedinUser.TutorialProgress = 3;
-                IntroText.Text = "Steg 3: Anpassa din app!";
-                progressBallCheckmark1.IsVisible = true;
-                progressBallCheckmark2.IsVisible = true;
-                progressBallCheckmark3.IsVisible = true;
-
-            }
+            ChangeIntroStep(App.LoggedinUser.TutorialProgress);
+            
         }
     }
 }

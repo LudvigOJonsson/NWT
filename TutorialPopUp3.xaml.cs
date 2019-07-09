@@ -16,6 +16,13 @@ namespace NWT
         public TutorialPopUp3()
         {
             InitializeComponent();
+            SizeReward();
+        }
+
+        async void SizeReward()
+        {
+            await wizardHat.ScaleTo(0, 0);
+            await wizardHat.ScaleTo(1, 2000);
         }
 
         async void ClosePopup(object sender, EventArgs e)

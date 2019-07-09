@@ -12,8 +12,7 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StylePage : ContentPage
     {
-        public static TapGestureRecognizer TGR;
-        int Rownr = 1;
+        //int Rownr = 1;
 
         public Label Label = new Label { };
         public Image Image = new Image { };
@@ -23,12 +22,10 @@ namespace NWT
         {
             InitializeComponent();
 
-            TGR.NumberOfTapsRequired = 1;
-            TGR.Tapped += (s, e) => {
-                IsEnabled = false;
-                SelectStyle(s, e);
-                IsEnabled = true;
-            };
+            if (App.LoggedinUser.TutorialProgress == 3)
+            {
+                App.LoggedinUser.TutorialProgress = 4;
+            }
         }
 
         public void SelectStyle(object sender, EventArgs e)
@@ -37,12 +34,83 @@ namespace NWT
             var Sender = (Button)sender;
             var Style = Sender.ClassId;
 
+            if(Style == "Blue")
+            {
+                ColorFunction(Color.FromHex("#2f6e83"));
+            }
+            else if (Style == "Green")
+            {
+                ColorFunction(Color.FromHex("#6fb110"));
+            }
+            else if (Style == "LightBlue")
+            {
+                ColorFunction(Color.FromHex("#57bcbf"));
+            }
+            else if (Style == "Purple")
+            {
+                ColorFunction(Color.FromHex("#bb0066"));
+            }
+            else if (Style == "White")
+            {
+                ColorFunction(Color.FromHex("#e0d8b3"));
+            }
+
+
+
             //NEW STYLE SELECTED
 
             //UPDATE STYLE ON LEAVE PAGE, or straight away?
 
             //LOADING animation?
         }
+
+        public void ColorFunction(Color BGC)
+        {
+
+            var BC = BGC;
+            var CM = App.SideMenu;
+            var MP = App.Mainpage;
+            var CNF = (CustomNewsFeed)MP.Children[0];
+            var NF = (NewsGridPage)MP.Children[1];
+            var HP = (HubbPage)MP.Children[2];
+            var PP = (ProfilePage)MP.Children[3];
+
+            CM.DownButton.BackgroundColor = BC;
+            MP.BackgroundColor = BC;
+            MP.BarBackgroundColor = BC;
+
+            CNF.Up.BackgroundColor = BC;
+            CNF.Down.BackgroundColor = BC;
+
+            NF.Up.BackgroundColor = BC;
+            NF.Down.BackgroundColor = BC;
+
+
+            HP.PE1.BackgroundColor = BC;
+            HP.PE2.BackgroundColor = BC;
+            HP.PE3.BackgroundColor = BC;
+            HP.PE4.BackgroundColor = BC;
+
+            PP.PE1.TextColor = BC;
+            PP.PE2.TextColor = BC;
+            PP.PE3.TextColor = BC;
+            PP.PE4.TextColor = BC;
+            PP.PE5.TextColor = BC;
+            PP.PE6.TextColor = BC;
+            PP.FavoritesButton.BackgroundColor = BC;
+            PP.AvatarButton.BackgroundColor = BC;
+            PP.HistoryButton.BackgroundColor = BC;
+            PP.StyleButton.BackgroundColor = BC;
+            PP.AchievementsButton.BackgroundColor = BC;
+            PP.ProfileSettingsButton.BackgroundColor = BC;
+
+            App.MC = BC;
+
+            
+
+            NF.PrintNews();
+        }
+
 
         async void OnDismissButtonClicked(object sender, EventArgs args)
         {
@@ -54,7 +122,7 @@ namespace NWT
             Console.WriteLine("Memory Cleanup");
             GC.Collect();
         }
-
+        /*
         public void MakeButton(string s, int Type)
         {
             var Button = new StyleButton();
@@ -92,7 +160,7 @@ namespace NWT
                     ClassId = style,
                 };
 
-                Label.GestureRecognizers.Add(TGR);
+                //Label.GestureRecognizers.Add(TGR);
 
                 Image = new Image
                 {
@@ -106,7 +174,7 @@ namespace NWT
 
                 };
 
-                Image.GestureRecognizers.Add(TGR);
+                //Image.GestureRecognizers.Add(TGR);
 
                 Button = new Button
                 {
@@ -117,9 +185,9 @@ namespace NWT
                     ClassId = style,
                 };
 
-                Button.GestureRecognizers.Add(TGR);
+                //Button.GestureRecognizers.Add(TGR);
             }
-        }
+        }*/
 
     }
 }

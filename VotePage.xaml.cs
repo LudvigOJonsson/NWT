@@ -15,6 +15,12 @@ namespace NWT
 		public VotePage ()
 		{
 			InitializeComponent ();
+
+            Header.TextColor = App.MC;
+            SubmitN.BackgroundColor = App.MC;
+            VoteN.BackgroundColor = App.MC;
+            ResultN.BackgroundColor = App.MC;
+            ArchiveN.BackgroundColor = App.MC;
         }
         async void Submit(object sender, EventArgs e)
         {

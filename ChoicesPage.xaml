@@ -195,7 +195,10 @@
                     </Grid>
                 </ScrollView>
 
-                <BoxView Color="#2f6e83"
+                <BoxView 
+                x:Name="DownButton"   
+                x:FieldModifier="public" 
+                Color="#2f6e83"
                  WidthRequest="500"
                          HeightRequest="400"
 

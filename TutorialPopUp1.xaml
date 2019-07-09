@@ -48,13 +48,17 @@
                 <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Margin="25"/>
                 <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" Margin="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 -->
-                <Label Text=" Grattis! Du har nu anpassat ditt flöde. Gå till din profilsida för att vidare anpassa din upplevelse!" FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <Label Text=" Grattis! Du har nu anpassat ditt flöde. Gå till profilsidan för att vidare anpassa din upplevelse!" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
-                <BoxView x:Name="progressBarTutorial" BackgroundColor="#00f9ff" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="progressBarTutorialBackground" BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="10" Margin="10"/>
-                <BoxView x:Name="introProgressBar1" BackgroundColor="#00f9ff" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="introProgressBar2" BackgroundColor="#d8d8d8" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
-                <BoxView x:Name="introProgressBar3" BackgroundColor="#d8d8d8" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
+                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+
+                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+
+                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
                 <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"/>
 

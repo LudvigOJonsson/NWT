@@ -15,6 +15,7 @@ namespace NWT
         public UserSettingsPage()
 		{
 			InitializeComponent ();
+            UpdateInfoButton.BackgroundColor = App.MC;
         }
     }
 }
