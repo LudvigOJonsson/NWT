@@ -22,6 +22,20 @@ namespace NWT
         public AchivementsPage()
 		{
 			InitializeComponent ();
+
+            Trophylabel.TextColor = App.MC;
+            PE1.BackgroundColor = App.MC;
+            PE2.BackgroundColor = App.MC;
+            PE3.BackgroundColor = App.MC;
+            PE4.BackgroundColor = App.MC;
+            PE5.BackgroundColor = App.MC;
+            PE6.BackgroundColor = App.MC;
+            PE7.BackgroundColor = App.MC;
+            PE8.BackgroundColor = App.MC;
+            PE9.BackgroundColor = App.MC;
+            PE10.BackgroundColor = App.MC;
+
+
             var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
             UpdateAchivements(Stats);
         }

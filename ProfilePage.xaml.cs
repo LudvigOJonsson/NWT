@@ -397,6 +397,7 @@ namespace NWT
             await Navigation.PushAsync(new NewsGridPage(2));
             ButtonLock();
         }
+
         async void StylePage(object sender, EventArgs e)
         {
             Button button = (Button)sender;

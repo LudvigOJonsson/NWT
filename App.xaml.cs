@@ -21,6 +21,9 @@ namespace NWT
         public static System.Timers.Timer Timer;
         public static bool Login = false;
         public static LoadingPopUp LoadingScreen;
+
+        public static Color MC = Color.FromHex("#2f6e83");
+
         public App()
         {
             InitializeComponent();
@@ -43,8 +46,10 @@ namespace NWT
                 Detail = new NavigationPage(Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"),  }
             };
 
-            Timer = new System.Timers.Timer();
-            Timer.Interval = 60000;
+            Timer = new System.Timers.Timer
+            {
+                Interval = 60000
+            };
             Timer.Elapsed += OnTimedEvent;
             Timer.Enabled = true;
 

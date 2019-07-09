@@ -14,9 +14,9 @@ namespace NWT
     public partial class NewsPage : ContentPage
     {
         Random rnd = new Random();
-        public int red = 147;
-        public int green = 210;
-        public int blue = 231;
+        public int red = (int)App.MC.R;
+        public int green = (int)App.MC.G;
+        public int blue = (int)App.MC.B;
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
@@ -29,6 +29,12 @@ namespace NWT
         {
             InitializeComponent();
 
+            red = (int)App.MC.R  + (255 -(int)App.MC.R -1);
+            green = (int)App.MC.G + (255 - (int)App.MC.G - 1);
+            blue = (int)App.MC.B + (255 - (int)App.MC.B - 1);
+
+            Category.TextColor = App.MC;
+            FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
             {
                 bool read = false;
@@ -47,9 +53,9 @@ namespace NWT
                     TimerIcon.Source = "tokenicon.png";
                     TimerButton.Text = "Samlad";
                     Read = true;
-                    NewsPageView.BackgroundColor = Color.FromRgb(47, 110, 131);
+                    NewsPageView.BackgroundColor = App.MC;
                     //Dot.TextColor = Color.FromRgb(47, 110, 131); 
-                    TimerButton.BackgroundColor = Color.FromRgb(47, 110, 131);
+                    TimerButton.BackgroundColor = App.MC;
                                      
                 }
                 else
@@ -377,7 +383,7 @@ namespace NWT
             await button.RotateTo(2, 1, Easing.BounceOut);
             await button.RotateTo(0, 1, Easing.BounceOut);
 
-            if (TimerButton.BackgroundColor == Color.FromRgb(47, 110, 131) && Read == false)
+            if (TimerButton.BackgroundColor == App.MC && Read == false)
             {
                 var HT = new HistoryTable();
                 HT.User = App.LoggedinUser.ID;
@@ -435,15 +441,15 @@ namespace NWT
         }
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (red != 47)
+            if (red != App.MC.R)
             {
                 red--;
             }
-            if (green != 110)
+            if (green != App.MC.G)
             {
                 green--;
             }
-            if (blue != 131)
+            if (blue != App.MC.B)
             {
                 blue--;
             }
@@ -454,7 +460,7 @@ namespace NWT
                 TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
-            if (green == 110 && blue == 131 && red == 47)
+            if (green == App.MC.G && blue == App.MC.B && red == App.MC.R)
             {
 
 

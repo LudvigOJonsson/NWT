@@ -12,7 +12,9 @@ namespace NWT
         public CustomizationPage()
 		{
             InitializeComponent ();
-            
+
+            BackgroundColor = App.MC;
+            StartButton.BackgroundColor = App.MC;
             CheckStartButton();
 
             foreach (var Box in CustomizationGrid.Children)

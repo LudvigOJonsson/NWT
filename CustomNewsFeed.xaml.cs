@@ -89,9 +89,9 @@ namespace NWT
                 if (App.LoggedinUser != null)
                 {
                     var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
-                    var UserCategories = TagList[0];
+                    //var UserCategories = TagList[0];
                     var UserTags = TagList[1];
-                    var UserAuthors = TagList[2];
+                    //var UserAuthors = TagList[2];
 
                 
                     var Firsttag = true;
@@ -198,8 +198,10 @@ namespace NWT
             }
 
 
-            TGR = new TapGestureRecognizer();
-            TGR.NumberOfTapsRequired = 1;
+            TGR = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1
+            };
 
 
 
@@ -364,7 +366,7 @@ namespace NWT
                 {
                     // Create views with bindings for displaying each property.
                     int IMGXC = 200;
-                    int IMGYC = 250;
+                    //int IMGYC = 250;
 
                     Label Label = new Label
                     {
@@ -458,12 +460,12 @@ namespace NWT
                     Label Tag = new Label
                     {
                         //Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalTextAlignment = TextAlignment.End,
+                        VerticalTextAlignment = TextAlignment.End,
                         FontSize = 12,
                         FontAttributes = FontAttributes.Bold,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
 
                         TextColor = Color.White,
                         //ClassId = NF.Article.ToString(),
@@ -474,9 +476,9 @@ namespace NWT
                     Button TagBox = new Button
                     {
 
-                        BackgroundColor = Color.FromHex("#3b5e6a"),
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
+                        BackgroundColor = Color.Black,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
                         HeightRequest = 16,
                         //InputTransparent = true,
                         
@@ -545,11 +547,12 @@ namespace NWT
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
                     Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
                     Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
-                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag    
-                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag    
+                     
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    
+                    Grid.Children.Add(TagBox, 1, 2, 2, 3); //Tag    
+                    Grid.Children.Add(Tag, 1, 2, 2, 3); //Tag   
+
 
 
                     Console.WriteLine("Utdata: " + Label.Text);
@@ -604,14 +607,16 @@ namespace NWT
                 Console.WriteLine("History Gotten: " + RAL.Count());
                 foreach (var RA in RAL)
                 {
-                    var NF = new NewsfeedTable();
-                    NF.ID = 0;
-                    NF.NewsScore = 5;
-                    NF.Image = RA.Image;
-                    NF.Article = RA.Article;
-                    NF.Category = "N/A";
-                    NF.Header = RA.Header;
-                    NF.Plus = 0;
+                    var NF = new NewsfeedTable
+                    {
+                        ID = 0,
+                        NewsScore = 5,
+                        Image = RA.Image,
+                        Article = RA.Article,
+                        Category = "N/A",
+                        Header = RA.Header,
+                        Plus = 0
+                    };
                     Rss.Add(NF);
                     j++;
                     Console.WriteLine("Artikel Inlagd");
@@ -627,14 +632,16 @@ namespace NWT
                 Console.WriteLine("Favorites Gotten: " + FAL.Count());
                 foreach (var FA in FAL)
                 {
-                    var NF = new NewsfeedTable();
-                    NF.ID = 0;
-                    NF.NewsScore = 5;
-                    NF.Image = FA.Image;
-                    NF.Article = FA.Article;
-                    NF.Category = "N/A";
-                    NF.Header = FA.Header;
-                    NF.Plus = 0;
+                    var NF = new NewsfeedTable
+                    {
+                        ID = 0,
+                        NewsScore = 5,
+                        Image = FA.Image,
+                        Article = FA.Article,
+                        Category = "N/A",
+                        Header = FA.Header,
+                        Plus = 0
+                    };
                     Rss.Add(NF);
                     j++;
                     Console.WriteLine("Artikel Inlagd");

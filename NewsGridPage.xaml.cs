@@ -119,15 +119,18 @@ namespace NWT
         {
             InitializeComponent();
 
+            
 
             for (int i = 0; i < DBLN; i++)
             {
 
             }
- 
 
-            TGR = new TapGestureRecognizer();
-            TGR.NumberOfTapsRequired = 1;
+
+            TGR = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1
+            };
 
 
 
@@ -252,11 +255,11 @@ namespace NWT
             ListView listView = new ListView
             {
                 // Source of data items.
-                
+
                 ItemsSource = ArticlePrintList,
                 HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
-
+                BackgroundColor = Color.FromHex("#f2f2f2"),
 
             // Define template for displaying each item.
             // (Argument of DataTemplate constructor is called for 
@@ -265,7 +268,7 @@ namespace NWT
                 {
                     // Create views with bindings for displaying each property.
                     int IMGXC = 200;
-                    int IMGYC = 250;
+                    //int IMGYC = 250;
 
                     Label Label = new Label
                     {
@@ -331,7 +334,7 @@ namespace NWT
 
                     BoxView ArticleMargin = new BoxView
                     {
-                        Color = Color.White,
+                        Color = Color.FromHex("#f2f2f2"),
                         WidthRequest = IMGXC,
                         HeightRequest = 20,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -343,13 +346,21 @@ namespace NWT
                     BoxView CategoryBox = new BoxView
                     {
                         
-                        BackgroundColor = Color.FromHex("#2f6e83"),
+                        BackgroundColor = App.MC,
                         ///WidthRequest = Label.WidthRequest,
                         //HeightRequest = 3,
                         //HorizontalOptions =,
                         //VerticalOptions = LayoutOptions.Start,
                         InputTransparent = true,
                         
+                    };
+
+                    Image Shadow = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        Source = "shadow.png"
                     };
 
                     //Label.GestureRecognizers.Add(TGR);
@@ -388,7 +399,7 @@ namespace NWT
                     },
                         RowSpacing = 0,
                         ColumnSpacing = 14,
-                        BackgroundColor = Color.White
+                        BackgroundColor = Color.FromHex("#f2f2f2")
 
 
 
@@ -407,6 +418,7 @@ namespace NWT
                     Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(Shadow, 1, 2, 3, 4);
 
 
                     Console.WriteLine("Utdata: " + Label.Text);
@@ -450,14 +462,16 @@ namespace NWT
                 Console.WriteLine("History Gotten: " + RAL.Count());
                 foreach (var RA in RAL)
                 {
-                    var NF = new NewsfeedTable();
-                    NF.ID = 0;
-                    NF.NewsScore = 5;
-                    NF.Image = RA.Image;
-                    NF.Article = RA.Article;
-                    NF.Category = "N/A";
-                    NF.Header = RA.Header;
-                    NF.Plus = 0;
+                    var NF = new NewsfeedTable
+                    {
+                        ID = 0,
+                        NewsScore = 5,
+                        Image = RA.Image,
+                        Article = RA.Article,
+                        Category = "N/A",
+                        Header = RA.Header,
+                        Plus = 0
+                    };
                     Rss.Add(NF);
                     j++;
                     Console.WriteLine("Artikel Inlagd");
@@ -473,14 +487,16 @@ namespace NWT
                 Console.WriteLine("Favorites Gotten: " + FAL.Count());
                 foreach (var FA in FAL)
                 {
-                    var NF = new NewsfeedTable();
-                    NF.ID = 0;
-                    NF.NewsScore = 5;
-                    NF.Image = FA.Image;
-                    NF.Article = FA.Article;
-                    NF.Category = "N/A";
-                    NF.Header = FA.Header;
-                    NF.Plus = 0;
+                    var NF = new NewsfeedTable
+                    {
+                        ID = 0,
+                        NewsScore = 5,
+                        Image = FA.Image,
+                        Article = FA.Article,
+                        Category = "N/A",
+                        Header = FA.Header,
+                        Plus = 0
+                    };
                     Rss.Add(NF);
                     j++;
                     Console.WriteLine("Artikel Inlagd");

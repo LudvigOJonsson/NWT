@@ -15,7 +15,13 @@ namespace NWT
 		public PlayPage ()
 		{
 			InitializeComponent ();
-		}
+
+            SPEL.TextColor = App.MC;
+            SudokuButton.BackgroundColor = App.MC;
+            QuizButton.BackgroundColor = App.MC;
+            PicrossButton.BackgroundColor = App.MC;
+
+        }
 
         async void PlaySudoku(object sender, EventArgs e)
         {

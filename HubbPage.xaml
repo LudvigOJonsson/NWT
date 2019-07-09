@@ -36,7 +36,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="InsandareButton" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
-                <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <BoxView x:Name="PE1" x:FieldModifier="public" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="newsfeed.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Text="Insändare" FontSize = "25" LineBreakMode="TailTruncation"
@@ -45,7 +45,7 @@
 
 
                 <Button x:Name="EvenemangsButton" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="WIP"/>
-                <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <BoxView x:Name="PE2" x:FieldModifier="public" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="calendar.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" Text="Evenemang" FontSize = "25" LineBreakMode="TailTruncation"
@@ -54,7 +54,7 @@
 
 
                 <Button x:Name="VoteButton" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="VotePage"/>
-                <BoxView Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <BoxView x:Name="PE3" x:FieldModifier="public" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="votebox.png" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3" Text="Röstning" FontSize = "25" LineBreakMode="TailTruncation"
@@ -62,7 +62,7 @@
 
 
                 <Button x:Name="PlayButton" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0" Clicked="GamePage"/>
-                <BoxView Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
+                <BoxView x:Name="PE4" x:FieldModifier="public" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#2f6e83" WidthRequest="8" HorizontalOptions="Start"/>
                 <Image Source="play.png" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" Margin="20" InputTransparent="True"/>
 
                 <Label Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="3" Text="Spel" FontSize = "25" LineBreakMode="TailTruncation"

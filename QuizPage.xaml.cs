@@ -74,6 +74,22 @@ namespace NWT
             ScoreList.Add(Q4);
             ScoreList.Add(Q5);
             ScoreList.Add(Q6);
+
+            Header.TextColor = App.MC;
+
+            Start.BackgroundColor = App.MC;
+            Submit.BackgroundColor = App.MC;
+            Cat1.BackgroundColor = App.MC;
+            Cat2.BackgroundColor = App.MC;
+            Cat3.BackgroundColor = App.MC;
+            QuestionText.TextColor = App.MC;
+            A.BackgroundColor = App.MC;
+            B.BackgroundColor = App.MC;
+            C.BackgroundColor = App.MC;
+            D.BackgroundColor = App.MC;
+
+
+
         }
 
         public async void Submission(object sender, EventArgs e)

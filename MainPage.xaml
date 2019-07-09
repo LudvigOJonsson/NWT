@@ -5,7 +5,7 @@
             x:Name="Mainpage"
             BackgroundColor="#f8f8f9"
             BarBackgroundColor="#2f6e83"
-            
+            x:FieldModifier="public"
             >
     
     <ContentPage x:Name = "CustomNewsFeed">

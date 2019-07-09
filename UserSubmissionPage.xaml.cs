@@ -18,7 +18,7 @@ namespace NWT
             ClassId = "-1";
 		}
 
-        public async void Submit(object sender, EventArgs e)
+        public void Submit(object sender, EventArgs e)
         {
             if(App.LoggedinUser != null && Rubrik.Text != "" && Ingress.Text != "" && Brodtext.Text != "")
             {
