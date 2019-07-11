@@ -37,6 +37,8 @@ namespace NWT
         public bool First = true;
         public int argc = 0;
 
+        public int interval = 0;
+
         public class Article
         {
             public long ID { get; set; }
@@ -51,13 +53,15 @@ namespace NWT
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
             public bool Full { get; set; }
+            public bool adVisibility { get; set; }
+            public string adText { get; set; }
             public int IHR { get; set; }
             public int BHR { get; set; }
             public int CBWR { get; set; }
             public int CBHR { get; set; }
             public LayoutOptions CBHO { get; set; }
             public LayoutOptions CBVO { get; set; }
-            public Article(NewsfeedTable NF)
+            public Article(NewsfeedTable NF, int interval)
             {
                 if (NF.Category.Contains("Sport"))
                 {
@@ -174,6 +178,44 @@ namespace NWT
                     CBVO = LayoutOptions.StartAndExpand;
                 }
 
+
+                if (interval % 5 == 0)
+                {
+                    adVisibility = true;
+
+                    //Randomizing the content of ads and social media posts
+                    Random chance = new Random();
+                    int content = rnd.Next(1, 4);  // creates a number between 1 and 20
+
+                    if (content == 1)
+                    {
+                        //a 1 in 3 chance to become an ad
+                        adText = "REKLAM";
+                    }
+                    else if (content == 2)
+                    {
+                        //a 1 in 3 chance to become a social media post
+                        adText = "SOCIALA MEDIER";
+                    }
+                    else if (content == 3)
+                    {
+                        //a 1 in 3 chance to become an event
+                        adText = "EVENEMANG";
+                    }
+                    else
+                    {
+                        //else there is no extra post
+                        adVisibility = false;
+                    }
+
+                } else
+                {
+                    adVisibility = false;
+                }
+
+                
+
+                
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -485,9 +527,60 @@ namespace NWT
                     };
 
                     TagBox.Clicked += TagPopup;
-
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
+
+                    Image AdImage = new Image
+                    {
+
+                        BackgroundColor = Color.White,
+                        //Source = NF.Image,
+                        WidthRequest = IMGXC,
+                        //HeightRequest = IMGYC,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        Aspect = Aspect.AspectFill,
+                        InputTransparent = true,
+                        Margin = 0
+                        // ClassId = NF.Article.ToString()
+
+
+                    };
+
+                    AdImage.SetBinding(HeightRequestProperty, "IHR");
+
+                    Button AdBox = new Button
+                    {
+                        BackgroundColor = Color.White,
+                        WidthRequest = IMGXC,
+                        Text = "",
+                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        //ClassId = NF.Article.ToString(),
+                        BorderColor = Color.FromHex("#f0f0f0"),
+                        Margin = 0
+
+                    };
+
+                    Label AdLabel = new Label
+                    {
+                        Text = "REKLAM",
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 25,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Center,
+
+                        TextColor = Color.Black,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 0),
+                    };
+
+
+                    AdBox.SetBinding(HeightRequestProperty, "BHR");
 
                     CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
                     CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
@@ -512,12 +605,20 @@ namespace NWT
                     
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
 
+                    AdBox.SetBinding(Button.IsVisibleProperty, "adVisibility");
+                    AdImage.SetBinding(Image.IsVisibleProperty, "adVisibility");
+                    AdLabel.SetBinding(Label.IsVisibleProperty, "adVisibility");
+                    AdLabel.SetBinding(Label.TextProperty, "adText");
+
+
+
                     var Grid = new Grid
                     {
                         RowSpacing = 0,
                         RowDefinitions = {
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Star },
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
 
@@ -550,8 +651,13 @@ namespace NWT
                      
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(TagBox, 1, 2, 2, 3); //Tag    
+                    Grid.Children.Add(TagBox, 1, 2, 2, 3); //Tag
                     Grid.Children.Add(Tag, 1, 2, 2, 3); //Tag   
+                    
+                    Grid.Children.Add(ArticleMargin, 1, 2, 3, 4); //Boxview
+                    Grid.Children.Add(AdBox, 1, 2, 4, 5); //Boxview
+                    Grid.Children.Add(AdImage, 1, 2, 4, 5); //Image   
+                    Grid.Children.Add(AdLabel, 1, 2, 4, 5); //Image   
 
 
 
@@ -674,7 +780,9 @@ namespace NWT
                 Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
-                    var Box = new Article(NF);
+                    var Box = new Article(NF, interval);
+
+                    interval++;
 
                     Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
