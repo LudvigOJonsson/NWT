@@ -20,10 +20,11 @@ namespace NWT
         {
             
             InitializeComponent();
-            
+
             //On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarItemColor(Color.FromHex("FFFFFF"));
-            On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarSelectedItemColor(Color.FromHex("FFFFFF"));
+            UnselectedTabColor = Color.FromHex("FFFFFF");
+            SelectedTabColor = Color.FromHex("FFFFFF");
+
             
             ToolbarItems.Add(new ToolbarItem("Search", "search.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel");
             Debug.WriteLine("success: {0}", result); }));

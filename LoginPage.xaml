@@ -35,7 +35,7 @@
                 <Entry x:Name="UserLogin" x:FieldModifier="public" Placeholder="dinemail@gmail.com" Grid.Row="5" TextColor="Black" VerticalOptions="End"/>
                 <Label Text="LÖSENORD" TextColor="DimGray" FontSize="8" Grid.Row="7" VerticalOptions="Start"/>
                 <Entry x:Name="UserPassword" x:FieldModifier="public" IsPassword="True" Placeholder="1234" TextColor="Black" Grid.Row="7" VerticalOptions="End"/>
-                <Button x:Name="LoginButton" Text="Logga in"  Clicked="Login" Style="" BackgroundColor="#2f6e83" TextColor="White" Grid.Row="9" HeightRequest="50"/>
+                <Button x:Name="LoginButton" Text="Logga in"  Clicked="Login"  BackgroundColor="#2f6e83" TextColor="White" Grid.Row="9" HeightRequest="50"/>
                 <Label Text="INGET KONTO?" TextColor="DimGray" FontSize="8" Grid.Row="10" HorizontalOptions="End"/>
                 <Button x:Name="RegisterButton" Text="Registrera" Clicked="Register" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="End"/>
 

@@ -22,18 +22,24 @@ namespace NWT
 
         async void Login(object sender, EventArgs e)
         {
+
+            //await Navigation.PushAsync(App.LoadingScreen);
+
+
             
-                //await Navigation.PushAsync(App.LoadingScreen);
-            
+          
+
+
             if (App.Online && UserLogin.Text != null && UserPassword.Text != null)
             {
-               
-                
 
-                UserTable User = new UserTable();
-                User.Username = UserLogin.Text;
-                User.Email = UserLogin.Text;
-                User.Password = UserPassword.Text;
+
+                UserTable User = new UserTable
+                {
+                    Username = UserLogin.Text,
+                    Email = UserLogin.Text,
+                    Password = UserPassword.Text
+                };
 
 
                 App.database.Login(User);
@@ -47,19 +53,57 @@ namespace NWT
 
                     if (App.LoggedinUser.TutorialProgress == 0)
                     {
-                        App.Startpage.Detail = new IntroWalkthrough() { };
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            App.Startpage.Detail = new IntroWalkthrough() { };
+
+                        });
+
+                        
                     } else
                     {
-                        StartApp();
+
+                        await System.Threading.Tasks.Task.Run(async () =>
+                        {
+                            Device.BeginInvokeOnMainThread(async() =>
+                            {
+                                App.Startpage.Detail = new LoadingPopUp();
+                                await System.Threading.Tasks.Task.Delay(1000);
+                                App.Startpage.Detail.BackgroundColor = Color.Red;
+
+                            });
+                            await System.Threading.Tasks.Task.Delay(3000);
+                            StartApp();
+
+                        });
+
+
+
                     }
                 }
                 else
                 {
+                    
+                        
+
+                    
+
+
                     await DisplayAlert("Failed Login", "Incorrect Username/Password", "OK");
+
+
+
                 }
             }
             else
             {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.Startpage.Detail = App.Loginpage;
+
+                });
+
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
             //await Navigation.PopAsync();
@@ -72,7 +116,15 @@ namespace NWT
 
         public void StartApp()
         {
+
+            
+
             App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
+
+            
+
+
+            
             
             var x = (ProfilePage)App.Mainpage.Children[3];
             x.Login(App.LoggedinUser);
@@ -96,10 +148,13 @@ namespace NWT
                     }
                 }
             }
-
+            /*
             App.SideMenu.SetTags();
             var y = (CustomNewsFeed)App.Mainpage.Children[0];
             y.TagUpdate();
+            */
+
+            
         }
 
     }

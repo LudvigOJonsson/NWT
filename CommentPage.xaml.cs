@@ -16,7 +16,7 @@ namespace NWT
         public int CLVL = 1;
         public CommentTable root;
         public List<CommentTable> Chain = new List<CommentTable>();
-        public Button BackButton = new Button() { Image = "uparrow.png" };
+        public Button BackButton = new Button() { ImageSource = "uparrow.png" };
         public CommentPage (int argc,CommentTable s)
 		{
             root = s;
@@ -172,13 +172,14 @@ namespace NWT
                 Console.WriteLine("PING2");
 
                 var CNR = App.database.CommentCount(ArticleNR);
-                var SC = new CommentTable();
-
-                SC.Article = ArticleNR;
-                SC.CommentNR = CNR;
-                SC.UserSubmitted = root.UserSubmitted;
-                SC.User = App.LoggedinUser.ID;
-                SC.Replynr = ReplyNR;
+                var SC = new CommentTable
+                {
+                    Article = ArticleNR,
+                    CommentNR = CNR,
+                    UserSubmitted = root.UserSubmitted,
+                    User = App.LoggedinUser.ID,
+                    Replynr = ReplyNR
+                };
                 if (ReplyNR > -1)
                 {
                     Console.WriteLine("PING3.1.1");

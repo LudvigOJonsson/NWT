@@ -13,7 +13,7 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsPage : ContentPage
     {
-        Random rnd = new Random();
+        
         public int red = (int)App.MC.R;
         public int green = (int)App.MC.G;
         public int blue = (int)App.MC.B;
@@ -61,8 +61,10 @@ namespace NWT
                 else
                 {
                     NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
-                    Timer = new System.Timers.Timer();
-                    Timer.Interval = 60;
+                    Timer = new System.Timers.Timer
+                    {
+                        Interval = 60
+                    };
                     Timer.Elapsed += OnTimedEvent;
                     Timer.Enabled = true;
                 }
@@ -115,8 +117,10 @@ namespace NWT
                 //Tags.Text = "";
             }
 
-            var TGR = new TapGestureRecognizer();
-            TGR.NumberOfTapsRequired = 1;
+            var TGR = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1
+            };
             TGR.Tapped += (s, e) => {
                 IsEnabled = false;
                 App.SideMenu.Author = RSS.Author;
@@ -357,11 +361,13 @@ namespace NWT
                 }
                 else
                 {
-                    var fav = new FavoritesTable();
-                    fav.User = App.LoggedinUser.ID;
-                    fav.Article = ArticleNR;
-                    fav.Image = ArticleImage.Source.ToString();
-                    fav.Header = Rubrik.Text;
+                    var fav = new FavoritesTable
+                    {
+                        User = App.LoggedinUser.ID,
+                        Article = ArticleNR,
+                        Image = ArticleImage.Source.ToString(),
+                        Header = Rubrik.Text
+                    };
                     App.database.InsertFavorite(fav);
                     await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
                     Favorited = true;
@@ -385,12 +391,14 @@ namespace NWT
 
             if (TimerButton.BackgroundColor == App.MC && Read == false)
             {
-                var HT = new HistoryTable();
-                HT.User = App.LoggedinUser.ID;
-                HT.Article = ArticleNR;
-                HT.Readat = DateTime.Now;
-                HT.Header = Rubrik.Text;
-                HT.Image = ArticleImage.Source.ToString();
+                var HT = new HistoryTable
+                {
+                    User = App.LoggedinUser.ID,
+                    Article = ArticleNR,
+                    Readat = DateTime.Now,
+                    Header = Rubrik.Text,
+                    Image = ArticleImage.Source.ToString()
+                };
                 App.database.InsertHistory(HT);
                 TimerIcon.Source = "tokenicon.png";
                 TimerButton.Text = "Samlad";
@@ -432,6 +440,7 @@ namespace NWT
             await label.RotateTo(2, 60, Easing.BounceOut);
             await label.RotateTo(0, 40, Easing.BounceOut);
         }
+        /*
         async void IconRotation()
         {
             Image image = TimerIcon;
@@ -439,6 +448,7 @@ namespace NWT
             await image.RotateTo(2, 60, Easing.BounceOut);
             await image.RotateTo(0, 40, Easing.BounceOut);
         }
+        */
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (red != App.MC.R)
@@ -487,16 +497,17 @@ namespace NWT
                 if (App.database.TokenCheck() && Comment.Text != null && Comment.Text != "" && Comment.Text.Length < 0)
                 {
                     var CNR = App.database.CommentCount(ArticleNR);
-                    var SC = new CommentTable();
-
-                    SC.Article = ArticleNR;
-                    SC.CommentNR = CNR;
-                    SC.UserSubmitted = 0;
-                    SC.User = App.LoggedinUser.ID;
-                    SC.Replynr = -1;
-                    SC.Replylvl = 0;
-                    SC.Comment = Comment.Text;
-                    SC.Point = 0;
+                    var SC = new CommentTable
+                    {
+                        Article = ArticleNR,
+                        CommentNR = CNR,
+                        UserSubmitted = 0,
+                        User = App.LoggedinUser.ID,
+                        Replynr = -1,
+                        Replylvl = 0,
+                        Comment = Comment.Text,
+                        Point = 0
+                    };
                     Comment.Text = "";
                     App.database.InsertComment(SC);
                     MakeComment(SC);
@@ -574,7 +585,7 @@ namespace NWT
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.End,
                 Margin = 20,
-                Image = "elipses.png",
+                ImageSource = "elipses.png",
             };
 
 

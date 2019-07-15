@@ -422,7 +422,7 @@ namespace NWT
             {
                 Animation = "confetti.json",
                 Loop = false,
-                AutoPlay = true
+                IsPlaying = true
             };
 
 

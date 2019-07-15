@@ -95,11 +95,12 @@ namespace NWT
 
         public void UpdateTags()
         {
-            List<List<string>> Taglist = new List<List<string>>();
-
-            Taglist.Add(Categories);
-            Taglist.Add(Tags);
-            Taglist.Add(Authors);
+            List<List<string>> Taglist = new List<List<string>>
+            {
+                Categories,
+                Tags,
+                Authors
+            };
             App.LoggedinUser.TaggString = JsonConvert.SerializeObject(Taglist);
             App.database.UpdateChoices(App.LoggedinUser);
             NewsGridOri.Children.Clear();

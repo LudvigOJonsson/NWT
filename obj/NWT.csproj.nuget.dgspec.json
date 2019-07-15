@@ -14,7 +14,7 @@
         "outputPath": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
@@ -45,7 +45,7 @@
           "dependencies": {
             "Com.Airbnb.Xamarin.Forms.Lottie": {
               "target": "Package",
-              "version": "[2.7.1, )"
+              "version": "[3.0.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -67,7 +67,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[3.6.0.344457, )"
+              "version": "[4.1.0.581479, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",
