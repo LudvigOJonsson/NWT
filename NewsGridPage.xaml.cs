@@ -259,7 +259,7 @@ namespace NWT
                 ItemsSource = ArticlePrintList,
                 HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
-                BackgroundColor = Color.FromHex("#f2f2f2"),
+                BackgroundColor = Color.FromHex("#FFFFFF"),
 
             // Define template for displaying each item.
             // (Argument of DataTemplate constructor is called for 
