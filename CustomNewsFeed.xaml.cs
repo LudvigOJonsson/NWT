@@ -55,6 +55,7 @@ namespace NWT
             public bool Full { get; set; }
             public bool adVisibility { get; set; }
             public string adText { get; set; }
+            public string adSource { get; set; }
             public int IHR { get; set; }
             public int BHR { get; set; }
             public int CBWR { get; set; }
@@ -179,7 +180,7 @@ namespace NWT
                 }
 
 
-                if (interval % 5 == 0)
+                if (interval % 5 == 0 && Full)
                 {
                     adVisibility = true;
 
@@ -191,16 +192,19 @@ namespace NWT
                     {
                         //a 1 in 3 chance to become an ad
                         adText = "REKLAM";
+                        adSource = "hamburgare.jpg";
                     }
                     else if (content == 2)
                     {
                         //a 1 in 3 chance to become a social media post
                         adText = "SOCIALA MEDIER";
+                        adSource = "blomma.png";
                     }
                     else if (content == 3)
                     {
                         //a 1 in 3 chance to become an event
                         adText = "EVENEMANG";
+                        adSource = "julbord.jpg";
                     }
                     else
                     {
@@ -431,21 +435,19 @@ namespace NWT
                     Image Image = new Image
                     {
 
-                        BackgroundColor = Color.White,
+
                         //Source = NF.Image,
                         WidthRequest = IMGXC,
                         //HeightRequest = IMGYC,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-                        Margin = 0
+
                         // ClassId = NF.Article.ToString()
 
 
                     };
-
-
 
                     Image.SetBinding(HeightRequestProperty, "IHR");
 
@@ -455,10 +457,10 @@ namespace NWT
                         WidthRequest = IMGXC,
                         //HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         //ClassId = NF.Article.ToString(),
                         BorderColor = Color.FromHex("#f0f0f0"),
-                        Margin = 0
+
 
                     };
 
@@ -474,11 +476,9 @@ namespace NWT
                     }
 
 
-
-
                     BoxView ArticleMargin = new BoxView
                     {
-                        Color = Color.White,
+                        Color = Color.FromHex("#f2f2f2"),
                         WidthRequest = IMGXC,
                         HeightRequest = 20,
                         HorizontalOptions = LayoutOptions.Fill,
@@ -490,13 +490,38 @@ namespace NWT
                     BoxView CategoryBox = new BoxView
                     {
 
-                        
+                        BackgroundColor = App.MC,
                         ///WidthRequest = Label.WidthRequest,
                         //HeightRequest = 3,
                         //HorizontalOptions =,
                         //VerticalOptions = LayoutOptions.Start,
                         InputTransparent = true,
 
+                    };
+
+                    Image Shadow = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        Source = "shadow.png"
+                    };
+                    Image AdShadow = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        Source = "shadow.png"
+                    };
+                    BoxView AdArticleMargin = new BoxView
+                    {
+                        Color = Color.FromHex("#f2f2f2"),
+                        WidthRequest = IMGXC,
+                        HeightRequest = 20,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        //ClassId = NF.Article.ToString()
                     };
 
                     Label Tag = new Label
@@ -541,42 +566,49 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-                        Margin = 0
+                        Margin = 50,
                         // ClassId = NF.Article.ToString()
-
+                    };
+                    BoxView AdImageOutline = new BoxView
+                    {
+                        BackgroundColor = Color.White,
+                        WidthRequest = IMGXC,
+                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        //ClassId = NF.Article.ToString(),
+                        Margin = 35,
 
                     };
 
                     AdImage.SetBinding(HeightRequestProperty, "IHR");
 
-                    Button AdBox = new Button
+                    BoxView AdBox = new BoxView
                     {
-                        BackgroundColor = Color.White,
+                        BackgroundColor = Color.FromHex("#fffef2"),
                         WidthRequest = IMGXC,
-                        Text = "",
                         //HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.Fill,
                         //ClassId = NF.Article.ToString(),
-                        BorderColor = Color.FromHex("#f0f0f0"),
                         Margin = 0
 
                     };
 
                     Label AdLabel = new Label
                     {
-                        Text = "REKLAM",
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
-                        FontSize = 25,
+                        Text = "Reklam",
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        FontSize = 12,
                         FontAttributes = FontAttributes.Bold,
-                        VerticalOptions = LayoutOptions.Center,
-                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Start,
+                        HorizontalOptions = LayoutOptions.End,
 
-                        TextColor = Color.Black,
+                        TextColor = Color.LightGray,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
-                        Margin = new Thickness(15, 5, 15, 0),
+                        Margin = new Thickness(5, 5, 5, 5),
                     };
 
 
@@ -605,20 +637,26 @@ namespace NWT
                     
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
 
-                    AdBox.SetBinding(Button.IsVisibleProperty, "adVisibility");
+                    AdArticleMargin.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
+                    AdShadow.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
+                    AdBox.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
+                    AdImageOutline.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
                     AdImage.SetBinding(Image.IsVisibleProperty, "adVisibility");
                     AdLabel.SetBinding(Label.IsVisibleProperty, "adVisibility");
                     AdLabel.SetBinding(Label.TextProperty, "adText");
+                    AdImage.SetBinding(Image.SourceProperty, "adSource");
 
 
 
                     var Grid = new Grid
                     {
-                        RowSpacing = 0,
+
                         RowDefinitions = {
+                    new RowDefinition { Height = 20 },
                     new RowDefinition { Height = GridLength.Auto },
-                    new RowDefinition { Height = GridLength.Star },
                     new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = 20 },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
 
@@ -629,9 +667,9 @@ namespace NWT
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = 1 },
                     },
-
-                        //ColumnSpacing = 14,
-                        BackgroundColor = Color.White
+                        RowSpacing = 0,
+                        ColumnSpacing = 14,
+                        BackgroundColor = Color.FromHex("#f2f2f2")
 
 
 
@@ -648,17 +686,26 @@ namespace NWT
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
                     Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
                     Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
-                     
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(Shadow, 1, 2, 3, 4);
+
                     Grid.Children.Add(TagBox, 1, 2, 2, 3); //Tag
                     Grid.Children.Add(Tag, 1, 2, 2, 3); //Tag   
-                    
-                    Grid.Children.Add(ArticleMargin, 1, 2, 3, 4); //Boxview
-                    Grid.Children.Add(AdBox, 1, 2, 4, 5); //Boxview
-                    Grid.Children.Add(AdImage, 1, 2, 4, 5); //Image   
-                    Grid.Children.Add(AdLabel, 1, 2, 4, 5); //Image   
 
+
+                    //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
+                    Grid.Children.Add(AdBox, 1, 2, 5, 6); //Boxview
+                    Grid.Children.Add(AdImage, 1, 2, 5, 6); //Boxview
+                    Grid.Children.Add(AdLabel, 1, 2, 5, 6); //Label
+                    Grid.Children.Add(AdShadow, 1, 2, 6, 7);
+
+                    /*Grid.Children.Add(AdBox, 1, 2, 4, 5); //Boxview
+                    Grid.Children.Add(AdImageOutline, 1, 2, 4, 5); //Image 
+                    Grid.Children.Add(AdImage, 1, 2, 4, 5); //Image     
+                    Grid.Children.Add(AdLabel, 1, 2, 4, 5); //Label   
+
+                    Grid.Children.Add(AdShadow, 0, 3, 5, 6); //ShadowBelowAd*/
 
 
                     Console.WriteLine("Utdata: " + Label.Text);

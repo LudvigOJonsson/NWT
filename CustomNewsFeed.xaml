@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NWT.CustomNewsFeed"
              Icon="newsfeed.png"
-             Title="Nyheter">
+             Title="Nyheter"
+             BackgroundColor="#f2f2f2">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
         <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
@@ -15,7 +16,7 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView x:Name="NewsSV">
-            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="14" BackgroundColor="White">
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="14" BackgroundColor="#f2f2f2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
