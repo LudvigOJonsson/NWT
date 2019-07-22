@@ -45,7 +45,7 @@
 	                AutoPlay="true"
 	                />
 
-                <Label Text="Det här är dina uppdrag. De uppdateras varje dag- och om du klarar alla tre " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <Label Text="Grattis! Du klarade alla tre uppdrag. " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
                 <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"/>
 

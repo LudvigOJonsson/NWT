@@ -38,8 +38,7 @@ namespace NWT
         {
             if (App.LoggedinUser.TutorialProgress == 5)
             {
-                RemoveIntro();
-                App.LoggedinUser.TutorialProgress = 6;
+                ChangeIntroStep(App.LoggedinUser.TutorialProgress);
             }
             else
             {
@@ -50,8 +49,7 @@ namespace NWT
         {
             if (App.LoggedinUser.TutorialProgress == 5)
             {
-                RemoveIntro();
-                App.LoggedinUser.TutorialProgress = 6;
+                ChangeIntroStep(App.LoggedinUser.TutorialProgress);
             }
             else
             {
@@ -62,8 +60,7 @@ namespace NWT
         {
             if (App.LoggedinUser.TutorialProgress == 5)
             {
-                RemoveIntro();
-                App.LoggedinUser.TutorialProgress = 6;
+                ChangeIntroStep(App.LoggedinUser.TutorialProgress);
             }
             else
             {
@@ -304,7 +301,7 @@ namespace NWT
                 {
                     //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
 
-                    await PopupNavigation.Instance.PushAsync(new DailyPopUp());
+                    await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
                 });
                 var T = Convert.ToInt32(TokenNumber.Text);
                 if (M1HI)
