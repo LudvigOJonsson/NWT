@@ -39,6 +39,9 @@
                 <Label Text="INGET KONTO?" TextColor="DimGray" FontSize="8" Grid.Row="10" HorizontalOptions="End"/>
                 <Button x:Name="RegisterButton" Text="Registrera" Clicked="Register" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="End"/>
 
+                
+                <Button x:Name="GrafikerButton" Text="GrafikerLäge" Clicked="Grafiker" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="Start"/>
+                
                 <ActivityIndicator x:Name="Loading" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" Color="Blue"></ActivityIndicator>
                 
             </Grid>

@@ -44,7 +44,6 @@ C:\Users\party\Documents\Visual Studio 2017\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\bin\Release\netstandard2.0\NWT.deps.json
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\bin\Release\netstandard2.0\NWT.dll
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\bin\Release\netstandard2.0\NWT.pdb
-C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.csprojAssemblyReference.cache
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\AboutPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\AchivementsPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\App.xaml.g.cs
@@ -56,6 +55,12 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomizationPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\CustomNewsFeed.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\DailyPopUp.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSampleNewsGrid.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSampleNewsPage.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSamplePage.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSampleProfilePage.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSampleSidemenu.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\GSampleTabbedPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\HubbPage.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\IntroWalkthrough.xaml.g.cs
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\LoadingPopUp.xaml.g.cs

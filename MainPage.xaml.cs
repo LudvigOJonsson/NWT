@@ -30,7 +30,7 @@ namespace NWT
             Debug.WriteLine("success: {0}", result); }));
             
             Children[1] = new NewsGridPage(0);
-            Children[0] = new CustomNewsFeed(0);
+            Children[0] = new CustomNewsFeed();
 
             Children[3] = new ProfilePage();
             Children[2] = new HubbPage();                      

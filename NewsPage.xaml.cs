@@ -307,8 +307,8 @@ namespace NWT
 
 
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
-            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 4);
-            ArticleGrid.Children.Add(TimerButton, 1, 4, Row+1, Row + 2);
+            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 3);
+            ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
             ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);

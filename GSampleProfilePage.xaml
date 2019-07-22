@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             mc:Ignorable="d"
+             x:Class="NWT.GSampleProfilePage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Margin="0" >
+
+            <ContentView>
+                <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="Läsare" FontSize="40" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="Black"/>
+                    <!--<Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>-->
+                    <Image x:Name="ProfilePictureFace" Source="avatar_face.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                    <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                    <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+
+                    </Image>
+
+                    <Label Text="Favoriter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="heart.png" Text="" FontSize="Micro" TextColor="White" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <Label Text="Avatar" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="shirtSmol.png" Text="" FontSize="Micro"  TextColor="White" Grid.Row="2" Grid.Column="0" x:Name="AvatarButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <Label Text="Troféer" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="knapp.png" Text="" TextColor="White" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <Label Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="edit.png" Text="" FontSize="Micro" TextColor="White" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <Label Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="history.png" Text="" FontSize="Micro"  TextColor="White" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <Label Text="Inställningar" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Button Image="settings.png" Text="" FontSize="Micro" TextColor="White" Grid.Row="3" Grid.Column="2" x:Name="ProfileSettingsButton" CornerRadius="0" BackgroundColor="#2f6e83" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="5"/>
+
+                    <forms:AnimationView 
+	                x:Name="tokenAnimation" 
+	                Grid.Row="2" Grid.Column="1"
+                    VerticalOptions="FillAndExpand"
+	                HorizontalOptions="FillAndExpand"
+	                Animation="stone.json" 
+	                Loop="true" 
+	                AutoPlay="true"
+	                />
+
+                    <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="35" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="3" Grid.Column="1" TextColor="Black"/>
+
+                    <BoxView Grid.Row="4" Grid.Column="0" BackgroundColor="#2f6e83" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+
+                    <Label x:Name="mission1text1" TextColor="White" Text="Read Article" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                    <Label x:Name="mission1text2" TextColor="White" FontSize="26" Text="0 / 10"  Grid.Row="4" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                    <Label x:Name="mission1text3" TextColor="White" Text="3 Tokens" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+
+                    <Button x:Name="mission1knapp" Grid.Row="4" Grid.Column="0"  BackgroundColor="Transparent" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
+
+
+
+                    <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#2f6e83" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+
+                    <Label x:Name="mission2text1" TextColor="White" Text="Post Comment" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                    <Label x:Name="mission2text2" TextColor="White" FontSize="26" Text="0 / 5"  Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                    <Label x:Name="mission2text3" TextColor="White" Text="5 Tokens" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+
+                    <Button x:Name="mission2knapp" Grid.Row="4" Grid.Column="1"  BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
+
+                    <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="#2f6e83" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+
+                    <Label x:Name="mission3text1" TextColor="White" Text="Win Sudoku" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                    <Label x:Name="mission3text2" TextColor="White" FontSize="26" Text="0 / 3"  Grid.Row="4" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                    <Label x:Name="mission3text3" TextColor="White" Text="150 Tokens" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+
+                    <Button x:Name="mission3knapp" Text=" "  Grid.Row="4" Grid.Column="2"  BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
+
+
+                </Grid>
+            </ContentView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -23,7 +23,7 @@ namespace NWT {
         private global::Xamarin.Forms.Grid ArticleGrid;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Lottie.Forms.AnimationView loadingAnimation;
+        public global::Lottie.Forms.AnimationView loadingAnimation;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {

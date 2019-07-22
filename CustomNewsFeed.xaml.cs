@@ -53,9 +53,10 @@ namespace NWT
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
             public bool Full { get; set; }
-            public bool adVisibility { get; set; }
-            public string adText { get; set; }
-            public string adSource { get; set; }
+            public bool AdVisibility { get; set; }
+            public string AdText { get; set; }
+            public string AdSource { get; set; }
+
             public int IHR { get; set; }
             public int BHR { get; set; }
             public int CBWR { get; set; }
@@ -182,39 +183,45 @@ namespace NWT
 
                 if (interval % 5 == 0 && Full)
                 {
-                    adVisibility = true;
+                    AdVisibility = true;
 
                     //Randomizing the content of ads and social media posts
-                    Random chance = new Random();
+                    
                     int content = rnd.Next(1, 4);  // creates a number between 1 and 20
 
                     if (content == 1)
                     {
                         //a 1 in 3 chance to become an ad
-                        adText = "REKLAM";
-                        adSource = "hamburgare.jpg";
+
+                        AdText = "REKLAM";
+                        AdSource = "hamburgare.jpg";
+
                     }
                     else if (content == 2)
                     {
                         //a 1 in 3 chance to become a social media post
-                        adText = "SOCIALA MEDIER";
-                        adSource = "blomma.png";
+
+                        AdText = "SOCIALA MEDIER";
+                        AdSource = "blomma.png";
+
                     }
                     else if (content == 3)
                     {
                         //a 1 in 3 chance to become an event
-                        adText = "EVENEMANG";
-                        adSource = "julbord.jpg";
+
+                        AdText = "EVENEMANG";
+                        AdSource = "julbord.jpg";
+
                     }
                     else
                     {
                         //else there is no extra post
-                        adVisibility = false;
+                        AdVisibility = false;
                     }
 
                 } else
                 {
-                    adVisibility = false;
+                    AdVisibility = false;
                 }
 
                 
@@ -233,81 +240,33 @@ namespace NWT
         }
 
 
-        public CustomNewsFeed(int Argc)
+        public CustomNewsFeed()
         {
             InitializeComponent();
-
-
-            for (int i = 0; i < DBLN; i++)
-            {
-
-            }
-
-
             TGR = new TapGestureRecognizer
             {
                 NumberOfTapsRequired = 1
             };
 
 
-
-            if (Argc == 0)
-            {
-                Console.WriteLine("NewsGrid");
-                TGR.Tapped += (s, e) => {
-                    IsEnabled = false;
-                    LoadNews(s, e);
-                    IsEnabled = true;
-                };
-                LoadLocalDB();
-
-                AddNews(0);
-            }
-            else if (Argc == 1)
-            {
-
-                Console.WriteLine("ReferatSida");
-                TGR.Tapped += (s, e) => {
-                    IsEnabled = false;
-                    var Header = (View)s;
-                    Console.WriteLine(Header.ClassId);
-                    Console.WriteLine(App.Mainpage.Children[0].Navigation.NavigationStack[1].GetType());
-                    App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
-
-                    Navigation.PopAsync();
-                };
-                AddNews(0);
-            }
-            else if (Argc == 2)
-            {
-
-                Console.WriteLine("HistorikSida");
-                TGR.Tapped += (s, e) => {
-                    IsEnabled = false;
-                    LoadNews(s, e);
-                    IsEnabled = true;
-                };
-                LoadHistory();
-            }
-            else if (Argc == 3)
-            {
-
-                Console.WriteLine("FavoritSida");
-                TGR.Tapped += (s, e) => {
-                    IsEnabled = false;
-                    LoadNews(s, e);
-                    IsEnabled = true;
-                };
-                LoadFavorites();
-            }
-
-
-
-
-
-
-            //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
+            Console.WriteLine("NewsGrid");
+            TGR.Tapped += (s, e) => {
+                IsEnabled = false;
+                LoadNews(s, e);
+                IsEnabled = true;
+            };
         }
+
+        public void CreateFeed()
+        {
+
+            LoadLocalDB();
+
+            AddNews();
+        }
+
+
+
 
         public void ArtikelClicked(object sender, EventArgs e)
         {
@@ -338,7 +297,7 @@ namespace NWT
 
             ArticleList.Clear();
             LoadLocalDB();
-            AddNews(0);
+            AddNews();
             
 
         }
@@ -359,17 +318,7 @@ namespace NWT
 
         }
 
-        public void LoadHistory()
-        {
-            argc = 1;
-            AddNews(1);
-        }
 
-        public void LoadFavorites()
-        {
-            argc = 2;
-            AddNews(2);
-        }
 
         public void LoadLocalDB()
         {
@@ -744,70 +693,11 @@ namespace NWT
             throw new NotImplementedException();
         }
 
-        public void AddNews(int argc)
+        public void AddNews()
         {
 
-            List<NewsfeedTable> Rss = new List<NewsfeedTable>();
-            if (argc == 0)
-            {
-                Rss = App.database.GetCNF(Loadnr);
-            }
-            else if (argc == 1)
-            {
-                Down.IsVisible = false;
-                int j = 0;
-                var RAL = App.database.GetHistory(App.LoggedinUser.ID);
-                Console.WriteLine("History Gotten: " + RAL.Count());
-                foreach (var RA in RAL)
-                {
-                    var NF = new NewsfeedTable
-                    {
-                        ID = 0,
-                        NewsScore = 5,
-                        Image = RA.Image,
-                        Article = RA.Article,
-                        Category = "N/A",
-                        Header = RA.Header,
-                        Plus = 0
-                    };
-                    Rss.Add(NF);
-                    j++;
-                    Console.WriteLine("Artikel Inlagd");
-                }
-                CURR = j;
-
-            }
-            else if (argc == 2)
-            {
-                Down.IsVisible = false;
-                int j = 0;
-                var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
-                Console.WriteLine("Favorites Gotten: " + FAL.Count());
-                foreach (var FA in FAL)
-                {
-                    var NF = new NewsfeedTable
-                    {
-                        ID = 0,
-                        NewsScore = 5,
-                        Image = FA.Image,
-                        Article = FA.Article,
-                        Category = "N/A",
-                        Header = FA.Header,
-                        Plus = 0
-                    };
-                    Rss.Add(NF);
-                    j++;
-                    Console.WriteLine("Artikel Inlagd");
-                }
-                CURR = j;
-            }
-            else
-            {
-                Rss = App.database.GetNF(Loadnr);
-            }
-
-
-
+            List<NewsfeedTable> Rss = App.database.GetCNF(Loadnr);
+            
             Console.WriteLine(Rss.Count);
             Console.WriteLine("Inladdning Klar");
             int i = 1;
@@ -850,53 +740,50 @@ namespace NWT
         public async void Scrollup(object sender, EventArgs e)
         {
             IsBusy = true;
-            if (argc == 0)
+
+            NEXT = CURR;
+            CURR = PREV;
+            PREV -= DBLN;
+            if (PREV <= 0)
             {
-
-                NEXT = CURR;
-                CURR = PREV;
-                PREV -= DBLN;
-                if (PREV <= 0)
-                {
-                    PREV = 0;
-                    CURR = DBLN;
-                    NEXT = DBLN * 2;
-                }
-
-
-
-                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
-
-
-                LoadLocalDB();
-                AddNews(argc);
-                await NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
-
-                GC.Collect();
-
+                PREV = 0;
+                CURR = DBLN;
+                NEXT = DBLN * 2;
             }
+
+
+
+            Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+
+
+            LoadLocalDB();
+            AddNews();
+            await NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
+
+            GC.Collect();
+
+            
             IsBusy = false;
         }
 
         public async void Scrolldown(object sender, EventArgs e)
         {
             IsBusy = true;
-            if (argc == 0)
-            {
-                PREV = CURR;
-                CURR = NEXT;
-                NEXT += DBLN;
 
-                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+            PREV = CURR;
+            CURR = NEXT;
+            NEXT += DBLN;
+
+            Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
 
 
-                LoadLocalDB();
-                AddNews(argc);
-                await NewsSV.ScrollToAsync(0, 10, false);
+            LoadLocalDB();
+            AddNews();
+            await NewsSV.ScrollToAsync(0, 10, false);
 
-                GC.Collect();
+            GC.Collect();
 
-            }
+            
             IsBusy = false;
         }
     }
