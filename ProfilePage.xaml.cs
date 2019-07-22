@@ -134,11 +134,18 @@ namespace NWT
 
         public void Login(UserTable User)
         {
-            Welcome.Text = "Hej, " + User.Username + "!";
-            TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+
+
+                Welcome.Text = "Hej, " + User.Username + "!";
+                TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
+                updateMissions();
+             
+ 
+
+            
 
             //Getting update
-            updateMissions();
+            
             if(App.LoggedinUser.DailyLogin == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>

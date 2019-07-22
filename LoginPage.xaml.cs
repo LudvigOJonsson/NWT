@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,13 +69,28 @@ namespace NWT
                         {
                             Device.BeginInvokeOnMainThread(async() =>
                             {
-                                App.Startpage.Detail = new LoadingPopUp();
-                                await System.Threading.Tasks.Task.Delay(1000);
-                                App.Startpage.Detail.BackgroundColor = Color.Red;
+
+                                LoadingPopUp x = new LoadingPopUp();
+                                x.loadingAnimation.Play();
+
+                                App.Startpage.Detail = x;
+                                
+                                
+
+                               
+
+                                
 
                             });
-                            await System.Threading.Tasks.Task.Delay(3000);
                             StartApp();
+                            await System.Threading.Tasks.Task.Delay(1000);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                Console.WriteLine("Initiering Klar");
+
+                                App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
+                                App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+                            });
 
                         });
 
@@ -114,25 +130,40 @@ namespace NWT
             await Navigation.PushAsync(new RegistrationPage());
         }
 
+        void Grafiker(object sender, EventArgs e)
+        {
+            App.Startpage.Detail = new NavigationPage(new GSampleTabbedPage());
+            //App.Startpage.Master = new NavigationPage(new GSampleSidemenu());
+        }
+
+
+
         public void StartApp()
         {
 
-            
 
-            App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
 
-            
 
 
             
+
+            var CustomNewsGridPage = (CustomNewsFeed)App.Mainpage.Children[0];
+            var NG = (NewsGridPage)App.Mainpage.Children[1];
+
+            NG.CreateFeed(0);
+            CustomNewsGridPage.CreateFeed();
             
             var x = (ProfilePage)App.Mainpage.Children[3];
             x.Login(App.LoggedinUser);
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
 
+            /*
+
+
+            
+            
             var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
-            var NG = (NewsGridPage)App.Mainpage.Children[1];
+            
             foreach (NewsGridPage.Article A in NG.ArticleList)
             {
                 foreach (HistoryTable HT in History)
@@ -148,13 +179,13 @@ namespace NWT
                     }
                 }
             }
-            /*
+            
             App.SideMenu.SetTags();
             var y = (CustomNewsFeed)App.Mainpage.Children[0];
             y.TagUpdate();
             */
 
-            
+
         }
 
     }

@@ -597,9 +597,11 @@ namespace NWT
             {
 
 
-                var Plus = new PlusRSSTable();
-                Plus.User = App.LoggedinUser.ID;
-                Plus.Article = Article;
+                var Plus = new PlusRSSTable
+                {
+                    User = App.LoggedinUser.ID,
+                    Article = Article
+                };
                 var Result = TCP(JsonConvert.SerializeObject(new JSONObj("Plus", "PlusCheck", JsonConvert.SerializeObject(Plus), App.LoggedinUser.ID)));
 
                 if (Result != null)
@@ -725,10 +727,12 @@ namespace NWT
         {
             if(App.Token != null)
             {
-             
-                var Token = new TokenTable();
-                Token.User = App.Token.User;
-                Token.Token = SHA256Hash(App.Token.Token + App.Token.User);            
+
+                var Token = new TokenTable
+                {
+                    User = App.Token.User,
+                    Token = SHA256Hash(App.Token.Token + App.Token.User)
+                };
                 var Result = TCP(JsonConvert.SerializeObject(new JSONObj("Token", "TokenCheck", JsonConvert.SerializeObject(Token), App.LoggedinUser.ID)));
                 if(Result != null)
                 {                                     

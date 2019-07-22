@@ -121,10 +121,7 @@ namespace NWT
 
             
 
-            for (int i = 0; i < DBLN; i++)
-            {
 
-            }
 
 
             TGR = new TapGestureRecognizer
@@ -136,6 +133,24 @@ namespace NWT
 
             if (Argc == 0)
             {
+            }
+            else 
+            {
+                CreateFeed(Argc);
+            }
+
+            
+
+
+
+
+            //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
+        }
+
+        public void CreateFeed(int Argc)
+        {
+            if (Argc == 0)
+            {
                 Console.WriteLine("NewsGrid");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -145,6 +160,7 @@ namespace NWT
                 LoadLocalDB();
 
                 AddNews(0);
+
             }
             else if (Argc == 1)
             {
@@ -183,14 +199,9 @@ namespace NWT
                 };
                 LoadFavorites();
             }
-
-
-
-
-
-
-            //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
+
+
 
         public void ArtikelClicked(object sender, EventArgs e)
         {
