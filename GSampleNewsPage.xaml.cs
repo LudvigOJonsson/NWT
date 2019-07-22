@@ -14,16 +14,11 @@ namespace NWT
     public partial class GSampleNewsPage : ContentPage
     {
 
-        public int red = (int)App.MC.R;
-        public int green = (int)App.MC.G;
-        public int blue = (int)App.MC.B;
-        public System.Timers.Timer Timer;
-        public static int ArticleNR;
-        public int CC = 8;
-        public bool Read = false;
+
+
         public int Row = 7;
         public bool Topimg = true;
-        public bool Favorited = false;
+  
 
         public GSampleNewsPage()
         {
@@ -56,7 +51,7 @@ namespace NWT
             ArticleImage.Source = "https://i.gyazo.com/2a102b448a1261f6e7fe6dc2b5c867d8.png";
 
 
-            var Order = new List<int>
+            var Order = new List<int> // 0 = Text, 1 = Bild
             {
                 0,
                 1,
@@ -80,12 +75,14 @@ namespace NWT
                 "https://i.gyazo.com/2e5c8c70a654cf4d8736a946fb021f66.png",
                 "https://i.gyazo.com/f495d95a612f1ebfa0128b3850b89aaa.jpg",
                 "https://i.gyazo.com/a5faf7c93be616e02c519a762c9bbb11.jpg"
+                
             };
             var ImageText = new List<string>
             {
                 "Thanks, I love being stabbed, it's my favourite pastime.",
                 "You know i need my Payday.... 2...",
                 "Remember that its faster to switch to your secondary than it is to reload"
+                
             };
 
             int Count = 0;

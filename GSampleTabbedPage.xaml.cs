@@ -19,7 +19,7 @@ namespace NWT
             
             Children[0] = new GSampleNewsGrid();
             Children[1] = new GSamplePage();            
-            Children[2] = new GSamplePage();
+            Children[2] = new GSamplePage2();
             Children[3] = new GSampleProfilePage();
 
 

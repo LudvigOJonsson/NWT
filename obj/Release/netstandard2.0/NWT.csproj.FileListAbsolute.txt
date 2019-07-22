@@ -94,3 +94,5 @@ C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\net
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\XamlC.stamp
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.dll
 C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\NWT.pdb
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\TutorialPopUp4.xaml.g.cs
+C:\Users\ludvi\Documents\Visual Studio 2019\Projects\NWT\NWT\NWT\obj\Release\netstandard2.0\TutorialPopUp5.xaml.g.cs
