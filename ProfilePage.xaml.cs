@@ -98,7 +98,13 @@ namespace NWT
                 IntroBackground.Color = Color.Green;
 
             }
-            if (step > 5)
+            if (step == 5)
+            {
+                PopupNavigation.Instance.PushAsync(new TutorialPopUp4());
+                App.LoggedinUser.TutorialProgress = 6;
+                RemoveIntro();
+            }
+            if (step == 6)
             {
                 RemoveIntro();
             }
