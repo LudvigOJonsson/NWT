@@ -6,10 +6,27 @@
              mc:Ignorable="d"
              x:Class="NWT.GSamplePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <Button x:Name="Button" WidthRequest="250" HeightRequest="250"
+                    BackgroundColor="#649FD4" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

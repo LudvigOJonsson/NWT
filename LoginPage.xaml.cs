@@ -17,8 +17,7 @@ namespace NWT
 		{
 			InitializeComponent ();
             BindingContext = this;
-            
-		}
+        }
 
 
         async void Login(object sender, EventArgs e)
@@ -26,7 +25,7 @@ namespace NWT
 
             //await Navigation.PushAsync(App.LoadingScreen);
 
-
+            
             
           
 
@@ -67,7 +66,7 @@ namespace NWT
 
                         await System.Threading.Tasks.Task.Run(async () =>
                         {
-                            Device.BeginInvokeOnMainThread(async() =>
+                            Device.BeginInvokeOnMainThread(() =>
                             {
 
                                 LoadingPopUp x = new LoadingPopUp();
@@ -84,7 +83,7 @@ namespace NWT
                             });
                             StartApp();
                             await System.Threading.Tasks.Task.Delay(1000);
-                            Device.BeginInvokeOnMainThread(async () =>
+                            Device.BeginInvokeOnMainThread( () =>
                             {
                                 Console.WriteLine("Initiering Klar");
 
@@ -97,6 +96,9 @@ namespace NWT
 
 
                     }
+                    App.SideMenu.SetTags();
+                    var y = (CustomNewsFeed)App.Mainpage.Children[0];
+                    y.TagUpdate();
                 }
                 else
                 {
@@ -141,12 +143,6 @@ namespace NWT
         public void StartApp()
         {
 
-
-
-
-
-            
-
             var CustomNewsGridPage = (CustomNewsFeed)App.Mainpage.Children[0];
             var NG = (NewsGridPage)App.Mainpage.Children[1];
 
@@ -156,34 +152,10 @@ namespace NWT
             var x = (ProfilePage)App.Mainpage.Children[3];
             x.Login(App.LoggedinUser);
 
-            /*
-
-
+           
             
-            
-            var History = App.database.GetAllHistory(App.LoggedinUser.ID);
 
             
-            foreach (NewsGridPage.Article A in NG.ArticleList)
-            {
-                foreach (HistoryTable HT in History)
-                {
-                    if (A.ID == HT.Article)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            //A.CheckImage.Source = "checkmark.png";
-                            //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
-                        });
-
-                    }
-                }
-            }
-            
-            App.SideMenu.SetTags();
-            var y = (CustomNewsFeed)App.Mainpage.Children[0];
-            y.TagUpdate();
-            */
 
 
         }

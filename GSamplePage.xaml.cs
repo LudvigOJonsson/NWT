@@ -15,6 +15,11 @@ namespace NWT
         public GSamplePage()
         {
             InitializeComponent();
+
+
+            Button.CornerRadius = (int)((Button.WidthRequest + Button.HeightRequest) / 4);
+
+
         }
     }
 }

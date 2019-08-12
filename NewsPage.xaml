@@ -23,7 +23,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15" />
@@ -82,8 +81,16 @@
                 </Image.GestureRecognizers>
             </Image>
 
+            <Button x:Name="TagSelectButton" Text="Tagglista!" 
+                    Clicked="TagSelected"  TextColor="Black" 
+                    HorizontalOptions="Start" WidthRequest="100" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
 
-            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6">
+            <Button x:Name="CommentSelectButton" Text="Kommentarer!" 
+                    Clicked="CommentSelected"  TextColor="Black" 
+                    HorizontalOptions="End" WidthRequest="100" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+            
+
+            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="Gray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -97,22 +104,11 @@
             </Grid>
 
 
-            <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"   Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
+            <Entry Placeholder="Write a comment..." x:Name="CommentEntry" FontSize="16"  TextColor="Black" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
             <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
-            <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-            </Grid>
+
 
         </Grid>
     </ScrollView>

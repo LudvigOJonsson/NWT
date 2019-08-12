@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,7 +27,7 @@ namespace NWT
         public string Filter = "All";
         public string Author = "";
         public string Tag = "";
-
+        public ListView ArticleListView;
         public int PREV = 0;
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
@@ -35,6 +36,33 @@ namespace NWT
 
         public bool First = true;
         public int argc = 0;
+
+
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    IsRefreshing = true;
+
+                    ListViewScroll();
+                    await System.Threading.Tasks.Task.Delay(1000);
+                    IsRefreshing = false;
+                });
+            }
+        }
 
         public class Article
         {
@@ -119,10 +147,10 @@ namespace NWT
         {
             InitializeComponent();
 
+            NewsSV.ClassId = null;
+
+
             
-
-
-
 
             TGR = new TapGestureRecognizer
             {
@@ -136,6 +164,7 @@ namespace NWT
             }
             else 
             {
+                
                 CreateFeed(Argc);
             }
 
@@ -146,6 +175,204 @@ namespace NWT
 
             //NewsButtonN.Image = ImageSource.FromFile("newsfeed.png");
         }
+
+        public void CreateListView()
+        {
+            ArticleListView = new ListView
+            {
+                // Source of data items.
+                
+                ItemsSource = ArticleList,
+                HasUnevenRows = true,
+                SeparatorVisibility = SeparatorVisibility.None,
+                BackgroundColor = Color.FromHex("#FFFFFF"),
+                IsPullToRefreshEnabled = true,
+                Footer = Down,
+                RefreshCommand = RefreshCommand,
+                IsRefreshing = IsRefreshing,
+                
+
+
+
+
+                // Define template for displaying each item.
+                // (Argument of DataTemplate constructor is called for 
+                //      each item; it must return a Cell derivative.)
+                ItemTemplate = new DataTemplate(() =>
+                {
+                    // Create views with bindings for displaying each property.
+                    int IMGXC = 200;
+                    //int IMGYC = 250;
+
+                    Label Label = new Label
+                    {
+                        //Text = NF.Header,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        FontSize = 25,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+
+                        TextColor = Color.Black,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 0),
+                    };
+
+                    Label.SetBinding(HeightRequestProperty, "HeaderLength");
+
+                    Image Image = new Image
+                    {
+
+
+                        //Source = NF.Image,
+                        WidthRequest = IMGXC,
+                        //HeightRequest = IMGYC,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        Aspect = Aspect.AspectFill,
+                        InputTransparent = true,
+
+                        // ClassId = NF.Article.ToString()
+
+
+                    };
+
+                    Image.SetBinding(HeightRequestProperty, "IHR");
+
+                    Button Box = new Button
+                    {
+                        BackgroundColor = Color.White,
+                        WidthRequest = IMGXC,
+                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        //ClassId = NF.Article.ToString(),
+                        BorderColor = Color.FromHex("#f0f0f0"),
+
+
+                    };
+
+                    Box.SetBinding(HeightRequestProperty, "BHR");
+
+                    if (argc == 1)
+                    {
+                        Box.Clicked += ArtikelClicked;
+                    }
+                    else
+                    {
+                        Box.Clicked += LoadNews;
+                    }
+
+
+                    BoxView ArticleMargin = new BoxView
+                    {
+                        Color = Color.FromHex("#f2f2f2"),
+                        WidthRequest = IMGXC,
+                        HeightRequest = 20,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        //ClassId = NF.Article.ToString()
+                    };
+
+                    BoxView CategoryBox = new BoxView
+                    {
+
+                        BackgroundColor = App.MC,
+                        ///WidthRequest = Label.WidthRequest,
+                        //HeightRequest = 3,
+                        //HorizontalOptions =,
+                        //VerticalOptions = LayoutOptions.Start,
+                        InputTransparent = true,
+
+                    };
+
+                    Image Shadow = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        InputTransparent = true,
+                        Source = "shadow.png"
+                    };
+
+                    //Label.GestureRecognizers.Add(TGR);
+                    //Image.GestureRecognizers.Add(TGR);
+
+                    CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
+                    CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
+                    CategoryBox.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
+                    CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
+
+                    Label.SetBinding(Label.TextProperty, "Header");
+                    Image.SetBinding(Image.SourceProperty, "IMGSource");
+
+                    Label.SetBinding(Label.ClassIdProperty, "ID");
+                    Image.SetBinding(Image.ClassIdProperty, "ID");
+
+                    Box.SetBinding(Button.ClassIdProperty, "ID");
+
+                    ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
+
+                    var Grid = new Grid
+                    {
+
+                        RowDefinitions = {
+                    new RowDefinition { Height = 20 },
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
+
+                    },
+
+                        ColumnDefinitions = {
+                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = 1 },
+                    },
+                        RowSpacing = 0,
+                        ColumnSpacing = 14,
+                        BackgroundColor = Color.FromHex("#f2f2f2")
+
+
+
+                    };
+
+
+
+
+
+                    //Label.HeightRequest = ((Label.Text.Length / 30)) * 50;
+                    Label.WidthRequest = Label.Width - 25;
+
+
+                    Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
+                    Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
+                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(Label, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(Shadow, 1, 2, 3, 4);
+
+
+                    Console.WriteLine("Utdata: " + Label.Text);
+
+
+
+                    // Return an assembled ViewCell.
+                    return new ViewCell
+                    {
+                        View = Grid
+                    };
+                })
+
+            };
+
+
+
+        }
+
+
 
         public void CreateFeed(int Argc)
         {
@@ -248,13 +475,9 @@ namespace NWT
 
         public void PrintNews()
         {
-            int Start = 0;
-            int End = 0;
+
             Rownr = 1;
 
-
-            Start = PREV;
-            End = CURR;
 
             NewsGrid.Children.Clear();
 
@@ -263,192 +486,12 @@ namespace NWT
                 NewsGrid.Children.Add(Up, 0, 3, 0, 1);
             }
 
-            ListView listView = new ListView
-            {
-                // Source of data items.
+            CreateListView();
 
-                ItemsSource = ArticlePrintList,
-                HasUnevenRows = true,
-                SeparatorVisibility = SeparatorVisibility.None,
-                BackgroundColor = Color.FromHex("#FFFFFF"),
+            NewsGrid.Children.Add(ArticleListView, 0, 3, 1, 2);
+            //NewsGrid.Children.Add(Down, 0, 3, 2, 3);
 
-            // Define template for displaying each item.
-            // (Argument of DataTemplate constructor is called for 
-            //      each item; it must return a Cell derivative.)
-                ItemTemplate = new DataTemplate(() =>
-                {
-                    // Create views with bindings for displaying each property.
-                    int IMGXC = 200;
-                    //int IMGYC = 250;
-
-                    Label Label = new Label
-                    {
-                        //Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
-                        FontSize = 25,
-                        FontAttributes = FontAttributes.Bold,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        
-                        TextColor = Color.Black,
-                        //ClassId = NF.Article.ToString(),
-                        InputTransparent = true,
-                        Margin = new Thickness(15, 5, 15, 0),
-                    };
-
-                    Label.SetBinding(HeightRequestProperty,"HeaderLength");
-
-                    Image Image = new Image
-                    {
-
-
-                        //Source = NF.Image,
-                        WidthRequest = IMGXC,
-                        //HeightRequest = IMGYC,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        Aspect = Aspect.AspectFill,
-                        InputTransparent = true,
-                        
-                        // ClassId = NF.Article.ToString()
-
-
-                    };
-
-                    Image.SetBinding(HeightRequestProperty, "IHR");
-
-                    Button Box = new Button
-                    {
-                        BackgroundColor = Color.White,
-                        WidthRequest = IMGXC,
-                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        //ClassId = NF.Article.ToString(),
-                        BorderColor = Color.FromHex("#f0f0f0"),
-                        
-                        
-                    };
-
-                    Box.SetBinding(HeightRequestProperty, "BHR");
-
-                    if (argc == 1)
-                    {
-                        Box.Clicked += ArtikelClicked;
-                    }
-                    else
-                    {
-                        Box.Clicked += LoadNews;
-                    }
-
-
-                    BoxView ArticleMargin = new BoxView
-                    {
-                        Color = Color.FromHex("#f2f2f2"),
-                        WidthRequest = IMGXC,
-                        HeightRequest = 20,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.Fill,
-                        InputTransparent = true,
-                        //ClassId = NF.Article.ToString()
-                    };
-
-                    BoxView CategoryBox = new BoxView
-                    {
-                        
-                        BackgroundColor = App.MC,
-                        ///WidthRequest = Label.WidthRequest,
-                        //HeightRequest = 3,
-                        //HorizontalOptions =,
-                        //VerticalOptions = LayoutOptions.Start,
-                        InputTransparent = true,
-                        
-                    };
-
-                    Image Shadow = new Image
-                    {
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        VerticalOptions = LayoutOptions.Fill,
-                        InputTransparent = true,
-                        Source = "shadow.png"
-                    };
-
-                    //Label.GestureRecognizers.Add(TGR);
-                    //Image.GestureRecognizers.Add(TGR);
-
-                    CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
-                    CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
-                    CategoryBox.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
-                    CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
-
-                    Label.SetBinding(Label.TextProperty, "Header");
-                    Image.SetBinding(Image.SourceProperty, "IMGSource");
-
-                    Label.SetBinding(Label.ClassIdProperty, "ID");
-                    Image.SetBinding(Image.ClassIdProperty, "ID");
-
-                    Box.SetBinding(Button.ClassIdProperty, "ID");
-        
-                    ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
-
-                    var Grid = new Grid
-                    {
-                        
-                        RowDefinitions = {
-                    new RowDefinition { Height = 20 },
-                    new RowDefinition { Height = GridLength.Auto },
-                    new RowDefinition { Height = GridLength.Auto },
-                    new RowDefinition { Height = GridLength.Auto },
-
-                    },
-
-                        ColumnDefinitions = {
-                    new ColumnDefinition { Width = 1 },
-                    new ColumnDefinition { Width = GridLength.Star },
-                    new ColumnDefinition { Width = 1 },
-                    },
-                        RowSpacing = 0,
-                        ColumnSpacing = 14,
-                        BackgroundColor = Color.FromHex("#f2f2f2")
-
-
-
-                    };
-
-
-
-
-
-                    //Label.HeightRequest = ((Label.Text.Length / 30)) * 50;
-                    Label.WidthRequest = Label.Width - 25;
-
-
-                    Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
-                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(Shadow, 1, 2, 3, 4);
-
-
-                    Console.WriteLine("Utdata: " + Label.Text);
-
-                    
-
-                    // Return an assembled ViewCell.
-                    return new ViewCell
-                    {
-                        View = Grid
-                    };
-                })
-                
-            };
-           
-            NewsGrid.Children.Add(listView, 0, 3, 1, 2);
-            NewsGrid.Children.Add(Down, 0, 3, 2, 3);
-
-
+            First = false;
 
         }
 
@@ -554,8 +597,11 @@ namespace NWT
             {
                 ArticlePrintList.Add(ArticleList[j]);
             }
+            if (First)
+            {
+                PrintNews();
+            }
             
-            PrintNews();
         }
 
         public async void Scrollup(object sender, EventArgs e)
@@ -581,7 +627,7 @@ namespace NWT
 
                 LoadLocalDB();
                 AddNews(argc);
-                await NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
+                await NewsSV.ScrollToAsync(0, NewsGrid.Children[1].Height - 10, false);
 
                 GC.Collect();
 
@@ -592,23 +638,62 @@ namespace NWT
         public async void Scrolldown(object sender, EventArgs e)
         {
             IsBusy = true;
+            ArticleListView.IsRefreshing = true;
             if (argc == 0)
             {
-                PREV = CURR;
+                PREV = 0;
                 CURR = NEXT;
                 NEXT += DBLN;
 
                 Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
 
+                double height = NewsSV.ContentSize.Height - 10;
 
                 LoadLocalDB();
                 AddNews(argc);
-                await NewsSV.ScrollToAsync(0, 10, false);
+
+
+                ArticleListView.ItemsSource = null;
+                ArticleListView.ItemsSource = ArticleList;
+
+                await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
 
                 GC.Collect();
 
             }
+            ArticleListView.IsRefreshing = false;
             IsBusy = false;
         }
+
+        public async void ListViewScroll()
+        {
+            IsBusy = true;
+            ArticleListView.IsRefreshing = true;
+            if (argc == 0)
+            {
+                PREV = 0;
+                CURR = NEXT;
+                NEXT += DBLN;
+
+                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+
+                double height = NewsSV.ContentSize.Height - 10;
+
+                LoadLocalDB();
+                AddNews(argc);
+
+                ArticleListView.ItemsSource = null;
+                ArticleListView.ItemsSource = ArticleList;
+
+
+                await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+
+                GC.Collect();
+
+            }
+            ArticleListView.IsRefreshing = false;
+            IsBusy = false;
+        }
+
     }
 }

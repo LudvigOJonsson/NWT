@@ -586,14 +586,14 @@ namespace NWT
                     
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
 
-                    AdArticleMargin.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
-                    AdShadow.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
-                    AdBox.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
-                    AdImageOutline.SetBinding(BoxView.IsVisibleProperty, "adVisibility");
-                    AdImage.SetBinding(Image.IsVisibleProperty, "adVisibility");
-                    AdLabel.SetBinding(Label.IsVisibleProperty, "adVisibility");
-                    AdLabel.SetBinding(Label.TextProperty, "adText");
-                    AdImage.SetBinding(Image.SourceProperty, "adSource");
+                    AdArticleMargin.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
+                    AdShadow.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
+                    AdBox.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
+                    AdImageOutline.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
+                    AdImage.SetBinding(Image.IsVisibleProperty, "AdVisibility");
+                    AdLabel.SetBinding(Label.IsVisibleProperty, "AdVisibility");
+                    AdLabel.SetBinding(Label.TextProperty, "AdText");
+                    AdImage.SetBinding(Image.SourceProperty, "AdSource");
 
 
 
