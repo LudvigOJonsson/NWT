@@ -4,7 +4,7 @@
              x:Class="NWT.NewsGridPage"
              Icon="heart.png"
              Title="Mina val"
-             BackgroundColor="#f2f2f2">
+             BackgroundColor="#BCBCBC">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
         <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->

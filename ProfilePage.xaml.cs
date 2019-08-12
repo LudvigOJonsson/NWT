@@ -240,7 +240,7 @@ namespace NWT
                 m1t3.Text = "" + M1T +" Tokens";
                 if (Tasklist[0].Progress >=  Tasklist[0].Goal)
                 {
-                    m1.BackgroundColor = Color.FromHex("FFDF00");
+                    m1.BackgroundColor = Color.FromHex("#649FD4");
                     M1HI = true;
                 }
             }

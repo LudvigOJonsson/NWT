@@ -48,8 +48,8 @@ namespace NWT
                 {
 
                     //FOR TESTING ONLY
-                    //App.LoggedinUser.TutorialProgress = 0;
-                    //App.database.UpdateTutorialProgress(App.LoggedinUser);
+                    App.LoggedinUser.TutorialProgress = 0;
+                    App.database.UpdateTutorialProgress(App.LoggedinUser);
                     //REMOVE FOR OFFICIAL RELEASE
 
                     if (App.LoggedinUser.TutorialProgress == 0)

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj": {}
+    "C:\\Users\\Olli_\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj": {
+    "C:\\Users\\Olli_\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
+        "projectUniqueName": "C:\\Users\\Olli_\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
         "projectName": "NWT",
-        "projectPath": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
-        "packagesPath": "C:\\Users\\ludvi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ludvi\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\obj\\",
+        "projectPath": "C:\\Users\\Olli_\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\NWT.csproj",
+        "packagesPath": "C:\\Users\\Olli_\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Olli_\\Documents\\Visual Studio 2019\\Projects\\NWT\\NWT\\NWT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ludvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Olli_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

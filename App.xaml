@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--c8c8c8  50d2c2-->
-            <Color x:Key="backgroundColor">#50d2c2</Color>
+            <Color x:Key="backgroundColor">#649FD4</Color>
             <Color x:Key="backgroundColor2">Gray</Color>
             <Color x:Key="textColorWhite">White</Color>
             <Color x:Key="textColorBlack">Black</Color>
@@ -25,7 +25,7 @@
             </Style>
 
             <!-- Pallete 50d2c2 -->
-            <Color x:Key="primary-back-title-color">#2f6e83</Color>
+            <Color x:Key="primary-back-title-color">#649FD4</Color>
             <Color x:Key="primary-title-color">#FFFFFF</Color>
             <!-- Pallete-end -->
             <Style x:Name="AppStyle" x:FieldModifier="public" ApplyToDerivedTypes="true" TargetType="NavigationPage">

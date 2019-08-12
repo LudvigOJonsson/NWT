@@ -25,42 +25,35 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                   
+                           
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="15" />
                 </Grid.ColumnDefinitions>
-                
-                <forms:AnimationView 
-	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
-                    VerticalOptions="FillAndExpand"
-	                HorizontalOptions="FillAndExpand"
-	                Animation="confetti.json" 
-	                Loop="false" 
-	                AutoPlay="true"
-	                />
-                <!--
-                <Image Source="hamburger.png" Grid.Row="0" Grid.Column="0" Margin="25"/>
-                <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Margin="25"/>
-                <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" Margin="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
--->
-                <Label Text=" Grattis! Du har nu anpassat ditt flöde. Gå till profilsidan för att vidare anpassa din upplevelse!" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
-                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Button CornerRadius="25" BackgroundColor="#4576A2" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
+                <Button CornerRadius="25" BackgroundColor="#848484" Grid.Row="2" Grid.Column="1" Margin="20"/>
+                <Button CornerRadius="25" BackgroundColor="#FFFFFF" Grid.Row="2" Grid.Column="1" Margin="25" />
+              
+                <Label Text="Nu ska du få välja din Avatar :)!" Grid.Row="2" Grid.Column="1" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  TextColor="Black" FontAttributes="Bold"/>
 
-                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="Intro_1" Source="Intro_1.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10" Aspect="AspectFit"/>
 
-                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+
+                <!-- <BoxView Grid.Row="1" Grid.Column="1"  Margin="15" BackgroundColor="AntiqueWhite"  />
+                <Image Source="Intro_1.png" Grid.Row="0" Grid.Column="1"/> 
+                <Label Text="Nu ska du få välja avatar :) !" Grid.Row="3" Grid.RowSpan="5" Grid.Column="1" FontAttributes="Bold" FontSize="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/> -->
+
 
             </Grid>
         </ContentView>

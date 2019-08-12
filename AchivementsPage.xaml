@@ -29,76 +29,97 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
                 </Grid.ColumnDefinitions>
 
                 <forms:AnimationView 
                     Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"
 	                x:Name="animationView" 	                 
 	                Animation="trophy.json" 
-	                Loop="false" 
+	                Loop="False" 
 	                AutoPlay="true" 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"/>
-                <Label x:Name="Trophylabel" Text="Troféer" FontSize="28" TextColor="#2f6e83" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="2"  Grid.Column="1"/>
+                
+               <!-- <BoxView BackgroundColor="#40000000" Grid.Row="2" Grid.Column="1" Margin="7" />
+                <BoxView BackgroundColor="#649FD4" Grid.Row="2" Grid.Column="1" Margin="10"/> -->
 
-                <Button x:Name="PE1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" CornerRadius="0" Margin="0"/>
-                <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="newsfeedWhite.png" Margin="10"/>
+         
+
+
+                <BoxView Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" BackgroundColor="#649FD4"  />
+                <BoxView Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" BackgroundColor="#649FD4"  />
+
+                <Label x:Name="Trophylabel" Text="Troféer" FontSize="26" TextColor="#000000" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+
+                <Button x:Name="Shadow" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" CornerRadius="0" Margin="10"/>
+                <Image Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="newsfeedWhite.png" Margin="8"/>
                 <Label x:Name="articleReadText" FontSize="16" TextColor="#FFFFFF" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Artiklar Lästa"/>
-                <Label x:Name="articleReadNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
-                <BoxView x:Name="articleReadProgressBar" BackgroundColor="#00f9ff" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
+                <Label x:Name="articleReadNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
+                <BoxView x:Name="articleReadProgressBar" BackgroundColor="#00f9ff" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE2" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow2" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE2" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="tokeniconWhite.png" Margin="10"/>
                 <Label x:Name="tokensCollectedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Tokens Insamlade"/>
-                <Label x:Name="tokensCollectedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
-                <BoxView x:Name="tokensCollectedProgressBar" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
+                <Label x:Name="tokensCollectedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
+                <BoxView x:Name="tokensCollectedProgressBar" BackgroundColor="#33A537" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE3" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow3" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE3" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="communityWhite.png" Margin="5"/>
                 <Label x:Name="insandareReadText" FontSize="16" TextColor="#FFFFFF" Grid.Row="5" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Insändare Lästa"/>
-                <Label x:Name="insandareReadNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
+                <Label x:Name="insandareReadNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="5" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="insandareReadProgressBar" BackgroundColor="#00f9ff" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE4" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow4" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE4" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="profileWhite.png" Margin="10"/>
                 <Label x:Name="commentsPostedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="6" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Kommentarer Skrivna"/>
-                <Label x:Name="commentsPostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="6" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
+                <Label x:Name="commentsPostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="6" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="commentsPostedProgressBar" BackgroundColor="#00f9ff" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE5" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="communityWhite.png" Margin="10"/>
                 <Label x:Name="insandarePostedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="7" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Insändare Skrivna"/>
-                <Label x:Name="insandarePostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
+                <Label x:Name="insandarePostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="7" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="insandarePostedProgressBar" BackgroundColor="#00f9ff" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE6" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow6" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE6" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="8" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="communityWhite.png" Margin="10"/>
                 <Label x:Name="questionPostedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="8" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Lokalfråga Skapta"/>
-                <Label x:Name="questionPostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="8" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
-                <BoxView x:Name="questionPostedProgressBar" BackgroundColor="#00f9ff" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
+                <Label x:Name="questionPostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="8" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center" Text="X/X"/>
+                <BoxView x:Name="questionPostedProgressBar" BackgroundColor="#0EB63C" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE7" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow7" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE7" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="9" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="playWhite.png" Margin="10"/>
                 <Label x:Name="quizPostedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="9" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Quizfrågor Skapta"/>
                 <Label x:Name="quizPostedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="9" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="quizPostedProgressBar" BackgroundColor="#00f9ff" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE8" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow8" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE8" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="10" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="playWhite.png" Margin="10"/>
                 <Label x:Name="gamesFinishedText" FontSize="16" TextColor="#FFFFFF" Grid.Row="10" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Spel Avklarade"/>
                 <Label x:Name="gamesFinishedNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="10" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="gamesFinishedProgressBar" BackgroundColor="#00f9ff" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE9" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow9" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE9" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="11" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="communityWhite.png" Margin="10"/>
                 <Label x:Name="questionAnsweredText" FontSize="16" TextColor="#FFFFFF" Grid.Row="11" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Lokalfråga Svarade"/>
                 <Label x:Name="questionAnsweredNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="11" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
                 <BoxView x:Name="questionAnsweredProgressBar" BackgroundColor="#00f9ff" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="StartAndExpand" VerticalOptions="End" HeightRequest="4" Margin="0"/>
 
-                <Button x:Name="PE10" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#2f6e83" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="0"/>
+                <Button x:Name="Shadow10" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#40000000" CornerRadius="0" Margin="5"/>
+                <Button x:Name="PE10" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Clicked="ShowPopup" BackgroundColor="#649FD4" BorderColor="Black" BorderRadius="1" CornerRadius="0" Margin="8"/>
                 <Image Grid.Row="12" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="playWhite.png" Margin="10"/>
                 <Label x:Name="quizAnsweredText" FontSize="16" TextColor="#FFFFFF" Grid.Row="12" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="X Quiz Svarade"/>
                 <Label x:Name="quizAnsweredNumber" FontSize="16" TextColor="#FFFFFF" Grid.Row="12" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="X/X"/>
