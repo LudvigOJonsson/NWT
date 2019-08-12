@@ -4,29 +4,149 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="NWT.GSamplePage">
+             x:Class="NWT.GSamplePage"
+             BackgroundColor="#f2f2f2">
+
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="15" />
 
-            </Grid.RowDefinitions>
+        <ScrollView x:Name="NewsPageView" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="15" />
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5"/>
+                </Grid.RowDefinitions>
 
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Image Source="Background_01"  Grid.Row="0" Grid.RowSpan="6" Grid.Column="0"  Grid.ColumnSpan="5" Opacity="0.05" WidthRequest="300" HeightRequest="600" HorizontalOptions="FillAndExpand"/>
+
+                <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000"/>
+                <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="3"/>
+                <Label Text="Välkommen, Oliver!" Grid.Row="1" FontAttributes="Bold" FontSize="28" TextColor="White" Grid.Column="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
 
-            <Button x:Name="Button" WidthRequest="250" HeightRequest="250"
-                    BackgroundColor="#649FD4" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-        </Grid>
+                <Button WidthRequest="284" HeightRequest="284" CornerRadius="142"
+                    BackgroundColor="#40000000" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center"  />
+
+                <Button x:Name="Button"  WidthRequest="280" HeightRequest="280"
+                    BackgroundColor="#649FD4" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center"  />
+
+
+                <ImageButton  WidthRequest="260" HeightRequest="260" CornerRadius="130"
+                    BackgroundColor="#f2f2f2" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"  HorizontalOptions="Center" VerticalOptions="Center"/>
+
+
+
+                <!-- <Button Grid.Row="3" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000"/> -->
+                <!--    <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="5" /> -->
+
+                <BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="3" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" ImageSource="heart.png" />
+                 
+                
+                
+                
+                
+                <!-- is currently streching buttons next to it unsure if that is to continue-->
+               <ImageButton 
+	                Grid.Row="3" Grid.Column="2"
+                 	Source="tokenicon.png"
+                    Scale="0.9"/>
+
+                <Label Grid.Row="3" Grid.Column="2" Text="45" FontSize="35" TextColor="BLACK" VerticalTextAlignment="End" HorizontalTextAlignment="Center" />
+
+                <!-- <BoxView Grid.Row="3" Grid.Column="2" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="3" Grid.Column="2" BackgroundColor="#649FD4" Margin="10" ImageSource="shirtSmol.png" /> -->
+
+                <BoxView Grid.Row="3" Grid.Column="3" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="3" Grid.Column="3" BackgroundColor="#649FD4" Margin="10" ImageSource="knapp.png"/>
+
+
+
+                <!-- <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="5"/> -->
+
+                <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" ImageSource="settings.png"/>
+
+                <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="4" Grid.Column="2" BackgroundColor="#649FD4" Margin="10" Image="edit.png"/>
+
+                <BoxView Grid.Row="4" Grid.Column="3" BackgroundColor="#40000000" Margin="8"/>
+                <Button Grid.Row="4" Grid.Column="3" BackgroundColor="#649FD4" Margin="10" ImageSource="history.png"/>
+
+
+
+
+
+                <BoxView Grid.Row="5"/>
+
+                <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="48" HorizontalOptions="CenterAndExpand"/>
+                <BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="50" HorizontalOptions="CenterAndExpand"/>
+
+                <Image Source="Background_01"  Grid.Row="6" Grid.RowSpan="10" Grid.Column="0"  Grid.ColumnSpan="5" Opacity="0.05" WidthRequest="300" HeightRequest="600" HorizontalOptions="FillAndExpand"/>
+
+                <BoxView Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000"/>
+                <BoxView Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="3"/>
+                <Label Text="Achievements!" Grid.Row="6" FontAttributes="Bold" FontSize="28" TextColor="White" Grid.Column="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+
+
+                
+                
+                
+                
+                <BoxView Grid.Row="8" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
+                <ImageButton Grid.Row="8" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" Source="slaicon.png"/>
+
+                <BoxView Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="8"/>
+                <BoxView Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="10"/>
+                <Label Text="5/25 Artiklar lästa" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="20" FontSize="20" FontAttributes="Bold"/>
+                
+                
+                
+                <BoxView Grid.Row="9" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
+                <ImageButton Grid.Row="9" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" Source="edit.png" />
+
+
+                <BoxView Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="8"/>
+                <BoxView Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="10"/>
+                <Label Text="2/10 Hemligheter" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="20" FontSize="20" FontAttributes="Bold"/>
+
+
+
+                <BoxView Grid.Row="10" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
+                <ImageButton Grid.Row="10" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" Source="exclaimation.png"/>
+
+
+                <BoxView Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="8"/>
+                <BoxView Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="10"/>
+                <Label Text="9/14 Gillade Kommentarer" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="3" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="20" FontSize="20" FontAttributes="Bold"/>
+
+
+
+
+
+
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

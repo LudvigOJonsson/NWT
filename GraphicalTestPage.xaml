@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NWT.GraphicalTestPage"
+             BackgroundColor="#e8bbed">
+    <ContentPage.Content>
+        <ScrollView x:Name="NewsPageView" >
+            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
+                <Grid.RowDefinitions>                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="15" />
+                </Grid.ColumnDefinitions>
+
+
+
+                <Entry Placeholder="Graphical Test Page" x:Name="Comment" FontSize="18"   Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="350" Margin="1"/>
+
+
+                <Label Text="Today was an Ok day, and tomorrow will also be an OK day." x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,0,20" FontSize="12" FontAttributes="Bold,Italic" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" TextDecorations="Underline"/>
+
+                <Label Text="Gustavo Tiberius" x:Name="Author" Margin="0,0,0,0" FontSize="12" TextColor="#36454f" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+                
+
+                <Label Text="Epic Adventures of Me, Myself and I." x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,10" FontSize="12" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
+               
+
+               
+                <BoxView BackgroundColor="#FFFFFF" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="5"/>
+
+
+
+                 <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
+                    Grid.Column="4" Grid.ColumnSpan="5" Grid.Row="1" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="star.png" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer  NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image> 
+
+
+
+               <Image x:Name="Mario" Source="Mario.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="6" Margin="0" 
+                        HeightRequest="264" WidthRequest="191" BackgroundColor="Transparent"
+                       Grid.ColumnSpan="3" Grid.RowSpan="4"
+                     />  
+                
+                
+              
+
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

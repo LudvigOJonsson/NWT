@@ -10,18 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace NWT
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GSamplePage : ContentPage
+    public partial class GraphicalTestPage : ContentPage
     {
-        public GSamplePage()
+        public GraphicalTestPage()
         {
             InitializeComponent();
-
-
-            Button.CornerRadius = (int)((Button.WidthRequest + Button.HeightRequest) / 4);
-
         }
-
-       
-         
     }
 }

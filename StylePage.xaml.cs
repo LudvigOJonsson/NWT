@@ -44,7 +44,7 @@ namespace NWT
             }
             else if (Style == "LightBlue")
             {
-                ColorFunction(Color.FromHex("#57bcbf"));
+                ColorFunction(Color.FromHex("#649FD4"));
             }
             else if (Style == "Purple")
             {
