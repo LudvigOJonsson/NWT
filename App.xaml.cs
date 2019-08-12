@@ -45,7 +45,7 @@ namespace NWT
                 Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), },
                 Detail = new NavigationPage(Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"),  }
             };
-
+            
             Timer = new System.Timers.Timer
             {
                 Interval = 60000

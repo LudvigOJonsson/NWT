@@ -79,13 +79,19 @@ namespace NWT
             var Box = new Subject(s,Type);
 
 
-            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
+            
 
-            NewsGridOri.Children.Add(Box.Box, 1, 7, Rownr, Rownr + 1); //Boxview
-            NewsGridOri.Children.Add(Box.Label, 1, 7, Rownr, Rownr + 1); //Label
-            NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
-            NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
+           
+                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                NewsGridOri.Children.Add(Box.Box, 1, 7, Rownr, Rownr + 1); //Boxview
+                NewsGridOri.Children.Add(Box.Label, 1, 7, Rownr, Rownr + 1); //Label
+                NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
+                NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
+
+           
+
+
             
 
 
@@ -136,7 +142,8 @@ namespace NWT
                 Box = new Button
                 {
                     BackgroundColor = Color.LightGray,
-                    ClassId = s
+                    ClassId = s,
+                    HeightRequest = 20
                 };
 
                 if (Type == 0)

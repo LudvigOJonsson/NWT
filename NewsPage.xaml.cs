@@ -13,31 +13,53 @@ namespace NWT
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewsPage : ContentPage
     {
-        
-        public int red = (int)App.MC.R;
-        public int green = (int)App.MC.G;
-        public int blue = (int)App.MC.B;
+
+        public int red = 255;
+        public int green = 255;
+        public int blue = 255;
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
         public bool Read = false;
-        public int Row = 7;
+        public int Row = 6;
         public bool Topimg = true;
         public bool Favorited = false;
+        public ListView CommentListView;
+        public List<CommentTable> CommentTableList = new List<CommentTable>();
+        public List<Comment> CommentList = new List<Comment>();
+        public class Comment
+        {
+            public UserTable User { get; set; }
+            public string UserName { get; set; }
+            public string UserAvatar { get; set; }
+            public string CommentText { get; set; }
+            public int CommentNR { get; set; }           
+            public CommentTable CB { get; set; }
+
+            public Comment(CommentTable s)
+            {
+                CB = s;
+                User = App.database.GetUser(s.User).First();
+                UserName = User.Name;
+                UserAvatar = "";
+                CommentText = CB.Comment;
+                CommentNR = s.CommentNR;
+            }
+        }
+
+
 
         public NewsPage(RSSTable RSS, int argc)
         {
             InitializeComponent();
 
-            red = (int)App.MC.R  + (255 -(int)App.MC.R -1);
-            green = (int)App.MC.G + (255 - (int)App.MC.G - 1);
-            blue = (int)App.MC.B + (255 - (int)App.MC.B - 1);
+
 
             Category.TextColor = App.MC;
             FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
             {
-                bool read = false;
+                bool read = true;
                 var History = App.database.GetAllHistory(App.LoggedinUser.ID);
                 foreach (HistoryTable HT in History)
                 {
@@ -54,13 +76,12 @@ namespace NWT
                     TimerButton.Text = "Samlad";
                     Read = true;
                     NewsPageView.BackgroundColor = App.MC;
-                    //Dot.TextColor = Color.FromRgb(47, 110, 131); 
                     TimerButton.BackgroundColor = App.MC;
                                      
                 }
                 else
                 {
-                    NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                    NewsPageView.BackgroundColor = Color.White;
                     Timer = new System.Timers.Timer
                     {
                         Interval = 60
@@ -94,8 +115,20 @@ namespace NWT
             
         }
 
- 
-
+        void TagSelected(object sender, EventArgs e)
+        {
+            CommentEntry.IsVisible = false;
+            CommentButton.IsVisible = false;
+            CommentListView.IsVisible = false;
+            TagGrid.IsVisible = true;
+        }
+        void CommentSelected(object sender, EventArgs e)
+        {
+            CommentEntry.IsVisible = true;
+            CommentButton.IsVisible = true;
+            CommentListView.IsVisible = true;
+            TagGrid.IsVisible = false;
+        }
         void LoadNews(RSSTable RSS)
         {
             ArticleNR = RSS.ID;
@@ -306,17 +339,23 @@ namespace NWT
 
 
 
+
+
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
-            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 3);
+            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
             ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(Comment, 0, 6, Row + 3, Row + 4);
+
+            ArticleGrid.Children.Add(TagSelectButton, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentSelectButton, 0, 6, Row + 2, Row + 3);
+
+            
+            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentGrid, 0, 6, Row + 4, Row + 5);
+            
 
 
 
@@ -327,6 +366,14 @@ namespace NWT
             {
                 LoadComments();
             }
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 4, Row + 5);
+
+            CommentEntry.IsVisible = false;
+            CommentButton.IsVisible = false;
+            CommentListView.IsVisible = false;
+            TagGrid.IsVisible = true;
+
 
         }
 
@@ -494,7 +541,7 @@ namespace NWT
             CommentButton.IsEnabled = false;
             if (App.Online)
             {
-                if (App.database.TokenCheck() && Comment.Text != null && Comment.Text != "" && Comment.Text.Length < 0)
+                if (App.database.TokenCheck() && CommentEntry.Text != null && CommentEntry.Text != "" && CommentEntry.Text.Length > 0)
                 {
                     var CNR = App.database.CommentCount(ArticleNR);
                     var SC = new CommentTable
@@ -505,10 +552,10 @@ namespace NWT
                         User = App.LoggedinUser.ID,
                         Replynr = -1,
                         Replylvl = 0,
-                        Comment = Comment.Text,
+                        Comment = CommentEntry.Text,
                         Point = 0
                     };
-                    Comment.Text = "";
+                    CommentEntry.Text = "";
                     App.database.InsertComment(SC);
                     MakeComment(SC);
                 }
@@ -521,120 +568,146 @@ namespace NWT
         }
         void LoadComments()
         {
-            var Query = App.database.GetComments(ArticleNR,0,-1);
-            
-            CommentGrid.Children.Clear();
-            foreach (var s in Query)
+            CommentTableList = App.database.GetComments(ArticleNR,0,-1);
+
+            foreach (var CommentTable in CommentTableList)
             {
-                MakeComment(s);
+                MakeComment(CommentTable);
             }
+
+
+            CreateCommentListView();
+            
         }
         public void MakeComment(CommentTable s)
         {
-            var User = App.database.GetUser(s.User).First();
 
+            var C = new Comment(s);
 
+            CommentList.Add(C);
+           
+        }
 
-            var Box = new Button
+        public void CreateCommentListView()
+        {
+            CommentListView = new ListView
             {
-                CornerRadius = 10,
-                Margin = 5,
-                BackgroundColor = Color.White,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-            };
-            var Comment = new Label
-            {
-                Text = s.Comment,
-                HorizontalTextAlignment = TextAlignment.Start,
-                VerticalTextAlignment = TextAlignment.Center,
-                HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.Black,
-                FontSize = 16,
-                WidthRequest = 290,
-                Margin = 20,
-            };
-            var Username = new Label
-            {
-                Text = "  " + User.Name,
-                HorizontalTextAlignment = TextAlignment.Start,
-                VerticalTextAlignment = TextAlignment.Start,
-                TextColor = Color.Black,
-                FontSize = 16,
+                // Source of data items.
 
-            };
-
-
-            var Reply = new Button()
-            {
-                BackgroundColor = Color.FromHex("#2f6e83"),
-                TextColor = Color.FromHex("#FFFFFF"),
-                WidthRequest = 60,
-                HeightRequest = 30,
-                Text = "Reply",
-                FontSize = 10,
-                HorizontalOptions = LayoutOptions.End,
-                VerticalOptions = LayoutOptions.End,
-                Margin = 20,
-            };
-            var Elispses = new Button()
-            {
-                BackgroundColor = Color.Transparent,
-                WidthRequest = 60,
-                HeightRequest = 30,
-                HorizontalOptions = LayoutOptions.End,
-                VerticalOptions = LayoutOptions.End,
-                Margin = 20,
-                ImageSource = "elipses.png",
-            };
+                ItemsSource = CommentList,
+                HasUnevenRows = true,
+                SeparatorVisibility = SeparatorVisibility.None,
+                
+                
 
 
 
 
 
-
-            Reply.Clicked += async (o, e) => {
-                PostClicked(o, e);
-                await Navigation.PushAsync(new CommentPage(ArticleNR, s));
-            };
-
-            async void PostClicked(object sender, System.EventArgs e)
-            {
-                Button button = (Button)sender;
-                await button.RotateTo(-5, 80, Easing.BounceOut);
-                await button.RotateTo(5, 120, Easing.BounceOut);
-                await button.RotateTo(0, 80, Easing.BounceOut);
-            }
-
-            Elispses.Clicked += async (o, e) => {
-                var action = await DisplayActionSheet("Alternativ", "Avbryt", null, "Markera med Token", "Dela", "Rapportera");
-                //Debug.WriteLine("Action: " + action);
-
-                switch (action)
+                // Define template for displaying each item.
+                // (Argument of DataTemplate constructor is called for 
+                //      each item; it must return a Cell derivative.)
+                ItemTemplate = new DataTemplate(() =>
                 {
-                    case "Markera med Token":
-                        //DoSomething();
-                        break;
-                    case "Dela":
-                        //DoSomethingElse();
-                        break;
-                    case "Rapportera":
-                        //DoSomethingElse();
-                        break;
-                }
+                    
+
+
+
+                    var Box = new Button
+                    {
+                        CornerRadius = 10,
+                        Margin = 5,
+                        BackgroundColor = Color.White,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                    };
+                    var Comment = new Label
+                    {
+                        //Text = s.Comment,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        HorizontalOptions = LayoutOptions.Start,
+                        TextColor = Color.Black,
+                        FontSize = 16,
+                        WidthRequest = 290,
+                        Margin = 20,
+                    };
+                    var Username = new Label
+                    {
+                        //Text = "  " + User.Name,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Start,
+                        TextColor = Color.Black,
+                        FontSize = 16,
+
+                    };
+
+
+
+                    var Elispses = new Button()
+                    {
+                        BackgroundColor = Color.Transparent,
+                        WidthRequest = 60,
+                        HeightRequest = 30,
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.End,
+                        Margin = 20,
+                        ImageSource = "elipses.png",
+                    };
+
+                    var CommentGrid = new Grid
+                    {
+
+                        RowDefinitions = {
+                    new RowDefinition { Height = GridLength.Auto },
+                    },
+
+                        ColumnDefinitions = {
+                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = 1 },
+                    },
+                        RowSpacing = 0,
+                        ColumnSpacing = 14,
+                        BackgroundColor = Color.White
+
+
+
+                    };
+
+
+                    Comment.SetBinding(Label.TextProperty, "CommentText");
+                    Username.SetBinding(Label.TextProperty, "UserName");
+
+
+                    CommentGrid.Children.Add(Box, 1, 7, 0, 1);
+                    CommentGrid.Children.Add(Comment, 2, 6, 0, 1);
+                    CommentGrid.Children.Add(Username, 2, 6, 0, 1);
+                    CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);
+
+                    var SW = new ScrollView();
+
+                    SW.Content = CommentGrid;
+
+                    // Return an assembled ViewCell.
+                    return new ViewCell
+                    {
+                        View = CommentGrid
+                    };
+                })
+
             };
 
-             
 
-            CommentGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-            CommentGrid.Children.Add(Box, 0, 6, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(Comment, 1, 5, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(Username, 1, 5, s.CommentNR, s.CommentNR + 1);                  
-            //CommentGrid.Children.Add(Reply, 4, 5, s.CommentNR, s.CommentNR + 1);
-            CommentGrid.Children.Add(Elispses, 5, 6, s.CommentNR, s.CommentNR + 1);
 
         }
-        
+
+
         protected override void OnDisappearing()
         {
             Console.WriteLine("Memory Cleanup");

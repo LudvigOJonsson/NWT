@@ -8,6 +8,7 @@
              BackgroundColor="#f2f2f2">
 
     <ContentPage.Content>
+
         <ScrollView x:Name="NewsPageView" >
             <Grid>
                 <Grid.RowDefinitions>

@@ -16,7 +16,9 @@ namespace NWT
         {
             InitializeComponent();
 
+
             Button.CornerRadius = (int)((Button.WidthRequest + Button.HeightRequest) / 4);
+
         }
 
        
