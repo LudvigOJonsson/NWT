@@ -37,6 +37,33 @@ namespace NWT
                 App.LoggedinUser.TutorialProgress = 2;
             }
 
+            /*var unlockedItems = new List<string>();
+            unlockedItems.Add("1");
+            //Temp local list of unlocked items
+            bool removeNext = false;
+            var myList = new List<Image>(); //your list here
+            foreach (Image item in AvatarButtonsGrid.Children)
+            {
+                //The there is a classID then it's a item button
+                if (item.ClassId != null)
+                {
+                    myList.Add(item);
+                    if (unlockedItems.Contains(item.ClassId))
+                    {
+                        removeNext = true;
+                    }
+                } 
+                else //If there is no classID, then it's a unlock button
+                {
+                    //If removeNext is true, then the button above is unlocked, and thusly the keyhole is removed.
+                    if (removeNext)
+                    {
+                        item.IsEnabled = false;
+                        item.IsVisible = false;
+                        removeNext = true;
+                    }
+                }
+            }*/
         }
 
         async void UnlockComponent(object sender, EventArgs e)
@@ -63,7 +90,23 @@ namespace NWT
 
         public int CostParser(string itemId)
         {
-            if (itemId == "hair")
+            if (itemId == "1")
+            {
+                return 10;
+            }
+            else if (itemId == "2")
+            {
+                return 10;
+            }
+            else if (itemId == "3")
+            {
+                return 10;
+            }
+            else if (itemId == "4")
+            {
+                return 10;
+            }
+            else if(itemId == "5")
             {
                 return 10;
             }
