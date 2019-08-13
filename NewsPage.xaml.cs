@@ -21,12 +21,13 @@ namespace NWT
         public static int ArticleNR;
         public int CC = 8;
         public bool Read = false;
-        public int Row = 6;
+        public int Row = 7;
         public bool Topimg = true;
         public bool Favorited = false;
         public ListView CommentListView;
         public List<CommentTable> CommentTableList = new List<CommentTable>();
         public List<Comment> CommentList = new List<Comment>();
+        public int LWH = 500;
         public class Comment
         {
             public UserTable User { get; set; }
@@ -42,7 +43,7 @@ namespace NWT
                 User = App.database.GetUser(s.User).First();
                 UserName = User.Name;
                 UserAvatar = "";
-                CommentText = CB.Comment;
+                CommentText = "R: "+App.MC.R*255+" B: "+App.MC.B * 255 + " G: "+App.MC.G * 255;
                 CommentNR = s.CommentNR;
             }
         }
@@ -59,7 +60,7 @@ namespace NWT
             FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
             {
-                bool read = true;
+                bool read = false;
                 var History = App.database.GetAllHistory(App.LoggedinUser.ID);
                 foreach (HistoryTable HT in History)
                 {
@@ -256,7 +257,7 @@ namespace NWT
             string[] Categories = RSS.Category.Split(new[] { ", " }, StringSplitOptions.None);
             string[] Tags = RSS.Tag.Split(new[] { ", " }, StringSplitOptions.None);
 
-            int TagRow = 0;
+            int TagRow = 1;
 
             foreach (String Category in Categories)
             {
@@ -342,19 +343,19 @@ namespace NWT
 
 
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
-            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
+            ArticleGrid.Children.Add(BackGround, 0, 6, Row, Row + 1);
+            ArticleGrid.Children.Add(TimerButton, 1, 4, Row, Row + 1);
+            ArticleGrid.Children.Add(TimerIcon, 2, Row);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
+            ArticleGrid.Children.Add(FavIcon, 4, Row);
 
-            ArticleGrid.Children.Add(TagSelectButton, 0, 6, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(CommentSelectButton, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 1, Row + 2);
 
             
-            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
             
 
 
@@ -366,8 +367,8 @@ namespace NWT
             {
                 LoadComments();
             }
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 4, Row + 5);
-            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 3, Row + 4);
 
             CommentEntry.IsVisible = false;
             CommentButton.IsVisible = false;
@@ -498,26 +499,26 @@ namespace NWT
         */
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (red != App.MC.R)
+            if (red > (App.MC.R*255))
             {
                 red--;
             }
-            if (green != App.MC.G)
+            if (green > (App.MC.G * 255))
             {
                 green--;
             }
-            if (blue != App.MC.B)
+            if (blue > (App.MC.B * 255))
             {
                 blue--;
             }
             Device.BeginInvokeOnMainThread(() =>
             {
-                NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
+                //NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 //Dot.TextColor = Color.FromRgb(red, green, blue);
                 TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
             });
 
-            if (green == App.MC.G && blue == App.MC.B && red == App.MC.R)
+            if (App.MC == Color.FromRgb(red, green, blue))
             {
 
 
@@ -574,7 +575,14 @@ namespace NWT
             {
                 MakeComment(CommentTable);
             }
-
+            if (7 < CommentList.Count)
+            {
+                LWH = 500;
+            }
+            else
+            {
+                LWH = 70 * CommentList.Count;
+            }
 
             CreateCommentListView();
             
@@ -597,6 +605,8 @@ namespace NWT
                 ItemsSource = CommentList,
                 HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
+                HeightRequest = LWH,
+
                 
                 
 
@@ -613,10 +623,11 @@ namespace NWT
 
 
 
-                    var Box = new Button
+                    var Box = new BoxView
                     {
                         CornerRadius = 10,
                         Margin = 5,
+                        HeightRequest = 50,
                         BackgroundColor = Color.White,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
@@ -629,7 +640,7 @@ namespace NWT
                         HorizontalOptions = LayoutOptions.Start,
                         TextColor = Color.Black,
                         FontSize = 16,
-                        WidthRequest = 290,
+                        
                         Margin = 20,
                     };
                     var Username = new Label
@@ -659,7 +670,7 @@ namespace NWT
                     {
 
                         RowDefinitions = {
-                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto }
                     },
 
                         ColumnDefinitions = {
@@ -674,8 +685,8 @@ namespace NWT
                     },
                         RowSpacing = 0,
                         ColumnSpacing = 14,
-                        BackgroundColor = Color.White
-
+                        
+                        IsClippedToBounds = true
 
 
                     };
@@ -690,9 +701,6 @@ namespace NWT
                     CommentGrid.Children.Add(Username, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);
 
-                    var SW = new ScrollView();
-
-                    SW.Content = CommentGrid;
 
                     // Return an assembled ViewCell.
                     return new ViewCell

@@ -23,6 +23,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15" />
@@ -83,16 +84,17 @@
 
             <Button x:Name="TagSelectButton" Text="Tagglista!" 
                     Clicked="TagSelected"  TextColor="Black" 
-                    HorizontalOptions="Start" WidthRequest="100" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
 
             <Button x:Name="CommentSelectButton" Text="Kommentarer!" 
                     Clicked="CommentSelected"  TextColor="Black" 
-                    HorizontalOptions="End" WidthRequest="100" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
             
 
-            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="Gray">
+            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

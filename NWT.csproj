@@ -87,4 +87,151 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="AchivementsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="AvatarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ChoicesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CommentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CommunityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CustomizationIntroPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CustomizationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="CustomNewsFeed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="DailyPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GraphicalTestPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSampleNewsGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSampleNewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSamplePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSamplePage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSampleProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSampleSidemenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="GSampleTabbedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="HubbPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="IntroWalkthrough.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="LoadingPopUp.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="NewsGridPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="NewsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="PasswordPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="PicrossPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="PlayPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="QuizPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="QuizSubmissionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="RegistrationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Sidemenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="StylePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="SudokuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="TutorialPopUp1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="TutorialPopUp2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="TutorialPopUp3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="TutorialPopUp4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="TutorialPopUp5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="UserSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="UserSubmissionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="VoteDisplayPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="VoteListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="VotePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="VoteSubmissionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
 </Project>
