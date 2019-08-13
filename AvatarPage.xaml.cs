@@ -39,6 +39,40 @@ namespace NWT
 
         }
 
+        async void UnlockComponent(object sender, EventArgs e)
+        {
+            var Button = (Image)sender;
+            var id = Button.ClassId;
+            int tokenNumber = CostParser(id);
+            bool answer = await DisplayAlert("", "Vill du låsa upp utstyrseln för " + tokenNumber + " mynt?", "Nej", "Ja");
+            if (!answer)
+            {
+                
+                if (App.LoggedinUser.Plustokens >= tokenNumber)
+                {
+                    //Unlocks item
+                    Button.IsEnabled = false;
+                    Button.IsVisible = false;
+                    App.database.Plustoken(App.LoggedinUser, -tokenNumber);
+                } else
+                {
+                    await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
+                }
+            }
+        }
+
+        public int CostParser(string itemId)
+        {
+            if (itemId == "hair")
+            {
+                return 10;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public void ChangeHair(object sender, EventArgs e)
         {
             Image image = (Image)sender;

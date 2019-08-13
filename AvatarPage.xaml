@@ -125,9 +125,14 @@
                     <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image ClassId="avatar_hair10.png" Source="avatar_hair10.png" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image x:Name="avatar_hair10" ClassId="avatar_hair10.png" Source="avatar_hair10.png" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="keyhole.png" ClassId="hair" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
 
