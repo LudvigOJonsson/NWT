@@ -133,9 +133,10 @@ namespace NWT
         async void UnlockComponent(object sender, EventArgs e)
         {
             var Button = (Image)sender;
-            var id = Button.ClassId;
-            int tokenNumber = 1;
-            bool answer = await DisplayAlert("", "Vill du låsa upp utstyrseln för " + tokenNumber + " mynt?", "Nej", "Ja");
+            var id = Convert.ToInt32(Button.ClassId);
+            var item = App.database.GetItemFromID(id).First();
+            int tokenNumber = item.Price;
+            bool answer = await DisplayAlert("", "Vill du låsa upp "+ item.Descriptions+" för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
             {
                 
