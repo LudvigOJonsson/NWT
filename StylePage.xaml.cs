@@ -70,10 +70,10 @@ namespace NWT
             var BC = BGC;
             var CM = App.SideMenu;
             var MP = App.Mainpage;
+            var SP = App.Startpage;
             var CNF = (CustomNewsFeed)MP.Children[0];
             var NF = (NewsGridPage)MP.Children[1];
-            var HP = (HubbPage)MP.Children[2];
-            var PP = (ProfilePage)MP.Children[3];
+            var PP = (ProfilePage)MP.Children[2];
 
             CM.DownButton.BackgroundColor = BC;
             MP.BackgroundColor = BC;
@@ -85,11 +85,8 @@ namespace NWT
             NF.Up.BackgroundColor = BC;
             NF.Down.BackgroundColor = BC;
 
-
-            HP.PE1.BackgroundColor = BC;
-            HP.PE2.BackgroundColor = BC;
-            HP.PE3.BackgroundColor = BC;
-            HP.PE4.BackgroundColor = BC;
+            SP.Master.BackgroundColor = BC;
+            SP.Detail.BackgroundColor = BC;
 
             PP.PE1.TextColor = BC;
             PP.PE2.TextColor = BC;

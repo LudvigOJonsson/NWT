@@ -51,6 +51,9 @@ namespace NWT
         public int LoginStreak { get; set; }
         public int DailyLogin { get; set; }
         public int TutorialProgress { get; set; }
+        public string Inventory { get; set; }
+        public string Avatar { get; set; }
+
     }
 
     
@@ -258,6 +261,20 @@ namespace NWT
         public string Gameboard { get; set; }
     }
 
+    [Table("Items")]
+    public class AvatarItemsTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public string Descriptions { get; set; }
+        public string ImagePath { get; set; }
+        public string InventorySlot { get; set; }
+        public int Price { get; set; }
+    }
+
+
+
+
     public class DBHelper 
     {
 
@@ -274,8 +291,9 @@ namespace NWT
             DB.CreateTable<HistoryTable>();
             DB.DropTable<CustomNewsfeedTable>();
             DB.CreateTable<CustomNewsfeedTable>();
-
-
+            DB.DropTable<AvatarItemsTable>();
+            DB.CreateTable<AvatarItemsTable>();
+            AvatarItemInit();
         }
 
 
@@ -686,6 +704,21 @@ namespace NWT
             return DB.Query<NewsfeedTable>("SELECT * FROM NF WHERE Article = ?" , ID.ToString());
         }
 
+        public List<AvatarItemsTable> GetAllItems()
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items");
+        }
+
+        public List<AvatarItemsTable> GetItemFromType(string ID)
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = ?", ID.ToString());
+        }
+
+        public List<AvatarItemsTable> GetItemFromID(long ID)
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE ID = ?", ID.ToString());
+        }
+
         public List<PicrossTable> LoadPicross()
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Picross", "Query", "SELECT * FROM Picross WHERE ID = 1", App.LoggedinUser.ID)));
@@ -811,6 +844,16 @@ namespace NWT
             
         }
 
+        public void UpdateAvatarItems(UserTable Update)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateItems", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
+
+            var UserQuery = JsonConvert.DeserializeObject<JSONObj>(TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User, App.LoggedinUser.ID))));
+            App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
+
+        }
+
+
         public void UpdateTutorialProgress(UserTable Update)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateTutorial", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
@@ -867,6 +910,31 @@ namespace NWT
             }
         }
         
+        public void AvatarItemInit()
+        {
+            LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price) VALUES " +
+                "(1, 'Blå_Tröja', 'avatar_body1.png', 'Body', 5), " +
+                "(2, 'Grön_Tröja', 'avatar_body2.png', 'Body', 5), " +
+                "(3, 'Rustning', 'avatar_body3.png', 'Body', 12), " +
+                "(4, 'Cool_Tröja', 'avatar_body4.png', 'Body', 25), " +
+                "(5, 'Senap_och_Ketchup', 'avatar_body5.png', 'Body', 50), " +
+                "(6, 'Ljusbrunt_Kort', 'avatar_hair1.png', 'Hair', 10), " +
+                "(7, 'Blondt_Kort', 'avatar_hair2.png', 'Hair', 10), " +
+                "(8, 'Beige_Rufsigt', 'avatar_hair3.png', 'Hair', 10), " +
+                "(9, 'Svart_Kort', 'avatar_hair4.png', 'Hair', 10), " +
+                "(10, 'Orange_Kort', 'avatar_hair5.png', 'Hair', 10), " +
+                "(11, 'Brunt_Långt', 'avatar_hair6.png', 'Hair', 10), " +
+                "(12, 'Blondt_Långt', 'avatar_hair7.png', 'Hair', 10), " +
+                "(13, 'Svart_Långt', 'avatar_hair8.png', 'Hair', 10), " +
+                "(14, 'Blått_Kort', 'avatar_hair9.png', 'Hair', 10), " +
+                "(15, 'Rött_Långt', 'avatar_hair10.png', 'Hair', 10); " +
+
+
+
+             "");
+        }
+
+
         public static string TCP(string JSON)
         {
             string Message = "";

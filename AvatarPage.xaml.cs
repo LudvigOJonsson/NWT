@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,8 @@ namespace NWT
 	public partial class AvatarPage : ContentPage
     {
 
-        public string saveString = "kek";
-
+        public List<int> Inventory = new List<int>();
+        public List<string> Avatar = new List<string>(); 
 
         public AvatarPage()
         {
@@ -26,51 +27,114 @@ namespace NWT
             //But right now these database variables do not exist. So instead, a local variable will be saved.
 
 
-            var PP = (ProfilePage)App.Mainpage.Children[3];
-            
+            var PP = (ProfilePage)App.Mainpage.Children[2];
+
             //Make the avatar picture into whatever pieces are saved on the user's account.
-            ProfilePictureHair.Source = PP.avatarHairPic.Source;
-            ProfilePictureBody.Source = PP.avatarBodyPic.Source;
+
 
             if (App.LoggedinUser.TutorialProgress == 1)
             {
                 App.LoggedinUser.TutorialProgress = 2;
             }
+            Inventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
+            Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);
 
-            /*var unlockedItems = new List<string>();
-            unlockedItems.Add("1");
-            //Temp local list of unlocked items
-            bool removeNext = false;
-            var myList = new List<Image>(); //your list here
-            foreach (Image item in AvatarButtonsGrid.Children)
+            ProfilePictureFace.Source = Avatar[0];
+            ProfilePictureHair.Source = Avatar[1];
+            ProfilePictureBody.Source = Avatar[2];
+
+
+            var ItemList = App.database.GetAllItems();
+
+            var Row = 3;
+            var Column = 0;
+
+            foreach(var Item in ItemList)
             {
-                //The there is a classID then it's a item button
-                if (item.ClassId != null)
+                if(Column == 5)
                 {
-                    myList.Add(item);
-                    if (unlockedItems.Contains(item.ClassId))
-                    {
-                        removeNext = true;
-                    }
-                } 
-                else //If there is no classID, then it's a unlock button
-                {
-                    //If removeNext is true, then the button above is unlocked, and thusly the keyhole is removed.
-                    if (removeNext)
-                    {
-                        item.IsEnabled = false;
-                        item.IsVisible = false;
-                        removeNext = true;
-                    }
+                    Column = 0;
+                    Row++;
                 }
-            }*/
+                var IMG = new Image
+                {
+                    ClassId = Item.ImagePath,
+                    Source = Item.ImagePath,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand, 
+                    VerticalOptions = LayoutOptions.CenterAndExpand, 
+                    BackgroundColor = Color.FromHex("#2f6e83") ,
+                    Margin = 5
+
+                };
+
+                var TGR = new TapGestureRecognizer()
+                {
+                    NumberOfTapsRequired = 1
+                };
+                if (Item.InventorySlot == "Hair")
+                {
+
+                    TGR.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        ChangeHair(s, e);
+                        IsEnabled = true;
+                    };
+                }
+                else if (Item.InventorySlot == "Body")
+                {
+                    TGR.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        ChangeBody(s, e);
+                        IsEnabled = true;
+                    };
+                }
+                IMG.GestureRecognizers.Add(TGR);
+                AvatarButtonsGrid.Children.Add(IMG, Column, Row);
+
+                if (!Inventory.Contains(Item.ID))
+                {
+                    var TGR2 = new TapGestureRecognizer()
+                    {
+                        NumberOfTapsRequired = 1
+                    };
+
+                    var IMG2 = new Image
+                    {
+                        ClassId = Item.ID.ToString(),
+                        Source = "keyhole.png",
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        BackgroundColor = Color.FromHex("#2f6e83"),
+                        Margin = 5
+
+                    };
+
+                    TGR2.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        UnlockComponent(s, e);
+                        IsEnabled = true;
+                    };
+
+                    IMG2.GestureRecognizers.Add(TGR2);
+                    AvatarButtonsGrid.Children.Add(IMG2, Column, Row);
+                }
+
+
+
+
+                Column++;
+            }
+
+
+
+
         }
 
         async void UnlockComponent(object sender, EventArgs e)
         {
             var Button = (Image)sender;
             var id = Button.ClassId;
-            int tokenNumber = CostParser(id);
+            int tokenNumber = 1;
             bool answer = await DisplayAlert("", "Vill du låsa upp utstyrseln för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
             {
@@ -81,6 +145,12 @@ namespace NWT
                     Button.IsEnabled = false;
                     Button.IsVisible = false;
                     App.database.Plustoken(App.LoggedinUser, -tokenNumber);
+                    Inventory.Add(Convert.ToInt32(id));
+
+                    App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
+                    App.database.UpdateAvatarItems(App.LoggedinUser);
+
+
                 } else
                 {
                     await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
@@ -88,55 +158,41 @@ namespace NWT
             }
         }
 
-        public int CostParser(string itemId)
+        public void ChangeFace(object sender, EventArgs e)
         {
-            if (itemId == "1")
-            {
-                return 10;
-            }
-            else if (itemId == "2")
-            {
-                return 10;
-            }
-            else if (itemId == "3")
-            {
-                return 10;
-            }
-            else if (itemId == "4")
-            {
-                return 10;
-            }
-            else if(itemId == "5")
-            {
-                return 10;
-            }
-            else
-            {
-                return 0;
-            }
+            Image image = (Image)sender;
+            ProfilePictureFace.Source = image.Source;
+            var PP = (ProfilePage)App.Mainpage.Children[2];
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
+
+            Avatar[0] = image.ClassId;
+            App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
 
         public void ChangeHair(object sender, EventArgs e)
         {
             Image image = (Image)sender;
             ProfilePictureHair.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[3];
+            var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
+
+            Avatar[1] = image.ClassId;
+            App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
         public void ChangeBody(object sender, EventArgs e)
         {
             Image image = (Image)sender;
             ProfilePictureBody.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[3];
+            var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
+
+            Avatar[2] = image.ClassId;
+            App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
-        public void ChangeFace(object sender, EventArgs e)
-        {
-            Image image = (Image)sender;
-            ProfilePictureFace.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[3];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
-        }
+
 
         async void OnDismissButtonClicked(object sender, EventArgs args)
         {

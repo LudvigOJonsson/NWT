@@ -26,13 +26,21 @@ namespace NWT
         public Image avatarBodyPic;
         public Image avatarFacePic;
         
+
+
+
         public ProfilePage ()
 		{
 			InitializeComponent ();
 
+         
+            avatarFacePic = ProfilePictureFace;
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
-            avatarFacePic = ProfilePictureFace;
+
+            
+
+
         }
         void ProgressBallClicked1(object sender, EventArgs e)
         {
@@ -142,14 +150,15 @@ namespace NWT
                 Welcome.Text = "Hej, " + User.Username + "!";
                 TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
                 updateMissions();
-             
- 
 
-            
+
+
+            var Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);
+            updateAvatar(Avatar[0], Avatar[1], Avatar[2]);
 
             //Getting update
-            
-            if(App.LoggedinUser.DailyLogin == 0)
+
+            if (App.LoggedinUser.DailyLogin == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {

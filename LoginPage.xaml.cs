@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,8 @@ namespace NWT
             //await Navigation.PushAsync(App.LoadingScreen);
 
             
-            
-          
+
+
 
 
             if (App.Online && UserLogin.Text != null && UserPassword.Text != null)
@@ -99,6 +100,10 @@ namespace NWT
                     App.SideMenu.SetTags();
                     var y = (CustomNewsFeed)App.Mainpage.Children[0];
                     y.TagUpdate();
+
+
+
+
                 }
                 else
                 {
@@ -149,7 +154,7 @@ namespace NWT
             NG.CreateFeed(0);
             CustomNewsGridPage.CreateFeed();
             
-            var x = (ProfilePage)App.Mainpage.Children[3];
+            var x = (ProfilePage)App.Mainpage.Children[2];
             x.Login(App.LoggedinUser);
 
            

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,16 @@ namespace NWT
                     User.LoginStreak = 0;
                     User.DailyLogin = 0;
                     User.TutorialProgress = 0;
+
+                    var Avatar = new List<string>();
+                    Avatar.Add("avatar_face.png");
+                    Avatar.Add("avatar_hair1.png");
+                    Avatar.Add("avatar_body1.png");
+                    User.Avatar = JsonConvert.SerializeObject(Avatar);
+
+                    var Inventory = new List<int>();
+                    User.Inventory = JsonConvert.SerializeObject(Inventory);
+
                     int j;
                     if (Int32.TryParse(UserAge.Text, out j))
                         User.Age = j;

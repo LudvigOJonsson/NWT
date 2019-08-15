@@ -93,7 +93,7 @@ namespace NWT
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 33;
+                int BL = 28;
                 int BH = 35;
 
                 if(Header.Length < BL)

@@ -27,134 +27,37 @@
             <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
             <Image x:Name="ProfilePictureBody" Source="avatar_body.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
 
-            <Image ClassId="avatar_hair1.png" Source="avatar_hair1.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_hair2.png" Source="avatar_hair2.png" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_hair3.png" Source="avatar_hair3.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_hair4.png" Source="avatar_hair4.png" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_hair5.png" Source="avatar_hair5.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-
-            <Image ClassId="avatar_body1.png" Source="avatar_body1.png" Grid.Row="4" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_body2.png" Source="avatar_body2.png" Grid.Row="4" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_body3.png" Source="avatar_body3.png" Grid.Row="4" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_body4.png" Source="avatar_body4.png" Grid.Row="4" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_body5.png" Source="avatar_body5.png" Grid.Row="4" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeBody" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-
-            <Image ClassId="avatar_face.png" Source="avatar_face.png" Grid.Row="5" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image ClassId="avatar_face.png" Source="avatar_face.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image ClassId="avatar_face2.png" Source="avatar_face2.png" Grid.Row="5" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image ClassId="avatar_face2.png" Source="avatar_face2.png" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image ClassId="avatar_face3.png" Source="avatar_face3.png" Grid.Row="5" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image ClassId="avatar_face3.png" Source="avatar_face3.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image ClassId="avatar_face4.png" Source="avatar_face4.png" Grid.Row="5" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image ClassId="avatar_face4.png" Source="avatar_face4.png" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image ClassId="avatar_face5.png" Source="avatar_face5.png" Grid.Row="5" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
+            <Image ClassId="avatar_face5.png" Source="avatar_face5.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image ClassId="1" Source="avatar_hair6.png" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="keyhole.png" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="2" Source="avatar_hair7.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="keyhole.png" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="3" Source="avatar_hair8.png" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="keyhole.png" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="4" Source="avatar_hair9.png" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="keyhole.png" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="5" Source="avatar_hair10.png" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeHair" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="keyhole.png" Grid.Row="3" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#2f6e83" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="UnlockComponent" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
+
+
+
+
+
 
         </Grid>
     </ContentView>

@@ -83,7 +83,7 @@ namespace NWT
         {
             App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
 
-            var x = (ProfilePage)App.Mainpage.Children[3];
+            var x = (ProfilePage)App.Mainpage.Children[2];
             x.Login(App.LoggedinUser);
             App.Mainpage.CurrentPage = App.Mainpage.Children[0];
 

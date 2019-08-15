@@ -32,8 +32,8 @@ namespace NWT
             Children[1] = new NewsGridPage(0);
             Children[0] = new CustomNewsFeed();
 
-            Children[3] = new ProfilePage();
-            Children[2] = new HubbPage();                      
+            Children[2] = new ProfilePage();
+                     
         }
 
         /*
