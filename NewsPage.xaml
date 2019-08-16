@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.NewsPage"
-             Title="Article"
+             Title="Nyhet"
              BackgroundColor="#FFFFFF">
     <!--<ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -42,8 +42,8 @@
             <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
             <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,0,20" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
 
-            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,0" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
-            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,10,0" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
             
             <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
             

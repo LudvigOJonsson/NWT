@@ -215,7 +215,7 @@ namespace NWT
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 12,
                             TextColor = Color.Gray,
-                            Margin = new Thickness(0, 0, 10, 10)
+                            Margin = new Thickness(0, 10, 0, 20)
                         };
                         
                         if (Topimg == true)
@@ -711,17 +711,17 @@ namespace NWT
                     },
 
                         ColumnDefinitions = {
-                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = 10 },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
-                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = 0 },
                     },
                         RowSpacing = 0,
-                        ColumnSpacing = 14,
+                        ColumnSpacing = 0,
                         
                         IsClippedToBounds = true
 
@@ -735,7 +735,7 @@ namespace NWT
                     AvatarHair.SetBinding(Image.SourceProperty, "UserAvatar[1]");
                     AvatarBody.SetBinding(Image.SourceProperty, "UserAvatar[2]");
 
-                    CommentGrid.Children.Add(Box, 1, 7, 0, 1);
+                    CommentGrid.Children.Add(Box, 0, 8, 0, 1);
 
                     CommentGrid.Children.Add(AvatarFace, 1, 2, 0, 1);
                     CommentGrid.Children.Add(AvatarHair, 1, 2, 0, 1);

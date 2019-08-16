@@ -16,7 +16,7 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView x:Name="NewsSV">
-            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="14" BackgroundColor="#f2f2f2">
+            <Grid x:Name="NewsGrid" RowSpacing="0" ColumnSpacing="0" BackgroundColor="#f2f2f2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
