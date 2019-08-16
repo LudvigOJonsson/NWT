@@ -32,7 +32,7 @@ namespace NWT
         {
             public UserTable User { get; set; }
             public string UserName { get; set; }
-            public string UserAvatar { get; set; }
+            public List<string> UserAvatar { get; set; }
             public string CommentText { get; set; }
             public int CommentNR { get; set; }           
             public CommentTable CB { get; set; }
@@ -42,8 +42,8 @@ namespace NWT
                 CB = s;
                 User = App.database.GetUser(s.User).First();
                 UserName = User.Name;
-                UserAvatar = "";
-                CommentText = "R: "+App.MC.R*255+" B: "+App.MC.B * 255 + " G: "+App.MC.G * 255;
+                UserAvatar = JsonConvert.DeserializeObject<List<string>>(User.Avatar);
+                CommentText = s.Comment;
                 CommentNR = s.CommentNR;
             }
         }
@@ -653,6 +653,37 @@ namespace NWT
 
                     };
 
+                    var AvatarFace = new Image
+                    {
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
+                        BackgroundColor = App.MC,
+                        Margin = 5
+
+                    };
+                    var AvatarHair = new Image
+                    {
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
+
+                        Margin = 5
+
+                    };
+
+                    var AvatarBody = new Image
+                    {
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
+
+                        Margin = 5
+
+                    };
 
 
                     var Elispses = new Button()
@@ -665,6 +696,12 @@ namespace NWT
                         Margin = 20,
                         ImageSource = "elipses.png",
                     };
+
+
+
+
+
+
 
                     var CommentGrid = new Grid
                     {
@@ -694,9 +731,15 @@ namespace NWT
 
                     Comment.SetBinding(Label.TextProperty, "CommentText");
                     Username.SetBinding(Label.TextProperty, "UserName");
-
+                    AvatarFace.SetBinding(Image.SourceProperty, "UserAvatar[0]");                    
+                    AvatarHair.SetBinding(Image.SourceProperty, "UserAvatar[1]");
+                    AvatarBody.SetBinding(Image.SourceProperty, "UserAvatar[2]");
 
                     CommentGrid.Children.Add(Box, 1, 7, 0, 1);
+
+                    CommentGrid.Children.Add(AvatarFace, 1, 2, 0, 1);
+                    CommentGrid.Children.Add(AvatarHair, 1, 2, 0, 1);
+                    CommentGrid.Children.Add(AvatarBody, 1, 2, 0, 1);
                     CommentGrid.Children.Add(Comment, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Username, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);
