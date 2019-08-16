@@ -22,6 +22,11 @@ namespace NWT
 			InitializeComponent ();
             
         }
+
+        public void ChangeColor(Color color)
+        {
+            SideMenuBox.Color = color;
+        }
         
         
         public void SetKategori(object sender, EventArgs e)

@@ -216,7 +216,7 @@
                     
                 </ScrollView>
 
-                <BoxView Color="#2f6e83"
+                <BoxView x:Name="SideMenuBox" Color="#2f6e83"
                  WidthRequest="500"
                          HeightRequest="400"
 
