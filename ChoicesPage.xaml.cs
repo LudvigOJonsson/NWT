@@ -50,6 +50,20 @@ namespace NWT
             //adding to list.
 
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if(App.LoggedinUser != null)
+            {
+                UserSettingsB.IsEnabled = true;
+                LogoutB.IsEnabled = true;
+            } else
+            {
+                UserSettingsB.IsEnabled = false;
+                LogoutB.IsEnabled = false;
+            }
+
+        }
         public void SetTags(){
 
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);

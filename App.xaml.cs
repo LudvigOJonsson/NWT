@@ -42,8 +42,8 @@ namespace NWT
             LoadingScreen = new LoadingPopUp();
             Startpage = new MasterDetailPage()
             {               
-                Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), },
-                Detail = new NavigationPage(Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"),  }
+                Master = new NavigationPage(SideMenu) { Title = "Side Menu", BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), },
+                Detail = new NavigationPage(Loginpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"),  }
             };
             
             Timer = new System.Timers.Timer
@@ -53,6 +53,7 @@ namespace NWT
             Timer.Elapsed += OnTimedEvent;
             Timer.Enabled = true;
 
+            
             
 
             MainPage = Startpage;// new NavigationPage();
