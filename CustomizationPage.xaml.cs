@@ -81,7 +81,8 @@ namespace NWT
 
         public async void StartButtonPressed(object sender, EventArgs e)
         {
-            App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
+            App.MC = Color.FromHex("#649FD4");
+            App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), };
 
             var x = (ProfilePage)App.Mainpage.Children[2];
             x.Login(App.LoggedinUser);

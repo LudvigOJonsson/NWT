@@ -39,15 +39,6 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="20" />
                         </Grid.ColumnDefinitions>
 
 
@@ -60,7 +51,7 @@
                 <BoxView 
                 x:Name="DownButton"   
                 x:FieldModifier="public" 
-                Color="#2f6e83"
+                Color="#649FD4"
                  WidthRequest="500"
                          HeightRequest="400"
 

@@ -16,5 +16,11 @@ namespace NWT
 		{
 			InitializeComponent ();
         }
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Uri siteUri = new Uri("https://forms.gle/P8b4CbjRwXKPNXtL9");
+
+            Device.OpenUri(siteUri);
+        }
     }
 }

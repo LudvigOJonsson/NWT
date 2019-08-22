@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.NewsPage"
-             Title="Article"
+             Title="Nyhet"
              BackgroundColor="#FFFFFF">
     <!--<ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -38,17 +38,16 @@
             <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
 
-            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
-            <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
-            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,0,20" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <!--<Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
+            <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,0" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
 
-            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,0" FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"/>
-            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,10,0" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5"/>
-            
-            <Image x:Name="ArticleImage" Source="https://i.gyazo.com/5cf9a87d47754ff2084e6398ae1b0ddc.png"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
+
+            <Image x:Name="ArticleImage" Source="https://www.underconsideration.com/brandnew/archives/google_broken_image_00_a_logo.gif"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
             
 
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,10" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -59,6 +58,9 @@
             <!--<BoxView Color="White" WidthRequest="300" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0"/>-->
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
+            
+            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="22" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
+
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="Samla token!" 
                     Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="White" Margin="15" 
@@ -74,9 +76,10 @@
 	                Loop="True" 
 	                AutoPlay="true"
 	                />-->
-
+            
+           
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="star.png">
+                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="heart.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
@@ -108,7 +111,7 @@
 
             <Entry Placeholder="Write a comment..." x:Name="CommentEntry" FontSize="16"  TextColor="Black" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
 
 

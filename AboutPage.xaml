@@ -24,9 +24,12 @@
                 <Label Text="Producerad av:" Grid.Row="0" Grid.Column="0" FontSize="14" TextColor="Black"/>
                 <Label Text="Ludvig Jonsson och Christoffer Bodegård" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="Black"/>
 
-                <Label Text="På uppdrag av:" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
-                <Label Text="Gothia Innovation" Grid.Row="5" Grid.Column="0" FontSize="16" TextColor="Black"/>
+                <Label Text="På uppdrag av Science Park Skövde" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
 
+                <Label Text="Om du hittar något fel, eller vill ge någon återkoppling om appens innehåll, får du gärna skicka in det via detta formulär. Vi tar gärna emot dina åsikter!" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" FontSize="16" TextColor="Black"/>
+
+                <Button Text="Formulär" Clicked="Button_Clicked" Grid.Row="8" Grid.Column="0" FontSize="16" TextColor="Black" BackgroundColor="White" BorderColor="Black" BorderWidth="5"/>
+                
             </Grid>
         </StackLayout>
     </ContentPage.Content>

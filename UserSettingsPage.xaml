@@ -30,7 +30,7 @@
                 <Label Text="Kommentarer per inladdning" TextColor="DimGray"  Grid.Row="1" VerticalOptions="Center" FontSize="18"/>
                 <Entry x:Name="LoadedComments" Placeholder="10" Grid.Row="1" Grid.Column="1" TextColor="Black" VerticalOptions="Center"  />
 
-                <Button x:Name="UpdateInfoButton" Text="Spara" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#2f6e83" TextColor="#FFFFFF"/>
+                <Button x:Name="UpdateInfoButton" Text="Spara" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#649FD4" TextColor="#FFFFFF"/>
 
                 <Label Text="Bilder i nyhetsflödet" TextColor="Black" FontSize="18" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"  />
                 <Switch x:Name="PictureSwitch"
@@ -38,7 +38,7 @@
                IsToggled="True"
                HorizontalOptions="Center"
                 Grid.Row="2" Grid.Column="1"
-                        OnColor="#2f6e83"
+                        OnColor="#649FD4"
                         
                 />
 
@@ -48,7 +48,7 @@
                IsToggled="True"
                HorizontalOptions="Center"
                 Grid.Row="3" Grid.Column="1"
-                        OnColor="#2f6e83"
+                        OnColor="#649FD4"
                         
                 />
             </Grid>

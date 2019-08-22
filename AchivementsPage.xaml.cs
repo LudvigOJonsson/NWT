@@ -355,6 +355,8 @@ namespace NWT
 
         private async void ShowPopup(object sender, EventArgs ev)
         {
+            //No popups atm
+            return;
             //Create `ContentPage` with padding and transparent background
             ContentPage popup = new ContentPage
             {

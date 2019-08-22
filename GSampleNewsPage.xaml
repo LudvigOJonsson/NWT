@@ -38,7 +38,7 @@
             <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
 
-            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#2f6e83" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
          
             <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,0,20" FontSize="35" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
 
@@ -80,7 +80,7 @@
 
             <Entry Placeholder="Write a comment..." x:Name="Comment" FontSize="16"   Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#2f6e83" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
             <Grid x:Name="CommentGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6">
                 <Grid.RowDefinitions>

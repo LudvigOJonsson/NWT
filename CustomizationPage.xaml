@@ -68,7 +68,7 @@
 
                 </Grid>
             </ScrollView>
-            <Button Text="Starta appen!" TextColor="White" Clicked="StartButtonPressed" BackgroundColor="#2f6e83" Margin="0" x:Name="StartButton"/>
+            <Button Text="Starta appen!" TextColor="White" Clicked="StartButtonPressed" BackgroundColor="#649FD4" Margin="0" x:Name="StartButton"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

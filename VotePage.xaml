@@ -26,12 +26,12 @@
                 <BoxView x:Name="Q5"   Grid.Row="0" Grid.Column="4"/>
                 <BoxView x:Name="Q6"   Grid.Row="0" Grid.Column="5"/>
 
-                <Label x:Name="Header" Text="Lokala omröstningar!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#2f6e83" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Label x:Name="Header" Text="Lokala omröstningar!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#649FD4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
 
-                <Button x:Name="SubmitN" Margin="10" BackgroundColor="#2f6e83" Text="Submit Question" TextColor="White" Clicked="Submit" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="VoteN" Margin="10" BackgroundColor="#2f6e83" Text="Vote on Question" TextColor="White" Clicked="Vote" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="ResultN" Margin="10" BackgroundColor="#2f6e83" Text="Results" TextColor="White" Clicked="Results" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
-                <Button x:Name="ArchiveN" Margin="10" BackgroundColor="#2f6e83" Text="Archive" TextColor="White" Clicked="Archive" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+                <Button x:Name="SubmitN" Margin="10" BackgroundColor="#649FD4" Text="Submit Question" TextColor="White" Clicked="Submit" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="VoteN" Margin="10" BackgroundColor="#649FD4" Text="Vote on Question" TextColor="White" Clicked="Vote" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="ResultN" Margin="10" BackgroundColor="#649FD4" Text="Results" TextColor="White" Clicked="Results" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+                <Button x:Name="ArchiveN" Margin="10" BackgroundColor="#649FD4" Text="Archive" TextColor="White" Clicked="Archive" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
              </Grid>
         </StackLayout>
     </ContentPage.Content>

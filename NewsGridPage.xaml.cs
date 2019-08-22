@@ -183,7 +183,7 @@ namespace NWT
                     {
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
@@ -245,7 +245,7 @@ namespace NWT
                     {
                         Color = Color.FromHex("#f2f2f2"),
                         WidthRequest = IMGXC,
-                        HeightRequest = 20,
+                        HeightRequest = 10,
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
                         InputTransparent = true,
@@ -294,20 +294,21 @@ namespace NWT
                     {
 
                         RowDefinitions = {
-                    new RowDefinition { Height = 20 },
+                    new RowDefinition { Height = 0 },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = 10 },
 
                     },
 
                         ColumnDefinitions = {
-                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = 0 },
                     new ColumnDefinition { Width = GridLength.Star },
-                    new ColumnDefinition { Width = 1 },
+                    new ColumnDefinition { Width = 0 },
                     },
                         RowSpacing = 0,
-                        ColumnSpacing = 14,
+                        ColumnSpacing = 0,
                         BackgroundColor = Color.FromHex("#f2f2f2")
 
 

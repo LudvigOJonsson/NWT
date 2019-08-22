@@ -62,7 +62,7 @@ namespace NWT
                     Source = Item.ImagePath,
                     HorizontalOptions = LayoutOptions.CenterAndExpand, 
                     VerticalOptions = LayoutOptions.CenterAndExpand, 
-                    BackgroundColor = Color.FromHex("#2f6e83") ,
+                    BackgroundColor = Color.FromHex("#649FD4") ,
                     Margin = 5
 
                 };
@@ -104,7 +104,7 @@ namespace NWT
                         Source = "keyhole.png",
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.FromHex("#2f6e83"),
+                        BackgroundColor = Color.FromHex("#649FD4"),
                         Margin = 5
 
                     };
