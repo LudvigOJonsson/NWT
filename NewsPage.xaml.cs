@@ -224,7 +224,7 @@ namespace NWT
                             VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 18,
+                            FontSize = 16,
                             TextColor = Color.Gray,
                             Margin = new Thickness(0, 10, 0, 20)
                         };

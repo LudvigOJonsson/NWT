@@ -35,6 +35,7 @@ namespace NWT
             if (App.LoggedinUser.TutorialProgress == 1)
             {
                 App.LoggedinUser.TutorialProgress = 2;
+                App.database.UpdateTutorialProgress(App.LoggedinUser);
             }
             Inventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
             Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);

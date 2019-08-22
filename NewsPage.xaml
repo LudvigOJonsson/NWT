@@ -47,7 +47,7 @@
             <Image x:Name="ArticleImage" Source="https://www.underconsideration.com/brandnew/archives/google_broken_image_00_a_logo.gif"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
             
 
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -62,7 +62,7 @@
             <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="22" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
 
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
-            <Button x:Name="TimerButton" Text="Samla token!" 
+            <Button x:Name="TimerButton" Text="Samla mynt!" 
                     Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="White" Margin="15" 
                     HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
@@ -85,13 +85,13 @@
                 </Image.GestureRecognizers>
             </Image>
 
-            <Button x:Name="TagSelectButton" Text="Tagglista!" 
+            <Button x:Name="TagSelectButton" Text="Ämnen" 
                     Clicked="TagSelected"  TextColor="Black" 
-                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000" BackgroundColor="#f2f2f2"/>
 
-            <Button x:Name="CommentSelectButton" Text="Kommentarer!" 
+            <Button x:Name="CommentSelectButton" Text="Kommentarer" 
                     Clicked="CommentSelected"  TextColor="Black" 
-                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+                    HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000" BackgroundColor="#f2f2f2"/>
             
 
             <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" >

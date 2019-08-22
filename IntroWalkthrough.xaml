@@ -20,9 +20,9 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
 
@@ -33,13 +33,13 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="Newspaper_Temp.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Center" VerticalOptions="Start" />
+            <Image Source="Newspaper_Temp.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#f2f2f2" Margin="35"/>
             <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Title" FontAttributes="Bold" Text="Välkommen!"/>
-            <Label TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Body" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" Text="Håll dig uppdaterad var du än är. Här får du alla dina lokala nyheter samlade på ett och samma ställe." Margin="37" />
+            <Label TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Body" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" Text=" Håll dig uppdaterad var du än är. Här får du alla dina SLA-nyheter samlade på ett och samma ställe." Margin="40" />
 
 
             <Button  BackgroundColor="#40000000" Grid.Row="9" Grid.Column="1" Margin="20" VerticalOptions="End" Grid.ColumnSpan="3" HorizontalOptions="Center" CornerRadius="50"/>
@@ -68,9 +68,9 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
 
@@ -79,7 +79,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="InApp_Intro2.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Center" VerticalOptions="Start" />
+            <Image Source="InApp_Intro2.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#f2f2f2" Margin="35"/>
@@ -115,9 +115,9 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
 
@@ -126,7 +126,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="Checklist_Intro3.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Center" VerticalOptions="Start" />
+            <Image Source="Checklist_Intro3.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
@@ -163,9 +163,9 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5"/>
             </Grid.ColumnDefinitions>
 
@@ -174,7 +174,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="Anpassa_Intro4.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Center" VerticalOptions="Start" />
+            <Image Source="Anpassa_Intro4.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>

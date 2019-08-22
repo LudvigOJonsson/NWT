@@ -16,6 +16,12 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -24,7 +30,11 @@
                 <Label Text="Producerad av:" Grid.Row="0" Grid.Column="0" FontSize="14" TextColor="Black"/>
                 <Label Text="Ludvig Jonsson och Christoffer Bodegård" Grid.Row="1" Grid.Column="0" FontSize="16" TextColor="Black"/>
 
-                <Label Text="På uppdrag av Science Park Skövde" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                <Label Text="På uppdrag av Science Park Skövde" Grid.Row="2" Grid.Column="0" FontSize="14" TextColor="Black"/>
+                
+                <Label Text="Sidan 'Nyheter' är en kronologisk samling av alla artiklar i dina valda ämnen." VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0" FontSize="14" TextColor="Black"/>
+
+                <Label Text="'Mina val' är en kronologisk samling av alla ariklar i det ämne du klickat på i sidomenyn." VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
 
                 <Label Text="Om du hittar något fel, eller vill ge någon återkoppling om appens innehåll, får du gärna skicka in det via detta formulär. Vi tar gärna emot dina åsikter!" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" FontSize="16" TextColor="Black"/>
 

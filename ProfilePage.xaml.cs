@@ -75,7 +75,7 @@ namespace NWT
                 //await DisplayAlert("Anpassa din stil!", "Okej", "");
             }
         }
-        void ChangeIntroStep(int step)
+        public void ChangeIntroStep(int step)
         {
             if (step == 1)
             {
@@ -113,6 +113,7 @@ namespace NWT
             {
                 RemoveIntro();
             }
+            App.database.UpdateTutorialProgress(App.LoggedinUser);
         }
         void RemoveIntro()
         {

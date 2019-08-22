@@ -140,7 +140,9 @@ namespace NWT
             }
             else 
             {
-                
+                EmptyText.Text = "";
+                EmptyText.IsEnabled = false;
+                EmptyText.IsVisible = false;
                 CreateFeed(Argc);
             }
 

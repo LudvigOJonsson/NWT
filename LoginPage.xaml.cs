@@ -87,10 +87,14 @@ namespace NWT
                             Device.BeginInvokeOnMainThread( () =>
                             {
                                 Console.WriteLine("Initiering Klar");
-
+                                
                                 App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), };
                                 App.Mainpage.CurrentPage = App.Mainpage.Children[0];
                                 App.SideMenu.UpdatingSideMenu();
+                                App.database.UpdateTutorialProgress(App.LoggedinUser);
+                                var MP = App.Mainpage;
+                                var PP = (ProfilePage)MP.Children[2];
+                                PP.ChangeIntroStep(App.LoggedinUser.TutorialProgress);
                             });
 
                         });

@@ -25,6 +25,7 @@ namespace NWT
             if (App.LoggedinUser.TutorialProgress == 3)
             {
                 App.LoggedinUser.TutorialProgress = 4;
+                App.database.UpdateTutorialProgress(App.LoggedinUser);
             }
         }
 
