@@ -89,7 +89,7 @@ namespace NWT
 
             ARGC = argc;
             Console.WriteLine(ARGC);
-            var VoteQuestionQuery = App.database.GetVoteQuestions(ARGC);
+            var VoteQuestionQuery = new List<VoteQuestionTable>();// App.database.GetVoteQuestions(ARGC);
             Console.WriteLine("Questions Read, Nr: "+ VoteQuestionQuery.Count());
             var VoteQuestionList = new List<VoteQuestion>();
             

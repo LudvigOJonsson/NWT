@@ -7,7 +7,9 @@
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="NWT.LoadingPopUp"
     x:Name="LoadingPopUpPage"
-    BackgroundColor="Transparent">
+    BackgroundColor="Transparent"
+    >
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation DurationIn="400"
                                    DurationOut="300"

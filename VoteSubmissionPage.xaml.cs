@@ -30,7 +30,7 @@ namespace NWT
                 VQ.Posted = DateTime.Now;
                 VQ.Stage = 1;
 
-                App.database.InsertVoteQuestion(VQ);
+                //App.database.InsertVoteQuestion(VQ);
             }
 
             await DisplayAlert("Submission Successful", "Question Submitted", "OK");

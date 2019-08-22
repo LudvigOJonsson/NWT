@@ -136,7 +136,7 @@ namespace NWT
                     B.BorderColor = Color.FromHex("#649FD4");
                     C.BorderColor = Color.FromHex("#649FD4");
                     D.BorderColor = Color.FromHex("#649FD4");
-                    var Quest = App.database.GetQuestion(CurrentQuestion+1).First();
+                    var Quest = new QuizTable(); // App.database.GetQuestion(CurrentQuestion+1).First();
                     var Q = new Question(Quest);
                     QuestionText.Text = "Kategori; "+Clicked.Text+ ": " +Q.QuestionText; 
                     A.Text = Q.ChoiceA;

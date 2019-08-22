@@ -26,7 +26,7 @@ namespace NWT
         public PicrossPage ()
 		{
 			InitializeComponent ();
-            PCT = App.database.LoadPicross().First();
+            PCT = new PicrossTable(); // App.database.LoadPicross().First();
             Left = JsonConvert.DeserializeObject<List<string>>(PCT.Left);
             Top = JsonConvert.DeserializeObject<List<string>>(PCT.Top);
             Solution = JsonConvert.DeserializeObject<List<List<int>>>(PCT.Gameboard);

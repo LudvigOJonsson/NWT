@@ -481,7 +481,7 @@ namespace NWT
                 Read = true;
                 TimerButton.IsEnabled = false;
 
-                var variable = (ProfilePage)App.Mainpage.Children[3];
+                var variable = (ProfilePage)App.Mainpage.Children[2];
                 variable.TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
             }
             else
