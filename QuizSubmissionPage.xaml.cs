@@ -156,7 +156,7 @@ namespace NWT
                 Q.ChoiceD = D.Text;
                 Q.Category = Categ;
                 Q.CorrectAnswer = CorAnsw;
-                App.database.InsertQuestion(Q);
+                //App.database.InsertQuestion(Q);
             }
             await DisplayAlert("Submission Successful", "Question Submitted", "OK");
         }

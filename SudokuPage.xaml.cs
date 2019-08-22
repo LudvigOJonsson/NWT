@@ -75,8 +75,8 @@ namespace NWT
             {
                 for (int y = 1; y <= 9; y++)
                 {
-                    
-                    var Tile = App.database.GetTile(x,y).First().Value;
+
+                    var Tile = 1;//App.database.GetTile(x,y).First().Value;
                     foreach (Tile T in SudokuBoard)
                     {
                         if (T.x == x - 1 && T.y == y - 1 && T.entry.Text == Tile.ToString())
@@ -102,7 +102,7 @@ namespace NWT
             {
                 for (int y = 1; y <= 9; y++)
                 {
-                    var Tile = App.database.GetTile(x, y).First();
+                    var Tile = new SudokuTable();// App.database.GetTile(x, y).First();
                     if (Tile.Placed == 1)
                     {
                         foreach (Tile T in SudokuBoard)

@@ -48,7 +48,7 @@ namespace NWT
         {
             if (App.LoggedinUser != null)
             {
-                var Check = App.database.VoteCheck(App.LoggedinUser.ID, Q);
+                var Check = new List<VoteTable>();// App.database.VoteCheck(App.LoggedinUser.ID, Q);
 
                 if (Check.Count() > 0)
                 {
@@ -89,7 +89,7 @@ namespace NWT
                 V.Question = Convert.ToInt32(Question.ClassId);
                 V.User = App.LoggedinUser.ID;
                 V.ChoosenOption = Convert.ToInt32(Clicked.ClassId);             
-                App.database.InsertVote(V);
+                //App.database.InsertVote(V);
                 await DisplayAlert("Submission Successful", "Vote Submitted", "OK");
             }
             else
