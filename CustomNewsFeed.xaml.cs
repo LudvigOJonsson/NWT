@@ -27,7 +27,7 @@ namespace NWT
         public List<string> Filter = new List<string>();
         public List<string> Author = new List<string>();
         public List<string> Tag = new List<string>();
-
+        public ListView ArticleListView;
         public int PREV = 0;
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
@@ -344,7 +344,8 @@ namespace NWT
                 NewsGrid.Children.Add(Up, 0, 3, 0, 1);
             }
 
-            ListView listView = new ListView
+
+            ArticleListView = new ListView
             {
                 // Source of data items.
 
@@ -674,7 +675,7 @@ namespace NWT
 
 
 
-            NewsGrid.Children.Add(listView, 0, 3, 1, 2);
+            NewsGrid.Children.Add(ArticleListView, 0, 3, 1, 2);
             NewsGrid.Children.Add(Down, 0, 3, 2, 3);
 
         }
@@ -785,6 +786,72 @@ namespace NWT
 
             
             IsBusy = false;
+        }
+        public async void ListViewScroll(object sender, EventArgs e)
+        {
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsBusy = true;
+                    ArticleListView.IsRefreshing = true;
+                    LoadingPopUp x = new LoadingPopUp();
+                    x.loadingAnimation.Play();
+                    await Navigation.PushAsync(x);
+
+                });
+
+                if (argc == 0)
+                {
+                    PREV = 0;
+                    CURR = NEXT;
+                    NEXT += DBLN;
+
+                    Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+
+                    double height = NewsSV.ContentSize.Height - 10;
+
+                    LoadLocalDB();
+                    AddNews();
+
+
+
+
+
+                }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    ArticleListView.ItemsSource = null;
+                    ArticleListView.ItemsSource = ArticleList;
+
+
+
+                });
+
+
+                GC.Collect();
+
+
+                await System.Threading.Tasks.Task.Delay(1000);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    Console.WriteLine("Initiering Klar");
+
+                    await Navigation.PopAsync();
+                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                    await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                    ArticleListView.IsRefreshing = false;
+                    IsBusy = false;
+                });
+
+            });
+
+
+
+
+
+
         }
     }
 }

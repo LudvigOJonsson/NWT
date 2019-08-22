@@ -38,31 +38,7 @@ namespace NWT
         public int argc = 0;
 
 
-        private bool _isRefreshing = false;
-        public bool IsRefreshing
-        {
-            get { return _isRefreshing; }
-            set
-            {
-                _isRefreshing = value;
-                OnPropertyChanged(nameof(IsRefreshing));
-            }
-        }
 
-        public ICommand RefreshCommand
-        {
-            get
-            {
-                return new Command(async() =>
-                {
-                    IsRefreshing = true;
-
-                    ListViewScroll();
-                    await System.Threading.Tasks.Task.Delay(1000);
-                    IsRefreshing = false;
-                });
-            }
-        }
 
         public class Article
         {
@@ -188,8 +164,7 @@ namespace NWT
                 BackgroundColor = Color.FromHex("#FFFFFF"),
                 IsPullToRefreshEnabled = true,
                 Footer = Down,
-                RefreshCommand = RefreshCommand,
-                IsRefreshing = IsRefreshing,
+
                 
 
 
@@ -448,7 +423,14 @@ namespace NWT
             Header.IsEnabled = false;
             var id = Int32.Parse(Header.ClassId);
             var RSS = App.database.GetServerRSS(id).First();
-            await Navigation.PushAsync(new NewsPage(RSS, argc));
+            if(RSS != null)
+            {
+                await Navigation.PushAsync(new NewsPage(RSS, argc));
+            }
+            else
+            {
+                await DisplayAlert("Article Load Failure", "Artikeln misslyckades att laddas in, vänligen försök igen.", "OK");
+            }
 
             Header.IsEnabled = true;
 
@@ -665,34 +647,71 @@ namespace NWT
             IsBusy = false;
         }
 
-        public async void ListViewScroll()
+        public async void ListViewScroll(object sender, EventArgs e)
         {
-            IsBusy = true;
-            ArticleListView.IsRefreshing = true;
-            if (argc == 0)
+            await System.Threading.Tasks.Task.Run(async () =>
             {
-                PREV = 0;
-                CURR = NEXT;
-                NEXT += DBLN;
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    IsBusy = true;
+                    ArticleListView.IsRefreshing = true;
+                    LoadingPopUp x = new LoadingPopUp();
+                    x.loadingAnimation.Play();
+                    await Navigation.PushAsync(x);
+                    
+                });
+                
+                if (argc == 0)
+                {
+                    PREV = 0;
+                    CURR = NEXT;
+                    NEXT += DBLN;
 
-                Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
+                    Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
 
-                double height = NewsSV.ContentSize.Height - 10;
+                    double height = NewsSV.ContentSize.Height - 10;
 
-                LoadLocalDB();
-                AddNews(argc);
+                    LoadLocalDB();
+                    AddNews(argc);
 
-                ArticleListView.ItemsSource = null;
-                ArticleListView.ItemsSource = ArticleList;
+                    
+
+                    
+
+                }
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+
+                    ArticleListView.ItemsSource = null;
+                    ArticleListView.ItemsSource = ArticleList;
 
 
-                await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                   
+                });
+
 
                 GC.Collect();
 
-            }
-            ArticleListView.IsRefreshing = false;
-            IsBusy = false;
+                
+                await System.Threading.Tasks.Task.Delay(1000);
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    Console.WriteLine("Initiering Klar");
+
+                    await Navigation.PopAsync();
+                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                    await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                    ArticleListView.IsRefreshing = false;
+                    IsBusy = false;
+                });
+
+            });
+
+
+
+
+
+
         }
 
     }
