@@ -342,7 +342,7 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
 
-        public List<CommentTable> GetComments(int ID_, int LVL, int RNR)
+        public List<CommentTable> GetComments(int ID_, int LVL, int RNR) { 
 
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " AND Replylvl = " + LVL + " AND (Replynr = " + RNR + " OR Replynr = -1) ORDER BY CommentNR", App.LoggedinUser.ID)));
             if (JSONResult == "No")
