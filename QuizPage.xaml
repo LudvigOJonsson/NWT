@@ -26,22 +26,22 @@
                 <BoxView x:Name="Q5"   Grid.Row="0" Grid.Column="4"/>
                 <BoxView x:Name="Q6"   Grid.Row="0" Grid.Column="5"/>
 
-                <Label x:Name="Header" Text="QUIZ!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#2f6e83" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Label x:Name="Header" Text="QUIZ!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#649FD4" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
 
 
-                <Button x:Name="Start" Margin="10" BackgroundColor="#2f6e83" Text="Start Game" TextColor="White" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="Submit" Margin="10" BackgroundColor="#2f6e83" Text="Submit Questions" TextColor="White" Clicked="Submission" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+                <Button x:Name="Start" Margin="10" BackgroundColor="#649FD4" Text="Start Game" TextColor="White" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Submit" Margin="10" BackgroundColor="#649FD4" Text="Submit Questions" TextColor="White" Clicked="Submission" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
 
 
-                <Button x:Name="Cat1" Margin="10" Text="Kategori 1" TextColor="White" BackgroundColor="#2f6e83" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="Cat2" Margin="10" Text="Kategori 2" TextColor="White" BackgroundColor="#2f6e83" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="Cat3" Margin="10" Text="Kategori 3" TextColor="White" BackgroundColor="#2f6e83" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat1" Margin="10" Text="Kategori 1" TextColor="White" BackgroundColor="#649FD4" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat2" Margin="10" Text="Kategori 2" TextColor="White" BackgroundColor="#649FD4" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="Cat3" Margin="10" Text="Kategori 3" TextColor="White" BackgroundColor="#649FD4" Clicked="Gametick" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
 
-                <Label  x:Name="QuestionText" Text="The Question" TextColor="#2f6e83" FontSize="20" HorizontalTextAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsVisible="False"/>
-                <Button x:Name="A" BorderWidth="2" BorderColor="Transparent" Text="A" BackgroundColor="#2f6e83" ClassId="A" Clicked="Gametick" Grid.Row="3" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="B" BorderWidth="2" BorderColor="Transparent" Text="B" BackgroundColor="#2f6e83" ClassId="B" Clicked="Gametick" Grid.Row="3" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="C" BorderWidth="2" BorderColor="Transparent" Text="C" BackgroundColor="#2f6e83" ClassId="C" Clicked="Gametick" Grid.Row="5" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
-                <Button x:Name="D" BorderWidth="2" BorderColor="Transparent"  Text="D" BackgroundColor="#2f6e83" ClassId="D" Clicked="Gametick" Grid.Row="5" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Label  x:Name="QuestionText" Text="The Question" TextColor="#649FD4" FontSize="20" HorizontalTextAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" IsVisible="False"/>
+                <Button x:Name="A" BorderWidth="2" BorderColor="Transparent" Text="A" BackgroundColor="#649FD4" ClassId="A" Clicked="Gametick" Grid.Row="3" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="B" BorderWidth="2" BorderColor="Transparent" Text="B" BackgroundColor="#649FD4" ClassId="B" Clicked="Gametick" Grid.Row="3" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="C" BorderWidth="2" BorderColor="Transparent" Text="C" BackgroundColor="#649FD4" ClassId="C" Clicked="Gametick" Grid.Row="5" Margin="10" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+                <Button x:Name="D" BorderWidth="2" BorderColor="Transparent"  Text="D" BackgroundColor="#649FD4" ClassId="D" Clicked="Gametick" Grid.Row="5" Margin="10" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

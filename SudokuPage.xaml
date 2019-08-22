@@ -11,7 +11,7 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Sudoku" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#2f6e83" />
+            <Label Text="Sudoku" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#649FD4" />
             <Grid x:Name="SudokuGrid" RowSpacing="1" ColumnSpacing="1" VerticalOptions="Center" HorizontalOptions ="Center" BackgroundColor = "Black">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -130,7 +130,7 @@
 
             </Grid>
 
-            <Button x:Name="SolveButton" Text="Solve" Clicked="SolveSudoku" Margin="20" BackgroundColor="#2f6e83" TextColor="White"/>
+            <Button x:Name="SolveButton" Text="Solve" Clicked="SolveSudoku" Margin="20" BackgroundColor="#649FD4" TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

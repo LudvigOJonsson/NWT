@@ -132,10 +132,10 @@ namespace NWT
                     B.BackgroundColor = Color.White;
                     C.BackgroundColor = Color.White;
                     D.BackgroundColor = Color.White;
-                    A.BorderColor = Color.FromHex("#2f6e83");
-                    B.BorderColor = Color.FromHex("#2f6e83");
-                    C.BorderColor = Color.FromHex("#2f6e83");
-                    D.BorderColor = Color.FromHex("#2f6e83");
+                    A.BorderColor = Color.FromHex("#649FD4");
+                    B.BorderColor = Color.FromHex("#649FD4");
+                    C.BorderColor = Color.FromHex("#649FD4");
+                    D.BorderColor = Color.FromHex("#649FD4");
                     var Quest = App.database.GetQuestion(CurrentQuestion+1).First();
                     var Q = new Question(Quest);
                     QuestionText.Text = "Kategori; "+Clicked.Text+ ": " +Q.QuestionText; 
@@ -192,10 +192,10 @@ namespace NWT
                         B.BackgroundColor = Color.Red;
                         C.BackgroundColor = Color.Red;
                         D.BackgroundColor = Color.Red;
-                        A.BorderColor = Color.FromHex("#2f6e83");
-                        B.BorderColor = Color.FromHex("#2f6e83");
-                        C.BorderColor = Color.FromHex("#2f6e83");
-                        D.BorderColor = Color.FromHex("#2f6e83");
+                        A.BorderColor = Color.FromHex("#649FD4");
+                        B.BorderColor = Color.FromHex("#649FD4");
+                        C.BorderColor = Color.FromHex("#649FD4");
+                        D.BorderColor = Color.FromHex("#649FD4");
 
                         if (Clicked.ClassId == CorrectAnswer)
                         {

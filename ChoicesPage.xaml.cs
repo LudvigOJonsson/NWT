@@ -64,6 +64,19 @@ namespace NWT
             }
 
         }
+        public void UpdatingSideMenu()
+        {
+            if (App.LoggedinUser != null)
+            {
+                UserSettingsB.IsEnabled = true;
+                LogoutB.IsEnabled = true;
+            }
+            else
+            {
+                UserSettingsB.IsEnabled = false;
+                LogoutB.IsEnabled = false;
+            }
+        }
         public void SetTags(){
 
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
@@ -97,7 +110,7 @@ namespace NWT
 
            
                 NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 1 });
+                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 5 });
                 NewsGridOri.Children.Add(Box.Box, 1, 7, Rownr, Rownr + 1); //Boxview
                 NewsGridOri.Children.Add(Box.Label, 1, 7, Rownr, Rownr + 1); //Label
                 NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
@@ -155,9 +168,9 @@ namespace NWT
 
                 Box = new Button
                 {
-                    BackgroundColor = Color.LightGray,
+                    BackgroundColor = Color.FromHex("#f2f2f2"),
                     ClassId = s,
-                    HeightRequest = 20
+                    HeightRequest = 30
                 };
 
                 if (Type == 0)

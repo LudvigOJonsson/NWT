@@ -208,7 +208,7 @@ namespace NWT
                     {
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 25,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,

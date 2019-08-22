@@ -752,7 +752,7 @@ namespace NWT
                 TCP(JsonConvert.SerializeObject(new JSONObj("Token", "Logout", JsonConvert.SerializeObject(App.Token), App.LoggedinUser.ID)));
                 App.Token = null;
                 App.LoggedinUser = null;
-                App.Startpage.Detail = new NavigationPage(App.Loginpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
+                App.Startpage.Detail = new NavigationPage(App.Loginpage) { BarBackgroundColor = Color.FromHex("#649FD4"), BarTextColor = Color.FromHex("#FFFFFF"), };
             }
         }
 

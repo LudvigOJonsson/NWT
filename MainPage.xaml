@@ -4,7 +4,7 @@
             x:Class="NWT.MainPage"
             x:Name="Mainpage"
             BackgroundColor="#f8f8f9"
-            BarBackgroundColor="#4C84B6"
+            BarBackgroundColor="#649FD4"
             x:FieldModifier="public"
             >
     

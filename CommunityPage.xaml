@@ -65,7 +65,7 @@
                         <TapGestureRecognizer Tapped="LoadNews" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#2f6e83"/>
+                <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="#649FD4"/>
                 <Button  x:Name="CPMNAB" Grid.Row="3" Clicked="LoadNews"  Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
                 <Label x:Name="CPMNAT" Grid.Row="3" Grid.Column="1" Text="Artikelrubrik. #7 kommer att shocka dig." FontSize = "25"
@@ -73,7 +73,7 @@
 
 
 
-                <Button Grid.Row="5"  Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Button Grid.Row="5"  Grid.Column="1" BackgroundColor="#649FD4" CornerRadius="0"/>
                 <Label  Grid.Row="5" Grid.Column="1" Text="Senaste nyheter" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
 
                 <Button x:Name="CPNA1B" Grid.Row="6" Clicked="LoadNews" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
@@ -102,7 +102,7 @@
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
-                <BoxView Grid.Row="13" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#2f6e83"/>
+                <BoxView Grid.Row="13" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#649FD4"/>
                 <Button x:Name="CPMIAB"  Grid.Row="13" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
                 <Label x:Name="CPMIAT" Grid.Row="13" Grid.Column="1" Text="Insändare #1! Jag är bäst!" FontSize = "25"
@@ -110,7 +110,7 @@
 
 
 
-                <Button Grid.Row="15" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Button Grid.Row="15" Grid.Column="1" BackgroundColor="#649FD4" CornerRadius="0"/>
                 <Label  Grid.Row="15" Grid.Column="1" Text="Senaste insändare" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
 
                 <Button x:Name="CPIA1B"  Grid.Row="16" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>
@@ -136,7 +136,7 @@
                        HorizontalOptions = "Fill"
                        VerticalOptions = "Fill"
                        Aspect = "AspectFill" />
-                <BoxView Grid.Row="23" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#2f6e83"/>
+                <BoxView Grid.Row="23" Grid.Column="1" WidthRequest="10" HorizontalOptions="Start" BackgroundColor="#649FD4"/>
                 <Button Grid.Row="23" Grid.Column="1" BackgroundColor="White" CornerRadius="0" BorderWidth="1" BorderColor="#f0f0f0"/>
 
                 <Label Grid.Row="23" Grid.Column="1" Text="Majbrasa i Skultorp" FontSize = "25"
@@ -144,7 +144,7 @@
 
 
 
-                <Button Grid.Row="25" Grid.Column="1" BackgroundColor="#2f6e83" CornerRadius="0"/>
+                <Button Grid.Row="25" Grid.Column="1" BackgroundColor="#649FD4" CornerRadius="0"/>
                 <Label  Grid.Row="25" Grid.Column="1" Text="Andra evenemang" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" Margin="5"/>
 
                 <Button Grid.Row="26" Grid.Column="1" BackgroundColor="White" BorderWidth="1" BorderColor="#f0f0f0" CornerRadius="0"/>

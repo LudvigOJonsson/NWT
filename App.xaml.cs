@@ -22,7 +22,7 @@ namespace NWT
         public static bool Login = false;
         public static LoadingPopUp LoadingScreen;
 
-        public static Color MC = Color.FromHex("#2f6e83");
+        public static Color MC = Color.FromHex("#649FD4");
 
         public App()
         {

@@ -36,7 +36,7 @@ namespace NWT
 
             if(Style == "Blue")
             {
-                ColorFunction(Color.FromHex("#2f6e83"));
+                ColorFunction(Color.FromHex("#649FD4"));
             }
             else if (Style == "Green")
             {
@@ -76,8 +76,10 @@ namespace NWT
             var PP = (ProfilePage)MP.Children[2];
 
             CM.DownButton.BackgroundColor = BC;
+            CM.DownButton.Color = BC;
             MP.BackgroundColor = BC;
             MP.BarBackgroundColor = BC;
+            SP.Detail.BackgroundColor = BC;
 
             CNF.Up.BackgroundColor = BC;
             CNF.Down.BackgroundColor = BC;
@@ -100,12 +102,16 @@ namespace NWT
             PP.StyleButton.BackgroundColor = BC;
             PP.AchievementsButton.BackgroundColor = BC;
             PP.ProfileSettingsButton.BackgroundColor = BC;
+            PP.m1bx.BackgroundColor = BC;
+            PP.m2bx.BackgroundColor = BC;
+            PP.m3bx.BackgroundColor = BC;
 
             App.MC = BC;
 
             
 
             NF.PrintNews();
+            App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = BC, BarTextColor = Color.FromHex("#FFFFFF"), };
         }
 
 

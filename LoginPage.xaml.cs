@@ -88,8 +88,9 @@ namespace NWT
                             {
                                 Console.WriteLine("Initiering Klar");
 
-                                App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = Color.FromHex("#2f6e83"), BarTextColor = Color.FromHex("#FFFFFF"), };
+                                App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), };
                                 App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+                                App.SideMenu.UpdatingSideMenu();
                             });
 
                         });

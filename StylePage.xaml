@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Blue" BackgroundColor="#2f6e83" CornerRadius="0" Margin="0"/>
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Blue" BackgroundColor="#649FD4" CornerRadius="0" Margin="0"/>
                 <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Green" BackgroundColor="#6fb110" CornerRadius="0" Margin="0"/>
                 <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Purple" BackgroundColor="#bb0066" CornerRadius="0" Margin="0"/>
                 <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="White" BackgroundColor="#e0d8b3" CornerRadius="0" Margin="0"/>

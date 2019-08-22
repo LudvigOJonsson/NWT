@@ -21,7 +21,7 @@ namespace NWT
         public static int ArticleNR;
         public int CC = 8;
         public bool Read = false;
-        public int Row = 7;
+        public int Row = 8;
         public bool Topimg = true;
         public bool Favorited = false;
         public ListView CommentListView;
@@ -55,8 +55,8 @@ namespace NWT
             InitializeComponent();
 
 
-
-            Category.TextColor = App.MC;
+            
+            //Category.TextColor = App.MC;
             FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
             {
@@ -137,8 +137,18 @@ namespace NWT
             //Dot.Text = "⚫";
             Ingress.Text = RSS.Description;
             Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
-            Author.Text = RSS.Author;
-            Category.Text = "-"+RSS.Category;
+            if (RSS.Author == "Ingen Byline")
+            {
+                Author.Text = "";
+            } else
+            {
+                Author.TextColor = Color.FromHex("#649FD4");
+                Author.Text = RSS.Author;
+            }
+            Title = RSS.Category;
+            
+            //Category.Text = "-"+RSS.Category;
+
             if (RSS.Tag.Length > 20)
             {
                 //Tags.Text = "";
@@ -157,7 +167,8 @@ namespace NWT
             };
             TGR.Tapped += (s, e) => {
                 IsEnabled = false;
-                App.SideMenu.Author = RSS.Author;
+
+                //Menu.Author = RSS.Author;
                 IsEnabled = true;
             };
             Author.GestureRecognizers.Add(TGR);
@@ -195,9 +206,9 @@ namespace NWT
                             Text = Text[TextCount],
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 14,
+                            FontSize = 16,
                             TextColor = Color.Black,                        
-                            Margin = new Thickness(0, 0, 10, 10)
+                            Margin = new Thickness(0, 0, 5, 10)
                         };
                         ArticleGrid.Children.Add(Label, 1, 5, Row, Row + 1);
                         Row++;
@@ -213,7 +224,7 @@ namespace NWT
                             VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 12,
+                            FontSize = 18,
                             TextColor = Color.Gray,
                             Margin = new Thickness(0, 10, 0, 20)
                         };
@@ -339,23 +350,21 @@ namespace NWT
             }
 
 
-
-
-
-            ArticleGrid.Children.Add(BG, 0, 6, 0, Row);
-            ArticleGrid.Children.Add(BackGround, 0, 6, Row, Row + 1);
-            ArticleGrid.Children.Add(TimerButton, 1, 4, Row, Row + 1);
-            ArticleGrid.Children.Add(TimerIcon, 2, Row);
+            ArticleGrid.Children.Add(Author, 1, 4, Row, Row + 1);
+            ArticleGrid.Children.Add(BG, 0, 6, 0, Row + 1);
+            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(FavIcon, 4, Row);
+            ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
 
-            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 2, Row + 3);
 
             
-            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
             
 
 

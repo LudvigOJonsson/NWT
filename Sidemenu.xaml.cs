@@ -20,7 +20,8 @@ namespace NWT
         public Sidemenu ()
 		{
 			InitializeComponent ();
-            
+            UserSettingsB.IsEnabled = false;
+            LogoutB.IsEnabled = false;
         }
 
         public void ChangeColor(Color color)
@@ -120,6 +121,17 @@ namespace NWT
 
         }
 
+        public void LockButtons()
+        {
+            UserSettingsB.IsEnabled = false;
+            LogoutB.IsEnabled = false;
+        }
+        public void UnlockButtons()
+        {
+            UserSettingsB.IsEnabled = true;
+            LogoutB.IsEnabled = true;
+        }
+
 
 
         async void Logout(object sender, EventArgs e)
@@ -132,6 +144,8 @@ namespace NWT
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
             ButtonLock();
+            UserSettingsB.IsEnabled = false;
+            LogoutB.IsEnabled = false;
         }
         async void About(object sender, EventArgs e)
         {

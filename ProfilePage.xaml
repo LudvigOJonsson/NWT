@@ -44,24 +44,18 @@
                 </Image>
 
                 <Label x:Name="PE1" x:FieldModifier="public" Text="Favoriter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="1" Grid.Column="0" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="heart.png" Text="" FontSize="Micro" TextColor="White" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
                 
-                
                 <Label x:Name="PE2" x:FieldModifier="public" Text="Avatar" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="2" Grid.Column="0" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="shirtSmol.png" Text="" FontSize="Micro"  TextColor="White" Clicked="Avatar" Grid.Row="2" Grid.Column="0" x:Name="AvatarButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="60"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
+                <Button x:FieldModifier="public" Image="shirtSmol.png" Text="" FontSize="Micro"  TextColor="White" Clicked="Avatar" Grid.Row="2" Grid.Column="0" x:Name="AvatarButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
                 <Label x:Name="PE3" x:FieldModifier="public" Text="Troféer" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="1" Grid.Column="2" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="knapp.png" Text="" TextColor="White" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
                 <Label x:Name="PE4" x:FieldModifier="public" Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="2" Grid.Column="2" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="StylePage" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
                 <Label x:Name="PE5" x:FieldModifier="public" Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="3" Grid.Column="0" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
                 <Button x:FieldModifier="public" Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
                 <Label x:Name="PE6" x:FieldModifier="public" Text="Inställningar" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
@@ -83,40 +77,40 @@
 
 
 
-                <BoxView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#40000000"/>
-                
-                
+                <!-- <BoxView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#40000000"/>-->
+
+
                 <BoxView Grid.Row="4" Grid.Column="0" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView Grid.Row="4" Grid.Column="0" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <BoxView x:FieldModifier="public" x:Name="m1bx" Grid.Row="4" Grid.Column="0" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
 
                 <Label x:Name="m1t1" TextColor="White" Text="Read Article" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m1t2" TextColor="White" FontSize="26" Text="0 / 10"  Grid.Row="4" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
                 <Label x:Name="m1t3" TextColor="White" Text="3 Tokens" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                
+
                 <Button x:Name="m1" Grid.Row="4" Grid.Column="0" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
 
 
                 <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <BoxView x:FieldModifier="public" x:Name="m2bx" Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
 
                 <Label x:Name="m2t1" TextColor="White" Text="Post Comment" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m2t2" TextColor="White" FontSize="26" Text="0 / 5"  Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
                 <Label x:Name="m2t3" TextColor="White" Text="5 Tokens" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                
+
                 <Button x:Name="m2" Grid.Row="4" Grid.Column="1" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
 
                 <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <BoxView x:FieldModifier="public" x:Name="m3bx" Grid.Row="4" Grid.Column="2" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
 
                
 
                 <Label x:Name="m3t1" TextColor="White" Text="Win Sudoku" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
                 <Label x:Name="m3t2" TextColor="White" FontSize="26" Text="0 / 3"  Grid.Row="4" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
                 <Label x:Name="m3t3" TextColor="White" Text="150 Tokens" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                
+
                 <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
 
-                <BoxView x:Name="IntroBackground" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="2"/>
+                <BoxView x:Name="IntroBackground" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White" Margin="0"/>
                 <Label x:Name="IntroText" Text="" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
                 
                 
