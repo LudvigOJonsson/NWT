@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.ProfilePage"
              BackgroundColor="#ffffff"
-             Icon="profile.png"
+             Icon="Icon_Profile.png"
              Title="Profil">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
@@ -14,125 +14,167 @@
     <StackLayout Spacing="0" Margin="0" >
 
         <ContentView>
-            <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    <RowDefinition Height="15" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="100" />
+                    
+                    
 
-                <Image Source="Background_01"  Grid.Row="0" Grid.RowSpan="5" Grid.Column="0"  Grid.ColumnSpan="3" Opacity="0.05" WidthRequest="500" HeightRequest="1200"/>
-                <Label Text="Orange" x:Name="Welcome"  FontSize="40" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="Black"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+
+                </Grid.ColumnDefinitions>
+                <Image Source="Background_01"  Grid.Row="0" Grid.RowSpan="8" Grid.Column="0"  Grid.ColumnSpan="5" Opacity="0.05"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+                
+                
+                
+                
+                
                 <!--<Image x:Name="ProfilePicture" Source="snail.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <Image x:Name="ProfilePictureFace" Source="avatar_face.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
-                <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
-                <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+
+
+
+
+
+
+
+                <BoxView WidthRequest="250" HeightRequest="250" CornerRadius="125" BackgroundColor="#40000000" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center" />
+
+           
+
+                <ImageButton  WidthRequest="240" HeightRequest="240" CornerRadius="120"
+                    BackgroundColor="#f2f2f2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                <Image x:Name="ProfilePictureFace" Source="avatar_face.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3"  Grid.Column="1"  Grid.ColumnSpan="3"/>
+                <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Label x:Name="PE1" x:FieldModifier="public" Text="Favoriter" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="heart.png" Text="" FontSize="Micro" TextColor="White" Clicked="Favorites" Grid.Row="1" Grid.Column="0" x:Name="FavoritesButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
                 
-                <Label x:Name="PE2" x:FieldModifier="public" Text="Avatar" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="shirtSmol.png" Text="" FontSize="Micro"  TextColor="White" Clicked="Avatar" Grid.Row="2" Grid.Column="0" x:Name="AvatarButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
+                <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000" VerticalOptions="End" />
+                <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="3" VerticalOptions="End" />
+                
+                
+                
+                <Label Text="Orange" x:Name="Welcome"  FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="35" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextColor="White" />
 
-                <Label x:Name="PE3" x:FieldModifier="public" Text="Troféer" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="knapp.png" Text="" TextColor="White" Clicked="Achivements" Grid.Row="1" Grid.Column="2" x:Name="AchievementsButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
-                <Label x:Name="PE4" x:FieldModifier="public" Text="Stil" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="edit.png" Text="" FontSize="Micro" TextColor="White" Clicked="StylePage" Grid.Row="2" Grid.Column="2" x:Name="StyleButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
-                <Label x:Name="PE5" x:FieldModifier="public" Text="Historik" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="history.png" Text="" FontSize="Micro"  TextColor="White" Clicked="History" Grid.Row="3" Grid.Column="0" x:Name="HistoryButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
 
-                <Label x:Name="PE6" x:FieldModifier="public" Text="Inställningar" Grid.Row="1" Grid.RowSpan="4" Grid.Column="2" TextColor="#2f6e83" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#40000000" Grid.Row="3" Grid.Column="2" Margin="23" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Button x:FieldModifier="public" Image="settings.png" Text="" FontSize="Micro" TextColor="White" Clicked="Settings" Grid.Row="3" Grid.Column="2" x:Name="ProfileSettingsButton" CornerRadius="0" BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="25"/>
-
-                <forms:AnimationView 
-	                x:Name="tokenAnimation" 
-	                Grid.Row="2" Grid.Column="1"
-                    VerticalOptions="FillAndExpand"
-	                HorizontalOptions="FillAndExpand"
-	                Animation="stone.json" 
-	                Loop="true" 
-	                AutoPlay="true"
-	                />
+                <BoxView BackgroundColor="#40000000" Grid.Row="4" Grid.Column="1" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="#649FD4" Grid.Row="4" Grid.Column="1" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:FieldModifier="public" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" x:Name="FavoritesButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+                
+                <Button BackgroundColor="Transparent" Clicked="Favorites" Grid.Row="4" Grid.Column="1"/>
+                                                      
+                <BoxView BackgroundColor="#40000000" Grid.Row="4" Grid.Column="3" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="#649FD4" Grid.Row="4" Grid.Column="3" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:FieldModifier="public" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3" x:Name="AchievementsButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+                
+                <Button BackgroundColor="Transparent" Clicked="Achivements" Grid.Row="4" Grid.Column="3"/>
+              
+                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="2" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="2" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:FieldModifier="public" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" x:Name="StyleButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+                
+                <Button BackgroundColor="Transparent" Clicked="StylePage" Grid.Row="5" Grid.Column="2"/>
+              
+                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="3" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="3" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:FieldModifier="public" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3" x:Name="HistoryButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
                
+                <Button BackgroundColor="Transparent" Clicked="History" Grid.Row="5" Grid.Column="3"/>
 
-                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="35" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="3" Grid.Column="1" TextColor="Black"/>
+                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="1" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="1" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Image x:FieldModifier="public" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1" x:Name="ProfileSettingsButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+            
+                <Button BackgroundColor="Transparent" Clicked="Settings" Grid.Row="5" Grid.Column="1"/>
 
+
+                <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" TextColor="Black" /> 
+                <Button BackgroundColor="Transparent" Clicked="Avatar" Grid.Row="4" Grid.Column="2"/>
 
 
                 <!-- <BoxView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#40000000"/>-->
 
 
-                <BoxView Grid.Row="4" Grid.Column="0" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView x:FieldModifier="public" x:Name="m1bx" Grid.Row="4" Grid.Column="0" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
-
-                <Label x:Name="m1t1" TextColor="White" Text="Read Article" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                <Label x:Name="m1t2" TextColor="White" FontSize="26" Text="0 / 10"  Grid.Row="4" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
-                <Label x:Name="m1t3" TextColor="White" Text="3 Tokens" FontSize="12" Grid.Row="4" Grid.Column="0" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-
-                <Button x:Name="m1" Grid.Row="4" Grid.Column="0" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
-
-
-                <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView x:FieldModifier="public" x:Name="m2bx" Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
-
-                <Label x:Name="m2t1" TextColor="White" Text="Post Comment" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                <Label x:Name="m2t2" TextColor="White" FontSize="26" Text="0 / 5"  Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
-                <Label x:Name="m2t3" TextColor="White" Text="5 Tokens" FontSize="12" Grid.Row="4" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-
-                <Button x:Name="m2" Grid.Row="4" Grid.Column="1" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
-
-                <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
-                <BoxView x:FieldModifier="public" x:Name="m3bx" Grid.Row="4" Grid.Column="2" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
-
                
+                
+                
+                
+                
+                <BoxView Grid.Row="6" Grid.Column="1" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
+                <BoxView x:FieldModifier="public" x:Name="m1bx" Grid.Row="6" Grid.Column="1"  BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <Label x:Name="m1t1" TextColor="White" Text="Read Article" FontSize="12" Grid.Row="6" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Label x:Name="m1t2" TextColor="White" FontSize="26" Text="0 / 10"  Grid.Row="6" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                <Label x:Name="m1t3" TextColor="White" Text="3 Tokens" FontSize="12" Grid.Row="6" Grid.Column="1" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Button x:Name="m1" Grid.Row="6" Grid.Column="1" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
 
-                <Label x:Name="m3t1" TextColor="White" Text="Win Sudoku" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
-                <Label x:Name="m3t2" TextColor="White" FontSize="26" Text="0 / 3"  Grid.Row="4" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
-                <Label x:Name="m3t3" TextColor="White" Text="150 Tokens" FontSize="12" Grid.Row="4" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                
 
-                <Button x:Name="m3" Text=" "  Grid.Row="4" Grid.Column="2" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
+                <BoxView Grid.Row="6" Grid.Column="2" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
+                <BoxView x:FieldModifier="public" x:Name="m2bx" Grid.Row="6" Grid.Column="2" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <Label x:Name="m2t1" TextColor="White" Text="Post Comment" FontSize="12" Grid.Row="6" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Label x:Name="m2t2" TextColor="White" FontSize="26" Text="0 / 5"  Grid.Row="6" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                <Label x:Name="m2t3" TextColor="White" Text="5 Tokens" FontSize="12" Grid.Row="6" Grid.Column="2" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Button x:Name="m2" Grid.Row="6" Grid.Column="2" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0"/>
 
-                <BoxView x:Name="IntroBackground" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="White" Margin="0"/>
-                <Label x:Name="IntroText" Text="" TextColor="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
+                
+                
+                <BoxView Grid.Row="6" Grid.Column="3" BackgroundColor="#40000000" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="3"/>
+                <BoxView x:FieldModifier="public" x:Name="m3bx" Grid.Row="6" Grid.Column="3" BackgroundColor="#649FD4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="5"/>
+                <Label x:Name="m3t1" TextColor="White" Text="Win Sudoku" FontSize="12" Grid.Row="6" Grid.Column="3" VerticalOptions="Start" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Label x:Name="m3t2" TextColor="White" FontSize="26" Text="0 / 3"  Grid.Row="6" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="5"/>
+                <Label x:Name="m3t3" TextColor="White" Text="150 Tokens" FontSize="12" Grid.Row="6" Grid.Column="3" VerticalOptions="End" HorizontalOptions="Center" VerticalTextAlignment="End" HorizontalTextAlignment="Center" Margin="10"/>
+                <Button x:Name="m3" Text=" "  Grid.Row="6" Grid.Column="3" Clicked="Evaluate" BackgroundColor="Transparent" TextColor="White" VerticalOptions="FillAndExpand" Margin="5" CornerRadius="0" />
+
+                
+                
+                
+                <BoxView x:Name="IntroBackground" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0"/>
+                <Label x:Name="IntroText" Text="" TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" VerticalOptions="Start" HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold"/>
                 
                 
                 <!--<BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
                 <BoxView x:Name="introProgressBar2" BackgroundColor="#00f9ff" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
                 <BoxView x:Name="introProgressBar3" BackgroundColor="#d8d8d8" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/> -->
                 
-                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
-                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
-                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
-                <Button x:Name="progressBall1Button1" Clicked="ProgressBallClicked1" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
-                <Button x:Name="progressBall2Button2" Clicked="ProgressBallClicked2" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
-                <Button x:Name="progressBall3Button3" Clicked="ProgressBallClicked3" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall1Button1" Clicked="ProgressBallClicked1" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall2Button2" Clicked="ProgressBallClicked2" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
+                <Button x:Name="progressBall3Button3" Clicked="ProgressBallClicked3" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0"/>
 
             </Grid>
         </ContentView>

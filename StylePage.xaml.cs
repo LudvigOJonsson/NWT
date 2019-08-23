@@ -91,14 +91,14 @@ namespace NWT
             SP.Master.BackgroundColor = BC;
             SP.Detail.BackgroundColor = BC;
 
-            PP.PE1.TextColor = BC;
-            PP.PE2.TextColor = BC;
-            PP.PE3.TextColor = BC;
-            PP.PE4.TextColor = BC;
-            PP.PE5.TextColor = BC;
-            PP.PE6.TextColor = BC;
+            //PP.PE1.TextColor = BC;
+           // PP.PE2.TextColor = BC;
+            //PP.PE3.TextColor = BC;
+            //PP.PE4.TextColor = BC;
+            //PP.PE5.TextColor = BC;
+            //PP.PE6.TextColor = BC;
             PP.FavoritesButton.BackgroundColor = BC;
-            PP.AvatarButton.BackgroundColor = BC;
+           // PP.AvatarButton.BackgroundColor = BC;
             PP.HistoryButton.BackgroundColor = BC;
             PP.StyleButton.BackgroundColor = BC;
             PP.AchievementsButton.BackgroundColor = BC;
