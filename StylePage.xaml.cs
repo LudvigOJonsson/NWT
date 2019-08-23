@@ -91,8 +91,9 @@ namespace NWT
             SP.Master.BackgroundColor = BC;
             SP.Detail.BackgroundColor = BC;
 
-            //PP.PE1.TextColor = BC;
-           // PP.PE2.TextColor = BC;
+            PP.PE1.BackgroundColor = BC;
+            PP.PE1.Color = BC;
+            // PP.PE2.TextColor = BC;
             //PP.PE3.TextColor = BC;
             //PP.PE4.TextColor = BC;
             //PP.PE5.TextColor = BC;

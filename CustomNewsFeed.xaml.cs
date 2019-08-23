@@ -277,6 +277,10 @@ namespace NWT
 
             Navigation.PopAsync();
         }
+        async public void AdClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("WIP", "Work in progress.", "Okej");
+        }
 
         public void TagUpdate()
         {
@@ -544,6 +548,18 @@ namespace NWT
                         Margin = 0
 
                     };
+                    Button AdButton = new Button
+                    {
+                        BackgroundColor = Color.Transparent,
+                        WidthRequest = IMGXC,
+                        //HeightRequest = Image.HeightRequest + Label.HeightRequest,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.Fill,
+                        //ClassId = NF.Article.ToString(),
+                        Margin = 0
+
+                    };
+                    AdButton.Clicked += AdClicked;
 
                     Label AdLabel = new Label
                     {
@@ -590,6 +606,7 @@ namespace NWT
                     AdArticleMargin.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     AdShadow.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     AdBox.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
+                    AdButton.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     AdImageOutline.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     AdImage.SetBinding(Image.IsVisibleProperty, "AdVisibility");
                     AdLabel.SetBinding(Label.IsVisibleProperty, "AdVisibility");
@@ -647,6 +664,7 @@ namespace NWT
 
                     //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
                     Grid.Children.Add(AdBox, 1, 2, 5, 6); //Boxview
+                    Grid.Children.Add(AdButton, 1, 2, 5, 6); //Boxview
                     Grid.Children.Add(AdImage, 1, 2, 5, 6); //Boxview
                     Grid.Children.Add(AdLabel, 1, 2, 5, 6); //Label
                     Grid.Children.Add(AdShadow, 1, 2, 6, 7);

@@ -16,13 +16,13 @@
         <ContentView>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="15" />
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="35" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="40" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                     
                     
 
@@ -72,7 +72,7 @@
 
                 
                 <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000" VerticalOptions="End" />
-                <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="3" VerticalOptions="End" />
+                <BoxView x:FieldModifier="public" x:Name="PE1" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#649FD4" Margin="3" VerticalOptions="End" />
                 
                 
                 
