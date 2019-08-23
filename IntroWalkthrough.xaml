@@ -15,9 +15,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="100" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="5" />
-            </Grid.RowDefinitions>
+             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="*"/>
@@ -39,7 +37,7 @@
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#f2f2f2" Margin="35"/>
             <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Start" FontSize="Title" FontAttributes="Bold" Text="Välkommen!"/>
-            <Label TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Body" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" Text=" Håll dig uppdaterad var du än är. Här får du alla dina SLA-nyheter samlade på ett och samma ställe." Margin="40" />
+            <Label TextColor="Black" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" FontSize="Body" HorizontalOptions="Center" VerticalOptions="Start" HorizontalTextAlignment="Center" Text=" Håll dig uppdaterad var du än är. Här får du alla dina SLA-nyheter samlade på ett och samma ställe." Margin="37" />
 
 
             <Button  BackgroundColor="#40000000" Grid.Row="9" Grid.Column="1" Margin="20" VerticalOptions="End" Grid.ColumnSpan="3" HorizontalOptions="Center" CornerRadius="50"/>
@@ -63,8 +61,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="100" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="5" />
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
@@ -110,8 +107,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="100" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="5" />
+                
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
@@ -158,8 +154,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="100" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="5" />
+            
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5"/>
