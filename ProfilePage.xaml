@@ -11,7 +11,7 @@
         <ToolbarItem Icon="black_logout.png" Text="Logout" Clicked="Logout"/>-->
     </ContentPage.ToolbarItems>
     
-    <StackLayout Spacing="0" Margin="0" >
+    <StackLayout Spacing="0" Margin="0" VerticalOptions="CenterAndExpand">
 
         <ContentView>
             <Grid>
@@ -81,33 +81,23 @@
 
 
 
-                <BoxView BackgroundColor="#40000000" Grid.Row="4" Grid.Column="1" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#649FD4" Grid.Row="4" Grid.Column="1" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Image x:FieldModifier="public" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" x:Name="FavoritesButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+                <Image x:FieldModifier="public" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" x:Name="FavoritesButton"  BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
                 
                 <Button BackgroundColor="Transparent" Clicked="Favorites" Grid.Row="4" Grid.Column="1"/>
-                                                      
-                <BoxView BackgroundColor="#40000000" Grid.Row="4" Grid.Column="3" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#649FD4" Grid.Row="4" Grid.Column="3" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Image x:FieldModifier="public" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3" x:Name="AchievementsButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+
+                <Image x:FieldModifier="public" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3" x:Name="AchievementsButton"  BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
                 
                 <Button BackgroundColor="Transparent" Clicked="Achivements" Grid.Row="4" Grid.Column="3"/>
-              
-                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="2" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="2" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Image x:FieldModifier="public" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" x:Name="StyleButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+
+                <Image x:FieldModifier="public" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" x:Name="StyleButton"  BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
                 
                 <Button BackgroundColor="Transparent" Clicked="StylePage" Grid.Row="5" Grid.Column="2"/>
-              
-                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="3" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="3" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Image x:FieldModifier="public" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3" x:Name="HistoryButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+
+                <Image x:FieldModifier="public" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3" x:Name="HistoryButton"  BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
                
                 <Button BackgroundColor="Transparent" Clicked="History" Grid.Row="5" Grid.Column="3"/>
 
-                <BoxView BackgroundColor="#40000000" Grid.Row="5" Grid.Column="1" Margin="8" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <BoxView BackgroundColor="#649FD4" Grid.Row="5" Grid.Column="1" Margin="10" WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
-                <Image x:FieldModifier="public" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1" x:Name="ProfileSettingsButton"  BackgroundColor="Transparent" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
+                <Image x:FieldModifier="public" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1" x:Name="ProfileSettingsButton"  BackgroundColor="#649FD4" WidthRequest="80" HeightRequest="80"  HorizontalOptions="Center" VerticalOptions="Center" Margin="14"/>
             
                 <Button BackgroundColor="Transparent" Clicked="Settings" Grid.Row="5" Grid.Column="1"/>
 

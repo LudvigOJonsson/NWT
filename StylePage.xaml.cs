@@ -55,6 +55,10 @@ namespace NWT
             {
                 ColorFunction(Color.FromHex("#e0d8b3"));
             }
+            else
+            {
+                ColorFunction(Color.FromHex(Sender.ClassId));
+            }
 
 
 

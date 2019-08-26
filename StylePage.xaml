@@ -27,6 +27,17 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -34,12 +45,75 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Välj en färg som passar dig!" TextColor="Black" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+
                 <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Blue" BackgroundColor="#649FD4" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="1" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
                 <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Green" BackgroundColor="#6fb110" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="2" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
                 <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Purple" BackgroundColor="#bb0066" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="3" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
                 <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="White" BackgroundColor="#e0d8b3" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="4" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
                 <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="LightBlue" BackgroundColor="#649FD4" CornerRadius="0" Margin="0"/>
-                
+                <Image  Grid.Row="5" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#56E39F" BackgroundColor="#56E39F" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="6" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#3B2C35" BackgroundColor="#3B2C35" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="7" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#99C24D" BackgroundColor="#99C24D" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="8" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#F18F01" BackgroundColor="#F18F01" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="9" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#EF2648" BackgroundColor="#EF2648" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="10" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#FFC818" BackgroundColor="#FFC818" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="11" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#020202" BackgroundColor="#020202" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="12" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#5EF4FE" BackgroundColor="#5EF4FE" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="13" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#DF7782" BackgroundColor="#DF7782" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="14" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#A84A5C" BackgroundColor="#A84A5C" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="15" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#88382D" BackgroundColor="#88382D" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="16" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#55134E" BackgroundColor="#55134E" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="17" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#FFEC94" BackgroundColor="#FFEC94" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="18" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="19" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#B0E57C" BackgroundColor="#B0E57C" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="19" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#003366" BackgroundColor="#003366" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="20" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#CCFF33" BackgroundColor="#CCFF33" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="21" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+                <Button Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#996699" BackgroundColor="#996699" CornerRadius="0" Margin="0"/>
+                <Image  Grid.Row="22" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+
+
             </Grid>
         </ScrollView>
     </ContentPage.Content>
