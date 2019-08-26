@@ -86,10 +86,10 @@ namespace NWT
             MP.BarBackgroundColor = BC;
             SP.Detail.BackgroundColor = BC;
 
-            CNF.Up.BackgroundColor = BC;
+
             CNF.Down.BackgroundColor = BC;
 
-            NF.Up.BackgroundColor = BC;
+
             NF.Down.BackgroundColor = BC;
 
             SP.Master.BackgroundColor = BC;

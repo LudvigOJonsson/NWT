@@ -32,6 +32,7 @@ namespace NWT
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
         public bool ScrollLock = false;
+        public bool TagsModified = false;
 
 
         public bool First = true;
@@ -239,6 +240,20 @@ namespace NWT
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (App.LoggedinUser != null)
+            {
+                Console.WriteLine("OnAppearing");
+                if (TagsModified)
+                {
+                    Console.WriteLine("Tags modifing, reloading feed.");
+                    TagUpdate();
+                    TagsModified = false;
+                }
+            }           
+        }
 
         public CustomNewsFeed()
         {
@@ -282,11 +297,8 @@ namespace NWT
             await DisplayAlert("WIP", "Work in progress.", "Okej");
         }*/
 
-        public void TagUpdate()
+        public async void TagUpdate()
         {
-
-            
-            
             App.database.LocalExecute("DELETE FROM CNF");
 
             PREV = 0;
@@ -297,13 +309,49 @@ namespace NWT
             Filter = TagList[0];
             Tag = TagList[1];
             Author = TagList[2];
-
-
             ArticleList.Clear();
-            LoadLocalDB();
-            AddNews();
-            
 
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {                    
+                    ArticleListView.IsRefreshing = true;
+                    LoadingPopUp x = new LoadingPopUp();
+                    x.loadingAnimation.Play();
+                    await Navigation.PushAsync(x);
+
+                });
+
+                
+                LoadLocalDB();
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    AddNews();
+                    ArticleListView.ItemsSource = null;
+                    ArticleListView.ItemsSource = ArticleList;
+
+
+
+                });
+
+
+                GC.Collect();
+
+
+                await System.Threading.Tasks.Task.Delay(1000);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    Console.WriteLine("Initiering Klar");
+
+                    await Navigation.PopAsync();
+                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                    await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                    ArticleListView.IsRefreshing = false;
+                    
+                });
+
+            });
         }
 
 
@@ -349,12 +397,12 @@ namespace NWT
             Start = PREV;
             End = CURR;
 
+           
             NewsGrid.Children.Clear();
+            
+            
 
-            if (PREV > 0)
-            {
-                NewsGrid.Children.Add(Up, 0, 3, 0, 1);
-            }
+            Console.WriteLine("Grid Rensat.");
 
 
             ArticleListView = new ListView
@@ -765,55 +813,7 @@ namespace NWT
             PrintNews();
         }
 
-        public async void Scrollup(object sender, EventArgs e)
-        {
-            IsBusy = true;
 
-            NEXT = CURR;
-            CURR = PREV;
-            PREV -= DBLN;
-            if (PREV <= 0)
-            {
-                PREV = 0;
-                CURR = DBLN;
-                NEXT = DBLN * 2;
-            }
-
-
-
-            Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
-
-
-            LoadLocalDB();
-            AddNews();
-            await NewsSV.ScrollToAsync(0, NewsSV.ContentSize.Height - 10, false);
-
-            GC.Collect();
-
-            
-            IsBusy = false;
-        }
-
-        public async void Scrolldown(object sender, EventArgs e)
-        {
-            IsBusy = true;
-
-            PREV = CURR;
-            CURR = NEXT;
-            NEXT += DBLN;
-
-            Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
-
-
-            LoadLocalDB();
-            AddNews();
-            await NewsSV.ScrollToAsync(0, 10, false);
-
-            GC.Collect();
-
-            
-            IsBusy = false;
-        }
         public async void ListViewScroll(object sender, EventArgs e)
         {
             await System.Threading.Tasks.Task.Run(async () =>
@@ -839,7 +839,7 @@ namespace NWT
                     double height = NewsSV.ContentSize.Height - 10;
 
                     LoadLocalDB();
-                    AddNews();
+                    
 
 
 
@@ -848,7 +848,7 @@ namespace NWT
                 }
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
+                    AddNews();
                     ArticleListView.ItemsSource = null;
                     ArticleListView.ItemsSource = ArticleList;
 

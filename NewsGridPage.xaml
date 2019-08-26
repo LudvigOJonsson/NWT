@@ -30,7 +30,7 @@
                 
                 <Label x:Name="EmptyText" Text="Hej! Klicka på ett ämne i sidomenyn. Då kommer det valda ämnet att visas på denna sida!" TextColor="Black" FontSize="24" Grid.Row="1" Grid.Column="1" VerticalOptions="Fill" HorizontalOptions="Fill" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
 
-                <Button x:Name="Up" x:FieldModifier="public"  Margin="5" BackgroundColor="#2f6e83"  Text="Scrollup" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+              
                 <Button x:Name="Down" x:FieldModifier="public" Margin="5" BackgroundColor="#2f6e83" Clicked="ListViewScroll" Text="Scrolldown" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
 
             </Grid>
