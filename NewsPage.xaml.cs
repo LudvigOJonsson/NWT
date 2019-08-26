@@ -37,10 +37,10 @@ namespace NWT
             public int CommentNR { get; set; }           
             public CommentTable CB { get; set; }
 
-            public Comment(CommentTable s)
+            public Comment(CommentTable s, UserTable User)
             {
                 CB = s;
-                User = App.database.GetUser(s.User).First();
+                
                 UserName = User.Name;
                 UserAvatar = JsonConvert.DeserializeObject<List<string>>(User.Avatar);
                 CommentText = s.Comment;
@@ -62,14 +62,23 @@ namespace NWT
             {
                 bool read = false;
                 var History = App.database.GetAllHistory(App.LoggedinUser.ID);
-                foreach (HistoryTable HT in History)
+
+                if(History == null)
                 {
-                    if (RSS.ID == HT.Article)
+                    read = true;
+                }
+                else
+                {
+                    foreach (HistoryTable HT in History)
                     {
-                        read = true;
-                        break;
-                    }                 
-                }            
+                        if (RSS.ID == HT.Article)
+                        {
+                            read = true;
+                            break;
+                        }
+                    }
+                }
+                          
                 if (read)
                 {                   
                     TimerButton.IsEnabled = false;
@@ -268,7 +277,7 @@ namespace NWT
             string[] Categories = RSS.Category.Split(new[] { ", " }, StringSplitOptions.None);
             string[] Tags = RSS.Tag.Split(new[] { ", " }, StringSplitOptions.None);
 
-            int TagRow = 1;
+            int TagRow = 0;
 
             foreach (String Category in Categories)
             {
@@ -551,9 +560,11 @@ namespace NWT
             CommentButton.IsEnabled = false;
             if (App.Online)
             {
-                if (App.database.TokenCheck() && CommentEntry.Text != null && CommentEntry.Text != "" && CommentEntry.Text.Length > 0)
+                var CNR = App.database.CommentCount(ArticleNR);
+
+                if (App.database.TokenCheck() && CommentEntry.Text != null && CommentEntry.Text != "" && CommentEntry.Text.Length > 0 && CNR != -1)
                 {
-                    var CNR = App.database.CommentCount(ArticleNR);
+                    
                     var SC = new CommentTable
                     {
                         Article = ArticleNR,
@@ -576,33 +587,43 @@ namespace NWT
             }
             CommentButton.IsEnabled = true;
         }
-        void LoadComments()
+        async void LoadComments()
         {
             CommentTableList = App.database.GetComments(ArticleNR,0,-1);
+            if (CommentTableList != null)
+            {
+                foreach (var CommentTable in CommentTableList)
+                {
+                    MakeComment(CommentTable);
+                }
+                if (7 < CommentList.Count)
+                {
+                    LWH = 500;
+                }
+                else
+                {
+                    LWH = 70 * CommentList.Count;
+                }
 
-            foreach (var CommentTable in CommentTableList)
-            {
-                MakeComment(CommentTable);
-            }
-            if (7 < CommentList.Count)
-            {
-                LWH = 500;
+                CreateCommentListView();
             }
             else
             {
-                LWH = 70 * CommentList.Count;
+                await DisplayAlert("Offline", "Comments could not be loaded. Please try again later.", "OK");
             }
-
-            CreateCommentListView();
+            
             
         }
         public void MakeComment(CommentTable s)
         {
+            var User = App.database.GetUser(s.User);
+            if(User != null)
+            {
+                var C = new Comment(s, User.First());
 
-            var C = new Comment(s);
-
-            CommentList.Add(C);
-           
+                CommentList.Add(C);
+            }
+                      
         }
 
         public void CreateCommentListView()

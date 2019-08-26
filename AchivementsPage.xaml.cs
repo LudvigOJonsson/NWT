@@ -19,7 +19,7 @@ namespace NWT
         public Image Image2 = new Image { };
         public Button Button = new Button { };
 
-        public AchivementsPage()
+        public AchivementsPage(StatsTable Stats)
 		{
 			InitializeComponent ();
 
@@ -36,7 +36,7 @@ namespace NWT
             PE10.BackgroundColor = App.MC;
 
 
-            var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
+            
             UpdateAchivements(Stats);
         }
 

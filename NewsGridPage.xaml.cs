@@ -425,9 +425,10 @@ namespace NWT
             var Header = (Button)sender;
             Header.IsEnabled = false;
             var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetServerRSS(id).First();
-            if(RSS != null)
+            var RSSTable =  App.database.GetServerRSS(id);
+            if(RSSTable != null)
             {
+                RSSTable RSS = RSSTable.First();
                 await Navigation.PushAsync(new NewsPage(RSS, argc));
             }
             else
@@ -499,23 +500,29 @@ namespace NWT
                 int j = 0;
                 var RAL = App.database.GetHistory(App.LoggedinUser.ID);
                 Console.WriteLine("History Gotten: " + RAL.Count());
-                foreach (var RA in RAL)
+
+                if(RAL != null)
                 {
-                    var NF = new NewsfeedTable
+                    foreach (var RA in RAL)
                     {
-                        ID = 0,
-                        NewsScore = 5,
-                        Image = RA.Image,
-                        Article = RA.Article,
-                        Category = "N/A",
-                        Header = RA.Header,
-                        Plus = 0
-                    };
-                    Rss.Add(NF);
-                    j++;
-                    Console.WriteLine("Artikel Inlagd");
+                        var NF = new NewsfeedTable
+                        {
+                            ID = 0,
+                            NewsScore = 5,
+                            Image = RA.Image,
+                            Article = RA.Article,
+                            Category = "N/A",
+                            Header = RA.Header,
+                            Plus = 0
+                        };
+                        Rss.Add(NF);
+                        j++;
+                        Console.WriteLine("Artikel Inlagd");
+                    }
+                    CURR = j;
                 }
-                CURR = j;
+
+                
 
             }
             else if (argc == 2)
@@ -523,24 +530,30 @@ namespace NWT
                 Down.IsVisible = false;
                 int j = 0;
                 var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
-                Console.WriteLine("Favorites Gotten: " + FAL.Count());
-                foreach (var FA in FAL)
+
+                if(FAL != null)
                 {
-                    var NF = new NewsfeedTable
+                    Console.WriteLine("Favorites Gotten: " + FAL.Count());
+                    foreach (var FA in FAL)
                     {
-                        ID = 0,
-                        NewsScore = 5,
-                        Image = FA.Image,
-                        Article = FA.Article,
-                        Category = "N/A",
-                        Header = FA.Header,
-                        Plus = 0
-                    };
-                    Rss.Add(NF);
-                    j++;
-                    Console.WriteLine("Artikel Inlagd");
+                        var NF = new NewsfeedTable
+                        {
+                            ID = 0,
+                            NewsScore = 5,
+                            Image = FA.Image,
+                            Article = FA.Article,
+                            Category = "N/A",
+                            Header = FA.Header,
+                            Plus = 0
+                        };
+                        Rss.Add(NF);
+                        j++;
+                        Console.WriteLine("Artikel Inlagd");
+                    }
+                    CURR = j;
                 }
-                CURR = j;
+
+                
             }
             else
             {
@@ -578,6 +591,13 @@ namespace NWT
 
 
             ArticlePrintList.Clear();
+
+            if(ArticleList.Count < 20)
+            {
+                CURR = ArticleList.Count;
+            }
+
+
             for(int j = PREV; j < CURR; j++)
             {
                 ArticlePrintList.Add(ArticleList[j]);

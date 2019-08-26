@@ -382,7 +382,17 @@ namespace NWT
             await button.RotateTo(-5, 80, Easing.BounceOut);
             await button.RotateTo(5, 120, Easing.BounceOut);
             await button.RotateTo(0, 80, Easing.BounceOut);
-            await Navigation.PushAsync(new AchivementsPage());
+            var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
+            if(Stats != null)
+            {
+                await Navigation.PushAsync(new AchivementsPage(Stats));
+            }
+            else
+            {
+                await DisplayAlert("Article Load Failure", "Troferna misslyckades att laddas in, vänligen försök igen.", "OK");
+            }
+
+            
             ButtonLock();
         }
         async void Points(object sender, EventArgs e)

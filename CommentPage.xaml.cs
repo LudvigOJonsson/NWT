@@ -183,7 +183,7 @@ namespace NWT
                 if (ReplyNR > -1)
                 {
                     Console.WriteLine("PING3.1.1");
-                    var Reply = App.database.GetComment(ReplyNR).First();
+                    var Reply = new CommentTable(); //App.database.GetComment(ReplyNR).First();
                     Console.WriteLine("PING3.1.2");
                     var User = App.database.GetUser(Reply.User).First();
                     Console.WriteLine("PING3.1.3");
