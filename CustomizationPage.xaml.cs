@@ -88,24 +88,7 @@ namespace NWT
             x.Login(App.LoggedinUser);
             App.Mainpage.CurrentPage = App.Mainpage.Children[0];
 
-            var History = App.database.GetAllHistory(App.LoggedinUser.ID);
-
-            var NG = (NewsGridPage)App.Mainpage.Children[1];
-            foreach (NewsGridPage.Article A in NG.ArticleList)
-            {
-                foreach (HistoryTable HT in History)
-                {
-                    if (A.ID == HT.Article)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            //A.CheckImage.Source = "checkmark.png";
-                            //A.Box.BorderColor = Color.FromRgb(80, 210, 194);
-                        });
-
-                    }
-                }
-            }
+            
 
             App.SideMenu.UpdateTags();
             var y = (CustomNewsFeed)App.Mainpage.Children[0];

@@ -311,8 +311,16 @@ namespace NWT
             var Header = (Button)sender;
             Header.IsEnabled = false;
             var id = Int32.Parse(Header.ClassId);
-            var RSS = App.database.GetServerRSS(id).First();
-            await Navigation.PushAsync(new NewsPage(RSS, argc));
+            var RSSTable = App.database.GetServerRSS(id);
+            if (RSSTable != null)
+            {
+                RSSTable RSS = RSSTable.First();
+                await Navigation.PushAsync(new NewsPage(RSS, argc));
+            }
+            else
+            {
+                await DisplayAlert("Article Load Failure", "Artikeln misslyckades att laddas in, vänligen försök igen.", "OK");
+            }
 
             Header.IsEnabled = true;
 

@@ -96,7 +96,6 @@
 
             <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1" />
                     
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

@@ -318,6 +318,7 @@ namespace NWT
             DB.Delete(arg);
         }
 
+
         public List<UserTable> GetUser(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + ID_, App.LoggedinUser.ID)));
@@ -328,20 +329,6 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
         }
-
-        public List<UserTable> GetUserByName(string Username)
-        {
-
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE Username = '" + Username + "'", App.LoggedinUser.ID)));
-
-            if (JSONResult == "No")
-            {
-                return null;
-            }
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
-        }
-
         public List<CommentTable> GetComments(int ID_, int LVL, int RNR) { 
 
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE Article = " + ID_ + " AND Replylvl = " + LVL + " AND (Replynr = " + RNR + " OR Replynr = -1) ORDER BY CommentNR", App.LoggedinUser.ID)));
@@ -353,28 +340,18 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
         }
 
-        public List<CommentTable> GetComment(int ID_)
-        {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR", App.LoggedinUser.ID)));
-            if (JSONResult == "No")
-            {
-                return null;
-            }
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
-        }
 
         public List<RSSTable> GetServerRSS(long ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("RSS", "Query", "SELECT * FROM RSS WHERE ID = " + ID_, App.LoggedinUser.ID)));
             if (JSONResult == "No")
             {
+                Console.WriteLine("Failed to Load Article");
                 return null;
             }
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<RSSTable>>(Result.JSON);
         }
-
         public List<FavoritesTable> GetFavorites(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Query", "SELECT * FROM Favorites WHERE User = " + ID_, App.LoggedinUser.ID)));
@@ -385,10 +362,8 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<FavoritesTable>>(Result.JSON);
         }
-
         public List<HistoryTable> GetHistory(int ID_)
         {
-
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = " + ID_ + " ORDER BY Readat LIMIT 10 OFFSET(SELECT COUNT(*) FROM History  WHERE User = " + ID_ + ") - 10 ", App.LoggedinUser.ID)));
             if (JSONResult == "No")
             {
@@ -397,7 +372,6 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
         }
-
         public List<HistoryTable> GetAllHistory(int ID_)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Query", "SELECT * FROM History WHERE User = " + ID_ + " ORDER BY Readat", App.LoggedinUser.ID)));
@@ -408,8 +382,6 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<HistoryTable>>(Result.JSON);
         }
-
-
         public List<StatsTable> GetUserStats(int ID)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Query", "SELECT * FROM Stats WHERE User = " + ID.ToString(), App.LoggedinUser.ID)));
@@ -421,7 +393,30 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<StatsTable>>(Result.JSON);
         }
 
-
+        public List<NewsfeedTable> GetNF(int ID)
+        {
+            return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());
+        }
+        public List<NewsfeedTable> GetCNF(int ID)
+        {
+            return DB.Query<NewsfeedTable>("SELECT * FROM CNF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM CNF) - " + ID.ToString());
+        }
+        public List<NewsfeedTable> GetNf(long ID)
+        {
+            return DB.Query<NewsfeedTable>("SELECT * FROM NF WHERE Article = ?", ID.ToString());
+        }
+        public List<AvatarItemsTable> GetAllItems()
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items");
+        }
+        public List<AvatarItemsTable> GetItemFromType(string ID)
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = ?", ID.ToString());
+        }
+        public List<AvatarItemsTable> GetItemFromID(long ID)
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE ID = ?", ID.ToString());
+        }
 
         public int LoadNF(int start, int stop, string Filter, string Author, string Tag)
         {
@@ -473,7 +468,7 @@ namespace NWT
                     }
                     else
                     {
-                        break;
+                        
                         //ParseRssFile();
                         //App.Online = false;
 
@@ -483,7 +478,6 @@ namespace NWT
             }
             return Nr;
         }
-
         public int LoadCNF(int start, int stop, List<string> Filter_, List<string> Author_, List<string> Tag_)
         {
             int Nr = 0;
@@ -613,7 +607,7 @@ namespace NWT
                     }
                     else
                     {
-                        break;
+                        
                         //ParseRssFile();
                         //App.Online = false;
 
@@ -623,12 +617,6 @@ namespace NWT
             }
             return Nr;
         }
-
-
-
-
-
-
 
         public void InsertComment(CommentTable Comment)
         {
@@ -642,10 +630,7 @@ namespace NWT
                 
             }
             
-        }
-
-        
-
+        }     
         public void StatUpdate(string Statement)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Stats", "Update", Statement, App.LoggedinUser.ID)));
@@ -659,7 +644,6 @@ namespace NWT
             }
 
         }
-
         public void InsertHistory(HistoryTable RSS)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("History", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
@@ -673,12 +657,6 @@ namespace NWT
             }
 
         }
-
-
-
-
-
-
         public void InsertFavorite(FavoritesTable RSS)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
@@ -688,43 +666,10 @@ namespace NWT
             TCP(JsonConvert.SerializeObject(new JSONObj("Favorite", "Delete", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
         }
 
-        public List<NewsfeedTable> GetNF(int ID)
-        {
-            return DB.Query<NewsfeedTable>("SELECT * FROM NF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM NF) - " + ID.ToString());
-        }
-
-        public List<NewsfeedTable> GetCNF(int ID)
-        {
-            return DB.Query<NewsfeedTable>("SELECT * FROM CNF LIMIT " + ID.ToString() + " OFFSET(SELECT COUNT(*) FROM CNF) - " + ID.ToString());
-        }
-
-        public List<NewsfeedTable> GetNf(long ID)
-        {
-            return DB.Query<NewsfeedTable>("SELECT * FROM NF WHERE Article = ?", ID.ToString());
-        }
-
-        public List<AvatarItemsTable> GetAllItems()
-        {
-            return DB.Query<AvatarItemsTable>("SELECT * FROM Items");
-        }
-
-        public List<AvatarItemsTable> GetItemFromType(string ID)
-        {
-            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = ?", ID.ToString());
-        }
-
-        public List<AvatarItemsTable> GetItemFromID(long ID)
-        {
-            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE ID = ?", ID.ToString());
-        }
-
-
-
         public void Registration(UserTable User)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "Register", JsonConvert.SerializeObject(User), -1)));
         }
-
         public void Login(UserTable User)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Token", "Login", JsonConvert.SerializeObject(User), -1)));
@@ -747,7 +692,6 @@ namespace NWT
 
 
         }
-
         public void Logout()
         {
             if (App.Token != null)
@@ -758,7 +702,6 @@ namespace NWT
                 App.Startpage.Detail = new NavigationPage(App.Loginpage) { BarBackgroundColor = Color.FromHex("#649FD4"), BarTextColor = Color.FromHex("#FFFFFF"), };
             }
         }
-
         public bool TokenCheck()
         {
             if (App.Token != null)
@@ -792,7 +735,6 @@ namespace NWT
             }
             return false;
         }
-
         public bool Plustoken(UserTable User, int Balance)
         {
             var Pair = JsonConvert.SerializeObject(new KeyValuePair<UserTable, int>(User, Balance));
@@ -815,28 +757,6 @@ namespace NWT
 
             return Convert.ToBoolean(Result.JSON);
         }
-
-
-        public List<Task> MissionUpdate(UserTable User, string Operation)
-        {
-
-
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Mission", JsonConvert.SerializeObject(new KeyValuePair<UserTable, string>(User, Operation)), App.LoggedinUser.ID)));
-            if (JSONResult == "No")
-            {
-                return null;
-            }
-            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User, App.LoggedinUser.ID)));
-            if (JSONResult == "No")
-            {
-                return null;
-            }
-            var UserQuery = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-            App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
-            return JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
-        }
-
         public void MissionEvaluation()
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Mission", "", App.LoggedinUser.ID)));
@@ -850,9 +770,6 @@ namespace NWT
             }
 
         }
-
-
-
         public void ChangePassword(string NewPass, string RepeatPass)
         {
             if (NewPass == RepeatPass)
@@ -861,12 +778,10 @@ namespace NWT
                 TCP(JsonConvert.SerializeObject(new JSONObj("User", "ChangePassword", JsonConvert.SerializeObject(Statement), App.LoggedinUser.ID)));
             }
         }
-
         public void UpdateInfo(UserTable Update)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateInfo", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
         }
-
         public void UpdateChoices(UserTable Update)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateChoices", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
@@ -880,12 +795,8 @@ namespace NWT
             {
 
 
-            }
-            
-            
-
+            }                      
         }
-
         public void UpdateAvatarItems(UserTable Update)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateItems", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
@@ -899,17 +810,11 @@ namespace NWT
 
 
             }
-
-
-
         }
-
-
         public void UpdateTutorialProgress(UserTable Update)
         {
             TCP(JsonConvert.SerializeObject(new JSONObj("User", "UpdateTutorial", JsonConvert.SerializeObject(Update), App.LoggedinUser.ID)));
         }
-
         public int CommentCount(int parm)
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT Comment FROM Comments WHERE Article = " + parm, App.LoggedinUser.ID)));
@@ -923,12 +828,6 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON).Count;
         }
-
-
-
-
-
-
 
 
         public string SHA256Hash(string input)
@@ -949,7 +848,6 @@ namespace NWT
                 return builder.ToString();
             }
         }
-
         public void AvatarItemInit()
         {
             LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price) VALUES " +
@@ -973,8 +871,6 @@ namespace NWT
 
              "");
         }
-
-
         public static string TCP(string JSON)
         {
             string Message = "";
@@ -1052,12 +948,12 @@ namespace NWT
                     }
                 } while (BR < Length);
 
-
+                Console.WriteLine("JSON Error testing");
                 var Result = JsonConvert.DeserializeObject<JSONObj>(Message).JSON;
+                Console.WriteLine("JSON Error testing Complete");
 
 
 
-                //Console.WriteLine(Message);
                 tcpclnt.Close();
 
                 return Message;
@@ -1066,15 +962,38 @@ namespace NWT
             catch (Exception e)
             {
                 Console.WriteLine("Error..... " + e.StackTrace);
-
+                
                 return "No";
             }
         }
-
-
         private void Storage()
         {
             /*
+              
+    public List<UserTable> GetUserByName(string Username)
+    {
+
+        var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE Username = '" + Username + "'", App.LoggedinUser.ID)));
+
+        if (JSONResult == "No")
+        {
+            return null;
+        }
+        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+        return JsonConvert.DeserializeObject<List<UserTable>>(Result.JSON);
+    }              
+
+    public List<CommentTable> GetComment(int ID_)
+    {
+        var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Comments", "Query", "SELECT * FROM Comments WHERE ID = " + ID_ + " ORDER BY CommentNR", App.LoggedinUser.ID)));
+        if (JSONResult == "No")
+        {
+            return null;
+        }
+        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+        return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
+    }        
+            
     public List<VoteQuestionTable> GetVoteQuestions(int ID)
     {           
     var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM VoteQuestions WHERE Stage = " + ID, App.LoggedinUser.ID)));
@@ -1178,9 +1097,29 @@ namespace NWT
     return JsonConvert.DeserializeObject<List<QuizTable>>(Result.JSON);
     }
 
+
+    public List<Task> MissionUpdate(UserTable User, string Operation)
+    {
+
+
+        var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Mission", JsonConvert.SerializeObject(new KeyValuePair<UserTable, string>(User, Operation)), App.LoggedinUser.ID)));
+        if (JSONResult == "No")
+        {
+            return null;
+        }
+        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("User", "Query", "SELECT * FROM Users WHERE ID = " + App.Token.User, App.LoggedinUser.ID)));
+        if (JSONResult == "No")
+        {
+            return null;
+        }
+        var UserQuery = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+        App.LoggedinUser = JsonConvert.DeserializeObject<List<UserTable>>(UserQuery.JSON).First();
+        return JsonConvert.DeserializeObject<List<Task>>(App.LoggedinUser.MissionString);
+    }
+
     */
         }
-
 
     }
 }
