@@ -52,7 +52,10 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Add(Button.ClassId);
-            
+            if (!Tutorial)
+            {
+                App.SideMenu.UpdateTags();
+            }
             Button.IsEnabled = false;
             CheckStartButton();
         }

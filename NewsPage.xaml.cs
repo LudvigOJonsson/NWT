@@ -142,9 +142,9 @@ namespace NWT
         void LoadNews(RSSTable RSS)
         {
             ArticleNR = RSS.ID;
-            Rubrik.Text = RSS.Title;
+            Rubrik.Text = RSS.Title.Replace("*", "-");
             //Dot.Text = "⚫";
-            Ingress.Text = RSS.Description;
+            Ingress.Text = RSS.Description.Replace("*", "-");
             Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
             if (RSS.Author == "Ingen Byline")
             {
@@ -212,7 +212,7 @@ namespace NWT
                         
                         var Label = new Label
                         {
-                            Text = Text[TextCount],
+                            Text = Text[TextCount].Replace("*", "-"),
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 16,
@@ -228,7 +228,7 @@ namespace NWT
                 {
                         var IMGText = new Label
                         {
-                            Text = ImageText[ImageCount],
+                            Text = ImageText[ImageCount].Replace("*", "-"),
                             HorizontalOptions = LayoutOptions.Start ,
                             VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
@@ -580,6 +580,8 @@ namespace NWT
                     App.database.InsertComment(SC);
                     MakeComment(SC);
                 }
+                CommentListView = null;
+                LoadComments();
             }
             else
             {
