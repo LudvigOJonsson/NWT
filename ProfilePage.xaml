@@ -80,25 +80,24 @@
 
 
 
-
-                <Image x:FieldModifier="public" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" x:Name="FavoritesButton"  BackgroundColor="#649FD4"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="14"/>
-                
+                <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
+                <Image x:FieldModifier="public" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" x:Name="FavoritesButton"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Favorites" Grid.Row="4" Grid.Column="1"/>
 
-                <Image x:FieldModifier="public" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3" x:Name="AchievementsButton"  BackgroundColor="#649FD4"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="14"/>
-                
+                <BoxView Grid.Row="4" Grid.Column="3" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
+                <Image x:FieldModifier="public" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3" x:Name="AchievementsButton"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Achivements" Grid.Row="4" Grid.Column="3"/>
 
-                <Image x:FieldModifier="public" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" x:Name="StyleButton"  BackgroundColor="#649FD4"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="14"/>
-                
+                <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
+                <Image x:FieldModifier="public" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" x:Name="StyleButton"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="StylePage" Grid.Row="5" Grid.Column="2"/>
 
-                <Image x:FieldModifier="public" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3" x:Name="HistoryButton"  BackgroundColor="#649FD4"   HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="14"/>
-               
+                <BoxView Grid.Row="5" Grid.Column="3" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
+                <Image x:FieldModifier="public" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3" x:Name="HistoryButton"  BackgroundColor="Transparent"   HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="History" Grid.Row="5" Grid.Column="3"/>
 
-                <Image x:FieldModifier="public" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1" x:Name="ProfileSettingsButton"  BackgroundColor="#649FD4"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="14"/>
-            
+                <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
+                <Image x:FieldModifier="public" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1" x:Name="ProfileSettingsButton"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Settings" Grid.Row="5" Grid.Column="1"/>
 
 
