@@ -40,14 +40,14 @@
 
             <!--<Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
             <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
-            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,0" FontSize="30" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,0" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
 
-            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="12"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="14"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
 
             <Image x:Name="ArticleImage" Source="https://www.underconsideration.com/brandnew/archives/google_broken_image_00_a_logo.gif"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
             
 
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -59,7 +59,7 @@
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
             
-            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="22" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="26" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
 
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="Samla mynt!" 
@@ -79,7 +79,7 @@
             
            
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="heart.png">
+                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="Icon_Heart.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>

@@ -15,29 +15,6 @@
             <Grid x:Name="StyleGrid" RowSpacing="3" ColumnSpacing="0" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -47,7 +24,7 @@
 
                 <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Välj en färg som passar dig!" TextColor="Black" FontSize="24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
 
-                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Blue" BackgroundColor="#649FD4" CornerRadius="0" Margin="0"/>
+                <!--<Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Blue" BackgroundColor="#649FD4" CornerRadius="0" Margin="0"/>
                 <Image  Grid.Row="1" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
 
                 <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="Green" BackgroundColor="#6fb110" CornerRadius="0" Margin="0"/>
@@ -111,7 +88,7 @@
                 <Image  Grid.Row="21" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
 
                 <Button Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="3" Clicked="SelectStyle" ClassId="#996699" BackgroundColor="#996699" CornerRadius="0" Margin="0"/>
-                <Image  Grid.Row="22" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>
+                <Image  Grid.Row="22" Grid.Column="0" Margin="5" Source="Icon_Hub_white.png" HeightRequest="150" WidthRequest="150"/>-->
 
 
             </Grid>

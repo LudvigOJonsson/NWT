@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,6 +15,17 @@ namespace NWT
         public LoadingPopUp()
         {
             InitializeComponent();
+
+            LoadingText.IsVisible = false;
+            LoadingTextAppear();
+        }
+
+        async public void LoadingTextAppear()
+        {
+            await LoadingText.ScaleTo(0, 2000);
+            await LoadingText.ScaleTo(1, 2000);
+            LoadingText.IsVisible = true;
+
         }
 
         async void ClosePopup(object sender, EventArgs e)

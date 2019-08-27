@@ -92,12 +92,36 @@ namespace NWT
                 IMG.GestureRecognizers.Add(TGR);
                 AvatarButtonsGrid.Children.Add(IMG, Column, Row);
 
-                if (!Inventory.Contains(Item.ID))
+                if (!Inventory.Contains(Item.ID) && Column != 0)
                 {
+                    var TGR3 = new TapGestureRecognizer()
+                    {
+                        NumberOfTapsRequired = 1
+                    };
+
                     var TGR2 = new TapGestureRecognizer()
                     {
                         NumberOfTapsRequired = 1
                     };
+
+                    var IMG3 = new Image
+                    {
+                        ClassId = Item.ID.ToString(),
+                        Source = "",
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        BackgroundColor = Color.Transparent,
+                        Margin = 0
+
+                    };
+
+                    TGR3.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        UnlockComponent(s, e);
+                        IsEnabled = true;
+                    };
+
+                    IMG3.GestureRecognizers.Add(TGR2);
 
                     var IMG2 = new Image
                     {
@@ -105,8 +129,8 @@ namespace NWT
                         Source = "keyhole.png",
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.FromHex("#649FD4"),
-                        Margin = 5
+                        BackgroundColor = Color.Transparent,
+                        Margin = 20
 
                     };
 
@@ -117,6 +141,8 @@ namespace NWT
                     };
 
                     IMG2.GestureRecognizers.Add(TGR2);
+
+                    AvatarButtonsGrid.Children.Add(IMG3, Column, Row);
                     AvatarButtonsGrid.Children.Add(IMG2, Column, Row);
                 }
 

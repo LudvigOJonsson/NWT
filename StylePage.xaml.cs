@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,12 @@ namespace NWT
         public Image Image = new Image { };
         public Button Button = new Button { };
 
+        public List<int> StylesInventory = new List<int>();
+        public string ActiveStyle;
+
         public StylePage()
         {
+
             InitializeComponent();
 
             if (App.LoggedinUser.TutorialProgress == 3)
@@ -27,7 +32,128 @@ namespace NWT
                 App.LoggedinUser.TutorialProgress = 4;
                 App.database.UpdateTutorialProgress(App.LoggedinUser);
             }
+
+
+            /*StylesInventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
+            ActiveStyle = JsonConvert.DeserializeObject<string>(App.LoggedinUser.Avatar);
+
+            var StylesList = App.database.GetAllStyles();
+
+            var Row = 1;
+
+            foreach (var Style in StylesList)
+            {
+                var Button = new Button
+                {
+                    ClassId = Style.ID,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    BackgroundColor = Style.Color,
+                    Margin = 5,
+                };
+
+                var TGR = new TapGestureRecognizer()
+                {
+                    NumberOfTapsRequired = 1
+                };
+                TGR.Tapped += (s, e) => {
+                    IsEnabled = false;
+                    ColorFunction(Style.Color);
+                    IsEnabled = true;
+                };
+                Button.GestureRecognizers.Add(TGR);
+                StyleGrid.Children.Add(Button, 0, 3, Row, Row + 1);
+
+                if (!StylesInventory.Contains(Style.ID))
+                {
+                    var TGR3 = new TapGestureRecognizer()
+                    {
+                        NumberOfTapsRequired = 1
+                    };
+
+                    var TGR2 = new TapGestureRecognizer()
+                    {
+                        NumberOfTapsRequired = 1
+                    };
+
+                    var IMG3 = new Image
+                    {
+                        ClassId = Style.ID.ToString(),
+                        Source = "",
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        BackgroundColor = Color.Transparent,
+                        Margin = 0
+
+                    };
+
+                    TGR3.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        UnlockComponent(s, e);
+                        IsEnabled = true;
+                    };
+
+                    IMG3.GestureRecognizers.Add(TGR2);
+
+                    var IMG2 = new Image
+                    {
+                        ClassId = Style.ID.ToString(),
+                        Source = "keyhole.png",
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        BackgroundColor = Color.Transparent,
+                        Margin = 60
+
+                    };
+
+                    TGR2.Tapped += (s, e) => {
+                        IsEnabled = false;
+                        UnlockComponent(s, e);
+                        IsEnabled = true;
+                    };
+
+                    IMG2.GestureRecognizers.Add(TGR2);
+
+                    StyleGrid.Children.Add(IMG3, Column, Row);
+                    StyleGrid.Children.Add(IMG2, Column, Row);
+                }
+
+
+
+
+                Row++;
+            }*/
         }
+
+        /*async void UnlockComponent(object sender, EventArgs e)
+        {
+            var Button = (Image)sender;
+            var id = Convert.ToInt32(Button.ClassId);
+            var Style = App.database.GetStyleFromID(id).First();
+            int tokenNumber = Style.Price;
+            bool answer = await DisplayAlert("", "Vill du låsa upp " + Style.Descriptions + " för " + tokenNumber + " mynt?", "Nej", "Ja");
+            if (!answer)
+            {
+
+                if (App.LoggedinUser.Plustokens >= tokenNumber)
+                {
+                    //Unlocks item
+                    Button.IsEnabled = false;
+                    Button.IsVisible = false;
+                    App.database.Plustoken(App.LoggedinUser, -tokenNumber);
+                    StylesInventory.Add(Convert.ToInt32(id));
+
+                    App.LoggedinUser.Inventory = JsonConvert.SerializeObject(StylesInventory);
+                    App.database.UpdateAvatarItems(App.LoggedinUser);
+
+
+                }
+                else
+                {
+                    await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
+                }
+            }
+        }*/
 
         public void SelectStyle(object sender, EventArgs e)
         {

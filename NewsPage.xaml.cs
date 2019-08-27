@@ -215,7 +215,7 @@ namespace NWT
                             Text = Text[TextCount].Replace("*", "-"),
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 16,
+                            FontSize = 18,
                             TextColor = Color.Black,                        
                             Margin = new Thickness(0, 0, 5, 10)
                         };
@@ -233,7 +233,7 @@ namespace NWT
                             VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 16,
+                            FontSize = 18,
                             TextColor = Color.Gray,
                             Margin = new Thickness(0, 10, 0, 20)
                         };
@@ -293,6 +293,17 @@ namespace NWT
                 };
                 Box.Clicked += CategoryButtonClicked;
 
+                var AddedBox = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 2,
+                    BackgroundColor = Color.LightGray,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    ClassId = Category
+                };
+                Box.Clicked += RemoveCategoryButtonClicked;
+
                 var Comment = new Label
                 {
                     Text = Category,
@@ -308,13 +319,15 @@ namespace NWT
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
                 TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
-                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
-                TagRow++;
 
                 if (App.SideMenu.Categories.Contains(Category))
                 {
                     Box.IsEnabled = false;
+                    TagGrid.Children.Add(AddedBox, 0, 6, TagRow, TagRow + 1);
                 }
+
+                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
+                TagRow++;
 
 
             }
@@ -333,6 +346,18 @@ namespace NWT
                     ClassId = Tag
                 };
                 Box.Clicked += TagButtonClicked;
+
+                var AddedBox = new Button
+                {
+                    CornerRadius = 10,
+                    Margin = 2,
+                    BackgroundColor = Color.LightGray,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
+                    ClassId = Tag
+                };
+                Box.Clicked += RemoveTagButtonClicked;
+
                 var Comment = new Label
                 {
                     Text = Tag,
@@ -348,14 +373,15 @@ namespace NWT
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
                 TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
-                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
-                TagRow++;
-
-
+                
                 if (App.SideMenu.Tags.Contains(Tag))
                 {
                     Box.IsEnabled = false;
+                    TagGrid.Children.Add(AddedBox, 0, 6, TagRow, TagRow + 1);
                 }
+
+                TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
+                TagRow++;
             }
 
 
@@ -405,16 +431,51 @@ namespace NWT
             App.SideMenu.UpdateTags();
             Button.IsEnabled = false;
         }
-        void TagButtonClicked(object sender, System.EventArgs e) {
+        void RemoveCategoryButtonClicked(object sender, System.EventArgs e)
+        {
+
+            var Button = (Button)sender;
+            App.SideMenu.Categories.Remove(Button.ClassId);
+            App.SideMenu.UpdateTags();
+            Button.IsEnabled = false;
+        }
+        void TagButtonClicked(object sender, System.EventArgs e)
+        {
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Add(Button.ClassId);
             App.SideMenu.UpdateTags();
             Button.IsEnabled = false;
         }
+        void RemoveTagButtonClicked(object sender, System.EventArgs e)
+        {
+
+            var Button = (Button)sender;
+            App.SideMenu.Tags.Remove(Button.ClassId);
+            App.SideMenu.UpdateTags();
+            Button.IsEnabled = false;
+        }
+
+        public void FavButtonCheck()
+        {
+            if (App.LoggedinUser != null)
+            {
+
+                if (Favorited)
+                {
+                    FavIcon.Source = "Icon_Heart_Full";
+                }
+                else
+                {
+                    FavIcon.Source = "Icon_Heart";
+                }
+
+            }
+        }
 
         async void FavButtonClicked(object sender, System.EventArgs e)
         {
+            var Button = (Button)sender;
             
             if (App.LoggedinUser != null)
             {
@@ -424,6 +485,7 @@ namespace NWT
                     App.database.Execute("DELETE FROM Favorites WHERE User = "+ App.LoggedinUser.ID +" AND Article = "+ ArticleNR);
                     await DisplayAlert("Favorite", "Article Unfavorited", "Ok");
                     Favorited = false;
+                    FavIcon.Source = "Icon_Heart";
                 }
                 else
                 {
@@ -437,6 +499,7 @@ namespace NWT
                     App.database.InsertFavorite(fav);
                     await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
                     Favorited = true;
+                    FavIcon.Source = "Icon_Heart_Full";
                 }
                 
             }
@@ -466,7 +529,7 @@ namespace NWT
                     Image = ArticleImage.Source.ToString()
                 };
                 App.database.InsertHistory(HT);
-                TimerIcon.Source = "tokenicon.png";
+                TimerIcon.Source = "Icon_Coin.png";
                 TimerButton.Text = "Samlad";
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
@@ -739,6 +802,7 @@ namespace NWT
                     {
 
                         RowDefinitions = {
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto }
                     },
 
