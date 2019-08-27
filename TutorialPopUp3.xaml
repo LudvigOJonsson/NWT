@@ -25,43 +25,45 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" />
                 </Grid.ColumnDefinitions>
 
                 <forms:AnimationView 
 	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+	                Grid.Row="1" Grid.Column="1" 
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
 	                Animation="confetti.json"
 	                Loop="false" 
 	                AutoPlay="true"
-	                />
+	                IsVisible="False"/>
 
-                <Label Text="Grattis, du har nu anpassat din app! Här får du en hatt till din avatar :)" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <Label Text="Grattis, du har nu anpassat din app! Här får du en hatt till din avatar :)" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" TextColor="White" IsVisible="False"/>
 
-                <Image x:Name="wizardHat" Source="wizardhat.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="20"/>
+                <Image x:Name="wizardHat" Source="wizardhat.png" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill" Margin="20" IsVisible="False"/>
 
-                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="2" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="2" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="2" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="2" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="2" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="2" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="2" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallCheckmark3" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Image x:Name="Intro_3" Source="Intro_Sequence_3" Grid.Row="1"   Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="AspectFit" />
+
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1"/>
 
             </Grid>
         </ContentView>

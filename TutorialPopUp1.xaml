@@ -25,28 +25,22 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="0"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="5"/>
-                   
-                           
+                    <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="15" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="15" />
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0"/>
+
                 </Grid.ColumnDefinitions>
 
-                <Button CornerRadius="25" BackgroundColor="#4576A2" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" />
-                <Button CornerRadius="25" BackgroundColor="#848484" Grid.Row="2" Grid.Column="1" Margin="20"/>
-                <Button CornerRadius="25" BackgroundColor="#FFFFFF" Grid.Row="2" Grid.Column="1" Margin="25" />
-              
-                <Label Text="Nu ska du få välja din Avatar :)!" Grid.Row="2" Grid.Column="1" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"  TextColor="Black" FontAttributes="Bold"/>
+             
+                <Image x:Name="Intro_1" Source="Intro_Sequence_1" Grid.Row="1"   Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="AspectFit"/>
 
-                <Image x:Name="Intro_1" Source="Intro_1.png" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10" Aspect="AspectFit"/>
-
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="1"   Grid.Column="1" />
 
 
 

@@ -25,13 +25,14 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" />
                 </Grid.ColumnDefinitions>
 
                 <forms:AnimationView 
@@ -42,26 +43,33 @@
 	                Animation="confetti.json" 
 	                Loop="false" 
 	                AutoPlay="true"
-	                />
+	                IsVisible="False"/>
 
                 <!--<Image Source="hamburger.png" Grid.Row="0" Grid.Column="0" Margin="25"/>
                 <Image Source="leftarrow2.png" Grid.Row="0" Grid.Column="1" Margin="25"/>
                 <Label Text="För att ändra dina val, öppna sidomenyn via hamburgarknappen eller genom att svepa från vänster." FontSize="24" Margin="25" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 -->
+                
+                
                 <Label Text=" Grattis! Du har nu anpassat din avatar. Gå till Stil-sidan för att vidare anpassa din app!" FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
 
-                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="Intro_2" Source="Intro_Sequence_2" Grid.Row="1"   Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="AspectFit"/>
+                
+                
+                
+                
+                <Image x:Name="progressBall1" Source="progressBall" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBall2" Source="progressBall" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBall3" Source="progressBall" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False" />
+                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="1" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
-                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10"/>
+                <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
+                <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="End" Margin="10" IsVisible="False"/>
 
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" />
 
             </Grid>
         </ContentView>

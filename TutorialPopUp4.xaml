@@ -7,17 +7,7 @@
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="NWT.TutorialPopUp4"
     x:Name="TutorialPopUpPage3">
-    <pages:PopupPage.Animation>
-        <animations:ScaleAnimation DurationIn="400"
-                                   DurationOut="300"
-                                   EasingIn="SinOut"
-                                   EasingOut="SinIn"
-                                   HasBackgroundAnimation="True"
-                                   PositionIn="Center"
-                                   PositionOut="Center"
-                                   ScaleIn="1.2"
-                                   ScaleOut="0.8" />
-    </pages:PopupPage.Animation>
+  
     <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
     <StackLayout Padding="0,0,0,0"
                  HorizontalOptions="Center"
@@ -25,29 +15,30 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="0" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" />
                 </Grid.ColumnDefinitions>
 
                 <forms:AnimationView 
 	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+	                Grid.Row="1" Grid.Column="1"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
 	                Animation="confetti.json"
 	                Loop="false" 
 	                AutoPlay="true"
-	                />
+	                IsVisible="False"/>
 
-                <Label Text="Det här är dina uppdrag. De uppdateras varje dag- och om du klarar alla tre " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <Label Text="Det här är dina uppdrag. De uppdateras varje dag- och om du klarar alla tre " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"  TextColor="White" IsVisible="False" />
 
-                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <Image Source="Intro_Sequence_4" Grid.Row="1"   Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="AspectFit" />
+                <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1"/>
 
             </Grid>
         </ContentView>
