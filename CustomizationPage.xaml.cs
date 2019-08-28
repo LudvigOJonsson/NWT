@@ -41,7 +41,7 @@ namespace NWT
             App.SideMenu.Categories.Add(Button.ClassId);
             if (!Tutorial)
             {
-                App.SideMenu.UpdateTags();
+                App.SideMenu.TaglistUpdate = true;
             }
 
             Button.IsEnabled = false;
@@ -54,7 +54,7 @@ namespace NWT
             App.SideMenu.Tags.Add(Button.ClassId);
             if (!Tutorial)
             {
-                App.SideMenu.UpdateTags();
+                App.SideMenu.TaglistUpdate = true;
             }
             Button.IsEnabled = false;
             CheckStartButton();
@@ -86,18 +86,20 @@ namespace NWT
         {
             App.MC = Color.FromHex("#649FD4");
             App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), };
-
+            App.LoggedinUser.TutorialProgress = 1;           
+            App.database.UpdateTutorialProgress(App.LoggedinUser);
             var x = (ProfilePage)App.Mainpage.Children[2];
             x.Login(App.LoggedinUser);
-            App.Mainpage.CurrentPage = App.Mainpage.Children[0];
+            App.Mainpage.CurrentPage = App.Mainpage.Children[1];
 
             
-
+            
             App.SideMenu.UpdateTags();
-            var y = (CustomNewsFeed)App.Mainpage.Children[0];
-            y.TagUpdate();
-            App.LoggedinUser.TutorialProgress = 1;
-            App.database.UpdateTutorialProgress(App.LoggedinUser);
+
+            //var y = (CustomNewsFeed)App.Mainpage.Children[0];
+            //y.TagsModified = true;
+
+
             await PopupNavigation.Instance.PushAsync(new TutorialPopUp1());
         }
 

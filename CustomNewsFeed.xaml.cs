@@ -27,7 +27,7 @@ namespace NWT
         public List<string> Filter = new List<string>();
         public List<string> Author = new List<string>();
         public List<string> Tag = new List<string>();
-        public ListView ArticleListView;
+        public ListView ArticleListView = new ListView();
         public int PREV = 0;
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
@@ -306,11 +306,12 @@ namespace NWT
             NEXT = NewsGridPage.DBLN * 2;
             Loadnr = 1;
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
+            Console.WriteLine("CNF Taggupdate, Deserializing Taglist.");
             Filter = TagList[0];
             Tag = TagList[1];
             Author = TagList[2];
             ArticleList.Clear();
-
+            Console.WriteLine("CNF Taggupdate, Starting Task. Filter: " + Filter.First());
             await System.Threading.Tasks.Task.Run(async () =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -322,16 +323,18 @@ namespace NWT
 
                 });
 
-                
+                Console.WriteLine("CNF Taggupdate, Popup Made.");
                 LoadLocalDB();
-
+                Console.WriteLine("CNF Taggupdate, Database Loaded.");
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     AddNews();
+
+                    Console.WriteLine("CNF Taggupdate, Listview Skapad.");
                     ArticleListView.ItemsSource = null;
                     ArticleListView.ItemsSource = ArticleList;
 
-
+                    Console.WriteLine("CNF Taggupdate, ArticleList Refreshad.");
 
                 });
 
@@ -340,13 +343,14 @@ namespace NWT
 
 
                 await System.Threading.Tasks.Task.Delay(1000);
+                Console.WriteLine("CNF Taggupdate, Uhhhhh.");
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
 
                     await Navigation.PopAsync();
                     //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-                    await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                    //await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
                     ArticleListView.IsRefreshing = false;
                     
                 });

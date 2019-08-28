@@ -42,7 +42,7 @@
                 
                 <Button x:Name="GrafikerButton" Text="GrafikerLäge" Clicked="Grafiker" BackgroundColor="Transparent" Grid.Row="10" HorizontalOptions="Start"/>
                 
-                <ActivityIndicator x:Name="Loading" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" Color="Blue"></ActivityIndicator>
+                
                 
             </Grid>
         </StackLayout>

@@ -164,7 +164,7 @@ namespace NWT
                 HasUnevenRows = true,
                 SeparatorVisibility = SeparatorVisibility.None,
                 BackgroundColor = Color.FromHex("#FFFFFF"),
-                IsPullToRefreshEnabled = true,
+                //IsPullToRefreshEnabled = true,
                 Footer = Down,
 
                 
@@ -421,6 +421,7 @@ namespace NWT
 
         async void LoadNews(object sender, EventArgs e)
         {
+            bool LoadFailure = false;
             var Header = (Button)sender;
             Header.IsEnabled = false;
             var id = Int32.Parse(Header.ClassId);
@@ -457,7 +458,7 @@ namespace NWT
                 }
                 else
                 {
-                    await DisplayAlert("Article Load Failure", "Artikeln misslyckades att laddas in, vänligen försök igen.", "OK");
+                    LoadFailure = true;
                 }
 
                 
@@ -481,7 +482,10 @@ namespace NWT
 
             });
             Header.IsEnabled = true;
-
+            if (LoadFailure)
+            {
+                await DisplayAlert("Article Load Failure", "Artikeln misslyckades att laddas in, vänligen försök igen.", "OK");
+            }
 
         }
 
@@ -630,7 +634,7 @@ namespace NWT
                 i++;
             }
 
-
+            /*
             ArticlePrintList.Clear();
 
             if(ArticleList.Count < 20)
@@ -642,7 +646,7 @@ namespace NWT
             for(int j = PREV; j < CURR; j++)
             {
                 ArticlePrintList.Add(ArticleList[j]);
-            }
+            }*/
             if (First)
             {
                 PrintNews();
