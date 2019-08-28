@@ -128,7 +128,7 @@ namespace NWT
                     }
                     else
                     {
-                        TagVisible = true;
+                        TagVisible = false;
                     }
                 }
 

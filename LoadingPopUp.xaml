@@ -50,7 +50,7 @@
 	                AutoPlay="true"
 	                />
 
-                <Label x:Name="LoadingText" Grid.Row="2" Grid.Column="1" Text="Kopplingen till servern är långsam för tillfället. Var god vänta." TextColor="Black" FontSize="24" VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label x:Name="LoadingText" Grid.Row="2" Grid.Column="1" Text="Kopplingen till servern är långsam för tillfället. Var god vänta." TextColor="Black" FontSize="18" VerticalOptions="End" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
             </Grid>
         </ContentView>
