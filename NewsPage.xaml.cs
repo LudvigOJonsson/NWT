@@ -28,6 +28,7 @@ namespace NWT
         public List<CommentTable> CommentTableList = new List<CommentTable>();
         public List<Comment> CommentList = new List<Comment>();
         public int LWH = 500;
+        public bool CommentsLoaded = false;
         public class Comment
         {
             public UserTable User { get; set; }
@@ -302,7 +303,7 @@ namespace NWT
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     ClassId = Category
                 };
-                Box.Clicked += RemoveCategoryButtonClicked;
+                //Box.Clicked += RemoveCategoryButtonClicked;
 
                 var Comment = new Label
                 {
@@ -356,7 +357,7 @@ namespace NWT
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     ClassId = Tag
                 };
-                Box.Clicked += RemoveTagButtonClicked;
+                //Box.Clicked += RemoveTagButtonClicked;
 
                 var Comment = new Label
                 {
@@ -398,8 +399,7 @@ namespace NWT
             ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 2, Row + 3);
 
             
-            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
+            
             
 
 
@@ -411,9 +411,13 @@ namespace NWT
             {
                 LoadComments();
             }
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 4, Row + 5);
 
+            CommentListView.InputTransparent = true;
+            //TagGrid.InputTransparent = true;
             CommentEntry.IsVisible = false;
             CommentButton.IsVisible = false;
             CommentListView.IsVisible = false;
@@ -428,7 +432,7 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Categories.Add(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
         }
         void RemoveCategoryButtonClicked(object sender, System.EventArgs e)
@@ -436,7 +440,7 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Categories.Remove(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
         }
         void TagButtonClicked(object sender, System.EventArgs e)
@@ -444,7 +448,7 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Add(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
         }
         void RemoveTagButtonClicked(object sender, System.EventArgs e)
@@ -452,7 +456,7 @@ namespace NWT
 
             var Button = (Button)sender;
             App.SideMenu.Tags.Remove(Button.ClassId);
-            App.SideMenu.UpdateTags();
+            App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
         }
 
@@ -474,8 +478,7 @@ namespace NWT
         }
 
         async void FavButtonClicked(object sender, System.EventArgs e)
-        {
-            var Button = (Button)sender;
+        {           
             
             if (App.LoggedinUser != null)
             {
@@ -621,6 +624,7 @@ namespace NWT
         async void SubmitComment(object sender, EventArgs e)
         {
             CommentButton.IsEnabled = false;
+            CommentListView.IsRefreshing = true;
             if (App.Online)
             {
                 var CNR = App.database.CommentCount(ArticleNR);
@@ -641,15 +645,19 @@ namespace NWT
                     };
                     CommentEntry.Text = "";
                     App.database.InsertComment(SC);
-                    MakeComment(SC);
+                    LoadComments();
+
+                    CommentListView.ItemsSource = null;
+                    CommentListView.ItemsSource = CommentList;
+                    
                 }
-                CommentListView = null;
-                LoadComments();
+                
             }
             else
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
+            CommentListView.IsRefreshing = false;
             CommentButton.IsEnabled = true;
         }
         async void LoadComments()

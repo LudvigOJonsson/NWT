@@ -62,7 +62,8 @@ namespace NWT
                         });
 
                         
-                    } else
+                    }
+                    else
                     {
 
                         await System.Threading.Tasks.Task.Run(async () =>
@@ -99,12 +100,12 @@ namespace NWT
 
                         });
 
-
+                        App.SideMenu.SetTags();
+                        var y = (CustomNewsFeed)App.Mainpage.Children[0];
+                        y.TagUpdate();
 
                     }
-                    App.SideMenu.SetTags();
-                    var y = (CustomNewsFeed)App.Mainpage.Children[0];
-                    y.TagUpdate();
+                    
 
 
 
@@ -126,11 +127,7 @@ namespace NWT
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    App.Startpage.Detail = App.Loginpage;
-
-                });
+                
 
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }

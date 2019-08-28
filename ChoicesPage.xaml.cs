@@ -17,14 +17,14 @@ namespace NWT
         public string Filter = "";
         public string Author = "";
         public string Tag = "";
-
+        public bool TaglistUpdate = false;
         public List<string> Categories = new List<string>();
         public List<string> Tags = new List<string>();
         public List<string> Authors = new List<string>();
 
         public static TapGestureRecognizer TGR = new TapGestureRecognizer();
 
-
+        
 
 
            int Rownr = 1;
@@ -62,8 +62,15 @@ namespace NWT
                 UserSettingsB.IsEnabled = false;
                 LogoutB.IsEnabled = false;
             }
+            if (TaglistUpdate)
+            {
+                UpdateTags();
+                TaglistUpdate = false;
+            }
+
 
         }
+
         public void UpdatingSideMenu()
         {
             if (App.LoggedinUser != null)
@@ -126,20 +133,62 @@ namespace NWT
             Rownr++;
         }
 
-        public void UpdateTags()
+        public async void UpdateTags()
         {
-            List<List<string>> Taglist = new List<List<string>>
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    LoadingPopUp x = new LoadingPopUp();
+                    x.loadingAnimation.Play();
+                    await Navigation.PushAsync(x);
+
+                });
+
+
+                //ANVÄND KOD HÄR
+                List<List<string>> Taglist = new List<List<string>>
             {
                 Categories,
                 Tags,
                 Authors
             };
-            App.LoggedinUser.TaggString = JsonConvert.SerializeObject(Taglist);
-            App.database.UpdateChoices(App.LoggedinUser);
-            NewsGridOri.Children.Clear();
-            SetTags();
-            var CNP = (CustomNewsFeed)App.Mainpage.Children[0];
-            CNP.TagsModified = true;
+                App.LoggedinUser.TaggString = JsonConvert.SerializeObject(Taglist);
+                App.database.UpdateChoices(App.LoggedinUser);
+                
+                
+
+                Device.BeginInvokeOnMainThread( () =>
+                {
+
+                    //ANVÄND GRAFISK KOD HÄR
+                    NewsGridOri.Children.Clear();
+                    SetTags();
+
+
+                });
+                var CNP = (CustomNewsFeed)App.Mainpage.Children[0];
+                CNP.TagsModified = true;
+
+
+                await System.Threading.Tasks.Task.Delay(1000);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    Console.WriteLine("Initiering Klar");
+
+                    await Navigation.PopAsync();
+                    
+                    
+                    
+                });
+
+            });
+
+
+
+
+ 
         }
 
 
@@ -277,25 +326,70 @@ namespace NWT
         }
 
 
-        public void PrintNews(object sender, EventArgs e)
+        public async void PrintNews(object sender, EventArgs e)
         {
-
             ButtonLock();
-            NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
-            App.database.LocalExecute("DELETE FROM NF");
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    LoadingPopUp x = new LoadingPopUp();
+                    x.loadingAnimation.Play();
+                    await Navigation.PushAsync(x);
 
-            Page.PREV = 0;
-            Page.CURR = NewsGridPage.DBLN;
-            Page.NEXT = NewsGridPage.DBLN * 2;
-            Page.Loadnr = 1;
-            Page.Filter = Filter;
-            Page.Author = Author;
-            Page.Tag = Tag;
+                });
 
-            Page.ArticleList.Clear();
-            Page.LoadLocalDB();
-            Page.AddNews(0);
+
+                
+                NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
+                App.database.LocalExecute("DELETE FROM NF");
+
+                Page.PREV = 0;
+                Page.CURR = NewsGridPage.DBLN;
+                Page.NEXT = NewsGridPage.DBLN * 2;
+                Page.Loadnr = 1;
+                Page.Filter = Filter;
+                Page.Author = Author;
+                Page.Tag = Tag;
+                Page.ArticleList.Clear();
+                Page.LoadLocalDB();
+
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    //ANVÄND GRAFISK KOD HÄR
+                    Page.AddNews(0);
+
+                    Page.ArticleListView.ItemsSource = null;
+                    Page.ArticleListView.ItemsSource = Page.ArticleList;
+
+
+                });
+
+
+
+                await System.Threading.Tasks.Task.Delay(1000);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    Console.WriteLine("Initiering Klar");
+
+                    await Navigation.PopAsync();
+                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                });
+
+            });
             ButtonLock();
+
+
+
+
+
+
+
+
+            
 
         }
 
