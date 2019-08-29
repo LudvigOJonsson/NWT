@@ -81,7 +81,7 @@
             
            
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="Icon_Heart.png">
+                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="Icon_Heart_red.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>

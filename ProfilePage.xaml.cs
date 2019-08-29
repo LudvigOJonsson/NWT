@@ -127,7 +127,6 @@ namespace NWT
             progressBallCogwheel.IsVisible = false;
             progressBallProfile.IsVisible = false;
             progressBallNews.IsVisible = false;
-            IntroText.IsVisible = false;
         }
         void AddIntro()
         {
@@ -141,7 +140,6 @@ namespace NWT
             progressBallCogwheel.IsVisible = true;
             progressBallProfile.IsVisible = true;
             progressBallNews.IsVisible = true;
-            IntroText.IsVisible = true;
         }
 
         public void Login(UserTable User)
@@ -316,7 +314,7 @@ namespace NWT
                         await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
                     } else
                     {
-                        await PopupNavigation.Instance.PushAsync(new TutorialPopUp6());
+                        //await PopupNavigation.Instance.PushAsync(new TutorialPopUp6());
                     }
                 });
                 var T = Convert.ToInt32(TokenNumber.Text);

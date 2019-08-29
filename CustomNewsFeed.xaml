@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
 
                 
-                <Button x:FieldModifier="public" x:Name="Down" Margin="5" BackgroundColor="#2f6e83" Clicked="ListViewScroll" Text="Scrolldown" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:FieldModifier="public" x:Name="Down" Margin="5" BackgroundColor="#2f6e83" Clicked="ListViewScroll" Text="Ladda in fler artiklar" TextColor="White" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
 
             </Grid>
 

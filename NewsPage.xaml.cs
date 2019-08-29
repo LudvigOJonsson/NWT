@@ -55,8 +55,6 @@ namespace NWT
         {
             InitializeComponent();
 
-
-            
             //Category.TextColor = App.MC;
             FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
@@ -122,8 +120,10 @@ namespace NWT
             }
 
             LoadNews(RSS);
-            
-            
+
+            FavButtonCheck();
+
+
         }
 
         void TagSelected(object sender, EventArgs e)
@@ -286,7 +286,7 @@ namespace NWT
                 {
                     CornerRadius = 10,
                     Margin = 2,
-                    BackgroundColor = Color.White,
+                    BackgroundColor = Color.Transparent,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     ClassId = Category,
@@ -325,6 +325,7 @@ namespace NWT
                 {
                     Box.IsEnabled = false;
                     TagGrid.Children.Add(AddedBox, 0, 6, TagRow, TagRow + 1);
+                    AddedBox.IsEnabled = false;
                 }
 
                 TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
@@ -341,7 +342,7 @@ namespace NWT
                 {
                     CornerRadius = 10,
                     Margin = 2,
-                    BackgroundColor = Color.White,
+                    BackgroundColor = Color.Transparent,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
                     ClassId = Tag
@@ -379,6 +380,7 @@ namespace NWT
                 {
                     Box.IsEnabled = false;
                     TagGrid.Children.Add(AddedBox, 0, 6, TagRow, TagRow + 1);
+                    AddedBox.IsEnabled = false;
                 }
 
                 TagGrid.Children.Add(Comment, 0, 6, TagRow, TagRow + 1);
@@ -427,12 +429,22 @@ namespace NWT
         }
 
 
-        void CategoryButtonClicked(object sender, System.EventArgs e)
+        async void CategoryButtonClicked(object sender, System.EventArgs e)
         {
-
             var Button = (Button)sender;
-            App.SideMenu.Categories.Add(Button.ClassId);
-            App.SideMenu.TaglistUpdate = true;
+            bool answer = await DisplayAlert("", "Vill du lägga till " + Button.ClassId + " i din lista?", "Nej", "Ja");
+            if (!answer)
+            {
+                App.SideMenu.Categories.Add(Button.ClassId);
+                App.SideMenu.TaglistUpdate = true;
+                Button.IsEnabled = false;
+                Button.BackgroundColor = Color.Transparent;
+            }
+            else
+            {
+                Button.IsEnabled = true;
+                Button.BackgroundColor = Color.Transparent;
+            }
             Button.IsEnabled = false;
         }
         void RemoveCategoryButtonClicked(object sender, System.EventArgs e)
@@ -443,13 +455,22 @@ namespace NWT
             App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
         }
-        void TagButtonClicked(object sender, System.EventArgs e)
+        async void TagButtonClicked(object sender, System.EventArgs e)
         {
-
             var Button = (Button)sender;
-            App.SideMenu.Tags.Add(Button.ClassId);
-            App.SideMenu.TaglistUpdate = true;
-            Button.IsEnabled = false;
+            bool answer = await DisplayAlert("", "Vill du lägga till " + Button.ClassId + " i din lista?" , "Nej", "Ja");
+            if (!answer)
+            {
+                App.SideMenu.Tags.Add(Button.ClassId);
+                App.SideMenu.TaglistUpdate = true;
+                Button.IsEnabled = false;
+                Button.BackgroundColor = Color.Transparent;
+            } else
+            {
+                Button.IsEnabled = true;
+                Button.BackgroundColor = Color.Transparent;
+            }
+                
         }
         void RemoveTagButtonClicked(object sender, System.EventArgs e)
         {
@@ -471,7 +492,7 @@ namespace NWT
                 }
                 else
                 {
-                    FavIcon.Source = "Icon_Heart";
+                    FavIcon.Source = "Icon_Heart_red";
                 }
 
             }
@@ -488,7 +509,7 @@ namespace NWT
                     App.database.Execute("DELETE FROM Favorites WHERE User = "+ App.LoggedinUser.ID +" AND Article = "+ ArticleNR);
                     await DisplayAlert("Favorite", "Article Unfavorited", "Ok");
                     Favorited = false;
-                    FavIcon.Source = "Icon_Heart";
+                    FavIcon.Source = "Icon_Heart_red";
                 }
                 else
                 {
