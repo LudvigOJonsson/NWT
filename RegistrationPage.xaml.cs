@@ -38,7 +38,7 @@ namespace NWT
                     User.TutorialProgress = 0;
 
                     var Avatar = new List<string>();
-                    Avatar.Add("avatar_face.png");
+                    Avatar.Add("avatar_face1.png");
                     Avatar.Add("avatar_hair1.png");
                     Avatar.Add("avatar_body1.png");
                     User.Avatar = JsonConvert.SerializeObject(Avatar);

@@ -155,7 +155,7 @@ namespace NWT
 
 
             var Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);
-            updateAvatar(Avatar[0], Avatar[1], Avatar[2]);
+            updateAvatar(Avatar[1], Avatar[2], Avatar[0]);
 
             //Getting update
 

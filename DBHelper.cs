@@ -411,7 +411,7 @@ namespace NWT
         }
         public List<AvatarItemsTable> GetItemFromType(string ID)
         {
-            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = ?", ID.ToString());
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = '" + ID +"'");
         }
         public List<AvatarItemsTable> GetItemFromID(long ID)
         {
@@ -853,22 +853,49 @@ namespace NWT
             LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price) VALUES " +
                 "(1, 'Blå_Tröja', 'avatar_body1.png', 'Body', 5), " +
                 "(2, 'Grön_Tröja', 'avatar_body2.png', 'Body', 5), " +
-                "(3, 'Rustning', 'avatar_body3.png', 'Body', 12), " +
-                "(4, 'Cool_Tröja', 'avatar_body4.png', 'Body', 25), " +
-                "(5, 'Senap_och_Ketchup', 'avatar_body5.png', 'Body', 50), " +
-                "(6, 'Ljusbrunt_Kort', 'avatar_hair1.png', 'Hair', 10), " +
-                "(7, 'Blondt_Kort', 'avatar_hair2.png', 'Hair', 10), " +
-                "(8, 'Beige_Rufsigt', 'avatar_hair3.png', 'Hair', 10), " +
-                "(9, 'Svart_Kort', 'avatar_hair4.png', 'Hair', 10), " +
-                "(10, 'Orange_Kort', 'avatar_hair5.png', 'Hair', 10), " +
-                "(11, 'Brunt_Långt', 'avatar_hair6.png', 'Hair', 10), " +
-                "(12, 'Blondt_Långt', 'avatar_hair7.png', 'Hair', 10), " +
-                "(13, 'Svart_Långt', 'avatar_hair8.png', 'Hair', 10), " +
-                "(14, 'Blått_Kort', 'avatar_hair9.png', 'Hair', 10), " +
-                "(15, 'Rött_Långt', 'avatar_hair10.png', 'Hair', 10); " +
-
-
-
+                "(3, 'Lila_Tröja', 'avatar_body3.png', 'Body', 12), " +
+                "(4, 'Svart_Tröja', 'avatar_body4.png', 'Body', 12), " +
+                "(5, 'Blåvit_Tröja', 'avatar_body5.png', 'Body', 25), " +
+                "(6, 'Blå_Tröja', 'avatar_body6.png', 'Body', 5), " +
+                "(7, 'Grön_Tröja', 'avatar_body7.png', 'Body', 5), " +
+                "(8, 'Lila_Tröja', 'avatar_body8.png', 'Body', 12), " +
+                "(9, 'Svart_Tröja', 'avatar_body9.png', 'Body', 12), " +
+                "(10, 'Blåvit_Tröja', 'avatar_body10.png', 'Body', 25), " +
+                "(11, 'Brunt_Kort', 'avatar_hair1.png', 'Hair', 10), " +
+                "(12, 'Svart_Kort', 'avatar_hair2.png', 'Hair', 10), " +
+                "(13, 'Blått_Kort', 'avatar_hair3.png', 'Hair', 10), " +
+                "(14, 'Lila_Kort', 'avatar_hair4.png', 'Hair', 10), " +
+                "(15, 'Grått_Kort', 'avatar_hair5.png', 'Hair', 10), " +
+                "(16, 'Svart_Långt', 'avatar_hair6.png', 'Hair', 10), " +
+                "(17, 'Rött_Långt', 'avatar_hair7.png', 'Hair', 10), " +
+                "(18, 'Blått_Långt', 'avatar_hair8.png', 'Hair', 10), " +
+                "(19, 'Grått_Långt', 'avatar_hair9.png', 'Hair', 10), " +
+                "(20, 'Blondt_Långt', 'avatar_hair10.png', 'Hair', 10), " +
+                "(21, '#649FD4', '#649FD4', 'Style', 10), " +
+                "(22, '#6fb110', '#6fb110', 'Style', 10), " +
+                "(23, '#bb0066', '#bb0066', 'Style', 10), " +
+                "(24, '#e0d8b3', '#e0d8b3', 'Style', 10), " +
+                "(25, '#56E39F', '#56E39F', 'Style', 10), " +
+                "(26, '#3B2C35', '#3B2C35', 'Style', 10), " +
+                "(27, '#99C24D', '#99C24D', 'Style', 10), " +
+                "(28, '#F18F01', '#F18F01', 'Style', 10), " +
+                "(29, '#EF2648', '#EF2648', 'Style', 10), " +
+                "(30, '#FFC818', '#FFC818', 'Style', 10), " +
+                "(31, '#020202', '#020202', 'Style', 10), " +
+                "(32, '#5EF4FE', '#5EF4FE', 'Style', 10), " +
+                "(33, '#DF7782', '#DF7782', 'Style', 10), " +
+                "(34, '#A84A5C', '#A84A5C', 'Style', 10), " +
+                "(35, '#88382D', '#88382D', 'Style', 10), " +
+                "(36, '#55134E', '#55134E', 'Style', 10), " +
+                "(37, '#FFEC94', '#FFEC94', 'Style', 10), " +
+                "(38, '#B0E57C', '#B0E57C', 'Style', 10), " +
+                "(39, '#003366', '#003366', 'Style', 10), " +
+                "(40, '#CCFF33', '#CCFF33', 'Style', 10), " +
+                "(41, '#f27F60', '#f27F60', 'Style', 10), " +
+                "(42, '#063336', '#063336', 'Style', 10), " +
+                "(43, '#CC4B93', '#CC4B93', 'Style', 10), " +
+                "(44, '#DADADA', '#DADADA', 'Style', 10), " +
+                "(45, '#996699', '#996699', 'Style', 10); " +
              "");
         }
         public static string TCP(string JSON)

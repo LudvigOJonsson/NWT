@@ -62,7 +62,7 @@
                 <ImageButton  WidthRequest="240" HeightRequest="240" CornerRadius="120"
                     BackgroundColor="#f2f2f2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                <Image x:Name="ProfilePictureFace" Source="avatar_face.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3"/>
                 <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3"  Grid.Column="1"  Grid.ColumnSpan="3"/>
                 <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3" >
                     <Image.GestureRecognizers>

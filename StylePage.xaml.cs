@@ -34,66 +34,43 @@ namespace NWT
             }
 
 
-            /*StylesInventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
-            ActiveStyle = JsonConvert.DeserializeObject<string>(App.LoggedinUser.Avatar);
+            StylesInventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
+            //ActiveStyle = JsonConvert.DeserializeObject<string>(App.LoggedinUser.Avatar);
 
-            var StylesList = App.database.GetAllStyles();
+            var StylesList = App.database.GetItemFromType("Style");
 
             var Row = 1;
-
+            Console.WriteLine("Styles: "+StylesList.Count);
             foreach (var Style in StylesList)
             {
                 var Button = new Button
                 {
-                    ClassId = Style.ID,
+                    ClassId = Style.ID.ToString(),
                     HorizontalOptions = LayoutOptions.CenterAndExpand,
                     VerticalOptions = LayoutOptions.CenterAndExpand,
-                    BackgroundColor = Style.Color,
+                    BackgroundColor = Color.FromHex(Style.ImagePath),
                     Margin = 5,
                 };
 
-                var TGR = new TapGestureRecognizer()
-                {
-                    NumberOfTapsRequired = 1
-                };
-                TGR.Tapped += (s, e) => {
-                    IsEnabled = false;
-                    ColorFunction(Style.Color);
-                    IsEnabled = true;
-                };
-                Button.GestureRecognizers.Add(TGR);
+
+
+                Button.Clicked += SelectStyle;
+
+
                 StyleGrid.Children.Add(Button, 0, 3, Row, Row + 1);
 
                 if (!StylesInventory.Contains(Style.ID))
                 {
-                    var TGR3 = new TapGestureRecognizer()
-                    {
-                        NumberOfTapsRequired = 1
-                    };
+
 
                     var TGR2 = new TapGestureRecognizer()
                     {
                         NumberOfTapsRequired = 1
                     };
 
-                    var IMG3 = new Image
-                    {
-                        ClassId = Style.ID.ToString(),
-                        Source = "",
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.Transparent,
-                        Margin = 0
 
-                    };
 
-                    TGR3.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        UnlockComponent(s, e);
-                        IsEnabled = true;
-                    };
-
-                    IMG3.GestureRecognizers.Add(TGR2);
+                    
 
                     var IMG2 = new Image
                     {
@@ -114,22 +91,23 @@ namespace NWT
 
                     IMG2.GestureRecognizers.Add(TGR2);
 
-                    StyleGrid.Children.Add(IMG3, Column, Row);
-                    StyleGrid.Children.Add(IMG2, Column, Row);
+                   
+                    StyleGrid.Children.Add(IMG2, 1, Row);
                 }
 
 
 
 
                 Row++;
-            }*/
+                
+            }
         }
 
-        /*async void UnlockComponent(object sender, EventArgs e)
+        async void UnlockComponent(object sender, EventArgs e)
         {
             var Button = (Image)sender;
             var id = Convert.ToInt32(Button.ClassId);
-            var Style = App.database.GetStyleFromID(id).First();
+            var Style = App.database.GetItemFromID(id).First();
             int tokenNumber = Style.Price;
             bool answer = await DisplayAlert("", "Vill du låsa upp " + Style.Descriptions + " för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
@@ -153,7 +131,7 @@ namespace NWT
                     await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
                 }
             }
-        }*/
+        }
 
         public void SelectStyle(object sender, EventArgs e)
         {
@@ -183,7 +161,7 @@ namespace NWT
             }
             else
             {
-                ColorFunction(Color.FromHex(Sender.ClassId));
+                ColorFunction(Sender.BackgroundColor);
             }
 
 

@@ -21,11 +21,14 @@ namespace NWT
         {
 
             InitializeComponent();
+            /*
+            Avatar.Add("");
+            Avatar.Add("");
+            Avatar.Add("");
 
-            //Get the user's saved avatar indexes here
-            //CODE
-            //But right now these database variables do not exist. So instead, a local variable will be saved.
+            SetDefaultAvatar();
 
+            */
 
             var PP = (ProfilePage)App.Mainpage.Children[2];
 
@@ -52,110 +55,124 @@ namespace NWT
 
             foreach(var Item in ItemList)
             {
-                if(Column == 5)
-                {
-                    Column = 0;
-                    Row++;
-                }
-                var IMG = new Image
-                {
-                    ClassId = Item.ImagePath,
-                    Source = Item.ImagePath,
-                    HorizontalOptions = LayoutOptions.CenterAndExpand, 
-                    VerticalOptions = LayoutOptions.CenterAndExpand, 
-                    BackgroundColor = Color.FromHex("#649FD4") ,
-                    Margin = 5
+                if(Item.InventorySlot != "Style")
+                { 
+                    if(Column == 5)
+                    {
+                        Column = 0;
+                        Row++;
+                        
+                    }
+                    var IMG = new Image
+                    {
+                        ClassId = Item.ImagePath,
+                        Source = Item.ImagePath,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand, 
+                        VerticalOptions = LayoutOptions.CenterAndExpand, 
+                        BackgroundColor = Color.FromHex("#649FD4") ,
+                        Margin = 5
 
-                };
-
-                var TGR = new TapGestureRecognizer()
-                {
-                    NumberOfTapsRequired = 1
-                };
-                if (Item.InventorySlot == "Hair")
-                {
-
-                    TGR.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        ChangeHair(s, e);
-                        IsEnabled = true;
                     };
-                }
-                else if (Item.InventorySlot == "Body")
-                {
-                    TGR.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        ChangeBody(s, e);
-                        IsEnabled = true;
-                    };
-                }
-                IMG.GestureRecognizers.Add(TGR);
-                AvatarButtonsGrid.Children.Add(IMG, Column, Row);
 
-                if (!Inventory.Contains(Item.ID) && Column != 0)
-                {
-                    var TGR3 = new TapGestureRecognizer()
+                    var TGR = new TapGestureRecognizer()
                     {
                         NumberOfTapsRequired = 1
                     };
-
-                    var TGR2 = new TapGestureRecognizer()
+                    if (Item.InventorySlot == "Hair")
                     {
-                        NumberOfTapsRequired = 1
-                    };
 
-                    var IMG3 = new Image
+                        TGR.Tapped += (s, e) => {
+                            IsEnabled = false;
+                            ChangeHair(s, e);
+                            IsEnabled = true;
+                        };
+                    }
+                    else if (Item.InventorySlot == "Body")
                     {
-                        ClassId = Item.ID.ToString(),
-                        Source = "",
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.Transparent,
-                        Margin = 0
+                        TGR.Tapped += (s, e) => {
+                            IsEnabled = false;
+                            ChangeBody(s, e);
+                            IsEnabled = true;
+                        };
+                    }
+                    IMG.GestureRecognizers.Add(TGR);
+                    AvatarButtonsGrid.Children.Add(IMG, Column, Row);
 
-                    };
-
-                    TGR3.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        UnlockComponent(s, e);
-                        IsEnabled = true;
-                    };
-
-                    IMG3.GestureRecognizers.Add(TGR2);
-
-                    var IMG2 = new Image
+                    if (!Inventory.Contains(Item.ID) && Column != 0)
                     {
-                        ClassId = Item.ID.ToString(),
-                        Source = "keyhole.png",
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.Transparent,
-                        Margin = 20
+                        var TGR3 = new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1
+                        };
 
-                    };
+                        var TGR2 = new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1
+                        };
 
-                    TGR2.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        UnlockComponent(s, e);
-                        IsEnabled = true;
-                    };
+                        var IMG3 = new Image
+                        {
+                            ClassId = Item.ID.ToString(),
+                            Source = "",
+                            HorizontalOptions = LayoutOptions.CenterAndExpand,
+                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            BackgroundColor = Color.Transparent,
+                            Margin = 0
 
-                    IMG2.GestureRecognizers.Add(TGR2);
+                        };
 
-                    AvatarButtonsGrid.Children.Add(IMG3, Column, Row);
-                    AvatarButtonsGrid.Children.Add(IMG2, Column, Row);
+                        TGR3.Tapped += (s, e) => {
+                            IsEnabled = false;
+                            UnlockComponent(s, e);
+                            IsEnabled = true;
+                        };
+
+                        IMG3.GestureRecognizers.Add(TGR2);
+
+                        var IMG2 = new Image
+                        {
+                            ClassId = Item.ID.ToString(),
+                            Source = "keyhole.png",
+                            HorizontalOptions = LayoutOptions.CenterAndExpand,
+                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            BackgroundColor = Color.Transparent,
+                            Margin = 20
+
+                        };
+
+                        TGR2.Tapped += (s, e) => {
+                            IsEnabled = false;
+                            UnlockComponent(s, e);
+                            IsEnabled = true;
+                        };
+
+                        IMG2.GestureRecognizers.Add(TGR2);
+
+                        AvatarButtonsGrid.Children.Add(IMG3, Column, Row);
+                        AvatarButtonsGrid.Children.Add(IMG2, Column, Row);
+                    }
+
+
+
+
+                    Column++;
                 }
-
-
-
-
-                Column++;
             }
 
 
 
 
         }
+
+        void SetDefaultAvatar()
+        {
+            Avatar[0] = "avatar_face1.png";
+            Avatar[1] = "avatar_hair1.png";
+            Avatar[2] = "avatar_body1.png";
+            App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
+        }
+
 
         async void UnlockComponent(object sender, EventArgs e)
         {

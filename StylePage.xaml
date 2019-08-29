@@ -15,6 +15,7 @@
             <Grid x:Name="StyleGrid" RowSpacing="3" ColumnSpacing="0" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
