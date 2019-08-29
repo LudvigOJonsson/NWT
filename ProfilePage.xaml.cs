@@ -235,9 +235,9 @@ namespace NWT
 
             if (Tasklist[0].Completed == 1)
             {
-                m1t1.Text = "Mission Complete";
+                m1t1.Text = "Uppdrag avklarat";
                 m1t2.Text = "";
-                m1t3.Text = "Come back tomorrow for new Missions";
+                m1t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
                 m1.BackgroundColor = Color.FromHex("D3D3D3");
                 m1.IsEnabled = false;
                 M1HI = false;
@@ -247,7 +247,7 @@ namespace NWT
                 M1T = Convert.ToInt32(Tasklist[0].Goal / Tasklist[0].Modifier);
                 m1t1.Text = missionNames[0];
                 m1t2.Text = Tasklist[0].Progress + "/" + Tasklist[0].Goal;
-                m1t3.Text = "" + M1T +" Tokens";
+                m1t3.Text = "" + M1T +" mynt";
                 if (Tasklist[0].Progress >=  Tasklist[0].Goal)
                 {
                     m1.BackgroundColor = Color.FromHex("#649FD4");
@@ -256,9 +256,9 @@ namespace NWT
             }
             if (Tasklist[1].Completed == 1)
             {
-                m2t1.Text = "Mission Complete";
+                m2t1.Text = "Uppdrag avklarat";
                 m2t2.Text = "";
-                m2t3.Text = "Come back tomorrow for new Missions";
+                m2t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
                 m2.BackgroundColor = Color.FromHex("D3D3D3");
                 m2.IsEnabled = false;
                 M2HI = false;
@@ -277,9 +277,9 @@ namespace NWT
             }
             if (Tasklist[2].Completed == 1)
             {
-                m3t1.Text = "Mission Complete";
+                m3t1.Text = "Uppdrag avklarat";
                 m3t2.Text = "";
-                m3t3.Text = "Come back tomorrow for new Missions";
+                m3t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
                 m3.BackgroundColor = Color.FromHex("D3D3D3");
                 m3.IsEnabled = false;
                 M3HI = false;
@@ -289,7 +289,7 @@ namespace NWT
                 M3T = Convert.ToInt32(Tasklist[2].Goal / Tasklist[2].Modifier);
                 m3t1.Text = missionNames[2];
                 m3t2.Text = Tasklist[2].Progress + "/" + Tasklist[2].Goal;
-                m3t3.Text = "" + M3T + " Tokens";
+                m3t3.Text = "" + M3T + " mynt";
                 if (Tasklist[2].Progress >= Tasklist[2].Goal)
                 {
                     m3.BackgroundColor = Color.FromHex("FFDF00");
@@ -310,8 +310,14 @@ namespace NWT
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //await DisplayAlert("Daily Login", "You have logged in " + User.LoginStreak + " days in a row and you get " + User.LoginStreak + " tokens as a reward!", "Nice");
-
-                    await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
+                    
+                    if (M1HI && M2HI && M3HI)
+                    {
+                        await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
+                    } else
+                    {
+                        await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
+                    }
                 });
                 var T = Convert.ToInt32(TokenNumber.Text);
                 if (M1HI)
