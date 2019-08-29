@@ -238,7 +238,7 @@ namespace NWT
                 m1t1.Text = "Uppdrag avklarat";
                 m1t2.Text = "";
                 m1t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
-                m1.BackgroundColor = Color.FromHex("D3D3D3");
+                m1bx.BackgroundColor = App.MC;
                 m1.IsEnabled = false;
                 M1HI = false;
             }
@@ -250,7 +250,7 @@ namespace NWT
                 m1t3.Text = "" + M1T +" mynt";
                 if (Tasklist[0].Progress >=  Tasklist[0].Goal)
                 {
-                    m1.BackgroundColor = Color.FromHex("#649FD4");
+                    m1bx.BackgroundColor = App.MC;
                     M1HI = true;
                 }
             }
@@ -259,7 +259,7 @@ namespace NWT
                 m2t1.Text = "Uppdrag avklarat";
                 m2t2.Text = "";
                 m2t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
-                m2.BackgroundColor = Color.FromHex("D3D3D3");
+                m2bx.BackgroundColor = App.MC;
                 m2.IsEnabled = false;
                 M2HI = false;
             }
@@ -271,7 +271,7 @@ namespace NWT
                 m2t3.Text = "" + M2T + " Tokens";
                 if (Tasklist[1].Progress >= Tasklist[1].Goal)
                 {
-                    m2.BackgroundColor = Color.FromHex("FFDF00");
+                    m2bx.BackgroundColor = Color.FromHex("FFDF00");
                     M2HI = true;
                 }
             }
@@ -280,7 +280,7 @@ namespace NWT
                 m3t1.Text = "Uppdrag avklarat";
                 m3t2.Text = "";
                 m3t3.Text = "Kom tillbaka imorgon för fler uppdrag!";
-                m3.BackgroundColor = Color.FromHex("D3D3D3");
+                m3bx.BackgroundColor = App.MC;
                 m3.IsEnabled = false;
                 M3HI = false;
             }
@@ -292,7 +292,7 @@ namespace NWT
                 m3t3.Text = "" + M3T + " mynt";
                 if (Tasklist[2].Progress >= Tasklist[2].Goal)
                 {
-                    m3.BackgroundColor = Color.FromHex("FFDF00");
+                    m3bx.BackgroundColor = App.MC;
                     M3HI = true;
                 }
             }
@@ -316,7 +316,7 @@ namespace NWT
                         await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
                     } else
                     {
-                        await PopupNavigation.Instance.PushAsync(new TutorialPopUp5());
+                        await PopupNavigation.Instance.PushAsync(new TutorialPopUp6());
                     }
                 });
                 var T = Convert.ToInt32(TokenNumber.Text);
