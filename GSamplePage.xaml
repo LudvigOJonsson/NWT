@@ -81,8 +81,7 @@
                 <Button Grid.Row="3" Grid.Column="3" BackgroundColor="#649FD4" Margin="10" ImageSource="knapp.png"/>
 
 
-
-                <!-- <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#40000000" Margin="5"/> -->
+               
 
                 <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="#40000000" Margin="8"/>
                 <Button Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" Margin="10" ImageSource="settings.png"/>
