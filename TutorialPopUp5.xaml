@@ -37,7 +37,7 @@
 
                 <forms:AnimationView 
 	                x:Name="tokenAnimation2" 
-	                Grid.Row="0" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="3"
+	                Grid.Row="0" Grid.RowSpan="0" Grid.Column="0" Grid.ColumnSpan="0"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
 	                Animation="confetti.json"
@@ -45,7 +45,7 @@
 	                AutoPlay="true"
 	                IsVisible="False"/>
 
-                <Label Text="Grattis! Du klarade alla tre uppdrag. " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+                <Label Text=" " FontSize="28" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="0" TextColor="White" IsVisible="False" />
 
                 <Image x:Name="Intro_5" Source="Intro_Sequence_5" Grid.Row="1"   Grid.Column="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="AspectFit" />
                 <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" />
