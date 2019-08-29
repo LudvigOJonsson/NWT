@@ -45,7 +45,7 @@ namespace NWT
             {
                 var Button = new Button
                 {
-                    ClassId = Style.ID.ToString(),
+                    ClassId = Style.ImagePath.ToString(),
                     HorizontalOptions = LayoutOptions.Fill,
                     VerticalOptions = LayoutOptions.Fill,
                     BackgroundColor = Color.FromHex(Style.ImagePath),
@@ -76,7 +76,7 @@ namespace NWT
                 StyleGrid.Children.Add(IMG, 0, 3, Row, Row + 1);
 
 
-                Console.WriteLine("Style nr: " + Style.ID);
+                
                 if (!StylesInventory.Contains(Style.ID))
                 {
                     Console.WriteLine("Style Not Unlocked");
@@ -175,8 +175,8 @@ namespace NWT
             {
                 ColorFunction(Sender.BackgroundColor);
             }
-
-
+            App.LoggedinUser.Style = Style;
+            App.database.UpdateAvatarItems(App.LoggedinUser);
 
             //NEW STYLE SELECTED
 
@@ -185,7 +185,7 @@ namespace NWT
             //LOADING animation?
         }
 
-        public void ColorFunction(Color BGC)
+        public static void ColorFunction(Color BGC)
         {
 
             var BC = BGC;

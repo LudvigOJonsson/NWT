@@ -36,6 +36,7 @@ namespace NWT
                     User.LoginStreak = 0;
                     User.DailyLogin = 0;
                     User.TutorialProgress = 0;
+                    User.Style = "#649FD4";
 
                     var Avatar = new List<string>();
                     Avatar.Add("avatar_face1.png");

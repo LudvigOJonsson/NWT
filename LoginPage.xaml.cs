@@ -103,6 +103,8 @@ namespace NWT
                         App.SideMenu.SetTags();
                         var y = (CustomNewsFeed)App.Mainpage.Children[0];
                         y.TagUpdate();
+                        
+                        StylePage.ColorFunction(Color.FromHex(App.LoggedinUser.Style));
 
                     }
                     

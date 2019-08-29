@@ -53,7 +53,7 @@ namespace NWT
         public int TutorialProgress { get; set; }
         public string Inventory { get; set; }
         public string Avatar { get; set; }
-        //public string Style { get; set; }
+        public string Style { get; set; }
     }
 
     
