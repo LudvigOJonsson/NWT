@@ -42,14 +42,12 @@ namespace NWT
                 IsEnabled = true;
             };
 
-
-
-
-            //-------------------------------------------------------------
-
-            //adding to list.
+             
 
         }
+
+     
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -62,14 +60,22 @@ namespace NWT
                 UserSettingsB.IsEnabled = false;
                 LogoutB.IsEnabled = false;
             }
+
+            TaglistCheck();
+
+        }
+
+        public void TaglistCheck()
+        {
             if (TaglistUpdate)
             {
                 UpdateTags();
                 TaglistUpdate = false;
             }
-
-
+            
         }
+
+
 
         public void UpdatingSideMenu()
         {

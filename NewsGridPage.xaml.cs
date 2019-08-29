@@ -435,7 +435,7 @@ namespace NWT
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //IsBusy = true;
-                    ArticleListView.IsRefreshing = true;
+                    
                     LoadingPopUp x = new LoadingPopUp();
                     x.loadingAnimation.Play();
                     await Navigation.PushAsync(x);
@@ -663,7 +663,7 @@ namespace NWT
                 Device.BeginInvokeOnMainThread(async() =>
                 {
                     //IsBusy = true;
-                    ArticleListView.IsRefreshing = true;
+                    //ArticleListView.IsRefreshing = true;
                     LoadingPopUp x = new LoadingPopUp();
                     x.loadingAnimation.Play();
                     await Navigation.PushAsync(x);
@@ -710,7 +710,7 @@ namespace NWT
                     await Navigation.PopAsync();
                     //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
                     await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
-                    ArticleListView.IsRefreshing = false;
+                    //ArticleListView.IsRefreshing = false;
                     //IsBusy = false;
                 });
 

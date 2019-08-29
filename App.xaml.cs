@@ -57,6 +57,11 @@ namespace NWT
             
 
             MainPage = Startpage;// new NavigationPage();
+
+            App.Startpage.IsPresentedChanged += (s, e) => {
+                SideMenu.TaglistCheck();
+            };
+
             Instanciated = true;
         }
 

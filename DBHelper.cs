@@ -53,7 +53,7 @@ namespace NWT
         public int TutorialProgress { get; set; }
         public string Inventory { get; set; }
         public string Avatar { get; set; }
-
+        //public string Style { get; set; }
     }
 
     
@@ -851,16 +851,16 @@ namespace NWT
         public void AvatarItemInit()
         {
             LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price) VALUES " +
-                "(1, 'Blå_Tröja', 'avatar_body1.png', 'Body', 5), " +
-                "(2, 'Grön_Tröja', 'avatar_body2.png', 'Body', 5), " +
-                "(3, 'Lila_Tröja', 'avatar_body3.png', 'Body', 12), " +
-                "(4, 'Svart_Tröja', 'avatar_body4.png', 'Body', 12), " +
-                "(5, 'Blåvit_Tröja', 'avatar_body5.png', 'Body', 25), " +
-                "(6, 'Blå_Tröja', 'avatar_body6.png', 'Body', 5), " +
-                "(7, 'Grön_Tröja', 'avatar_body7.png', 'Body', 5), " +
-                "(8, 'Lila_Tröja', 'avatar_body8.png', 'Body', 12), " +
-                "(9, 'Svart_Tröja', 'avatar_body9.png', 'Body', 12), " +
-                "(10, 'Blåvit_Tröja', 'avatar_body10.png', 'Body', 25), " +
+                "(1, 'Röd_Tröja', 'avatar_body1.png', 'Body', 5), " +
+                "(2, 'Blå_Tröja', 'avatar_body2.png', 'Body', 5), " +
+                "(3, 'Grön_Tröja', 'avatar_body3.png', 'Body', 5), " +
+                "(4, 'Lila_Tröja', 'avatar_body4.png', 'Body', 12), " +
+                "(5, 'Svart_Tröja', 'avatar_body5.png', 'Body', 12), " +
+                "(6, 'LjusBlå_Tröja', 'avatar_body6.png', 'Body', 12), " +
+                "(7, 'Rosa_Tröja', 'avatar_body7.png', 'Body', 12), " +
+                "(8, 'Blåvit_Tröja', 'avatar_body8.png', 'Body', 25), " +
+                "(9, 'Rödvit_Tröja', 'avatar_body9.png', 'Body', 25), " +
+                "(10, 'Svartgrön_Tröja', 'avatar_body10.png', 'Body', 25), " +
                 "(11, 'Brunt_Kort', 'avatar_hair1.png', 'Hair', 10), " +
                 "(12, 'Svart_Kort', 'avatar_hair2.png', 'Hair', 10), " +
                 "(13, 'Blått_Kort', 'avatar_hair3.png', 'Hair', 10), " +

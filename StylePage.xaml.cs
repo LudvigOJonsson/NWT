@@ -40,46 +40,62 @@ namespace NWT
             var StylesList = App.database.GetItemFromType("Style");
 
             var Row = 1;
-            Console.WriteLine("Styles: "+StylesList.Count);
+            
             foreach (var Style in StylesList)
             {
                 var Button = new Button
                 {
                     ClassId = Style.ID.ToString(),
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Fill,
                     BackgroundColor = Color.FromHex(Style.ImagePath),
                     Margin = 5,
+                    
                 };
 
-
+                StyleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
                 Button.Clicked += SelectStyle;
 
-
                 StyleGrid.Children.Add(Button, 0, 3, Row, Row + 1);
 
+                var IMG = new Image
+                {
+                    ClassId = Style.ID.ToString(),
+                    Source = "Icon_Hub_white.png",
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Fill,
+                    //BackgroundColor = Color.Transparent,
+                    Margin = 5,
+                    HeightRequest = 150,
+                    WidthRequest = 150
+
+                };
+
+
+                StyleGrid.Children.Add(IMG, 0, 3, Row, Row + 1);
+
+
+                Console.WriteLine("Style nr: " + Style.ID);
                 if (!StylesInventory.Contains(Style.ID))
                 {
-
+                    Console.WriteLine("Style Not Unlocked");
 
                     var TGR2 = new TapGestureRecognizer()
                     {
                         NumberOfTapsRequired = 1
                     };
 
-
-
-                    
-
+                 
                     var IMG2 = new Image
                     {
                         ClassId = Style.ID.ToString(),
                         Source = "keyhole.png",
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        BackgroundColor = Color.Transparent,
-                        Margin = 60
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        //BackgroundColor = Color.Transparent,
+                        Margin = 0
+                        
 
                     };
 
@@ -92,14 +108,10 @@ namespace NWT
                     IMG2.GestureRecognizers.Add(TGR2);
 
                    
-                    StyleGrid.Children.Add(IMG2, 1, Row);
+                    StyleGrid.Children.Add(IMG2, 1,2, Row,Row+1);
                 }
-
-
-
-
-                Row++;
                 
+                Row++;                
             }
         }
 

@@ -645,7 +645,7 @@ namespace NWT
         async void SubmitComment(object sender, EventArgs e)
         {
             CommentButton.IsEnabled = false;
-            CommentListView.IsRefreshing = true;
+            //CommentListView.IsRefreshing = true;
             if (App.Online)
             {
                 var CNR = App.database.CommentCount(ArticleNR);
@@ -678,7 +678,7 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-            CommentListView.IsRefreshing = false;
+            //CommentListView.IsRefreshing = false;
             CommentButton.IsEnabled = true;
         }
         async void LoadComments()
@@ -698,8 +698,12 @@ namespace NWT
                 {
                     LWH = 70 * CommentList.Count;
                 }
-
-                CreateCommentListView();
+                if (!CommentsLoaded)
+                {
+                    CreateCommentListView();
+                    CommentsLoaded = true;
+                }
+                
             }
             else
             {

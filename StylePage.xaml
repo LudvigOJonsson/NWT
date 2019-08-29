@@ -12,10 +12,10 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="StyleGrid" RowSpacing="3" ColumnSpacing="0" Margin="0">
+            <Grid x:Name="StyleGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
