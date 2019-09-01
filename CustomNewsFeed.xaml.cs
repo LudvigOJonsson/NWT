@@ -307,55 +307,67 @@ namespace NWT
             Loadnr = 1;
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
             Console.WriteLine("CNF Taggupdate, Deserializing Taglist.");
-            Filter = TagList[0];
-            Tag = TagList[1];
-            Author = TagList[2];
-            ArticleList.Clear();
-            Console.WriteLine("CNF Taggupdate, Starting Task. Filter: " + Filter.First());
-            await System.Threading.Tasks.Task.Run(async () =>
+
+            if(TagList != null)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {                    
-                    ArticleListView.IsRefreshing = true;
-                    LoadingPopUp x = new LoadingPopUp();
-                    x.loadingAnimation.Play();
-                    await Navigation.PushAsync(x);
-
-                });
-
-                Console.WriteLine("CNF Taggupdate, Popup Made.");
-                LoadLocalDB();
-                Console.WriteLine("CNF Taggupdate, Database Loaded.");
-                Device.BeginInvokeOnMainThread(() =>
+                Filter = TagList[0];
+                Tag = TagList[1];
+                Author = TagList[2];
+                ArticleList.Clear();
+                //Console.WriteLine("CNF Taggupdate, Starting Task. Filter: " + Filter.First());
+                await System.Threading.Tasks.Task.Run(async () =>
                 {
-                    AddNews();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        ArticleListView.IsRefreshing = true;
+                        LoadingPopUp x = new LoadingPopUp();
+                        x.loadingAnimation.Play();
+                        await Navigation.PushAsync(x);
 
-                    Console.WriteLine("CNF Taggupdate, Listview Skapad.");
-                    ArticleListView.ItemsSource = null;
-                    ArticleListView.ItemsSource = ArticleList;
+                    });
 
-                    Console.WriteLine("CNF Taggupdate, ArticleList Refreshad.");
+                    Console.WriteLine("CNF Taggupdate, Popup Made.");
+                    LoadLocalDB();
+                    Console.WriteLine("CNF Taggupdate, Database Loaded.");
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        AddNews();
+
+                        Console.WriteLine("CNF Taggupdate, Listview Skapad.");
+                        ArticleListView.ItemsSource = null;
+                        ArticleListView.ItemsSource = ArticleList;
+
+                        Console.WriteLine("CNF Taggupdate, ArticleList Refreshad.");
+
+                    });
+
+
+                    GC.Collect();
+
+
+                    await System.Threading.Tasks.Task.Delay(1000);
+                    Console.WriteLine("CNF Taggupdate, Uhhhhh.");
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        Console.WriteLine("Initiering Klar");
+
+                        await Navigation.PopAsync();
+                        //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                        //await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
+                        //ArticleListView.IsRefreshing = false;
+
+                    });
 
                 });
+            }
+            else
+            {
+
+                
+
+            }
 
 
-                GC.Collect();
-
-
-                await System.Threading.Tasks.Task.Delay(1000);
-                Console.WriteLine("CNF Taggupdate, Uhhhhh.");
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    Console.WriteLine("Initiering Klar");
-
-                    await Navigation.PopAsync();
-                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
-                    //await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
-                    //ArticleListView.IsRefreshing = false;
-                    
-                });
-
-            });
         }
 
 

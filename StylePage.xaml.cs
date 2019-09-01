@@ -77,7 +77,7 @@ namespace NWT
 
 
                 
-                if (!StylesInventory.Contains(Style.ID))
+                if (!StylesInventory.Contains(Style.ID) && false)
                 {
                     Console.WriteLine("Style Not Unlocked");
 
