@@ -17,7 +17,7 @@ namespace NWT
         public static bool Instanciated = false;
         public static UserTable LoggedinUser = null;
         public static TokenTable Token = null;
-        public static bool Online = true;
+        public static bool Online = false;
         public static System.Timers.Timer Timer;
         public static bool Login = false;
         public static LoadingPopUp LoadingScreen;

@@ -319,7 +319,7 @@ namespace NWT
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        ArticleListView.IsRefreshing = true;
+                        //ArticleListView.IsRefreshing = true;
                         LoadingPopUp x = new LoadingPopUp();
                         x.loadingAnimation.Play();
                         await Navigation.PushAsync(x);
@@ -768,7 +768,7 @@ namespace NWT
 
             NewsGrid.Children.Add(ArticleListView, 0, 3, 1, 2);
             NewsGrid.Children.Add(Down, 0, 3, 2, 3);
-
+            First = false;
         }
 
         async void TagPopup(object sender, EventArgs e)
@@ -797,7 +797,7 @@ namespace NWT
             foreach (NewsfeedTable NF in Rss)
             {
                 bool Exists = false;
-
+                App.Online = true;
                 foreach (var Article in ArticleList)
                 {
                     if (Article.ID == NF.Article)
@@ -825,8 +825,11 @@ namespace NWT
             {
                 ArticlePrintList.Add(ArticleList[j]);
             }
-
-            PrintNews();
+            if(First && App.Online)
+            {
+                PrintNews();
+            }
+            
         }
 
 

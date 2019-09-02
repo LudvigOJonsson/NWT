@@ -20,13 +20,28 @@ namespace NWT
             BindingContext = this;
         }
 
+        void LoginCheck()
+        {
+            App.LoggedinUser = new UserTable();
+            
+
+            var Test = App.database.GetUserStats(1);
+            if(Test != null)
+            {
+                App.Online = true;
+            }
+
+            App.LoggedinUser = null;
+        }
+
+
 
         async void Login(object sender, EventArgs e)
         {
 
             //await Navigation.PushAsync(App.LoadingScreen);
 
-            
+            LoginCheck();
 
 
 

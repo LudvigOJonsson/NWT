@@ -364,6 +364,10 @@ namespace NWT
                 };
                 LoadLocalDB();
 
+
+
+
+
                 AddNews(0);
 
             }
@@ -449,7 +453,7 @@ namespace NWT
                 if (RSSTable != null)
                 {
                     RSSTable RSS = RSSTable.First();
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread( () =>
                     {
                         NP = new NewsPage(RSS, argc);
                         OK = true;
@@ -614,7 +618,7 @@ namespace NWT
             foreach (NewsfeedTable NF in Rss)
             {
                 bool Exists = false;
-
+                App.Online = true;
                 foreach (var Article in ArticleList)
                 {
                     if (Article.ID == NF.Article)
@@ -647,7 +651,7 @@ namespace NWT
             {
                 ArticlePrintList.Add(ArticleList[j]);
             }*/
-            if (First)
+            if (First && App.Online)
             {
                 PrintNews();
             }
@@ -688,7 +692,7 @@ namespace NWT
                     
 
                 }
-                Device.BeginInvokeOnMainThread(async() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
 
                     ArticleListView.ItemsSource = null;
