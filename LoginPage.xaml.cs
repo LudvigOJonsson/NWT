@@ -116,8 +116,8 @@ namespace NWT
                         });
 
                         App.SideMenu.SetTags();
-                        var y = (CustomNewsFeed)App.Mainpage.Children[0];
-                        y.TagUpdate();
+                        //var y = (CustomNewsFeed)App.Mainpage.Children[0];
+                        //y.TagUpdate();
                         
                         StylePage.ColorFunction(Color.FromHex(App.LoggedinUser.Style));
 
@@ -171,6 +171,8 @@ namespace NWT
             var NG = (NewsGridPage)App.Mainpage.Children[1];
 
             NG.CreateFeed(0);
+
+
             CustomNewsGridPage.CreateFeed();
             
             var x = (ProfilePage)App.Mainpage.Children[2];

@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using FFImageLoading.Forms;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -199,7 +200,7 @@ namespace NWT
 
                     Label.SetBinding(HeightRequestProperty, "HeaderLength");
 
-                    Image Image = new Image
+                    var Image = new CachedImage()
                     {
 
 
@@ -210,7 +211,13 @@ namespace NWT
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = true,
+                        RetryCount = 1,
+                        RetryDelay = 250,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                         // ClassId = NF.Article.ToString()
 
 
@@ -283,10 +290,10 @@ namespace NWT
                     CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
 
                     Label.SetBinding(Label.TextProperty, "Header");
-                    Image.SetBinding(Image.SourceProperty, "IMGSource");
+                    Image.SetBinding(CachedImage.SourceProperty, "IMGSource");
 
                     Label.SetBinding(Label.ClassIdProperty, "ID");
-                    Image.SetBinding(Image.ClassIdProperty, "ID");
+                    Image.SetBinding(CachedImage.ClassIdProperty, "ID");
 
                     Box.SetBinding(Button.ClassIdProperty, "ID");
 
@@ -653,7 +660,9 @@ namespace NWT
             }*/
             if (First && App.Online)
             {
+                Console.WriteLine("News Added, Creating Listview");
                 PrintNews();
+                Console.WriteLine("Listview Created");
             }
             
         }

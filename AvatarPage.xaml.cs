@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FFImageLoading.Forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,15 +64,21 @@ namespace NWT
                         Row++;
                         
                     }
-                    var IMG = new Image
+                    var IMG = new CachedImage
                     {
                         ClassId = Item.ImagePath,
                         Source = Item.ImagePath,
                         HorizontalOptions = LayoutOptions.CenterAndExpand, 
                         VerticalOptions = LayoutOptions.CenterAndExpand, 
                         BackgroundColor = Color.FromHex("#649FD4") ,
-                        Margin = 5
-
+                        Margin = 5,
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = false,
+                        RetryCount = 1,
+                        RetryDelay = 250,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                     };
 
                     var TGR = new TapGestureRecognizer()

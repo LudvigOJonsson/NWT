@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FFImageLoading.Forms;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -458,7 +459,7 @@ namespace NWT
 
                     Label.SetBinding(HeightRequestProperty, "HeaderLength");
 
-                    Image Image = new Image
+                    var Image = new CachedImage()
                     {
 
 
@@ -469,7 +470,13 @@ namespace NWT
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = true,
+                        RetryCount = 1,
+                        RetryDelay = 250,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                         // ClassId = NF.Article.ToString()
 
 
@@ -581,7 +588,7 @@ namespace NWT
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
 
-                    Image AdImage = new Image
+                    var AdImage = new CachedImage
                     {
 
                         BackgroundColor = Color.White,
@@ -593,6 +600,13 @@ namespace NWT
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
                         Margin = 50,
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = true,
+                        RetryCount = 1,
+                        RetryDelay = 250,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                         // ClassId = NF.Article.ToString()
                     };
                     BoxView AdImageOutline = new BoxView
@@ -659,7 +673,7 @@ namespace NWT
                     CategoryBox.SetBinding(BoxView.BackgroundColorProperty, "CategoryColor");
 
                     Label.SetBinding(Label.TextProperty, "Header");
-                    Image.SetBinding(Image.SourceProperty, "IMGSource");
+                    Image.SetBinding(CachedImage.SourceProperty, "IMGSource");
 
                     Tag.SetBinding(Label.TextProperty, "FirstTag");
                     Tag.SetBinding(Label.IsVisibleProperty, "TagVisible");
@@ -669,7 +683,7 @@ namespace NWT
                     TagBox.SetBinding(Button.ClassIdProperty, "Tag");
 
                     Label.SetBinding(Label.ClassIdProperty, "ID");
-                    Image.SetBinding(Image.ClassIdProperty, "ID");
+                    Image.SetBinding(CachedImage.ClassIdProperty, "ID");
 
                     Box.SetBinding(Button.ClassIdProperty, "ID");
                     
@@ -680,10 +694,10 @@ namespace NWT
                     AdBox.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     //AdButton.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
                     AdImageOutline.SetBinding(BoxView.IsVisibleProperty, "AdVisibility");
-                    AdImage.SetBinding(Image.IsVisibleProperty, "AdVisibility");
+                    AdImage.SetBinding(CachedImage.IsVisibleProperty, "AdVisibility");
                     AdLabel.SetBinding(Label.IsVisibleProperty, "AdVisibility");
                     AdLabel.SetBinding(Label.TextProperty, "AdText");
-                    AdImage.SetBinding(Image.SourceProperty, "AdSource");
+                    AdImage.SetBinding(CachedImage.SourceProperty, "AdSource");
 
 
 
