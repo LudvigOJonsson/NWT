@@ -17,6 +17,7 @@ namespace NWT
         public int red = 255;
         public int green = 255;
         public int blue = 255;
+        public string timerText = "0%";
         public System.Timers.Timer Timer;
         public static int ArticleNR;
         public int CC = 8;
@@ -621,6 +622,12 @@ namespace NWT
                 //NewsPageView.BackgroundColor = Color.FromRgb(red, green, blue);
                 //Dot.TextColor = Color.FromRgb(red, green, blue);
                 TimerButton.BackgroundColor = Color.FromRgb(red, green, blue);
+
+                string newText = Math.Round((((App.MC.R * 255) + (App.MC.G * 255) + (App.MC.B * 255)) / (blue + green + red)) * 100).ToString() + "%";
+                if (TimerButton.Text != newText)
+                    TimerButton.Text = newText;
+                if (TimerButton.Text == "100%")
+                    TimerButton.Text = "Samla mynt!";
             });
 
             if (App.MC == Color.FromRgb(red, green, blue))

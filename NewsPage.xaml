@@ -64,7 +64,7 @@
             <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="26" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
 
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
-            <Button x:Name="TimerButton" Text="Samla mynt!" 
+            <Button x:Name="TimerButton" Text="0%" 
                     Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="White" Margin="15" 
                     HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
