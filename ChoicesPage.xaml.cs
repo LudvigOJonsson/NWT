@@ -243,7 +243,7 @@ namespace NWT
 
                 TrashImage = new Image
                 {
-                    Source = "trash.png",
+                    Source = "Icon_Trash.png",
                     WidthRequest = 10,
                     HeightRequest = 10,
                     ClassId = s
@@ -252,7 +252,7 @@ namespace NWT
 
                 BellImage = new Image
                 {
-                    Source = "bell.png",
+                    Source = "Icon_Bell.png",
                     WidthRequest = 10,
                     HeightRequest = 10,
                 };
