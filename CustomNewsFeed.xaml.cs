@@ -196,7 +196,7 @@ namespace NWT
                         //a 1 in 3 chance to become an ad
 
                         AdText = "Reklam";
-                        AdSource = "Commercial_Hamburger.jpg";
+                        AdSource = "hamburgare.jpg";
 
                     }
                     else if (content == 2)
@@ -204,7 +204,7 @@ namespace NWT
                         //a 1 in 3 chance to become a social media post
 
                         AdText = "Användarbilder";
-                        AdSource = "Commercial_Social.png";
+                        AdSource = "blomma.png";
 
                     }
                     else if (content == 3)
@@ -212,7 +212,7 @@ namespace NWT
                         //a 1 in 3 chance to become an event
 
                         AdText = "Evenemang";
-                        AdSource = "Commercial_HollidaySpecial.jpg";
+                        AdSource = "julbord.jpg";
 
                     }
                     else
@@ -475,8 +475,8 @@ namespace NWT
                         RetryCount = 1,
                         RetryDelay = 250,
                         BitmapOptimizations = false,
-                        LoadingPlaceholder = "",
-                        ErrorPlaceholder = "failed_load.png",
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                         // ClassId = NF.Article.ToString()
 
 
@@ -605,8 +605,8 @@ namespace NWT
                         RetryCount = 1,
                         RetryDelay = 250,
                         BitmapOptimizations = false,
-                        LoadingPlaceholder = "",
-                        ErrorPlaceholder = "failed_load.png",
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                         // ClassId = NF.Article.ToString()
                     };
                     BoxView AdImageOutline = new BoxView

@@ -31,7 +31,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="IntroSequence_Image_Newspaper.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
+            <Image Source="Newspaper_Temp.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
@@ -76,7 +76,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="IntroSequence_Image_Choices.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
+            <Image Source="InApp_Intro2.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#f2f2f2" Margin="35"/>
@@ -122,7 +122,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="IntroSequence_Image_Checklist.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
+            <Image Source="Checklist_Intro3.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>
@@ -169,7 +169,7 @@
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="15"/>
             <BoxView Grid.Row="1" Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#649FD4" Margin="20"/>
 
-            <Image Source="IntroSequence_Image_Style.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
+            <Image Source="Anpassa_Intro4.png"  WidthRequest="300" HeightRequest="300"  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4"  HorizontalOptions="Fill" VerticalOptions="Start" />
 
 
             <BoxView Grid.Row="4" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="#40000000" Margin="30"/>

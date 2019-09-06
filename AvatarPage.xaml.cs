@@ -77,8 +77,8 @@ namespace NWT
                         RetryCount = 1,
                         RetryDelay = 250,
                         BitmapOptimizations = false,
-                        LoadingPlaceholder = "",
-                        ErrorPlaceholder = "failed_load.png",
+                        LoadingPlaceholder = "snail.png",
+                        ErrorPlaceholder = "snailClothes.png",
                     };
 
                     var TGR = new TapGestureRecognizer()
@@ -139,11 +139,11 @@ namespace NWT
                         var IMG2 = new Image
                         {
                             ClassId = Item.ID.ToString(),
-                            Source = "Icon_Keyhole2.png",
+                            Source = "keyhole.png",
                             HorizontalOptions = LayoutOptions.CenterAndExpand,
                             VerticalOptions = LayoutOptions.CenterAndExpand,
                             BackgroundColor = Color.Transparent,
-                            Margin = 0
+                            Margin = 20
 
                         };
 
@@ -173,9 +173,9 @@ namespace NWT
 
         void SetDefaultAvatar()
         {
-            Avatar[0] = "Avatar_Skintone_1.png";
-            Avatar[1] = "Avatar_Hair_Sideswept_black.png";
-            Avatar[2] = "Avatar_Shirt_black.png";
+            Avatar[0] = "avatar_face1.png";
+            Avatar[1] = "avatar_hair1.png";
+            Avatar[2] = "avatar_body1.png";
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
         }

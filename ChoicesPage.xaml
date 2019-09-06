@@ -61,8 +61,8 @@
                  />
 
                 <Button x:Name="UserSettingsB" Clicked="Customization" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="0" Image="plusSmall.png" HorizontalOptions="Center"/>
-                <Button x:Name="AboutB" Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="1" Image="Icon_About.png" HorizontalOptions="Center"/>
-                <Button x:Name="LogoutB" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="2" Image="Icon_Logout.png" HorizontalOptions="Center"/>
+                <Button x:Name="AboutB" Clicked="About" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="1" Image="about.png" HorizontalOptions="Center"/>
+                <Button x:Name="LogoutB" Text="" BackgroundColor="Transparent" Grid.Row="9" Grid.Column="2" Image="logout.png" HorizontalOptions="Center"/>
 
             </Grid>
 

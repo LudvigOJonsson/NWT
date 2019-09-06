@@ -40,7 +40,7 @@ namespace NWT
             var StylesList = App.database.GetItemFromType("Style");
 
             var Row = 1;
-
+            
             foreach (var Style in StylesList)
             {
                 var Button = new Button
@@ -50,7 +50,7 @@ namespace NWT
                     VerticalOptions = LayoutOptions.Fill,
                     BackgroundColor = Color.FromHex(Style.ImagePath),
                     Margin = 5,
-
+                    
                 };
 
                 StyleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
@@ -63,18 +63,20 @@ namespace NWT
                 {
                     ClassId = Style.ID.ToString(),
                     Source = "Icon_Hub_white.png",
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Fill,
+                    VerticalOptions = LayoutOptions.Fill,
                     //BackgroundColor = Color.Transparent,
-                    Margin = 25,
+                    Margin = 5,
+                    HeightRequest = 150,
+                    WidthRequest = 150
 
                 };
 
 
-                StyleGrid.Children.Add(IMG, 0, 1, Row, Row + 1);
+                StyleGrid.Children.Add(IMG, 0, 3, Row, Row + 1);
 
 
-
+                
                 if (!StylesInventory.Contains(Style.ID) && false)
                 {
                     Console.WriteLine("Style Not Unlocked");
@@ -84,7 +86,7 @@ namespace NWT
                         NumberOfTapsRequired = 1
                     };
 
-
+                 
                     var IMG2 = new Image
                     {
                         ClassId = Style.ID.ToString(),
@@ -93,7 +95,7 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Fill,
                         //BackgroundColor = Color.Transparent,
                         Margin = 0
-
+                        
 
                     };
 
@@ -105,11 +107,11 @@ namespace NWT
 
                     IMG2.GestureRecognizers.Add(TGR2);
 
-
-                    StyleGrid.Children.Add(IMG2, 1, 2, Row, Row + 1);
+                   
+                    StyleGrid.Children.Add(IMG2, 1,2, Row,Row+1);
                 }
-
-                Row++;
+                
+                Row++;                
             }
         }
 
