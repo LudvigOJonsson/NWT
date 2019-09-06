@@ -25,7 +25,7 @@ namespace NWT
             UnselectedTabColor = Color.FromHex("FFFFFF");
             SelectedTabColor = Color.FromHex("FFFFFF");
 
-            ToolbarItems.Add(new ToolbarItem("Search", "search.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel");
+            ToolbarItems.Add(new ToolbarItem("Search", "Icon_Search_white.png", async () => { var page = new ContentPage(); var result = await page.DisplayAlert("Title", "Message", "Accept", "Cancel");
             
             Debug.WriteLine("success: {0}", result); }));
 

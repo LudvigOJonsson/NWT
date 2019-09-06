@@ -216,8 +216,8 @@ namespace NWT
                         RetryCount = 1,
                         RetryDelay = 250,
                         BitmapOptimizations = false,
-                        LoadingPlaceholder = "snail.png",
-                        ErrorPlaceholder = "snailClothes.png",
+                        LoadingPlaceholder = "",
+                        ErrorPlaceholder = "failed_load.png",
                         // ClassId = NF.Article.ToString()
 
 
