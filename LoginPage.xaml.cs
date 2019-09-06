@@ -18,6 +18,17 @@ namespace NWT
 		{
 			InitializeComponent ();
             BindingContext = this;
+
+            var properties = App.Current.Properties;
+            if (properties.ContainsKey("username"))
+            {
+                UserLogin.Text = (string)properties["username"];
+            }
+
+            if (properties.ContainsKey("password"))
+            {
+                UserPassword.Text = (string)properties["password"];
+            }
         }
 
         void LoginCheck()
@@ -122,7 +133,25 @@ namespace NWT
                         StylePage.ColorFunction(Color.FromHex(App.LoggedinUser.Style));
 
                     }
-                    
+
+                    var properties = App.Current.Properties;
+                    if (!properties.ContainsKey("username"))
+                    {
+                        properties.Add("username", UserLogin.Text);
+                    }
+                    else
+                    {
+                        properties["username"] = UserLogin.Text;
+                    }
+
+                    if (!properties.ContainsKey("password"))
+                    {
+                        properties.Add("password", UserPassword.Text);
+                    }
+                    else
+                    {
+                        properties["password"] = UserPassword.Text;
+                    }
 
 
 

@@ -857,7 +857,7 @@ namespace NWT
                 "(4, 'Lila_Tröja', 'avatar_body4.png', 'Body', 12), " +
                 "(5, 'Svart_Tröja', 'avatar_body5.png', 'Body', 12), " +
                 "(6, 'LjusBlå_Tröja', 'avatar_body6.png', 'Body', 12), " +
-                "(7, 'Rosa_Tröja', 'avatar_body7.png', 'Body', 12), " +
+                "(7, 'Lavender_Tröja', 'avatar_body7.png', 'Body', 12), " +
                 "(8, 'Blåvit_Tröja', 'avatar_body8.png', 'Body', 25), " +
                 "(9, 'Rödvit_Tröja', 'avatar_body9.png', 'Body', 25), " +
                 "(10, 'Svartgrön_Tröja', 'avatar_body10.png', 'Body', 25), " +
