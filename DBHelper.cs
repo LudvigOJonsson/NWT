@@ -895,7 +895,22 @@ namespace NWT
                 "(42, '#063336', '#063336', 'Style', 10), " +
                 "(43, '#CC4B93', '#CC4B93', 'Style', 10), " +
                 "(44, '#DADADA', '#DADADA', 'Style', 10), " +
-                "(45, '#996699', '#996699', 'Style', 10); " +
+                "(45, '#996699', '#996699', 'Style', 10), " +
+                "(46, 'Röd_Hat', 'avatar_hair11.png', 'Hair', 10), " +
+                "(47, 'Röd_Keps', 'avatar_hair12.png', 'Hair', 10), " +
+                "(48, 'Blå_Keps', 'avatar_hair13.png', 'Hair', 10), " +
+                "(49, 'Brun_Pompador', 'avatar_hair14.png', 'Hair', 10), " +
+                "(50, 'Grått_Pompador', 'avatar_hair15.png', 'Hair', 10), " +
+                "(51, 'Neutral', 'avatar_expr1.png', 'Expr', 5), " +
+                "(52, 'Frågande', 'avatar_expr2.png', 'Expr', 5), " +
+                "(53, 'Ledsen', 'avatar_expr3.png', 'Expr', 5), " +
+                "(54, 'Glad', 'avatar_expr4.png', 'Expr', 5), " +
+                "(55, 'Blinkar', 'avatar_expr5.png', 'Expr', 5), " +
+                "(56, 'Kort', 'avatar_beard1.png', 'Beard', 10), " +
+                "(57, 'Långt', 'avatar_beard2.png', 'Beard', 10), " +
+                "(58, 'Imperial', 'avatar_beard3.png', 'Beard', 10), " +
+                "(59, 'Twirl', 'avatar_beard4.png', 'Beard', 10), " +
+                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10); " +
              "");
         }
         public static string TCP(string JSON)

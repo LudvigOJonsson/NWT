@@ -47,7 +47,7 @@ namespace NWT
             ProfilePictureFace.Source = Avatar[0];
             ProfilePictureHair.Source = Avatar[1];
             ProfilePictureBody.Source = Avatar[2];
-
+            ProfilePictureExpr.Source = "avatar_expr4.png";
 
             var ItemList = App.database.GetAllItems();
 
@@ -56,7 +56,7 @@ namespace NWT
 
             foreach(var Item in ItemList)
             {
-                if(Item.InventorySlot != "Style")
+                if(Item.InventorySlot != "Style" && Item.InventorySlot != "Expr" && Item.InventorySlot != "Beard")
                 { 
                     if(Column == 5)
                     {
@@ -173,9 +173,9 @@ namespace NWT
 
         void SetDefaultAvatar()
         {
-            Avatar[0] = "Avatar_Skintone_1.png";
-            Avatar[1] = "Avatar_Hair_Sideswept_black.png";
-            Avatar[2] = "Avatar_Shirt_black.png";
+            Avatar[0] = "avatar_face1.png";
+            Avatar[1] = "avatar_hair1.png";
+            Avatar[2] = "avatar_body1.png";
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
         }
@@ -212,7 +212,7 @@ namespace NWT
 
         public void ChangeFace(object sender, EventArgs e)
         {
-            Image image = (Image)sender;
+            CachedImage image = (CachedImage)sender;
             ProfilePictureFace.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
@@ -224,7 +224,7 @@ namespace NWT
 
         public void ChangeHair(object sender, EventArgs e)
         {
-            Image image = (Image)sender;
+            CachedImage image = (CachedImage)sender;
             ProfilePictureHair.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
@@ -235,7 +235,7 @@ namespace NWT
         }
         public void ChangeBody(object sender, EventArgs e)
         {
-            Image image = (Image)sender;
+            CachedImage image = (CachedImage)sender;
             ProfilePictureBody.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
