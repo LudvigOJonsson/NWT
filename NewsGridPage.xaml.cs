@@ -369,9 +369,20 @@ namespace NWT
                     LoadNews(s, e);
                     IsEnabled = true;
                 };
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.LS.LoadingText.Text = "Laddar in Dina Val, Hämtar nyheter ifrån servern";
+                });
+
+
+
                 LoadLocalDB();
 
 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.LS.LoadingText.Text = "Laddar in Dina Val, Skapar Nyhetslistan";
+                });
 
 
 
@@ -502,13 +513,13 @@ namespace NWT
 
         public void LoadHistory()
         {
-            argc = 1;
+            argc = 2;
             AddNews(1);
         }
 
         public void LoadFavorites()
         {
-            argc = 2;
+            argc = 3;
             AddNews(2);
         }
 
@@ -643,6 +654,11 @@ namespace NWT
                     ArticleList.Add(Box);
                 }
                 i++;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.LS.LoadingText.Text = "Laddar in Dina Val, Skapar Nyhetslistan: " + i + " Artiklar Skapade";
+                });
+                
             }
 
             /*
@@ -677,9 +693,9 @@ namespace NWT
                 {
                     //IsBusy = true;
                     //ArticleListView.IsRefreshing = true;
-                    LoadingPopUp x = new LoadingPopUp();
-                    x.loadingAnimation.Play();
-                    await Navigation.PushAsync(x);
+                    App.LS.loadingAnimation.Play();
+                    await Navigation.PushAsync(App.LS);
+                    App.LS.LoadingText.Text = "Laddar in mera artiklar.";
                     
                 });
                 
@@ -711,7 +727,7 @@ namespace NWT
                    
                 });
 
-
+                
                 GC.Collect();
 
                 

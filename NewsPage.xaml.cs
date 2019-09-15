@@ -672,11 +672,20 @@ namespace NWT
                         Point = 0
                     };
                     CommentEntry.Text = "";
+                    Console.WriteLine("Inserting Comment");
                     App.database.InsertComment(SC);
+                    Console.WriteLine("Loading Comments");
+                    
                     LoadComments();
-
+                    Console.WriteLine("Refreshing Comments");
                     CommentListView.ItemsSource = null;
                     CommentListView.ItemsSource = CommentList;
+
+                    CommentListView.HeightRequest = LWH;
+
+
+                        
+                    
                     
                 }
                 
@@ -690,16 +699,19 @@ namespace NWT
         }
         async void LoadComments()
         {
+            Console.WriteLine("Nr of Comments (Pre Load): " + CommentTableList.Count);
+            CommentTableList.Clear();
             CommentTableList = App.database.GetComments(ArticleNR,0,-1);
             if (CommentTableList != null)
             {
+                CommentList.Clear();
                 foreach (var CommentTable in CommentTableList)
                 {
                     MakeComment(CommentTable);
                 }
                 if (7 < CommentList.Count)
                 {
-                    LWH = 500;
+                    LWH = 70 * CommentList.Count;
                 }
                 else
                 {
@@ -716,8 +728,8 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "Comments could not be loaded. Please try again later.", "OK");
             }
-            
-            
+
+            Console.WriteLine("Nr of Comments (Post Load): " + CommentTableList.Count);
         }
         public void MakeComment(CommentTable s)
         {

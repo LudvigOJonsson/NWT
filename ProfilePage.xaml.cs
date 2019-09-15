@@ -144,12 +144,19 @@ namespace NWT
 
         public void Login(UserTable User)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.LS.LoadingText.Text = "Hämtar Uppdrag.";
+            });
 
 
-                Welcome.Text = "Hej, " + User.Username + "!";
+            Welcome.Text = "Hej, " + User.Username + "!";
                 TokenNumber.Text = App.LoggedinUser.Plustokens.ToString();
                 updateMissions();
-
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.LS.LoadingText.Text = "Laddar in Avatar.";
+            });
 
 
             var Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);

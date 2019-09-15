@@ -14,10 +14,14 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-		public LoginPage ()
+        
+
+        public LoginPage ()
 		{
 			InitializeComponent ();
             BindingContext = this;
+
+            
 
             var properties = App.Current.Properties;
             if (properties.ContainsKey("username"))
@@ -91,19 +95,20 @@ namespace NWT
                     }
                     else
                     {
-
+                        
                         await System.Threading.Tasks.Task.Run(async () =>
                         {
+                            
                             Device.BeginInvokeOnMainThread(() =>
                             {
 
-                                LoadingPopUp x = new LoadingPopUp();
-                                x.loadingAnimation.Play();
-
-                                App.Startpage.Detail = x;
                                 
-                                
+                                App.LS.loadingAnimation.Play();
 
+                                App.Startpage.Detail = App.LS;
+
+
+                                App.LS.LoadingText.Text = "Appen laddas in.";
                                
 
                                 
@@ -125,8 +130,9 @@ namespace NWT
                             });
 
                         });
-
+                        
                         App.SideMenu.SetTags();
+
                         //var y = (CustomNewsFeed)App.Mainpage.Children[0];
                         //y.TagUpdate();
                         
@@ -191,26 +197,39 @@ namespace NWT
             //App.Startpage.Master = new NavigationPage(new GSampleSidemenu());
         }
 
-
-
+   
         public void StartApp()
         {
 
             var CustomNewsGridPage = (CustomNewsFeed)App.Mainpage.Children[0];
             var NG = (NewsGridPage)App.Mainpage.Children[1];
-
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.LS.LoadingText.Text = "Laddar in Dina Val";
+            });
+            
             NG.CreateFeed(0);
+            Device.BeginInvokeOnMainThread(() =>
+            {
 
+            });
 
             CustomNewsGridPage.CreateFeed();
-            
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.LS.LoadingText.Text = "Laddar in det samlade Nyhetsflödet";
+            });
+
             var x = (ProfilePage)App.Mainpage.Children[2];
             x.Login(App.LoggedinUser);
 
-           
-            
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.LS.LoadingText.Text = "Updaterar Profilsidan";
+            });
 
-            
+
+
 
 
         }

@@ -321,9 +321,10 @@ namespace NWT
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         //ArticleListView.IsRefreshing = true;
-                        LoadingPopUp x = new LoadingPopUp();
-                        x.loadingAnimation.Play();
-                        await Navigation.PushAsync(x);
+                        App.LS.loadingAnimation.Play();
+                        await Navigation.PushAsync(App.LS);
+
+                        App.LS.LoadingText.Text = "Uppdaterar Nyhetsflödet för nya taggar.";
 
                     });
 
@@ -855,9 +856,9 @@ namespace NWT
                 {
                     //IsBusy = true;
                     //ArticleListView.IsRefreshing = true;
-                    LoadingPopUp x = new LoadingPopUp();
-                    x.loadingAnimation.Play();
-                    await Navigation.PushAsync(x);
+                    App.LS.loadingAnimation.Play();
+                    await Navigation.PushAsync(App.LS);
+                    App.LS.LoadingText.Text = "Laddar in mera artiklar.";
 
                 });
 

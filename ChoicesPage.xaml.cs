@@ -146,10 +146,9 @@ namespace NWT
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     
-                    LoadingPopUp x = new LoadingPopUp();
-                    x.loadingAnimation.Play();
-                    await Navigation.PushAsync(x);
-
+                    App.LS.loadingAnimation.Play();
+                    await Navigation.PushAsync(App.LS);
+                    App.LS.LoadingText.Text = "Uppdaterar Taggar.";
                 });
 
 
@@ -340,9 +339,9 @@ namespace NWT
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     
-                    LoadingPopUp x = new LoadingPopUp();
-                    x.loadingAnimation.Play();
-                    await Navigation.PushAsync(x);
+                    App.LS.loadingAnimation.Play();
+                    await Navigation.PushAsync(App.LS);
+                    App.LS.LoadingText.Text = "Updaterar Dina Val Nyhetsflödet.";
 
                 });
 
@@ -362,7 +361,7 @@ namespace NWT
                 Page.LoadLocalDB();
 
 
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread( () =>
                 {
 
                     //ANVÄND GRAFISK KOD HÄR

@@ -21,7 +21,7 @@ namespace NWT
         public static System.Timers.Timer Timer;
         public static bool Login = false;
         public static LoadingPopUp LoadingScreen;
-
+        public static LoadingPopUp LS = new LoadingPopUp();
         public static Color MC = Color.FromHex("#649FD4");
 
         public App()

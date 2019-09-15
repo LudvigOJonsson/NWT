@@ -474,6 +474,15 @@ namespace NWT
 
                     }
                 }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
+                    App.LS.LoadingText.Text = "Laddar in Dina Val, Hämtar nyheter ifrån servern: " + x + "/"+(stop+20)+" artiklar inladdade";
+
+                });
+                
+
                 Nr = x;
             }
             return Nr;
@@ -613,6 +622,15 @@ namespace NWT
 
                     }
                 }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
+                    App.LS.LoadingText.Text = "Laddar in det samlade Nyhetsflödet, Hämtar nyheter ifrån servern: " + x + "/20 artiklar inladdade";
+
+
+                });
+                
                 Nr = x;
             }
             return Nr;
