@@ -33,7 +33,7 @@ namespace NWT
         public int CURR = DBLN;
         public int NEXT = DBLN * 2;
         public bool ScrollLock = false;
-
+        public string EmptyList = "";
 
         public bool First = true;
         public int argc = 0;
@@ -141,9 +141,10 @@ namespace NWT
             }
             else 
             {
-                EmptyText.Text = "";
+                /*EmptyText.Text = "";
                 EmptyText.IsEnabled = false;
                 EmptyText.IsVisible = false;
+                */
                 CreateFeed(Argc);
             }
 
@@ -384,7 +385,7 @@ namespace NWT
                     App.LS.LoadingText.Text = "Laddar in Dina Val, Skapar Nyhetslistan";
                 });
 
-
+                EmptyList = "Hej! Klicka på ett ämne i sidomenyn. Då kommer det valda ämnet att visas på denna sida!";
 
                 AddNews(0);
 
@@ -413,6 +414,7 @@ namespace NWT
                     LoadNews(s, e);
                     IsEnabled = true;
                 };
+                EmptyList = "Den här sidan ska visa upp dom senaste artiklar som du har läst. För att läsa en artikel, tryck på knappen 'Samla Token' efter slutet av artikelns brödtext.";
                 LoadHistory();
             }
             else if (Argc == 3)
@@ -424,7 +426,19 @@ namespace NWT
                     LoadNews(s, e);
                     IsEnabled = true;
                 };
+
+                EmptyList = "Den här sidan ska visa upp dom artiklar du favoritmarkerat. För att favoritmarkera en artikel, tryck på den hjärtformade knappen efter slutet av artikelns brödtext.";
                 LoadFavorites();
+            }
+
+            if (!ArticleList.Any())
+            {
+                EmptyText.Text = EmptyList;
+                NewsGrid.Children.Add(EmptyText, 1, 1);
+            }
+            else
+            {
+                EmptyText.IsVisible = false;
             }
         }
 

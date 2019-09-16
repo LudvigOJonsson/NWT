@@ -34,7 +34,7 @@ namespace NWT
         public int NEXT = DBLN * 2;
         public bool ScrollLock = false;
         public bool TagsModified = false;
-
+        
 
         public bool First = true;
         public int argc = 0;
