@@ -212,7 +212,7 @@ namespace NWT
 
         public void ChangeFace(object sender, EventArgs e)
         {
-            CachedImage image = (CachedImage)sender;
+            Image image = (Image)sender;
             ProfilePictureFace.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
             PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source);
