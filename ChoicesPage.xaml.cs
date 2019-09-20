@@ -433,18 +433,16 @@ namespace NWT
             ButtonLock();
             ProfilePage page = (ProfilePage)App.Mainpage.Children[2];
             page.Logout();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
             ButtonLock();
         }
         async void About(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
             await Navigation.PushAsync(new AboutPage());
             ButtonLock();
         }
@@ -452,19 +450,25 @@ namespace NWT
         {
             Button button = (Button)sender;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
             await Navigation.PushAsync(new UserSettingsPage());
             ButtonLock();
         }
         async void Customization(object sender, EventArgs e)
         {
+            Button button = (Button)sender;
+            ButtonLock();
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
+
             CustomizationPage c = new CustomizationPage();
             //c.fromSidemenu = true;
             await App.Mainpage.Navigation.PushAsync(c);
 
             App.Startpage.IsPresented = false;
+
+            ButtonLock();
         }
 
 

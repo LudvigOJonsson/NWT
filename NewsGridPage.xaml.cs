@@ -214,7 +214,7 @@ namespace NWT
                         InputTransparent = true,
                         CacheDuration = TimeSpan.FromDays(14),
                         DownsampleToViewSize = true,
-                        RetryCount = 1,
+                        RetryCount = 5,
                         RetryDelay = 250,
                         BitmapOptimizations = false,
                         LoadingPlaceholder = "",

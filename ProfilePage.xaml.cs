@@ -356,6 +356,27 @@ namespace NWT
             m2.IsEnabled = !m2.IsEnabled;
             m3.IsEnabled = !m3.IsEnabled;
         }
+        
+        async void AnimateButton(Button button, Image image, BoxView box)
+        {
+            if (box != null)
+            {
+                await box.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await box.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+
+            else if (image != null)
+            {
+                await image.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await image.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+
+            else if (button != null)
+            {
+                await button.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await button.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+        }
 
         public void Logout()
         {
@@ -372,27 +393,60 @@ namespace NWT
         }
         async void Avatar(object sender, EventArgs e)
         {
+
+            Image image1 = ProfilePictureFace;
+            Image image2 = ProfilePictureHair;
+            Image image3 = ProfilePictureBody;
+            Image image4 = ProfilePictureExpr;
             ButtonLock();
+
+            AnimateButton(null, image1, null);
+            AnimateButton(null, image2, null);
+            AnimateButton(null, image3, null);
+            AnimateButton(null, image4, null);
+            await image1.FadeTo(0.9f, 100);
+            await image1.FadeTo(1f, 100);
+
+            ButtonLock();
+
             await Navigation.PushAsync(new AvatarPage());
+            ButtonLock();
+        }
+        async void Coin(object sender, EventArgs e)
+        {
+            ButtonLock();
+            Image button = CoinButton;
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
+            await DisplayAlert("Dina mynt", "Samla genom att läsa artiklar och klara uppdrag. Spendera på nya utstyrslar och backgrundfärger!", "Okej");
             ButtonLock();
         }
         async void Settings(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            BoxView button = ProfileSettingsButton;
+            Image image = ProfileSettingsImage;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
             await Navigation.PushAsync(new SettingsPage());
             ButtonLock();
         }
+
         async void Achivements(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            BoxView button = AchievementsButton;
+            Image image = AchievementsImage;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
             var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
             if(Stats != null)
             {
@@ -420,32 +474,44 @@ namespace NWT
         }
         async void Favorites(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            BoxView button = FavoritesButton;
+            Image image = FavoritesImage;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
             await Navigation.PushAsync(new NewsGridPage(3));
             ButtonLock();
         }
         async void History(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            BoxView button = HistoryButton;
+            Image image = HistoryImage  ;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
             await Navigation.PushAsync(new NewsGridPage(2));
             ButtonLock();
         }
 
         async void StylePage(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            BoxView button = StyleButton;
+            Image image = StyleImage;
             ButtonLock();
-            await button.RotateTo(-5, 80, Easing.BounceOut);
-            await button.RotateTo(5, 120, Easing.BounceOut);
-            await button.RotateTo(0, 80, Easing.BounceOut);
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
             await Navigation.PushAsync(new StylePage());
             ButtonLock();
         }

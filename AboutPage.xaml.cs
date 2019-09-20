@@ -22,5 +22,13 @@ namespace NWT
 
             Device.OpenUri(siteUri);
         }
+
+        private void Button_Clicked2(object sender, EventArgs e)
+        {
+            Uri siteUri = new Uri("https://drive.google.com/uc?id=19BhZs4YtFg-VpK6hRlBeXCPGFtizxSJs");
+
+            Device.OpenUri(siteUri);
+        
+        }
     }
 }

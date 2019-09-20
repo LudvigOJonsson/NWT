@@ -499,6 +499,27 @@ namespace NWT
             }
         }
 
+        async void AnimateButton(Button button, Image image, BoxView box)
+        {
+            if (box != null)
+            {
+                await box.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await box.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+
+            else if (image != null)
+            {
+                await image.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await image.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+
+            else if (button != null)
+            {
+                await button.ScaleTo(0.8f, 100, Easing.BounceOut);
+                await button.ScaleTo(1f, 100, Easing.BounceOut);
+            }
+        }
+
         async void FavButtonClicked(object sender, System.EventArgs e)
         {           
             
@@ -522,6 +543,12 @@ namespace NWT
                         Header = Rubrik.Text
                     };
                     App.database.InsertFavorite(fav);
+                    
+                    Image image = FavIcon;
+
+                    await image.ScaleTo(0.8f, 100, Easing.BounceOut);
+                    await image.ScaleTo(1f, 100, Easing.BounceOut);
+
                     await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
                     Favorited = true;
                     FavIcon.Source = "Icon_Heart_Full";
@@ -539,9 +566,8 @@ namespace NWT
             //IconRotation();
             TimerButton.IsEnabled = false;
             Button button = (Button)sender;
-            await button.RotateTo(0, 1, Easing.BounceOut);
-            await button.RotateTo(2, 1, Easing.BounceOut);
-            await button.RotateTo(0, 1, Easing.BounceOut);
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
 
             if (TimerButton.BackgroundColor == App.MC && Read == false)
             {
@@ -590,9 +616,9 @@ namespace NWT
         {
             //IconRotation();
             Label label = (Label)sender;
-            await label.RotateTo(-2, 40, Easing.BounceOut);
+           /* await label.RotateTo(-2, 40, Easing.BounceOut);
             await label.RotateTo(2, 60, Easing.BounceOut);
-            await label.RotateTo(0, 40, Easing.BounceOut);
+            await label.RotateTo(0, 40, Easing.BounceOut);*/
         }
         /*
         async void IconRotation()

@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.ProfilePage"
              BackgroundColor="#ffffff"
-             Icon="Icon_Profile.png"
+             Icon="Icon_Profile_white.png"
              Title="Profil">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
@@ -83,31 +83,31 @@
 
 
                 <BoxView x:FieldModifier="public" x:Name="FavoritesButton" Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Image x:Name="FavoritesImage" Source="Icon_Heart_white.png" Grid.Row="4" Grid.Column="1" BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Favorites" Grid.Row="4" Grid.Column="1"/>
 
                 <BoxView x:FieldModifier="public" x:Name="AchievementsButton" Grid.Row="4" Grid.Column="3" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Image x:Name="AchievementsImage" Source="Icon_Trophy_white.png" Grid.Row="4" Grid.Column="3"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Achivements" Grid.Row="4" Grid.Column="3"/>
 
                 <BoxView x:FieldModifier="public" x:Name="StyleButton" Grid.Row="5" Grid.Column="2" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Image x:Name="StyleImage" Source="Icon_Edit_white.png" Grid.Row="5" Grid.Column="2" BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="StylePage" Grid.Row="5" Grid.Column="2"/>
 
                 <BoxView x:FieldModifier="public" x:Name="HistoryButton" Grid.Row="5" Grid.Column="3" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3"  BackgroundColor="Transparent"   HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Image x:Name="HistoryImage" Source="Icon_History_white.png" Grid.Row="5" Grid.Column="3"  BackgroundColor="Transparent"   HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="History" Grid.Row="5" Grid.Column="3"/>
 
                 <BoxView x:FieldModifier="public" x:Name="ProfileSettingsButton" Grid.Row="5" Grid.Column="1" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Image x:Name="ProfileSettingsImage" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
                 <Button BackgroundColor="Transparent" Clicked="Settings" Grid.Row="5" Grid.Column="1"/>
 
 
-                <Image Grid.Row="4" Grid.Column="2" Source="Icon_Coin"  />
+                <Image x:Name="CoinButton" Grid.Row="4" Grid.Column="2" Source="Icon_Coin"  />
                 <BoxView Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="End" HeightRequest="20" WidthRequest="30" BackgroundColor="#40000000"/>
                 <BoxView Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="End" HeightRequest="20" WidthRequest="30" BackgroundColor="#E0E0E0" Margin="5"/>
                 <Label Text="0" x:Name="TokenNumber" x:FieldModifier="Public"  FontSize="15" HorizontalOptions="Center" VerticalOptions="End" Grid.Row="4" Grid.Column="2" TextColor="Black" Margin="5"/>
-                <Button BackgroundColor="Transparent" Clicked="Avatar" Grid.Row="4" Grid.Column="2"/>
+                <Button BackgroundColor="Transparent" Clicked="Coin" Grid.Row="4" Grid.Column="2"/>
 
 
 

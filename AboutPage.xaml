@@ -38,8 +38,9 @@
 
                 <Label Text="Om du hittar något fel, eller vill ge någon återkoppling om appens innehåll, får du gärna skicka in det via detta formulär. Vi tar gärna emot dina åsikter!" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" FontSize="16" TextColor="Black"/>
 
-                <Button Text="Formulär" Clicked="Button_Clicked" Grid.Row="8" Grid.Column="0" FontSize="16" TextColor="Black" BackgroundColor="White" BorderColor="Black" BorderWidth="5"/>
-                
+                <Button Text="Formulär" Clicked="Button_Clicked" Grid.Row="7" Grid.Column="0" FontSize="16" TextColor="Black" BackgroundColor="White" BorderColor="Black" BorderWidth="5"/>
+
+                <Button Text="Ladda ner senaste versionen av applikationen" Clicked="Button_Clicked2" Grid.Row="8" Grid.Column="0" FontSize="12" TextColor="Black" BackgroundColor="White" BorderColor="Black" BorderWidth="5"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
