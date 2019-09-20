@@ -46,7 +46,11 @@ namespace NWT
             public long ID { get; set; }
             public string Source { get; set; }
             public string Tag { get; set; }
+            public bool TagVisible { get; set; }
+            public int TagLength { get; set; }
             public string Header { get; set; }
+            public bool HasIngress { get; set; }
+            public DateTime DatePublished { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
@@ -57,6 +61,7 @@ namespace NWT
             public int CBHR { get; set; }
             public LayoutOptions CBHO { get; set; }
             public LayoutOptions CBVO { get; set; }
+
             public Article(NewsfeedTable NF)
             {
                 
@@ -67,11 +72,16 @@ namespace NWT
                 IMGSource = NF.Image;
                 Full = true;
 
+                if(NF.Category == "")
+                {
+                   
+                }
+                TagLength = (Tag.Length * 7)-2;
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 28;
-                int BH = 35;
+                int BL = 50;
+                int BH = 30;
 
                 if(Header.Length < BL)
                 {
@@ -188,7 +198,7 @@ namespace NWT
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Center,
-                        FontSize = 25,
+                        FontSize = 18,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -282,6 +292,34 @@ namespace NWT
                         Source = "shadow.png"
                     };
 
+                    Label Tag = new Label
+                    {
+                        //Text = NF.Header,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.End,
+                        FontSize = 12,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
+
+                        TextColor = Color.White,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 5),
+                    };
+
+                    BoxView TagBox = new BoxView
+                    {
+
+                        BackgroundColor = App.MC,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
+                        HeightRequest = 16,
+                        //InputTransparent = true,
+                        Margin = new Thickness(13, 5, 13, 5),
+
+                    };
+
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
 
@@ -299,7 +337,12 @@ namespace NWT
                     Box.SetBinding(Button.ClassIdProperty, "ID");
 
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
+                    Tag.SetBinding(Label.TextProperty, "Tag");
+                    
 
+                    
+                    TagBox.SetBinding(BoxView.WidthRequestProperty, "TagLength");
+                    
                     var Grid = new Grid
                     {
 
@@ -339,7 +382,8 @@ namespace NWT
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Shadow, 1, 2, 3, 4);
-
+                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
+                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
 
                     Console.WriteLine("Utdata: " + Label.Text);
 
