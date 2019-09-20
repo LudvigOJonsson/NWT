@@ -129,11 +129,11 @@ namespace NWT
                     }
                     else
                     {
-                        TagVisible = false;
+                        TagVisible = true;
                     }
                 }
 
-                TagLength = FirstTag.Length*7;
+                TagLength = (FirstTag.Length*7);
 
 
 
@@ -145,8 +145,8 @@ namespace NWT
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 25;
-                int BH = 35;
+                int BL = 50;
+                int BH = 30;
 
                 if (Header.Length < BL)
                 {
@@ -447,7 +447,7 @@ namespace NWT
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Center,
-                        FontSize = 25,
+                        FontSize = 18,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -561,7 +561,7 @@ namespace NWT
                     Label Tag = new Label
                     {
                         //Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.End,
+                        HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.End,
                         FontSize = 12,
                         FontAttributes = FontAttributes.Bold,
@@ -571,18 +571,19 @@ namespace NWT
                         TextColor = Color.White,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
-                        Margin = new Thickness(15, 5, 15, 0),
+                        Margin = new Thickness(15, 5, 15, 5),
                     };
 
                     Button TagBox = new Button
                     {
 
-                        BackgroundColor = Color.Black,
+
+                        BackgroundColor = App.MC,
                         VerticalOptions = LayoutOptions.End,
                         HorizontalOptions = LayoutOptions.End,
                         HeightRequest = 16,
                         //InputTransparent = true,
-                        
+                        Margin = new Thickness(13, 5, 13, 5),
                     };
 
                     TagBox.Clicked += TagPopup;
@@ -745,8 +746,8 @@ namespace NWT
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Shadow, 1, 2, 3, 4);
 
-                    Grid.Children.Add(TagBox, 1, 2, 2, 3); //Tag
-                    Grid.Children.Add(Tag, 1, 2, 2, 3); //Tag   
+                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
+                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
 
 
                     //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
