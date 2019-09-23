@@ -145,8 +145,8 @@ namespace NWT
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 50;
-                int BH = 30;
+                int BL = 100;
+                int BH = 60;
 
                 if (Header.Length < BL)
                 {
@@ -447,7 +447,7 @@ namespace NWT
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Center,
-                        FontSize = 18,
+                        FontSize = 22,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,

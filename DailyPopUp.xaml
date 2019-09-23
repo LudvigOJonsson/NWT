@@ -46,6 +46,8 @@
 	                Loop="false" 
 	                AutoPlay="true"
 	                />
+                <Image Source="Icon_Coin.png" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+                <!--
                 <forms:AnimationView 
 	                x:Name="tokenAnimation" 
 	                Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"
@@ -54,10 +56,10 @@
 	                Animation="stone.json" 
 	                Loop="true" 
 	                AutoPlay="true"
-	                />
-                
+	                />-->
 
-                <Label Text="+1 Daily Token!" FontSize="42" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
+
+                <Label Text="Här får du ditt dagliga mynt. Kom tillbaka imorgon för fler!" FontSize="38" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" TextColor="White"/>
                 <Button HorizontalOptions="FillAndExpand" Clicked="ClosePopup" VerticalOptions="FillAndExpand" BackgroundColor="Transparent" Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3"/>
 
             </Grid>

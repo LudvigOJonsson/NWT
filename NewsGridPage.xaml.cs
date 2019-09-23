@@ -80,8 +80,8 @@ namespace NWT
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
-                int BL = 50;
-                int BH = 30;
+                int BL = 100;
+                int BH = 60;
 
                 if(Header.Length < BL)
                 {
@@ -198,7 +198,7 @@ namespace NWT
                         //Text = NF.Header,
                         HorizontalTextAlignment = TextAlignment.Start,
                         VerticalTextAlignment = TextAlignment.Center,
-                        FontSize = 18,
+                        FontSize = 22,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -295,12 +295,12 @@ namespace NWT
                     Label Tag = new Label
                     {
                         //Text = NF.Header,
-                        HorizontalTextAlignment = TextAlignment.Start,
-                        VerticalTextAlignment = TextAlignment.End,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
                         FontSize = 12,
                         FontAttributes = FontAttributes.Bold,
                         VerticalOptions = LayoutOptions.End,
-                        HorizontalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.Start,
 
                         TextColor = Color.White,
                         //ClassId = NF.Article.ToString(),
@@ -313,7 +313,7 @@ namespace NWT
 
                         BackgroundColor = App.MC,
                         VerticalOptions = LayoutOptions.End,
-                        HorizontalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.Start,
                         HeightRequest = 16,
                         //InputTransparent = true,
                         Margin = new Thickness(13, 5, 13, 5),
