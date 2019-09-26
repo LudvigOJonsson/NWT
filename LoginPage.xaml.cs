@@ -84,7 +84,7 @@ namespace NWT
 
                     if (App.LoggedinUser.TutorialProgress == 0)
                     {
-
+                        App.TutorialSafety = false;
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             App.Startpage.Detail = new IntroWalkthrough() { };

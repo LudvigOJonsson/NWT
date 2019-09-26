@@ -792,8 +792,8 @@ namespace NWT
             var Header = (Button)sender;
             Header.IsEnabled = false;
             String tagstring = Header.ClassId;
-
             await DisplayAlert("Tags", "Tags in this Article that you Follow: \n" + tagstring, "Okay");
+            Header.IsEnabled = true;
         }
 
         private void Box_Clicked(object sender, EventArgs e)

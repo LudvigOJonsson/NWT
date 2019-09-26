@@ -23,7 +23,7 @@ namespace NWT
         public static LoadingPopUp LoadingScreen;
         public static LoadingPopUp LS = new LoadingPopUp();
         public static Color MC = Color.FromHex("#649FD4");
-
+        public static bool TutorialSafety = true;
         public App()
         {
             InitializeComponent();

@@ -86,6 +86,7 @@ namespace NWT
         {
             App.MC = Color.FromHex("#649FD4");
             App.Startpage.Detail = new NavigationPage(App.Mainpage) { BarBackgroundColor = App.MC, BarTextColor = Color.FromHex("#FFFFFF"), };
+            App.SideMenu.UpdateTags();
             App.LoggedinUser.TutorialProgress = 1;           
             App.database.UpdateTutorialProgress(App.LoggedinUser);
             var x = (ProfilePage)App.Mainpage.Children[2];
@@ -94,13 +95,14 @@ namespace NWT
 
             
             
-            App.SideMenu.UpdateTags();
+            
 
             //var y = (CustomNewsFeed)App.Mainpage.Children[0];
             //y.TagsModified = true;
 
 
             await PopupNavigation.Instance.PushAsync(new TutorialPopUp1());
+            
         }
 
         public void FollowButton(object sender, EventArgs e)

@@ -14,21 +14,73 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+               
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
-            <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
-            <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
-            <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
+            <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="Face" ClassId="Face" BackgroundColor="Red" Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+
+            </Button>
+            <Button x:Name="Hair" ClassId="Hair" BackgroundColor="Blue" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+
+            </Button>
+            <Button x:Name="Body" ClassId="Body" BackgroundColor="Yellow" Grid.Row="1" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+
+            </Button>
+            <Button x:Name="Nr4" ClassId="Nr4" BackgroundColor="Purple" Grid.Row="1" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+
+            </Button>
+            <Button x:Name="Option1" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+
+            </Button>
+            <Button x:Name="Option2" BackgroundColor="Blue" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+
+            </Button>
+            <Button x:Name="Option3" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+
+            </Button>
+            <Button x:Name="Option4" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+
+            </Button>
+
+            <Grid x:Name="ItemsGrid" Grid.Row="3" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
 
+            </Grid>
+            
+            
+            
+            <!--
             <Image ClassId="avatar_face1.png" Source="avatar_face1.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
@@ -54,7 +106,7 @@
                     <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-
+-->
 
 
 

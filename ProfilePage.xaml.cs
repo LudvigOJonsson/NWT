@@ -163,7 +163,7 @@ namespace NWT
             updateAvatar(Avatar[1], Avatar[2], Avatar[0]);
 
             //Getting update
-
+            //App.LoggedinUser.DailyLogin = 0;
             if (App.LoggedinUser.DailyLogin == 0)
             {
                 Device.BeginInvokeOnMainThread(async () =>

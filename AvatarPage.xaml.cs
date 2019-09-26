@@ -53,7 +53,7 @@ namespace NWT
 
             var Row = 3;
             var Column = 0;
-
+            /*
             foreach(var Item in ItemList)
             {
                 if(Item.InventorySlot != "Style" && Item.InventorySlot != "Expr" && Item.InventorySlot != "Beard")
@@ -165,10 +165,258 @@ namespace NWT
                     Column++;
                 }
             }
+            */
 
 
 
+        }
 
+        void OpenMenu(object sender, EventArgs e)
+        {
+            var Button = (Button)sender;
+            var id = Button.ClassId;
+            string Op1 = "";
+            string Op2 = "";
+            string Op3 = "";
+            string Op4 = "";
+            Color DC = Color.Transparent;
+            switch (id)
+            {
+                case "Face":
+                    Op1 = "Face";
+                    Op2 = "Expr";
+                    Op3 = "FacialFeats";
+                    Op4 = "Undef";
+                    DC = Color.Red;
+                    break;
+                case "Hair":
+                    Op1 = "Hair";
+                    Op2 = "Moustach";
+                    Op3 = "Beard";
+                    Op4 = "Hat";
+                    DC = Color.Yellow;
+                    break;
+                case "Body":
+                    Op1 = "Ct1";
+                    Op2 = "Ct2";
+                    Op3 = "Ct3";
+                    Op4 = "Ct4";
+                    DC = Color.Blue;
+                    break;
+                case "Nr4":
+                    DC = Color.Purple;
+                    break;
+               
+            }
+
+            if (Button.BackgroundColor != Color.Green)
+            {
+                ResetRowOneButtons();
+                ResetRowTwoButtons();
+                ItemsGrid.Children.Clear();
+                //ItemsGrid.IsVisible = false;
+                Button.BackgroundColor = Color.Green;
+                
+                Option1.ClassId = Op1;
+                Option2.ClassId = Op2;
+                Option3.ClassId = Op3;
+                Option4.ClassId = Op4;
+                Option1.IsVisible = true;
+                Option2.IsVisible = true;
+                Option3.IsVisible = true;
+                Option4.IsVisible = true;
+            }
+            else
+            {
+                Button.BackgroundColor = DC;
+                Option1.ClassId = "";
+                Option2.ClassId = "";
+                Option3.ClassId = "";
+                Option4.ClassId = "";
+                Option1.IsVisible = false;
+                Option2.IsVisible = false;
+                Option3.IsVisible = false;
+                Option4.IsVisible = false;
+                ItemsGrid.Children.Clear();
+                //ItemsGrid.IsVisible = false;
+            }
+        }
+
+        void OpenSubMenu(object sender, EventArgs e)
+        {
+            var Button = (Button)sender;
+            var id = Button.ClassId;
+
+            Color DC = Color.Transparent;
+            ItemsGrid.Children.Clear();
+            switch (id)
+            {
+                case "Face":
+                    
+                    LoadFace();
+                    DC = Color.Red;
+                    break;
+                case "Expr":
+
+                    DC = Color.Yellow;
+                    break;
+                case "FacialFeats":
+
+                    DC = Color.Blue;
+                    break;
+                case "Undef":
+                    DC = Color.Purple;
+                    break;
+                case "Hair":
+
+                    DC = Color.Red;
+                    break;
+                case "Moustach":
+
+                    DC = Color.Yellow;
+                    break;
+                case "Beard":
+
+                    DC = Color.Blue;
+                    break;
+                case "Hat":
+                    DC = Color.Purple;
+                    break;
+                case "Ct1":
+
+                    DC = Color.Red;
+                    break;
+                case "Ct2":
+
+                    DC = Color.Yellow;
+                    break;
+                case "Ct3":
+
+                    DC = Color.Blue;
+                    break;
+                case "Ct4":
+                    DC = Color.Purple;
+                    break;
+
+
+            }
+
+
+            if (Button.BackgroundColor != Color.Green)
+            {
+                ResetRowTwoButtons();
+                Button.BackgroundColor = Color.Green;
+                Console.WriteLine("ItemGrid Visible");
+                //ItemsGrid.IsVisible = true;
+                Console.WriteLine(ItemsGrid.Children.Count);
+            }
+            else
+            {
+                Button.BackgroundColor = DC;
+                Console.WriteLine("ItemGrid Not Visible");
+                ItemsGrid.Children.Clear();
+                //ItemsGrid.IsVisible = false;
+
+            }
+
+        }
+
+
+
+        void ResetRowOneButtons()
+        {
+            Face.BackgroundColor = Color.Red;
+            Hair.BackgroundColor = Color.Yellow;
+            Body.BackgroundColor = Color.Blue;
+            Nr4.BackgroundColor = Color.Purple;
+        }
+        void ResetRowTwoButtons()
+        {
+            Option1.BackgroundColor = Color.Red;
+            Option2.BackgroundColor = Color.Yellow;
+            Option3.BackgroundColor = Color.Blue;
+            Option4.BackgroundColor = Color.Purple;
+            Console.WriteLine("Row 2 Reset.");
+        }
+
+        void LoadFace()
+        {
+            
+            Console.WriteLine("Loading Face");
+            var TGR = new TapGestureRecognizer()
+            {
+                NumberOfTapsRequired = 1
+                
+            };
+            
+            TGR.Tapped += (s, e) => {
+                IsEnabled = false;
+                ChangeFace(s, e);
+                IsEnabled = true;
+            };
+            
+
+
+            var face1 = new Image
+            {
+                ClassId = "avatar_face1.png",
+                Source = "avatar_face1.png",
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Color.FromHex("#649FD4"),
+                Margin = 5,
+            };
+            var face2 = new Image
+            {
+                ClassId = "avatar_face2.png",
+                Source = "avatar_face2.png",
+                HorizontalOptions = LayoutOptions.Fill,
+                VerticalOptions = LayoutOptions.Fill,
+                BackgroundColor = Color.FromHex("#649FD4"),
+                Margin = 5,
+            };
+            var face3 = new Image
+            {
+                ClassId = "avatar_face3.png",
+                Source = "avatar_face3.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.FromHex("#649FD4"),
+                Margin = 5,
+            };
+            var face4 = new Image
+            {
+                ClassId = "avatar_face4.png",
+                Source = "avatar_face4.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.FromHex("#649FD4"),
+                Margin = 5,
+            };
+            var face5 = new Image
+            {
+                ClassId = "avatar_face5.png",
+                Source = "avatar_face5.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.FromHex("#649FD4"),
+                Margin = 5,
+            };
+
+
+            face1.GestureRecognizers.Add(TGR);
+            face2.GestureRecognizers.Add(TGR);
+            face3.GestureRecognizers.Add(TGR);
+            face4.GestureRecognizers.Add(TGR);
+            face5.GestureRecognizers.Add(TGR);
+
+            ItemsGrid.Children.Add(face1, 0, 0);
+            ItemsGrid.Children.Add(face2, 1, 0);
+            ItemsGrid.Children.Add(face3, 2, 0);
+            ItemsGrid.Children.Add(face4, 3, 0);
+            ItemsGrid.Children.Add(face5, 4, 0);
+            ItemsGrid.IsVisible = true;
+            Console.WriteLine("Face Loaded");
         }
 
         void SetDefaultAvatar()

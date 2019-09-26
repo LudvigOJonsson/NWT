@@ -145,10 +145,14 @@ namespace NWT
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    Console.WriteLine(App.LoggedinUser.TutorialProgress);
+                    if (App.TutorialSafety)
+                    {
+                        App.LS.loadingAnimation.Play();
+                        await Navigation.PushAsync(App.LS);
+                        App.LS.LoadingText.Text = "Uppdaterar Taggar.";
+                    }
                     
-                    App.LS.loadingAnimation.Play();
-                    await Navigation.PushAsync(App.LS);
-                    App.LS.LoadingText.Text = "Uppdaterar Taggar.";
                 });
 
 
@@ -187,7 +191,7 @@ namespace NWT
                     
                     
                 });
-
+                App.TutorialSafety = true;
             });
 
 

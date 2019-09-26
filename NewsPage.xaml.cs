@@ -144,9 +144,9 @@ namespace NWT
         void LoadNews(RSSTable RSS)
         {
             ArticleNR = RSS.ID;
-            Rubrik.Text = RSS.Title.Replace("*", "-");
+            Rubrik.Text = RSS.Title.Replace("*", "-").Replace("&quot;", "'");
             //Dot.Text = "⚫";
-            Ingress.Text = RSS.Description.Replace("*", "-");
+            Ingress.Text = RSS.Description.Replace("*", "-").Replace("&quot;", "'");
             Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
             if (RSS.Author == "Ingen Byline")
             {
@@ -214,7 +214,7 @@ namespace NWT
                         
                         var Label = new Label
                         {
-                            Text = Text[TextCount].Replace("*", "-"),
+                            Text = Text[TextCount].Replace("*", "-").Replace("&quot;","'"),
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
                             FontSize = 18,

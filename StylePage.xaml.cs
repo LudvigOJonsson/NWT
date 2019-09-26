@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using FFImageLoading.Forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,30 @@ namespace NWT
         public List<int> StylesInventory = new List<int>();
         public string ActiveStyle;
 
-        public StylePage()
+        public ListView StyleListView;
+        public List<AvatarItemsTable> StylesList;
+        public List<UserStyle> UserStylesList = new List<UserStyle>();
+        public class UserStyle{
+
+            public AvatarItemsTable Style { get; set; }
+            public bool Owns { get; set; }
+            public string ImagePath { get; set; }
+            public int ID  { get; set; }
+
+            public UserStyle(AvatarItemsTable Style_, bool Owns_)
+            {
+                Style = Style_;
+                Owns = Owns_;
+                ImagePath = Style.ImagePath;
+                ID = Style.ID;
+            }
+
+
+        }
+
+
+
+    public StylePage()
         {
 
             InitializeComponent();
@@ -37,88 +61,197 @@ namespace NWT
             StylesInventory = JsonConvert.DeserializeObject<List<int>>(App.LoggedinUser.Inventory);
             //ActiveStyle = JsonConvert.DeserializeObject<string>(App.LoggedinUser.Avatar);
 
-            var StylesList = App.database.GetItemFromType("Style");
+            StylesList = App.database.GetItemFromType("Style");
 
-            var Row = 1;
 
+            
+            
             foreach (var Style in StylesList)
             {
-                var Button = new Button
+                bool Owns = false; 
+                foreach (var StyleID in StylesInventory)
                 {
-                    ClassId = Style.ImagePath.ToString(),
-                    HorizontalOptions = LayoutOptions.Fill,
-                    VerticalOptions = LayoutOptions.Fill,
-                    BackgroundColor = Color.FromHex(Style.ImagePath),
-                    Margin = 5,
-
-                };
-
-                StyleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-
-                Button.Clicked += SelectStyle;
-
-                StyleGrid.Children.Add(Button, 0, 3, Row, Row + 1);
-
-                var IMG = new Image
-                {
-                    ClassId = Style.ID.ToString(),
-                    Source = "Icon_Hub_white.png",
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center,
-                    //BackgroundColor = Color.Transparent,
-                    Margin = 25,
-
-                };
-
-
-                StyleGrid.Children.Add(IMG, 0, 1, Row, Row + 1);
-
-
-
-                if (!StylesInventory.Contains(Style.ID) && false)
-                {
-                    Console.WriteLine("Style Not Unlocked");
-
-                    var TGR2 = new TapGestureRecognizer()
+                    if(Style.ID == StyleID)
                     {
-                        NumberOfTapsRequired = 1
-                    };
-
-
-                    var IMG2 = new Image
+                        Owns = true;
+                    }
+                    else
                     {
-                        ClassId = Style.ID.ToString(),
-                        Source = "keyhole.png",
+                        Owns = false;
+                    }
+                }
+                UserStylesList.Add(new UserStyle(Style, Owns));
+                Console.WriteLine(Style.ID);
+            }
+            
+            CreateListView();
+
+           
+
+            StyleGrid.Children.Add(StyleListView, 0, 3, 1, 2);
+
+            
+
+        }
+
+        public void CreateListView()
+        {
+            StyleListView = new ListView
+            {
+                // Source of data items.
+
+                ItemsSource = UserStylesList,
+                HasUnevenRows = false,
+                SeparatorVisibility = SeparatorVisibility.None,
+                BackgroundColor = Color.FromHex("#FFFFFF"),
+
+                ItemTemplate = new DataTemplate(() =>
+                {
+
+
+                    Button Box = new Button
+                    {
+                        HeightRequest = 30,
+                        BorderColor = Color.FromHex("#f0f0f0"),
+                        //ClassId = Style.ImagePath.ToString(),
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
+                        //BackgroundColor = Color.FromHex(Style.ImagePath),
+                        Margin = 5,
+
+                    };
+
+                                      
+                    Box.Clicked += SelectStyle;
+
+
+                    var Image = new CachedImage()
+                    {
+                        HeightRequest = 20,
+                        
+                        //ClassId = Style.ID.ToString(),
+                        Source = "Icon_Hub_white.png",
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
                         //BackgroundColor = Color.Transparent,
-                        Margin = 0
+                        Margin = new Thickness(10,0,0,0),
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = false,
+                        RetryCount = 5,
+                        RetryDelay = 100,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "",
+                        ErrorPlaceholder = "",
+
 
 
                     };
 
-                    TGR2.Tapped += (s, e) => {
-                        IsEnabled = false;
-                        UnlockComponent(s, e);
-                        IsEnabled = true;
+                    Button Lock = new Button
+                    {
+                        HeightRequest = 30,
+                        //BorderColor = Color.FromHex("#f0f0f0"),
+                        //ClassId = Style.ImagePath.ToString(),
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Fill,
+                        BackgroundColor = Color.Red,
+                        Margin = 5,
+                        //ImageSource = "keyhole.png",
+
                     };
 
-                    IMG2.GestureRecognizers.Add(TGR2);
+
+                    Lock.Clicked += UnlockComponent;
 
 
-                    StyleGrid.Children.Add(IMG2, 1, 2, Row, Row + 1);
-                }
+                    var LockImage = new CachedImage()
+                    {
+                        HeightRequest = 20,
 
-                Row++;
-            }
+                        //ClassId = Style.ID.ToString(),
+                        Source = "keyhole.png",
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        //BackgroundColor = Color.Transparent,
+                        Margin = new Thickness(0, 0, 0, 0),
+                        CacheDuration = TimeSpan.FromDays(14),
+                        DownsampleToViewSize = false,
+                        RetryCount = 5,
+                        RetryDelay = 100,
+                        BitmapOptimizations = false,
+                        LoadingPlaceholder = "",
+                        ErrorPlaceholder = "",
+
+
+
+                    };
+
+
+
+                    Box.SetBinding(Button.ClassIdProperty, "ImagePath");
+                    Box.SetBinding(Button.BackgroundColorProperty, "ImagePath");
+                    Image.SetBinding(CachedImage.ClassIdProperty, "ID");
+                    Lock.SetBinding(Button.ClassIdProperty, "ID");
+                    //LockImage.SetBinding(CachedImage.ClassIdProperty, "ID");
+
+                    Lock.SetBinding(Button.IsVisibleProperty, "Owns");
+                    //LockImage.SetBinding(CachedImage.IsVisibleProperty, "Owns");
+
+                    var Grid = new Grid
+                    {
+
+                        RowDefinitions = {
+                    new RowDefinition { Height = 0 },
+                    new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = 10 },
+
+                    },
+
+                        ColumnDefinitions = {
+                    new ColumnDefinition { Width = 0 },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = 0 },
+                    },
+                        RowSpacing = 0,
+                        ColumnSpacing = 0,
+                        BackgroundColor = Color.FromHex("#f2f2f2")
+
+
+
+                    };
+
+
+
+                    Grid.Children.Add(Box, 0, 5, 1, 2); //Boxview
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
+                    Grid.Children.Add(Lock, 0, 5, 1, 2); //Boxview
+                    //Grid.Children.Add(LockImage, 3, 4, 1, 2); //Image   
+
+
+                    return new ViewCell
+                    {
+                        View = Grid
+                    };
+                })
+
+            };
+
+
+
         }
+
+
 
         async void UnlockComponent(object sender, EventArgs e)
         {
-            var Button = (Image)sender;
+            var Button = (Button)sender;
+            Console.WriteLine(Button.ClassId);
             var id = Convert.ToInt32(Button.ClassId);
             var Style = App.database.GetItemFromID(id).First();
             int tokenNumber = Style.Price;
+            Console.WriteLine("Unlocking item.");
             bool answer = await DisplayAlert("", "Vill du låsa upp " + Style.Descriptions + " för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
             {
