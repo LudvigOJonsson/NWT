@@ -66,7 +66,7 @@ namespace NWT
             {
                 
 
-                Tag = NF.Category;
+                Tag = NF.Category.Split(new[] { ", " }, StringSplitOptions.None)[0];
                 ID = NF.Article;
                 Header = NF.Header.Replace("*", "-").Replace("&quot;", "'");
                 IMGSource = NF.Image;
