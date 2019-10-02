@@ -19,6 +19,9 @@ namespace NWT
             UserEmail.Text = App.LoggedinUser.Email;
             UserCity.Text = App.LoggedinUser.City;
             UserAge.Text = App.LoggedinUser.Age.ToString();
+
+            UpdateInfoButton.BackgroundColor = App.MC;
+            ChangePasswordButton.BackgroundColor = App.MC;
         }
 
         /*public void ChangePassword(object sender, EventArgs e)

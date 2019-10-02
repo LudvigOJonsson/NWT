@@ -441,11 +441,6 @@ namespace NWT
             Image image = ProfileSettingsImage;
             ButtonLock();
 
-            AnimateButton(null, image, null);
-            AnimateButton(null, null, button);
-            await button.FadeTo(0.5f, 100);
-            await button.FadeTo(1f, 100);
-
             await Navigation.PushAsync(new SettingsPage());
             ButtonLock();
         }
