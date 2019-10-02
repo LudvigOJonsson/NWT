@@ -82,7 +82,7 @@ namespace NWT
                 if (read)
                 {                   
                     TimerButton.IsEnabled = false;
-                    TimerIcon.Source = "tokenicon.png";
+                    TimerIcon.Source = "Icon_Coin.png";
                     TimerButton.Text = "Samlad";
                     Read = true;
                     NewsPageView.BackgroundColor = App.MC;
@@ -858,6 +858,28 @@ namespace NWT
 
                     };
 
+                    var AvatarExpr = new Image
+                    {
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
+
+                        Margin = 5
+
+                    };
+
+                    var AvatarBeard = new Image
+                    {
+                        WidthRequest = 50,
+                        HeightRequest = 50,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.Center,
+
+                        Margin = 5
+
+                    };
+
 
                     var Elispses = new Button()
                     {
@@ -908,12 +930,15 @@ namespace NWT
                     AvatarFace.SetBinding(Image.SourceProperty, "UserAvatar[0]");                    
                     AvatarHair.SetBinding(Image.SourceProperty, "UserAvatar[1]");
                     AvatarBody.SetBinding(Image.SourceProperty, "UserAvatar[2]");
-
+                    AvatarExpr.SetBinding(Image.SourceProperty, "UserAvatar[3]");
+                    AvatarBeard.SetBinding(Image.SourceProperty, "UserAvatar[4]");
                     CommentGrid.Children.Add(Box, 0, 8, 0, 1);
 
                     CommentGrid.Children.Add(AvatarFace, 1, 2, 0, 1);
                     CommentGrid.Children.Add(AvatarHair, 1, 2, 0, 1);
                     CommentGrid.Children.Add(AvatarBody, 1, 2, 0, 1);
+                    CommentGrid.Children.Add(AvatarExpr, 1, 2, 0, 1);
+                    CommentGrid.Children.Add(AvatarBeard, 1, 2, 0, 1);
                     CommentGrid.Children.Add(Comment, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Username, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);

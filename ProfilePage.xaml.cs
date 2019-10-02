@@ -160,7 +160,17 @@ namespace NWT
 
 
             var Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);
-            updateAvatar(Avatar[1], Avatar[2], Avatar[0]);
+
+            if(Avatar.Count() == 3)
+            {
+                Avatar.Add("avatar_expr4.png");
+                Avatar.Add("nothing.png");
+
+                App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
+                App.database.UpdateAvatarItems(App.LoggedinUser);
+            }
+
+            updateAvatar(Avatar[1], Avatar[2], Avatar[0], Avatar[3], Avatar[4]);
 
             //Getting update
             //App.LoggedinUser.DailyLogin = 0;
@@ -177,11 +187,15 @@ namespace NWT
             ChangeIntroStep(App.LoggedinUser.TutorialProgress);
         }
 
-        public void updateAvatar(ImageSource hair, ImageSource body, ImageSource face)
+        public void updateAvatar(ImageSource hair, ImageSource body, ImageSource face, ImageSource expr, ImageSource beard)
         {
             ProfilePictureHair.Source = hair;
             ProfilePictureBody.Source = body;
             ProfilePictureFace.Source = face;
+            ProfilePictureExpr.Source = expr;
+            ProfilePictureBeard.Source = beard;
+
+
         }
 
         public void updateMissions()

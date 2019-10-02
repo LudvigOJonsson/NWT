@@ -270,6 +270,7 @@ namespace NWT
         public string ImagePath { get; set; }
         public string InventorySlot { get; set; }
         public int Price { get; set; }
+        public string Category { get; set; }
     }
 
 
@@ -413,6 +414,10 @@ namespace NWT
         {
             return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE InventorySlot = '" + ID +"'");
         }
+        public List<AvatarItemsTable> GetItemFromCategory(string ID)
+        {
+            return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE Category = '" + ID + "'");
+        }
         public List<AvatarItemsTable> GetItemFromID(long ID)
         {
             return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE ID = ?", ID.ToString());
@@ -436,13 +441,13 @@ namespace NWT
                     string JSONResult = "";
                     if ((Filter == "" || Filter == "All" && Filter != null) && (Author == "" || Author == "All" && Filter != null) && (Tag == "" || Tag == "All" && Tag != null))
                     {
-                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x + 1).ToString(), -1)));
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT 1 OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (x).ToString(), -1)));
                         Console.WriteLine("No Filter");
                     }
                     else
                     {
 
-                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%' LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%') - " + (x + 1).ToString(), -1)));
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%' LIMIT 1 OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%') - " + (x).ToString(), -1)));
                         Console.WriteLine("Filter");
                     }
                     //Console.WriteLine(JSONResult.Length);
@@ -868,67 +873,67 @@ namespace NWT
         }
         public void AvatarItemInit()
         {
-            LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price) VALUES " +
-                "(1, 'Röd_Tröja', 'avatar_body1.png', 'Body', 5), " +
-                "(2, 'Blå_Tröja', 'avatar_body2.png', 'Body', 5), " +
-                "(3, 'Grön_Tröja', 'avatar_body3.png', 'Body', 5), " +
-                "(4, 'Lila_Tröja', 'avatar_body4.png', 'Body', 12), " +
-                "(5, 'Svart_Tröja', 'avatar_body5.png', 'Body', 12), " +
-                "(6, 'LjusBlå_Tröja', 'avatar_body6.png', 'Body', 12), " +
-                "(7, 'Lavender_Tröja', 'avatar_body7.png', 'Body', 12), " +
-                "(8, 'Blåvit_Tröja', 'avatar_body8.png', 'Body', 25), " +
-                "(9, 'Rödvit_Tröja', 'avatar_body9.png', 'Body', 25), " +
-                "(10, 'Svartgrön_Tröja', 'avatar_body10.png', 'Body', 25), " +
-                "(11, 'Brunt_Kort', 'avatar_hair1.png', 'Hair', 10), " +
-                "(12, 'Svart_Kort', 'avatar_hair2.png', 'Hair', 10), " +
-                "(13, 'Blått_Kort', 'avatar_hair3.png', 'Hair', 10), " +
-                "(14, 'Lila_Kort', 'avatar_hair4.png', 'Hair', 10), " +
-                "(15, 'Grått_Kort', 'avatar_hair5.png', 'Hair', 10), " +
-                "(16, 'Svart_Långt', 'avatar_hair6.png', 'Hair', 10), " +
-                "(17, 'Rött_Långt', 'avatar_hair7.png', 'Hair', 10), " +
-                "(18, 'Blått_Långt', 'avatar_hair8.png', 'Hair', 10), " +
-                "(19, 'Grått_Långt', 'avatar_hair9.png', 'Hair', 10), " +
-                "(20, 'Blondt_Långt', 'avatar_hair10.png', 'Hair', 10), " +
-                "(21, '#649FD4', '#649FD4', 'Style', 10), " +
-                "(22, '#6fb110', '#6fb110', 'Style', 10), " +
-                "(23, '#bb0066', '#bb0066', 'Style', 10), " +
-                "(24, '#e0d8b3', '#e0d8b3', 'Style', 10), " +
-                "(25, '#56E39F', '#56E39F', 'Style', 10), " +
-                "(26, '#3B2C35', '#3B2C35', 'Style', 10), " +
-                "(27, '#99C24D', '#99C24D', 'Style', 10), " +
-                "(28, '#F18F01', '#F18F01', 'Style', 10), " +
-                "(29, '#EF2648', '#EF2648', 'Style', 10), " +
-                "(30, '#FFC818', '#FFC818', 'Style', 10), " +
-                "(31, '#020202', '#020202', 'Style', 10), " +
-                "(32, '#5EF4FE', '#5EF4FE', 'Style', 10), " +
-                "(33, '#DF7782', '#DF7782', 'Style', 10), " +
-                "(34, '#A84A5C', '#A84A5C', 'Style', 10), " +
-                "(35, '#88382D', '#88382D', 'Style', 10), " +
-                "(36, '#55134E', '#55134E', 'Style', 10), " +
-                "(37, '#FFEC94', '#FFEC94', 'Style', 10), " +
-                "(38, '#B0E57C', '#B0E57C', 'Style', 10), " +
-                "(39, '#003366', '#003366', 'Style', 10), " +
-                "(40, '#CCFF33', '#CCFF33', 'Style', 10), " +
-                "(41, '#f27F60', '#f27F60', 'Style', 10), " +
-                "(42, '#063336', '#063336', 'Style', 10), " +
-                "(43, '#CC4B93', '#CC4B93', 'Style', 10), " +
-                "(44, '#DADADA', '#DADADA', 'Style', 10), " +
-                "(45, '#996699', '#996699', 'Style', 10), " +
-                "(46, 'Röd_Hat', 'avatar_hair11.png', 'Hair', 10), " +
-                "(47, 'Röd_Keps', 'avatar_hair12.png', 'Hair', 10), " +
-                "(48, 'Blå_Keps', 'avatar_hair13.png', 'Hair', 10), " +
-                "(49, 'Brun_Pompador', 'avatar_hair14.png', 'Hair', 10), " +
-                "(50, 'Grått_Pompador', 'avatar_hair15.png', 'Hair', 10), " +
-                "(51, 'Neutral', 'avatar_expr1.png', 'Expr', 5), " +
-                "(52, 'Frågande', 'avatar_expr2.png', 'Expr', 5), " +
-                "(53, 'Ledsen', 'avatar_expr3.png', 'Expr', 5), " +
-                "(54, 'Glad', 'avatar_expr4.png', 'Expr', 5), " +
-                "(55, 'Blinkar', 'avatar_expr5.png', 'Expr', 5), " +
-                "(56, 'Kort', 'avatar_beard1.png', 'Beard', 10), " +
-                "(57, 'Långt', 'avatar_beard2.png', 'Beard', 10), " +
-                "(58, 'Imperial', 'avatar_beard3.png', 'Beard', 10), " +
-                "(59, 'Twirl', 'avatar_beard4.png', 'Beard', 10), " +
-                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10); " +
+            LocalExecute("INSERT INTO Items (ID,Descriptions,ImagePath,InventorySlot,Price,Category) VALUES " +
+                "(1, 'Röd_Tröja', 'avatar_body1.png', 'Body', 5, 'Ct1'), " +
+                "(2, 'Blå_Tröja', 'avatar_body2.png', 'Body', 5, 'Ct1'), " +
+                "(3, 'Grön_Tröja', 'avatar_body3.png', 'Body', 5, 'Ct1'), " +
+                "(4, 'Lila_Tröja', 'avatar_body4.png', 'Body', 12, 'Ct1'), " +
+                "(5, 'Svart_Tröja', 'avatar_body5.png', 'Body', 12, 'Ct1'), " +
+                "(6, 'LjusBlå_Tröja', 'avatar_body6.png', 'Body', 12, 'Ct1'), " +
+                "(7, 'Lavender_Tröja', 'avatar_body7.png', 'Body', 12, 'Ct1'), " +
+                "(8, 'Blåvit_Tröja', 'avatar_body8.png', 'Body', 25, 'Ct1'), " +
+                "(9, 'Rödvit_Tröja', 'avatar_body9.png', 'Body', 25, 'Ct1'), " +
+                "(10, 'Svartgrön_Tröja', 'avatar_body10.png', 'Body', 25, 'Ct1'), " +
+                "(11, 'Brunt_Kort', 'avatar_hair1.png', 'Hair', 10, 'Hair'), " +
+                "(12, 'Svart_Kort', 'avatar_hair2.png', 'Hair', 10, 'Hair'), " +
+                "(13, 'Blått_Kort', 'avatar_hair3.png', 'Hair', 10, 'Hair'), " +
+                "(14, 'Lila_Kort', 'avatar_hair4.png', 'Hair', 10, 'Hair'), " +
+                "(15, 'Grått_Kort', 'avatar_hair5.png', 'Hair', 10, 'Hair'), " +
+                "(16, 'Svart_Långt', 'avatar_hair6.png', 'Hair', 10, 'Hair'), " +
+                "(17, 'Rött_Långt', 'avatar_hair7.png', 'Hair', 10, 'Hair'), " +
+                "(18, 'Blått_Långt', 'avatar_hair8.png', 'Hair', 10, 'Hair'), " +
+                "(19, 'Grått_Långt', 'avatar_hair9.png', 'Hair', 10, 'Hair'), " +
+                "(20, 'Blondt_Långt', 'avatar_hair10.png', 'Hair', 10, 'Hair'), " +
+                "(21, '#649FD4', '#649FD4', 'Style', 10, 'Style'), " +
+                "(22, '#6fb110', '#6fb110', 'Style', 10, 'Style'), " +
+                "(23, '#bb0066', '#bb0066', 'Style', 10, 'Style'), " +
+                "(24, '#e0d8b3', '#e0d8b3', 'Style', 10, 'Style'), " +
+                "(25, '#56E39F', '#56E39F', 'Style', 10, 'Style'), " +
+                "(26, '#3B2C35', '#3B2C35', 'Style', 10, 'Style'), " +
+                "(27, '#99C24D', '#99C24D', 'Style', 10, 'Style'), " +
+                "(28, '#F18F01', '#F18F01', 'Style', 10, 'Style'), " +
+                "(29, '#EF2648', '#EF2648', 'Style', 10, 'Style'), " +
+                "(30, '#FFC818', '#FFC818', 'Style', 10, 'Style'), " +
+                "(31, '#020202', '#020202', 'Style', 10, 'Style'), " +
+                "(32, '#5EF4FE', '#5EF4FE', 'Style', 10, 'Style'), " +
+                "(33, '#DF7782', '#DF7782', 'Style', 10, 'Style'), " +
+                "(34, '#A84A5C', '#A84A5C', 'Style', 10, 'Style'), " +
+                "(35, '#88382D', '#88382D', 'Style', 10, 'Style'), " +
+                "(36, '#55134E', '#55134E', 'Style', 10, 'Style'), " +
+                "(37, '#FFEC94', '#FFEC94', 'Style', 10, 'Style'), " +
+                "(38, '#B0E57C', '#B0E57C', 'Style', 10, 'Style'), " +
+                "(39, '#003366', '#003366', 'Style', 10, 'Style'), " +
+                "(40, '#CCFF33', '#CCFF33', 'Style', 10, 'Style'), " +
+                "(41, '#f27F60', '#f27F60', 'Style', 10, 'Style'), " +
+                "(42, '#063336', '#063336', 'Style', 10, 'Style'), " +
+                "(43, '#CC4B93', '#CC4B93', 'Style', 10, 'Style'), " +
+                "(44, '#DADADA', '#DADADA', 'Style', 10, 'Style'), " +
+                "(45, '#996699', '#996699', 'Style', 10, 'Style'), " +
+                "(46, 'Röd_Hat', 'avatar_hair11.png', 'Hair', 10, 'Hat'), " +
+                "(47, 'Röd_Keps', 'avatar_hair12.png', 'Hair', 10, 'Hat'), " +
+                "(48, 'Blå_Keps', 'avatar_hair13.png', 'Hair', 10, 'Hat'), " +
+                "(49, 'Brun_Pompador', 'avatar_hair14.png', 'Hair', 10, 'Hair'), " +
+                "(50, 'Grått_Pompador', 'avatar_hair15.png', 'Hair', 10, 'Hair'), " +
+                "(51, 'Neutral', 'avatar_expr1.png', 'Expr', 5, 'Expr'), " +
+                "(52, 'Frågande', 'avatar_expr2.png', 'Expr', 5, 'Expr'), " +
+                "(53, 'Ledsen', 'avatar_expr3.png', 'Expr', 5, 'Expr'), " +
+                "(54, 'Glad', 'avatar_expr4.png', 'Expr', 5, 'Expr'), " +
+                "(55, 'Blinkar', 'avatar_expr5.png', 'Expr', 5, 'Expr'), " +
+                "(56, 'Kort', 'avatar_beard1.png', 'Beard', 10, 'Beard'), " +
+                "(57, 'Långt', 'avatar_beard2.png', 'Beard', 10, 'Beard'), " +
+                "(58, 'Imperial', 'avatar_beard3.png', 'Beard', 10, 'Beard'), " +
+                "(59, 'Twirl', 'avatar_beard4.png', 'Beard', 10, 'Beard'), " +
+                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10, 'Beard'); " +
              "");
         }
         public static string TCP(string JSON)

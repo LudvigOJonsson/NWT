@@ -28,43 +28,39 @@
                
             </Grid.ColumnDefinitions>
 
-            <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="2"/>
-
-            <Button x:Name="Face" ClassId="Face" BackgroundColor="Red" Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
-
-            </Button>
-            <Button x:Name="Hair" ClassId="Hair" BackgroundColor="Blue" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+            <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Image x:Name="ProfilePictureBeard" Source="nothing.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="Face" ClassId="Face" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
 
             </Button>
-            <Button x:Name="Body" ClassId="Body" BackgroundColor="Yellow" Grid.Row="1" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+            <Button x:Name="Hair" ClassId="Hair" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
 
             </Button>
-            <Button x:Name="Nr4" ClassId="Nr4" BackgroundColor="Purple" Grid.Row="1" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
+            <Button x:Name="Body" ClassId="Body" BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
 
             </Button>
-            <Button x:Name="Option1" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+            <Button x:Name="Nr4" ClassId="Nr4" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
 
             </Button>
-            <Button x:Name="Option2" BackgroundColor="Blue" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+            <Button x:Name="Option1" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
 
             </Button>
-            <Button x:Name="Option3" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+            <Button x:Name="Option2" BackgroundColor="Yellow" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
 
             </Button>
-            <Button x:Name="Option4" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+            <Button x:Name="Option3" BackgroundColor="Blue" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
+
+            </Button>
+            <Button x:Name="Option4" BackgroundColor="Purple" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
 
             </Button>
 
-            <Grid x:Name="ItemsGrid" Grid.Row="3" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid x:Name="ItemsGrid" Grid.Row="4" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

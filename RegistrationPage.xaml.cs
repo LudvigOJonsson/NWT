@@ -42,6 +42,9 @@ namespace NWT
                     Avatar.Add("avatar_face1.png");
                     Avatar.Add("avatar_hair1.png");
                     Avatar.Add("avatar_body1.png");
+                    Avatar.Add("avatar_expr4.png");
+                    Avatar.Add("nothing.png");
+
                     User.Avatar = JsonConvert.SerializeObject(Avatar);
 
                     var Inventory = new List<int>();
