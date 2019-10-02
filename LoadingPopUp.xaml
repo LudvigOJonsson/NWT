@@ -8,6 +8,8 @@
     x:Class="NWT.LoadingPopUp"
     x:Name="LoadingPopUpPage"
     BackgroundColor="Transparent"
+    NavigationPage.HasNavigationBar="false"
+    
     >
 
     <pages:PopupPage.Animation>

@@ -6,6 +6,8 @@
             BackgroundColor="#f8f8f9"
             BarBackgroundColor="#649FD4"
             x:FieldModifier="public"
+             NavigationPage.HasNavigationBar="False"
+            HeightRequest="50"
             >
     
     <ContentPage x:Name = "CustomNewsFeed">
