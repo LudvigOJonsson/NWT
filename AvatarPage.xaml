@@ -33,30 +33,47 @@
             <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Image x:Name="ProfilePictureBeard" Source="nothing.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Button x:Name="Face" ClassId="Face" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
-
-            </Button>
-            <Button x:Name="Hair" ClassId="Hair" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
-
-            </Button>
-            <Button x:Name="Body" ClassId="Body" BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
-
-            </Button>
-            <Button x:Name="Nr4" ClassId="Nr4" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" Clicked = "OpenMenu">
-
-            </Button>
-            <Button x:Name="Option1" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
-
-            </Button>
-            <Button x:Name="Option2" BackgroundColor="Yellow" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
-
-            </Button>
-            <Button x:Name="Option3" BackgroundColor="Blue" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
-
-            </Button>
-            <Button x:Name="Option4" BackgroundColor="Purple" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" Clicked = "OpenSubMenu">
-
-            </Button>
+            <Image x:Name="Face" ClassId="Face" Source="avatar_face1.png" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="FaceImage" />
+            <Image x:Name="Hair" ClassId="Hair" Source="avatar_hair6" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Body" ClassId="Body" Source="avatar_hair6" BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Nr4" ClassId="Nr4" Source="avatar_beard1" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Option1" Source="avatar_hair6" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenSubMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Option2" Source="avatar_hair6" BackgroundColor="Yellow" Grid.Row="3" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenSubMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Option3" Source="avatar_hair6" BackgroundColor="Blue" Grid.Row="3" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenSubMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="Option4" Source="avatar_hair6" BackgroundColor="Purple" Grid.Row="3" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OpenSubMenu" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
             <Grid x:Name="ItemsGrid" Grid.Row="4" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
                 
@@ -64,7 +81,6 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
