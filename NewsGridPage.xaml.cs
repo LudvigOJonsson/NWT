@@ -722,6 +722,8 @@ namespace NWT
                             Article = RA.Article,
                             Category = "N/A",
                             Header = RA.Header,
+                            Ingress = "",
+                            DatePosted = DateTime.Now,
                             Plus = 0
                         };
                         Rss.Add(NF);
@@ -753,6 +755,8 @@ namespace NWT
                             Article = FA.Article,
                             Category = "N/A",
                             Header = FA.Header,
+                            Ingress = "",
+                            DatePosted = DateTime.Now,
                             Plus = 0
                         };
                         Rss.Add(NF);
