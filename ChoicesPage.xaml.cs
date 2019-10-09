@@ -436,9 +436,20 @@ namespace NWT
             Button button = (Button)sender;
             ButtonLock();
             ProfilePage page = (ProfilePage)App.Mainpage.Children[2];
-            page.Logout();
             await button.ScaleTo(0.8f, 80, Easing.BounceOut);
             await button.ScaleTo(1, 80, Easing.BounceOut);
+            page.Logout();
+            ButtonLock();
+        }
+        async void Settings(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            ButtonLock();
+            ProfilePage page = (ProfilePage)App.Mainpage.Children[2];
+            await button.ScaleTo(0.8f, 80, Easing.BounceOut);
+            await button.ScaleTo(1, 80, Easing.BounceOut);
+            App.Startpage.IsPresented = false;
+            page.Settings(sender, e);
             ButtonLock();
         }
         async void About(object sender, EventArgs e)

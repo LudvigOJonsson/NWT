@@ -57,6 +57,9 @@ namespace NWT
         {
 
             //await Navigation.PushAsync(App.LoadingScreen);
+            Button button = (Button)sender;
+            await button.ScaleTo(0.8f, 100, Easing.BounceOut);
+            await button.ScaleTo(1f, 100, Easing.BounceOut);
 
             LoginCheck();
 
@@ -80,8 +83,8 @@ namespace NWT
                 {
 
                     //FOR TESTING ONLY
-                    //App.LoggedinUser.TutorialProgress = 0;
-                    //App.database.UpdateTutorialProgress(App.LoggedinUser);
+                   /* App.LoggedinUser.TutorialProgress = 0;
+                    App.database.UpdateTutorialProgress(App.LoggedinUser);*/
                     //REMOVE FOR OFFICIAL RELEASE
 
                     if (App.LoggedinUser.TutorialProgress == 0)
@@ -160,11 +163,11 @@ namespace NWT
                     {
                         properties["password"] = UserPassword.Text;
                     }
-
                     if (!properties.ContainsKey("showingress"))
                     {
                         properties.Add("showingress", true);
                     }
+
 
                     //Använd detta för att reseta en användares Tutorial
                     //App.LoggedinUser.TutorialProgress = 0; 

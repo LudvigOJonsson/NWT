@@ -20,11 +20,16 @@ namespace NWT
             UserCity.Text = App.LoggedinUser.City;
             UserAge.Text = App.LoggedinUser.Age.ToString();
 
+
             var properties = App.Current.Properties;
             if (properties.ContainsKey("showingress"))
             {
                 IngressSwitch.IsToggled = (bool)properties["showingress"];
             }
+
+
+            UpdateInfoButton.BackgroundColor = App.MC;
+            ChangePasswordButton.BackgroundColor = App.MC;
 
         }
 

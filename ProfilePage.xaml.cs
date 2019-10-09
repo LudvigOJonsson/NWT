@@ -100,7 +100,7 @@ namespace NWT
                 progressBallCheckmark1.IsVisible = true;
                 progressBallCheckmark2.IsVisible = true;
                 progressBallCheckmark3.IsVisible = true;
-                IntroBackground.Color = Color.Green;
+                IntroBackground.Color = Color.FromHex("#90EE90");
 
             }
             if (step == 5)
@@ -160,8 +160,8 @@ namespace NWT
 
 
             var Avatar = JsonConvert.DeserializeObject<List<string>>(App.LoggedinUser.Avatar);
-
-            if(Avatar.Count() == 3)
+            
+			if(Avatar.Count() == 3)
             {
                 Avatar.Add("avatar_expr4.png");
                 Avatar.Add("nothing.png");
@@ -287,7 +287,7 @@ namespace NWT
                 M2T = Convert.ToInt32(Tasklist[1].Goal / Tasklist[1].Modifier);
                 m2t1.Text = missionNames[1];
                 m2t2.Text = Tasklist[1].Progress + "/" + Tasklist[1].Goal;
-                m2t3.Text = "" + M2T + " Tokens";
+                m2t3.Text = "" + M2T + " mynt";
                 if (Tasklist[1].Progress >= Tasklist[1].Goal)
                 {
                     m2bx.BackgroundColor = Color.FromHex("FFDF00");
@@ -435,16 +435,11 @@ namespace NWT
             await DisplayAlert("Dina mynt", "Samla genom att läsa artiklar och klara uppdrag. Spendera på nya utstyrslar och backgrundfärger!", "Okej");
             ButtonLock();
         }
-        async void Settings(object sender, EventArgs e)
+        public async void Settings(object sender, EventArgs e)
         {
             BoxView button = ProfileSettingsButton;
             Image image = ProfileSettingsImage;
             ButtonLock();
-
-            AnimateButton(null, image, null);
-            AnimateButton(null, null, button);
-            await button.FadeTo(0.5f, 100);
-            await button.FadeTo(1f, 100);
 
             await Navigation.PushAsync(new SettingsPage());
             ButtonLock();
@@ -503,7 +498,7 @@ namespace NWT
         async void History(object sender, EventArgs e)
         {
             BoxView button = HistoryButton;
-            Image image = HistoryImage  ;
+            Image image = HistoryImage;
             ButtonLock();
 
             AnimateButton(null, image, null);
@@ -512,6 +507,20 @@ namespace NWT
             await button.FadeTo(1f, 100);
 
             await Navigation.PushAsync(new NewsGridPage(2));
+            ButtonLock();
+        }
+        async void SideMenu(object sender, EventArgs e)
+        {
+            BoxView button = ProfileSettingsButton;
+            Image image = ProfileSettingsImage;
+            ButtonLock();
+
+            AnimateButton(null, image, null);
+            AnimateButton(null, null, button);
+            await button.FadeTo(0.5f, 100);
+            await button.FadeTo(1f, 100);
+
+            App.Startpage.IsPresented = true;
             ButtonLock();
         }
 

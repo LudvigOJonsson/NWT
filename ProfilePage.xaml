@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.ProfilePage"
              BackgroundColor="#ffffff"
-             Icon="Icon_Profile_white.png"
+             Icon="Icon_Profile_white"
              Title="Profil">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>
@@ -66,10 +66,9 @@
                 <Image x:Name="ProfilePictureHair" Source="avatar_hair1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3"  Grid.Column="1"  Grid.ColumnSpan="3"/>
                 <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3"/>
                 <Image x:Name="ProfilePictureBeard" Source="nothing.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3"/>
-                <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3">
-                
+				<Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" WidthRequest="190" HeightRequest="190" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1"  Grid.ColumnSpan="3">
 
-                        <Image.GestureRecognizers>
+                <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Avatar" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
@@ -101,8 +100,8 @@
                 <Button BackgroundColor="Transparent" Clicked="History" Grid.Row="5" Grid.Column="3"/>
 
                 <BoxView x:FieldModifier="public" x:Name="ProfileSettingsButton" Grid.Row="5" Grid.Column="1" BackgroundColor="#649FD4" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="15"/>
-                <Image x:Name="ProfileSettingsImage" Source="Icon_Gear_white.png" Grid.Row="5" Grid.Column="1"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
-                <Button BackgroundColor="Transparent" Clicked="Settings" Grid.Row="5" Grid.Column="1"/>
+                <Image x:Name="ProfileSettingsImage" Source="Icon_Newsfeed_white.png" Grid.Row="5" Grid.Column="1"  BackgroundColor="Transparent"  HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Margin="20"/>
+                <Button BackgroundColor="Transparent" Clicked="SideMenu" Grid.Row="5" Grid.Column="1"/>
 
 
                 <Image x:Name="CoinButton" Grid.Row="4" Grid.Column="2" Source="Icon_Coin"  />
@@ -142,7 +141,7 @@
 
 
 
-                <BoxView x:Name="IntroBackground" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0"/>
+                <BoxView x:Name="IntroBackground" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="White" Margin="0"/>
 
 
                 <!--<BoxView x:Name="introProgressBar1" BackgroundColor="#00b5ba" Grid.Row="4" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Center" HeightRequest="20" Margin="10"/>
@@ -153,9 +152,9 @@
                 <Image x:Name="progressBall2" Source="progressBall" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
                 <Image x:Name="progressBall3" Source="progressBall" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
 
-                <Image x:Name="progressBallNews" Source="progressBallNews" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallProfile" Source="progressBallProfile" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-                <Image x:Name="progressBallCogwheel" Source="editBig.png" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+                <Image x:Name="progressBallNews" Source="Icon_Newsfeed" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="30"/>
+                <Image x:Name="progressBallProfile" Source="Icon_Avatar" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="30"/>
+                <Image x:Name="progressBallCogwheel" Source="Icon_Edit" Grid.Row="6" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center" Margin="30"/>
 
                 <Image x:Name="progressBallCheckmark1" Source="progressBallCheckmark" Grid.Row="6" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
                 <Image x:Name="progressBallCheckmark2" Source="progressBallCheckmark" Grid.Row="6" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>

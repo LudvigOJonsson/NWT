@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace NWT
     {
 
         public List<int> Inventory = new List<int>();
-        public List<string> Avatar = new List<string>(); 
+        public List<string> Avatar = new List<string>();
+
+        public Image selectedImage;
 
         public AvatarPage()
         {
@@ -49,14 +52,16 @@ namespace NWT
                 SetDefaultAvatar();
             }
 
+            UpdateAvatar();
+            Face.BackgroundColor = App.MC;
+            Hair.BackgroundColor = App.MC;
+            Body.BackgroundColor = App.MC;
+            Nr4.BackgroundColor = App.MC;
+            Option1.BackgroundColor = App.MC;
+            Option2.BackgroundColor = App.MC;
+            Option3.BackgroundColor = App.MC;
+            Option4.BackgroundColor = App.MC;
 
-
-            ProfilePictureFace.Source = Avatar[0];
-            ProfilePictureHair.Source = Avatar[1];
-            ProfilePictureBody.Source = Avatar[2];
-            ProfilePictureExpr.Source = Avatar[3];
-            ProfilePictureBeard.Source = Avatar[4];
-            
             var ItemList = App.database.GetAllItems();
 
             var Row = 3;
@@ -181,13 +186,19 @@ namespace NWT
 
         void OpenMenu(object sender, EventArgs e)
         {
-            var Button = (Button)sender;
-            var id = Button.ClassId;
+            UpdateAvatar();
+            var Image = (Image)sender;
+            var id = Image.ClassId;
             string Op1 = "";
             string Op2 = "";
             string Op3 = "";
             string Op4 = "";
-            Color DC = Color.Transparent;
+            string Op1Source = "";
+            string Op2Source = "";
+            string Op3Source = "";
+            string Op4Source = "";
+            Color DC = App.MC;
+
             switch (id)
             {
                 case "Face":
@@ -195,48 +206,66 @@ namespace NWT
                     Op2 = "Expr";
                     Op3 = "FacialFeats";
                     Op4 = "Undef";
-                    DC = Color.Red;
+                    Op1Source = Avatar[0];
+                    Op2Source = "icon_face";
+                    Op3Source = "";
+                    Op4Source = "";
+                    DC = App.MC;
                     break;
                 case "Hair":
                     Op1 = "Hair";
                     Op2 = "Moustach";
                     Op3 = "Beard";
                     Op4 = "Hat";
-                    DC = Color.Yellow;
+                    Op1Source = "icon_hair";
+                    Op2Source = "icon_moustaches";
+                    Op3Source = "icon_beard";
+                    Op4Source = "icon_hats";
+                    DC = App.MC;
                     break;
                 case "Body":
                     Op1 = "Ct1";
                     Op2 = "Ct2";
                     Op3 = "Ct3";
                     Op4 = "Ct4";
-                    DC = Color.Blue;
+                    Op1Source = "icon_clothing4";
+                    Op2Source = "icon_clothing2";
+                    Op3Source = "icon_clothing3";
+                    Op4Source = "icon_clothing";
+                     DC = App.MC;
                     break;
                 case "Nr4":
-                    DC = Color.Purple;
+                    DC = App.MC;
                     break;
                
             }
 
-            if (Button.BackgroundColor != Color.Green)
+            if (selectedImage != Image)
             {
                 ResetRowOneButtons();
                 ResetRowTwoButtons();
                 ItemsGrid.Children.Clear();
                 //ItemsGrid.IsVisible = false;
-                Button.BackgroundColor = Color.Green;
-                
+                Image.BackgroundColor = Color.Gray;
+
                 Option1.ClassId = Op1;
                 Option2.ClassId = Op2;
                 Option3.ClassId = Op3;
                 Option4.ClassId = Op4;
+                Option1.Source = Op1Source;
+                Option2.Source = Op2Source;
+                Option3.Source = Op3Source;
+                Option4.Source = Op4Source;
                 Option1.IsVisible = true;
                 Option2.IsVisible = true;
                 Option3.IsVisible = true;
                 Option4.IsVisible = true;
+
+                selectedImage = Image;
             }
             else
             {
-                Button.BackgroundColor = DC;
+                Image.BackgroundColor = App.MC;
                 Option1.ClassId = "";
                 Option2.ClassId = "";
                 Option3.ClassId = "";
@@ -247,85 +276,91 @@ namespace NWT
                 Option4.IsVisible = false;
                 ItemsGrid.Children.Clear();
                 //ItemsGrid.IsVisible = false;
+
+                selectedImage = null;
             }
         }
 
         void OpenSubMenu(object sender, EventArgs e)
         {
-            var Button = (Button)sender;
-            var id = Button.ClassId;
+            UpdateAvatar();
+            var Image = (Image)sender;
+            var id = Image.ClassId;
 
-            Color DC = Color.Transparent;
+            Color DC = App.MC;
             ItemsGrid.Children.Clear();
             switch (id)
             {
                 case "Face":                  
                     LoadFace();
-                    DC = Color.Red;
+                    DC = App.MC;
                     break;
                 case "Expr":
                     LoadCategory("Expr");
-                    DC = Color.Yellow;
+                    DC = App.MC;
                     break;
                 case "FacialFeats":
 
-                    DC = Color.Blue;
+                    DC = App.MC;
                     break;
                 case "Undef":
-                    DC = Color.Purple;
+                    DC = App.MC;
                     break;
                 case "Hair":
                     LoadCategory("Hair");
-                    DC = Color.Red;
+                    DC = App.MC;
                     break;
                 case "Moustach":
 
-                    DC = Color.Yellow;
+                    DC = App.MC;
                     break;
                 case "Beard":
                     LoadCategory("Beard");
-                    DC = Color.Blue;
+                    DC = App.MC;
                     break;
                 case "Hat":
                     LoadCategory("Hat");
-                    DC = Color.Purple;
+                    DC = App.MC;
                     break;
                 case "Ct1":
                     LoadCategory("Ct1");
-                    DC = Color.Red;
+                    DC = App.MC;
                     break;
                 case "Ct2":
                     LoadCategory("Ct2");
-                    DC = Color.Yellow;
+                    DC = App.MC;
                     break;
                 case "Ct3":
                     LoadCategory("Ct3");
-                    DC = Color.Blue;
+                    DC = App.MC;
                     break;
                 case "Ct4":
                     LoadCategory("Ct4");
-                    DC = Color.Purple;
+                    DC = App.MC;
                     break;
 
 
             }
 
 
-            if (Button.BackgroundColor != Color.Green)
+            if (selectedImage != Image)
             {
                 ResetRowTwoButtons();
-                Button.BackgroundColor = Color.Green;
+                Image.BackgroundColor = Color.Gray;
                 Console.WriteLine("ItemGrid Visible");
                 //ItemsGrid.IsVisible = true;
                 Console.WriteLine(ItemsGrid.Children.Count);
+
+                selectedImage = Image;
             }
             else
             {
-                Button.BackgroundColor = DC;
+                Image.BackgroundColor = App.MC;
                 Console.WriteLine("ItemGrid Not Visible");
                 ItemsGrid.Children.Clear();
                 //ItemsGrid.IsVisible = false;
 
+                selectedImage = null;
             }
 
         }
@@ -334,17 +369,17 @@ namespace NWT
 
         void ResetRowOneButtons()
         {
-            Face.BackgroundColor = Color.Red;
-            Hair.BackgroundColor = Color.Yellow;
-            Body.BackgroundColor = Color.Blue;
-            Nr4.BackgroundColor = Color.Purple;
+            Face.BackgroundColor = App.MC;
+            Hair.BackgroundColor = App.MC;
+            Body.BackgroundColor = App.MC;
+            Nr4.BackgroundColor = App.MC;
         }
         void ResetRowTwoButtons()
         {
-            Option1.BackgroundColor = Color.Red;
-            Option2.BackgroundColor = Color.Yellow;
-            Option3.BackgroundColor = Color.Blue;
-            Option4.BackgroundColor = Color.Purple;
+            Option1.BackgroundColor = App.MC;
+            Option2.BackgroundColor = App.MC;
+            Option3.BackgroundColor = App.MC;
+            Option4.BackgroundColor = App.MC;
             Console.WriteLine("Row 2 Reset.");
         }
 
@@ -372,7 +407,7 @@ namespace NWT
                 Source = "avatar_face1.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.FromHex("#649FD4"),
+                BackgroundColor = App.MC,
                 Margin = 5,
             };
             var face2 = new Image
@@ -381,7 +416,7 @@ namespace NWT
                 Source = "avatar_face2.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.FromHex("#649FD4"),
+                BackgroundColor = App.MC,
                 Margin = 5,
             };
             var face3 = new Image
@@ -390,7 +425,7 @@ namespace NWT
                 Source = "avatar_face3.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.FromHex("#649FD4"),
+                BackgroundColor = App.MC,
                 Margin = 5,
             };
             var face4 = new Image
@@ -399,7 +434,7 @@ namespace NWT
                 Source = "avatar_face4.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.FromHex("#649FD4"),
+                BackgroundColor = App.MC,
                 Margin = 5,
             };
             var face5 = new Image
@@ -408,7 +443,7 @@ namespace NWT
                 Source = "avatar_face5.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                BackgroundColor = Color.FromHex("#649FD4"),
+                BackgroundColor = App.MC,
                 Margin = 5,
             };
 
@@ -453,7 +488,7 @@ namespace NWT
                         Source = Item.ImagePath,
                         HorizontalOptions = LayoutOptions.CenterAndExpand, 
                         VerticalOptions = LayoutOptions.CenterAndExpand, 
-                        BackgroundColor = Color.FromHex("#649FD4") ,
+                        BackgroundColor = App.MC,
                         Margin = 5,
                         CacheDuration = TimeSpan.FromDays(14),
                         DownsampleToViewSize = false,
@@ -521,7 +556,7 @@ namespace NWT
                             ClassId = Item.ID.ToString(),
                             Source = "",
                             HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            VerticalOptions = LayoutOptions.CenterAndExpand,  
                             BackgroundColor = Color.Transparent,
                             Margin = 0
 
@@ -566,6 +601,21 @@ namespace NWT
             }
         }
 
+        public void UpdateAvatar()
+        {
+            //Updating the display avatar
+            ProfilePictureFace.Source = Avatar[0];
+            ProfilePictureHair.Source = Avatar[1];
+            ProfilePictureBody.Source = Avatar[2];
+            ProfilePictureExpr.Source = Avatar[3];
+            ProfilePictureBeard.Source = Avatar[4];
+
+            //Updating the category buttons
+            /*Face.Source = Avatar[0];
+            Hair.Source = Avatar[1];
+            Body.Source = Avatar[2];
+            Nr4.Source = "";*/
+        }
 
         void SetDefaultAvatar()
         {
@@ -593,27 +643,39 @@ namespace NWT
             var id = Convert.ToInt32(Button.ClassId);
             var item = App.database.GetItemFromID(id).First();
             int tokenNumber = item.Price;
-            bool answer = await DisplayAlert("", "Vill du låsa upp "+ item.Descriptions+" för " + tokenNumber + " mynt?", "Nej", "Ja");
+
+            AvatarPopup ap = new AvatarPopup();
+            ap.UpdatePreview(Button, tokenNumber, this, id, item.ImagePath);
+            await PopupNavigation.Instance.PushAsync(ap);
+
+            /*bool answer = await DisplayAlert("", "Vill du låsa upp "+ item.Descriptions+" för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
             {
                 
                 if (App.LoggedinUser.Plustokens >= tokenNumber)
                 {
-                    //Unlocks item
-                    Button.IsEnabled = false;
-                    Button.IsVisible = false;
-                    App.database.Plustoken(App.LoggedinUser, -tokenNumber);
-                    Inventory.Add(Convert.ToInt32(id));
-
-                    App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
-                    App.database.UpdateAvatarItems(App.LoggedinUser);
+                    
 
 
                 } else
                 {
                     await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
                 }
-            }
+            }*/
+        }
+        public void UnlockForReal(Image button, int id, int cost)
+        {
+            
+            var item = App.database.GetItemFromID(id).First();
+
+            //Unlocks item
+            button.IsEnabled = false;
+            button.IsVisible = false;
+            App.database.Plustoken(App.LoggedinUser, -cost);
+            Inventory.Add(Convert.ToInt32(id));
+
+            App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
 
         public void ChangeFace(object sender, EventArgs e)

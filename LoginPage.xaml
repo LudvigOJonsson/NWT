@@ -5,6 +5,7 @@
              x:Class="NWT.LoginPage"
              x:Name = "Loginpage" 
              BackgroundColor="#ffffff"
+             NavigationPage.HasNavigationBar="False"
              >
     <ContentPage.Content>
 
