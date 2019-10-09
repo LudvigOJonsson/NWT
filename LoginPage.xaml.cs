@@ -33,6 +33,8 @@ namespace NWT
             {
                 UserPassword.Text = (string)properties["password"];
             }
+
+
         }
 
         void LoginCheck()
@@ -161,9 +163,15 @@ namespace NWT
                     {
                         properties["password"] = UserPassword.Text;
                     }
-                    /*App.LoggedinUser.TutorialProgress = 0;
-                    App.database.UpdateTutorialProgress(App.LoggedinUser);*/
+                    if (!properties.ContainsKey("showingress"))
+                    {
+                        properties.Add("showingress", true);
+                    }
 
+
+                    //Använd detta för att reseta en användares Tutorial
+                    //App.LoggedinUser.TutorialProgress = 0; 
+                    //App.database.UpdateTutorialProgress(App.LoggedinUser);
 
 
                 }

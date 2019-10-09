@@ -327,14 +327,15 @@ namespace NWT
                     DC = App.MC;
                     break;
                 case "Ct2":
-
+                    LoadCategory("Ct2");
                     DC = App.MC;
                     break;
                 case "Ct3":
-
+                    LoadCategory("Ct3");
                     DC = App.MC;
                     break;
                 case "Ct4":
+                    LoadCategory("Ct4");
                     DC = App.MC;
                     break;
 
