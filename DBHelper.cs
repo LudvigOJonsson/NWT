@@ -203,10 +203,12 @@ namespace NWT
         public long Article { get; set; }
         public int NewsScore { get; set; }
         public string Header { get; set; }
+        public string Ingress { get; set; }
         public string Image { get; set; }
         public string Author { get; set; }
         public string Category { get; set; }
         public string Tag { get; set; }
+        public DateTime DatePosted { get; set; }
         public int Plus { get; set; }
     }
 
@@ -218,10 +220,12 @@ namespace NWT
         public long Article { get; set; }
         public int NewsScore { get; set; }
         public string Header { get; set; }
+        public string Ingress { get; set; }
         public string Image { get; set; }
         public string Author { get; set; }
         public string Category { get; set; }
         public string Tag { get; set; }
+        public DateTime DatePosted { get; set; }
         public int Plus { get; set; }
     }
 
@@ -879,8 +883,8 @@ namespace NWT
                 "(3, 'Grön_Tröja', 'avatar_body3.png', 'Body', 5, 'Ct1'), " +
                 "(4, 'Lila_Tröja', 'avatar_body4.png', 'Body', 12, 'Ct1'), " +
                 "(5, 'Svart_Tröja', 'avatar_body5.png', 'Body', 12, 'Ct1'), " +
-                "(6, 'LjusBlå_Tröja', 'avatar_body6.png', 'Body', 12, 'Ct1'), " +
-                "(7, 'Lavender_Tröja', 'avatar_body7.png', 'Body', 12, 'Ct1'), " +
+                "(6, 'Frölunda_Tröja', 'avatar_body6.png', 'Body', 12, 'Ct1'), " +
+                "(7, 'HV71_Tröja', 'avatar_body7.png', 'Body', 12, 'Ct1'), " +
                 "(8, 'Blåvit_Tröja', 'avatar_body8.png', 'Body', 25, 'Ct1'), " +
                 "(9, 'Rödvit_Tröja', 'avatar_body9.png', 'Body', 25, 'Ct1'), " +
                 "(10, 'Svartgrön_Tröja', 'avatar_body10.png', 'Body', 25, 'Ct1'), " +
@@ -933,7 +937,49 @@ namespace NWT
                 "(57, 'Långt', 'avatar_beard2.png', 'Beard', 10, 'Beard'), " +
                 "(58, 'Imperial', 'avatar_beard3.png', 'Beard', 10, 'Beard'), " +
                 "(59, 'Twirl', 'avatar_beard4.png', 'Beard', 10, 'Beard'), " +
-                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10, 'Beard'); " +
+                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10, 'Beard'), " +
+                "(61, 'Röd_Tröja', 'avatar_body11.png', 'Body', 5, 'Ct2'), " +
+                "(62, 'Blå_Tröja', 'avatar_body12.png', 'Body', 5, 'Ct2'), " +
+                "(63, 'Grön_Tröja', 'avatar_body13.png', 'Body', 5, 'Ct2'), " +
+                "(64, 'Lila_Tröja', 'avatar_body14.png', 'Body', 12, 'Ct2'), " +
+                "(65, 'Svart_Tröja', 'avatar_body15.png', 'Body', 12, 'Ct2'), " +
+                "(66, 'Frölunda_Tröja', 'avatar_body16.png', 'Body', 12, 'Ct2'), " +
+                "(67, 'HV71_Tröja', 'avatar_body17.png', 'Body', 12, 'Ct2'), " +
+                "(68, 'Blåvit_Tröja', 'avatar_body18.png', 'Body', 25, 'Ct2'), " +
+                "(69, 'Rödvit_Tröja', 'avatar_body19.png', 'Body', 25, 'Ct2'), " +
+                "(70, 'Svartgrön_Tröja', 'avatar_body20.png', 'Body', 25, 'Ct2'), " +
+                "(71, 'Röd_Kostym', 'avatar_body21.png', 'Body', 5, 'Ct1'), " +
+                "(72, 'Blå_Kostym', 'avatar_body22.png', 'Body', 5, 'Ct1'), " +
+                "(73, 'Grön_Kostym', 'avatar_body23.png', 'Body', 5, 'Ct1'), " +
+                "(74, 'Lila_Kostym', 'avatar_body24.png', 'Body', 12, 'Ct1'), " +
+                "(75, 'Svart_Kostym', 'avatar_body25.png', 'Body', 12, 'Ct1'), " +
+                "(76, 'Röd_V-Ring', 'avatar_body26.png', 'Body', 12, 'Ct2'), " +
+                "(77, 'Blå_V-Ring', 'avatar_body27.png', 'Body', 12, 'Ct2'), " +
+                "(78, 'Grön_V-Ring', 'avatar_body28.png', 'Body', 25, 'Ct2'), " +
+                "(79, 'Lila_V-Ring', 'avatar_body29.png', 'Body', 25, 'Ct2'), " +
+                "(80, 'Svart_V-Ring', 'avatar_body30.png', 'Body', 25, 'Ct2'), " +
+                "(81, 'Röd_Sleeveless', 'avatar_body31.png', 'Body', 5, 'Ct3'), " +
+                "(82, 'Blå_Sleeveless', 'avatar_body32.png', 'Body', 5, 'Ct3'), " +
+                "(83, 'Grön_Sleeveless', 'avatar_body33.png', 'Body', 5, 'Ct3'), " +
+                "(84, 'Lila_Sleeveless', 'avatar_body34.png', 'Body', 12, 'Ct3'), " +
+                "(85, 'Svart_Sleeveless', 'avatar_body35.png', 'Body', 12, 'Ct3'), " +
+                "(86, 'Röd_Skjorta', 'avatar_body36.png', 'Body', 12, 'Ct3'), " +
+                "(87, 'Blå_Skjorta', 'avatar_body37.png', 'Body', 12, 'Ct3'), " +
+                "(88, 'Grön_Skjorta', 'avatar_body38.png', 'Body', 25, 'Ct3'), " +
+                "(89, 'Lila_Skjorta', 'avatar_body39.png', 'Body', 25, 'Ct3'), " +
+                "(90, 'Svart_Skjorta', 'avatar_body40.png', 'Body', 25, 'Ct3'), " +
+                "(91, 'Röd_T-Shirt', 'avatar_body41.png', 'Body', 5, 'Ct4'), " +
+                "(92, 'Blå_T-Shirt', 'avatar_body42.png', 'Body', 5, 'Ct4'), " +
+                "(93, 'Grön_T-Shirt', 'avatar_body43.png', 'Body', 5, 'Ct4'), " +
+                "(94, 'Lila_T-Shirt', 'avatar_body44.png', 'Body', 12, 'Ct4'), " +
+                "(95, 'Svart_T-Shirt', 'avatar_body45.png', 'Body', 12, 'Ct4'), " +
+                "(96, 'Röd_Shoulder-Top', 'avatar_body46.png', 'Body', 12, 'Ct4'), " +
+                "(97, 'Blå_Shoulder-Top', 'avatar_body47.png', 'Body', 12, 'Ct4'), " +
+                "(98, 'Grön_Shoulder-Top', 'avatar_body48.png', 'Body', 25, 'Ct4'), " +
+                "(99, 'Lila_Shoulder-Top', 'avatar_body49.png', 'Body', 25, 'Ct4'), " +
+                "(100, 'Svart_Shoulder-Top', 'avatar_body50.png', 'Body', 25, 'Ct4'), " +
+                "(101, 'Rustning', 'avatar_body51.png', 'Body', 50, 'Ct1'), " +
+                "(102, 'Rustning', 'avatar_body52.png', 'Body', 50, 'Ct2'); " +
              "");
         }
         public static string TCP(string JSON)

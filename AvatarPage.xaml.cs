@@ -295,14 +295,15 @@ namespace NWT
                     DC = Color.Red;
                     break;
                 case "Ct2":
-
+                    LoadCategory("Ct2");
                     DC = Color.Yellow;
                     break;
                 case "Ct3":
-
+                    LoadCategory("Ct3");
                     DC = Color.Blue;
                     break;
                 case "Ct4":
+                    LoadCategory("Ct4");
                     DC = Color.Purple;
                     break;
 

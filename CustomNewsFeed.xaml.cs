@@ -51,6 +51,10 @@ namespace NWT
             public bool TagVisible { get; set; }
             public int TagLength { get; set; }
             public string Header { get; set; }
+            public string Ingress { get; set; }
+            public bool HasIngress { get; set; }
+            public DateTime DatePublished { get; set; }
+            public int DateLength { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
@@ -65,6 +69,7 @@ namespace NWT
             public int CBHR { get; set; }
             public LayoutOptions CBHO { get; set; }
             public LayoutOptions CBVO { get; set; }
+            public int INGHR { get; set; }
             public Article(NewsfeedTable NF, int interval)
             {
                 if (NF.Category.Contains("Sport"))
@@ -132,13 +137,35 @@ namespace NWT
                         TagVisible = true;
                     }
                 }
+                DatePublished = NF.DatePosted;
+                DateLength = (DatePublished.ToString().Length * 7);
 
                 TagLength = (FirstTag.Length*7);
+                Console.WriteLine("Ping");
+                if (!NF.Ingress.Any())
+                {
+                    HasIngress = false;
+                    Ingress = NF.Ingress;
+                }
+                else
+                {
+                    var properties = App.Current.Properties;
+                    if (properties.ContainsKey("showingress"))
+                    {
+                        HasIngress = (bool)properties["showingress"];
+                    }
+                    else
+                    {
+                        HasIngress = true;
+                    }
 
 
+                    Ingress = NF.Ingress;
+                }
 
+                Console.WriteLine("Pong");
                 ID = NF.Article;
-                Header = NF.Header;
+                Header = NF.Header.Replace("*", "-").Replace("&quot;", "'"); ;
                 IMGSource = NF.Image;
                 Full = true;
                 
@@ -171,6 +198,7 @@ namespace NWT
                     CBHO = LayoutOptions.Start;
                     CBVO = LayoutOptions.FillAndExpand;
                     Full = false;
+                    INGHR = 34;
                 }
                 else
                 {
@@ -180,6 +208,7 @@ namespace NWT
                     CBHR = 7;
                     CBHO = LayoutOptions.Fill;
                     CBVO = LayoutOptions.StartAndExpand;
+                    INGHR = 51;
                 }
 
 
@@ -590,6 +619,51 @@ namespace NWT
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
 
+                    Label Date = new Label
+                    {
+                        //Text = NF.Header,
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        FontSize = 12,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
+
+                        TextColor = Color.White,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 5),
+                    };
+
+                    BoxView DateBox = new BoxView
+                    {
+
+                        BackgroundColor = App.MC,
+                        VerticalOptions = LayoutOptions.End,
+                        HorizontalOptions = LayoutOptions.End,
+                        HeightRequest = 16,
+                        //InputTransparent = true,
+                        Margin = new Thickness(13, 5, 10, 5),
+
+                    };
+
+                    Label IngressLabel = new Label
+                    {
+                        //Text = NF.Header,
+                        HorizontalTextAlignment = TextAlignment.Start,
+                        VerticalTextAlignment = TextAlignment.Center,
+                        FontSize = 14,
+                        FontAttributes = FontAttributes.Bold,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        HeightRequest = 54,
+                        TextColor = Color.Black,
+                        //ClassId = NF.Article.ToString(),
+                        InputTransparent = true,
+                        Margin = new Thickness(15, 5, 15, 0),
+                    };
+
+
                     var AdImage = new CachedImage
                     {
 
@@ -684,6 +758,14 @@ namespace NWT
                     TagBox.SetBinding(Button.WidthRequestProperty, "TagLength");
                     TagBox.SetBinding(Button.ClassIdProperty, "Tag");
 
+                    Date.SetBinding(Label.TextProperty, "DatePublished");
+
+                    DateBox.SetBinding(BoxView.WidthRequestProperty, "DateLength");
+
+                    IngressLabel.SetBinding(Label.TextProperty, "Ingress");
+                    IngressLabel.SetBinding(Label.IsVisibleProperty, "HasIngress");
+                    IngressLabel.SetBinding(HeightRequestProperty, "INGHR");
+
                     Label.SetBinding(Label.ClassIdProperty, "ID");
                     Image.SetBinding(CachedImage.ClassIdProperty, "ID");
 
@@ -708,6 +790,7 @@ namespace NWT
 
                         RowDefinitions = {
                     new RowDefinition { Height = 0 },
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
@@ -740,22 +823,24 @@ namespace NWT
 
 
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 3); //Boxview
+                    Grid.Children.Add(Box, 1, 2, 1, 4); //Boxview
                     Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(Shadow, 1, 2, 3, 4);
+                    Grid.Children.Add(IngressLabel, 1, 2, 3, 4);
+                    Grid.Children.Add(Shadow, 1, 2, 4, 5);
 
                     Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
                     Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
-
+                    Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
+                    Grid.Children.Add(Date, 1, 2, 1, 2); //Tag 
 
                     //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
-                    Grid.Children.Add(AdBox, 1, 2, 5, 6); //Boxview
+                    Grid.Children.Add(AdBox, 1, 2, 6, 7); //Boxview
                     //Grid.Children.Add(AdButton, 1, 2, 5, 6); //Boxview
-                    Grid.Children.Add(AdImage, 1, 2, 5, 6); //Boxview
-                    Grid.Children.Add(AdLabel, 1, 2, 5, 6); //Label
-                    Grid.Children.Add(AdShadow, 1, 2, 6, 7);
+                    Grid.Children.Add(AdImage, 1, 2, 6, 7); //Boxview
+                    Grid.Children.Add(AdLabel, 1, 2, 6, 7); //Label
+                    Grid.Children.Add(AdShadow, 1, 2, 7, 8);
 
                     /*Grid.Children.Add(AdBox, 1, 2, 4, 5); //Boxview
                     Grid.Children.Add(AdImageOutline, 1, 2, 4, 5); //Image 

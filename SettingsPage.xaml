@@ -51,13 +51,15 @@
 
 
 
-                <Label Text="Notifications" TextColor="DimGray" FontSize="18" Grid.Row="12" HorizontalOptions="Start"  />
-                <Switch x:Name="NotificationsSwitch"
+                <Label Text="Visa Ingress" TextColor="DimGray" FontSize="18" Grid.Row="12" HorizontalOptions="Start"  />
+                <Switch x:Name="IngressSwitch"
                         x:FieldModifier="public"
                IsToggled="True"
                HorizontalOptions="End"
                 Grid.Row="12" Grid.Column="0"
                         OnColor="#649FD4"
+                        
+                Toggled="IngressSwitchToggled"
                         
                 />
 

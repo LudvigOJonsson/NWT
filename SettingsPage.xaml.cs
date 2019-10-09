@@ -19,6 +19,13 @@ namespace NWT
             UserEmail.Text = App.LoggedinUser.Email;
             UserCity.Text = App.LoggedinUser.City;
             UserAge.Text = App.LoggedinUser.Age.ToString();
+
+            var properties = App.Current.Properties;
+            if (properties.ContainsKey("showingress"))
+            {
+                IngressSwitch.IsToggled = (bool)properties["showingress"];
+            }
+
         }
 
         /*public void ChangePassword(object sender, EventArgs e)
@@ -82,6 +89,15 @@ namespace NWT
                     App.database.UpdateInfo(App.LoggedinUser);
                 else
                     await DisplayAlert("Bad Credentials", "Please type in new information and/or a valid age", "OK");
+            }
+        }
+
+        public void IngressSwitchToggled(object sender, EventArgs e)
+        {
+            var properties = App.Current.Properties;
+            if (properties.ContainsKey("showingress"))
+            {
+                properties["showingress"] = IngressSwitch.IsToggled;
             }
         }
 
