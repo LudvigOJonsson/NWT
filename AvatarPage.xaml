@@ -33,23 +33,23 @@
             <Image x:Name="ProfilePictureBody" Source="avatar_body1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Image x:Name="ProfilePictureExpr" Source="avatar_expr4.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
             <Image x:Name="ProfilePictureBeard" Source="nothing.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-            <Image x:Name="Face" ClassId="Face" Source="avatar_face1.png" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
+            <Image x:Name="Face" ClassId="Face" Source="icon_body.png" BackgroundColor="Red" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
             <Image x:Name="FaceImage" />
-            <Image x:Name="Hair" ClassId="Hair" Source="avatar_hair6" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
+            <Image x:Name="Hair" ClassId="Hair" Source="icon_head" BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="Body" ClassId="Body" Source="avatar_hair6" BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
+            <Image x:Name="Body" ClassId="Body" Source="icon_clothing2" BackgroundColor="Blue" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="Nr4" ClassId="Nr4" Source="avatar_beard1" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
+            <Image x:Name="Nr4" ClassId="Nr4" Source="" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
@@ -81,6 +81,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

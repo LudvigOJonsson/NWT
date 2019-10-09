@@ -207,7 +207,7 @@ namespace NWT
                     Op3 = "FacialFeats";
                     Op4 = "Undef";
                     Op1Source = Avatar[0];
-                    Op2Source = Avatar[3];
+                    Op2Source = "icon_face";
                     Op3Source = "";
                     Op4Source = "";
                     DC = App.MC;
@@ -217,10 +217,10 @@ namespace NWT
                     Op2 = "Moustach";
                     Op3 = "Beard";
                     Op4 = "Hat";
-                    Op1Source = Avatar[1];
-                    Op2Source = "avatar_beard4";
-                    Op3Source = "avatar_beard2";
-                    Op4Source = "avatar_hair11";
+                    Op1Source = "icon_hair";
+                    Op2Source = "icon_moustaches";
+                    Op3Source = "icon_beard";
+                    Op4Source = "icon_hats";
                     DC = App.MC;
                     break;
                 case "Body":
@@ -228,11 +228,11 @@ namespace NWT
                     Op2 = "Ct2";
                     Op3 = "Ct3";
                     Op4 = "Ct4";
-                    Op1Source = "avatar_beard4";
-                    Op2Source = "avatar_beard4";
-                    Op3Source = "avatar_beard4";
-                    Op4Source = "avatar_beard4";
-                    DC = App.MC;
+                    Op1Source = "icon_clothing4";
+                    Op2Source = "icon_clothing2";
+                    Op3Source = "icon_clothing3";
+                    Op4Source = "icon_clothing";
+                     DC = App.MC;
                     break;
                 case "Nr4":
                     DC = App.MC;
@@ -457,7 +457,7 @@ namespace NWT
             ItemsGrid.Children.Add(face2, 1, 0);
             ItemsGrid.Children.Add(face3, 2, 0);
             ItemsGrid.Children.Add(face4, 3, 0);
-            ItemsGrid.Children.Add(face5, 0, 1);
+            ItemsGrid.Children.Add(face5, 4, 0);
             ItemsGrid.IsVisible = true;
             Console.WriteLine("Face Loaded");
         }
@@ -474,7 +474,7 @@ namespace NWT
             {
                 if(Item.InventorySlot != "Style")
                 { 
-                    if(Column == 4)
+                    if(Column == 5)
                     {
                         Column = 0;
                         ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star});
@@ -610,10 +610,10 @@ namespace NWT
             ProfilePictureBeard.Source = Avatar[4];
 
             //Updating the category buttons
-            Face.Source = Avatar[0];
+            /*Face.Source = Avatar[0];
             Hair.Source = Avatar[1];
             Body.Source = Avatar[2];
-            Nr4.Source = "";
+            Nr4.Source = "";*/
         }
 
         void SetDefaultAvatar()
