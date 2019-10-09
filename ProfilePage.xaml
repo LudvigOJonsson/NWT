@@ -4,7 +4,7 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="NWT.ProfilePage"
              BackgroundColor="#ffffff"
-             Icon=""
+             Icon="Icon_Profile_white"
              Title="Profil">
     <ContentPage.ToolbarItems>
         <!--<ToolbarItem Icon="cogwheel.png" Text="Settings" Clicked="Settings"/>

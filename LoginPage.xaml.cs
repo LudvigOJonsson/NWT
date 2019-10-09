@@ -161,7 +161,8 @@ namespace NWT
                     {
                         properties["password"] = UserPassword.Text;
                     }
-
+                    /*App.LoggedinUser.TutorialProgress = 0;
+                    App.database.UpdateTutorialProgress(App.LoggedinUser);*/
 
 
 

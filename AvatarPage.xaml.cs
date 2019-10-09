@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -641,27 +642,39 @@ namespace NWT
             var id = Convert.ToInt32(Button.ClassId);
             var item = App.database.GetItemFromID(id).First();
             int tokenNumber = item.Price;
-            bool answer = await DisplayAlert("", "Vill du låsa upp "+ item.Descriptions+" för " + tokenNumber + " mynt?", "Nej", "Ja");
+
+            AvatarPopup ap = new AvatarPopup();
+            ap.UpdatePreview(Button, tokenNumber, this, id, item.ImagePath);
+            await PopupNavigation.Instance.PushAsync(ap);
+
+            /*bool answer = await DisplayAlert("", "Vill du låsa upp "+ item.Descriptions+" för " + tokenNumber + " mynt?", "Nej", "Ja");
             if (!answer)
             {
                 
                 if (App.LoggedinUser.Plustokens >= tokenNumber)
                 {
-                    //Unlocks item
-                    Button.IsEnabled = false;
-                    Button.IsVisible = false;
-                    App.database.Plustoken(App.LoggedinUser, -tokenNumber);
-                    Inventory.Add(Convert.ToInt32(id));
-
-                    App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
-                    App.database.UpdateAvatarItems(App.LoggedinUser);
+                    
 
 
                 } else
                 {
                     await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (tokenNumber - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
                 }
-            }
+            }*/
+        }
+        public void UnlockForReal(Image button, int id, int cost)
+        {
+            
+            var item = App.database.GetItemFromID(id).First();
+
+            //Unlocks item
+            button.IsEnabled = false;
+            button.IsVisible = false;
+            App.database.Plustoken(App.LoggedinUser, -cost);
+            Inventory.Add(Convert.ToInt32(id));
+
+            App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
+            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
 
         public void ChangeFace(object sender, EventArgs e)
