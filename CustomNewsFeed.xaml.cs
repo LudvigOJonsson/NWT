@@ -73,8 +73,15 @@ namespace NWT
             public LayoutOptions CBHO { get; set; }
             public LayoutOptions CBVO { get; set; }
             public int INGHR { get; set; }
+
+
             public Article(NewsfeedTable NF, int interval)
             {
+                
+
+
+
+
                 if (NF.Category.Contains("Sport"))
                 {
                     CategoryColor = Color.FromHex("#6fb110");
@@ -171,9 +178,25 @@ namespace NWT
                         HasIngress = true;
                     }
 
+                    
 
                     Ingress = NF.Ingress;
 
+                    int IL = 40;
+                    int IH = 17;
+
+                    if (Ingress.Length < IL)
+                    {
+                        INGHR = IH;
+                    }
+                    else if (Ingress.Length < IL * 2)
+                    {
+                        INGHR = IH * 2;
+                    }
+                    else 
+                    {
+                        INGHR = IH * 3;
+                    }
                     //If the ingress is more than X characters, then shorten it until it's not.
                     while (Ingress.Length > 120)
                     {
@@ -200,11 +223,11 @@ namespace NWT
                         Ingress = Ingress.Remove(Ingress.Length - 1);
 
                     Ingress = "● " + Ingress + "...";
-
+                    /*
                     if (Ingress.Length < 80)
                     {
                         HasIngress = false;
-                    }
+                    }*/
                 }
 
                 Console.WriteLine("Pong");
@@ -246,7 +269,7 @@ namespace NWT
                     Full = false;
                     CategoryBig = false;
                     CategorySmall = true;
-                    INGHR = 34;
+                    //INGHR = 34;
                 }
                 else
                 {
@@ -256,7 +279,7 @@ namespace NWT
                     CBHR = 7;
                     CBHO = LayoutOptions.Fill;
                     CBVO = LayoutOptions.StartAndExpand;
-                    INGHR = 51;
+                    //INGHR = 51;
                 }
 
 
@@ -303,9 +326,9 @@ namespace NWT
                     AdVisibility = false;
                 }
 
-                
 
-                
+
+
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -326,9 +349,11 @@ namespace NWT
                 Console.WriteLine("OnAppearing");
                 if (TagsModified)
                 {
+                    App.Startpage.IsGestureEnabled = false;
                     Console.WriteLine("Tags modifing, reloading feed.");
                     TagUpdate();
                     TagsModified = false;
+                    App.Startpage.IsGestureEnabled = true;
                 }
             }           
         }
@@ -831,7 +856,7 @@ namespace NWT
                     Date.SetBinding(Label.TextProperty, "datePub");
 
                     DateBox.SetBinding(BoxView.WidthRequestProperty, "DateLength");
-
+                    
                     IngressLabel.SetBinding(Label.TextProperty, "Ingress");
                     IngressLabel.SetBinding(Label.IsVisibleProperty, "HasIngress");
                     IngressLabel.SetBinding(HeightRequestProperty, "INGHR");
@@ -1015,6 +1040,7 @@ namespace NWT
                 {
                     //IsBusy = true;
                     //ArticleListView.IsRefreshing = true;
+                    App.Startpage.IsGestureEnabled = false;
                     App.LS.loadingAnimation.Play();
                     await Navigation.PushAsync(App.LS);
                     App.LS.LoadingText.Text = "Laddar in mera artiklar.";
@@ -1063,6 +1089,7 @@ namespace NWT
                     await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
                     //ArticleListView.IsRefreshing = false;
                     //IsBusy = false;
+                    App.Startpage.IsGestureEnabled = true;
                 });
 
             });

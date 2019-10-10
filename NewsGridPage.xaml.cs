@@ -67,10 +67,10 @@ namespace NWT
             public LayoutOptions CBHO { get; set; }
             public LayoutOptions CBVO { get; set; }
             public int INGHR { get; set; }
-
-            public Article(NewsfeedTable NF)
+            public bool IsNormalfeed { get; set; }
+            public Article(NewsfeedTable NF, int argc)
             {
-
+                
 
                 Tag = NF.Category.Split(new[] { ", " }, StringSplitOptions.None)[0];
                 ID = NF.Article;
@@ -97,6 +97,21 @@ namespace NWT
 
                     Ingress = NF.Ingress;
 
+                    int IL = 40;
+                    int IH = 17;
+
+                    if (Ingress.Length < IL)
+                    {
+                        INGHR = IH;
+                    }
+                    else if (Ingress.Length < IL * 2)
+                    {
+                        INGHR = IH * 2;
+                    }
+                    else if (Ingress.Length < IL * 3)
+                    {
+                        INGHR = IH * 3;
+                    }
                     //If the ingress is more than X characters, then shorten it until it's not.
                     while (Ingress.Length > 120)
                     {
@@ -123,11 +138,11 @@ namespace NWT
                         Ingress = Ingress.Remove(Ingress.Length - 1);
 
                     Ingress = "● " + Ingress + "...";
-
+                    /*
                     if (Ingress.Length < 80)
                     {
                         HasIngress = false;
-                    }
+                    }*/
 
                 }
 
@@ -195,6 +210,17 @@ namespace NWT
                     INGHR = 54;
                 }
 
+                if (argc != 0)
+                {
+                    IsNormalfeed = false;
+                    HasIngress = false;
+                    TagVisible = false;
+                }
+                else
+                {
+                    IsNormalfeed = true;
+                }
+
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -214,7 +240,7 @@ namespace NWT
 
             NewsSV.ClassId = null;
 
-
+            argc = Argc;
             
 
             TGR = new TapGestureRecognizer
@@ -224,7 +250,7 @@ namespace NWT
 
 
 
-            if (Argc == 0)
+            if (argc == 0)
             {
             }
             else 
@@ -233,7 +259,7 @@ namespace NWT
                 EmptyText.IsEnabled = false;
                 EmptyText.IsVisible = false;
                 */
-                CreateFeed(Argc);
+                CreateFeed(argc);
             }
 
             
@@ -475,11 +501,14 @@ namespace NWT
 
                     ArticleMargin.SetBinding(BoxView.ClassIdProperty, "ID");
                     Tag.SetBinding(Label.TextProperty, "Tag");
-                                       
+                    Tag.SetBinding(Label.IsVisibleProperty, "TagVisible");
+
+                    TagBox.SetBinding(Button.IsVisibleProperty, "TagVisible");
                     TagBox.SetBinding(BoxView.WidthRequestProperty, "TagLength");
 
                     Date.SetBinding(Label.TextProperty, "DatePublished");
-
+                    Date.SetBinding(Label.IsVisibleProperty, "IsNormalfeed");
+                    DateBox.SetBinding(BoxView.IsVisibleProperty, "IsNormalfeed");
                     DateBox.SetBinding(BoxView.WidthRequestProperty, "DateLength");
 
                     IngressLabel.SetBinding(Label.TextProperty, "Ingress");
@@ -583,7 +612,7 @@ namespace NWT
             }
             else if (Argc == 1)
             {
-
+                
                 Console.WriteLine("ReferatSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -598,7 +627,7 @@ namespace NWT
             }
             else if (Argc == 2)
             {
-
+                
                 Console.WriteLine("HistorikSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -610,7 +639,7 @@ namespace NWT
             }
             else if (Argc == 3)
             {
-
+                
                 Console.WriteLine("FavoritSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -718,13 +747,13 @@ namespace NWT
 
         public void LoadHistory()
         {
-            argc = 2;
+            
             AddNews(1);
         }
 
         public void LoadFavorites()
         {
-            argc = 3;
+            
             AddNews(2);
         }
 
@@ -758,15 +787,15 @@ namespace NWT
             throw new NotImplementedException();
         }
 
-        public void AddNews(int argc)
+        public void AddNews(int Argc)
         {
 
             List<NewsfeedTable> Rss = new List<NewsfeedTable>();
-            if (argc == 0)
+            if (Argc == 0)
             {
                 Rss = App.database.GetNF(Loadnr);
             }
-            else if (argc == 1)
+            else if (Argc == 1)
             {
                 Down.IsVisible = false;
                 int j = 0;
@@ -799,7 +828,7 @@ namespace NWT
                 
 
             }
-            else if (argc == 2)
+            else if (Argc == 2)
             {
                 Down.IsVisible = false;
                 int j = 0;
@@ -857,7 +886,7 @@ namespace NWT
                 Console.WriteLine("Jämnförelse ned ArtikelLista klar");
                 if (!Exists)
                 {
-                    var Box = new Article(NF);
+                    var Box = new Article(NF,argc);
 
                     Console.WriteLine("ArtikelObjekt Skapat");
                     ArticleList.Add(Box);
