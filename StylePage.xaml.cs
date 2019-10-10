@@ -68,19 +68,22 @@ namespace NWT
             
             foreach (var Style in StylesList)
             {
-                bool Owns = false; 
+                bool Owns = false;
+
+                Console.WriteLine(StylesInventory.Count);
                 foreach (var StyleID in StylesInventory)
                 {
                     if(Style.ID == StyleID)
                     {
                         Owns = true;
+                        break;
                     }
                     else
                     {
                         Owns = false;
                     }
                 }
-                UserStylesList.Add(new UserStyle(Style, Owns));
+                UserStylesList.Add(new UserStyle(Style, !Owns));
                 Console.WriteLine(Style.ID);
             }
             
@@ -154,9 +157,9 @@ namespace NWT
                         //ClassId = Style.ImagePath.ToString(),
                         HorizontalOptions = LayoutOptions.Fill,
                         VerticalOptions = LayoutOptions.Fill,
-                        BackgroundColor = Color.Red,
+                        //BackgroundColor = Color.Transparent,
                         Margin = 5,
-                        //ImageSource = "keyhole.png",
+                        //ImageSource = "icon_lock.png",
 
                     };
 
@@ -169,19 +172,19 @@ namespace NWT
                         HeightRequest = 20,
 
                         //ClassId = Style.ID.ToString(),
-                        Source = "keyhole.png",
+                        Source = "icon_lock.png",
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                         //BackgroundColor = Color.Transparent,
                         Margin = new Thickness(0, 0, 0, 0),
                         CacheDuration = TimeSpan.FromDays(14),
-                        DownsampleToViewSize = false,
+                        DownsampleToViewSize = true,
                         RetryCount = 5,
                         RetryDelay = 100,
                         BitmapOptimizations = false,
                         LoadingPlaceholder = "",
                         ErrorPlaceholder = "",
-
+                        InputTransparent = true
 
 
                     };
@@ -192,10 +195,10 @@ namespace NWT
                     Box.SetBinding(Button.BackgroundColorProperty, "ImagePath");
                     Image.SetBinding(CachedImage.ClassIdProperty, "ID");
                     Lock.SetBinding(Button.ClassIdProperty, "ID");
-                    //LockImage.SetBinding(CachedImage.ClassIdProperty, "ID");
+                    LockImage.SetBinding(CachedImage.ClassIdProperty, "ID");
 
                     Lock.SetBinding(Button.IsVisibleProperty, "Owns");
-                    //LockImage.SetBinding(CachedImage.IsVisibleProperty, "Owns");
+                    LockImage.SetBinding(CachedImage.IsVisibleProperty, "Owns");
 
                     var Grid = new Grid
                     {
