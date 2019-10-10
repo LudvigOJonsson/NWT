@@ -49,9 +49,9 @@
                     <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-            <Image x:Name="Nr4" ClassId="Nr4" Source="" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
+            <Image x:Name="Nr4" ClassId="Nr4" Source="questionMark" BackgroundColor="Purple" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" >
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OpenMenu" NumberOfTapsRequired="1" />
+                    <TapGestureRecognizer Tapped="Question" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
             <Image x:Name="Option1" Source="avatar_hair6" BackgroundColor="Red" Grid.Row="3" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="2" IsVisible="False" >

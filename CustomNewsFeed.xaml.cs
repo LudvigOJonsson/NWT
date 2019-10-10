@@ -54,11 +54,14 @@ namespace NWT
             public string Ingress { get; set; }
             public bool HasIngress { get; set; }
             public DateTime DatePublished { get; set; }
+            public string datePub { get; set; }
             public int DateLength { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
             public bool Full { get; set; }
+            public bool CategoryBig { get; set; }
+            public bool CategorySmall { get; set; }
             public bool AdVisibility { get; set; }
             public string AdText { get; set; }
             public string AdSource { get; set; }
@@ -138,9 +141,18 @@ namespace NWT
                     }
                 }
                 DatePublished = NF.DatePosted;
-                DateLength = (DatePublished.ToString().Length * 7);
+
+                datePub = DatePublished.ToString();
+
+                for(int i = 0; i < 9; i++)
+                {
+                    datePub = datePub.Remove(datePub.Length - 1);
+                }
+                DateLength = (datePub.Length * 7);
 
                 TagLength = (FirstTag.Length*7);
+
+
                 Console.WriteLine("Ping");
                 if (!NF.Ingress.Any())
                 {
@@ -161,6 +173,38 @@ namespace NWT
 
 
                     Ingress = NF.Ingress;
+
+                    //If the ingress is more than X characters, then shorten it until it's not.
+                    while (Ingress.Length > 120)
+                    {
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+                    }
+                    while (!Ingress.EndsWith(" "))
+                    {
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+                    }
+
+
+                    /*string[] words = Ingress.Split(' ');
+                    string myLastWord = words[words.Length - 1];
+                    int wordIndex = Ingress.IndexOf(myLastWord);
+                    Ingress.Remove(wordIndex);*/
+
+                    if (Ingress.EndsWith(" "))
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+                    if (Ingress.EndsWith(","))
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+                    if (Ingress.EndsWith("!"))
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+                    if (Ingress.EndsWith("."))
+                        Ingress = Ingress.Remove(Ingress.Length - 1);
+
+                    Ingress = "● " + Ingress + "...";
+
+                    if (Ingress.Length < 80)
+                    {
+                        HasIngress = false;
+                    }
                 }
 
                 Console.WriteLine("Pong");
@@ -168,7 +212,9 @@ namespace NWT
                 Header = NF.Header.Replace("*", "-").Replace("&quot;", "'"); ;
                 IMGSource = NF.Image;
                 Full = true;
-                
+                CategoryBig = true;
+                CategorySmall = false;
+
 
                 Plus = Convert.ToBoolean(NF.Plus);
 
@@ -198,6 +244,8 @@ namespace NWT
                     CBHO = LayoutOptions.Start;
                     CBVO = LayoutOptions.FillAndExpand;
                     Full = false;
+                    CategoryBig = false;
+                    CategorySmall = true;
                     INGHR = 34;
                 }
                 else
@@ -561,6 +609,13 @@ namespace NWT
                         InputTransparent = true,
 
                     };
+                    BoxView CategoryBoxSmall = new BoxView
+                    {
+
+                        BackgroundColor = App.MC,
+                        InputTransparent = true,
+
+                    };
 
                     Image Shadow = new Image
                     {
@@ -568,6 +623,13 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Fill,
                         InputTransparent = true,
                         Source = "shadow.png"
+                    };
+                    Image WhiteShadow = new Image
+                    {
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        InputTransparent = true,
+                        Source = "whiteShadow.png"
                     };
                     Image AdShadow = new Image
                     {
@@ -629,7 +691,7 @@ namespace NWT
                         VerticalOptions = LayoutOptions.End,
                         HorizontalOptions = LayoutOptions.End,
 
-                        TextColor = Color.White,
+                        TextColor = Color.Black,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
                         Margin = new Thickness(15, 5, 15, 5),
@@ -657,7 +719,7 @@ namespace NWT
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         HeightRequest = 54,
-                        TextColor = Color.Black,
+                        TextColor = Color.Gray,
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
                         Margin = new Thickness(15, 5, 15, 0),
@@ -696,7 +758,6 @@ namespace NWT
                         Margin = 35,
 
                     };
-
                     AdImage.SetBinding(HeightRequestProperty, "IHR");
 
                     BoxView AdBox = new BoxView
@@ -742,11 +803,20 @@ namespace NWT
 
                     AdBox.SetBinding(HeightRequestProperty, "BHR");
 
+                    CategoryBox.SetBinding(IsVisibleProperty, "CategoryBig");
                     CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
                     CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
                     CategoryBox.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
                     CategoryBox.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
                     CategoryBox.SetBinding(BoxView.BackgroundColorProperty, "CategoryColor");
+
+
+                    CategoryBoxSmall.SetBinding(IsVisibleProperty, "CategorySmall");
+                    CategoryBoxSmall.SetBinding(HeightRequestProperty, "CBHR");
+                    CategoryBoxSmall.SetBinding(WidthRequestProperty, "CBWR");
+                    CategoryBoxSmall.SetBinding(BoxView.VerticalOptionsProperty, "CBVO");
+                    CategoryBoxSmall.SetBinding(BoxView.HorizontalOptionsProperty, "CBHO");
+                    CategoryBoxSmall.SetBinding(BoxView.BackgroundColorProperty, "CategoryColor");
 
                     Label.SetBinding(Label.TextProperty, "Header");
                     Image.SetBinding(CachedImage.SourceProperty, "IMGSource");
@@ -758,7 +828,7 @@ namespace NWT
                     TagBox.SetBinding(Button.WidthRequestProperty, "TagLength");
                     TagBox.SetBinding(Button.ClassIdProperty, "Tag");
 
-                    Date.SetBinding(Label.TextProperty, "DatePublished");
+                    Date.SetBinding(Label.TextProperty, "datePub");
 
                     DateBox.SetBinding(BoxView.WidthRequestProperty, "DateLength");
 
@@ -797,6 +867,7 @@ namespace NWT
                     new RowDefinition { Height = 10 },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = 10 },
 
                     },
@@ -823,17 +894,19 @@ namespace NWT
 
 
                     Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 4); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
+                    Grid.Children.Add(Box, 1, 2, 1, 5); //Boxview
+                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image  
                     Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
+                    Grid.Children.Add(CategoryBoxSmall, 1, 2, 1, 5); //Label
                     Grid.Children.Add(Label, 1, 2, 2, 3); //Label
                     Grid.Children.Add(IngressLabel, 1, 2, 3, 4);
-                    Grid.Children.Add(Shadow, 1, 2, 4, 5);
+                    Grid.Children.Add(Date, 1, 2, 4, 5);
+                    //Grid.Children.Add(WhiteShadow, 1, 2, 3, 4);
+                    Grid.Children.Add(Shadow, 1, 2, 5, 6);
 
                     Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
                     Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
-                    Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
-                    Grid.Children.Add(Date, 1, 2, 1, 2); //Tag 
+                    //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
 
                     //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
                     Grid.Children.Add(AdBox, 1, 2, 6, 7); //Boxview

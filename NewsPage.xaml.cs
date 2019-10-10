@@ -147,14 +147,20 @@ namespace NWT
             Rubrik.Text = RSS.Title.Replace("*", "-").Replace("&quot;", "'");
             //Dot.Text = "⚫";
             Ingress.Text = RSS.Description.Replace("*", "-").Replace("&quot;", "'");
-            Top.Text = "Publicerad: " + RSS.PubDate + "   "+RSS.Source;
+            string datePub = RSS.PubDate.ToString();
+
+            for (int i = 0; i < 3; i++)
+            {
+                datePub = datePub.Remove(datePub.Length - 1);
+            }
+            Top.Text = datePub + "   "+RSS.Source;
             if (RSS.Author == "Ingen Byline")
             {
                 Author.Text = "";
             } else
             {
                 Author.TextColor = Color.FromHex("#649FD4");
-                Author.Text = RSS.Author;
+                Author.Text = "Av " + RSS.Author;
             }
             Title = RSS.Category;
             
@@ -217,7 +223,7 @@ namespace NWT
                             Text = Text[TextCount].Replace("*", "-").Replace("&quot;","'"),
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 18,
+                            FontSize = 16,
                             TextColor = Color.Black,                        
                             Margin = new Thickness(0, 0, 5, 10)
                         };
@@ -235,7 +241,7 @@ namespace NWT
                             VerticalOptions = LayoutOptions.Start,
                             HorizontalTextAlignment = TextAlignment.Start,
                             VerticalTextAlignment = TextAlignment.Start,
-                            FontSize = 18,
+                            FontSize = 14,
                             TextColor = Color.Gray,
                             Margin = new Thickness(0, 10, 0, 20)
                         };

@@ -539,7 +539,7 @@ namespace NWT
                     IMG.GestureRecognizers.Add(TGR);
                     ItemsGrid.Children.Add(IMG, Column, Row);
 
-                    if (!Inventory.Contains(Item.ID) && Column != 0)
+                    if (!Inventory.Contains(Item.ID) && Column != 0 && Row != 0 && Row != 1)
                     {
                         var TGR3 = new TapGestureRecognizer()
                         {
@@ -733,6 +733,10 @@ namespace NWT
             Avatar[4] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
+        }
+        public async void Question(object sender, EventArgs e)
+        {
+            await DisplayAlert("Din Avatar", "Här kan du köpa utstyrsal till din avatar, eller pröva olika ansiksuttryck och hårstilar!", "Okay");
         }
         async void OnDismissButtonClicked(object sender, EventArgs args)
         {
