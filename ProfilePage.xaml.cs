@@ -25,15 +25,19 @@ namespace NWT
         public Image avatarHairPic;
         public Image avatarBodyPic;
         public Image avatarFacePic;
-        
 
 
+        public bool BBT = true;
 
         public ProfilePage ()
 		{
 			InitializeComponent ();
 
-         
+            
+
+            
+
+
             avatarFacePic = ProfilePictureFace;
             avatarHairPic = ProfilePictureHair;
             avatarBodyPic = ProfilePictureBody;
@@ -189,6 +193,40 @@ namespace NWT
 
         public void updateAvatar(ImageSource hair, ImageSource body, ImageSource face, ImageSource expr, ImageSource beard)
         {
+
+            var properties = App.Current.Properties;
+            if (properties.ContainsKey("avatarbodyBig"))
+            {
+                BBT = (bool)properties["avatarbodyBig"];
+            }
+
+            if (!BBT)
+            {
+                string x = face.ToString();
+                string y = x[17].ToString();
+                Console.WriteLine("Before Char Modifier:" + face);
+                if (y == "5")
+                {
+                    face = "avatar_face10";
+                }
+                else
+                {
+                    int yz = Convert.ToInt32(y);
+                    string z = (yz + 5).ToString();
+
+                    x = x.Replace(y[0], z[0]);
+
+                    x = x.Substring(6);
+
+                    Console.WriteLine("Char Modifier: " + x + " Yz: " + yz + " Z: " + z);
+
+                    face = x;
+                }
+            }
+
+
+
+
             ProfilePictureHair.Source = hair;
             ProfilePictureBody.Source = body;
             ProfilePictureFace.Source = face;

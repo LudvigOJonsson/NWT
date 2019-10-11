@@ -14,14 +14,14 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
-        
+        public bool BBT = true;
 
         public LoginPage ()
 		{
 			InitializeComponent ();
             BindingContext = this;
-
             
+
 
             var properties = App.Current.Properties;
             if (properties.ContainsKey("username"))
@@ -167,7 +167,10 @@ namespace NWT
                     {
                         properties.Add("showingress", true);
                     }
-
+                    if (!properties.ContainsKey("avatarbodyBig"))
+                    {
+                        properties.Add("avatarbodyBig", true);
+                    }
 
                     //Använd detta för att reseta en användares Tutorial
                     //App.LoggedinUser.TutorialProgress = 0; 

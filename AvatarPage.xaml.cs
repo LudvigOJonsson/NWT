@@ -18,9 +18,10 @@ namespace NWT
 
         public List<int> Inventory = new List<int>();
         public List<string> Avatar = new List<string>();
-
+        public bool BBT = true;
         public Image selectedImage;
-
+        public string CatOpen = "";
+        public string LastApl = "";
         public AvatarPage()
         {
 
@@ -33,6 +34,13 @@ namespace NWT
             SetDefaultAvatar();
 
             */
+            var properties = App.Current.Properties;
+            if (properties.ContainsKey("avatarbodyBig"))
+            {
+                BBT = (bool)properties["avatarbodyBig"];
+            }
+            
+
 
             var PP = (ProfilePage)App.Mainpage.Children[2];
 
@@ -324,18 +332,22 @@ namespace NWT
                     break;
                 case "Ct1":
                     LoadCategory("Ct1");
+                    CatOpen = "Ct1";
                     DC = App.MC;
                     break;
                 case "Ct2":
                     LoadCategory("Ct2");
+                    CatOpen = "Ct2";
                     DC = App.MC;
                     break;
                 case "Ct3":
                     LoadCategory("Ct3");
+                    CatOpen = "Ct3";
                     DC = App.MC;
                     break;
                 case "Ct4":
                     LoadCategory("Ct4");
+                    CatOpen = "Ct4";
                     DC = App.MC;
                     break;
 
@@ -446,6 +458,54 @@ namespace NWT
                 BackgroundColor = App.MC,
                 Margin = 5,
             };
+            var face6 = new Image
+            {
+                ClassId = "avatar_face6.png",
+                Source = "avatar_face6.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = App.MC,
+                Margin = 5,
+            };
+            var face7 = new Image
+            {
+                ClassId = "avatar_face7.png",
+                Source = "avatar_face7.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = App.MC,
+                Margin = 5,
+            };
+            var face8 = new Image
+            {
+                ClassId = "avatar_face8.png",
+                Source = "avatar_face8.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = App.MC,
+                Margin = 5,
+            };
+            var face9 = new Image
+            {
+                ClassId = "avatar_face9.png",
+                Source = "avatar_face9.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = App.MC,
+                Margin = 5,
+            };
+            var face10 = new Image
+            {
+                ClassId = "avatar_face10.png",
+                Source = "avatar_face10.png",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = App.MC,
+                Margin = 5,
+            };
+
+
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
 
 
             face1.GestureRecognizers.Add(TGR);
@@ -453,12 +513,23 @@ namespace NWT
             face3.GestureRecognizers.Add(TGR);
             face4.GestureRecognizers.Add(TGR);
             face5.GestureRecognizers.Add(TGR);
+            face6.GestureRecognizers.Add(TGR);
+            face7.GestureRecognizers.Add(TGR);
+            face8.GestureRecognizers.Add(TGR);
+            face9.GestureRecognizers.Add(TGR);
+            face10.GestureRecognizers.Add(TGR);
 
             ItemsGrid.Children.Add(face1, 0, 0);
             ItemsGrid.Children.Add(face2, 1, 0);
             ItemsGrid.Children.Add(face3, 2, 0);
             ItemsGrid.Children.Add(face4, 3, 0);
             ItemsGrid.Children.Add(face5, 4, 0);
+            /*
+            ItemsGrid.Children.Add(face6, 0, 1);
+            ItemsGrid.Children.Add(face7, 1, 1);
+            ItemsGrid.Children.Add(face8, 2, 1);
+            ItemsGrid.Children.Add(face9, 3, 1);
+            ItemsGrid.Children.Add(face10, 4, 1);*/
             ItemsGrid.IsVisible = true;
             Console.WriteLine("Face Loaded");
         }
@@ -603,8 +674,35 @@ namespace NWT
 
         public void UpdateAvatar()
         {
+            var face = Avatar[0];
+            if (!BBT)
+            {
+                string x = face.ToString();
+                string y = x[11].ToString();
+                Console.WriteLine("Before Char Modifier:" + face);
+                if (y == "5")
+                {
+                    face = "avatar_face10";
+                }
+                else
+                {
+                    int yz = Convert.ToInt32(y);
+                    string z = (yz + 5).ToString();
+
+                    x = x.Replace(y[0], z[0]);
+
+                    
+
+                    Console.WriteLine("Char Modifier: " + x + " Yz: " + yz + " Z: " + z);
+
+                    face = x;
+                }
+            }
+
+
+
             //Updating the display avatar
-            ProfilePictureFace.Source = Avatar[0];
+            ProfilePictureFace.Source = face;//Avatar[0];
             ProfilePictureHair.Source = Avatar[1];
             ProfilePictureBody.Source = Avatar[2];
             ProfilePictureExpr.Source = Avatar[3];
@@ -681,13 +779,17 @@ namespace NWT
         public void ChangeFace(object sender, EventArgs e)
         {
             Image image = (Image)sender;
-            ProfilePictureFace.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+
 
             Avatar[0] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
+            
+            ProfilePictureFace.Source = image.Source;
+            var PP = (ProfilePage)App.Mainpage.Children[2];
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            UpdateAvatar();
+
         }
 
         public void ChangeHair(object sender, EventArgs e)
@@ -703,14 +805,36 @@ namespace NWT
         }
         public void ChangeBody(object sender, EventArgs e)
         {
-            CachedImage image = (CachedImage)sender;
-            ProfilePictureBody.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            var properties = App.Current.Properties;
+            if (CatOpen == "Ct2" || CatOpen == "Ct4")
+            {
+                if (properties.ContainsKey("avatarbodyBig"))
+                {
+                    properties["avatarbodyBig"] = false;
+                    BBT = false;
+                }
+            }
+            else
+            {
+                if (properties.ContainsKey("avatarbodyBig"))
+                {
+                    properties["avatarbodyBig"] = true;
+                    BBT = true;
+                }
+            }
+            LastApl = CatOpen;
 
+            CachedImage image = (CachedImage)sender;
+
+           
             Avatar[2] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
+
+            UpdateAvatar();
+            ProfilePictureBody.Source = image.Source;
+            var PP = (ProfilePage)App.Mainpage.Children[2];
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
         }
         public void ChangeExpr(object sender, EventArgs e)
         {
