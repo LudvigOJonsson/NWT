@@ -41,12 +41,9 @@ namespace NWT
                 ID = Style.ID;
             }
 
-
         }
 
-
-
-    public StylePage()
+        public StylePage()
         {
 
             InitializeComponent();
@@ -64,16 +61,20 @@ namespace NWT
             StylesList = App.database.GetItemFromType("Style");
 
 
-            
-            
+
+
+            int i = 0;
             foreach (var Style in StylesList)
             {
+                i++;
                 bool Owns = false;
 
                 Console.WriteLine(StylesInventory.Count);
+
+
                 foreach (var StyleID in StylesInventory)
                 {
-                    if(Style.ID == StyleID)
+                    if(Style.ID == StyleID || i < 5)
                     {
                         Owns = true;
                         break;
@@ -88,7 +89,6 @@ namespace NWT
             }
             
             CreateListView();
-
            
 
             StyleGrid.Children.Add(StyleListView, 0, 3, 1, 2);
@@ -172,7 +172,7 @@ namespace NWT
                         HeightRequest = 20,
 
                         //ClassId = Style.ID.ToString(),
-                        Source = "icon_lock.png",
+                        Source = "icon_keyhole.png",
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                         //BackgroundColor = Color.Transparent,

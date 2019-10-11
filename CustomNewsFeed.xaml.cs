@@ -149,12 +149,8 @@ namespace NWT
                 }
                 DatePublished = NF.DatePosted;
 
-                datePub = DatePublished.ToString();
+                datePub = DatePublished.Day + "/" + DatePublished.Month + "/" + DatePublished.Year;
 
-                for(int i = 0; i < 9; i++)
-                {
-                    datePub = datePub.Remove(datePub.Length - 1);
-                }
                 DateLength = (datePub.Length * 7);
 
                 TagLength = (FirstTag.Length*7);
