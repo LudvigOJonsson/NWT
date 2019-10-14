@@ -19,13 +19,13 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-               
             </Grid.ColumnDefinitions>
 
             <Image x:Name="ProfilePictureFace" Source="avatar_face1.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
@@ -74,58 +74,20 @@
                     <TapGestureRecognizer Tapped="OpenSubMenu" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
-
-            <Grid x:Name="ItemsGrid" Grid.Row="4" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4">
-                
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-
-            </Grid>
-            
-            
-            
-            <!--
-            <Image ClassId="avatar_face1.png" Source="avatar_face1.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_face2.png" Source="avatar_face2.png" Grid.Row="2" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_face3.png" Source="avatar_face3.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_face4.png" Source="avatar_face4.png" Grid.Row="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Image ClassId="avatar_face5.png" Source="avatar_face5.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#649FD4" Margin="5">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ChangeFace" NumberOfTapsRequired="1" />
-                </Image.GestureRecognizers>
-            </Image>
--->
-
-
-
-
-
-
+            <ScrollView Grid.Row="4" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="4" >
+                <Grid x:Name="ItemsGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ScrollView>
         </Grid>
     </ContentView>
 </ContentPage>

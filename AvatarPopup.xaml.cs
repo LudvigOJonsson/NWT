@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Extensions;
+﻿using FFImageLoading.Forms;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace NWT
     {
 
         public AvatarPage avatarPage;
-        public Image buttonImage;
+        public CachedImage buttonImage;
         public int cost;
         public int idNumber;
 
@@ -24,7 +25,7 @@ namespace NWT
             InitializeComponent();
         }
 
-        public void UpdatePreview(Image button, int coinAmount, AvatarPage ap, int id, string source)
+        public void UpdatePreview(CachedImage button, int coinAmount, AvatarPage ap, int id, string source)
         {
             YesButton.Text = "Köp för " + coinAmount + " mynt";
             NoButton.BackgroundColor = App.MC;

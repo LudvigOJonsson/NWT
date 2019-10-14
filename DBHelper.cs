@@ -933,11 +933,11 @@ namespace NWT
                 "(53, 'Ledsen', 'avatar_expr3.png', 'Expr', 5, 'Expr'), " +
                 "(54, 'Glad', 'avatar_expr4.png', 'Expr', 5, 'Expr'), " +
                 "(55, 'Blinkar', 'avatar_expr5.png', 'Expr', 5, 'Expr'), " +
-                "(56, 'Kort', 'avatar_beard1.png', 'Beard', 10, 'Beard'), " +
-                "(57, 'Långt', 'avatar_beard2.png', 'Beard', 10, 'Beard'), " +
-                "(58, 'Imperial', 'avatar_beard3.png', 'Beard', 10, 'Beard'), " +
-                "(59, 'Twirl', 'avatar_beard4.png', 'Beard', 10, 'Beard'), " +
-                "(60, 'Van_Dyke', 'avatar_beard5.png', 'Beard', 10, 'Beard'), " +
+                "(56, 'Svart Helt', 'avatar_beard1.png', 'Beard', 10, 'Beard'), " +
+                "(57, 'Brunt Helt', 'avatar_beard2.png', 'Beard', 10, 'Beard'), " +
+                "(58, 'Rött Helt', 'avatar_beard3.png', 'Beard', 10, 'Beard'), " +
+                "(59, 'Grått Helt', 'avatar_beard4.png', 'Beard', 10, 'Beard'), " +
+                "(60, 'Blondt Helt', 'avatar_beard5.png', 'Beard', 10, 'Beard'), " +
                 "(61, 'Röd_Tröja', 'avatar_body11.png', 'Body', 5, 'Ct2'), " +
                 "(62, 'Blå_Tröja', 'avatar_body12.png', 'Body', 5, 'Ct2'), " +
                 "(63, 'Grön_Tröja', 'avatar_body13.png', 'Body', 5, 'Ct2'), " +
@@ -979,7 +979,97 @@ namespace NWT
                 "(99, 'Lila_Shoulder-Top', 'avatar_body49.png', 'Body', 25, 'Ct4'), " +
                 "(100, 'Svart_Shoulder-Top', 'avatar_body50.png', 'Body', 25, 'Ct4'), " +
                 "(101, 'Rustning', 'avatar_body51.png', 'Body', 50, 'Ct1'), " +
-                "(102, 'Rustning', 'avatar_body52.png', 'Body', 50, 'Ct2'); " +
+                "(102, 'Rustning', 'avatar_body52.png', 'Body', 50, 'Ct2'), " +
+                "(103, 'Svart och Kort', 'avatar_hair61.png', 'Hair', 10, 'Hair'), " +
+                "(104, 'Brunt och Kort', 'avatar_hair62.png', 'Hair', 10, 'Hair'), " +
+                "(105, 'Rött och Kort', 'avatar_hair63.png', 'Hair', 10, 'Hair'), " +
+                "(106, 'Grått och Kort', 'avatar_hair64.png', 'Hair', 10, 'Hair'), " +
+                "(107, 'Blond och Kort', 'avatar_hair65.png', 'Hair', 10, 'Hair'), " +
+                "(108, 'Svart med Keps', 'avatar_hair16.png', 'Hair', 15, 'Hat'), " +
+                "(109, 'Brunt med Keps', 'avatar_hair17.png', 'Hair', 15, 'Hat'), " +
+                "(110, 'Rött med Keps', 'avatar_hair18.png', 'Hair', 15, 'Hat'), " +
+                "(111, 'Grått med Keps', 'avatar_hair19.png', 'Hair', 15, 'Hat'), " +
+                "(112, 'Blond med Keps', 'avatar_hair20.png', 'Hair', 10, 'Hat'), " +
+                "(113, 'Svart Fauxhawk', 'avatar_hair21.png', 'Hair', 10, 'Hair'), " +
+                "(114, 'Brunt Fauxhawk', 'avatar_hair22.png', 'Hair', 10, 'Hair'), " +
+                "(115, 'Röd Fauxhawk', 'avatar_hair23.png', 'Hair', 10, 'Hair'), " +
+                "(116, 'Gray Fauxhawk', 'avatar_hair24.png', 'Hair', 10, 'Hair'), " +
+                "(117, 'Blond Fauxhawk', 'avatar_hair25.png', 'Hair', 10, 'Hair'), " +
+                "(118, 'Snitsig Svart', 'avatar_hair26.png', 'Hair', 10, 'Hair'), " +
+                "(119, 'Snitsig  Brun', 'avatar_hair27.png', 'Hair', 10, 'Hair'), " +
+                "(120, 'Snitsig  Röd', 'avatar_hair28.png', 'Hair', 10, 'Hair'), " +
+                "(121, 'Snitsig  Grå', 'avatar_hair29.png', 'Hair', 10, 'Hair'), " +
+                "(122, 'Snitsig  Blond', 'avatar_hair30.png', 'Hair', 10, 'Hair'), " +
+                "(123, 'Hästsvans Svart', 'avatar_hair31.png', 'Hair', 10, 'Hair'), " +
+                "(124, 'Hästsvans Brun', 'avatar_hair32.png', 'Hair', 10, 'Hair'), " +
+                "(125, 'Hästsvans Röd', 'avatar_hair33.png', 'Hair', 10, 'Hair'), " +
+                "(126, 'Hästsvans Grå', 'avatar_hair34.png', 'Hair', 10, 'Hair'), " +
+                "(127, 'Hästsvans Blond', 'avatar_hair35.png', 'Hair', 10, 'Hair'), " +
+                "(128, 'Lång Svart med Keps', 'avatar_hair36.png', 'Hair', 15, 'Hat'), " +
+                "(129, 'Lång Brun med Keps', 'avatar_hair37.png', 'Hair', 15, 'Hat'), " +
+                "(130, 'Lång Röd med Keps', 'avatar_hair38.png', 'Hair', 15, 'Hat'), " +
+                "(131, 'Lång Grå med Keps', 'avatar_hair39.png', 'Hair', 15, 'Hat'), " +
+                "(132, 'Lång Blond med Keps', 'avatar_hair40.png', 'Hair', 15, 'Hat'), " +
+                "(133, 'Sidan Svart', 'avatar_hair41.png', 'Hair', 10, 'Hair'), " +
+                "(134, 'Sidan Brun', 'avatar_hair42.png', 'Hair', 10, 'Hair'), " +
+                "(135, 'Sidan Röd', 'avatar_hair43.png', 'Hair', 10, 'Hair'), " +
+                "(136, 'Sidan Grå', 'avatar_hair44.png', 'Hair', 10, 'Hair'), " +
+                "(137, 'Sidan Blond', 'avatar_hair45.png', 'Hair', 10, 'Hair'), " +
+                "(138, 'Spikig Svart', 'avatar_hair46.png', 'Hair', 10, 'Hair'), " +
+                "(139, 'Spikig Brun', 'avatar_hair47.png', 'Hair', 10, 'Hair'), " +
+                "(140, 'Spikig Röd', 'avatar_hair48.png', 'Hair', 10, 'Hair'), " +
+                "(141, 'Spikig Grå', 'avatar_hair49.png', 'Hair', 10, 'Hair'), " +
+                "(142, 'Spikig Blond', 'avatar_hair50.png', 'Hair', 10, 'Hair'), " +
+                "(143, 'Vågig Svart', 'avatar_hair51.png', 'Hair', 10, 'Hair'), " +
+                "(144, 'Vågig Brun', 'avatar_hair52.png', 'Hair', 10, 'Hair'), " +
+                "(145, 'Vågig Röd', 'avatar_hair53.png', 'Hair', 10, 'Hair'), " +
+                "(146, 'Vågig Grå', 'avatar_hair54.png', 'Hair', 10, 'Hair'), " +
+                "(147, 'Vågig Blond', 'avatar_hair55.png', 'Hair', 10, 'Hair'), " +
+                "(148, 'Ordentlig Svart', 'avatar_hair56.png', 'Hair', 10, 'Hair'), " +
+                "(149, 'Ordentlig Brun', 'avatar_hair57.png', 'Hair', 10, 'Hair'), " +
+                "(150, 'Ordentlig Röd', 'avatar_hair58.png', 'Hair', 10, 'Hair'), " +
+                "(151, 'Ordentlig Grå', 'avatar_hair59.png', 'Hair', 10, 'Hair'), " +
+                "(152, 'Ordentlig Blond', 'avatar_hair60.png', 'Hair', 10, 'Hair'), " +
+                "(153, 'Svart Goatee', 'avatar_beard6.png', 'Beard', 10, 'Beard'), " +
+                "(154, 'Brun Goatee', 'avatar_beard7.png', 'Beard', 10, 'Beard'), " +
+                "(155, 'Röd Goatee', 'avatar_beard8.png', 'Beard', 10, 'Beard'), " +
+                "(156, 'Grå Goatee', 'avatar_beard9.png', 'Beard', 10, 'Beard'), " +
+                "(157, 'Blond Goatee', 'avatar_beard10.png', 'Beard', 10, 'Beard'), " +
+                "(158, 'Svart Anchor', 'avatar_beard11.png', 'Beard', 10, 'Beard'), " +
+                "(159, 'Svart Anchor', 'avatar_beard12.png', 'Beard', 10, 'Beard'), " +
+                "(160, 'Röd Anchor', 'avatar_beard13.png', 'Beard', 10, 'Beard'), " +
+                "(161, 'Grå Anchor', 'avatar_beard14.png', 'Beard', 10, 'Beard'), " +
+                "(162, 'Blond Anchor', 'avatar_beard15.png', 'Beard', 10, 'Beard'), " +
+                "(163, 'Svart After Eight', 'avatar_beard16.png', 'Beard', 10, 'Beard'), " +
+                "(164, 'Brun After Eight', 'avatar_beard17.png', 'Beard', 10, 'Beard'), " +
+                "(165, 'Röd After Eight', 'avatar_beard18.png', 'Beard', 10, 'Beard'), " +
+                "(166, 'Grå After Eight', 'avatar_beard19.png', 'Beard', 10, 'Beard'), " +
+                "(167, 'Blond After Eight', 'avatar_beard20.png', 'Beard', 10, 'Beard'), " +
+                "(168, 'Svart Connoisseur', 'avatar_beard21.png', 'Beard', 10, 'Beard'), " +
+                "(169, 'Brun Connoisseur', 'avatar_beard22.png', 'Beard', 10, 'Beard'), " +
+                "(170, 'Röd Connoisseur', 'avatar_beard23.png', 'Beard', 10, 'Beard'), " +
+                "(171, 'Grå Connoisseur', 'avatar_beard24.png', 'Beard', 10, 'Beard'), " +
+                "(172, 'Blond Connoisseur', 'avatar_beard25.png', 'Beard', 10, 'Beard'), " +
+                "(173, 'Svart Fancy', 'avatar_beard26.png', 'Beard', 20, 'Beard'), " +
+                "(174, 'Brun Fancy', 'avatar_beard27.png', 'Beard', 20, 'Beard'), " +
+                "(175, 'Röd Fancy', 'avatar_beard28.png', 'Beard', 20, 'Beard'), " +
+                "(176, 'Grå Fancy', 'avatar_beard29.png', 'Beard', 20, 'Beard'), " +
+                "(177, 'Blond Fancy', 'avatar_beard30.png', 'Beard', 20, 'Beard'), " +
+                "(178, 'Svart The Regent', 'avatar_beard31.png', 'Beard', 10, 'Beard'), " +
+                "(179, 'Brun The Regent', 'avatar_beard32.png', 'Beard', 10, 'Beard'), " +
+                "(180, 'Röd The Regent', 'avatar_beard33.png', 'Beard', 10, 'Beard'), " +
+                "(181, 'Grå The Regent', 'avatar_beard34.png', 'Beard', 10, 'Beard'), " +
+                "(182, 'Blond The Regent', 'avatar_beard35.png', 'Beard', 10, 'Beard'), " +
+                "(183, 'Svart Tjock Fancy', 'avatar_beard36.png', 'Beard', 20, 'Beard'), " +
+                "(184, 'Brun Tjock Fancy', 'avatar_beard37.png', 'Beard', 20, 'Beard'), " +
+                "(185, 'Röd Tjock Fancy', 'avatar_beard38.png', 'Beard', 20, 'Beard'), " +
+                "(186, 'Grå Tjock Fancy', 'avatar_beard39.png', 'Beard', 20, 'Beard'), " +
+                "(187, 'Blond Tjock Fancy', 'avatar_beard40.png', 'Beard', 20, 'Beard'), " +
+                "(189, 'Svart Brett', 'avatar_beard41.png', 'Beard', 20, 'Beard'), " +
+                "(190, 'Brun Brett', 'avatar_beard42.png', 'Beard', 20, 'Beard'), " +
+                "(191, 'Röd Brett', 'avatar_beard43.png', 'Beard', 20, 'Beard'), " +
+                "(192, 'Grå Brett', 'avatar_beard44.png', 'Beard', 20, 'Beard'), " +
+                "(193, 'Blond Brett', 'avatar_beard45.png', 'Beard', 20, 'Beard'); " +
              "");
         }
         public static string TCP(string JSON)
