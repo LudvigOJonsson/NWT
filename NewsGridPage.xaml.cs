@@ -502,7 +502,7 @@ namespace NWT
                     TagBox.SetBinding(Button.IsVisibleProperty, "TagVisible");
                     TagBox.SetBinding(BoxView.WidthRequestProperty, "TagLength");
 
-                    Date.SetBinding(Label.TextProperty, "DatePublished");
+                    Date.SetBinding(Label.TextProperty, "datePub");
                     Date.SetBinding(Label.IsVisibleProperty, "IsNormalfeed");
                     DateBox.SetBinding(BoxView.IsVisibleProperty, "IsNormalfeed");
                     DateBox.SetBinding(BoxView.WidthRequestProperty, "DateLength");

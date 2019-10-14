@@ -450,12 +450,14 @@ namespace NWT
             Image image2 = ProfilePictureHair;
             Image image3 = ProfilePictureBody;
             Image image4 = ProfilePictureExpr;
+            Image image5 = ProfilePictureBeard;
             ButtonLock();
 
             AnimateButton(null, image1, null);
             AnimateButton(null, image2, null);
             AnimateButton(null, image3, null);
             AnimateButton(null, image4, null);
+            AnimateButton(null, image5, null);
             await image1.FadeTo(0.9f, 100);
             await image1.FadeTo(1f, 100);
 

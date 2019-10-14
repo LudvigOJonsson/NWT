@@ -300,8 +300,8 @@ namespace NWT
 
             var face1 = new Image
             {
-                ClassId = "avatar_face1.png",
-                Source = "avatar_face1.png",
+                ClassId = "avatar_face2.png",
+                Source = "avatar_face2.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = App.MC,
@@ -309,8 +309,8 @@ namespace NWT
             };
             var face2 = new Image
             {
-                ClassId = "avatar_face2.png",
-                Source = "avatar_face2.png",
+                ClassId = "avatar_face5.png",
+                Source = "avatar_face5.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = App.MC,
@@ -327,8 +327,8 @@ namespace NWT
             };
             var face4 = new Image
             {
-                ClassId = "avatar_face4.png",
-                Source = "avatar_face4.png",
+                ClassId = "avatar_face1.png",
+                Source = "avatar_face1.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = App.MC,
@@ -336,8 +336,8 @@ namespace NWT
             };
             var face5 = new Image
             {
-                ClassId = "avatar_face5.png",
-                Source = "avatar_face5.png",
+                ClassId = "avatar_face4.png",
+                Source = "avatar_face4.png",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = App.MC,
@@ -407,8 +407,8 @@ namespace NWT
             ItemsGrid.Children.Add(face1, 0, 0);
             ItemsGrid.Children.Add(face2, 1, 0);
             ItemsGrid.Children.Add(face3, 2, 0);
-            ItemsGrid.Children.Add(face4, 0, 1);
-            ItemsGrid.Children.Add(face5, 1, 1);
+            ItemsGrid.Children.Add(face4, 3, 0);
+            ItemsGrid.Children.Add(face5, 0, 1);
             /*
             ItemsGrid.Children.Add(face6, 0, 1);
             ItemsGrid.Children.Add(face7, 1, 1);
@@ -426,7 +426,7 @@ namespace NWT
 
             var ItemList = App.database.GetItemFromCategory(cat);
             ItemsGrid.RowDefinitions.Clear();
-            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90 });
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 85 });
             foreach (var Item in ItemList)
             {
                 if(Item.InventorySlot != "Style")
@@ -434,7 +434,7 @@ namespace NWT
                     if(Column == 4)
                     {
                         Column = 0;
-                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90});
+                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 85});
                         Row++;
                         
                     }
@@ -445,7 +445,7 @@ namespace NWT
                         HorizontalOptions = LayoutOptions.Center, 
                         VerticalOptions = LayoutOptions.Fill, 
                         BackgroundColor = App.MC,
-                        Margin = 5,
+                        Margin = 2,
                         CacheDuration = TimeSpan.FromDays(14),
                         DownsampleToViewSize = true,
                         RetryCount = 1,
@@ -662,19 +662,28 @@ namespace NWT
                 }
             }*/
         }
-        public void UnlockForReal(CachedImage button, int id, int cost)
+        public async void UnlockForReal(CachedImage button, int id, int cost)
         {
+            if (App.LoggedinUser.Plustokens >= cost)
+            {
+
+                var item = App.database.GetItemFromID(id).First();
+
+                //Unlocks item
+                button.IsEnabled = false;
+                button.IsVisible = false;
+                App.database.Plustoken(App.LoggedinUser, -cost);
+                Inventory.Add(Convert.ToInt32(id));
+
+                App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
+                App.database.UpdateAvatarItems(App.LoggedinUser);
+
+            }
+            else
+            {
+                await DisplayAlert("", "Inte tillräckligt mynt. Du har bara " + App.LoggedinUser.Plustokens + ". Du behöver " + (cost - App.LoggedinUser.Plustokens) + " mynt till.", "Okej.");
+            }
             
-            var item = App.database.GetItemFromID(id).First();
-
-            //Unlocks item
-            button.IsEnabled = false;
-            button.IsVisible = false;
-            App.database.Plustoken(App.LoggedinUser, -cost);
-            Inventory.Add(Convert.ToInt32(id));
-
-            App.LoggedinUser.Inventory = JsonConvert.SerializeObject(Inventory);
-            App.database.UpdateAvatarItems(App.LoggedinUser);
         }
 
         public void ChangeFace(object sender, EventArgs e)
