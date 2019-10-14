@@ -281,7 +281,8 @@ namespace NWT
         void LoadFace()
         {
             ItemsGrid.RowDefinitions.Clear();
-            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60 });
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90 });
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90 });
             Console.WriteLine("Loading Face");
             var TGR = new TapGestureRecognizer()
             {
@@ -406,8 +407,8 @@ namespace NWT
             ItemsGrid.Children.Add(face1, 0, 0);
             ItemsGrid.Children.Add(face2, 1, 0);
             ItemsGrid.Children.Add(face3, 2, 0);
-            ItemsGrid.Children.Add(face4, 3, 0);
-            ItemsGrid.Children.Add(face5, 4, 0);
+            ItemsGrid.Children.Add(face4, 0, 1);
+            ItemsGrid.Children.Add(face5, 1, 1);
             /*
             ItemsGrid.Children.Add(face6, 0, 1);
             ItemsGrid.Children.Add(face7, 1, 1);
@@ -425,15 +426,15 @@ namespace NWT
 
             var ItemList = App.database.GetItemFromCategory(cat);
             ItemsGrid.RowDefinitions.Clear();
-            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60 });
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90 });
             foreach (var Item in ItemList)
             {
                 if(Item.InventorySlot != "Style")
                 { 
-                    if(Column == 5)
+                    if(Column == 4)
                     {
                         Column = 0;
-                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60});
+                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 90});
                         Row++;
                         
                     }
