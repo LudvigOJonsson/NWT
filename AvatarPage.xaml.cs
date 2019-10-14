@@ -22,6 +22,9 @@ namespace NWT
         public Image selectedImage;
         public string CatOpen = "";
         public string LastApl = "";
+
+        public string ActualFace = "";
+
         public AvatarPage()
         {
 
@@ -69,126 +72,6 @@ namespace NWT
             Option2.BackgroundColor = App.MC;
             Option3.BackgroundColor = App.MC;
             Option4.BackgroundColor = App.MC;
-
-            var ItemList = App.database.GetAllItems();
-
-            var Row = 3;
-            var Column = 0;
-            /*
-            foreach(var Item in ItemList)
-            {
-                if(Item.InventorySlot != "Style" && Item.InventorySlot != "Expr" && Item.InventorySlot != "Beard")
-                { 
-                    if(Column == 5)
-                    {
-                        Column = 0;
-                        Row++;
-                        
-                    }
-                    var IMG = new CachedImage
-                    {
-                        ClassId = Item.ImagePath,
-                        Source = Item.ImagePath,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand, 
-                        VerticalOptions = LayoutOptions.CenterAndExpand, 
-                        BackgroundColor = Color.FromHex("#649FD4") ,
-                        Margin = 5,
-                        CacheDuration = TimeSpan.FromDays(14),
-                        DownsampleToViewSize = false,
-                        RetryCount = 1,
-                        RetryDelay = 250,
-                        BitmapOptimizations = false,
-                        LoadingPlaceholder = "",
-                        ErrorPlaceholder = "failed_load.png",
-                    };
-
-                    var TGR = new TapGestureRecognizer()
-                    {
-                        NumberOfTapsRequired = 1
-                    };
-                    if (Item.InventorySlot == "Hair")
-                    {
-
-                        TGR.Tapped += (s, e) => {
-                            IsEnabled = false;
-                            ChangeHair(s, e);
-                            IsEnabled = true;
-                        };
-                    }
-                    else if (Item.InventorySlot == "Body")
-                    {
-                        TGR.Tapped += (s, e) => {
-                            IsEnabled = false;
-                            ChangeBody(s, e);
-                            IsEnabled = true;
-                        };
-                    }
-                    IMG.GestureRecognizers.Add(TGR);
-                    AvatarButtonsGrid.Children.Add(IMG, Column, Row);
-
-                    if (!Inventory.Contains(Item.ID) && Column != 0)
-                    {
-                        var TGR3 = new TapGestureRecognizer()
-                        {
-                            NumberOfTapsRequired = 1
-                        };
-
-                        var TGR2 = new TapGestureRecognizer()
-                        {
-                            NumberOfTapsRequired = 1
-                        };
-
-                        var IMG3 = new Image
-                        {
-                            ClassId = Item.ID.ToString(),
-                            Source = "",
-                            HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,
-                            BackgroundColor = Color.Transparent,
-                            Margin = 0
-
-                        };
-
-                        TGR3.Tapped += (s, e) => {
-                            IsEnabled = false;
-                            UnlockComponent(s, e);
-                            IsEnabled = true;
-                        };
-
-                        IMG3.GestureRecognizers.Add(TGR2);
-
-                        var IMG2 = new Image
-                        {
-                            ClassId = Item.ID.ToString(),
-                            Source = "Icon_Keyhole2.png",
-                            HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,
-                            BackgroundColor = Color.Transparent,
-                            Margin = 0
-
-                        };
-
-                        TGR2.Tapped += (s, e) => {
-                            IsEnabled = false;
-                            UnlockComponent(s, e);
-                            IsEnabled = true;
-                        };
-
-                        IMG2.GestureRecognizers.Add(TGR2);
-
-                        AvatarButtonsGrid.Children.Add(IMG3, Column, Row);
-                        AvatarButtonsGrid.Children.Add(IMG2, Column, Row);
-                    }
-
-
-
-
-                    Column++;
-                }
-            }
-            */
-
-
 
         }
 
@@ -397,7 +280,8 @@ namespace NWT
 
         void LoadFace()
         {
-            
+            ItemsGrid.RowDefinitions.Clear();
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60 });
             Console.WriteLine("Loading Face");
             var TGR = new TapGestureRecognizer()
             {
@@ -505,7 +389,7 @@ namespace NWT
             };
 
 
-            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            
 
 
             face1.GestureRecognizers.Add(TGR);
@@ -541,7 +425,7 @@ namespace NWT
 
             var ItemList = App.database.GetItemFromCategory(cat);
             ItemsGrid.RowDefinitions.Clear();
-            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60 });
             foreach (var Item in ItemList)
             {
                 if(Item.InventorySlot != "Style")
@@ -549,7 +433,7 @@ namespace NWT
                     if(Column == 5)
                     {
                         Column = 0;
-                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star});
+                        ItemsGrid.RowDefinitions.Add(new RowDefinition { Height = 60});
                         Row++;
                         
                     }
@@ -557,15 +441,15 @@ namespace NWT
                     {
                         ClassId = Item.ImagePath,
                         Source = Item.ImagePath,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand, 
-                        VerticalOptions = LayoutOptions.CenterAndExpand, 
+                        HorizontalOptions = LayoutOptions.Center, 
+                        VerticalOptions = LayoutOptions.Fill, 
                         BackgroundColor = App.MC,
                         Margin = 5,
                         CacheDuration = TimeSpan.FromDays(14),
-                        DownsampleToViewSize = false,
+                        DownsampleToViewSize = true,
                         RetryCount = 1,
                         RetryDelay = 250,
-                        BitmapOptimizations = false,
+                        BitmapOptimizations = true,
                         LoadingPlaceholder = "",
                         ErrorPlaceholder = "failed_load.png",
                     };
@@ -622,14 +506,21 @@ namespace NWT
                             NumberOfTapsRequired = 1
                         };
 
-                        var IMG3 = new Image
+                        var IMG3 = new CachedImage
                         {
                             ClassId = Item.ID.ToString(),
                             Source = "",
-                            HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,  
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Fill,  
                             BackgroundColor = Color.Transparent,
-                            Margin = 0
+                            Margin = 0,
+                            CacheDuration = TimeSpan.FromDays(14),
+                            DownsampleToViewSize = true,
+                            RetryCount = 1,
+                            RetryDelay = 250,
+                            BitmapOptimizations = true,
+                            LoadingPlaceholder = "",
+                            ErrorPlaceholder = "failed_load.png",
 
                         };
 
@@ -641,14 +532,21 @@ namespace NWT
 
                         IMG3.GestureRecognizers.Add(TGR2);
 
-                        var IMG2 = new Image
+                        var IMG2 = new CachedImage
                         {
                             ClassId = Item.ID.ToString(),
                             Source = "Icon_Keyhole2.png",
-                            HorizontalOptions = LayoutOptions.CenterAndExpand,
-                            VerticalOptions = LayoutOptions.CenterAndExpand,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Fill,
                             BackgroundColor = Color.Transparent,
-                            Margin = 0
+                            Margin = 0,
+                            CacheDuration = TimeSpan.FromDays(14),
+                            DownsampleToViewSize = true,
+                            RetryCount = 1,
+                            RetryDelay = 250,
+                            BitmapOptimizations = true,
+                            LoadingPlaceholder = "",
+                            ErrorPlaceholder = "failed_load.png",
 
                         };
 
@@ -664,9 +562,6 @@ namespace NWT
                         ItemsGrid.Children.Add(IMG2, Column, Row);
                     }
 
-
-
-
                     Column++;
                 }
             }
@@ -675,6 +570,7 @@ namespace NWT
         public void UpdateAvatar()
         {
             var face = Avatar[0];
+            ActualFace = face;
             if (!BBT)
             {
                 string x = face.ToString();
@@ -737,7 +633,7 @@ namespace NWT
 
         async void UnlockComponent(object sender, EventArgs e)
         {
-            var Button = (Image)sender;
+            var Button = (CachedImage)sender;
             var id = Convert.ToInt32(Button.ClassId);
             var item = App.database.GetItemFromID(id).First();
             int tokenNumber = item.Price;
@@ -761,7 +657,7 @@ namespace NWT
                 }
             }*/
         }
-        public void UnlockForReal(Image button, int id, int cost)
+        public void UnlockForReal(CachedImage button, int id, int cost)
         {
             
             var item = App.database.GetItemFromID(id).First();
@@ -797,7 +693,7 @@ namespace NWT
             CachedImage image = (CachedImage)sender;
             ProfilePictureHair.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
 
             Avatar[1] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
@@ -831,17 +727,18 @@ namespace NWT
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
 
-            UpdateAvatar();
+            
             ProfilePictureBody.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            UpdateAvatar();
         }
         public void ChangeExpr(object sender, EventArgs e)
         {
             CachedImage image = (CachedImage)sender;
             ProfilePictureExpr.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
 
             Avatar[3] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
@@ -852,7 +749,7 @@ namespace NWT
             CachedImage image = (CachedImage)sender;
             ProfilePictureBeard.Source = image.Source;
             var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ProfilePictureFace.Source, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
 
             Avatar[4] = image.ClassId;
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
