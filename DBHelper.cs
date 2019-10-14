@@ -487,7 +487,7 @@ namespace NWT
                 {
 
 
-                    App.LS.LoadingText.Text = "Laddar in Dina Val, Hämtar nyheter ifrån servern: " + x + "/"+(stop+20)+" artiklar inladdade";
+                    App.LS.LoadingText.Text = "Laddar in Dina Val. " + x + " artiklar inladdade.";
 
                 });
                 
@@ -635,7 +635,7 @@ namespace NWT
                 {
 
 
-                    App.LS.LoadingText.Text = "Laddar in det samlade Nyhetsflödet, Hämtar nyheter ifrån servern: " + x + "/20 artiklar inladdade";
+                    App.LS.LoadingText.Text = "Laddar in det samlade Nyhetsflödet. " + x + " artiklar inladdade.";
 
 
                 });

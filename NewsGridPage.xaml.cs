@@ -148,13 +148,9 @@ namespace NWT
 
 
                 DatePublished = NF.DatePosted;
+                
+                datePub = DatePublished.Day + "/" + DatePublished.Month + "/" + DatePublished.Year;
 
-                datePub = DatePublished.ToString();
-
-                for (int i = 0; i < 9; i++)
-                {
-                    datePub = datePub.Remove(datePub.Length - 1);
-                }
                 DateLength = (datePub.Length * 7);
 
                 Full = true;
@@ -894,7 +890,7 @@ namespace NWT
                 i++;
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    App.LS.LoadingText.Text = "Laddar in Dina Val, Skapar Nyhetslistan: " + i + " Artiklar Skapade";
+                    App.LS.LoadingText.Text = "Skapar Nyhetslistan. " + i + " Artiklar Skapade.";
                 });
                 
             }

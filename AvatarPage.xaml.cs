@@ -494,7 +494,11 @@ namespace NWT
                     IMG.GestureRecognizers.Add(TGR);
                     ItemsGrid.Children.Add(IMG, Column, Row);
 
-                    if (!Inventory.Contains(Item.ID) && Column != 0 && Row != 0 && Row != 1)
+                    if (Row == 0 && Column == 0)
+                    {
+
+                    }
+                    else if (!Inventory.Contains(Item.ID))
                     {
                         var TGR3 = new TapGestureRecognizer()
                         {
@@ -747,11 +751,21 @@ namespace NWT
         public void ChangeBeard(object sender, EventArgs e)
         {
             CachedImage image = (CachedImage)sender;
-            ProfilePictureBeard.Source = image.Source;
-            var PP = (ProfilePage)App.Mainpage.Children[2];
-            PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+            if (ProfilePictureBeard.Source == image.Source)
+            {
+                ProfilePictureBeard.Source = "";
+                var PP = (ProfilePage)App.Mainpage.Children[2];
+                PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+                Avatar[4] = "";
+            } else
+            {
+                ProfilePictureBeard.Source = image.Source;
+                var PP = (ProfilePage)App.Mainpage.Children[2];
+                PP.updateAvatar(ProfilePictureHair.Source, ProfilePictureBody.Source, ActualFace, ProfilePictureExpr.Source, ProfilePictureBeard.Source);
+                Avatar[4] = image.ClassId;
+            }
 
-            Avatar[4] = image.ClassId;
+
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);
             App.database.UpdateAvatarItems(App.LoggedinUser);
         }
