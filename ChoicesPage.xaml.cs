@@ -23,11 +23,12 @@ namespace NWT
         public List<string> Authors = new List<string>();
 
         public static TapGestureRecognizer TGR = new TapGestureRecognizer();
+        public static TapGestureRecognizer TGRAll = new TapGestureRecognizer();
 
-        
 
 
-           int Rownr = 1;
+
+        int Rownr = 1;
 
         public ChoicesPage()
         {
@@ -42,7 +43,14 @@ namespace NWT
                 IsEnabled = true;
             };
 
-             
+            TGRAll.NumberOfTapsRequired = 1;
+            TGRAll.Tapped += (s, e) => {
+                IsEnabled = false;
+                AllNews(s, e);
+                IsEnabled = true;
+            };
+
+
 
         }
 
@@ -91,6 +99,12 @@ namespace NWT
             }
         }
         public void SetTags(){
+            Rownr = 1;
+            NewsGridOri.RowDefinitions.Clear();
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 60 });
+            //Reassign Infotext
+            NewsGridOri.Children.Add(ChoiceLabel, 1, 8, 0, 1);
+            MakeAllButton("",0);
 
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
             Categories = TagList[0];
@@ -116,23 +130,47 @@ namespace NWT
 
         public void MakeButton(string s, int Type)
         {
-            var Box = new Subject(s,Type);
+            var Box = new Subject(s, Type);
 
 
-            
-
-           
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 5 });
-                NewsGridOri.Children.Add(Box.Box, 1, 7, Rownr, Rownr + 1); //Boxview
-                NewsGridOri.Children.Add(Box.Label, 1, 7, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
-                NewsGridOri.Children.Add(Box.TrashImage, 7, 8, Rownr, Rownr + 1); //Boxview
-
-           
 
 
-            
+
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 5 });
+            NewsGridOri.Children.Add(Box.Box, 2, 7, Rownr, Rownr + 1); //Boxview
+            NewsGridOri.Children.Add(Box.Label, 2, 7, Rownr, Rownr + 1); //Label
+                                                                         //NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
+            NewsGridOri.Children.Add(Box.TrashImage, 6, 7, Rownr, Rownr + 1); //Boxview
+
+
+
+
+
+
+
+            Rownr++;
+            Rownr++;
+        }
+        public void MakeAllButton(string s, int Type)
+        {
+            var Box = new Subject("Alla Nyheter", Type);
+
+
+
+
+
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 5 });
+            NewsGridOri.Children.Add(Box.AllBox, 2, 7, Rownr, Rownr + 1); //Boxview
+            NewsGridOri.Children.Add(Box.Label, 2, 7, Rownr, Rownr + 1); //Label
+                                                                         //NewsGridOri.Children.Add(Box.BellImage, 6, 7, Rownr, Rownr + 1); //Label
+            //NewsGridOri.Children.Add(Box.TrashImage, 6, 7, Rownr, Rownr + 1); //Boxview
+
+
+
+
+
 
 
             Rownr++;
@@ -205,6 +243,7 @@ namespace NWT
     public class Subject
         {
             public Button Box = new Button { };
+            public Button AllBox = new Button { };
             public Label Label = new Label { };
             public Image TrashImage = new Image { };
             public Image BellImage = new Image { };
@@ -226,10 +265,17 @@ namespace NWT
 
                 Box = new Button
                 {
-                    BackgroundColor = Color.FromHex("#f2f2f2"),
+                    BackgroundColor = Color.White,
                     ClassId = s,
                     HeightRequest = 30
                 };
+                AllBox = new Button
+                {
+                    BackgroundColor = Color.White,
+                    ClassId = s,
+                    HeightRequest = 30
+                };
+                AllBox.Clicked += App.SideMenu.AllNews;
 
                 if (Type == 0)
                 {
@@ -332,6 +378,13 @@ namespace NWT
             Filter = "";
             Author = "";
             Tag = "";
+        }
+
+        public void AllNews(object sender, EventArgs e)
+        {
+            Clear(sender, e);
+            PrintNews(sender, e);
+            //App.Startpage.IsPresented = false;
         }
 
 

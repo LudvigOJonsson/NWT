@@ -29,18 +29,26 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <ScrollView Grid.Row="0" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="3">
+                <ScrollView Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Grid.ColumnSpan="3">
                     <Grid x:Name="NewsGridOri" RowSpacing="0" ColumnSpacing="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="1" />
                         </Grid.ColumnDefinitions>
 
+                        <Label x:Name="ChoiceLabel" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="7" Text="Välj ett ämne att visa i Mina Val" TextColor="Black" FontSize="18" Margin="5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
 
 
