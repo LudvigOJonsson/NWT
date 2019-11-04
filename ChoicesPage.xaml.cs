@@ -106,6 +106,12 @@ namespace NWT
             NewsGridOri.Children.Add(ChoiceLabel, 1, 8, 0, 1);
             MakeAllButton("",0);
 
+            
+
+            NewsGridOri.RowDefinitions.Clear();
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+            
+
             var TagList = JsonConvert.DeserializeObject<List<List<string>>>(App.LoggedinUser.TaggString);
             Categories = TagList[0];
             Tags = TagList[1];
@@ -219,7 +225,7 @@ namespace NWT
                 CNP.TagsModified = true;
 
 
-                await System.Threading.Tasks.Task.Delay(1000);
+                await System.Threading.Tasks.Task.Delay(10);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
@@ -437,7 +443,7 @@ namespace NWT
                 if (Tag != "")
                     Page.ChangeName(Tag);
 
-                await System.Threading.Tasks.Task.Delay(1000);
+                await System.Threading.Tasks.Task.Delay(10);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");

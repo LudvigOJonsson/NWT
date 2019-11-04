@@ -112,6 +112,8 @@ namespace NWT
                     {
                         INGHR = IH * 3;
                     }
+
+                    /*
                     //If the ingress is more than X characters, then shorten it until it's not.
                     while (Ingress.Length > 120)
                     {
@@ -126,7 +128,7 @@ namespace NWT
                     /*string[] words = Ingress.Split(' ');
                     string myLastWord = words[words.Length - 1];
                     int wordIndex = Ingress.IndexOf(myLastWord);
-                    Ingress.Remove(wordIndex);*/
+                    Ingress.Remove(wordIndex);
 
                     if (Ingress.EndsWith(" "))
                         Ingress = Ingress.Remove(Ingress.Length - 1);
@@ -136,7 +138,7 @@ namespace NWT
                         Ingress = Ingress.Remove(Ingress.Length - 1);
                     if (Ingress.EndsWith("."))
                         Ingress = Ingress.Remove(Ingress.Length - 1);
-
+                    */
                     Ingress = "● " + Ingress + "...";
                     /*
                     if (Ingress.Length < 80)
@@ -338,7 +340,7 @@ namespace NWT
 
                     Button Box = new Button
                     {
-                        BackgroundColor = Color.White,
+                        BackgroundColor = Color.Transparent,
                         WidthRequest = IMGXC,
                         //HeightRequest = Image.HeightRequest + Label.HeightRequest,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -718,7 +720,7 @@ namespace NWT
 
 
 
-                await System.Threading.Tasks.Task.Delay(1000);
+                await System.Threading.Tasks.Task.Delay(10);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");                   
@@ -755,7 +757,11 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            App.database.LoadNF(Loadnr, (Loadnr + DBLN),Filter, Author , Tag);
+            var AL = App.database.BatchLoadNF(Loadnr, (Loadnr + DBLN),Filter, Author , Tag);
+            if (AL == 0)
+            {
+                AL = App.database.LoadNF(Loadnr, (Loadnr + DBLN), Filter, Author, Tag);
+            }
             Loadnr += DBLN;
 
         }
@@ -969,7 +975,7 @@ namespace NWT
                 GC.Collect();
 
                 
-                await System.Threading.Tasks.Task.Delay(1000);
+                await System.Threading.Tasks.Task.Delay(10);
                 Device.BeginInvokeOnMainThread(async() =>
                 {
                     Console.WriteLine("Initiering Klar");

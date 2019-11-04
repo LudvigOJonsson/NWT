@@ -435,7 +435,7 @@ namespace NWT
 
             for (int x = start; x < stop; x++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     while (ComLock)
                     {
@@ -496,6 +496,79 @@ namespace NWT
             }
             return Nr;
         }
+        public int BatchLoadNF(int start, int stop, string Filter, string Author, string Tag)
+        {
+            int Nr = 0;
+
+            int BS = stop - start;
+
+            
+                for (int i = 0; i < 5; i++)
+                {
+                    while (ComLock)
+                    {
+
+                    };
+                    ComLock = true;
+                    string JSONResult = "";
+                    if ((Filter == "" || Filter == "All" && Filter != null) && (Author == "" || Author == "All" && Filter != null) && (Tag == "" || Tag == "All" && Tag != null))
+                    {
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT "+BS+" OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (stop).ToString(), -1)));
+                        Console.WriteLine("No Filter");
+                    }
+                    else
+                    {
+
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed Where Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%' LIMIT " + BS + " OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE Category LIKE '%" + Filter + "%' AND Author LIKE '%" + Author + "%' AND Tag LIKE '%" + Tag + "%') - " + (stop).ToString(), -1)));
+                        Console.WriteLine("Filter");
+                    }
+                    //Console.WriteLine(JSONResult.Length);
+                    ComLock = false;
+
+                    if (JSONResult != "No")
+                    {
+
+                        //Console.WriteLine("JSON Object Found");
+                        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+                        //Console.WriteLine(Result.JSON);
+                        if (Result.JSON == "[]")
+                        {
+                            break;
+                        }
+
+                        var ArticleList = JsonConvert.DeserializeObject<List<NewsfeedTable>>(Result.JSON);
+
+                        foreach (NewsfeedTable Article in ArticleList)
+                        {
+                            DB.Insert(Article);
+                        }
+                        //Console.WriteLine("JSON Deserialized");
+                        
+                        //Console.WriteLine("Article Inserted");
+                        break;
+                    }
+                    else
+                    {
+
+                        //ParseRssFile();
+                        //App.Online = false;
+
+                    }
+                }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
+                    App.LS.LoadingText.Text = "Laddar in Dina Val. Artiklar inladdade.";
+
+                });
+
+
+                Nr = stop;
+            
+            return Nr;
+        }
         public int LoadCNF(int start, int stop, List<string> Filter_, List<string> Author_, List<string> Tag_)
         {
             int Nr = 0;
@@ -504,7 +577,7 @@ namespace NWT
 
             for (int x = start; x < stop; x++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     while (ComLock)
                     {
@@ -642,6 +715,157 @@ namespace NWT
                 
                 Nr = x;
             }
+            return Nr;
+        }
+
+        public int BatchLoadCNF(int start, int stop, List<string> Filter_, List<string> Author_, List<string> Tag_)
+        {
+            int Nr = 0;
+
+            int BS = stop - start;
+
+            
+                for (int i = 0; i < 2; i++)
+                {
+                    while (ComLock)
+                    {
+
+                    };
+                    ComLock = true;
+                    string JSONResult = "";
+                    if ((!Filter_.Any()) && (!Author_.Any()) && (!Tag_.Any()))
+                    {
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed LIMIT " + BS + " OFFSET (SELECT COUNT(*) FROM Newsfeed) - " + (stop).ToString(), -1)));
+                        Console.WriteLine("No Filter");
+                    }
+                    else
+                    {
+                        string C = "Category LIKE ";
+                        string A = "Author LIKE ";
+                        string T = "Tag LIKE ";
+                        string X = "'%%'";
+                        string Y = "'%XXXX%'";
+                        bool CF = true;
+                        bool AF = true;
+                        bool TF = true;
+                        bool Change = false;
+                        foreach (string s in Filter_)
+                        {
+                            if (!CF)
+                            {
+                                C += " OR ";
+                            }
+
+                            C += " '%" + s + "%'";
+                            Change = true;
+                            CF = false;
+                        }
+                        foreach (string s in Author_)
+                        {
+                            if (!AF)
+                            {
+                                A += " OR ";
+                            }
+
+                            A += " '%" + s + "%'";
+                            Change = true;
+                            AF = false;
+                        }
+                        foreach (string s in Tag_)
+                        {
+                            if (!TF)
+                            {
+                                T += " OR ";
+                            }
+
+                            T += " '%" + s + "%'";
+                            Change = true;
+                            TF = false;
+                        }
+
+                        if (CF)
+                        {
+                            if (Change)
+                            {
+                                C += Y;
+                            }
+                            else
+                            {
+                                C += X;
+                            }
+
+                        }
+                        if (AF)
+                        {
+
+                            if (Change)
+                            {
+                                A += Y;
+                            }
+                            else
+                            {
+                                A += X;
+                            }
+                        }
+                        if (TF)
+                        {
+
+                            if (Change)
+                            {
+                                T += Y;
+                            }
+                            else
+                            {
+                                T += X;
+                            }
+                        }
+
+                        JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Newsfeed", "Query", "SELECT * FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + " LIMIT " + BS + " OFFSET(SELECT COUNT(*) FROM Newsfeed WHERE " + C + " OR " + A + " OR " + T + ") - " + (stop).ToString(), -1)));
+                        Console.WriteLine("Filter");
+                    }
+                    //Console.WriteLine(JSONResult.Length);
+                    ComLock = false;
+
+                    if (JSONResult != "No")
+                    {
+
+                        //Console.WriteLine("JSON Object Found");
+                        var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+
+                        //Console.WriteLine(Result.JSON);
+                        if (Result.JSON == "[]")
+                        {
+                            break;
+                        }
+
+                        var ArticleList = JsonConvert.DeserializeObject<List<CustomNewsfeedTable>>(Result.JSON);
+                        Nr = ArticleList.Count;
+                        foreach (CustomNewsfeedTable Article in ArticleList)
+                        {
+                            DB.Insert(Article);
+                        }
+                    //Console.WriteLine("Article Inserted");
+                    break;
+                    }
+                    else
+                    {
+
+                        //ParseRssFile();
+                        //App.Online = false;
+
+                    }
+                }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
+                    App.LS.LoadingText.Text = "Laddar in det samlade Nyhetsflödet. Artiklar inladdade.";
+
+
+                });
+
+                
+            
             return Nr;
         }
 
@@ -1084,7 +1308,7 @@ namespace NWT
                 TcpClient tcpclnt = new TcpClient();
                 //Console.WriteLine("Connecting.....");
 
-                tcpclnt.Connect("109.228.152.124", 1518);
+                tcpclnt.Connect("35.228.169.200", 1518);
                 // use the ipaddress as in the server program
 
                 //Console.WriteLine("Connected");
