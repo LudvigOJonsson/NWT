@@ -365,9 +365,9 @@ namespace NWT
                     {
                         Color = Color.FromHex("#f2f2f2"),
                         WidthRequest = IMGXC,
-                        HeightRequest = 10,
+                        HeightRequest = 10,  
                         HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.Fill,
+
                         InputTransparent = true,
                         //ClassId = NF.Article.ToString()
                     };
@@ -917,6 +917,10 @@ namespace NWT
             
         }
 
+        public void ChangeName(string newName)
+        {
+            Title = newName;
+        }
 
 
         public async void ListViewScroll(object sender, EventArgs e)

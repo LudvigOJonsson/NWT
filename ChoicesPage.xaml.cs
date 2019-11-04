@@ -430,7 +430,12 @@ namespace NWT
 
                 });
 
-
+                if (Filter != "")
+                    Page.ChangeName(Filter);
+                if (Author != "")
+                    Page.ChangeName(Author);
+                if (Tag != "")
+                    Page.ChangeName(Tag);
 
                 await System.Threading.Tasks.Task.Delay(1000);
                 Device.BeginInvokeOnMainThread(async () =>
