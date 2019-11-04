@@ -120,7 +120,7 @@ namespace NWT
 
                             });
                             StartApp();
-                            await System.Threading.Tasks.Task.Delay(1000);
+                            await System.Threading.Tasks.Task.Delay(10);
                             Device.BeginInvokeOnMainThread( () =>
                             {
                                 Console.WriteLine("Initiering Klar");
