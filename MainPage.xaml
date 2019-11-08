@@ -23,4 +23,9 @@
 
 
     </ContentPage>
+    <ContentPage x:Name = "HubbPage" >
+
+
+
+    </ContentPage>
 </TabbedPage>

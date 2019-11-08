@@ -285,8 +285,8 @@ namespace NWT
                     AdVisibility = true;
 
                     //Randomizing the content of ads and social media posts
-                    
-                    int content = rnd.Next(1, 4);  // creates a number between 1 and 20
+
+                    int content = rnd.Next(1, 10);  // creates a number between 1 and 20
 
                     if (content == 1)
                     {
@@ -309,7 +309,55 @@ namespace NWT
                         //a 1 in 3 chance to become an event
 
                         AdText = "Evenemang";
-                        AdSource = "Commercial_HollidaySpecial.jpg";
+                        AdSource = "reklamtest6.jpg";
+
+                    }
+                    else if (content == 4)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "reklamtest.jpg";
+
+                    }
+                    else if (content == 5)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Användarbilder";
+                        AdSource = "Reklam_2.jpg";
+
+                    }
+                    else if (content == 6)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Användarbilder";
+                        AdSource = "reklamtest2.jpg";
+
+                    }
+                    else if (content == 7)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Användarbilder";
+                        AdSource = "reklamtest3.jpg";
+
+                    }
+                    else if (content == 8)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Användarbilder";
+                        AdSource = "reklamtest4.jpg";
+
+                    }
+                    else if (content == 9)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Användarbilder";
+                        AdSource = "reklamtest5.jpg";
 
                     }
                     else

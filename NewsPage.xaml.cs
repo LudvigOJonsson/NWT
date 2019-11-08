@@ -162,6 +162,38 @@ namespace NWT
                 Author.TextColor = Color.FromHex("#649FD4");
                 Author.Text = "Av " + RSS.Author;
             }
+
+            switch (RSS.Tag)
+            {
+                case "Skövde":
+                    Location.Text = "Plats: Skövde";
+                    break;
+                case "Tibro":
+                    Location.Text = "Plats: Tibro";
+                    break;
+                case "Falköping":
+                    Location.Text = "Plats: Falköping";
+                    break;
+                case "Karlsborg":
+                    Location.Text = "Plats: Karlsborg";
+                    break;
+            }
+            switch (RSS.Category)
+            {
+                case "Skövde":
+                    Location.Text = "Plats: Skövde";
+                    break;
+                case "Tibro":
+                    Location.Text = "Plats: Tibro";
+                    break;
+                case "Falköping":
+                    Location.Text = "Plats: Falköping";
+                    break;
+                case "Karlsborg":
+                    Location.Text = "Plats: Karlsborg";
+                    break;
+            }
+
             Title = RSS.Category;
             
             //Category.Text = "-"+RSS.Category;
@@ -555,7 +587,7 @@ namespace NWT
                     await image.ScaleTo(0.8f, 100, Easing.BounceOut);
                     await image.ScaleTo(1f, 100, Easing.BounceOut);
 
-                    await DisplayAlert("Favorite", "Article Added to Favorites", "Ok");
+                    await DisplayAlert("Favorit", "Artikel tillagd i favoriter.", "Ok");
                     Favorited = true;
                     FavIcon.Source = "Icon_Heart_Full";
                 }

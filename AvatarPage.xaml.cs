@@ -628,7 +628,7 @@ namespace NWT
             Avatar[0] = "avatar_face1.png";
             Avatar[1] = "avatar_hair1.png";
             Avatar[2] = "avatar_body1.png";
-            Avatar[3] = "avatar_expr4.png";
+            Avatar[3] = "avatar_expr1.png";
             Avatar[4] = "nothing.png";
                 
             App.LoggedinUser.Avatar = JsonConvert.SerializeObject(Avatar);

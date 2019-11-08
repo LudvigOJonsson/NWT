@@ -36,7 +36,7 @@
 
                 <Label Text="'Mina val' är en kronologisk samling av alla ariklar i det ämne du klickat på i sidomenyn." VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" FontSize="14" TextColor="Black"/>
 
-                <Label Text="Om du hittar något fel, eller vill ge någon återkoppling om appens innehåll, får du gärna skicka in det via detta formulär. Vi tar gärna emot dina åsikter!" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" FontSize="16" TextColor="Black"/>
+                <Label Text="Om du hittar något fel, eller vill ge någon återkoppling om appens innehåll, får du gärna skicka in det via detta formulär. Vi tar gärna emot dina åsikter!" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="0" FontSize="14" TextColor="Black"/>
 
                 <Button Text="Formulär" Clicked="Button_Clicked" Grid.Row="7" Grid.Column="0" FontSize="16" TextColor="Black" BackgroundColor="White" BorderColor="Black" BorderWidth="5"/>
 

@@ -29,12 +29,13 @@ namespace NWT
             
             Debug.WriteLine("success: {0}", result); }));
 
-            
+
+            Children[3] = new HubbPage();
+            Children[2] = new ProfilePage();
             Children[1] = new NewsGridPage(0);
             Children[0] = new CustomNewsFeed();
 
-            Children[2] = new ProfilePage();
-                     
+
         }
 
         /*

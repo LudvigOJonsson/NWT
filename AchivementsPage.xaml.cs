@@ -42,6 +42,11 @@ namespace NWT
 
         public void UpdateAchivements(StatsTable Stats)
         {
+            if (Stats == null)
+            {
+                return;
+            }
+
             int articleReadGoal = 0;
             if (Stats.ArticlesRead < 5)
             {

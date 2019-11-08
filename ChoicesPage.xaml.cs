@@ -440,10 +440,13 @@ namespace NWT
 
                     if (Filter != "")
                         Page.ChangeName(Filter);
-                    if (Author != "")
+                    else if (Author != "")
                         Page.ChangeName(Author);
-                    if (Tag != "")
+                    else if (Tag != "")
                         Page.ChangeName(Tag);
+                    else
+                        Page.ChangeName("Alla nyheter");
+
                 });
 
 
