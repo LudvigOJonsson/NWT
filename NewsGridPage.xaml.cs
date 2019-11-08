@@ -757,7 +757,7 @@ namespace NWT
 
         public void LoadLocalDB()
         {
-            var AL = App.database.BatchLoadNF(Loadnr, (Loadnr + DBLN),Filter, Author , Tag);
+            var AL = App.database.BatchLoadNF(Loadnr, (Loadnr + DBLN),Filter, Author, Tag);
             if (AL == 0)
             {
                 AL = App.database.LoadNF(Loadnr, (Loadnr + DBLN), Filter, Author, Tag);
@@ -931,8 +931,12 @@ namespace NWT
 
         public async void ListViewScroll(object sender, EventArgs e)
         {
+            Down.IsEnabled = false;
+            ArticleListView.IsEnabled = false;
+            NewsGrid.IsEnabled = false;
             await System.Threading.Tasks.Task.Run(async () =>
             {
+                /*
                 Device.BeginInvokeOnMainThread(async() =>
                 {
                     //IsBusy = true;
@@ -942,7 +946,7 @@ namespace NWT
                     App.LS.LoadingText.Text = "Laddar in mera artiklar.";
                     
                 });
-                
+                */
                 if (argc == 0)
                 {
                     PREV = 0;
@@ -950,51 +954,33 @@ namespace NWT
                     NEXT += DBLN;
 
                     Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
-
                     double height = NewsSV.ContentSize.Height - 10;
-
                     LoadLocalDB();
                     AddNews(argc);
-
-                    
-
-                    
-
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {
-
                     ArticleListView.ItemsSource = null;
                     ArticleListView.ItemsSource = ArticleList;
-
-
-                   
                 });
 
-                
                 GC.Collect();
 
-                
-                await System.Threading.Tasks.Task.Delay(10);
-                Device.BeginInvokeOnMainThread(async() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
 
-                    await Navigation.PopAsync();
+                    //await Navigation.PopAsync();
                     //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
                     await NewsSV.ScrollToAsync(0, ArticleListView.Height - 10, false);
                     //ArticleListView.IsRefreshing = false;
                     //IsBusy = false;
-                });
-
+                });              
+                await System.Threading.Tasks.Task.Delay(5);
             });
-
-
-
-
-
-
+            ArticleListView.IsEnabled = true;
+            Down.IsEnabled = true;
+            NewsGrid.IsEnabled = true;            
         }
-
     }
 }

@@ -185,8 +185,10 @@ namespace NWT
 
         public async void UpdateTags()
         {
+            ButtonLock();
             await System.Threading.Tasks.Task.Run(async () =>
             {
+                /*
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine(App.LoggedinUser.TutorialProgress);
@@ -198,7 +200,7 @@ namespace NWT
                     }
                     
                 });
-
+                */
 
                 //ANVÄND KOD HÄR
                 List<List<string>> Taglist = new List<List<string>>
@@ -225,7 +227,8 @@ namespace NWT
                 CNP.TagsModified = true;
 
 
-                await System.Threading.Tasks.Task.Delay(10);
+
+                /*
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
@@ -234,14 +237,15 @@ namespace NWT
                     
                     
                     
-                });
+                });*/
+                await System.Threading.Tasks.Task.Delay(5);
                 App.TutorialSafety = true;
             });
 
+            ButtonLock();
 
 
 
- 
         }
 
 
@@ -399,6 +403,7 @@ namespace NWT
             ButtonLock();
             await System.Threading.Tasks.Task.Run(async () =>
             {
+                /*
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     
@@ -407,7 +412,7 @@ namespace NWT
                     App.LS.LoadingText.Text = "Updaterar Dina Val Nyhetsflödet.";
 
                 });
-
+                */
 
                 
                 NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
@@ -433,17 +438,18 @@ namespace NWT
                     Page.ArticleListView.ItemsSource = null;
                     Page.ArticleListView.ItemsSource = Page.ArticleList;
 
-
+                    if (Filter != "")
+                        Page.ChangeName(Filter);
+                    if (Author != "")
+                        Page.ChangeName(Author);
+                    if (Tag != "")
+                        Page.ChangeName(Tag);
                 });
 
-                if (Filter != "")
-                    Page.ChangeName(Filter);
-                if (Author != "")
-                    Page.ChangeName(Author);
-                if (Tag != "")
-                    Page.ChangeName(Tag);
 
-                await System.Threading.Tasks.Task.Delay(10);
+
+                await System.Threading.Tasks.Task.Delay(5);
+                /*
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
@@ -451,7 +457,7 @@ namespace NWT
                     await Navigation.PopAsync();
                     //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
                 });
-
+                */
             });
             ButtonLock();
 
@@ -473,7 +479,7 @@ namespace NWT
                 Child.IsEnabled = !Child.IsEnabled;
             }
 
-
+            DownButton.IsEnabled = !DownButton.IsEnabled;
             /*Nyheter.IsEnabled = !Nyheter.IsEnabled;
             Sport.IsEnabled = !Sport.IsEnabled;
             Ekonomi.IsEnabled = !Ekonomi.IsEnabled;
@@ -491,7 +497,8 @@ namespace NWT
             Rensa.IsEnabled = !Rensa.IsEnabled;
             Verkställ.IsEnabled = !Verkställ.IsEnabled;
             */
-
+            NewsGridOri.IsEnabled = !NewsGridOri.IsEnabled;
+            NewsGrid.IsEnabled = !NewsGrid.IsEnabled;
         }
 
 

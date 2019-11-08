@@ -1037,8 +1037,12 @@ namespace NWT
 
         public async void ListViewScroll(object sender, EventArgs e)
         {
+            Down.IsEnabled = false;
+            ArticleListView.IsEnabled = false;
+            NewsGrid.IsEnabled = false;
             await System.Threading.Tasks.Task.Run(async () =>
             {
+                /*
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //IsBusy = true;
@@ -1049,7 +1053,7 @@ namespace NWT
                     App.LS.LoadingText.Text = "Laddar in mera artiklar.";
 
                 });
-
+                */
                 if (argc == 0)
                 {
                     PREV = 0;
@@ -1057,32 +1061,18 @@ namespace NWT
                     NEXT += DBLN;
 
                     Console.WriteLine("PREV: " + PREV + " CURR: " + CURR + " NEXT: " + NEXT);
-
                     double height = NewsSV.ContentSize.Height - 10;
-
                     LoadLocalDB();
-                    
-
-
-
-
-
+                    AddNews();
                 }
                 Device.BeginInvokeOnMainThread( () =>
                 {
-                    AddNews();
                     ArticleListView.ItemsSource = null;
                     ArticleListView.ItemsSource = ArticleList;
-
-
-
                 });
-
 
                 GC.Collect();
 
-
-                await System.Threading.Tasks.Task.Delay(10);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
@@ -1094,14 +1084,11 @@ namespace NWT
                     //IsBusy = false;
                     App.Startpage.IsGestureEnabled = true;
                 });
-
+                await System.Threading.Tasks.Task.Delay(5);
             });
-
-
-
-
-
-
+            ArticleListView.IsEnabled = true;
+            Down.IsEnabled = true;
+            NewsGrid.IsEnabled = true;
         }
     }
 }
