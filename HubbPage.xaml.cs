@@ -75,6 +75,10 @@ namespace NWT
         {
             await DisplayAlert("WIP", "Work in progress.", "Okay");
         }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
 
     }
 }

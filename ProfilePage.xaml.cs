@@ -584,7 +584,11 @@ namespace NWT
             base.OnAppearing();
             updateMissions();
             ChangeIntroStep(App.LoggedinUser.TutorialProgress);
-            
+
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

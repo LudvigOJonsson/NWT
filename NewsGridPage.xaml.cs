@@ -980,7 +980,12 @@ namespace NWT
             });
             ArticleListView.IsEnabled = true;
             Down.IsEnabled = true;
-            NewsGrid.IsEnabled = true;            
+            NewsGrid.IsEnabled = true;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

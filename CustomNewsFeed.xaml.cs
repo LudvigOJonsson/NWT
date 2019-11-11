@@ -1138,5 +1138,9 @@ namespace NWT
             Down.IsEnabled = true;
             NewsGrid.IsEnabled = true;
         }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }
