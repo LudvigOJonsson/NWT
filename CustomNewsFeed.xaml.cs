@@ -286,7 +286,7 @@ namespace NWT
 
                     //Randomizing the content of ads and social media posts
 
-                    int content = rnd.Next(1, 10);  // creates a number between 1 and 20
+                    int content = rnd.Next(1, 20);  // creates a number between 1 and 20
 
                     if (content == 1)
                     {
@@ -308,7 +308,7 @@ namespace NWT
                     {
                         //a 1 in 3 chance to become an event
 
-                        AdText = "Evenemang";
+                        AdText = "Användarbilder";
                         AdSource = "reklamtest6.jpg";
 
                     }
@@ -316,7 +316,7 @@ namespace NWT
                     {
                         //a 1 in 3 chance to become an event
 
-                        AdText = "Reklam";
+                        AdText = "Användarbilder";
                         AdSource = "reklamtest.jpg";
 
                     }
@@ -324,7 +324,7 @@ namespace NWT
                     {
                         //a 1 in 3 chance to become an event
 
-                        AdText = "Användarbilder";
+                        AdText = "Reklam";
                         AdSource = "Reklam_2.jpg";
 
                     }
@@ -358,6 +358,46 @@ namespace NWT
 
                         AdText = "Användarbilder";
                         AdSource = "reklamtest5.jpg";
+
+                    }
+                    else if (content == 10)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "Reklam_1.jpg";
+
+                    }
+                    else if (content == 11)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "Reklam_3.jpg";
+
+                    }
+                    else if (content == 12)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "Reklam_4.jpg";
+
+                    }
+                    else if (content == 13)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "Reklam_5.jpg";
+
+                    }
+                    else if (content == 14)
+                    {
+                        //a 1 in 3 chance to become an event
+
+                        AdText = "Reklam";
+                        AdSource = "Reklam_6.jpg";
 
                     }
                     else

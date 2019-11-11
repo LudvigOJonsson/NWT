@@ -250,9 +250,11 @@ namespace NWT
 
             if (argc == 0)
             {
+                Title = "Mina Val";
             }
             else 
             {
+                Title = "Samlade Artiklar";
                 /*EmptyText.Text = "";
                 EmptyText.IsEnabled = false;
                 EmptyText.IsVisible = false;

@@ -131,6 +131,8 @@ namespace NWT
                 MakeButton(s,2);
             }
 
+            //One final button to push away the weird wrong-sized-button-bug
+            MakeButton("", 3);
 
         }
 
@@ -142,7 +144,7 @@ namespace NWT
 
 
 
-            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 30 });
             NewsGridOri.RowDefinitions.Add(new RowDefinition { Height = 5 });
             NewsGridOri.Children.Add(Box.Box, 2, 7, Rownr, Rownr + 1); //Boxview
             NewsGridOri.Children.Add(Box.Label, 2, 7, Rownr, Rownr + 1); //Label
@@ -299,23 +301,40 @@ namespace NWT
                 {
                     Box.Clicked += App.SideMenu.SetAuthor;
                 }
-
-                TrashImage = new Image
+                if (Type != 3)
                 {
-                    Source = "Icon_Trash.png",
-                    WidthRequest = 10,
-                    HeightRequest = 10,
-                    ClassId = s
-                };
-                TrashImage.GestureRecognizers.Add(TGR);
+                    TrashImage = new Image
+                    {
+                        Source = "Icon_Trash.png",
+                        WidthRequest = 10,
+                        HeightRequest = 10,
+                        ClassId = s
+                    };
+                    TrashImage.GestureRecognizers.Add(TGR);
 
-                BellImage = new Image
+                    BellImage = new Image
+                    {
+                        Source = "Icon_Bell.png",
+                        WidthRequest = 10,
+                        HeightRequest = 10,
+                    };
+                } else
                 {
-                    Source = "Icon_Bell.png",
-                    WidthRequest = 10,
-                    HeightRequest = 10,
-                };
+                    TrashImage = new Image
+                    {
+                        Source = "",
+                        WidthRequest = 10,
+                        HeightRequest = 10,
+                    };
+                    TrashImage.GestureRecognizers.Add(TGR);
 
+                    BellImage = new Image
+                    {
+                        Source = "",
+                        WidthRequest = 10,
+                        HeightRequest = 10,
+                    };
+                }
             }
         }
 
