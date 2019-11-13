@@ -419,6 +419,7 @@ namespace NWT
 
         public async void PrintNews(object sender, EventArgs e)
         {
+
             ButtonLock();
             await System.Threading.Tasks.Task.Run(async () =>
             {
@@ -432,8 +433,10 @@ namespace NWT
 
                 });
                 */
-
                 
+                App.Startpage.IsPresented = false;
+                //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+
                 NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
                 App.database.LocalExecute("DELETE FROM NF");
 
@@ -468,18 +471,19 @@ namespace NWT
 
                 });
 
-
+                
 
                 await System.Threading.Tasks.Task.Delay(5);
-                /*
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     Console.WriteLine("Initiering Klar");
 
-                    await Navigation.PopAsync();
-                    //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
+                    //await Navigation.PopAsync();
+                    App.Mainpage.CurrentPage = App.Mainpage.Children[1];
                 });
-                */
+                
+                
             });
             ButtonLock();
 

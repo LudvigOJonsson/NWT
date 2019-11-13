@@ -329,6 +329,7 @@ namespace NWT
             var CNF = (CustomNewsFeed)MP.Children[0];
             var NF = (NewsGridPage)MP.Children[1];
             var PP = (ProfilePage)MP.Children[2];
+            var HP = (HubbPage)MP.Children[3];
 
             CM.DownButton.BackgroundColor = BC;
             CM.DownButton.Color = BC;
@@ -361,6 +362,8 @@ namespace NWT
             PP.m1bx.BackgroundColor = BC;
             PP.m2bx.BackgroundColor = BC;
             PP.m3bx.BackgroundColor = BC;
+
+            HP.BackgroundColor = BC;
 
             App.MC = BC;
 
