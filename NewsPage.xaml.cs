@@ -56,6 +56,10 @@ namespace NWT
         {
             InitializeComponent();
 
+            red = 255 + (int)App.MC.R * 2;
+            green = 255 + (int)App.MC.G * 2;
+            blue = 255 + (int)App.MC.B * 2;
+
             //Category.TextColor = App.MC;
             FavIcon.BackgroundColor = App.MC;
             if (App.LoggedinUser != null && argc == 0)
@@ -160,9 +164,10 @@ namespace NWT
             } else
             {
                 Author.TextColor = Color.FromHex("#649FD4");
-                Author.Text = "Av " + RSS.Author;
+                Author.Text = "Av: " + RSS.Author;
             }
 
+            Location.TextColor = Color.FromHex("#649FD4");
             switch (RSS.Tag)
             {
                 case "Skövde":
@@ -427,7 +432,8 @@ namespace NWT
             }
 
 
-            ArticleGrid.Children.Add(Author, 1, 4, Row, Row + 1);
+            ArticleGrid.Children.Add(Author, 1, 3, Row, Row + 1);
+            ArticleGrid.Children.Add(Location, 3, 5, Row, Row + 1);
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row + 1);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
@@ -671,15 +677,15 @@ namespace NWT
         {
             if (red > (App.MC.R*255))
             {
-                red--;
+                red = red - 1;
             }
             if (green > (App.MC.G * 255))
             {
-                green--;
+                green = green - 1;
             }
             if (blue > (App.MC.B * 255))
             {
-                blue--;
+                blue = blue - 1;
             }
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -995,12 +1001,10 @@ namespace NWT
 
         }
 
-
         protected override void OnDisappearing()
         {
             Console.WriteLine("Memory Cleanup");
             GC.Collect();
         }
-
     }
 }

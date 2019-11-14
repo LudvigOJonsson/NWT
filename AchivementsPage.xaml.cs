@@ -28,12 +28,12 @@ namespace NWT
             PE2.BackgroundColor = App.MC;
             PE3.BackgroundColor = App.MC;
             PE4.BackgroundColor = App.MC;
-            /*PE5.BackgroundColor = App.MC;
+            PE5.BackgroundColor = App.MC;
             PE6.BackgroundColor = App.MC;
             PE7.BackgroundColor = App.MC;
             PE8.BackgroundColor = App.MC;
             PE9.BackgroundColor = App.MC;
-            PE10.BackgroundColor = App.MC;*/
+            PE10.BackgroundColor = App.MC;
 
 
             
@@ -174,7 +174,7 @@ namespace NWT
             percentCompleted = (double)Stats.CommentsPosted / (double)commentsPostedGoal;
             commentsPostedProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
-            /*int insandarePostedGoal = 0;
+            int insandarePostedGoal = 0;
             if (Stats.InsandareSubmitted < 1)
             {
                 insandarePostedGoal = 1;
@@ -354,7 +354,7 @@ namespace NWT
             quizAnsweredText.Text = Stats.QuestionAnswered.ToString() + " Quiz Svarade";
             quizAnsweredNumber.Text = Stats.QuestionAnswered.ToString() + "/" + quizAnsweredGoal;
             percentCompleted = (double)Stats.QuestionAnswered / (double)quizAnsweredGoal;
-            quizAnsweredProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;*/
+            quizAnsweredProgressBar.WidthRequest = Application.Current.MainPage.Width * percentCompleted;
 
         }
 
