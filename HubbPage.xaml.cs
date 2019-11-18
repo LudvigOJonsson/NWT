@@ -12,18 +12,21 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HubbPage : ContentPage
 	{
+
+
+       
 		public HubbPage()
 		{
 			InitializeComponent ();
+
+            BackgroundColor = App.MC;
             
 		}
 
         public void ButtonLock()
         {
-            InsandareButton.IsEnabled = !InsandareButton.IsEnabled;
-            MakeInsandareButton.IsEnabled = !MakeInsandareButton.IsEnabled;
+            
             EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
-            MakeEvenemangsButton.IsEnabled = !MakeEvenemangsButton.IsEnabled;
             VoteButton.IsEnabled = !VoteButton.IsEnabled;
             PlayButton.IsEnabled = !PlayButton.IsEnabled;
         }
