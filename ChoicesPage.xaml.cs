@@ -423,18 +423,19 @@ namespace NWT
             ButtonLock();
             await System.Threading.Tasks.Task.Run(async () =>
             {
-                /*
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    
+                    App.Startpage.IsPresented = false;
+                    /*
                     App.LS.loadingAnimation.Play();
                     await Navigation.PushAsync(App.LS);
                     App.LS.LoadingText.Text = "Updaterar Dina Val Nyhetsflödet.";
-
+                    */
                 });
-                */
                 
-                App.Startpage.IsPresented = false;
+                
+                
                 //App.Mainpage.CurrentPage = App.Mainpage.Children[1];
 
                 NewsGridPage Page = (NewsGridPage)App.Mainpage.Children[1];
