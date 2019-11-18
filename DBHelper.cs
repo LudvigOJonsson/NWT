@@ -132,6 +132,20 @@ namespace NWT
         public int VoteSubmitted { get; set; }
         public int CommentsPosted { get; set; }
         public int TokensCollected { get; set; }
+        public int StylesChanged { get; set; }
+        public int AvatarChanged { get; set; }
+        public int BoughtItems { get; set; }
+        public int BoughtStyles { get; set; }
+        public int CoinsSpent { get; set; }
+        public int ArticlesClicked { get; set; }
+        public int SubjectClicked { get; set; }
+        public int SubjectAdded { get; set; }
+        public int SubjectRemoved { get; set; }
+        public int GenericStat1 { get; set; }
+        public int GenericStat2 { get; set; }
+        public int GenericStat3 { get; set; }
+        public int GenericStat4 { get; set; }
+        public int GenericStat5 { get; set; }
     }
 
     public class Task
