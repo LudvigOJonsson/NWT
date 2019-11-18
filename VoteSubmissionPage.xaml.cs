@@ -15,7 +15,10 @@ namespace NWT
 		public VoteSubmissionPage ()
 		{
 			InitializeComponent ();
-		}
+
+            Submit.BackgroundColor = App.MC;
+
+        }
         public async void SubmitQ(object sender, EventArgs e)
         {
             if (Question.Text != "" && Op1.Text != "" && Op2.Text != "" && Question.Text != null && Op1.Text != null && Op2.Text != null && Op3.Text != null && Op4.Text != null)
@@ -31,9 +34,12 @@ namespace NWT
                 VQ.Stage = 1;
 
                 //App.database.InsertVoteQuestion(VQ);
+                await DisplayAlert("Snyggt!", "Din fråga har skickats in.", "Okej");
             }
-
-            await DisplayAlert("Submission Successful", "Question Submitted", "OK");
+            else
+            {
+                await DisplayAlert("Något gick fel", "Kolla om någon textruta är tom!", "Okej");
+            }
         }
     }
 }
