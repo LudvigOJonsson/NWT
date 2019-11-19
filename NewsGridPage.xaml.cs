@@ -627,7 +627,7 @@ namespace NWT
             }
             else if (Argc == 2)
             {
-                
+                Title = "Historik";
                 Console.WriteLine("HistorikSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -639,7 +639,7 @@ namespace NWT
             }
             else if (Argc == 3)
             {
-                
+                Title = "Favoriter";
                 Console.WriteLine("FavoritSida");
                 TGR.Tapped += (s, e) => {
                     IsEnabled = false;
@@ -960,7 +960,7 @@ namespace NWT
                     LoadLocalDB();
                     AddNews(argc);
                 }
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>  
                 {
                     ArticleListView.ItemsSource = null;
                     ArticleListView.ItemsSource = ArticleList;
@@ -987,7 +987,15 @@ namespace NWT
 
         protected override bool OnBackButtonPressed()
         {
-            return true;
+            if (Title == "Favoriter" || Title == "Historik")
+            {
+                base.OnBackButtonPressed();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
