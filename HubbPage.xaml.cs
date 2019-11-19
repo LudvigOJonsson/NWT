@@ -26,9 +26,9 @@ namespace NWT
         public void ButtonLock()
         {
             
-            EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
-            VoteButton.IsEnabled = !VoteButton.IsEnabled;
-            PlayButton.IsEnabled = !PlayButton.IsEnabled;
+           EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
+           VoteButton.IsEnabled = !VoteButton.IsEnabled;
+           PlayButton.IsEnabled = !PlayButton.IsEnabled;
         }
 
 
