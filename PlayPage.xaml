@@ -44,18 +44,18 @@
 
 
 
-                <Image Source="soduko.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit">
+                <Image x:Name="SudokuButton" Source="soduko.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="PlaySudoku" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="Quiz.png" Grid.Row="2" Grid.Column="0" Aspect="AspectFit">
+                <Image x:Name="QuizButton" Source="Quiz.png" Grid.Row="2" Grid.Column="0" Aspect="AspectFit">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="PlayQuiz" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="Picross.png" Grid.Row="4" Grid.Column="0" Aspect="AspectFit">
+                <Image x:Name="PicrossButton" Source="Picross.png" Grid.Row="4" Grid.Column="0" Aspect="AspectFit">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="PlayPicross" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>

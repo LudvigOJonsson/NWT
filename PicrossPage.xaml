@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NWT.PicrossPage">
+             x:Class="NWT.PicrossPage"
+             Title="Picross">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Picross"  FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#649FD4" />
+            
             <Grid x:Name="PicrossGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor = "Black">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="90" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -21,7 +22,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -35,27 +36,27 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Label x:Name="T1" Text=" " TextColor="White" Grid.Row="0" Grid.Column="1"/>
-                <Label x:Name="T2" Text=" " TextColor="White" Grid.Row="0" Grid.Column="2"/>
-                <Label x:Name="T3" Text=" " TextColor="White" Grid.Row="0" Grid.Column="3"/>
-                <Label x:Name="T4" Text=" " TextColor="White" Grid.Row="0" Grid.Column="4"/>
-                <Label x:Name="T5" Text=" " TextColor="White" Grid.Row="0" Grid.Column="5"/>
-                <Label x:Name="T6" Text=" " TextColor="White" Grid.Row="0" Grid.Column="6"/>
-                <Label x:Name="T7" Text=" " TextColor="White" Grid.Row="0" Grid.Column="7"/>
-                <Label x:Name="T8" Text=" " TextColor="White" Grid.Row="0" Grid.Column="8"/>
-                <Label x:Name="T9" Text=" " TextColor="White" Grid.Row="0" Grid.Column="9"/>
-                <Label x:Name="T10" Text=" " TextColor="White" Grid.Row="0" Grid.Column="10"/>
+                <Label x:Name="T1" Text=" " TextColor="White" Grid.Row="0" Grid.Column="1" VerticalOptions ="Center"/>
+                <Label x:Name="T2" Text=" " TextColor="White" Grid.Row="0" Grid.Column="2" VerticalOptions ="Center"/>
+                <Label x:Name="T3" Text=" " TextColor="White" Grid.Row="0" Grid.Column="3" VerticalOptions ="Center"/>
+                <Label x:Name="T4" Text=" " TextColor="White" Grid.Row="0" Grid.Column="4" VerticalOptions ="Center"/>
+                <Label x:Name="T5" Text=" " TextColor="White" Grid.Row="0" Grid.Column="5" VerticalOptions ="Center"/>
+                <Label x:Name="T6" Text=" " TextColor="White" Grid.Row="0" Grid.Column="6" VerticalOptions ="Center"/>
+                <Label x:Name="T7" Text=" " TextColor="White" Grid.Row="0" Grid.Column="7" VerticalOptions ="Center"/>
+                <Label x:Name="T8" Text=" " TextColor="White" Grid.Row="0" Grid.Column="8" VerticalOptions ="Center"/>
+                <Label x:Name="T9" Text=" " TextColor="White" Grid.Row="0" Grid.Column="9" VerticalOptions ="Center"/>
+                <Label x:Name="T10" Text=" " TextColor="White" Grid.Row="0" Grid.Column="10" VerticalOptions ="Center" />
 
-                <Label x:Name="L1" Text=" " TextColor="White" Grid.Row="1" Grid.Column="0"/>
-                <Label x:Name="L2" Text=" " TextColor="White" Grid.Row="2" Grid.Column="0"/>
-                <Label x:Name="L3" Text=" " TextColor="White" Grid.Row="3" Grid.Column="0"/>
-                <Label x:Name="L4" Text=" " TextColor="White" Grid.Row="4" Grid.Column="0"/>
-                <Label x:Name="L5" Text=" " TextColor="White" Grid.Row="5" Grid.Column="0"/>
-                <Label x:Name="L6" Text=" " TextColor="White" Grid.Row="6" Grid.Column="0"/>
-                <Label x:Name="L7" Text=" " TextColor="White" Grid.Row="7" Grid.Column="0"/>
-                <Label x:Name="L8" Text=" " TextColor="White" Grid.Row="8" Grid.Column="0"/>
-                <Label x:Name="L9" Text=" " TextColor="White" Grid.Row="9" Grid.Column="0"/>
-                <Label x:Name="L10" Text=" " TextColor="White" Grid.Row="10" Grid.Column="0"/>
+                <Label x:Name="L1" Text=" " TextColor="White" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
+                <Label x:Name="L2" Text=" " TextColor="White" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L3" Text=" " TextColor="White" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L4" Text=" " TextColor="White" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L5" Text=" " TextColor="White" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L6" Text=" " TextColor="White" Grid.Row="6" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L7" Text=" " TextColor="White" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L8" Text=" " TextColor="White" Grid.Row="8" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L9" Text=" " TextColor="White" Grid.Row="9" Grid.Column="0" HorizontalOptions="Center"/>
+                <Label x:Name="L10" Text=" " TextColor="White" Grid.Row="10" Grid.Column="0" HorizontalOptions="Center"/>
 
 
                 <Button x:Name="GreenButton" Text="Green" Clicked="SetGreen"  BackgroundColor="#649FD4"  Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" TextColor="Green"/>

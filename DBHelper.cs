@@ -85,10 +85,9 @@ namespace NWT
     {
         [PrimaryKey, AutoIncrement, Unique]
         public int ID { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Value { get; set; }
-        public int Placed { get; set; }
+        public string Difficulty { get; set; }
+        public string ValueList { get; set; }
+        public string PlacedList { get; set; }
     }
 
     [Table("RSS")]
@@ -1094,6 +1093,19 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON).Count;
         }
 
+        public List<PicrossTable> LoadPicross()
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Picross", "Query", "SELECT * FROM Picross WHERE ID = 1", App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<PicrossTable>>(Result.JSON);
+        }
+
+        public List<SudokuTable> LoadSudoku()
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", "SELECT * FROM Sudoku WHERE ID = 1", App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);
+        }
 
         public string SHA256Hash(string input)
         {
@@ -1510,20 +1522,10 @@ namespace NWT
     }
 
 
-    public List<PicrossTable> LoadPicross()
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Picross", "Query", "SELECT * FROM Picross WHERE ID = 1", App.LoggedinUser.ID)));
-    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-    return JsonConvert.DeserializeObject<List<PicrossTable>>(Result.JSON);
-    }
+    
 
 
-    public List<SudokuTable> GetTile (int x , int y)
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", "SELECT * FROM Sudoku WHERE X = " + x + " AND Y = " + y, App.LoggedinUser.ID)));
-    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-    return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);      
-    }
+
 
 
 

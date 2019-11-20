@@ -65,3 +65,4 @@ obj/Release/netstandard2.0/VotePage.xaml.g.cs
 obj/Release/netstandard2.0/VoteSubmissionPage.xaml.g.cs
 obj/Release/netstandard2.0/XamlC.stamp
 obj/Release/netstandard2.0/AvatarPopup.xaml.g.cs
+obj/Release/netstandard2.0/NumpadPopup.xaml.g.cs

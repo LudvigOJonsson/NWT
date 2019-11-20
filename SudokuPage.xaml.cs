@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,49 +14,62 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SudokuPage : ContentPage
 	{
-        public static List<Tile> SudokuBoard = new List<Tile>();
+        public SudokuTable SudoT;
+        public List<List<int>> Solution;
+        public List<List<int>> Placement;
         public bool Fusk = false;
         public bool Solved = false;
-        public class Tile
-        {
-            public int x { get; set; }
-            public int y { get; set; }
-            public Entry entry { get; set; }
-        }
+        public int ClickedNR = 1;
+        public bool Change = false;
+        public List<List<Button>> Gameboard = new List<List<Button>>();
 
 
         public SudokuPage ()
 		{
-            
-			InitializeComponent ();
-            MakeEntry();
-            LoadSudoku();
+            SudoT = App.database.LoadSudoku().First();
+            Solution = JsonConvert.DeserializeObject<List<List<int>>>(SudoT.ValueList);
+            Placement = JsonConvert.DeserializeObject<List<List<int>>>(SudoT.PlacedList);
+            InitializeComponent ();
+            MakeBoard();
         }
 
-        public void MakeEntry()
+        public void MakeBoard()
         {
-            for (int x = 0; x <= 8; x++)
+            for (int x = 0; x < 9; x++)
             {
-                for (int y = 0; y <= 8; y++)
+                var TempSol = Solution[x];
+                var TempPlace = Placement[x];
+                List<Button> Temp = new List<Button>();
+                for (int y = 0; y < 9; y++)
                 {
-                    var Number = new Entry();
-                    Number.Text = "";
-                    Number.FontSize = 10;
-                    Number.TextColor = Color.Black;
-                    Number.Keyboard = Keyboard.Numeric;
-                    Number.MaxLength = 1;
-                    Number.HorizontalOptions = LayoutOptions.CenterAndExpand;
-                    Number.VerticalOptions = LayoutOptions.Center;
-                    SudokuGrid.Children.Add (Number, x, y);
-                    var Tile = new Tile();
-                    Tile.x = x;
-                    Tile.y = y;
-                    Tile.entry = Number; 
-                    SudokuBoard.Add(Tile);
+                    var Tile = new Button();
+                    Tile.Margin = 1;
+                    Tile.BackgroundColor = Color.White;
+                    char temp = (char)TempSol[y];
+                    
+                    if(TempPlace[y] == 49)
+                    {
+                        Tile.Text = (temp - 48).ToString();
+                    }
+                    else
+                    {
+                        Tile.Text = " ";
+                    }
+                    Tile.Clicked += Place;
+                    SudokuGrid.Children.Add(Tile, y, x);
+                    Temp.Insert(y, Tile);
                 }
+                Gameboard.Insert(x, Temp);
             }
-            
         }
+
+        public async void Place(object sender, EventArgs e)
+        {
+            var Button = (Button)sender;
+            await PopupNavigation.Instance.PushAsync(new NumpadPopup(Button));
+        }
+
+
         async public void SolveSudoku(object sender, EventArgs e)
         {
             if((CalculateSudoku() || Fusk) && !Solved)
@@ -62,6 +77,10 @@ namespace NWT
                 await DisplayAlert("Task", "You Solved the Sudoku!", "OK");
                 App.database.StatUpdate("GameFinished");
                 Solved = true;
+            }
+            else if (Solved)
+            {
+                await DisplayAlert("Task", "You have already solved the Sudoku.", "OK");
             }
             else {
                 await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes. (Unless you want to Cheat, at which you can just click solve again..)", "OK");
@@ -71,51 +90,33 @@ namespace NWT
         public bool CalculateSudoku()
         {
             Boolean Solved = false;
-            for(int x = 1; x <= 9; x++)
+            for(int x = 0; x <= 8; x++)
             {
-                for (int y = 1; y <= 9; y++)
+                var TempBoard = Gameboard[x];
+                for (int y = 0; y <= 8; y++)
                 {
+                    var TempSol = Solution[x];
+                    var SolTile = TempSol[y];
+                    var Tile = TempBoard[y];
 
-                    var Tile = 1;//App.database.GetTile(x,y).First().Value;
-                    foreach (Tile T in SudokuBoard)
+                    if ((SolTile-48 == Convert.ToInt32(Tile.Text)))
                     {
-                        if (T.x == x - 1 && T.y == y - 1 && T.entry.Text == Tile.ToString())
-                        {
-                            Solved = true;
-                            break;
-                        }
-                        else
-                        {
-                            Solved = false;
-                        }
+                        Console.WriteLine("Sudoku Debug, X: " + x + " Y: " + y + " SolTile: " + (SolTile - 48) + " TileText: " + Tile.Text + " True");
+                        Solved = true;
                     }
-                    if(!Solved)
+                    else
+                    {
+                        Console.WriteLine("Sudoku Debug, X: " + x + " Y: " + y + " SolTile: " + (SolTile - 48) + " TileText: " + Tile.Text + " False");
+                        Solved = false;
+                    }
+
+                    if (!Solved)
                         return false;
                 }
             }
             return true;    
         }
 
-        public void LoadSudoku()
-        {
-            for (int x = 1; x <= 9; x++)
-            {
-                for (int y = 1; y <= 9; y++)
-                {
-                    var Tile = new SudokuTable();// App.database.GetTile(x, y).First();
-                    if (Tile.Placed == 1)
-                    {
-                        foreach (Tile T in SudokuBoard)
-                        {
-                            if(T.x == x-1 && T.y == y-1)
-                            {
-                                T.entry.Text = Tile.Value.ToString();
-                            }
-                        }                           
-                    }
-                }
-            }
-        }
 
         protected override void OnDisappearing()
         {

@@ -27,7 +27,8 @@ namespace NWT
 
         async void PlaySudoku(object sender, EventArgs e)
         {
-            if(App.Online)
+            SudokuButton.IsEnabled = false;
+            if (App.Online)
             {
                 await Navigation.PushAsync(new SudokuPage());
             }
@@ -35,10 +36,11 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-
+            SudokuButton.IsEnabled = true;
         }
         async void PlayQuiz(object sender, EventArgs e)
         {
+            QuizButton.IsEnabled = false;
             if (App.Online)
             {
                 await Navigation.PushAsync(new QuizPage());
@@ -47,11 +49,12 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
-
+            QuizButton.IsEnabled = true;
         }
 
         async void PlayPicross(object sender, EventArgs e)
         {
+            PicrossButton.IsEnabled = false;
             if (App.Online)
             {
                 await Navigation.PushAsync(new PicrossPage());
@@ -60,6 +63,7 @@ namespace NWT
             {
                 await DisplayAlert("Offline", "The Server is currently Offline. Please try again later.", "OK");
             }
+            PicrossButton.IsEnabled = true;
         }
 
     }

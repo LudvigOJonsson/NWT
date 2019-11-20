@@ -26,7 +26,7 @@ namespace NWT
         public PicrossPage ()
 		{
 			InitializeComponent ();
-            PCT = new PicrossTable(); // App.database.LoadPicross().First();
+            PCT = App.database.LoadPicross().First();
             Left = JsonConvert.DeserializeObject<List<string>>(PCT.Left);
             Top = JsonConvert.DeserializeObject<List<string>>(PCT.Top);
             Solution = JsonConvert.DeserializeObject<List<List<int>>>(PCT.Gameboard);
@@ -108,6 +108,10 @@ namespace NWT
                 await DisplayAlert("Task", "You Solved the Picross!", "OK");
                 App.database.StatUpdate("GameFinished");
                 Solved = true;
+            }
+            else if (Solved)
+            {
+                await DisplayAlert("Task", "You have already solved the Picross.", "OK");
             }
             else
             {

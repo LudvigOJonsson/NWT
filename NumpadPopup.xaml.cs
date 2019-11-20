@@ -13,10 +13,12 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NumpadPopup : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public NumpadPopup()
+        Button B_;
+        public NumpadPopup(Button b)
         {
             InitializeComponent();
 
+            B_ = b;
             Num1.BackgroundColor = App.MC;
             Num2.BackgroundColor = App.MC;
             Num3.BackgroundColor = App.MC;
@@ -30,11 +32,12 @@ namespace NWT
 
 
         //Function that happens when you click on one of the numpads
-        private void NumClicked(object sender, EventArgs e)
+        private async void NumClicked(object sender, EventArgs e)
         {
             Button b = (Button)sender;
 
-            int IDnr = Convert.ToInt32(b.ClassId);
+            B_.Text = b.ClassId;
+            await Navigation.PopPopupAsync();
         }
 
         async void ClosePopup(object sender, EventArgs e)
