@@ -26,9 +26,9 @@ namespace NWT
         public void ButtonLock()
         {
             
-           EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
+           /*EvenemangsButton.IsEnabled = !EvenemangsButton.IsEnabled;
            VoteButton.IsEnabled = !VoteButton.IsEnabled;
-           PlayButton.IsEnabled = !PlayButton.IsEnabled;
+           PlayButton.IsEnabled = !PlayButton.IsEnabled;*/
         }
 
 
@@ -76,7 +76,7 @@ namespace NWT
         }
         async void WIP(object sender, EventArgs e)
         {
-            await DisplayAlert("WIP", "Work in progress.", "Okay");
+            await DisplayAlert("WIP", "Inte ännu färdig.", "Okej");
         }
         protected override bool OnBackButtonPressed()
         {
