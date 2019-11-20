@@ -15,44 +15,59 @@
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <ScrollView>
-            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
+        <StackLayout  Padding="0" Spacing="5" VerticalOptions="Start">
+
+
+
+
+
+
+
+
+            <Grid x:Name="LoginGrid" RowSpacing="0" ColumnSpacing="0" VerticalOptions="StartAndExpand" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="150" />
-                    <RowDefinition Height="70" />
+
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="auto" />
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="30" />
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="SPEL" Text="SPEL" TextColor="#649FD4" FontSize="36" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                <!--<Button x:Name="SudokuButton2" Clicked="PlaySudoku" Grid.Row="1"   Image="sudoku.jpg" />-->
-                <Button x:Name="SudokuButton" Text="Sudoku" Clicked="PlaySudoku" Grid.Row="1" Grid.Column="1" BackgroundColor="#649FD4" TextColor="White" VerticalOptions="Start"  />
-                <Image x:Name="SudokuImage" Source="sudoku.png" Grid.Row="2" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" Aspect="AspectFill"/>
-                <!--<Label Grid.Row="1" Text="Reward:        " FontSize="22" BackgroundColor="Transparent" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End" Margin="15"/>
-                -->
 
-                <!--<Button x:Name="SudokuButton3" Clicked="PlayQuiz" Grid.Row="2"  Image="megaphone.jpg" />-->
-                <Button x:Name="QuizButton" Text="Quiz" Clicked="PlayQuiz" Grid.Row="4" Grid.Column="1" BackgroundColor="#649FD4" TextColor="White" VerticalOptions="Start"  />
-                <Image x:Name="QuizImage" Source="quiz.jpg" Grid.Row="5" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" Aspect="AspectFill"/>
 
-                <!--<Button x:Name="SudokuButton5" Clicked="PlayPicross" Grid.Row="3"  Image="picross.jpg" />-->
-                <Button x:Name="PicrossButton" Clicked="PlayPicross" Text="Picross"  Grid.Row="7" Grid.Column="1"  BackgroundColor="#649FD4" TextColor="White" VerticalOptions="Start"  />
-                <Image x:Name="PicrossImage" Source="picross.jpg" Grid.Row="8" Grid.Column="1" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" Aspect="AspectFill"/>
 
-              
+
+
+                <Image Source="soduko.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PlaySudoku" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image Source="Quiz.png" Grid.Row="2" Grid.Column="0" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PlayQuiz" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="Picross.png" Grid.Row="4" Grid.Column="0" Aspect="AspectFit">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PlayPicross" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+
+
+
+
             </Grid>
-        </ScrollView>
+
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

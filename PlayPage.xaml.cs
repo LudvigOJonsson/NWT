@@ -16,10 +16,12 @@ namespace NWT
 		{
 			InitializeComponent ();
 
-            SPEL.TextColor = App.MC;
-            SudokuButton.BackgroundColor = App.MC;
-            QuizButton.BackgroundColor = App.MC;
-            PicrossButton.BackgroundColor = App.MC;
+            BackgroundColor = App.MC;
+
+            //  SPEL.TextColor = App.MC;
+            // SudokuButton.BackgroundColor = App.MC;
+            // QuizButton.BackgroundColor = App.MC;
+            // PicrossButton.BackgroundColor = App.MC;
 
         }
 
