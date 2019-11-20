@@ -22,14 +22,14 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label x:Name="Start" Text="Skriv en fråga, och fyra svar. Om du har tur så väljs din ut som dagens fråga i framtiden!" FontSize="26" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Margin="30" Grid.Row="0" Grid.RowSpan="3"   Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center"  VerticalOptions="CenterAndExpand" IsVisible="True" />
-                <Button x:Name="Submit" TextColor="White" Margin="20" Text="Submit Quesition" Clicked="SubmitQ" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                <Label x:Name="Start" Text="Skriv en fråga, och fyra svar. Om du har tur så väljs din ut som dagens fråga i framtiden!" FontSize="26" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Margin="30" Grid.Row="0" Grid.RowSpan="2"   Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center"  VerticalOptions="Center" IsVisible="True" />
+                <Button x:Name="Submit" TextColor="White" Margin="20" Text="Skicka in fråga" Clicked="SubmitQ" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
 
-                <Entry x:Name="Question" Placeholder="The Question" Margin="20" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-                <Entry x:Name="Op1" Margin="20" Placeholder="Option 1" ClassId="1"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                <Entry x:Name="Op2" Margin="20" Placeholder="Option 2" ClassId="2"  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                <Entry x:Name="Op3" Margin="20" Placeholder="Option 3" ClassId="3"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                <Entry x:Name="Op4" Margin="20" Placeholder="Option 4" ClassId="4"  Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                <Entry x:Name="Question" Placeholder="Din fråga." Margin="20" FontSize="20" HorizontalTextAlignment="Center" TextColor="Black" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Entry x:Name="Op1" Margin="20" Placeholder="Val 1" ClassId="1"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                <Entry x:Name="Op2" Margin="20" Placeholder="Val 2" ClassId="2"  Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                <Entry x:Name="Op3" Margin="20" Placeholder="Val 3" ClassId="3"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                <Entry x:Name="Op4" Margin="20" Placeholder="Val 4" ClassId="4"  Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>
