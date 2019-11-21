@@ -14,7 +14,7 @@ namespace NWT
 	public partial class PicrossPage : ContentPage
 	{
         public PicrossTable PCT;
-        public Color Flag = Color.Green;
+        public Color Flag = Color.FromHex("#57B04D");
         public List<string> Left;
         public List<string> Top;
         public List<List<int>> Solution;
@@ -31,7 +31,10 @@ namespace NWT
             Top = JsonConvert.DeserializeObject<List<string>>(PCT.Top);
             Solution = JsonConvert.DeserializeObject<List<List<int>>>(PCT.Gameboard);
             MakeBoard();
-		}
+            BackgroundColor = App.MC;
+            
+            
+        }
 
 
 
@@ -87,11 +90,11 @@ namespace NWT
             {
                 Button.BackgroundColor = Flag;
             }
-            else if (Button.BackgroundColor == Color.Red && Flag == Color.Green)
+            else if (Button.BackgroundColor == Color.FromHex("#EE4949") && Flag == Color.FromHex("#57B04D"))
             {
                 Button.BackgroundColor = Flag;
             }
-            else if (Button.BackgroundColor == Color.Green && Flag == Color.Red)
+            else if (Button.BackgroundColor == Color.FromHex("#57B04D") && Flag == Color.FromHex("#EE4949"))
             {
                 Button.BackgroundColor = Flag;
             }
@@ -105,17 +108,17 @@ namespace NWT
         {
             if ((CalculatePicross() || Fusk) && !Solved)
             {
-                await DisplayAlert("Task", "You Solved the Picross!", "OK");
+                await DisplayAlert("Fantastiskt", "Du löste denna Picross. Grymt jobbat!", "OK");
                 App.database.StatUpdate("GameFinished");
                 Solved = true;
             }
             else if (Solved)
             {
-                await DisplayAlert("Task", "You have already solved the Picross.", "OK");
+                await DisplayAlert("WIP", "Du har redan löst denna Picross, återkom vid ett senare tillfälle", "OK");
             }
             else
             {
-                await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes. (Unless you want to Cheat, at which you can just click solve again..)", "OK");
+                await DisplayAlert("Inkorrekt", "Felaktig lösning, försök hitta var du gjort ett misstag", "OK");
                 //Fusk = true;
             }
         }
@@ -136,7 +139,7 @@ namespace NWT
                     var SolTile = TempSol[x];
                     var Tile = TempBoard[y];
 
-                    if ((SolTile == 49 && Tile.BackgroundColor == Color.Green)|| (SolTile == 48 && Tile.BackgroundColor != Color.Green))
+                    if ((SolTile == 49 && Tile.BackgroundColor == Color.FromHex("#57B04D")) || (SolTile == 48 && Tile.BackgroundColor != Color.FromHex("#57B04D")))
                     {
                         Console.WriteLine("Picross Debug, X: " + x + " Y: " + y + " SolTile: " + SolTile + " TileColor: " + Tile.BackgroundColor.ToString() + " True");
                         Solved = true;
@@ -156,11 +159,11 @@ namespace NWT
 
         public void SetGreen(object sender, EventArgs e)
         {
-            Flag = Color.Green;
+            Flag = Color.FromHex("#57B04D");
         }
         public void SetRed(object sender, EventArgs e)
         {
-            Flag = Color.Red;
+            Flag = Color.FromHex("#EE4949");
         }
 
 
