@@ -99,7 +99,7 @@ namespace NWT
                     var SolTile = TempSol[y];
                     var Tile = TempBoard[y];
 
-                    if ((SolTile-48 == Convert.ToInt32(Tile.Text)))
+                    if (((SolTile-48).ToString() == Tile.Text))
                     {
                         Console.WriteLine("Sudoku Debug, X: " + x + " Y: " + y + " SolTile: " + (SolTile - 48) + " TileText: " + Tile.Text + " True");
                         Solved = true;
