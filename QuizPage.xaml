@@ -29,8 +29,8 @@
                 <Label x:Name="Header" Text="QUIZ!" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Center" TextColor="#649FD4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
                 <Label Text="Det finns för tillfället bara fem testfrågor, och detta spel är inte färdigt. Testa gärna ändå!" HorizontalTextAlignment="Center" FontSize="24" VerticalTextAlignment="Start" TextColor="#000000" Grid.Row="2" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True"/>
 
-                <Button x:Name="Start" Margin="10" BackgroundColor="#649FD4" Text="Start Game" TextColor="White" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="Submit" Margin="10" BackgroundColor="#649FD4" Text="Submit Questions" TextColor="White" Clicked="Submission" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+                <Button x:Name="Start" Margin="10" BackgroundColor="#649FD4" Text="Starta Spelet" TextColor="White" Clicked="Gametick" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="Submit" Margin="10" BackgroundColor="#649FD4" Text="Skicka in Frågor" TextColor="White" Clicked="Submission" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
 
 
                 <Button x:Name="Cat1" Margin="10" Text="Kategori 1" TextColor="White" BackgroundColor="#649FD4" Clicked="Gametick" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
