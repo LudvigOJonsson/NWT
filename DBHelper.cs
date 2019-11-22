@@ -452,7 +452,12 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
         }
-
+        public List<QuizTable> GetQuestion(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Query", "SELECT * FROM Questions WHERE ID = " + ID, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<QuizTable>>(Result.JSON);
+        }
         public int LoadNF(int start, int stop, string Filter, string Author, string Tag)
         {
             int Nr = 0;
@@ -1134,6 +1139,10 @@ namespace NWT
             return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
 
         }
+
+
+
+
         public string SHA256Hash(string input)
         {
             // Create a SHA256   
@@ -1346,7 +1355,30 @@ namespace NWT
                 "(190, 'Brun Brett', 'avatar_beard42.png', 'Beard', 20, 'Beard'), " +
                 "(191, 'Röd Brett', 'avatar_beard43.png', 'Beard', 20, 'Beard'), " +
                 "(192, 'Grå Brett', 'avatar_beard44.png', 'Beard', 20, 'Beard'), " +
-                "(193, 'Blond Brett', 'avatar_beard45.png', 'Beard', 20, 'Beard'); " +
+                "(193, 'Blond Brett', 'avatar_beard45.png', 'Beard', 20, 'Beard'), " +
+                "(194, '(Sportutstyrsel1)', 'avatar_body53.png', 'Body', '20', 'Ct1'), " +
+                "(195, '(Sportutstyrsel2)', 'avatar_body54.png', 'Body', '20', 'Ct1'), " +
+                "(196, '(Sportutstyrsel3)', 'avatar_body55.png', 'Body', '20', 'Ct1'), " +
+                "(197, '(Sportutstyrsel4)', 'avatar_body56.png', 'Body', '20', 'Ct1'), " +
+                "(198, '(Sportutstyrsel5)', 'avatar_body57.png', 'Body', '20', 'Ct1'), " +
+                "(199, '(Sportutstyrsel6)', 'avatar_body58.png', 'Body', '20', 'Ct1'), " +
+                "(200, '(Sportutstyrsel7)', 'avatar_body59.png', 'Body', '20', 'Ct1'), " +
+                "(201, '(Sportutstyrsel8)', 'avatar_body61.png', 'Body', '20', 'Ct1'), " +
+                "(202, '(Sportutstyrsel9)', 'avatar_body62.png', 'Body', '20', 'Ct1'), " +
+                "(203, '(Sportutstyrsel10)', 'avatar_body63.png', 'Body', '20', 'Ct1'), " +
+                "(204, '(Sportutstyrsel11)', 'avatar_body64.png', 'Body', '20', 'Ct1'), " +
+                "(205, '(Sportutstyrsel12)', 'avatar_body65.png', 'Body', '20', 'Ct2'), " +
+                "(206, '(Sportutstyrsel13)', 'avatar_body66.png', 'Body', '20', 'Ct2'), " +
+                "(207, '(Sportutstyrsel14)', 'avatar_body67.png', 'Body', '20', 'Ct2'), " +
+                "(208, '(Sportutstyrsel15)', 'avatar_body68.png', 'Body', '20', 'Ct2'), " +
+                "(209, '(Sportutstyrsel16)', 'avatar_body69.png', 'Body', '20', 'Ct2'), " +
+                "(210, '(Sportutstyrsel17)', 'avatar_body70.png', 'Body', '20', 'Ct2'), " +
+                "(211, '(Sportutstyrsel18)', 'avatar_body71.png', 'Body', '20', 'Ct2'), " +
+                "(212, '(Sportutstyrsel19)', 'avatar_body72.png', 'Body', '20', 'Ct2'), " +
+                "(213, '(Sportutstyrsel20)', 'avatar_body73.png', 'Body', '20', 'Ct2'), " +
+                "(214, '(Sportutstyrsel21)', 'avatar_body74.png', 'Body', '20', 'Ct2'), " +
+                "(215, '(Sportutstyrsel22)', 'avatar_body75.png', 'Body', '20', 'Ct2'), " +
+                "(216, '(Sportutstyrsel23)', 'avatar_body76.png', 'Body', '20', 'Ct2'); " +
              "");
         }
         public static string TCP(string JSON)
@@ -1536,12 +1568,7 @@ namespace NWT
 
 
 
-    public List<QuizTable> GetQuestion(int ID)
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Query", "SELECT * FROM Questions WHERE ID = " + ID, App.LoggedinUser.ID)));
-    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-    return JsonConvert.DeserializeObject<List<QuizTable>>(Result.JSON);
-    }
+
 
 
     public List<Task> MissionUpdate(UserTable User, string Operation)

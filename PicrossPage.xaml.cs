@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 
 namespace NWT
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PicrossPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PicrossPage : ContentPage
+    {
         public PicrossTable PCT;
         public Color Flag = Color.FromHex("#57B04D");
         public List<string> Left;
@@ -23,17 +23,19 @@ namespace NWT
         public bool Fusk = false;
 
 
-        public PicrossPage ()
-		{
-			InitializeComponent ();
+        public PicrossPage()
+        {
+            InitializeComponent();
             PCT = App.database.LoadPicross().First();
             Left = JsonConvert.DeserializeObject<List<string>>(PCT.Left);
             Top = JsonConvert.DeserializeObject<List<string>>(PCT.Top);
             Solution = JsonConvert.DeserializeObject<List<List<int>>>(PCT.Gameboard);
             MakeBoard();
             BackgroundColor = App.MC;
-            
-            
+            PicrossGrid.BackgroundColor = App.MC;
+            PicrossGrid2.BackgroundColor = App.MC;
+
+
         }
 
 
@@ -52,9 +54,9 @@ namespace NWT
                     Tile.BackgroundColor = Color.White;
                     Tile.Clicked += Place;
                     PicrossGrid.Children.Add(Tile, x + 1, y + 1);
-                    Temp.Insert(y,Tile);                 
+                    Temp.Insert(y, Tile);
                 }
-                Gameboard.Insert(x,Temp);
+                Gameboard.Insert(x, Temp);
             }
 
             T1.Text = Top[0];
@@ -86,7 +88,7 @@ namespace NWT
         public void Place(object sender, EventArgs e)
         {
             var Button = (Button)sender;
-            if(Button.BackgroundColor == Color.White)
+            if (Button.BackgroundColor == Color.White)
             {
                 Button.BackgroundColor = Flag;
             }
@@ -123,7 +125,7 @@ namespace NWT
             }
         }
 
- 
+
 
 
 
@@ -131,7 +133,7 @@ namespace NWT
         {
             Boolean Solved = false;
             for (int x = 0; x < 10; x++)
-            {            
+            {
                 var TempBoard = Gameboard[x];
                 for (int y = 0; y < 10; y++)
                 {
@@ -166,6 +168,9 @@ namespace NWT
             Flag = Color.FromHex("#EE4949");
         }
 
-
+        async private void Tip(object sender, EventArgs e)
+        {
+            await DisplayAlert("Hur man spelar Picross", "De vita siffrorna på sidan visar hur många och hur långa gröna rutor som ska ritas ut på de olika raderna. T.ex. en vit tvåa betyder att det ska finnas två gröna rutor bredvid varandra någonstans på den raden. En etta efter tvåan betyder att det ska finnas en ensam grön ruta senare på samma rad. Använd gärna röda rutor om du vill, för att markera vilka rutor som inte ska ha grönt i sig.", "Okej");
+        }
     }
 }

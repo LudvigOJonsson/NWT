@@ -11,19 +11,19 @@
     </ContentPage.Padding>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Sudoku" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#649FD4" />
-            <Grid x:Name="SudokuGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor = "Black">
+            <!--<Label Text="Sudoku" FontSize="26" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="#649FD4" />-->
+            <Grid x:Name="SudokuGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor = "Black" VerticalOptions="Start">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="80" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -36,7 +36,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="SolveButton" Text="Solve" Clicked="SolveSudoku" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="9" BackgroundColor="#649FD4" TextColor="White"/>
+                <Button x:Name="SolveButton" Text="Klar!" Clicked="SolveSudoku" Margin="20" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="9" BackgroundColor="#649FD4" TextColor="Black"/>
             </Grid>
 
             

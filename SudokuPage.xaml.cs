@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 
 namespace NWT
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SudokuPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SudokuPage : ContentPage
+    {
         public SudokuTable SudoT;
         public List<List<int>> Solution;
         public List<List<int>> Placement;
@@ -24,12 +24,16 @@ namespace NWT
         public List<List<Button>> Gameboard = new List<List<Button>>();
 
 
-        public SudokuPage ()
-		{
+        public SudokuPage()
+        {
             SudoT = App.database.LoadSudoku().First();
             Solution = JsonConvert.DeserializeObject<List<List<int>>>(SudoT.ValueList);
             Placement = JsonConvert.DeserializeObject<List<List<int>>>(SudoT.PlacedList);
-            InitializeComponent ();
+            InitializeComponent();
+            SudokuGrid.BackgroundColor = App.MC;
+            BackgroundColor = App.MC;
+            SolveButton.BackgroundColor = Color.White;
+
             MakeBoard();
         }
 
@@ -44,12 +48,35 @@ namespace NWT
                 {
                     var Tile = new Button();
                     Tile.Margin = 1;
+                    Tile.FontSize = 24;
                     Tile.BackgroundColor = Color.White;
+
+                    //Bottom left
+                    if (y <= 2 && x <= 2)
+                        Tile.BackgroundColor = Color.LightGray;
+
+                    //Bottom right
+                    if (y <= 2 && x >= 6)
+                        Tile.BackgroundColor = Color.LightGray;
+
+                    //Center
+                    if (y >= 3 && y <= 5 && x >= 3 && x <= 5)
+                        Tile.BackgroundColor = Color.LightGray;
+
+                    //Top right
+                    if (y >= 6 && x >= 6)
+                        Tile.BackgroundColor = Color.LightGray;
+
+                    //Top left
+                    if (y >= 6 && x <= 2)
+                        Tile.BackgroundColor = Color.LightGray;
+
                     char temp = (char)TempSol[y];
-                    
-                    if(TempPlace[y] == 49)
+
+                    if (TempPlace[y] == 49)
                     {
                         Tile.Text = (temp - 48).ToString();
+                        Tile.IsEnabled = false;
                     }
                     else
                     {
@@ -66,13 +93,13 @@ namespace NWT
         public async void Place(object sender, EventArgs e)
         {
             var Button = (Button)sender;
-            await PopupNavigation.Instance.PushAsync(new NumpadPopup(Button));
+            await PopupNavigation.Instance.PushAsync(new NumpadPopup(Button, this));
         }
 
 
         async public void SolveSudoku(object sender, EventArgs e)
         {
-            if((CalculateSudoku() || Fusk) && !Solved)
+            if ((CalculateSudoku() || Fusk) && !Solved)
             {
                 await DisplayAlert("Task", "Du löste Picrosset! Bra jobbat! Här får du 20 mynt! Kom tillbaka imorgon för mer!", "OK");
                 App.database.StatUpdate("GameFinished");
@@ -81,17 +108,18 @@ namespace NWT
             }
             else if (Solved)
             {
-                await DisplayAlert("WIP", "Du har redan löst denna Sudoku, återkom vid ett senare tillfälle.", "OK");
+                await DisplayAlert("Snyggt!", "Du är redan klar med denna Sudoku. Kom tillbaka imorgon för mer!", "Okej");
             }
-            else {
+            else
+            {
                 await DisplayAlert("Inkorrekt", "Felaktig lösning, försök hitta var du gjort ett misstag", "OK");
-                Fusk = true;
+                //Fusk = true;
             }
         }
         public bool CalculateSudoku()
         {
             Boolean Solved = false;
-            for(int x = 0; x <= 8; x++)
+            for (int x = 0; x <= 8; x++)
             {
                 var TempBoard = Gameboard[x];
                 for (int y = 0; y <= 8; y++)
@@ -100,7 +128,7 @@ namespace NWT
                     var SolTile = TempSol[y];
                     var Tile = TempBoard[y];
 
-                    if (((SolTile-48).ToString() == Tile.Text))
+                    if (((SolTile - 48).ToString() == Tile.Text))
                     {
                         Console.WriteLine("Sudoku Debug, X: " + x + " Y: " + y + " SolTile: " + (SolTile - 48) + " TileText: " + Tile.Text + " True");
                         Solved = true;
@@ -115,7 +143,7 @@ namespace NWT
                         return false;
                 }
             }
-            return true;    
+            return true;
         }
 
 
