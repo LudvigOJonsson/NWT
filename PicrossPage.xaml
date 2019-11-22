@@ -22,7 +22,7 @@
                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="60" />
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="30" />
@@ -88,7 +88,7 @@
                     <ColumnDefinition Width="75" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="GreenButton" Text="Gröm" Clicked="SetGreen"  BackgroundColor="#A5A5A5"  Grid.Row="1" Grid.Column="1"   TextColor="#63C163" BorderColor="#363636" HorizontalOptions="Center" />
+                <Button x:Name="GreenButton" Text="Grön" Clicked="SetGreen"  BackgroundColor="#A5A5A5"  Grid.Row="1" Grid.Column="1"   TextColor="#63C163" BorderColor="#363636" HorizontalOptions="Center" />
                 <Button x:Name="RedButton" Text="Röd" Clicked="SetRed"  BackgroundColor="#A5A5A5"  Grid.Row="2" Grid.Column="1"  TextColor="#EE4949" BorderColor="#363636" HorizontalOptions="Center"/>
                 <Button x:Name="SolveButton" Text="Rätta"  Clicked="SolvePicross" BackgroundColor="#A5A5A5"  Grid.Row="3" Grid.Column="1"  HorizontalOptions="Center" TextColor="#E9E9E9" BorderColor="#363636"/>
                 <BoxView x:Name="Boxend" BackgroundColor="#3E3E3E"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"/>
