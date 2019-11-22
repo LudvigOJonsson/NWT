@@ -810,6 +810,7 @@ namespace NWT
                 {
                     foreach (var RA in RAL)
                     {
+                        RA.Image = RA.Image.Substring(4, RA.Image.Length-4);
                         var NF = new NewsfeedTable
                         {
                             ID = 0,
@@ -843,6 +844,7 @@ namespace NWT
                     Console.WriteLine("Favorites Gotten: " + FAL.Count());
                     foreach (var FA in FAL)
                     {
+                        FA.Image = FA.Image.Substring(4, FA.Image.Length-4);
                         var NF = new NewsfeedTable
                         {
                             ID = 0,
