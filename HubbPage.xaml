@@ -6,7 +6,7 @@
              x:Class="NWT.HubbPage"
              x:Name = "Hubbpage" 
              BackgroundColor="#FFFFFF"
-             Icon="community.png"
+             Icon="Icon_Hub_white.png"
              Title="Hubb"
              >
     <ContentPage.ToolbarItems>

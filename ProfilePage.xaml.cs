@@ -496,8 +496,14 @@ namespace NWT
             await button.FadeTo(0.5f, 100);
             await button.FadeTo(1f, 100);
 
+            var Test = App.database.GetUserStats(1);
+            if (Test != null)
+            {
+                App.Online = true;
+            }
+
             var Stats = App.database.GetUserStats(App.LoggedinUser.ID).First();
-            if(Stats != null)
+            if(Stats != null && App.Online)
             {
                 await Navigation.PushAsync(new AchivementsPage(Stats));
             }
