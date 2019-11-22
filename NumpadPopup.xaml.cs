@@ -14,11 +14,13 @@ namespace NWT
     public partial class NumpadPopup : Rg.Plugins.Popup.Pages.PopupPage
     {
         Button B_;
-        public NumpadPopup(Button b)
+        SudokuPage S_;
+        public NumpadPopup(Button b, SudokuPage s)
         {
             InitializeComponent();
 
             B_ = b;
+            S_ = s;
             Num1.BackgroundColor = App.MC;
             Num2.BackgroundColor = App.MC;
             Num3.BackgroundColor = App.MC;
@@ -28,15 +30,28 @@ namespace NWT
             Num7.BackgroundColor = App.MC;
             Num8.BackgroundColor = App.MC;
             Num9.BackgroundColor = App.MC;
+            NumNull.BackgroundColor = App.MC;
         }
 
 
         //Function that happens when you click on one of the numpads
         private async void NumClicked(object sender, EventArgs e)
         {
-            Button b = (Button)sender;
-
+            Button b;
+            b = (Button)sender;
+            //B_.TextColor = Color.DarkGray;
             B_.Text = b.ClassId;
+
+            //S_.CheckForEmpty();
+            await Navigation.PopPopupAsync();
+        }
+        private async void NumClickedLabel(object sender, EventArgs e)
+        {
+            Label b;
+            b = (Label)sender;
+            B_.Text = b.ClassId;
+
+            //S_.CheckForEmpty();
             await Navigation.PopPopupAsync();
         }
 

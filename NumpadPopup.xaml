@@ -25,9 +25,10 @@
         <ContentView>
             <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
@@ -39,31 +40,34 @@
 
 
                 <Button Grid.Row="0" Grid.Column="0" x:Name="Num1" ClassId="1" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="0" Grid.Column="0" Text="1" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="0" Grid.Column="0" Text="1" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
 
                 <Button Grid.Row="0" Grid.Column="1" x:Name="Num2" ClassId="2" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="0" Grid.Column="1" Text="2" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
 
                 <Button Grid.Row="0" Grid.Column="2" x:Name="Num3" ClassId="3" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="3" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="0" Grid.Column="2" Text="3" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
                 
                 <Button Grid.Row="1" Grid.Column="0" x:Name="Num4" ClassId="4" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="1" Grid.Column="0" Text="4" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="1" Grid.Column="0" Text="4" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
 
                 <Button Grid.Row="1" Grid.Column="1" x:Name="Num5" ClassId="5" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="1" Grid.Column="1" Text="5" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="1" Grid.Column="1" Text="5" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
                 
                 <Button Grid.Row="1" Grid.Column="2" x:Name="Num6" ClassId="6" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="1" Grid.Column="2" Text="6" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="1" Grid.Column="2" Text="6" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
                 
                 <Button Grid.Row="2" Grid.Column="0" x:Name="Num7" ClassId="7" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="2" Grid.Column="0" Text="7" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="2" Grid.Column="0" Text="7" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
                 
                 <Button Grid.Row="2" Grid.Column="1" x:Name="Num8" ClassId="8" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="2" Grid.Column="1" Text="8" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
-                
+                <Label Grid.Row="2" Grid.Column="1" Text="8" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+
                 <Button Grid.Row="2" Grid.Column="2" x:Name="Num9" ClassId="9" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
-                <Label Grid.Row="2" Grid.Column="2" Text="9" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+                <Label Grid.Row="2" Grid.Column="2" Text="9" FontSize="30" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
+
+                <Button Grid.Row="3" Grid.Column="1" x:Name="NumNull" ClassId="" Margin="10" CornerRadius="15" Clicked="NumClicked"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="Clear" FontSize="22" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" InputTransparent="True" />
 
 
                 <!-- <BoxView Grid.Row="1" Grid.Column="1"  Margin="15" BackgroundColor="AntiqueWhite"  />

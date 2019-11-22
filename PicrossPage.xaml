@@ -5,7 +5,7 @@
              Title="Picross">
     <ContentPage.Content>
         <StackLayout>
-            
+
             <Grid x:Name="PicrossGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor ="#3E3E3E">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90" />
@@ -19,10 +19,10 @@
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
-                   
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="90" />
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="30" />
@@ -58,16 +58,35 @@
                 <Label x:Name="L9" Text=" " TextColor="White" Grid.Row="9" Grid.Column="0" HorizontalOptions="Center" VerticalOptions ="Center"/>
                 <Label x:Name="L10" Text=" " TextColor="White" Grid.Row="10" Grid.Column="0" HorizontalOptions="Center" VerticalOptions ="Center"/>
 
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="1" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="2" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="3" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="4" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="5" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="6" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="7" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="8" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
+                <BoxView BackgroundColor="White" Grid.Row="0" Grid.Column="9" WidthRequest="1" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="End"/>
 
-                
-               
+
+                <BoxView BackgroundColor="White" Grid.Row="1" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="2" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="3" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="4" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="5" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="6" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="7" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="8" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+                <BoxView BackgroundColor="White" Grid.Row="9" Grid.Column="0" WidthRequest="50" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Center"/>
+
+
 
             </Grid>
 
 
-            <Grid   RowSpacing="5" ColumnSpacing="0" BackgroundColor ="#3E3E3E">
-                
-                
+            <Grid x:Name="PicrossGrid2"  RowSpacing="5" ColumnSpacing="0" BackgroundColor ="#3E3E3E">
+
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10" />
                     <RowDefinition Height="50" />
@@ -75,7 +94,7 @@
                     <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="10" />
-                    
+
 
                 </Grid.RowDefinitions>
 
@@ -88,14 +107,19 @@
                     <ColumnDefinition Width="75" />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="GreenButton" Text="Grön" Clicked="SetGreen"  BackgroundColor="#A5A5A5"  Grid.Row="1" Grid.Column="1"   TextColor="#63C163" BorderColor="#363636" HorizontalOptions="Center" />
-                <Button x:Name="RedButton" Text="Röd" Clicked="SetRed"  BackgroundColor="#A5A5A5"  Grid.Row="2" Grid.Column="1"  TextColor="#EE4949" BorderColor="#363636" HorizontalOptions="Center"/>
-                <Button x:Name="SolveButton" Text="Rätta"  Clicked="SolvePicross" BackgroundColor="#A5A5A5"  Grid.Row="3" Grid.Column="1"  HorizontalOptions="Center" TextColor="#E9E9E9" BorderColor="#363636"/>
-                <BoxView x:Name="Boxend" BackgroundColor="#3E3E3E"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"/>
+                <Button x:Name="GreenButton" Text="Grön" Clicked="SetGreen"  BackgroundColor="White"  Grid.Row="1" Grid.Column="1"   TextColor="#63C163" BorderColor="#363636" HorizontalOptions="Center" />
+                <Button x:Name="RedButton" Text="Röd" Clicked="SetRed"  BackgroundColor="White"  Grid.Row="2" Grid.Column="1"  TextColor="#EE4949" BorderColor="#363636" HorizontalOptions="Center"/>
+                <Button x:Name="SolveButton" Text="Rätta"  Clicked="SolvePicross" BackgroundColor="White"  Grid.Row="3" Grid.Column="1"  HorizontalOptions="Center" TextColor="Black" BorderColor="#363636"/>
+                <Image x:Name="Tips" Source="questionMark"  Grid.Row="3" Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="50" WidthRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tip" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <!--<BoxView x:Name="Boxend" BackgroundColor="#3E3E3E"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"/>-->
 
 
             </Grid>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
