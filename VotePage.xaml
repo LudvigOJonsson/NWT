@@ -11,6 +11,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -27,10 +28,12 @@
                 <BoxView x:Name="Q6"   Grid.Row="0" Grid.Column="5"/>
 
                 <Label x:Name="Header" Text="Lokala omröstningar" HorizontalTextAlignment="Center" FontSize="36" VerticalTextAlignment="Start" TextColor="#649FD4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="Center" IsVisible="True" />
-              
-                <Button x:Name="VoteN" Margin="10" BackgroundColor="#649FD4" Text="Svara på dagens fråga" FontSize="26" TextColor="White" Clicked="Vote" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="SubmitN" Margin="10" BackgroundColor="#649FD4" Text="Skicka in en fråga" FontSize="26" TextColor="White" Clicked="Submit" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
-                <Button x:Name="ResultN" Margin="10" BackgroundColor="#649FD4" Text="Tidigare resultat" FontSize="26" TextColor="White" Clicked="Results" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
+
+                <Label Text="Detta är för tillfället ett test för att kunna ställa och svara på frågor av andra användare."  FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand"  VerticalOptions="Center"/>
+
+                <Button x:Name="VoteN" Margin="10" BackgroundColor="#649FD4" Text="Svara på dagens fråga" FontSize="26" TextColor="White" Clicked="Vote" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="SubmitN" Margin="10" BackgroundColor="#649FD4" Text="Skicka in en fråga" FontSize="26" TextColor="White" Clicked="Submit" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" IsVisible="True" />
+                <Button x:Name="ResultN" Margin="10" BackgroundColor="#649FD4" Text="Tidigare resultat" FontSize="26" TextColor="White" Clicked="Results" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>
                 <!--<Button x:Name="ArchiveN" Margin="10" BackgroundColor="#649FD4" Text="Archive" FontSize="26" TextColor="White" Clicked="Archive" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True"/>-->
              </Grid>
         </StackLayout>
