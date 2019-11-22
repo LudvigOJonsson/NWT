@@ -440,6 +440,19 @@ namespace NWT
             return DB.Query<AvatarItemsTable>("SELECT * FROM Items WHERE ID = ?", ID.ToString());
         }
 
+        public List<VoteQuestionTable> GetVoteQuestions(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM VoteQuestions WHERE Stage = " + ID, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<VoteQuestionTable>>(Result.JSON);
+        }
+        public List<VoteTable> GetVotes(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Query", "SELECT * FROM Votes WHERE Question = " + ID, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
+        }
+
         public int LoadNF(int start, int stop, string Filter, string Author, string Tag)
         {
             int Nr = 0;
@@ -730,7 +743,6 @@ namespace NWT
             }
             return Nr;
         }
-
         public int BatchLoadCNF(int start, int stop, List<string> Filter_, List<string> Author_, List<string> Tag_)
         {
             int Nr = 0;
@@ -1092,21 +1104,36 @@ namespace NWT
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON).Count;
         }
-
         public List<PicrossTable> LoadPicross()
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Picross", "Query", "SELECT * FROM Picross WHERE ID = 1", App.LoggedinUser.ID)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<PicrossTable>>(Result.JSON);
         }
-
         public List<SudokuTable> LoadSudoku()
         {
             var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Sudoku", "Query", "SELECT * FROM Sudoku WHERE ID = 1", App.LoggedinUser.ID)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<SudokuTable>>(Result.JSON);
         }
+        public void InsertVoteQuestion(VoteQuestionTable VQ)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Insert", JsonConvert.SerializeObject(VQ), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
+        public void InsertVote(VoteTable Vote)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote), App.LoggedinUser.ID)));
+            App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
+        }
 
+        public List<VoteTable> VoteCheck(int ID, int Q)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Query", "SELECT * FROM Votes WHERE User = " + ID + " AND Question = " + Q, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
+
+        }
         public string SHA256Hash(string input)
         {
             // Create a SHA256   
@@ -1445,20 +1472,7 @@ namespace NWT
         return JsonConvert.DeserializeObject<List<CommentTable>>(Result.JSON);
     }        
             
-    public List<VoteQuestionTable> GetVoteQuestions(int ID)
-    {           
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM VoteQuestions WHERE Stage = " + ID, App.LoggedinUser.ID)));
-    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-    return JsonConvert.DeserializeObject<List<VoteQuestionTable>>(Result.JSON);
-    }
 
-    public List<VoteTable> VoteCheck(int ID, int Q)
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Query", "SELECT * FROM Votes WHERE User = " + ID + " AND Question = " + Q, App.LoggedinUser.ID)));
-    var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
-    return JsonConvert.DeserializeObject<List<VoteTable>>(Result.JSON);
-
-    }
 
     public void InsertInsandare(NewsfeedTable RSS)
     {
@@ -1470,16 +1484,7 @@ namespace NWT
     var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Quiz", "Insert", JsonConvert.SerializeObject(Quiz), App.LoggedinUser.ID)));
     App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
     }
-    public void InsertVoteQuestion(VoteQuestionTable VQ)
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Insert", JsonConvert.SerializeObject(VQ), App.LoggedinUser.ID)));
-    App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
-    }
-    public void InsertVote(VoteTable Vote)
-    {
-    var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Vote", "Insert", JsonConvert.SerializeObject(Vote), App.LoggedinUser.ID)));
-    App.LoggedinUser.MissionString = JsonConvert.DeserializeObject<JSONObj>(JSONResult).JSON;
-    }
+
 
 
     public void InsertPlus(PlusRSSTable RSS)

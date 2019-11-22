@@ -32,8 +32,12 @@ namespace NWT
                 VQ.Option4 = Op4.Text;
                 VQ.Posted = DateTime.Now;
                 VQ.Stage = 1;
-
-                //App.database.InsertVoteQuestion(VQ);
+                VQ.TotalVotes1 = 0;
+                VQ.TotalVotes2 = 0;
+                VQ.TotalVotes3 = 0;
+                VQ.TotalVotes4 = 0;
+                VQ.Winner = 0;
+                App.database.InsertVoteQuestion(VQ);
                 await DisplayAlert("Snyggt!", "Din fråga har skickats in.", "Okej");
             }
             else

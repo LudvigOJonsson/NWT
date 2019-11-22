@@ -16,7 +16,7 @@ namespace NWT
         public static TapGestureRecognizer TGR;
         public static int ARGC = 0;
 
-        public int Rownr = 0;
+        public int Rownr = 1;
 
 
         public class VoteQuestion
@@ -89,7 +89,7 @@ namespace NWT
 
             ARGC = argc;
             Console.WriteLine(ARGC);
-            var VoteQuestionQuery = new List<VoteQuestionTable>();// App.database.GetVoteQuestions(ARGC);
+            var VoteQuestionQuery = App.database.GetVoteQuestions(1);
             Console.WriteLine("Questions Read, Nr: "+ VoteQuestionQuery.Count());
             var VoteQuestionList = new List<VoteQuestion>();
             

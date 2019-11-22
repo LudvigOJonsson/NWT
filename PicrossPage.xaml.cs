@@ -108,9 +108,9 @@ namespace NWT
         {
             if ((CalculatePicross() || Fusk) && !Solved)
             {
-                await DisplayAlert("Fantastiskt", "Du löste denna Picross. Grymt jobbat!", "OK");
+                await DisplayAlert("Task", "Du löste Picrosset! Bra jobbat! Här får du 20 mynt! Kom tillbaka imorgon för mer!", "OK");
                 App.database.StatUpdate("GameFinished");
-                Solved = true;
+                App.database.Plustoken(App.LoggedinUser, 20);
             }
             else if (Solved)
             {

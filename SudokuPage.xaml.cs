@@ -74,16 +74,17 @@ namespace NWT
         {
             if((CalculateSudoku() || Fusk) && !Solved)
             {
-                await DisplayAlert("Task", "You Solved the Sudoku!", "OK");
+                await DisplayAlert("Task", "Du löste Picrosset! Bra jobbat! Här får du 20 mynt! Kom tillbaka imorgon för mer!", "OK");
                 App.database.StatUpdate("GameFinished");
+                App.database.Plustoken(App.LoggedinUser, 20);
                 Solved = true;
             }
             else if (Solved)
             {
-                await DisplayAlert("Task", "You have already solved the Sudoku.", "OK");
+                await DisplayAlert("WIP", "Du har redan löst denna Sudoku, återkom vid ett senare tillfälle.", "OK");
             }
             else {
-                await DisplayAlert("Task", "Incorrect Solution, please correct your mistakes. (Unless you want to Cheat, at which you can just click solve again..)", "OK");
+                await DisplayAlert("Inkorrekt", "Felaktig lösning, försök hitta var du gjort ett misstag", "OK");
                 Fusk = true;
             }
         }

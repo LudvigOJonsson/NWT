@@ -22,6 +22,11 @@ namespace NWT
             Op3.Text = VQ.Option3;
             Op4.Text = VQ.Option4;
 
+            int TV1 = 0;
+            int TV2 = 0;
+            int TV3 = 0;
+            int TV4 = 0;
+
             if (argc == 1)
             {
                 VoteCheck(VQ.ID);
@@ -33,6 +38,54 @@ namespace NWT
                 Op2.IsEnabled = false;
                 Op3.IsEnabled = false;
                 Op4.IsEnabled = false;
+
+
+                var Votelist = App.database.GetVotes(VQ.ID);
+
+                foreach (VoteTable Vote in Votelist)
+                {
+                    switch (Vote.ChoosenOption)
+                    {
+                        case 1:
+                            TV1++;
+                            break;
+                        case 2:
+                            TV2++;
+                            break;
+                        case 3:
+                            TV3++;
+                            break;
+                        case 4:
+                            TV4++;
+                            break;
+                    }
+                }
+                var TVMax = Math.Max(TV1, Math.Max(TV2, Math.Max(TV3, TV4)));
+                if(TVMax == TV1)
+                {
+                    Question.Text = "Val '" + VQ.Option1 + "' leder röstningen";
+                }
+                else if (TVMax == TV2)
+                {
+                    Question.Text = "Val '" + VQ.Option2 + "' leder röstningen";
+                }
+                else if (TVMax == TV3)
+                {
+                    Question.Text = "Val '" + VQ.Option3 + "' leder röstningen";
+                }
+                else if (TVMax == TV4)
+                {
+                    Question.Text = "Val '" + VQ.Option4 + "' leder röstningen";
+                }
+
+                
+
+                Op1.Text = TV1.ToString();
+                Op2.Text = TV2.ToString();
+                Op3.Text = TV3.ToString();
+                Op4.Text = TV4.ToString();
+
+
             }
             else if (argc == 3)
             {
@@ -48,7 +101,7 @@ namespace NWT
         {
             if (App.LoggedinUser != null)
             {
-                var Check = new List<VoteTable>();// App.database.VoteCheck(App.LoggedinUser.ID, Q);
+                var Check =  App.database.VoteCheck(App.LoggedinUser.ID, Q);
 
                 if (Check.Count() > 0)
                 {
@@ -89,7 +142,7 @@ namespace NWT
                 V.Question = Convert.ToInt32(Question.ClassId);
                 V.User = App.LoggedinUser.ID;
                 V.ChoosenOption = Convert.ToInt32(Clicked.ClassId);             
-                //App.database.InsertVote(V);
+                App.database.InsertVote(V);
                 await DisplayAlert("Submission Successful", "Vote Submitted", "OK");
             }
             else
