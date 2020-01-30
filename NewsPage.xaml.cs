@@ -56,6 +56,8 @@ namespace NWT
         {
             InitializeComponent();
 
+            BackGroundReactionTimerFavorites.BackgroundColor = App.MC;
+
             red = 255 + (int)App.MC.R * 2;
             green = 255 + (int)App.MC.G * 2;
             blue = 255 + (int)App.MC.B * 2;
@@ -98,7 +100,7 @@ namespace NWT
                     NewsPageView.BackgroundColor = Color.White;
                     Timer = new System.Timers.Timer
                     {
-                        Interval = 60
+                        Interval = 20
                     };
                     Timer.Elapsed += OnTimedEvent;
                     Timer.Enabled = true;
@@ -124,9 +126,11 @@ namespace NWT
                 Favorited = true;
             }
 
+            
+
             LoadNews(RSS);
 
-            FavButtonCheck();
+            FavButtonCheck(RSS);
 
 
         }
@@ -238,7 +242,89 @@ namespace NWT
             int Count = 0;
             int TextCount = 0;
             int ImageCount = 0;
-            
+
+            var ReactionBackground = new BoxView
+            {
+                CornerRadius = 0,
+                Margin = 0,
+                BackgroundColor = App.MC,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+            };
+
+            //Reaction stuff
+            var ReactionButton = new Button
+            {
+                CornerRadius = 0,
+                BorderWidth = 2,
+                Margin = 15,
+                BackgroundColor = Color.Transparent,
+                BorderColor = Color.LightGray,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                Text = "RE",
+                TextColor = Color.LightGray,
+            };
+            var ReactionBar1 = new BoxView
+            {
+                CornerRadius = 1,
+                Margin = 5,
+                BackgroundColor = Color.Red,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.End,
+                WidthRequest = Application.Current.MainPage.Width / 2 * 1f,
+                HeightRequest = 5,
+            };
+            var ReactionBar2 = new BoxView
+            {
+                CornerRadius = 1,
+                Margin = 5,
+                BackgroundColor = Color.Blue,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.End,
+                WidthRequest = Application.Current.MainPage.Width / 2 * 0.4f,
+                HeightRequest = 5,
+            };
+            var ReactionBar3 = new BoxView
+            {
+                CornerRadius = 1,
+                Margin = 0,
+                BackgroundColor = Color.Yellow,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.End,
+                WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
+                HeightRequest = 5,
+            };
+            var ReactionsOthers1 = new Image
+            {
+                Source = "reactions_angry",
+                Margin = 0,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.Start,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 30,
+                HeightRequest = 30,
+            };
+            var ReactionsOthers2 = new Image
+            {
+                Source = "reactions_happy",
+                Margin = 0,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 30,
+                HeightRequest = 30,
+            };
+            var ReactionsOthers3 = new Image
+            {
+                Source = "reactions_wow",
+                Margin = 0,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 30,
+                HeightRequest = 30,
+            };
 
             //ArticleGrid.Children.Add(BG, 0, 6, 0, Row+Order.Count);
 
@@ -436,14 +522,20 @@ namespace NWT
             ArticleGrid.Children.Add(Location, 3, 5, Row, Row + 1);
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row + 1);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerButton, 1, 4, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerIcon, 2, Row + 1);
+            ArticleGrid.Children.Add(BackGroundReactionTimerFavorites, 0, 6, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(TimerButton, 3, 4, Row + 1, Row + 2);
+            ArticleGrid.Children.Add(TimerIcon, 3, Row + 1);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
             ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
 
-            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 2, Row + 3);
-            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(ReactionButton, 2, 3, Row + 1, Row + 2); //Reaction   
+            ArticleGrid.Children.Add(ReactionsOthers1, 1, 2, Row + 1, Row + 2); //Reaction   
+            ArticleGrid.Children.Add(ReactionsOthers2, 1, 2, Row + 1, Row + 2); //Reaction  
+            ArticleGrid.Children.Add(ReactionsOthers3, 1, 2, Row + 1, Row + 2); //Reaction   
+
+            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 3, Row + 4);
+            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 3, Row + 4);
 
             
             
@@ -458,10 +550,10 @@ namespace NWT
             {
                 LoadComments();
             }
-            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 4, Row + 5);
-            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 5, Row + 6);
+            ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 5, Row + 6);
 
             CommentListView.InputTransparent = true;
             //TagGrid.InputTransparent = true;
@@ -526,10 +618,25 @@ namespace NWT
             Button.IsEnabled = false;
         }
 
-        public void FavButtonCheck()
+        public void FavButtonCheck(RSSTable RSS)
         {
             if (App.LoggedinUser != null)
             {
+
+                int j = 0;
+                var FAL = App.database.GetFavorites(App.LoggedinUser.ID);
+
+                if (FAL != null)
+                {
+                    Console.WriteLine("Favorites Gotten: " + FAL.Count());
+                    foreach (var FA in FAL)
+                    {
+                        if (RSS.ID == FA.ID)
+                        {
+                            Favorited = true;
+                        }
+                    }
+                }
 
                 if (Favorited)
                 {
@@ -626,6 +733,7 @@ namespace NWT
                 App.database.InsertHistory(HT);
                 TimerIcon.Source = "Icon_Coin.png";
                 TimerButton.Text = "Samlad";
+                TimerButton.TextColor = Color.White;
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
                 {

@@ -88,12 +88,15 @@ namespace NWT
                 {
                     Change = false;
                 }
-                    
 
-                if(Change)
+
+                if (Change)
+                {
                     App.database.UpdateInfo(App.LoggedinUser);
+                    await DisplayAlert("Ändrat", "Din information är ändrad.", "Okej");
+                }
                 else
-                    await DisplayAlert("Bad Credentials", "Please type in new information and/or a valid age", "OK");
+                    await DisplayAlert("Det blev fel", "Var god skriv in godkänd information i samtliga rutor ovanför.", "Okej");
             }
         }
 

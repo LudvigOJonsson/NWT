@@ -475,9 +475,84 @@ namespace NWT
                         Margin = new Thickness(15, 5, 15, 0),
                     };
 
+                    //Reaction stuff
+                    var ReactionButton = new Button
+                    {
+                        CornerRadius = 0,
+                        BorderWidth = 2,
+                        Margin = 10,
+                        BackgroundColor = Color.Transparent,
+                        BorderColor = Color.LightGray,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 60,
+                        HeightRequest = 35,
+                        Text = "RE",
+                        TextColor = Color.LightGray,
+
+                    };
+                    var ReactionBar1 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Red,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 1f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionBar2 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Blue,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 0.4f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionBar3 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Yellow,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionsOthers1 = new Image
+                    {
+                        Margin = 10,
+                        BackgroundColor = Color.Green,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 40,
+                        HeightRequest = 40,
+                    };
+                    var ReactionsOthers2 = new Image
+                    {
+                        Margin = 10,
+                        BackgroundColor = Color.Black,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 20,
+                        HeightRequest = 20,
+                    };
+                    var ReactionsOthers3 = new Image
+                    {
+                        Margin = 10,
+                        BackgroundColor = Color.Yellow,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 10,
+                        HeightRequest = 10,
+                    };
+
+
                     //Label.GestureRecognizers.Add(TGR);
                     //Image.GestureRecognizers.Add(TGR);
-                    
+
                     CategoryBox.SetBinding(IsVisibleProperty, "CategoryBig");
                     CategoryBox.SetBinding(HeightRequestProperty, "CBHR");
                     CategoryBox.SetBinding(WidthRequestProperty, "CBWR");
@@ -524,12 +599,29 @@ namespace NWT
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = GridLength.Auto },
+                    new RowDefinition { Height = GridLength.Auto },
                     new RowDefinition { Height = 10 },
 
                     },
 
                         ColumnDefinitions = {
                     new ColumnDefinition { Width = 0 },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = 0 },
                     },
@@ -549,17 +641,22 @@ namespace NWT
                     Label.WidthRequest = Label.Width - 25;
 
 
-                    Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 5); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image   
-                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(CategoryBoxSmall, 1, 2, 1, 5); //Label
-                    Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(IngressLabel, 1, 2, 3, 4); //Label
-                    Grid.Children.Add(Date, 1, 2, 4, 5); //Tag 
-                    Grid.Children.Add(Shadow, 1, 2, 5, 6);
-                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
-                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
+                    Grid.Children.Add(ArticleMargin, 1, 18, 0, 1); //Boxview
+                    Grid.Children.Add(Box, 1, 18, 1, 5); //Boxview
+                    Grid.Children.Add(Image, 1, 18, 1, 2); //Image   
+                    Grid.Children.Add(CategoryBox, 1, 18, 2, 3); //Label
+                    Grid.Children.Add(CategoryBoxSmall, 1, 18, 1, 5); //Label
+                    Grid.Children.Add(Label, 1, 18, 2, 3); //Label
+                    Grid.Children.Add(IngressLabel, 1, 18, 3, 4); //Label
+                    Grid.Children.Add(Date, 1, 18, 4, 5); //Tag 
+                    Grid.Children.Add(Shadow, 1, 18, 5, 6);
+                    Grid.Children.Add(TagBox, 1, 18, 1, 2); //Tag
+                    Grid.Children.Add(Tag, 1, 18, 1, 2); //Tag   
+
+                    Grid.Children.Add(ReactionButton, 1, 5, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers1, 5, 6, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers2, 6, 7, 4, 5); //Reaction  
+                    Grid.Children.Add(ReactionsOthers3, 7, 8, 4, 5); //Reaction   
                     //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
                     Console.WriteLine("Utdata: " + Label.Text);
 

@@ -39,6 +39,7 @@
             <BoxView x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
             <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
+            
 
             <!--<Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
             <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
@@ -65,9 +66,10 @@
             <Label Text="" x:Name="Location" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
 
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
+            <BoxView x:Name="BackGroundReactionTimerFavorites" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <Button x:Name="TimerButton" Text="0%" 
-                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" TextColor="White" Margin="15" 
-                    HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000"/>
+                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" Margin="15" 
+                    HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="2" TextColor="White" CornerRadius="0" BorderColor="#FFFFFF"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
                      BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source=""/>
 

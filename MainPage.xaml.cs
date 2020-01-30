@@ -11,7 +11,7 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace NWT
 {
-	public partial class MainPage : Xamarin.Forms.TabbedPage
+    public partial class MainPage : Xamarin.Forms.TabbedPage
     {
 
 
@@ -35,8 +35,7 @@ namespace NWT
             Children[1] = new NewsGridPage(0);
             Children[0] = new CustomNewsFeed();
 
-
-        }
+    }
 
         /*
         protected override void OnCurrentPageChanged()
