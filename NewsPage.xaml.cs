@@ -93,11 +93,13 @@ namespace NWT
                     Read = true;
                     NewsPageView.BackgroundColor = App.MC;
                     TimerButton.BackgroundColor = App.MC;
+                    TimerButton.TextColor = Color.White;
                                      
                 }
                 else
                 {
                     NewsPageView.BackgroundColor = Color.White;
+                    TimerButton.TextColor = Color.White;
                     Timer = new System.Timers.Timer
                     {
                         Interval = 20
@@ -131,6 +133,8 @@ namespace NWT
             LoadNews(RSS);
 
             FavButtonCheck(RSS);
+
+            ReactionCheck(RSS);
 
 
         }
@@ -256,14 +260,26 @@ namespace NWT
             var ReactionButton = new Button
             {
                 CornerRadius = 0,
-                BorderWidth = 2,
-                Margin = 15,
+                BorderWidth = 0,
+                Margin = 0,
                 BackgroundColor = Color.Transparent,
                 BorderColor = Color.LightGray,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                Text = "RE",
+                Text = "",
+                FontSize = 20,
                 TextColor = Color.LightGray,
+            };
+            var ReactionImage = new Image
+            {
+                Source = "reactions_gray",
+                Margin = 0,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                WidthRequest = 30,
+                HeightRequest = 30,
+
             };
             var ReactionBar1 = new BoxView
             {
@@ -297,17 +313,17 @@ namespace NWT
             };
             var ReactionsOthers1 = new Image
             {
-                Source = "reactions_angry",
+                Source = "reactions_4",
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
-                HorizontalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 30,
                 HeightRequest = 30,
             };
             var ReactionsOthers2 = new Image
             {
-                Source = "reactions_happy",
+                Source = "reactions_2",
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Center,
@@ -317,10 +333,10 @@ namespace NWT
             };
             var ReactionsOthers3 = new Image
             {
-                Source = "reactions_wow",
+                Source = "reactions_0",
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
-                HorizontalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 30,
                 HeightRequest = 30,
@@ -393,8 +409,8 @@ namespace NWT
 
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                            ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-                            Image.Source = Images[ImageCount];
+                        ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                        Image.Source = Images[ImageCount];
                             ArticleGrid.Children.Add(Image, 0, 6, Row, Row + 1);
                             ArticleGrid.Children.Add(IMGText, 1, 5, Row+1, Row + 2);
                             Row++;
@@ -441,7 +457,7 @@ namespace NWT
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalOptions = LayoutOptions.Start,
-                    TextColor = Color.Black,
+                    TextColor = Color.White,
                     FontSize = 16,
                     WidthRequest = 290,
                     Margin = 20,
@@ -475,6 +491,7 @@ namespace NWT
                     BackgroundColor = Color.Transparent,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
+                    TextColor = Color.Transparent,
                     ClassId = Tag
                 };
                 Box.Clicked += TagButtonClicked;
@@ -486,7 +503,8 @@ namespace NWT
                     BackgroundColor = Color.LightGray,
                     HorizontalOptions = LayoutOptions.FillAndExpand,
                     VerticalOptions = LayoutOptions.FillAndExpand,
-                    ClassId = Tag
+                    TextColor = Color.Transparent,
+                    ClassId = Tag,
                 };
                 //Box.Clicked += RemoveTagButtonClicked;
 
@@ -496,7 +514,7 @@ namespace NWT
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalOptions = LayoutOptions.Start,
-                    TextColor = Color.Black,
+                    TextColor = Color.White,
                     FontSize = 16,
                     WidthRequest = 290,
                     Margin = 20,
@@ -522,20 +540,23 @@ namespace NWT
             ArticleGrid.Children.Add(Location, 3, 5, Row, Row + 1);
             ArticleGrid.Children.Add(BG, 0, 6, 0, Row + 1);
             ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(BackGroundReactionTimerFavorites, 0, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerButton, 3, 4, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(TimerIcon, 3, Row + 1);
+            ArticleGrid.Children.Add(BackGroundReactionTimerFavorites, 0, 6, Row + 1, Row + 3);
+            ArticleGrid.Children.Add(TimerButton, 2, 4, Row + 2, Row + 3);
+            TimerButton.TextColor = Color.White;
+            ArticleGrid.Children.Add(TimerIcon, 2, 4, Row + 1, Row + 2);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(FavIcon, 4, Row + 1);
+            ArticleGrid.Children.Add(FavIcon, 4, 5, Row + 2, Row + 3);
+            //ArticleGrid.Children.Add(FavoriteText, 3, 5, Row + 2, Row + 3);
 
-            ArticleGrid.Children.Add(ReactionButton, 2, 3, Row + 1, Row + 2); //Reaction   
+            ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 3); //Reaction   
+            ArticleGrid.Children.Add(ReactionImage, 1, 2, Row + 2, Row + 3); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers1, 1, 2, Row + 1, Row + 2); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers2, 1, 2, Row + 1, Row + 2); //Reaction  
             ArticleGrid.Children.Add(ReactionsOthers3, 1, 2, Row + 1, Row + 2); //Reaction   
 
-            ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 3, Row + 4);
-            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 3, Row + 4);
+            /*ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 4, Row + 5);
+            ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 4, Row + 5);*/
 
             
             
@@ -550,16 +571,17 @@ namespace NWT
             {
                 LoadComments();
             }
-            ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 5, Row + 6);
+            /*ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 5, Row + 6);
             ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 4, Row + 5);
-            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 4, Row + 5);
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 5, Row + 6);
+            ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 4, Row + 5);*/
+            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 3, Row + 4);
+            TagGrid.BackgroundColor = App.MC;
 
             CommentListView.InputTransparent = true;
             //TagGrid.InputTransparent = true;
-            CommentEntry.IsVisible = false;
-            CommentButton.IsVisible = false;
-            CommentListView.IsVisible = false;
+            CommentEntry.IsVisible = true;
+            CommentButton.IsVisible = true;
+            CommentListView.IsVisible = true;
             TagGrid.IsVisible = true;
 
 
@@ -616,6 +638,53 @@ namespace NWT
             App.SideMenu.Tags.Remove(Button.ClassId);
             App.SideMenu.TaglistUpdate = true;
             Button.IsEnabled = false;
+        }
+        
+
+        async void ReactionButtonClicked(object sender, System.EventArgs e)
+        {
+            var Button = (Button)sender;
+            bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja");
+            if (!answer)
+            {
+                //
+            }
+            else
+            {
+                //
+            }
+
+        }
+
+        public void ReactionCheck(RSSTable RSS)
+        {
+            if (App.LoggedinUser != null)
+            {
+                
+                /*int r = -1;
+                var REA = App.database.GetReactions(App.LoggedinUser.ID);
+
+                if (REA != null)
+                {
+                    Console.WriteLine("Reactions Gotten: " + REA.Count());
+                    foreach (var RE in REA)
+                    {
+                        if (RSS.ID == RE.ID)
+                        {
+                            Favorited = true;
+                        }
+                    }
+                }
+                if (r >= 0)
+                {
+                    ReactionButton.Source = "reactions_" + r;
+                } else 
+                {
+                    ReactionButton.Source = "reactions_gray";
+                }
+                ok*/
+
+            }
         }
 
         public void FavButtonCheck(RSSTable RSS)
@@ -768,6 +837,7 @@ namespace NWT
         {
             //IconRotation();
             Label label = (Label)sender;
+            TimerButton.TextColor = Color.White;
            /* await label.RotateTo(-2, 40, Easing.BounceOut);
             await label.RotateTo(2, 60, Easing.BounceOut);
             await label.RotateTo(0, 40, Easing.BounceOut);*/
@@ -806,6 +876,7 @@ namespace NWT
                     TimerButton.Text = newText;
                 if (TimerButton.Text == "100%")
                     TimerButton.Text = "Samla mynt!";
+                TimerButton.TextColor = Color.White;
             });
 
             if (App.MC == Color.FromRgb(red, green, blue))

@@ -67,11 +67,11 @@
 
             <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
             <BoxView x:Name="BackGroundReactionTimerFavorites" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
-            <Button x:Name="TimerButton" Text="0%" 
-                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" Margin="15" 
-                    HorizontalOptions="Center" WidthRequest="200" VerticalOptions="Center" BorderWidth="2" TextColor="White" CornerRadius="0" BorderColor="#FFFFFF"/>
+            <Button x:Name="TimerButton" Text="0%" FontSize="20"
+                    Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" Margin="0" 
+                    HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="0" TextColor="White" CornerRadius="0" BorderColor="#FFFFFF"/>
             <Image x:Name="TimerIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                     BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Source=""/>
+                     BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" Source=""/>
 
             <!--<forms:AnimationView 
 	                x:Name="tokenAnimation" 
@@ -89,6 +89,7 @@
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
+            <Label x:Name="FavoriteText" Text="Favoriter" TextColor="White" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
 
             <Button x:Name="TagSelectButton" Text="Ämnen" 
                     Clicked="TagSelected"  TextColor="Black" 
@@ -113,11 +114,9 @@
             </Grid>
 
 
-            <Entry Placeholder="Write a comment..." x:Name="CommentEntry" FontSize="16"  TextColor="Black" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
+            <Entry Placeholder="Write a comment..." IsVisible="false" x:Name="CommentEntry" FontSize="16"  TextColor="White" PlaceholderColor="LightGray" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
-
-
+            <Button x:Name="CommentButton" Text=">" IsVisible="false" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
         </Grid>
     </ScrollView>
