@@ -113,6 +113,7 @@ namespace NWT
                 await DisplayAlert("Task", "Du löste Picrosset! Bra jobbat! Här får du 20 mynt! Kom tillbaka imorgon för mer!", "OK");
                 App.database.StatUpdate("GameFinished");
                 App.database.Plustoken(App.LoggedinUser, 20);
+                Solved = true;
             }
             else if (Solved)
             {

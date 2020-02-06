@@ -223,6 +223,8 @@ namespace NWT
         public string Tag { get; set; }
         public DateTime DatePosted { get; set; }
         public int Plus { get; set; }
+        public string ArtikelReactions { get; set; }
+        public string ReactionSum { get; set; }
     }
 
     [Table("CNF")]
@@ -240,8 +242,18 @@ namespace NWT
         public string Tag { get; set; }
         public DateTime DatePosted { get; set; }
         public int Plus { get; set; }
+        public string ArtikelReactions { get; set; }
+        public string ReactionSum { get; set; }
     }
-
+    [Table("Reaction")]
+    public class ReactionTable
+    {
+        [PrimaryKey, AutoIncrement, Unique]
+        public int ID { get; set; }
+        public long Article { get; set; }
+        public int User { get; set; }
+        public int Reaktion { get; set; }
+    }
     public class VoteQuestionTable
     {
         [PrimaryKey, AutoIncrement, Unique]
@@ -1140,8 +1152,27 @@ namespace NWT
 
         }
 
+        public void InsertReaction(ReactionTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Insert", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
+        }
+        public void DeleteReaction(ReactionTable RSS)
+        {
+            TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Delete", JsonConvert.SerializeObject(RSS), App.LoggedinUser.ID)));
+        }
 
-
+        public List<ReactionTable> GetReactionsFromUser(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Query", "SELECT * FROM Reactions WHERE Article = " + ID, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<ReactionTable>>(Result.JSON);
+        }
+        public List<ReactionTable> GetReactionsFromArticle(int ID)
+        {
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM Reactions WHERE User = " + ID, App.LoggedinUser.ID)));
+            var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
+            return JsonConvert.DeserializeObject<List<ReactionTable>>(Result.JSON);
+        }
 
         public string SHA256Hash(string input)
         {
