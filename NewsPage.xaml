@@ -12,7 +12,7 @@
     </ContentPage.Padding>-->
 
     <ScrollView x:Name="NewsPageView" >
-        <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="0" Margin="0">
+        <Grid x:Name="ArticleGrid" RowSpacing="0" ColumnSpacing="1" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -32,25 +32,24 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
 
-            <BoxView x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"/>
+            <BoxView x:Name="xx" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"/>
             <BoxView x:Name="BG" BackgroundColor="#FFFFFF" CornerRadius="0" Margin="0"/>
 
             
 
             <!--<Label Text="Category" x:Name="Category" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
             <!--<Label Text="Tags" x:Name="Tags" Style="{StaticResource grayLabelStyle}" Margin="0" FontSize="14" TextColor="#649FD4" FontAttributes="Italic" HorizontalOptions="End" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>-->
-            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,0" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Header" x:Name="Rubrik" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,0" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4"/>
 
-            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="14"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Publicerad: Idag 00:00" x:Name="Top" Style="{StaticResource grayLabelStyle}" Margin="0,0,0,10" FontSize="14"  HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"/>
 
-            <Image x:Name="ArticleImage" Source="https://www.underconsideration.com/brandnew/archives/google_broken_image_00_a_logo.gif"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,0,0,0"/>
+            <Image x:Name="ArticleImage" Source="https://www.underconsideration.com/brandnew/archives/google_broken_image_00_a_logo.gif"  WidthRequest="300" HeightRequest="0" Aspect="AspectFill" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,0,0,0"/>
             
 
-            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="Body" x:Name="Ingress" Style="{StaticResource blackLabelStyle}" Margin="0,0,10,15" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4"/>
             <!--<Label Text="Text" x:Name="Text" Style="{StaticResource blackLabelStyle}" Margin="10" FontSize="Small" HorizontalOptions="Start" Grid.Row="3" Grid.Column="0"/>-->
 
             <!--<BoxView Color="DimGray" WidthRequest="300" HeightRequest="1" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="0"/>-->
@@ -62,11 +61,11 @@
 
             <!--<BoxView Color="#FFFFFF" Grid.Column="0" Grid.Row="6" Margin="5"/>-->
 
-            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="14" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
-            <Label Text="" x:Name="Location" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="5"/>
+            <Label Text="John Smith  " x:Name="Author" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="14" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="4"/>
+            <Label Text="" x:Name="Location" Style="{StaticResource grayLabelStyle}" Margin="10,10,10,10" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" Grid.ColumnSpan="4"/>
 
-            <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
-            <BoxView x:Name="BackGroundReactionTimerFavorites" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="6"  Margin="0"/>
+            <BoxView x:Name="BackGround" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="5"  Margin="0"/>
+            <BoxView x:Name="BackGroundReactionTimerFavorites" BackgroundColor="#FFFFFF" CornerRadius="0" Grid.Column="0" Grid.ColumnSpan="5"  Margin="0"/>
             <Button x:Name="TimerButton" Text="0%" FontSize="20"
                     Clicked="TimerButtonClicked" BackgroundColor="#FFFFFF" Margin="0" 
                     HorizontalOptions="Center" VerticalOptions="Center" BorderWidth="0" TextColor="White" CornerRadius="0" BorderColor="#FFFFFF"/>
@@ -84,23 +83,23 @@
             
            
             <Image x:Name="FavIcon" HorizontalOptions="Center" VerticalOptions="Center" 
-                    Grid.Column="3" Grid.ColumnSpan="5" HeightRequest="50" WidthRequest="50" BackgroundColor="Transparent" Source="Icon_Heart_red.png">
+                    Grid.Column="3" Grid.ColumnSpan="3" HeightRequest="50" WidthRequest="50" Margin="20" BackgroundColor="Transparent" Source="Icon_Heart_red.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="FavButtonClicked" NumberOfTapsRequired="1" />
                 </Image.GestureRecognizers>
             </Image>
             <Label x:Name="FavoriteText" Text="Favoriter" TextColor="White" FontSize="20" VerticalOptions="Center" HorizontalOptions="End"/>
 
-            <Button x:Name="TagSelectButton" Text="Ämnen" 
+            <Button x:Name="TagSelectButton" Text="Ämnen"  IsVisible="false"
                     Clicked="TagSelected"  TextColor="Black" 
                     HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000" BackgroundColor="#f2f2f2"/>
 
-            <Button x:Name="CommentSelectButton" Text="Kommentarer" 
+            <Button x:Name="CommentSelectButton" Text="Kommentarer"  IsVisible="false"
                     Clicked="CommentSelected"  TextColor="Black" 
                     HorizontalOptions="FillAndExpand"  VerticalOptions="Center" BorderWidth="0" CornerRadius="0" BorderColor="#000000" BackgroundColor="#f2f2f2"/>
             
 
-            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="6" >
+            <Grid x:Name="TagGrid" RowSpacing="0" ColumnSpacing="0" Margin="0"  Grid.Column="0" Grid.ColumnSpan="5" >
                 <Grid.RowDefinitions>
                     
                 </Grid.RowDefinitions>
@@ -114,9 +113,9 @@
             </Grid>
 
 
-            <Entry Placeholder="Write a comment..." IsVisible="false" x:Name="CommentEntry" FontSize="16"  TextColor="White" PlaceholderColor="LightGray" Grid.Column="0" Grid.ColumnSpan="6" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
+            <Entry Placeholder="Write a comment..." IsVisible="false" x:Name="CommentEntry" FontSize="16"  TextColor="White" PlaceholderColor="LightGray" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
 
-            <Button x:Name="CommentButton" Text=">" IsVisible="false" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="6" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
+            <Button x:Name="CommentButton" Text=">" IsVisible="false" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
 
         </Grid>
     </ScrollView>

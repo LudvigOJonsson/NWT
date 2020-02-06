@@ -89,7 +89,8 @@ namespace NWT
                 {                   
                     TimerButton.IsEnabled = false;
                     TimerIcon.Source = "Icon_Coin.png";
-                    TimerButton.Text = "Samlad";
+                    TimerButton.Text = "";
+                    TimerButton.IsVisible = false;
                     Read = true;
                     NewsPageView.BackgroundColor = App.MC;
                     TimerButton.BackgroundColor = App.MC;
@@ -277,8 +278,8 @@ namespace NWT
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
-                WidthRequest = 30,
-                HeightRequest = 30,
+                WidthRequest = 50,
+                HeightRequest = 50,
 
             };
             var ReactionBar1 = new BoxView
@@ -314,7 +315,7 @@ namespace NWT
             var ReactionsOthers1 = new Image
             {
                 Source = "reactions_4",
-                Margin = 0,
+                Margin = 10,
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
@@ -324,7 +325,7 @@ namespace NWT
             var ReactionsOthers2 = new Image
             {
                 Source = "reactions_2",
-                Margin = 0,
+                Margin = 10,
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.Center,
@@ -334,12 +335,22 @@ namespace NWT
             var ReactionsOthers3 = new Image
             {
                 Source = "reactions_0",
-                Margin = 0,
+                Margin = 10,
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 30,
                 HeightRequest = 30,
+            };
+            var ReactionsOthersText = new Label
+            {
+                Text = " 7",
+                TextColor = Color.Black,
+                FontSize = 14,
+                Margin = 0,
+                BackgroundColor = Color.Transparent,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
             };
 
             //ArticleGrid.Children.Add(BG, 0, 6, 0, Row+Order.Count);
@@ -366,7 +377,7 @@ namespace NWT
                             TextColor = Color.Black,                        
                             Margin = new Thickness(0, 0, 5, 10)
                         };
-                        ArticleGrid.Children.Add(Label, 1, 5, Row, Row + 1);
+                        ArticleGrid.Children.Add(Label, 1, 4, Row, Row + 1);
                         Row++;
                         Count++;
                         TextCount++;
@@ -393,7 +404,7 @@ namespace NWT
                             ArticleImage.Source = Images[ImageCount];
                             ArticleImage.HeightRequest = img.Height;
                             ArticleImage.WidthRequest = 300;
-                            ArticleGrid.Children.Add(IMGText, 1, 5, 5, 6);
+                            ArticleGrid.Children.Add(IMGText, 1, 4, 5, 6);
                             Topimg = false;
                         }
                         else
@@ -411,8 +422,8 @@ namespace NWT
                             ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         ArticleGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
                         Image.Source = Images[ImageCount];
-                            ArticleGrid.Children.Add(Image, 0, 6, Row, Row + 1);
-                            ArticleGrid.Children.Add(IMGText, 1, 5, Row+1, Row + 2);
+                            ArticleGrid.Children.Add(Image, 0, 5, Row, Row + 1);
+                            ArticleGrid.Children.Add(IMGText, 1, 4, Row+1, Row + 2);
                             Row++;
                             Row++;
                             Row++;
@@ -440,16 +451,38 @@ namespace NWT
                 };
                 Box.Clicked += CategoryButtonClicked;
 
-                var AddedBox = new Button
+                var EmptyAddedBox = new Image
                 {
-                    CornerRadius = 10,
-                    Margin = 2,
-                    BackgroundColor = Color.LightGray,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    ClassId = Category
+                    Source = "Icon_Heart_red",
+                    Margin = 10,
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
+                    ClassId = Category,
+                    WidthRequest = 30,
+                    HeightRequest = 30,
                 };
-                //Box.Clicked += RemoveCategoryButtonClicked;
+
+                var AddedBox = new Image
+                {
+                    Source = "Icon_Heart_Full",
+                    Margin = 10,
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
+                    ClassId = Category,
+                    WidthRequest = 30,
+                    HeightRequest = 30,
+                };
+                var Line = new Button
+                {
+                    Margin = 0,
+                    BackgroundColor = App.MC,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Start,
+                    ClassId = Category,
+                    HeightRequest = 1,
+                };
 
                 var Comment = new Label
                 {
@@ -457,7 +490,7 @@ namespace NWT
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalOptions = LayoutOptions.Start,
-                    TextColor = Color.White,
+                    TextColor = Color.Black,
                     FontSize = 16,
                     WidthRequest = 290,
                     Margin = 20,
@@ -465,6 +498,8 @@ namespace NWT
                 };
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
+                TagGrid.Children.Add(EmptyAddedBox, 0, 6, TagRow, TagRow + 1);
+                TagGrid.Children.Add(Line, 0, 6, TagRow, TagRow + 1);
                 TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
 
                 if (App.SideMenu.Categories.Contains(Category))
@@ -495,16 +530,38 @@ namespace NWT
                     ClassId = Tag
                 };
                 Box.Clicked += TagButtonClicked;
-
-                var AddedBox = new Button
+                
+                var EmptyAddedBox = new Image
                 {
-                    CornerRadius = 10,
-                    Margin = 2,
-                    BackgroundColor = Color.LightGray,
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    TextColor = Color.Transparent,
+                    Source = "Icon_Heart_red",
+                    Margin = 10,
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
                     ClassId = Tag,
+                    WidthRequest = 30,
+                    HeightRequest = 30,
+                };
+                var Line = new Button
+                {
+                    Margin = 0,
+                    BackgroundColor = App.MC,
+                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.Start,
+                    ClassId = Tag,
+                    HeightRequest = 1,
+                };
+
+                var AddedBox = new Image
+                {
+                    Source= "Icon_Heart_Full",
+                    Margin = 10,
+                    BackgroundColor = Color.Transparent,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
+                    ClassId = Tag,
+                    WidthRequest = 30,
+                    HeightRequest = 30,
                 };
                 //Box.Clicked += RemoveTagButtonClicked;
 
@@ -514,7 +571,7 @@ namespace NWT
                     HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalOptions = LayoutOptions.Start,
-                    TextColor = Color.White,
+                    TextColor = Color.Black,
                     FontSize = 16,
                     WidthRequest = 290,
                     Margin = 20,
@@ -522,8 +579,10 @@ namespace NWT
                 };
                 TagGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
+                TagGrid.Children.Add(EmptyAddedBox, 0, 6, TagRow, TagRow + 1);
+                TagGrid.Children.Add(Line, 0, 6, TagRow, TagRow + 1);
                 TagGrid.Children.Add(Box, 0, 6, TagRow, TagRow + 1);
-                
+
                 if (App.SideMenu.Tags.Contains(Tag))
                 {
                     Box.IsEnabled = false;
@@ -536,31 +595,32 @@ namespace NWT
             }
 
 
-            ArticleGrid.Children.Add(Author, 1, 3, Row, Row + 1);
-            ArticleGrid.Children.Add(Location, 3, 5, Row, Row + 1);
-            ArticleGrid.Children.Add(BG, 0, 6, 0, Row + 1);
-            ArticleGrid.Children.Add(BackGround, 0, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(BackGroundReactionTimerFavorites, 0, 6, Row + 1, Row + 3);
-            ArticleGrid.Children.Add(TimerButton, 2, 4, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(Author, 1, 2, Row, Row + 1);
+            ArticleGrid.Children.Add(Location, 2, 4, Row, Row + 1);
+            ArticleGrid.Children.Add(BG, 0, 5, 0, Row + 2);
+            ArticleGrid.Children.Add(BackGround, 0, 5, Row + 2, Row + 4);
+            ArticleGrid.Children.Add(BackGroundReactionTimerFavorites, 0, 5, Row + 2, Row + 4);
+            ArticleGrid.Children.Add(TimerIcon, 2, 3, Row + 2, Row + 4);
+            ArticleGrid.Children.Add(TimerButton, 2, 3, Row + 2, Row + 4);
             TimerButton.TextColor = Color.White;
-            ArticleGrid.Children.Add(TimerIcon, 2, 4, Row + 1, Row + 2);
             //ArticleGrid.Children.Add(tokenAnimation, 2, Row + 1);
             //ArticleGrid.Children.Add(FavButton, 5, 6, Row + 1, Row + 2);
-            ArticleGrid.Children.Add(FavIcon, 4, 5, Row + 2, Row + 3);
+            ArticleGrid.Children.Add(FavIcon, 3, 4, Row + 2, Row + 4);
             //ArticleGrid.Children.Add(FavoriteText, 3, 5, Row + 2, Row + 3);
 
-            ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 3); //Reaction   
-            ArticleGrid.Children.Add(ReactionImage, 1, 2, Row + 2, Row + 3); //Reaction   
+            ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 4); //Reaction   
+            ArticleGrid.Children.Add(ReactionImage, 1, 2, Row + 2, Row + 4); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers1, 1, 2, Row + 1, Row + 2); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers2, 1, 2, Row + 1, Row + 2); //Reaction  
             ArticleGrid.Children.Add(ReactionsOthers3, 1, 2, Row + 1, Row + 2); //Reaction   
-
+            ArticleGrid.Children.Add(ReactionsOthersText, 1, 4, Row + 1, Row + 2); //Reaction   
+            
             /*ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 4, Row + 5);
             ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 4, Row + 5);*/
 
-            
-            
-            
+
+
+
 
 
 
@@ -574,14 +634,14 @@ namespace NWT
             /*ArticleGrid.Children.Add(CommentListView, 0, 6, Row + 5, Row + 6);
             ArticleGrid.Children.Add(CommentEntry, 0, 6, Row + 4, Row + 5);
             ArticleGrid.Children.Add(CommentButton, 0, 6, Row + 4, Row + 5);*/
-            ArticleGrid.Children.Add(TagGrid, 0, 6, Row + 3, Row + 4);
-            TagGrid.BackgroundColor = App.MC;
+            ArticleGrid.Children.Add(TagGrid, 0, 5, Row + 4, Row + 5);
+            TagGrid.BackgroundColor = Color.White;
 
             CommentListView.InputTransparent = true;
             //TagGrid.InputTransparent = true;
-            CommentEntry.IsVisible = true;
-            CommentButton.IsVisible = true;
-            CommentListView.IsVisible = true;
+            //CommentEntry.IsVisible = true;
+            //CommentButton.IsVisible = true;
+            //CommentListView.IsVisible = true;
             TagGrid.IsVisible = true;
 
 
@@ -801,7 +861,8 @@ namespace NWT
                 };
                 App.database.InsertHistory(HT);
                 TimerIcon.Source = "Icon_Coin.png";
-                TimerButton.Text = "Samlad";
+                TimerButton.Text = "";
+                TimerButton.IsVisible = false;
                 TimerButton.TextColor = Color.White;
                 var NG = (NewsGridPage)App.Mainpage.Children[1];
                 foreach (NewsGridPage.Article A in NG.ArticleList)
@@ -1155,7 +1216,7 @@ namespace NWT
                     AvatarBody.SetBinding(Image.SourceProperty, "UserAvatar[2]");
                     AvatarExpr.SetBinding(Image.SourceProperty, "UserAvatar[3]");
                     AvatarBeard.SetBinding(Image.SourceProperty, "UserAvatar[4]");
-                    CommentGrid.Children.Add(Box, 0, 8, 0, 1);
+                    /*CommentGrid.Children.Add(Box, 0, 8, 0, 1);
 
                     CommentGrid.Children.Add(AvatarFace, 1, 2, 0, 1);
                     CommentGrid.Children.Add(AvatarHair, 1, 2, 0, 1);
@@ -1164,7 +1225,7 @@ namespace NWT
                     CommentGrid.Children.Add(AvatarBeard, 1, 2, 0, 1);
                     CommentGrid.Children.Add(Comment, 2, 6, 0, 1);
                     CommentGrid.Children.Add(Username, 2, 6, 0, 1);
-                    CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);
+                    CommentGrid.Children.Add(Elispses, 6, 7, 0, 1);*/
 
 
                     // Return an assembled ViewCell.
