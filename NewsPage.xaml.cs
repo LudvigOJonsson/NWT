@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 
 namespace NWT
 {
@@ -248,6 +249,9 @@ namespace NWT
             int TextCount = 0;
             int ImageCount = 0;
 
+            var Reactions = App.database.GetReactionsFromArticle(RSS.ID);
+
+
             var ReactionBackground = new BoxView
             {
                 CornerRadius = 0,
@@ -271,6 +275,7 @@ namespace NWT
                 FontSize = 20,
                 TextColor = Color.LightGray,
             };
+            ReactionButton.Clicked += ReactionButtonClicked; 
             var ReactionImage = new Image
             {
                 Source = "reactions_gray",
@@ -344,7 +349,7 @@ namespace NWT
             };
             var ReactionsOthersText = new Label
             {
-                Text = " 7",
+                Text = Reactions.Count.ToString(),
                 TextColor = Color.Black,
                 FontSize = 14,
                 Margin = 0,
@@ -704,10 +709,11 @@ namespace NWT
         async void ReactionButtonClicked(object sender, System.EventArgs e)
         {
             var Button = (Button)sender;
-            bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja");
+            bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja"); //(Title,Message,Accept,Cancel)
             if (!answer)
             {
-                //
+                ReactionPopUp rp = new ReactionPopUp(ArticleNR);
+                await PopupNavigation.Instance.PushAsync(rp);
             }
             else
             {

@@ -13,8 +13,11 @@ namespace NWT
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReactionPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public ReactionPopUp()
+        int ArticleID = -1;
+        public ReactionPopUp(int ArticleID_)
         {
+            ArticleID = ArticleID_;
+
             InitializeComponent();
         }
 
@@ -23,6 +26,21 @@ namespace NWT
             //What happens when selecting a reaction, accessing the server, 
             //creating new reaction on the table, 
             //changing grafiks on newspage and/or newsfeed!
+            var BT = (Button)sender;
+            if (ArticleID != -1)
+            {
+                var RT = new ReactionTable
+                {
+                    User = App.LoggedinUser.ID,
+                    Reaktion = Convert.ToInt32(BT.ClassId),
+                    Article = ArticleID
+                };
+
+            App.database.InsertReaction(RT);
+                
+            }
+            
+
 
             //Then close window, as you can only select one reaction at a time
             ClosePopup(sender, e);

@@ -1163,13 +1163,13 @@ namespace NWT
 
         public List<ReactionTable> GetReactionsFromUser(int ID)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Query", "SELECT * FROM Reactions WHERE Article = " + ID, App.LoggedinUser.ID)));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Query", "SELECT * FROM Reaction WHERE User = " + ID, App.LoggedinUser.ID)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<ReactionTable>>(Result.JSON);
         }
         public List<ReactionTable> GetReactionsFromArticle(int ID)
         {
-            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("VoteQuestion", "Query", "SELECT * FROM Reactions WHERE User = " + ID, App.LoggedinUser.ID)));
+            var JSONResult = TCP(JsonConvert.SerializeObject(new JSONObj("Reaction", "Query", "SELECT * FROM Reaction WHERE Article = " + ID, App.LoggedinUser.ID)));
             var Result = JsonConvert.DeserializeObject<JSONObj>(JSONResult);
             return JsonConvert.DeserializeObject<List<ReactionTable>>(Result.JSON);
         }

@@ -42,23 +42,23 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button ImageSource="reactions_0" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1"/>
+                <Button ImageSource="reactions_0" ClassId="0" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1"/>
 
-                <Button ImageSource="reactions_1" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="2"/>
+                <Button ImageSource="reactions_1" ClassId="1" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="2"/>
 
-                <Button ImageSource="reactions_2" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="3"/>
+                <Button ImageSource="reactions_2" ClassId="2" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="3"/>
 
-                <Button ImageSource="reactions_3" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="1"/>
+                <Button ImageSource="reactions_3" ClassId="3" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="1"/>
 
-                <Button ImageSource="reactions_4" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="2"/>
+                <Button ImageSource="reactions_4" ClassId="4" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="2"/>
 
-                <Button ImageSource="reactions_5" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="3"/>
+                <Button ImageSource="reactions_5" ClassId="5" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="3"/>
 
-                <Button ImageSource="reactions_6" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="1"/>
+                <Button ImageSource="reactions_6" ClassId="6" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="1"/>
 
-                <Button ImageSource="reactions_7" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="2"/>
+                <Button ImageSource="reactions_7" ClassId="7" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="2"/>
 
-                <Button ImageSource="reactions_8" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="3"/>
+                <Button ImageSource="reactions_8" ClassId="8" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="3"/>
 
 
                 <!-- <BoxView Grid.Row="1" Grid.Column="1"  Margin="15" BackgroundColor="AntiqueWhite"  />

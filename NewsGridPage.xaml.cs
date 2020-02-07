@@ -57,6 +57,8 @@ namespace NWT
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
             public bool Plus { get; set; }
+            public string ArticleReactions { get; set; }
+            public string ReactionSum { get; set; }
             public bool Full { get; set; }
             public bool CategoryBig { get; set; }
             public bool CategorySmall { get; set; }
@@ -219,6 +221,8 @@ namespace NWT
                     IsNormalfeed = true;
                 }
 
+                ArticleReactions = NF.ArtikelReactions;
+                ReactionSum = NF.ReactionSum;
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -489,6 +493,7 @@ namespace NWT
                         HeightRequest = 35,
                         Text = "RE",
                         TextColor = Color.LightGray,
+                        
 
                     };
                     var ReactionBar1 = new BoxView
@@ -589,6 +594,8 @@ namespace NWT
                     IngressLabel.SetBinding(Label.TextProperty, "Ingress");
                     IngressLabel.SetBinding(Label.IsVisibleProperty, "HasIngress");
                     IngressLabel.SetBinding(HeightRequestProperty, "INGHR");
+
+                    ReactionButton.SetBinding(ClassIdProperty, "ReactionSum");
 
                     var Grid = new Grid
                     {
@@ -801,6 +808,9 @@ namespace NWT
                 var RSSTable = App.database.GetServerRSS(id);
                 if (RSSTable != null)
                 {
+                    
+
+
                     RSSTable RSS = RSSTable.First();
                     Device.BeginInvokeOnMainThread( () =>
                     {
