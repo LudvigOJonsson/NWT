@@ -14,9 +14,15 @@ namespace NWT
     public partial class ReactionPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
         int ArticleID = -1;
-        public ReactionPopUp(int ArticleID_)
+        ReactionTable RT;
+        bool Reacted = false;
+
+        public ReactionPopUp(int ArticleID_, bool Reacted_, ReactionTable RT_)
         {
             ArticleID = ArticleID_;
+            RT = RT_;
+            Reacted = Reacted_;
+
 
             InitializeComponent();
         }
@@ -29,19 +35,23 @@ namespace NWT
             var BT = (Button)sender;
             if (ArticleID != -1)
             {
-                var RT = new ReactionTable
+               
+
+                if (Reacted)
+                {
+                    App.database.DeleteReaction(RT);
+                }
+
+                var NRT = new ReactionTable
                 {
                     User = App.LoggedinUser.ID,
-                    Reaktion = Convert.ToInt32(BT.ClassId),
-                    Article = ArticleID
+                    Article = ArticleID,
+                    Reaktion = Convert.ToInt32(BT.ClassId)
                 };
 
-            App.database.InsertReaction(RT);
+                App.database.InsertReaction(NRT);
                 
-            }
-            
-
-
+            }          
             //Then close window, as you can only select one reaction at a time
             ClosePopup(sender, e);
         }

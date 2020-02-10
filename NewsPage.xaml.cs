@@ -31,6 +31,8 @@ namespace NWT
         public List<Comment> CommentList = new List<Comment>();
         public int LWH = 500;
         public bool CommentsLoaded = false;
+        public bool Reacted = false;
+        public ReactionTable CR;
         public class Comment
         {
             public UserTable User { get; set; }
@@ -250,7 +252,15 @@ namespace NWT
             int ImageCount = 0;
 
             var Reactions = App.database.GetReactionsFromArticle(RSS.ID);
-
+            foreach (ReactionTable Reaction in Reactions)
+            {
+                if (Reaction.User == App.LoggedinUser.ID)
+                {
+                    Reacted = true;
+                    CR = Reaction;
+                    break;
+                }
+            }
 
             var ReactionBackground = new BoxView
             {
@@ -712,8 +722,8 @@ namespace NWT
             /*bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja"); //(Title,Message,Accept,Cancel)
             if (!answer)
             {*/
-                ReactionPopUp rp = new ReactionPopUp(ArticleNR);
-                await PopupNavigation.Instance.PushAsync(rp);
+            ReactionPopUp rp = new ReactionPopUp(ArticleNR, Reacted, CR);
+            await PopupNavigation.Instance.PushAsync(rp);
             /*}
             else
             {

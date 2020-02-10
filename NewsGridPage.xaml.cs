@@ -809,7 +809,7 @@ namespace NWT
 
             string ID = b.ClassId;
 
-            ReactionPopUp rp = new ReactionPopUp(0);
+            ReactionPopUp rp = new ReactionPopUp(0,false,null);
             await PopupNavigation.Instance.PushAsync(rp);
         }
 
