@@ -483,17 +483,28 @@ namespace NWT
                     var ReactionButton = new Button
                     {
                         CornerRadius = 0,
-                        BorderWidth = 2,
-                        Margin = 10,
+                        BorderWidth = 0,
+                        Margin = 0,
                         BackgroundColor = Color.Transparent,
-                        BorderColor = Color.LightGray,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                         WidthRequest = 60,
-                        HeightRequest = 35,
+                        HeightRequest = 60,
                         Text = "RE",
                         TextColor = Color.LightGray,
-                        
+                        ClassId = "ArticleID",
+
+                    };
+                    ReactionButton.Clicked += ReactionButtonClicked;
+                    var ReactionImage = new Image
+                    {
+                        Margin = 15,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 45,
+                        HeightRequest = 45,
+                        Source = "reactions_gray",
 
                     };
                     var ReactionBar1 = new BoxView
@@ -528,30 +539,43 @@ namespace NWT
                     };
                     var ReactionsOthers1 = new Image
                     {
+                        Source = "reactions_0",
                         Margin = 10,
-                        BackgroundColor = Color.Green,
+                        BackgroundColor = Color.Transparent,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
-                        WidthRequest = 40,
-                        HeightRequest = 40,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
                     };
                     var ReactionsOthers2 = new Image
                     {
+                        Source = "reactions_7",
                         Margin = 10,
-                        BackgroundColor = Color.Black,
+                        BackgroundColor = Color.Transparent,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
-                        WidthRequest = 20,
-                        HeightRequest = 20,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
                     };
                     var ReactionsOthers3 = new Image
                     {
+                        Source = "reactions_4",
                         Margin = 10,
-                        BackgroundColor = Color.Yellow,
+                        BackgroundColor = Color.Transparent,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
-                        WidthRequest = 10,
-                        HeightRequest = 10,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                    };
+                    var ReactionsOthersText = new Label
+                    {
+                        Text = "X",
+                        Margin = 10,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
                     };
 
 
@@ -661,9 +685,10 @@ namespace NWT
                     Grid.Children.Add(Tag, 1, 18, 1, 2); //Tag   
 
                     Grid.Children.Add(ReactionButton, 1, 5, 4, 5); //Reaction   
-                    Grid.Children.Add(ReactionsOthers1, 5, 6, 4, 5); //Reaction   
-                    Grid.Children.Add(ReactionsOthers2, 6, 7, 4, 5); //Reaction  
-                    Grid.Children.Add(ReactionsOthers3, 7, 8, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionImage, 1, 5, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers1, 5, 8, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers2, 8, 11, 4, 5); //Reaction  
+                    Grid.Children.Add(ReactionsOthers3, 11, 14, 4, 5); //Reaction   
                     //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
                     Console.WriteLine("Utdata: " + Label.Text);
 
@@ -776,6 +801,16 @@ namespace NWT
             App.Mainpage.Children[0].Navigation.NavigationStack[1].ClassId = Header.ClassId;
 
             Navigation.PopAsync();
+        }
+        
+        async void ReactionButtonClicked(object sender, System.EventArgs e)
+        {
+            Button b = (Button)sender;
+
+            string ID = b.ClassId;
+
+            ReactionPopUp rp = new ReactionPopUp(0);
+            await PopupNavigation.Instance.PushAsync(rp);
         }
 
 

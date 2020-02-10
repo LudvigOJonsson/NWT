@@ -275,7 +275,7 @@ namespace NWT
                 FontSize = 20,
                 TextColor = Color.LightGray,
             };
-            ReactionButton.Clicked += ReactionButtonClicked; 
+            ReactionButton.Clicked += ReactionButtonClicked;
             var ReactionImage = new Image
             {
                 Source = "reactions_gray",
@@ -613,13 +613,13 @@ namespace NWT
             ArticleGrid.Children.Add(FavIcon, 3, 4, Row + 2, Row + 4);
             //ArticleGrid.Children.Add(FavoriteText, 3, 5, Row + 2, Row + 3);
 
-            ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 4); //Reaction   
             ArticleGrid.Children.Add(ReactionImage, 1, 2, Row + 2, Row + 4); //Reaction   
+            ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 4); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers1, 1, 2, Row + 1, Row + 2); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers2, 1, 2, Row + 1, Row + 2); //Reaction  
             ArticleGrid.Children.Add(ReactionsOthers3, 1, 2, Row + 1, Row + 2); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthersText, 1, 4, Row + 1, Row + 2); //Reaction   
-            
+
             /*ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 4, Row + 5);
             ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 4, Row + 5);*/
 
@@ -709,16 +709,16 @@ namespace NWT
         async void ReactionButtonClicked(object sender, System.EventArgs e)
         {
             var Button = (Button)sender;
-            bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja"); //(Title,Message,Accept,Cancel)
+            /*bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja"); //(Title,Message,Accept,Cancel)
             if (!answer)
-            {
+            {*/
                 ReactionPopUp rp = new ReactionPopUp(ArticleNR);
                 await PopupNavigation.Instance.PushAsync(rp);
-            }
+            /*}
             else
             {
-                //
-            }
+                
+            }*/
 
         }
 
