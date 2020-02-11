@@ -332,7 +332,7 @@ namespace NWT
                 Source = "reactions_4",
                 Margin = 10,
                 BackgroundColor = Color.Transparent,
-                HorizontalOptions = LayoutOptions.End,
+                HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
                 WidthRequest = 30,
                 HeightRequest = 30,
@@ -361,7 +361,7 @@ namespace NWT
             {
                 Text = Reactions.Count.ToString(),
                 TextColor = Color.Black,
-                FontSize = 14,
+                FontSize = 20,
                 Margin = 0,
                 BackgroundColor = Color.Transparent,
                 HorizontalOptions = LayoutOptions.Center,
@@ -626,9 +626,7 @@ namespace NWT
             ArticleGrid.Children.Add(ReactionImage, 1, 2, Row + 2, Row + 4); //Reaction   
             ArticleGrid.Children.Add(ReactionButton, 1, 2, Row + 2, Row + 4); //Reaction   
             ArticleGrid.Children.Add(ReactionsOthers1, 1, 2, Row + 1, Row + 2); //Reaction   
-            ArticleGrid.Children.Add(ReactionsOthers2, 1, 2, Row + 1, Row + 2); //Reaction  
-            ArticleGrid.Children.Add(ReactionsOthers3, 1, 2, Row + 1, Row + 2); //Reaction   
-            ArticleGrid.Children.Add(ReactionsOthersText, 1, 4, Row + 1, Row + 2); //Reaction   
+            ArticleGrid.Children.Add(ReactionsOthersText, 1, 2, Row + 1, Row + 2); //Reaction  
 
             /*ArticleGrid.Children.Add(TagSelectButton, 0, 3, Row + 4, Row + 5);
             ArticleGrid.Children.Add(CommentSelectButton, 3, 6, Row + 4, Row + 5);*/

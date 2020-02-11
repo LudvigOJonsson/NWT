@@ -480,6 +480,16 @@ namespace NWT
 
             Navigation.PopAsync();
         }
+        
+        async void ReactionButtonClicked(object sender, System.EventArgs e)
+        {
+            Button b = (Button)sender;
+
+            string ID = b.ClassId;
+
+            ReactionPopUp rp = new ReactionPopUp(0);
+            await PopupNavigation.Instance.PushAsync(rp);
+        }
         /*async public void AdClicked(object sender, EventArgs e)
         {
             await DisplayAlert("WIP", "Work in progress.", "Okej");
@@ -853,7 +863,7 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Fill,
                         Aspect = Aspect.AspectFill,
                         InputTransparent = true,
-                        Margin = 50,
+                        Margin = 30,
                         CacheDuration = TimeSpan.FromDays(14),
                         DownsampleToViewSize = true,
                         RetryCount = 1,
@@ -914,6 +924,118 @@ namespace NWT
                         //ClassId = NF.Article.ToString(),
                         InputTransparent = true,
                         Margin = new Thickness(5, 5, 5, 5),
+                    };
+
+                    //Reaction stuff
+                    var ReactionButton = new Button
+                    {
+                        CornerRadius = 0,
+                        BorderWidth = 0,
+                        Margin = 0,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 60,
+                        HeightRequest = 60,
+                        Text = "RE",
+                        TextColor = Color.LightGray,
+                        ClassId = "ArticleID",
+
+                    };
+                    ReactionButton.Clicked += ReactionButtonClicked;
+                    var ReactionImage = new Image
+                    {
+                        Margin = 15,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 45,
+                        HeightRequest = 45,
+                        Source = "reactions_gray",
+
+                    };
+                    var ShareButton = new Image
+                    {
+                        Margin = 20,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 40,
+                        HeightRequest = 40,
+                        Source = "icon_Share",
+
+                    };
+                    var ReactionBar1 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Red,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 1f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionBar2 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Blue,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 0.4f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionBar3 = new BoxView
+                    {
+                        CornerRadius = 1,
+                        Margin = 10,
+                        BackgroundColor = Color.Yellow,
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.End,
+                        WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
+                        HeightRequest = 5,
+                    };
+                    var ReactionsOthers1 = new Image
+                    {
+                        Source = "reactions_0",
+                        Margin = 10,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.End,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                    };
+                    var ReactionsOthers2 = new Image
+                    {
+                        Source = "reactions_7",
+                        Margin = 10,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                    };
+                    var ReactionsOthers3 = new Image
+                    {
+                        Source = "reactions_4",
+                        Margin = 10,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
+                    };
+                    var ReactionsOthersText = new Label
+                    {
+                        Text = "X",
+                        Margin = 10,
+                        FontSize = 20,
+                        TextColor = Color.Black,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
                     };
 
 
@@ -991,6 +1113,22 @@ namespace NWT
                         ColumnDefinitions = {
                     new ColumnDefinition { Width = 0 },
                     new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
+                    new ColumnDefinition { Width = GridLength.Star },
                     new ColumnDefinition { Width = 0 },
                     },
                         RowSpacing = 0,
@@ -1009,36 +1147,24 @@ namespace NWT
                     Label.WidthRequest = Label.Width - 25;
 
 
-                    Grid.Children.Add(ArticleMargin, 1, 2, 0, 1); //Boxview
-                    Grid.Children.Add(Box, 1, 2, 1, 5); //Boxview
-                    Grid.Children.Add(Image, 1, 2, 1, 2); //Image  
-                    Grid.Children.Add(CategoryBox, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(CategoryBoxSmall, 1, 2, 1, 5); //Label
-                    Grid.Children.Add(Label, 1, 2, 2, 3); //Label
-                    Grid.Children.Add(IngressLabel, 1, 2, 3, 4);
-                    Grid.Children.Add(Date, 1, 2, 4, 5);
-                    //Grid.Children.Add(WhiteShadow, 1, 2, 3, 4);
-                    Grid.Children.Add(Shadow, 1, 2, 5, 6);
+                    Grid.Children.Add(ArticleMargin, 1, 18, 0, 1); //Boxview
+                    Grid.Children.Add(Box, 1, 18, 1, 5); //Boxview
+                    Grid.Children.Add(Image, 1, 18, 1, 2); //Image   
+                    Grid.Children.Add(CategoryBox, 1, 18, 2, 3); //Label
+                    Grid.Children.Add(CategoryBoxSmall, 1, 18, 1, 5); //Label
+                    Grid.Children.Add(Label, 1, 18, 2, 3); //Label
+                    Grid.Children.Add(IngressLabel, 1, 18, 3, 4); //Label
+                    Grid.Children.Add(Date, 1, 18, 4, 5); //Tag 
+                    Grid.Children.Add(Shadow, 1, 18, 5, 6);
+                    Grid.Children.Add(TagBox, 1, 18, 1, 2); //Tag
+                    Grid.Children.Add(Tag, 1, 18, 1, 2); //Tag   
 
-                    Grid.Children.Add(TagBox, 1, 2, 1, 2); //Tag
-                    Grid.Children.Add(Tag, 1, 2, 1, 2); //Tag   
+                    Grid.Children.Add(ReactionButton, 1, 5, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionImage, 1, 5, 4, 5); //Reaction   
+                    Grid.Children.Add(ShareButton, 7, 12, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers1, 10, 18, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthersText, 13, 18, 4, 5); //Reaction  
                     //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
-
-                    //Grid.Children.Add(AdArticleMargin, 1, 2, 4, 5); //Boxview
-                    Grid.Children.Add(AdBox, 1, 2, 6, 7); //Boxview
-                    //Grid.Children.Add(AdButton, 1, 2, 5, 6); //Boxview
-                    Grid.Children.Add(AdImage, 1, 2, 6, 7); //Boxview
-                    Grid.Children.Add(AdLabel, 1, 2, 6, 7); //Label
-                    Grid.Children.Add(AdShadow, 1, 2, 7, 8);
-
-                    /*Grid.Children.Add(AdBox, 1, 2, 4, 5); //Boxview
-                    Grid.Children.Add(AdImageOutline, 1, 2, 4, 5); //Image 
-                    Grid.Children.Add(AdImage, 1, 2, 4, 5); //Image     
-                    Grid.Children.Add(AdLabel, 1, 2, 4, 5); //Label   
-
-                    Grid.Children.Add(AdShadow, 0, 3, 5, 6); //ShadowBelowAd*/
-
-
                     Console.WriteLine("Utdata: " + Label.Text);
 
 

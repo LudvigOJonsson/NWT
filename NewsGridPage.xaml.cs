@@ -507,6 +507,17 @@ namespace NWT
                         Source = "reactions_gray",
 
                     };
+                    var ShareButton = new Image
+                    {
+                        Margin = 20,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        WidthRequest = 40,
+                        HeightRequest = 40,
+                        Source = "icon_Share",
+
+                    };
                     var ReactionBar1 = new BoxView
                     {
                         CornerRadius = 1,
@@ -542,7 +553,7 @@ namespace NWT
                         Source = "reactions_0",
                         Margin = 10,
                         BackgroundColor = Color.Transparent,
-                        HorizontalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.End,
                         VerticalOptions = LayoutOptions.Center,
                         WidthRequest = 30,
                         HeightRequest = 30,
@@ -571,6 +582,8 @@ namespace NWT
                     {
                         Text = "X",
                         Margin = 10,
+                        FontSize = 20,
+                        TextColor = Color.Black,
                         BackgroundColor = Color.Transparent,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
@@ -686,9 +699,9 @@ namespace NWT
 
                     Grid.Children.Add(ReactionButton, 1, 5, 4, 5); //Reaction   
                     Grid.Children.Add(ReactionImage, 1, 5, 4, 5); //Reaction   
-                    Grid.Children.Add(ReactionsOthers1, 5, 8, 4, 5); //Reaction   
-                    Grid.Children.Add(ReactionsOthers2, 8, 11, 4, 5); //Reaction  
-                    Grid.Children.Add(ReactionsOthers3, 11, 14, 4, 5); //Reaction   
+                    Grid.Children.Add(ShareButton, 7, 12, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthers1, 10, 18, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionsOthersText, 10, 18, 4, 5); //Reaction  
                     //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag
                     Console.WriteLine("Utdata: " + Label.Text);
 
