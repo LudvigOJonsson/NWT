@@ -480,14 +480,14 @@ namespace NWT
 
             Navigation.PopAsync();
         }
-        
+
         async void ReactionButtonClicked(object sender, System.EventArgs e)
         {
             Button b = (Button)sender;
 
             string ID = b.ClassId;
 
-            ReactionPopUp rp = new ReactionPopUp(0);
+            ReactionPopUp rp = new ReactionPopUp(0, false, null);
             await PopupNavigation.Instance.PushAsync(rp);
         }
         /*async public void AdClicked(object sender, EventArgs e)
