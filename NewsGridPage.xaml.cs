@@ -70,9 +70,12 @@ namespace NWT
             public LayoutOptions CBVO { get; set; }
             public int INGHR { get; set; }
             public bool IsNormalfeed { get; set; }
+            public int ReactionNR { get; set; }
+
+
             public Article(NewsfeedTable NF, int argc)
             {
-                
+                ReactionNR = 1337;
 
                 Tag = NF.Category.Split(new[] { ", " }, StringSplitOptions.None)[0];
                 ID = NF.Article;
@@ -632,8 +635,8 @@ namespace NWT
                     IngressLabel.SetBinding(Label.IsVisibleProperty, "HasIngress");
                     IngressLabel.SetBinding(HeightRequestProperty, "INGHR");
 
-                    ReactionButton.SetBinding(ClassIdProperty, "ReactionSum");
-
+                    ReactionButton.SetBinding(ClassIdProperty, "ID");
+                    ReactionsOthersText.SetBinding(Label.TextProperty, "ReactionNR");
                     var Grid = new Grid
                     {
 
@@ -820,9 +823,24 @@ namespace NWT
         {
             Button b = (Button)sender;
 
-            string ID = b.ClassId;
+            var ID = Convert.ToInt32(b.ClassId);
 
-            ReactionPopUp rp = new ReactionPopUp(0,false,null);
+            var UserReactions = App.database.GetReactionsFromUser(App.LoggedinUser.ID);
+            bool Reacted = false;
+            ReactionTable CR = null;
+
+            foreach (ReactionTable Reaction in UserReactions)
+            {
+                if (Reaction.Article == ID)
+                {
+                    Reacted = true;
+                    CR = Reaction;
+                    break;
+                }
+            }
+
+
+            ReactionPopUp rp = new ReactionPopUp(ID,Reacted,CR);
             await PopupNavigation.Instance.PushAsync(rp);
         }
 
