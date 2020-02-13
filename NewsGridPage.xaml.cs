@@ -1,4 +1,5 @@
 ﻿using FFImageLoading.Forms;
+using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,7 @@ namespace NWT
             public int INGHR { get; set; }
             public bool IsNormalfeed { get; set; }
             public int ReactionNR { get; set; }
+            public string ReactionSrc { get; set; }
 
 
             public Article(NewsfeedTable NF, int argc)
@@ -226,6 +228,25 @@ namespace NWT
 
                 ArticleReactions = NF.ArtikelReactions;
                 ReactionSum = NF.ReactionSum;
+
+                var ReactionList = JsonConvert.DeserializeObject<List<ReactionTable>>(ReactionSum);
+
+                foreach (ReactionTable Reaction in ReactionList)
+                {
+                    if (Reaction.User == App.LoggedinUser.ID)
+                    {
+                        ReactionSrc = "reactions_"+Reaction.Reaktion+".png";
+                        break;
+                    }
+                    else
+                    {
+                        ReactionSrc = "reactions_0.png";
+                    }
+
+                }
+
+
+
 
                 Console.WriteLine("Artikel Klar");
             }
@@ -551,7 +572,7 @@ namespace NWT
                         WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
                         HeightRequest = 5,
                     };
-                    var ReactionsOthers1 = new Image
+                    var ReactionsOthers1 = new CachedImage
                     {
                         Source = "reactions_0",
                         Margin = 10,
@@ -637,6 +658,8 @@ namespace NWT
 
                     ReactionButton.SetBinding(ClassIdProperty, "ID");
                     ReactionsOthersText.SetBinding(Label.TextProperty, "ReactionNR");
+                    ReactionsOthers1.SetBinding(CachedImage.SourceProperty, "ReactionSrc");
+
                     var Grid = new Grid
                     {
 
