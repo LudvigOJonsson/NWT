@@ -33,6 +33,11 @@ namespace NWT
         public bool CommentsLoaded = false;
         public bool Reacted = false;
         public ReactionTable CR;
+        public RSSTable rssTable;
+        public Image ReactionImage;
+        public Image ReactionsOthers1;
+        public Label ReactionsOthersText;
+
         public class Comment
         {
             public UserTable User { get; set; }
@@ -58,6 +63,8 @@ namespace NWT
         public NewsPage(RSSTable RSS, int argc)
         {
             InitializeComponent();
+
+            rssTable = RSS; 
 
             BackGroundReactionTimerFavorites.BackgroundColor = App.MC;
 
@@ -138,7 +145,7 @@ namespace NWT
 
             FavButtonCheck(RSS);
 
-            ReactionCheck(RSS);
+            ReactionCheck();
 
 
         }
@@ -286,7 +293,7 @@ namespace NWT
                 TextColor = Color.LightGray,
             };
             ReactionButton.Clicked += ReactionButtonClicked;
-            var ReactionImage = new Image
+            ReactionImage = new Image
             {
                 Source = "reactions_gray",
                 Margin = 0,
@@ -327,7 +334,7 @@ namespace NWT
                 WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
                 HeightRequest = 5,
             };
-            var ReactionsOthers1 = new Image
+            ReactionsOthers1 = new Image
             {
                 Source = "reactions_4",
                 Margin = 10,
@@ -357,7 +364,7 @@ namespace NWT
                 WidthRequest = 30,
                 HeightRequest = 30,
             };
-            var ReactionsOthersText = new Label
+            ReactionsOthersText = new Label
             {
                 Text = Reactions.Count.ToString(),
                 TextColor = Color.Black,
@@ -720,7 +727,7 @@ namespace NWT
             /*bool answer = await DisplayAlert("Reagera", "TEST TEXT", "Nej", "Ja"); //(Title,Message,Accept,Cancel)
             if (!answer)
             {*/
-            ReactionPopUp rp = new ReactionPopUp(ArticleNR, Reacted, CR);
+            ReactionPopUp rp = new ReactionPopUp(ArticleNR, Reacted, CR, this);
             await PopupNavigation.Instance.PushAsync(rp);
             /*}
             else
@@ -730,33 +737,36 @@ namespace NWT
 
         }
 
-        public void ReactionCheck(RSSTable RSS)
+        public void ReactionCheck()
         {
             if (App.LoggedinUser != null)
             {
-                
-                /*int r = -1;
-                var REA = App.database.GetReactions(App.LoggedinUser.ID);
 
-                if (REA != null)
+                var Reactions = App.database.GetReactionsFromArticle(rssTable.ID);
+                foreach (ReactionTable Reaction in Reactions)
                 {
-                    Console.WriteLine("Reactions Gotten: " + REA.Count());
-                    foreach (var RE in REA)
+                    if (Reaction.User == App.LoggedinUser.ID)
                     {
-                        if (RSS.ID == RE.ID)
-                        {
-                            Favorited = true;
-                        }
+                        Reacted = true;
+                        CR = Reaction;
+
+                        //Hur du reagerat
+                        ReactionImage.Source = "reactions_" + Reaction.Reaktion + ".png";
+
+                        //Hur andra reagera (just nu satt till default)
+                        ReactionsOthers1.Source = "reactions_0.png";
+
+                        //Siffran på andras reactioner (just nu satt till meme)
+                        ReactionsOthersText.Text = "1337";
+
+                        break;
+                    }
+                    else
+                    {
+                        ReactionImage.Source = "reactions_gray.png";
+                        ReactionsOthers1.Source = "reactions_0.png";
                     }
                 }
-                if (r >= 0)
-                {
-                    ReactionButton.Source = "reactions_" + r;
-                } else 
-                {
-                    ReactionButton.Source = "reactions_gray";
-                }
-                ok*/
 
             }
         }

@@ -73,6 +73,7 @@ namespace NWT
             public bool IsNormalfeed { get; set; }
             public int ReactionNR { get; set; }
             public string ReactionSrc { get; set; }
+            public string ReactionSrcOthers { get; set; }
 
 
             public Article(NewsfeedTable NF, int argc)
@@ -240,7 +241,7 @@ namespace NWT
                     }
                     else
                     {
-                        ReactionSrc = "reactions_0.png";
+                        ReactionSrc = "reactions_gray.png";
                     }
 
                 }
@@ -863,7 +864,7 @@ namespace NWT
             }
 
 
-            ReactionPopUp rp = new ReactionPopUp(ID,Reacted,CR);
+            ReactionPopUp rp = new ReactionPopUp(ID,Reacted,CR, null);
             await PopupNavigation.Instance.PushAsync(rp);
         }
 

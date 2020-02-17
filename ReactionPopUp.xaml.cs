@@ -16,13 +16,14 @@ namespace NWT
         int ArticleID = -1;
         ReactionTable RT;
         bool Reacted = false;
+        NewsPage activeNP;
 
-        public ReactionPopUp(int ArticleID_, bool Reacted_, ReactionTable RT_)
+        public ReactionPopUp(int ArticleID_, bool Reacted_, ReactionTable RT_, NewsPage NP)
         {
             ArticleID = ArticleID_;
             RT = RT_;
             Reacted = Reacted_;
-
+            activeNP = NP;
 
             InitializeComponent();
         }
@@ -48,6 +49,9 @@ namespace NWT
                     Article = ArticleID,
                     Reaktion = Convert.ToInt32(BT.ClassId)
                 };
+
+                if (activeNP != null)
+                    activeNP.ReactionCheck();
 
                 App.database.InsertReaction(NRT);
                 

@@ -58,6 +58,11 @@ namespace NWT
             public int DateLength { get; set; }
             public string IMGSource { get; set; }
             public int HeaderLength { get; set; }
+            public string ArticleReactions { get; set; }
+            public string ReactionSum { get; set; }
+            public int ReactionNR { get; set; }
+            public string ReactionSrc { get; set; }
+            public string ReactionSrcOthers { get; set; }
             public bool Plus { get; set; }
             public bool Full { get; set; }
             public bool CategoryBig { get; set; }
@@ -77,7 +82,8 @@ namespace NWT
 
             public Article(NewsfeedTable NF, int interval)
             {
-                
+
+                ReactionNR = 1337;
 
 
 
@@ -412,6 +418,31 @@ namespace NWT
                 }
 
 
+                ArticleReactions = NF.ArtikelReactions;
+                ReactionSum = NF.ReactionSum;
+
+                var ReactionList = JsonConvert.DeserializeObject<List<ReactionTable>>(ReactionSum);
+
+                foreach (ReactionTable Reaction in ReactionList)
+                {
+                    if (Reaction.User == App.LoggedinUser.ID)
+                    {
+                        //Hur du reagerat
+                        ReactionSrc = "reactions_" + Reaction.Reaktion + ".png";
+
+                        //Hur andra reagera (just nu satt till default)
+                        ReactionSrcOthers = "reactions_0.png";
+                        break;
+                    }
+                    else
+                    {
+                        ReactionSrc = "reactions_gray.png";
+                        ReactionSrcOthers = "reactions_0.png";
+                    }
+
+                }
+
+
 
 
 
@@ -487,7 +518,7 @@ namespace NWT
 
             string ID = b.ClassId;
 
-            ReactionPopUp rp = new ReactionPopUp(0, false, null);
+            ReactionPopUp rp = new ReactionPopUp(0, false, null, null);
             await PopupNavigation.Instance.PushAsync(rp);
         }
         /*async public void AdClicked(object sender, EventArgs e)
@@ -937,13 +968,12 @@ namespace NWT
                         VerticalOptions = LayoutOptions.Center,
                         WidthRequest = 60,
                         HeightRequest = 60,
-                        Text = "RE",
                         TextColor = Color.LightGray,
                         ClassId = "ArticleID",
 
                     };
                     ReactionButton.Clicked += ReactionButtonClicked;
-                    var ReactionImage = new Image
+                    var ReactionImage = new CachedImage
                     {
                         Margin = 15,
                         BackgroundColor = Color.Transparent,
@@ -953,6 +983,16 @@ namespace NWT
                         HeightRequest = 45,
                         Source = "reactions_gray",
 
+                    };
+                    var ReactionButtonText = new Label
+                    {
+                        Text = "Reagera",
+                        Margin = 0,
+                        FontSize = 18,
+                        TextColor = Color.DimGray,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
                     };
                     var ShareButton = new Image
                     {
@@ -964,6 +1004,16 @@ namespace NWT
                         HeightRequest = 40,
                         Source = "icon_Share",
 
+                    };
+                    var ShareButtonText = new Label
+                    {
+                        Text = "Dela",
+                        Margin = 0,
+                        FontSize = 18,
+                        TextColor = Color.DimGray,
+                        BackgroundColor = Color.Transparent,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
                     };
                     var ReactionBar1 = new BoxView
                     {
@@ -995,7 +1045,7 @@ namespace NWT
                         WidthRequest = Application.Current.MainPage.Width / 2 * 0.1f,
                         HeightRequest = 5,
                     };
-                    var ReactionsOthers1 = new Image
+                    var ReactionsOthers1 = new CachedImage
                     {
                         Source = "reactions_0",
                         Margin = 10,
@@ -1030,10 +1080,11 @@ namespace NWT
                         Text = "X",
                         Margin = 10,
                         FontSize = 20,
-                        TextColor = Color.Black,
+                        TextColor = Color.DimGray,
                         BackgroundColor = Color.Transparent,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
+                        HorizontalTextAlignment = TextAlignment.End,
                         WidthRequest = 30,
                         HeightRequest = 30,
                     };
@@ -1091,6 +1142,10 @@ namespace NWT
                     AdLabel.SetBinding(Label.TextProperty, "AdText");
                     AdImage.SetBinding(CachedImage.SourceProperty, "AdSource");
 
+                    ReactionButton.SetBinding(ClassIdProperty, "ID");
+                    ReactionsOthersText.SetBinding(Label.TextProperty, "ReactionNR");
+                    ReactionImage.SetBinding(CachedImage.SourceProperty, "ReactionSrc");
+                    ReactionsOthers1.SetBinding(CachedImage.SourceProperty, "ReactionSrcOthers");
 
 
                     var Grid = new Grid
@@ -1159,9 +1214,11 @@ namespace NWT
                     Grid.Children.Add(TagBox, 1, 18, 1, 2); //Tag
                     Grid.Children.Add(Tag, 1, 18, 1, 2); //Tag   
 
-                    Grid.Children.Add(ReactionButton, 1, 5, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionButton, 1, 7, 4, 5); //Reaction   
+                    Grid.Children.Add(ReactionButtonText, 3, 8, 4, 5); //Reaction   
                     Grid.Children.Add(ReactionImage, 1, 5, 4, 5); //Reaction   
-                    Grid.Children.Add(ShareButton, 7, 12, 4, 5); //Reaction   
+                    Grid.Children.Add(ShareButton, 8, 12, 4, 5); //Reaction   
+                    Grid.Children.Add(ShareButtonText, 9, 15, 4, 5); //Reaction  
                     Grid.Children.Add(ReactionsOthers1, 10, 18, 4, 5); //Reaction   
                     Grid.Children.Add(ReactionsOthersText, 13, 18, 4, 5); //Reaction  
                     //Grid.Children.Add(DateBox, 1, 2, 1, 2); //Tag

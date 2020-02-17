@@ -29,6 +29,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="0"/>
                 </Grid.RowDefinitions>
 
@@ -59,6 +60,12 @@
                 <Button ImageSource="reactions_7" ClassId="7" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="2"/>
 
                 <Button ImageSource="reactions_8" ClassId="8" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="3"/>
+
+                <Button ImageSource="reactions_9" ClassId="9" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="1"/>
+
+                <Button ImageSource="reactions_10" ClassId="10" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="2"/>
+                
+                <Button ImageSource="reactions_gray" ClassId="666" HorizontalOptions="Center" Clicked="SelectReaction" VerticalOptions="Center" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="3"/>
 
 
                 <!-- <BoxView Grid.Row="1" Grid.Column="1"  Margin="15" BackgroundColor="AntiqueWhite"  />
