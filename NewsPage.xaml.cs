@@ -757,7 +757,7 @@ namespace NWT
                         ReactionsOthers1.Source = "reactions_0.png";
 
                         //Siffran på andras reactioner (just nu satt till meme)
-                        ReactionsOthersText.Text = "1337";
+                        
 
                         break;
                     }
@@ -767,7 +767,7 @@ namespace NWT
                         ReactionsOthers1.Source = "reactions_0.png";
                     }
                 }
-
+                ReactionsOthersText.Text = Reactions.Count().ToString();
             }
         }
 

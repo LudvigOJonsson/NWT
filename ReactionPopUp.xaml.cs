@@ -36,13 +36,6 @@ namespace NWT
             var BT = (Button)sender;
             if (ArticleID != -1)
             {
-               
-
-                if (Reacted)
-                {
-                    App.database.DeleteReaction(RT);
-                }
-
                 var NRT = new ReactionTable
                 {
                     User = App.LoggedinUser.ID,
@@ -50,11 +43,22 @@ namespace NWT
                     Reaktion = Convert.ToInt32(BT.ClassId)
                 };
 
-                if (activeNP != null)
-                    activeNP.ReactionCheck();
+                if (Reacted)
+                {
+                    App.database.DeleteReaction(RT);
+                    if (RT.Reaktion != NRT.Reaktion)
+                    {
+                        if (activeNP != null)
+                            activeNP.ReactionCheck();
 
-                App.database.InsertReaction(NRT);
-                
+                        App.database.InsertReaction(NRT);
+                    }
+                }
+                else
+                {
+                    App.database.InsertReaction(NRT);
+                }
+                           
             }          
             //Then close window, as you can only select one reaction at a time
             ClosePopup(sender, e);
