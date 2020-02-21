@@ -58,7 +58,10 @@ namespace NWT
                 {
                     App.database.InsertReaction(NRT);
                 }
-                           
+                if(activeNP != null)
+                {
+                    activeNP.ReactionImage.Source = "reactions_" + NRT.Reaktion + ".png";
+                }           
             }          
             //Then close window, as you can only select one reaction at a time
             ClosePopup(sender, e);

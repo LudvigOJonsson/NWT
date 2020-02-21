@@ -114,9 +114,9 @@
 
 
             <Entry Placeholder="Write a comment..." IsVisible="false" x:Name="CommentEntry" FontSize="16"  TextColor="White" PlaceholderColor="LightGray" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="280" Margin="5"/>
-
+            
             <Button x:Name="CommentButton" Text=">" IsVisible="false" FontSize="26" CornerRadius="0" Clicked="SubmitComment"  Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="#649FD4" TextColor="#FFFFFF" Margin="0" WidthRequest="50" HeightRequest="50" HorizontalOptions="End" VerticalOptions="Center"/>
-
+            
         </Grid>
     </ScrollView>
 </ContentPage>

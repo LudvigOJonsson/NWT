@@ -246,8 +246,28 @@ namespace NWT
 
                 }
 
+                int MaxValue = 0;
+                int MostPicked = 0;
 
+                for (int i = 0; i < 8; i++)
+                {
+                    int CurValue = 0;
+                    foreach (ReactionTable Reaction in ReactionList)
+                    {
+                        if (Reaction.Reaktion == i)
+                        {
+                            CurValue++;
+                        }
+                    }
+                    if (CurValue > MaxValue)
+                    {
+                        MaxValue = CurValue;
+                        MostPicked = i;
+                    }
+                }
+                ReactionSrcOthers = "reactions_" + MostPicked + ".png";
 
+                ReactionNR = MaxValue;
 
                 Console.WriteLine("Artikel Klar");
             }

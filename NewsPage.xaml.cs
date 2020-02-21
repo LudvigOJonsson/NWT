@@ -743,8 +743,10 @@ namespace NWT
             {
 
                 var Reactions = App.database.GetReactionsFromArticle(rssTable.ID);
+
                 foreach (ReactionTable Reaction in Reactions)
                 {
+
                     if (Reaction.User == App.LoggedinUser.ID)
                     {
                         Reacted = true;
@@ -752,22 +754,36 @@ namespace NWT
 
                         //Hur du reagerat
                         ReactionImage.Source = "reactions_" + Reaction.Reaktion + ".png";
-
-                        //Hur andra reagera (just nu satt till default)
-                        ReactionsOthers1.Source = "reactions_0.png";
-
-                        //Siffran på andras reactioner (just nu satt till meme)
-                        
-
                         break;
                     }
                     else
                     {
                         ReactionImage.Source = "reactions_gray.png";
-                        ReactionsOthers1.Source = "reactions_0.png";
                     }
                 }
-                ReactionsOthersText.Text = Reactions.Count().ToString();
+
+                int MaxValue = 0;
+                int MostPicked = 0;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    int CurValue = 0;
+                    foreach (ReactionTable Reaction in Reactions)
+                    {
+                        if(Reaction.Reaktion == i)
+                        {
+                            CurValue++;
+                        }
+                    }
+                    if (CurValue > MaxValue)
+                    {
+                        MaxValue = CurValue;
+                        MostPicked = i;
+                    }
+                }
+                ReactionsOthers1.Source = "reactions_"+MostPicked+".png";
+
+                ReactionsOthersText.Text = MaxValue.ToString();
             }
         }
 
