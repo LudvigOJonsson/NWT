@@ -16,6 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="AvatarPopup.xaml.cs">
+      <DependentUpon>AvatarPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ReactionPopUp.xaml.cs">
+      <DependentUpon>ReactionPopUp.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="CommentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
