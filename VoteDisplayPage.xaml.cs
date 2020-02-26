@@ -22,6 +22,17 @@ namespace NWT
             Op3.Text = VQ.Option3;
             Op4.Text = VQ.Option4;
 
+            Op1.BackgroundColor = App.MC;
+            Op2.BackgroundColor = App.MC;
+            Op3.BackgroundColor = App.MC;
+            Op4.BackgroundColor = App.MC;
+            Op1.TextColor = Color.White;
+            Op2.TextColor = Color.White;
+            Op3.TextColor = Color.White;
+            Op4.TextColor = Color.White;
+
+            Question.TextColor = App.MC;
+
             int TV1 = 0;
             int TV2 = 0;
             int TV3 = 0;

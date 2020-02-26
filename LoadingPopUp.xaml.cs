@@ -24,7 +24,7 @@ namespace NWT
         {
             await LoadingText.ScaleTo(0, 4000);
             await LoadingText.ScaleTo(1, 4000);
-            LoadingText.IsVisible = true;
+            //LoadingText.IsVisible = true;
 
         }
 
