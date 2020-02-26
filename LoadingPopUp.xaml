@@ -47,7 +47,7 @@
 	                Grid.Row="1" Grid.Column="1"
                     VerticalOptions="FillAndExpand"
 	                HorizontalOptions="FillAndExpand"
-	                Animation="AnimatedSwirl.json"
+	                Animation="loading.json"
 	                Loop="true"
 	                AutoPlay="true"
 	                />

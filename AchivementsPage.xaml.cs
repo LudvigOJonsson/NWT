@@ -42,7 +42,7 @@ namespace NWT
 
         public void UpdateAchivements(StatsTable Stats)
         {
-            if (Stats == null && !App.Online)
+            if (Stats == null)
             {
                 return;
             }

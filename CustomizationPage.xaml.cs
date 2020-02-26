@@ -116,10 +116,5 @@ namespace NWT
                 button.Text = "Unfollow";
             }
         }
-        /*protected override bool OnBackButtonPressed()
-        {
-            App.Startpage.IsPresented = true;
-            return false;
-        }*/
     }
 }

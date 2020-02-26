@@ -456,7 +456,7 @@ namespace NWT
                     };
 
                     var TGR = new TapGestureRecognizer()
-                    { 
+                    {
                         NumberOfTapsRequired = 1
                     };
                     if (Item.InventorySlot == "Hair")
